@@ -1,30 +1,30 @@
 import React from "react";
 import { QRCodeSVG } from "qrcode.react";
 
-const QRCodeDisplay = ({ url, size = 128, level = "H" }) => {
-  if (!url) {
-    return (
-      <div className="p-4 text-center text-gray-500">
-        URL not available for QR code.
-      </div>
-    );
-  }
-
+/**
+ * A reusable component to display a QR code.
+ * @param {string} url - The URL/data to encode in the QR code.
+ * @param {number} size - The width and height of the QR code in pixels.
+ * @param {string} level - The error correction level ('L', 'M', 'Q', 'H').
+ * @param {string} bgColor - The background color of the QR code.
+ * @param {string} fgColor - The foreground color (the code itself).
+ */
+const QRCodeDisplay = ({
+  url,
+  size = 128,
+  level = "H",
+  bgColor = "#FFFFFF",
+  fgColor = "#000000", // Defaulting to black as requested
+}) => {
   return (
-    <div className="flex justify-center p-4">
-      <div className="p-2 border-4 border-gray-100 bg-white rounded-lg shadow-xl">
-        {/* QRCodeSVG component generates an SVG image of the QR code.
-                  This is great for quality and performance.
-                */}
-        <QRCodeSVG
-          value={url}
-          size={size}
-          level={level}
-          bgColor="#ffffff"
-          fgColor="#a91b0d" // Using your brand red color
-        />
-      </div>
-    </div>
+    <QRCodeSVG
+      value={url}
+      size={size}
+      level={level}
+      bgColor={bgColor}
+      fgColor={fgColor}
+      includeMargin={false} // We will handle padding in the parent component
+    />
   );
 };
 
