@@ -10,5 +10,6 @@
 .DS_Store
 npm-debug.log
 yarn-error.log
+# ... other lines ...
 .cache
 /.cashe
