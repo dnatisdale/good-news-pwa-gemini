@@ -1,22 +1,7925 @@
-// This is your app's "database" of content.
-// Make sure the 'id' is a number if we are using parseInt() in App.jsx
+// This file was automatically generated from your CSV data on your_content_data.csv.
 export const staticContent = [
   {
-    id: 62808, // Using your example number
-    language: "Akheu",
+    id: 62808,
+    langId: "1148",
+    iso3: "AEU",
+    languageEn: "Akeu",
+    langTh: "อาเคอะ",
     title_en: "Good News",
     title_th: "ข่าวประเสริฐ",
     verse_en:
       "Genesis 1:1 In the beginning God created the heavens and the earth.",
     verse_th: "ปฐมกาล 1:1 ในปฐมกาลนั้น เมื่อพระเจ้าสร้างแผ่นดินและท้องฟ้า",
+    streamUrl: "fivefish.org/T62808",
+    trackDownloadUrl: "fivefish.org/T62808-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62808.zip",
+    programId: "62808",
   },
   {
-    id: 6760, // Using your example number
-    language: "Akha",
+    id: 6760,
+    langId: "529",
+    iso3: "AHK",
+    languageEn: "Akha",
+    langTh: "อาข่า",
     title_en: "Words of Life 1",
-    title_th: "ถ้อยคำแห่งชีวิต 1",
-    verse_en: 'Exodus 23:25 "Worship the LORD your God..."',
-    verse_th: 'อพยพ 23:25 "จงนมัสการพระเยโฮวาห์พระเจ้าของเจ้า..."',
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      'Exodus 23:25 "Worship the LORD your God, and His blessing will be on your food and water. I will take away sickness from among you."',
+    verse_th:
+      "อพยพ 23:25 ถ้าพวกเจ้ารับใช้พระยาห์เวห์พระเจ้าของเจ้า พระองค์จะอวยพรอาหารและน้ำของเจ้า และเราจะเอาเชื้อโรคออกไปจากเจ้า",
+    streamUrl: "fivefish.org/T6760",
+    trackDownloadUrl: "fivefish.org/T6760-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6760.zip",
+    programId: "6760",
   },
-  // Add more content items here...
+  {
+    id: 6761,
+    langId: "529",
+    iso3: "AHK",
+    languageEn: "Akha",
+    langTh: "อาข่า",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Leviticus 19:11 Do not steal. Do not lie. Do not deceive on another.",
+    verse_th: "เลวีนิติ 19:11 เจ้าต้องไม่ขโมย ไม่โกงหรือโกหกซึ่งกันและกัน",
+    streamUrl: "fivefish.org/T6761",
+    trackDownloadUrl: "fivefish.org/T6761-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6761.zip",
+    programId: "6761",
+  },
+  {
+    id: 74874,
+    langId: "3127",
+    iso3: "AHK",
+    languageEn: "Akha Thailand",
+    langTh: "อาข่า ประเทศไทย",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Numbers 23:19 God is not a man, that He should lie, nor a son of man, that He should change His mind. Does He speak and then not act? Does He promise and not fulfill?",
+    verse_th:
+      "กันดารวิถี 23:19 พระเจ้าไม่ใช่มนุษย์ที่พูดโกหก และก็ไม่ใช่มนุษย์ที่ชอบเปลี่ยนใจ มีหรือที่พระองค์พูดแล้วไม่ทำ หรือสัญญาแล้วไม่ทำตามสัญญานั้น",
+    streamUrl: "fivefish.org/T74874",
+    trackDownloadUrl: "fivefish.org/T74874-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74874.zip",
+    programId: "74874",
+  },
+  {
+    id: 6850,
+    langId: "3127",
+    iso3: "AHK",
+    languageEn: "Akha Thailand",
+    langTh: "อาข่า ประเทศไทย",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      'Deuteronomy 31:6 Be strong and courageous. Do not be afraid or terrified because of them, for the LORD your God goes with you; He will never leave you nor forsake you."',
+    verse_th:
+      "เฉลยธรรมบัญญัติ 31:6 ให้เข้มแข็งและกล้าหาญไว้ ไม่ต้องกลัวหรือตื่นตกใจเพราะพวกนั้น เพราะพระยาห์เวห์พระเจ้าของท่านคือผู้ที่จะไปกับท่าน พระองค์จะไม่ละท่านไปหรือทอดทิ้งท่านหรอก”",
+    streamUrl: "fivefish.org/T6850",
+    trackDownloadUrl: "fivefish.org/T6850-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6850.zip",
+    programId: "6850",
+  },
+  {
+    id: 62691,
+    langId: "3259",
+    iso3: "CTG",
+    languageEn: "Bangla Chittagonian",
+    langTh: "บังกลา ชิตตาโกเนียน",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Deuteronomy 6:16 Do not put the LORD your God to the test as you did at Massah.",
+    verse_th:
+      "เฉลยธรรมบัญญัติ 6:16 พวกท่านต้องไม่ลองดีกับพระยาห์เวห์พระเจ้าของท่าน เหมือนกับที่พวกท่านเคยลองดีกับพระองค์มาแล้วที่มัสสาห์",
+    streamUrl: "fivefish.org/T62691",
+    trackDownloadUrl: "fivefish.org/T62691-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62691.zip",
+    programId: "62691",
+  },
+  {
+    id: 75171,
+    langId: "3259",
+    iso3: "CTG",
+    languageEn: "Bangla Chittagonian",
+    langTh: "บังกลา ชิตตาโกเนียน",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Deuteronomy 6:5 Love the LORD your God with all your heart and with all your soul and with all your strength.",
+    verse_th:
+      "เฉลยธรรมบัญญัติ 6:5 ท่านต้องรักพระยาห์เวห์พระเจ้าของท่าน ด้วยการทุ่มสุดใจ สุดชีวิต และสุดตัว ของท่านให้กับพระองค์",
+    streamUrl: "fivefish.org/T75171",
+    trackDownloadUrl: "fivefish.org/T75171-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/75171.zip",
+    programId: "75171",
+  },
+  {
+    id: 62692,
+    langId: "3259",
+    iso3: "CTG",
+    languageEn: "Bangla Chittagonian",
+    langTh: "บังกลา ชิตตาโกเนียน",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Deuteronomy 8:3 He humbled you, causing you to hunger and then feeding you with manna, which neither you nor your ancestors had known, to teach you that man does not live on bread alone but on every word that comes from the mouth of the LORD.",
+    verse_th:
+      "เฉลยธรรมบัญญัติ 8:3 พระยาห์เวห์ทำให้ท่านต้องทนทุกข์จากความหิวแล้วพระองค์ก็เลี้ยงพวกท่านด้วยมานา ที่ทั้งท่านและบรรพบุรุษของท่านไม่เคยรู้จักมาก่อน เพื่อที่พระองค์จะได้สอนท่านว่า คนเราไม่ได้มีชีวิตอยู่ด้วยอาหารเพียงอย่างเดียว แต่คนเราจะมีชีวิตอยู่ได้ด้วยทุกๆคำพูดที่ออกมาจากปากของพระยาห์เวห์",
+    streamUrl: "fivefish.org/T62692",
+    trackDownloadUrl: "fivefish.org/T62692-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62692.zip",
+    programId: "62692",
+  },
+  {
+    id: 62695,
+    langId: "3259",
+    iso3: "CTG",
+    languageEn: "Bangla Chittagonian",
+    langTh: "บังกลา ชิตตาโกเนียน",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Joshua 1:8 Do not let this Book of the Law depart from your mouth; meditate on it day and night, so that you may be careful to do everything written in it. Then you will be prosperous and successful.",
+    verse_th:
+      "โยชูวา 1:8 เจ้าต้องไม่หยุดพูดถึงกฎในหนังสือเล่มนี้ และเจ้าต้องไตร่ตรองมันทั้งวันทั้งคืน เพื่อเจ้าจะได้ทำตามสิ่งที่ได้เขียนไว้ในกฎนั้นอย่างเคร่งครัด แล้วเจ้าจะได้เจริญรุ่งเรืองและประสบความสำเร็จ",
+    streamUrl: "fivefish.org/T62695",
+    trackDownloadUrl: "fivefish.org/T62695-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62695.zip",
+    programId: "62695",
+  },
+  {
+    id: 62710,
+    langId: "3259",
+    iso3: "CTG",
+    languageEn: "Bangla Chittagonian",
+    langTh: "บังกลา ชิตตาโกเนียน",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      'Joshua 1:9 Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go."',
+    verse_th:
+      "โยชูวา 1:9 อย่าลืมว่าเราได้สั่งเจ้าให้เข้มแข็งและกล้าหาญไว้ อย่าได้หวาดกลัวหรือท้อถอย เพราะเรา ยาห์เวห์ พระเจ้าของเจ้า จะอยู่กับเจ้าในทุกที่ที่เจ้าไป”",
+    streamUrl: "fivefish.org/T62710",
+    trackDownloadUrl: "fivefish.org/T62710-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62710.zip",
+    programId: "62710",
+  },
+  {
+    id: 62834,
+    langId: "3259",
+    iso3: "CTG",
+    languageEn: "Bangla Chittagonian",
+    langTh: "บังกลา ชิตตาโกเนียน",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "2 Chronicles 7:14 If My people, who are called by My name, will humble themselves and pray and seek My face and turn from their wicked ways, then I will hear from heaven, and I will forgive their sin and will heal their land.",
+    verse_th:
+      "2 พงศาวดาร 7:14 ถ้าประชาชนของเราผู้ที่เราได้ประทับชื่อเราไว้ ถ่อมตัวลงและอธิษฐาน และเริ่มแสวงหาใบหน้าของเรา และหันเหออกจากวิถีทางชั่วทั้งหลายของพวกเขา เราก็จะรับฟังจากสวรรค์ และจะยกโทษบาปของพวกเขาและจะรักษาแผ่นดินของพวกเขา",
+    streamUrl: "fivefish.org/T62834",
+    trackDownloadUrl: "fivefish.org/T62834-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62834.zip",
+    programId: "62834",
+  },
+  {
+    id: 75170,
+    langId: "3259",
+    iso3: "CTG",
+    languageEn: "Bangla Chittagonian",
+    langTh: "บังกลา ชิตตาโกเนียน",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Job 31:1 I made a covenant with my eyes not to look lustfully at a young woman.",
+    verse_th:
+      "โยบ 31:1 ข้าทำข้อตกลงกับดวงตาของข้าว่า ข้าจะไม่มองหญิงสาวด้วยความใคร่",
+    streamUrl: "fivefish.org/T75170",
+    trackDownloadUrl: "fivefish.org/T75170-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/75170.zip",
+    programId: "75170",
+  },
+  {
+    id: 2760,
+    langId: "3259",
+    iso3: "CTG",
+    languageEn: "Bangla Chittagonian",
+    langTh: "บังกลา ชิตตาโกเนียน",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Psalms 103:1 Praise the LORD, my soul; all my inmost being, praise His holy name.",
+    verse_th:
+      "สดุดี 103:1 จิตใจของข้าพเจ้าเอ๋ย สรรเสริญพระยาห์เวห์เถิด หัวใจทั้งดวงของข้าพเจ้าเอ๋ย สรรเสริญชื่ออันศักดิ์สิทธิ์ของพระองค์เถิด",
+    streamUrl: "fivefish.org/T2760",
+    trackDownloadUrl: "fivefish.org/T2760-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2760.zip",
+    programId: "2760",
+  },
+  {
+    id: 33761,
+    langId: "8185",
+    iso3: "BZI",
+    languageEn: "Bisu",
+    langTh: "บีซู",
+    title_en: "Bible Stories (Easy Reader)",
+    title_th: "เรื่องราวในพระคัมภีร์",
+    verse_en:
+      "Psalms 111:10 The fear of the LORD is the beginning of wisdom; all who follow His precepts have good understanding. To Him belongs eternal praise.",
+    verse_th:
+      "สดุดี 111:10 การยำเกรงพระยาห์เวห์คือจุดเริ่มต้นแห่งสติปัญญา ทุกคนที่เชื่อฟังพระองค์ก็จะเป็นคนที่มีสติรอบคอบ พระองค์จะได้รับการสรรเสริญตลอดไป",
+    streamUrl: "fivefish.org/T33761",
+    trackDownloadUrl: "fivefish.org/T33761-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/33761.zip",
+    programId: "33761",
+  },
+  {
+    id: 29841,
+    langId: "6164",
+    iso3: "BLR",
+    languageEn: "Blang-Shan",
+    langTh: "บลางชาน",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Psalms 119: 9,11 I lift up my eyes to the mountains— where does my help come from? My help comes from the LORD, the Maker of heaven and earth.",
+    verse_th:
+      "สดุดี 119:9,11 คนหนุ่มๆจะรักษาชีวิตของตนให้บริสุทธิ์ได้อย่างไร ก็ด้วยการรักษาคำบัญชาของพระอง 11ข้าพเจ้าเก็บรักษาคำสัญญาของพระองค์ไว้ในใจ เพื่อข้าพเจ้าจะได้ไม่ทำบาปต่อพระองค์",
+    streamUrl: "fivefish.org/T29841",
+    trackDownloadUrl: "fivefish.org/T29841-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/29841.zip",
+    programId: "29841",
+  },
+  {
+    id: 63352,
+    langId: "6164",
+    iso3: "BLR",
+    languageEn: "Blang-Shan",
+    langTh: "บลางชาน",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Psalms 121:1-2 How can a young man keep his way pure? By living according to Your Word. I have hidden Your Word in my heart that I might not sin against You.",
+    verse_th:
+      "สดุดี 121:1-2 ข้าพเจ้าแหงนหน้ามองขึ้นไปยังภูเขาทั้งหลาย ความช่วยเหลือของข้าพเจ้าจะมาจากที่ไหนกัน ความช่วยเหลือของข้าพเจ้ามาจากพระยาห์เวห์ ผู้สร้างสวรรค์และแผ่นดินโลก",
+    streamUrl: "fivefish.org/T63352",
+    trackDownloadUrl: "fivefish.org/T63352-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63352.zip",
+    programId: "63352",
+  },
+  {
+    id: 29770,
+    langId: "6164",
+    iso3: "BLR",
+    languageEn: "Blang-Shan",
+    langTh: "บลางชาน",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Psalms 139:13-14 For You created my inmost being; You knit me together in my mother’s womb. I praise You because I am fearfully and wonderfully made; Your works are wonderful, I know that full well.",
+    verse_th:
+      "สดุดี 139:13-14 พระองค์สร้างทั้งจิตและใจของข้าพเจ้า พระองค์ทอข้าพเจ้าเข้าด้วยกันในท้องแม่ ข้าพเจ้าจึงขอบคุณพระองค์เพราะงานของพระองค์นั้นช่างน่าเกรงขามและน่าทึ่ง พระองค์รู้จักข้าพเจ้าอย่างทะลุปรุโปร่ง",
+    streamUrl: "fivefish.org/T29770",
+    trackDownloadUrl: "fivefish.org/T29770-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/29770.zip",
+    programId: "29770",
+  },
+  {
+    id: 29771,
+    langId: "6164",
+    iso3: "BLR",
+    languageEn: "Blang-Shan",
+    langTh: "บลางชาน",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Psalms 139:8 If I go up to the heavens, You are there; if I make my bed in the depths, You are there.",
+    verse_th:
+      "สดุดี 139:8 ถ้าข้าพเจ้าจะขึ้นไปบนสวรรค์พระองค์ก็อยู่ที่นั่น ถ้าข้าพเจ้านอนลงที่แดนคนตายพระองค์ก็อยู่ที่นั่น",
+    streamUrl: "fivefish.org/T29771",
+    trackDownloadUrl: "fivefish.org/T29771-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/29771.zip",
+    programId: "29771",
+  },
+  {
+    id: 37411,
+    langId: "8378",
+    iso3: "BRU",
+    languageEn: "Bru Eastern Tri",
+    langTh: "บรู ตะวันออก ตรี",
+    title_en: "Genesis Stories 1",
+    title_th: "ปฐมกาลตอนเรื่องที่ 1",
+    verse_en: "Psalms 23:1 The Lord is my Shepherd, I lack nothing.",
+    verse_th:
+      "สดุดี 23:1 พระยาห์เวห์เลี้ยงดูข้าพเจ้าเหมือนเลี้ยงแกะ ดังนั้น ข้าพเจ้าไม่ขาดอะไรเลย",
+    streamUrl: "fivefish.org/T37411",
+    trackDownloadUrl: "fivefish.org/T37411-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37411.zip",
+    programId: "37411",
+  },
+  {
+    id: 37420,
+    langId: "8378",
+    iso3: "BRU",
+    languageEn: "Bru Eastern Tri",
+    langTh: "บรู ตะวันออก ตรี",
+    title_en: "Genesis Stories 2",
+    title_th: "ปฐมกาลตอนเรื่องที่ 2",
+    verse_en:
+      "Psalms 27:14 Wait for the Lord; be strong and take heart and wait for the Lord.",
+    verse_th:
+      "สดุดี 27:14 ให้ฝากความหวังไว้กับพระยาห์เวห์ ให้เข้มแข็งและกล้าหาญไว้ ให้ฝากความหวังไว้กับพระยาห์เวห์",
+    streamUrl: "fivefish.org/T37420",
+    trackDownloadUrl: "fivefish.org/T37420-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37420.zip",
+    programId: "37420",
+  },
+  {
+    id: 37421,
+    langId: "8378",
+    iso3: "BRU",
+    languageEn: "Bru Eastern Tri",
+    langTh: "บรู ตะวันออก ตรี",
+    title_en: "Genesis Stories 3",
+    title_th: "ปฐมกาลตอนเรื่องที่ 3",
+    verse_en:
+      "Psalms 30:5 For His anger lasts only a moment, but His favor lasts a lifetime; weeping may stay for the night, but rejoicing comes in the morning.",
+    verse_th:
+      "สดุดี 30:5 ความโกรธเกรี้ยวของพระองค์อยู่เพียงชั่วคราว แต่ความปรานีของพระองค์นำชีวิตมาให้ เราอาจจะร้องไห้ในยามค่ำคืน แต่ในวันรุ่งขึ้น เราจะชื่นบาน",
+    streamUrl: "fivefish.org/T37421",
+    trackDownloadUrl: "fivefish.org/T37421-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37421.zip",
+    programId: "37421",
+  },
+  {
+    id: 37410,
+    langId: "8378",
+    iso3: "BRU",
+    languageEn: "Bru Eastern Tri",
+    langTh: "บรู ตะวันออก ตรี",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      'Psalms 32:5 Then I acknowledged my sin to You and did not cover up my iniquity. I said, "I will confess my transgressions to the LORD." And You forgave the guilt of my sin.',
+    verse_th:
+      "สดุดี 32:5 ดังนั้น พระยาห์เวห์ ข้าพเจ้าขอสารภาพความบาปต่อพระองค์ โดยไม่ได้ซ่อนความผิดบาปอะไรไว้เลย ข้าพเจ้าพูดว่า “ข้าพเจ้าจะสารภาพต่อพระยาห์เวห์ถึงการกบฏทั้งหลายที่ทำไป” แล้วพระองค์ก็ได้ยกโทษให้กับความผิดบาปของข้าพเจ้า เซลาห์",
+    streamUrl: "fivefish.org/T37410",
+    trackDownloadUrl: "fivefish.org/T37410-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37410.zip",
+    programId: "37410",
+  },
+  {
+    id: 37370,
+    langId: "8379",
+    iso3: "BRV",
+    languageEn: "Bru Western Dong Luang",
+    langTh: "บรูตะวันตก ดงหลวง",
+    title_en: "Genesis Stories 1",
+    title_th: "ปฐมกาลตอนเรื่องที่ 1",
+    verse_en:
+      "Psalms 37:4 Take delight in the Lord, and He will give you the desires of your heart.",
+    verse_th:
+      "สดุดี 37:4 ให้มีความสุขกับการรับใช้พระยาห์เวห์ แล้วพระองค์จะให้สิ่งที่ใจเจ้าต้องการ",
+    streamUrl: "fivefish.org/T37370",
+    trackDownloadUrl: "fivefish.org/T37370-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37370.zip",
+    programId: "37370",
+  },
+  {
+    id: 37371,
+    langId: "8379",
+    iso3: "BRV",
+    languageEn: "Bru Western Dong Luang",
+    langTh: "บรูตะวันตก ดงหลวง",
+    title_en: "Genesis Stories 2",
+    title_th: "ปฐมกาลตอนเรื่องที่ 2",
+    verse_en:
+      "Psalms 4:3 Know that the LORD has set apart His faithful servant for Himself; the LORD hears when I call to Him.",
+    verse_th:
+      "สดุดี 4:3 พวกเจ้าทั้งหลาย ให้รู้ไว้เถอะว่า พระยาห์เวห์เอาใจใส่คนที่สัตย์ซื่อต่อพระองค์เป็นพิเศษ พระองค์จะฟังเสียงของเรา เมื่อเราร้องขอความช่วยเหลือจากพระองค์",
+    streamUrl: "fivefish.org/T37371",
+    trackDownloadUrl: "fivefish.org/T37371-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37371.zip",
+    programId: "37371",
+  },
+  {
+    id: 37380,
+    langId: "8379",
+    iso3: "BRV",
+    languageEn: "Bru Western Dong Luang",
+    langTh: "บรูตะวันตก ดงหลวง",
+    title_en: "Genesis Stories 3",
+    title_th: "ปฐมกาลตอนเรื่องที่ 3",
+    verse_en:
+      "Psalms 4:8 In peace I will lie down and sleep, for You alone, LORD, make me dwell in safety.",
+    verse_th:
+      "สดุดี 4:8 ดังนั้น ข้าพเจ้านอนลงและหลับไปอย่างสงบสุขยิ่งนัก เพราะ พระยาห์เวห์ พระองค์แต่เพียงผู้เดียวเป็นผู้ที่ทำให้ข้าพเจ้านอนลงอย่างปลอดภัย",
+    streamUrl: "fivefish.org/T37380",
+    trackDownloadUrl: "fivefish.org/T37380-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37380.zip",
+    programId: "37380",
+  },
+  {
+    id: 37381,
+    langId: "8379",
+    iso3: "BRV",
+    languageEn: "Bru Western Dong Luang",
+    langTh: "บรูตะวันตก ดงหลวง",
+    title_en: "Genesis Stories 4",
+    title_th: "ปฐมกาลตอนเรื่องที่ 4",
+    verse_en:
+      "Psalms 94:11 The LORD knows all human plans; He knows that they are futile.",
+    verse_th:
+      "สดุดี 94:11 พระยาห์เวห์รู้จักความคิดของมนุษย์ และพระองค์รู้ว่ามันไร้สาระ",
+    streamUrl: "fivefish.org/T37381",
+    trackDownloadUrl: "fivefish.org/T37381-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37381.zip",
+    programId: "37381",
+  },
+  {
+    id: 37390,
+    langId: "8379",
+    iso3: "BRV",
+    languageEn: "Bru Western Dong Luang",
+    langTh: "บรูตะวันตก ดงหลวง",
+    title_en: "Genesis Stories 5",
+    title_th: "ปฐมกาลตอนเรื่องที่ 5",
+    verse_en:
+      "Proverbs 1:7 The fear of the LORD is the beginning of knowledge, but fools despise wisdom and instruction.",
+    verse_th:
+      "สุภาษิต 1:7 การยำเกรงพระยาห์เวห์คือจุดเริ่มต้นของความรู้ แต่คนโง่เกลียดชังปัญญาและคำสั่งสอน",
+    streamUrl: "fivefish.org/T37390",
+    trackDownloadUrl: "fivefish.org/T37390-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37390.zip",
+    programId: "37390",
+  },
+  {
+    id: 37391,
+    langId: "8379",
+    iso3: "BRV",
+    languageEn: "Bru Western Dong Luang",
+    langTh: "บรูตะวันตก ดงหลวง",
+    title_en: "Genesis Stories 6",
+    title_th: "ปฐมกาลตอนเรื่องที่ 6",
+    verse_en:
+      "Proverbs 1:8 Listen, my son, to your father's instruction and do not forsake your mother's teaching.",
+    verse_th:
+      "สุภาษิต 1:8 ลูกเอ๋ย ให้เชื่อฟังคำสั่งสอนของพ่อเจ้า และอย่าได้ละทิ้งคำสอนของแม่เจ้าด้วย",
+    streamUrl: "fivefish.org/T37391",
+    trackDownloadUrl: "fivefish.org/T37391-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37391.zip",
+    programId: "37391",
+  },
+  {
+    id: 37526,
+    langId: "8379",
+    iso3: "BRV",
+    languageEn: "Bru Western Dong Luang",
+    langTh: "บรูตะวันตก ดงหลวง",
+    title_en: "Genesis Stories 7",
+    title_th: "ปฐมกาลตอนเรื่องที่ 7",
+    verse_en:
+      "Proverbs 10:12 Hatred stirs up conflict, but love covers over all wrongs.",
+    verse_th:
+      "สุภาษิต 10:12 ความเกลียดชังย่อมเร่งเร้าให้เกิดการทะเลาะวิวาท แต่ความรักปกปิดความผิดทั้งปวง",
+    streamUrl: "fivefish.org/T37526",
+    trackDownloadUrl: "fivefish.org/T37526-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37526.zip",
+    programId: "37526",
+  },
+  {
+    id: 37401,
+    langId: "20037",
+    iso3: "KHB",
+    languageEn: "Buguo",
+    langTh: "บูกูโอ",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Proverbs 10:4 Lazy hands make for poverty, but diligent hands bring wealth.",
+    verse_th:
+      "สุภาษิต 10:4 มือที่เกียจคร้านทำให้ยากจน แต่มือที่ขยันทำให้ร่ำรวย",
+    streamUrl: "fivefish.org/T37401",
+    trackDownloadUrl: "fivefish.org/T37401-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37401.zip",
+    programId: "37401",
+  },
+  {
+    id: 80570,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Proverbs 10:9 Whoever walks in integrity walks securely, but whoever takes crooked paths will be found out.",
+    verse_th:
+      "สุภาษิต 10:9 คนที่ใช้ชีวิตอย่างซื่อสัตย์ไม่ต้องห่วงอะไร แต่คนที่อยู่ในทางไม่ซื่อสัตย์ก็จะถูกจับได้",
+    streamUrl: "fivefish.org/T80570",
+    trackDownloadUrl: "fivefish.org/T80570-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80570.zip",
+    programId: "80570",
+  },
+  {
+    id: 74797,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "Gospel Songs",
+    title_th: "เพลงนมัสการ",
+    verse_en:
+      "Proverbs 16:3 Commit to the LORD whatever you do, and He will establish your plans.",
+    verse_th:
+      "สุภาษิต 16:3 ให้มอบการงานของเจ้าให้กับพระยาห์เวห์ แล้วแผนการของเจ้าจะสำเร็จ",
+    streamUrl: "fivefish.org/T74797",
+    trackDownloadUrl: "fivefish.org/T74797-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74797.zip",
+    programId: "74797",
+  },
+  {
+    id: 65957,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "Jesus, the Refugee",
+    title_th: "พระเยซู ผู้ลี้ภัย",
+    verse_en:
+      "Proverbs 16:4 The Lord works out everything to its proper end— even the wicked for a day of disaster.",
+    verse_th:
+      "สุภาษิต 16:4 พระยาห์เวห์สร้างทุกสิ่งขึ้นมาอย่างมีจุดมุ่งหมาย แม้แต่คนชั่ว พระองค์ก็สร้างขึ้นมาเพื่อวันแห่งความพินาศ",
+    streamUrl: "fivefish.org/T65957",
+    trackDownloadUrl: "fivefish.org/T65957-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65957.zip",
+    programId: "65957",
+  },
+  {
+    id: 62603,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Proverbs 17:17 A friend loves at all times, and a brother is born for a time of adversity.",
+    verse_th:
+      "สุภาษิต 17:17 เพื่อนแท้ก็รักกันอยู่เสมอ ส่วนพี่น้องนั้นก็เกิดมาเพื่อช่วยเหลือกันในยามทุกข์ยาก",
+    streamUrl: "fivefish.org/T62603",
+    trackDownloadUrl: "fivefish.org/T62603-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62603.zip",
+    programId: "62603",
+  },
+  {
+    id: 62605,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Proverbs 17:9 Whoever would foster love covers over an offense, but whoever repeats the matter separates close friends.",
+    verse_th:
+      "สุภาษิต 17:9 คนที่ปกปิดความผิดของคนอื่นไว้รักษามิตรภาพ ส่วนคนที่เล่าความผิดของเพื่อนให้คนอื่นฟังก็ทำลายมิตรภาพ",
+    streamUrl: "fivefish.org/T62605",
+    trackDownloadUrl: "fivefish.org/T62605-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62605.zip",
+    programId: "62605",
+  },
+  {
+    id: 62604,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Proverbs 18:4 The words of the mouth are deep waters, but the fountain of wisdom is a rushing stream.",
+    verse_th:
+      "สุภาษิต 18:4 คำพูดจากปาก เป็นน้ำลึกที่เกินกว่าจะเข้าใจได้ แต่แหล่งน้ำแห่งปัญญาทำให้สดชื่นเสมอ เหมือนกับลำธารที่ไหลเชี่ยว",
+    streamUrl: "fivefish.org/T62604",
+    trackDownloadUrl: "fivefish.org/T62604-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62604.zip",
+    programId: "62604",
+  },
+  {
+    id: 62606,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Proverbs 21:30 There is no wisdom, no insight, no plan that can succeed against the LORD.",
+    verse_th:
+      "สุภาษิต 21:30 ถึงจะมีสติปัญญา ความเข้าใจ และคำปรึกษาดีแค่ไหนก็ตาม ก็ช่วยไม่ได้หรอก ถ้าพระยาห์เวห์ต่อต้านเจ้า",
+    streamUrl: "fivefish.org/T62606",
+    trackDownloadUrl: "fivefish.org/T62606-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62606.zip",
+    programId: "62606",
+  },
+  {
+    id: 62607,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Proverbs 25:28 Like a city whose walls are broken through is a person who lacks self-control.",
+    verse_th:
+      "สุภาษิต 25:28 คนที่ควบคุมอารมณ์ตัวเองไม่ได้ ก็เหมือนเมืองที่ไม่มีกำแพงป้องกัน",
+    streamUrl: "fivefish.org/T62607",
+    trackDownloadUrl: "fivefish.org/T62607-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62607.zip",
+    programId: "62607",
+  },
+  {
+    id: 62708,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Proverbs 27:17 As iron sharpens iron, so one person sharpens another.",
+    verse_th: "สุภาษิต 27:17 เหล็กลับเหล็กให้คมได้ คนก็ลับเพื่อนของเขาได้",
+    streamUrl: "fivefish.org/T62708",
+    trackDownloadUrl: "fivefish.org/T62708-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62708.zip",
+    programId: "62708",
+  },
+  {
+    id: 62608,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "Proverbs 3:13-14 Blessed are those who find wisdom, those who gain understanding,for she is more profitable than silver and yields better returns than gold.",
+    verse_th:
+      "สุภาษิต 3:13-14 คนที่ค้นพบสติปัญญา มีเกียรติจริงๆ คนที่มีความเข้าใจก็มีเกียรติจริงๆ 14 กำไรที่เกิดจากสติปัญญานั้น มีค่ายิ่งกว่าเงิน รายได้ที่เกิดจากเธอ มีค่ายิ่งกว่าทองคำ",
+    streamUrl: "fivefish.org/T62608",
+    trackDownloadUrl: "fivefish.org/T62608-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62608.zip",
+    programId: "62608",
+  },
+  {
+    id: 62609,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Proverbs 3:5-6 Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to Him, and He will make your paths straight.",
+    verse_th:
+      "สุภาษิต 3:5-6 ให้ไว้วางใจในพระยาห์เวห์ด้วยสุดใจของเจ้า และอย่าได้พึ่งความเข้าใจของตัวเจ้าเอง 6 ให้เชื่อฟังพระองค์ในทุกหนทางของเจ้า แล้วพระองค์จะทำให้เส้นทางของเจ้าราบรื่น",
+    streamUrl: "fivefish.org/T62609",
+    trackDownloadUrl: "fivefish.org/T62609-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62609.zip",
+    programId: "62609",
+  },
+  {
+    id: 74799,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "Temporal to Eternity Part 1",
+    title_th: "ชั่วคราวถึงนิรันดร์กาล ตอนที่ 1",
+    verse_en:
+      "Proverbs 3:9-10 Honor the Lord with your wealth, with the first fruits of all your crops; then your barns will be filled to overflowing, and your vats will brim over with new wine.",
+    verse_th:
+      "สุภาษิต 3:9-10 ให้ถวายเกียรติกับพระยาห์เวห์ด้วยทรัพย์สมบัติของเจ้า และด้วยผลผลิตแรกจากพืชผลทุกชนิดที่เจ้าปลูกไว้ ให้ถวายเกียรติกับพระยาห์เวห์ด้วยทรัพย์สมบัติของเจ้า และด้วยผลผลิตแรกจากพืชผลทุกชนิดที่เจ้าปลูกไว้แล้วยุ้งฉางของเจ้าจะเต็มเปี่ยมไปด้วยเมล็ดข้าว และถังเหล้าองุ่นของเจ้าก็จะเต็มล้นไปด้วยเหล้าองุ่นใหม่",
+    streamUrl: "fivefish.org/T74799",
+    trackDownloadUrl: "fivefish.org/T74799-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74799.zip",
+    programId: "74799",
+  },
+  {
+    id: 74798,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "Temporal to Eternity Part 2",
+    title_th: "ชั่วคราวถึงนิรันดร์กาล ตอนที่ 2",
+    verse_en:
+      "Proverbs 4:23 The fear of the LORD is the beginning of wisdom; all who follow His precepts have good understanding. To Him belongs eternal praise.",
+    verse_th:
+      "สุภาษิต 4:23 ยิ่งกว่าสิ่งใด ให้เฝ้าระวังใจ เพราะใจเป็นแหล่งชีวิต",
+    streamUrl: "fivefish.org/T74798",
+    trackDownloadUrl: "fivefish.org/T74798-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74798.zip",
+    programId: "74798",
+  },
+  {
+    id: 80864,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "The Living Christ - Lessons 1 & 2",
+    title_th: "ชีวิตของพระคริสต์ - บทที่ 1 & 2",
+    verse_en:
+      "Isaiah 26:3 You will keep in perfect peace him whose mind is steadfast, because he trusts in You.",
+    verse_th:
+      "อิสยาห์ 26:3 พระยาห์เวห์เจ้าข้า พระองค์ประทานสันติสุขแท้จริงให้กับใจที่พึ่งพิงในพระองค์นั้น เพราะพวกเขาไว้วางใจในพระองค์",
+    streamUrl: "fivefish.org/T80864",
+    trackDownloadUrl: "fivefish.org/T80864-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80864.zip",
+    programId: "80864",
+  },
+  {
+    id: 62602,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "The Living Christ - Lessons 3 & 4",
+    title_th: "ชีวิตของพระคริสต์ - บทที่ 3 & 4",
+    verse_en:
+      "Isaiah 40:31 But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.",
+    verse_th:
+      "อิสยาห์ 40:31 แต่คนเหล่านั้นที่ฝากความหวังไว้กับพระยาห์เวห์จะมีกำลังขึ้นมาใหม่ และจะบินสูงขึ้นไปเหมือนติดปีกนกอินทรี พวกเขาจะวิ่งและจะไม่หมดเรี่ยวแรง พวกเขาจะเดินและจะไม่เหนื่อย",
+    streamUrl: "fivefish.org/T62602",
+    trackDownloadUrl: "fivefish.org/T62602-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62602.zip",
+    programId: "62602",
+  },
+  {
+    id: 80851,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "The Living Christ 1-63",
+    title_th: "ชีวิตของพระคริสต์ 1-63",
+    verse_en:
+      "Isaiah 41:10 So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with My righteous hand.",
+    verse_th:
+      "อิสยาห์ 41:10 ไม่ต้องกลัว เพราะเราอยู่กับเจ้า อย่ากลัวเลย เพราะเราเป็นพระเจ้าของเจ้า เราจะทำให้เจ้ามีกำลัง ใช่แล้ว เราจะช่วยเจ้า เราจะพยุงเจ้าด้วยมือขวาแห่งชัยชนะของเรา",
+    streamUrl: "fivefish.org/T80851",
+    trackDownloadUrl: "fivefish.org/T80851-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80851.zip",
+    programId: "80851",
+  },
+  {
+    id: 80852,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "The Living Christ 64 - 120",
+    title_th: "ชีวิตของพระคริสต์ 64 - 120",
+    verse_en:
+      "Isaiah 53:6 We all, like sheep, have gone astray, each of us has turned to his own way; and the Lord has laid on Him the iniquity of us all.",
+    verse_th:
+      "อิสยาห์ 53:6 พวกเราทุกคนได้หลงหายไปเหมือนแกะ พวกเราแต่ละคนต่างหลงไปคนละทิศละทาง แต่พระยาห์เวห์ปล่อยให้ความผิดของพวกเราทุกคนโจมตีเขา",
+    streamUrl: "fivefish.org/T80852",
+    trackDownloadUrl: "fivefish.org/T80852-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80852.zip",
+    programId: "80852",
+  },
+  {
+    id: 3240,
+    langId: "195",
+    iso3: "MYA",
+    languageEn: "Burmese",
+    langTh: "พม่า",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      'Isaiah 6:8 Then I heard the voice of the Lord saying, "Whom shall I send? And who will go for Us?" And I said, "Here am I. Send me!"',
+    verse_th:
+      "อิสยาห์ 6:8 และผมก็ได้ยินเสียงขององค์เจ้าชีวิตพูดว่า “เราจะส่งใครไปดี ใครจะไปแทนพวกเรา” แล้วผมก็ตอบว่า “ข้าพเจ้าอยู่นี่ครับ ส่งข้าพเจ้าไปเถิด”",
+    streamUrl: "fivefish.org/T3240",
+    trackDownloadUrl: "fivefish.org/T3240-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3240.zip",
+    programId: "3240",
+  },
+  {
+    id: 14200,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Jeremiah 1:9 Then the LORD reached out His hand and touched my mouth and said to me, I have put My words in your mouth.",
+    verse_th:
+      "เยเรมีย์ 1:9 แล้วพระยาห์เวห์ก็ยื่นมือออกมาแตะปากของผม และพระองค์พูดกับผมว่า “เราได้ใส่คำพูดของเราเข้าไปในปากของเจ้าแล้ว",
+    streamUrl: "fivefish.org/T14200",
+    trackDownloadUrl: "fivefish.org/T14200-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/14200.zip",
+    programId: "14200",
+  },
+  {
+    id: 70590,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Jeremiah 29:13 You will seek Me and find Me when you seek Me with all your heart.",
+    verse_th:
+      "เยเรมีย์ 29:13 เจ้าจะแสวงหาเรา แล้วเจ้าก็จะพบเรา เมื่อเจ้าแสวงหาเราด้วยสิ้นสุดใจของเจ้า",
+    streamUrl: "fivefish.org/T70590",
+    trackDownloadUrl: "fivefish.org/T70590-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/70590.zip",
+    programId: "70590",
+  },
+  {
+    id: 70600,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Lamentations 3:22-23 Because of the Lord’s great love, we are not consumed, for His compassions never fail. They are new every morning; great is Your faithfulness.",
+    verse_th:
+      "บทเพลงร้องทุกข์ 3:22-23 แน่นอน ความรักของพระยาห์เวห์ไม่มีวันสิ้นสุด แน่นอน ความเมตตาของพระองค์ไม่มีวันหมดสิ้น 23 ความรักและความเมตตาของพระองค์เริ่มต้นใหม่ในทุกๆ เช้า ความซื่อสัตย์ของพระองค์นั้นยิ่งใหญ่",
+    streamUrl: "fivefish.org/T70600",
+    trackDownloadUrl: "fivefish.org/T70600-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/70600.zip",
+    programId: "70600",
+  },
+  {
+    id: 80172,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Micah 6:8 He has shown you, O mortal, what is good. And what does the LORD require of you? To act justly and to love mercy and to walk humbly with your God.",
+    verse_th:
+      "มีคาห์ 6:8 เจ้ามนุษย์ พระยาห์เวห์ บอกเจ้าแล้วถึงสิ่งที่ดี และสิ่งที่พระองค์ต้องการจากเจ้า คือ ให้ทำสิ่งที่ยุติธรรม รักความเมตตา และเดินกับพระเจ้าของเจ้าด้วยความถ่อมใจ",
+    streamUrl: "fivefish.org/T80172",
+    trackDownloadUrl: "fivefish.org/T80172-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80172.zip",
+    programId: "80172",
+  },
+  {
+    id: 80245,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      'Zechariah 7:9-10 “This is what the LORD Almighty said: ‘Administer true justice; show mercy and compassion to one another. Do not oppress the widow or the fatherless, the foreigner or the poor. Do not plot evil against each other.’"',
+    verse_th:
+      "เศคาริยาห์ 7:9-10 “นี่คือสิ่งที่พระยาห์เวห์ผู้มีฤทธิ์ทั้งสิ้นพูด ‘ให้ตัดสินอย่างยุติธรรม ให้มีน้ำใจต่อกันและเห็นอกเห็นใจกัน อย่ากดขี่ข่มเหงแม่หม้าย เด็กกำพร้า คนต่างชาติ หรือคนจน อย่าวางแผนชั่วในใจต่อกัน’",
+    streamUrl: "fivefish.org/T80245",
+    trackDownloadUrl: "fivefish.org/T80245-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80245.zip",
+    programId: "80245",
+  },
+  {
+    id: 62456,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Matthew 18:20 For where two or three come together in My name, there am I with them.",
+    verse_th:
+      "มัทธิว 18:20 เพราะที่ไหนก็ตาม ที่มีสองหรือสามคนมาอยู่รวมกันเพราะเป็นศิษย์ของเรา เราก็จะอยู่กับพวกเขาที่นั่น",
+    streamUrl: "fivefish.org/T62456",
+    trackDownloadUrl: "fivefish.org/T62456-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62456.zip",
+    programId: "62456",
+  },
+  {
+    id: 70610,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      'Matthew 19:26 Jesus looked at them and said, "With man this is impossible, but with God all things are possible."',
+    verse_th:
+      "มัทธิว 19:26 พระเยซูมองพวกศิษย์และพูดว่า “สำหรับมนุษย์ เป็นไปไม่ได้อยู่แล้ว แต่สำหรับพระเจ้าทุกสิ่งทุกอย่างเป็นไปได้”",
+    streamUrl: "fivefish.org/T70610",
+    trackDownloadUrl: "fivefish.org/T70610-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/70610.zip",
+    programId: "70610",
+  },
+  {
+    id: 62457,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "Matthew 28:19-20 Therefore, go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you. And surely, I am with you always, to the very end of the age.",
+    verse_th:
+      "มัทธิว 28:19-20 ดังนั้นให้ออกไปทำให้คนทุกชาติมาเป็นศิษย์ของเรา ให้เขาเข้าพิธีจุ่มน้ำ เพื่อจะได้กลายเป็นของพระบิดา พระบุตร และพระวิญญาณบริสุทธิ์สอนพวกเขาให้เชื่อฟังทุกสิ่งที่เราได้สั่งไว้ จำไว้ว่า เราจะอยู่กับพวกคุณเสมอ จนกว่าจะสิ้นยุค",
+    streamUrl: "fivefish.org/T62457",
+    trackDownloadUrl: "fivefish.org/T62457-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62457.zip",
+    programId: "62457",
+  },
+  {
+    id: 70620,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Matthew 4:19 “Come, follow Me,” Jesus said, “and I will make you fishers of men.”",
+    verse_th:
+      "มัทธิว 4:19 พระองค์พูดกับเขาว่า “ตามเรามาเถอะ เราจะสอนให้จับคนแทนจับปลา”",
+    streamUrl: "fivefish.org/T70620",
+    trackDownloadUrl: "fivefish.org/T70620-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/70620.zip",
+    programId: "70620",
+  },
+  {
+    id: 30011,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "Portrait of Jesus",
+    title_th: "ชีวิตของพระเยซู",
+    verse_en:
+      "Matthew 4:4 Jesus answered, \"It is written: 'Man shall not live on bread alone, but on every word that comes from the mouth of God.'\"",
+    verse_th:
+      "มัทธิว 4:4 พระเยซูตอบว่า “พระคัมภีร์ เขียนไว้ว่า ‘ชีวิตที่เที่ยงแท้ไม่ได้ขึ้นอยู่กับขนมปังเพียงอย่างเดียว แต่อยู่ได้ด้วยคำพูดทุกคำที่มาจากพระเจ้า’”",
+    streamUrl: "fivefish.org/T30011",
+    trackDownloadUrl: "fivefish.org/T30011-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30011.zip",
+    programId: "30011",
+  },
+  {
+    id: 2890,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Matthew 5:16 In the same way, let your light shine before men, that they may see your good deeds and praise your Father in heaven.",
+    verse_th:
+      "มัทธิว 5:16 พวกคุณก็เหมือนกัน ให้ส่องสว่างออกไปเพื่อคนจะได้เห็นความดีที่คุณทำ และจะได้สรรเสริญพระบิดาของคุณที่อยู่บนสวรรค์",
+    streamUrl: "fivefish.org/T2890",
+    trackDownloadUrl: "fivefish.org/T2890-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2890.zip",
+    programId: "2890",
+  },
+  {
+    id: 2891,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Matthew 5:9 Blessed are the peacemakers, for they will be called children of God.",
+    verse_th:
+      "มัทธิว 5:9 คนที่สร้างสันติ มีเกียรติจริงๆ เพราะพระเจ้าจะเรียกเขาว่าเป็นลูก",
+    streamUrl: "fivefish.org/T2891",
+    trackDownloadUrl: "fivefish.org/T2891-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2891.zip",
+    programId: "2891",
+  },
+  {
+    id: 13250,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "Words of Life 3",
+    title_th: "พระคำแห่งชีวิต 3",
+    verse_en:
+      "Matthew 6:33 But seek first His kingdom and His righteousness, and all these things will be given to you as well.",
+    verse_th:
+      "มัทธิว 6:33 แต่ให้ดิ้นรนหาอาณาจักรของพระเจ้าและชีวิตที่ทำตามใจพระองค์ก่อน แล้วพระองค์จะให้สิ่งที่จำเป็นทั้งหมดนี้กับพวกคุณเอง",
+    streamUrl: "fivefish.org/T13250",
+    trackDownloadUrl: "fivefish.org/T13250-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/13250.zip",
+    programId: "13250",
+  },
+  {
+    id: 20340,
+    langId: "13",
+    iso3: "YUE",
+    languageEn: "Cantonese",
+    langTh: "จีนกวางตุ้ง",
+    title_en: "Words of Life for Children",
+    title_th: "พระคำแห่งชีวิตสำหรับเด็ก",
+    verse_en:
+      "Mark 10:45 For even the Son of Man did not come to be served, but to serve, and to give His life as ransom for many.",
+    verse_th:
+      "มาระโก 10:45 เพราะแม้แต่บุตรมนุษย์ ก็ยังไม่ได้มาเพื่อจะให้คนอื่นรับใช้ แต่มาเพื่อจะรับใช้คนอื่น และยอมสละชีวิตเพื่อปลดปล่อยให้คนมากมายเป็นอิสระ",
+    streamUrl: "fivefish.org/T20340",
+    trackDownloadUrl: "fivefish.org/T20340-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/20340.zip",
+    programId: "20340",
+  },
+  {
+    id: 3410,
+    langId: "1024",
+    iso3: "CJA",
+    languageEn: "Cham Cambodia",
+    langTh: "ชาม กัมพูชา",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en: 'Mark 9:29 He replied, "This kind can come out only by prayer."',
+    verse_th:
+      "มาระโก 9:29 พระองค์บอกว่า “มีทางเดียวที่จะไล่ผีชั่วชนิดนี้ออกได้ คือต้องอธิษฐาน”",
+    streamUrl: "fivefish.org/T3410",
+    trackDownloadUrl: "fivefish.org/T3410-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3410.zip",
+    programId: "3410",
+  },
+  {
+    id: 31891,
+    langId: "6238",
+    iso3: "CMN",
+    languageEn: "Chinese Huang Yuan",
+    langTh: "จีนหวงเยวียน",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Luke 12:32 Do not be afraid, little flock, for your Father has been pleased to give you the kingdom.",
+    verse_th:
+      "ลูกา 12:32 “ฝูงแกะเล็กๆเอ๋ย ไม่ต้องกลัวนะ เพราะพระบิดาของคุณยินดีที่จะมอบอาณาจักรให้กับคุณ",
+    streamUrl: "fivefish.org/T31891",
+    trackDownloadUrl: "fivefish.org/T31891-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/31891.zip",
+    programId: "31891",
+  },
+  {
+    id: 31111,
+    langId: "6276",
+    iso3: "CMN",
+    languageEn: "Chinese Hubei Chongyanghua",
+    langTh: "จีนเหอเป่ยฉงหยางหัว",
+    title_en: "Becoming a Friend of God",
+    title_th: "เป็นเพื่อนของพระเจ้า",
+    verse_en: "Luke 5:16 But Jesus often withdrew to lonely places and prayed.",
+    verse_th: "ลูกา 5:16 แต่บ่อยครั้งที่พระเยซูหลบไปที่สงบเงียบเพื่ออธิษฐาน",
+    streamUrl: "fivefish.org/T31111",
+    trackDownloadUrl: "fivefish.org/T31111-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/31111.zip",
+    programId: "31111",
+  },
+  {
+    id: 30170,
+    langId: "6278",
+    iso3: "CMN",
+    languageEn: "Chinese Hubei Dangyanghua",
+    langTh: "จีนเหอเป่ยตังแย่งหัว",
+    title_en: "Becoming a Friend of God",
+    title_th: "เป็นเพื่อนของพระเจ้า",
+    verse_en:
+      "Luke 6:42 How can you say to your brother, 'Brother, let me take the speck out of your eye,' when you yourself fail to see the plank in your own eye? You hypocrite, first take the plank out of your eye, and then you will see clearly to remove the speck from your brother's eye.",
+    verse_th:
+      "ลูกา 6:42 แล้วคุณพูดกับพี่น้องออกมาได้ยังไงว่า ‘เดี๋ยวผมจะเขี่ยขี้ผงในตาให้นะ’ ทั้งๆที่ซุงทั้งท่อนในตาตัวเองก็ยังมองไม่เห็น ไอ้หน้าซื่อใจคด เอาท่อนซุงออกจากตาของตัวเองก่อน แล้วจะได้มองเห็นชัดๆตอนเขี่ยขี้ผงออกจากตาของพี่น้อง",
+    streamUrl: "fivefish.org/T30170",
+    trackDownloadUrl: "fivefish.org/T30170-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30170.zip",
+    programId: "30170",
+  },
+  {
+    id: 30630,
+    langId: "6277",
+    iso3: "CMN",
+    languageEn: "Chinese Hubei Wuhandayehua",
+    langTh: "จีนเหอเป่ยวูฮั่นตาเยหัว",
+    title_en: "Becoming a Friend of God",
+    title_th: "เป็นเพื่อนของพระเจ้า",
+    verse_en:
+      "Luke 9:23 Then He said to them all, “If anyone would come after Me, he must deny himself and take up the cross daily and follow Me.”",
+    verse_th:
+      "ลูกา 9:23 แล้วพระองค์ก็พูดกับทุกคนว่า “ถ้าใครอยากจะติดตามเรา ต้องเลิกตามใจตัวเอง แล้วแบกไม้กางเขนของตัวเองตามเราทุกๆวัน”",
+    streamUrl: "fivefish.org/T30630",
+    trackDownloadUrl: "fivefish.org/T30630-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30630.zip",
+    programId: "30630",
+  },
+  {
+    id: 29501,
+    langId: "6143",
+    iso3: "CMN",
+    languageEn: "Chinese Liansan",
+    langTh: "จีนเหลียนซาน",
+    title_en: "Becoming a Friend of God",
+    title_th: "เป็นเพื่อนของพระเจ้า",
+    verse_en:
+      "John 1:12 Yet to all who received Him to those who believed in His name, He gave the right to become children of God.",
+    verse_th:
+      "ยอห์น 1:12 แต่ส่วนคนที่ยอมรับและไว้วางใจพระองค์ พระองค์ให้สิทธิ์พวกเขาเป็นลูกของพระเจ้า",
+    streamUrl: "fivefish.org/T29501",
+    trackDownloadUrl: "fivefish.org/T29501-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/29501.zip",
+    programId: "29501",
+  },
+  {
+    id: 31900,
+    langId: "6239",
+    iso3: "CMN",
+    languageEn: "Chinese Min Zhou",
+    langTh: "จีนมินโจ",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "John 10:14-15 I am the good shepherd; I know My sheep and My sheep know Me—just as the Father knows Me and I know the Father—and I lay down My life for the sheep.",
+    verse_th:
+      "ยอห์น 10:14-15 เราเป็นคนเลี้ยงแกะที่ดี เรารู้จักแกะของเรา และแกะก็รู้จักเราด้วย เหมือนกับที่พระบิดารู้จักเราและเราก็รู้จักพระบิดา เราสละชีวิตของเราเพื่อรักษาแกะของเราให้รอด",
+    streamUrl: "fivefish.org/T31900",
+    trackDownloadUrl: "fivefish.org/T31900-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/31900.zip",
+    programId: "31900",
+  },
+  {
+    id: 25310,
+    langId: "4665",
+    iso3: "CMN",
+    languageEn: "Chinese Ningxia",
+    langTh: "จีนหนิงเซีย",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "John 10:27 My sheep listen to My voice; I know them, and they follow Me.",
+    verse_th:
+      "ยอห์น 10:27 แกะของเราจะฟังเสียงเรา และเราก็รู้จักแกะของเรา และแกะของเราจะตามเราไป",
+    streamUrl: "fivefish.org/T25310",
+    trackDownloadUrl: "fivefish.org/T25310-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/25310.zip",
+    programId: "25310",
+  },
+  {
+    id: 27500,
+    langId: "4837",
+    iso3: "CMN",
+    languageEn: "Chinese Sichuan",
+    langTh: "จีนซื่อชวน",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "John 13:34 A new command I give you: Love one another. As I have loved you, so you must love one another.",
+    verse_th:
+      "ยอห์น 13:34 เราจะให้คำสั่งใหม่กับพวกคุณ คือให้รักซึ่งกันและกัน พวกคุณต้องรักกันเหมือนกับที่เรารักคุณ",
+    streamUrl: "fivefish.org/T27500",
+    trackDownloadUrl: "fivefish.org/T27500-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27500.zip",
+    programId: "27500",
+  },
+  {
+    id: 31870,
+    langId: "6241",
+    iso3: "CMN",
+    languageEn: "Chinese Zang Ye",
+    langTh: "จีนจางเย",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "John 13:35 By this everyone will know that you are My disciples, if you love one another.",
+    verse_th: "ยอห์น 13:35 ถ้าพวกคุณรักกัน ทุกคนก็จะรู้ว่าคุณเป็นศิษย์ของเรา",
+    streamUrl: "fivefish.org/T31870",
+    trackDownloadUrl: "fivefish.org/T31870-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/31870.zip",
+    programId: "31870",
+  },
+  {
+    id: 64447,
+    langId: "8901",
+    iso3: "COG",
+    languageEn: "Chong",
+    langTh: "ชอง",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "John 14:21 Whoever has My commands and obeys them, he is the one who loves Me. He who loves Me will be loved by My Father, and I too will love him and show Myself to him.",
+    verse_th:
+      "ยอห์น 14:21 คนที่รู้จักคำสั่งสอนของเราและทำตามก็เป็นคนที่รักเรา พระบิดาจะรักคนที่รักเราด้วย เราก็จะรักพวกเขาและจะปรากฏตัวให้พวกเขาเห็น",
+    streamUrl: "fivefish.org/T64447",
+    trackDownloadUrl: "fivefish.org/T64447-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64447.zip",
+    programId: "64447",
+  },
+  {
+    id: 31030,
+    langId: "6296",
+    iso3: "PCE",
+    languageEn: "Deang Hongfenglong",
+    langTh: "เดียง ฮองแฟงกลอง",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "John 14:27 Peace I leave with you; My peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.",
+    verse_th:
+      "ยอห์น 14:27 เราได้ให้สันติสุขไว้กับคุณ สันติสุขที่เราให้นี้ไม่เหมือนกับที่โลกให้ ดังนั้นคุณจึงไม่ต้องทุกข์ใจ หรือหวาดกลัวเลย",
+    streamUrl: "fivefish.org/T31030",
+    trackDownloadUrl: "fivefish.org/T31030-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/31030.zip",
+    programId: "31030",
+  },
+  {
+    id: 31020,
+    langId: "6296",
+    iso3: "PCE",
+    languageEn: "Deang Hongfenglong",
+    langTh: "เดียง ฮองแฟงกลอง",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      'John 14:6 Jesus answered, "I am the way and the truth and the life. No one comes to the Father except through Me."',
+    verse_th:
+      'ยอห์น 14:6 พระเยซูบอกว่า "เราเป็นทางนั้น เป็นความจริงและเป็นชีวิต ไม่มีใครไปถึงพระบิดาได้นอกจากมาทางเรา"',
+    streamUrl: "fivefish.org/T31020",
+    trackDownloadUrl: "fivefish.org/T31020-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/31020.zip",
+    programId: "31020",
+  },
+  {
+    id: 29270,
+    langId: "4405",
+    iso3: "ENG",
+    languageEn: "English Australia",
+    langTh: "อังกฤษ ออสเตรเลีย",
+    title_en: "Faith by Hearing",
+    title_th: "ความเชื่อเกิดขึ้นเพราะการได้ยิน",
+    verse_en:
+      "John 15:7 If you remain in Me and My Words remain in you, ask whatever you wish, and it will be given you.",
+    verse_th:
+      "ยอห์น 15:7 ถ้าพวกคุณติดสนิทกับเรา และคำสั่งสอนของเราติดสนิทกับคุณ ไม่ว่าคุณจะขออะไรมันก็จะเป็นอย่างนั้น",
+    streamUrl: "fivefish.org/T29270",
+    trackDownloadUrl: "fivefish.org/T29270-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/29270.zip",
+    programId: "29270",
+  },
+  {
+    id: 64560,
+    langId: "25",
+    iso3: "ENG",
+    languageEn: "English USA",
+    langTh: "อังกฤษ สหรัฐอเมริกา",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "John 5:24 I tell you the truth, whoever hears My Word and believes Him who sent Me has eternal life and will not be condemned; he has crossed over from death to life.",
+    verse_th:
+      "ยอห์น 5:24 เราจะบอกให้รู้ว่า คนที่ฟังคำพูดเราและไว้วางใจพระองค์ผู้ส่งเรามา ก็มีชีวิตกับพระเจ้าตลอดไป และเขาจะไม่ถูกตัดสินลงโทษ เขาได้ผ่านพ้นความตายไปสู่ชีวิตแล้ว",
+    streamUrl: "fivefish.org/T64560",
+    trackDownloadUrl: "fivefish.org/T64560-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64560.zip",
+    programId: "64560",
+  },
+  {
+    id: 65955,
+    langId: "25",
+    iso3: "ENG",
+    languageEn: "English USA",
+    langTh: "อังกฤษ สหรัฐอเมริกา",
+    title_en: "Jesus, the Refugee",
+    title_th: "พระเยซู ผู้ลี้ภัย",
+    verse_en:
+      "Acts 1:8 But you will receive power when the Holy Spirit comes on you; and you will be My witnesses in Jerusalem, and in all Judea and Samaria, and to the ends of the earth.",
+    verse_th:
+      "กิจการ 1:8 เมื่อพระวิญญาณบริสุทธิ์มาอยู่กับพวกคุณ พวกคุณก็จะได้รับฤทธิ์เดช และจะเป็นพยานเล่าเรื่องของเราให้คนฟัง ทั่วเมืองเยรูซาเล็ม ในแคว้นยูเดีย ในแคว้นสะมาเรีย และทุกหนแห่งในโลกนี้",
+    streamUrl: "fivefish.org/T65955",
+    trackDownloadUrl: "fivefish.org/T65955-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65955.zip",
+    programId: "65955",
+  },
+  {
+    id: 65688,
+    langId: "25",
+    iso3: "ENG",
+    languageEn: "English USA",
+    langTh: "อังกฤษ สหรัฐอเมริกา",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Acts 24:16 So I strive always to keep my conscience clear before God and man.",
+    verse_th:
+      "กิจการ 24:16 ผมจึงพยายามทำดีที่สุด เพื่อจะได้มีจิตสำนึกที่ถูกต้องต่อหน้าพระเจ้าและมนุษย์ทุกคน",
+    streamUrl: "fivefish.org/T65688",
+    trackDownloadUrl: "fivefish.org/T65688-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65688.zip",
+    programId: "65688",
+  },
+  {
+    id: 65689,
+    langId: "25",
+    iso3: "ENG",
+    languageEn: "English USA",
+    langTh: "อังกฤษ สหรัฐอเมริกา",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Acts 4:12 Salvation is found in no one else, for there is no other Name under heaven given to mankind by which we must be saved.",
+    verse_th:
+      "กิจการ 4:12 นอกจากพระเยซูแล้ว ไม่มีใครที่จะให้ความรอดกับเราได้ ไม่มีชื่ออื่นภายใต้ฟ้านี้ ที่จะทำให้มนุษย์รอดได้",
+    streamUrl: "fivefish.org/T65689",
+    trackDownloadUrl: "fivefish.org/T65689-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65689.zip",
+    programId: "65689",
+  },
+  {
+    id: 65761,
+    langId: "25",
+    iso3: "ENG",
+    languageEn: "English USA",
+    langTh: "อังกฤษ สหรัฐอเมริกา",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Acts 4:13 When they saw the courage of Peter and John and realized that they were unschooled, ordinary men, they were astonished and they took note that these men had been with Jesus.",
+    verse_th:
+      "กิจการ 4:13 เมื่อพวกผู้นำชาวยิวเห็นถึงความกล้าหาญของเปโตรกับยอห์น และเห็นว่าทั้งสองเป็นแค่คนธรรมดาๆที่ไม่ได้รับการศึกษาหรือฝึกฝนอะไรมาเป็นพิเศษ พวกเขาก็ยิ่งแปลกใจ พวกเขาต่างก็นึกขึ้นมาได้ว่า เปโตรและยอห์นเคยอยู่กับพระเยซูมาก่อน",
+    streamUrl: "fivefish.org/T65761",
+    trackDownloadUrl: "fivefish.org/T65761-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65761.zip",
+    programId: "65761",
+  },
+  {
+    id: 65762,
+    langId: "25",
+    iso3: "ENG",
+    languageEn: "English USA",
+    langTh: "อังกฤษ สหรัฐอเมริกา",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Romans 1:16 I am not ashamed of the Gospel, because it is the power of God for the salvation of everyone who believes: first for the Jew, then for the Gentile.",
+    verse_th:
+      "โรม 1:16 ผมไม่ละอายเกี่ยวกับข่าวดีนี้หรอก เพราะข่าวดีนี้เป็นฤทธิ์เดชของพระเจ้าที่จะช่วยชีวิตทุกคนที่ไว้วางใจให้รอด ช่วยพวกยิวก่อน แล้วต่อมาก็ช่วยคนที่ไม่ใช่ยิวด้วย",
+    streamUrl: "fivefish.org/T65762",
+    trackDownloadUrl: "fivefish.org/T65762-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65762.zip",
+    programId: "65762",
+  },
+  {
+    id: 65763,
+    langId: "25",
+    iso3: "ENG",
+    languageEn: "English USA",
+    langTh: "อังกฤษ สหรัฐอเมริกา",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Romans 12:1 Therefore, I urge you brothers, in view of God’s mercy, to offer your bodies as living sacrifices, holy and pleasing to God-this is your spiritual act of worship.",
+    verse_th:
+      "โรม 12:1 ดังนั้นพี่น้องครับ พระเจ้าได้เมตตากรุณาต่อเรา ผมก็เลยขอร้องให้คุณมอบร่างกายของคุณเป็นเครื่องบูชาที่มีชีวิตอยู่ เป็นเครื่องบูชาที่บริสุทธิ์ และเป็นที่พอใจของพระเจ้า การ",
+    streamUrl: "fivefish.org/T65763",
+    trackDownloadUrl: "fivefish.org/T65763-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65763.zip",
+    programId: "65763",
+  },
+  {
+    id: 65764,
+    langId: "25",
+    iso3: "ENG",
+    languageEn: "English USA",
+    langTh: "อังกฤษ สหรัฐอเมริกา",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Romans 12:2 Do not conform any longer to the pattern of this world but be transformed by the renewing of your mind. Then you will be able to test and approve what God’s will is - His good, pleasing and perfect will.",
+    verse_th:
+      "โรม 12:2 อย่าทำตามอย่างคนในโลกนี้ แต่ขอยอมให้พระเจ้าเปลี่ยนแปลงคุณ คือพระองค์จะให้จิตใจใหม่กับคุณเพื่อจะได้รู้ว่าพระเจ้าต้องการอะไร สิ่งไหนดี สิ่งไหนพระองค์ชอบใจ และสิ่งไหนสมบูรณ์แบบ",
+    streamUrl: "fivefish.org/T65764",
+    trackDownloadUrl: "fivefish.org/T65764-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65764.zip",
+    programId: "65764",
+  },
+  {
+    id: 65765,
+    langId: "25",
+    iso3: "ENG",
+    languageEn: "English USA",
+    langTh: "อังกฤษ สหรัฐอเมริกา",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "Romans 12:9 Love must be sincere. Hate what is evil; cling to what is good.",
+    verse_th:
+      "โรม 12:9 ให้รักคนอื่นด้วยความจริงใจ เกลียดสิ่งชั่วร้าย ยึดมั่นสิ่งที่ดี",
+    streamUrl: "fivefish.org/T65765",
+    trackDownloadUrl: "fivefish.org/T65765-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65765.zip",
+    programId: "65765",
+  },
+  {
+    id: 65766,
+    langId: "25",
+    iso3: "ENG",
+    languageEn: "English USA",
+    langTh: "อังกฤษ สหรัฐอเมริกา",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Romans 15:13 May the God of hope fill you with all joy and peace as you trust in Him, so that you may overflow with hope by the power of the Holy Spirit.",
+    verse_th:
+      "โรม 15:13 ขอให้พระเจ้าผู้เป็นแหล่งของความหวัง ช่วยเติมให้คุณเต็มเปี่ยมบริบูรณ์ไปด้วยความชื่นชมยินดีและสันติสุข ตามความไว้วางใจที่คุณมีในพระองค์ เพื่อคุณจะได้มีความหวังอย่างเหลือล้น ด้วยอำนาจของพระวิญญาณบริสุทธิ์",
+    streamUrl: "fivefish.org/T65766",
+    trackDownloadUrl: "fivefish.org/T65766-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65766.zip",
+    programId: "65766",
+  },
+  {
+    id: 3630,
+    langId: "113",
+    iso3: "CDO",
+    languageEn: "Foochow Colloquial Chinese",
+    langTh: "จีนฟูฉาว",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Romans 15:13 May the God of hope fill you with all joy and peace as you trust in Him, so that you may overflow with hope by the power of the Holy Spirit.",
+    verse_th:
+      "โรม 15:13 ขอให้พระเจ้าผู้เป็นแหล่งของความหวัง ช่วยเติมให้คุณเต็มเปี่ยมบริบูรณ์ไปด้วยความชื่นชมยินดีและสันติสุข ตามความไว้วางใจที่คุณมีในพระองค์ เพื่อคุณจะได้มีความหวังอย่างเหลือล้น ด้วยอำนาจของพระวิญญาณบริสุทธิ์",
+    streamUrl: "fivefish.org/T3630",
+    trackDownloadUrl: "fivefish.org/T3630-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3630.zip",
+    programId: "3630",
+  },
+  {
+    id: 28330,
+    langId: "6039",
+    iso3: "CMN",
+    languageEn: "Guiliu",
+    langTh: "กุยเลียว",
+    title_en: "Becoming a Friend of God",
+    title_th: "กลายเป็นเพื่อนของพระเจ้า",
+    verse_en:
+      "Romans 3:23 For all have sinned and fall short of the glory of God.",
+    verse_th:
+      "โรม 3:23 เพราะทุกคนทำบาปเหมือนกันหมด และเสื่อมจากพระบารมีของพระเจ้า",
+    streamUrl: "fivefish.org/T28330",
+    trackDownloadUrl: "fivefish.org/T28330-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/28330.zip",
+    programId: "28330",
+  },
+  {
+    id: 80909,
+    langId: "6039",
+    iso3: "CMN",
+    languageEn: "Guiliu",
+    langTh: "กุยเลียว",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Romans 4:20-21 Yet he did not waver through unbelief regarding the promise of God, but was strengthened in his faith and gave glory to God, being fully persuaded that God had power to do what He had promised.",
+    verse_th:
+      "โรม 4:20-21 แต่อับราฮัมไม่เคยสงสัยในคำสัญญาของพระเจ้าเลย กลับมีความไว้วางใจมากขึ้น ซึ่งเป็นการให้เกียรติกับพระเจ้า 21 อับราฮัมเชื่ออย่างแน่วแน่ว่า พระเจ้าสามารถทำในสิ่งที่พระองค์ได้สัญญาไว้",
+    streamUrl: "fivefish.org/T80909",
+    trackDownloadUrl: "fivefish.org/T80909-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80909.zip",
+    programId: "80909",
+  },
+  {
+    id: 30741,
+    langId: "366",
+    iso3: "NAN",
+    languageEn: "Hainanese",
+    langTh: "จีนไหหนาน",
+    title_en: "Portrait of Jesus 1",
+    title_th: "ชีวิตของพระเยซู 1",
+    verse_en:
+      "Romans 5:5 And hope does not put us to shame, because God’s love has been poured out into our hearts through the Holy Spirit, Who has been given to us.",
+    verse_th:
+      "โรม 5:5 ความหวังนั้นไม่เคยทำให้เราผิดหวังเลย เพราะพระเจ้าได้เทความรักของพระองค์เข้ามาในจิตใจของเรา ผ่านทางพระวิญญาณบริสุทธิ์ที่พระองค์ได้ให้กับเราไว้",
+    streamUrl: "fivefish.org/T30741",
+    trackDownloadUrl: "fivefish.org/T30741-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30741.zip",
+    programId: "30741",
+  },
+  {
+    id: 30750,
+    langId: "366",
+    iso3: "NAN",
+    languageEn: "Hainanese",
+    langTh: "จีนไหหนาน",
+    title_en: "Portrait of Jesus 2",
+    title_th: "ชีวิตของพระเยซู 2",
+    verse_en:
+      "Romans 5:8 But God demonstrates His own love for us in this: While we were still sinners, Christ died for us.",
+    verse_th:
+      "โรม 5:8 แต่พระเจ้าได้แสดงความรักต่อเรา โดยยอมส่งพระคริสต์มาตายเพื่อเรา ทั้งๆที่เรายังเป็นคนบาปอยู่",
+    streamUrl: "fivefish.org/T30750",
+    trackDownloadUrl: "fivefish.org/T30750-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30750.zip",
+    programId: "30750",
+  },
+  {
+    id: 3600,
+    langId: "366",
+    iso3: "NAN",
+    languageEn: "Hainanese",
+    langTh: "จีนไหหนาน",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Romans 6:23 For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord.",
+    verse_th:
+      "โรม 6:23 เพราะค่าจ้างที่ความบาปจ่ายให้กับเราคือความตาย แต่ของขวัญที่พระเจ้าให้กับเรานั้นคือชีวิตที่อยู่กับพระเจ้าตลอดไป ในพระเยซูคริสต์เจ้าของเรา",
+    streamUrl: "fivefish.org/T3600",
+    trackDownloadUrl: "fivefish.org/T3600-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3600.zip",
+    programId: "3600",
+  },
+  {
+    id: 18870,
+    langId: "366",
+    iso3: "NAN",
+    languageEn: "Hainanese",
+    langTh: "จีนไหหนาน",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Romans 8:32 He who did not spare His own Son, but gave Him up for us all-how will He not also, along with Him, graciously give us all things?",
+    verse_th:
+      "โรม 8:32 พระองค์ไม่หวงแม้แต่พระบุตรของพระองค์เอง แต่กลับมอบพระบุตรนั้นให้มาตายเพื่อเราทุกคน ถ้าอย่างนั้นพระองค์จะไม่ยิ่งให้ทุกสิ่งทุกอย่างกับเราพร้อมกับพระบุตรด้วยหรือ",
+    streamUrl: "fivefish.org/T18870",
+    trackDownloadUrl: "fivefish.org/T18870-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/18870.zip",
+    programId: "18870",
+  },
+  {
+    id: 17390,
+    langId: "340",
+    iso3: "HAK",
+    languageEn: "Hakka",
+    langTh: "จีนแคะ",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "1 Corinthians 14:33 For God is not a God of disorder but of peace - as in all the congregations of the Lord's people.",
+    verse_th:
+      "1 โครินธ์ 14:33 เพราะพระเจ้าไม่ได้เป็นพระเจ้าแห่งความวุ่นวาย แต่เป็นพระเจ้าแห่งสันติสุข เหมือนกับที่พระองค์เป็นในที่ประชุมทุกแห่งของคนของพระเจ้า",
+    streamUrl: "fivefish.org/T17390",
+    trackDownloadUrl: "fivefish.org/T17390-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/17390.zip",
+    programId: "17390",
+  },
+  {
+    id: 2590,
+    langId: "340",
+    iso3: "HAK",
+    languageEn: "Hakka",
+    langTh: "จีนแคะ",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "1 Corinthians 14:40 But everything should be done in a fitting and orderly way.",
+    verse_th: "1 โครินธ์ 14:40 แต่ให้ทำทุกอย่างนี้ อย่างเหมาะสมและเป็นระเบียบ",
+    streamUrl: "fivefish.org/T2590",
+    trackDownloadUrl: "fivefish.org/T2590-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2590.zip",
+    programId: "2590",
+  },
+  {
+    id: 37698,
+    langId: "492",
+    iso3: "HNJ",
+    languageEn: "Hmong Blue",
+    langTh: "ม้งเขียว",
+    title_en: "Creation to Christ",
+    title_th: "ตั้งแต่การสร้างจนถึงพระคริสต์",
+    verse_en:
+      "1 Corinthians 15:58 Therefore, my dear brothers, stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord, because you know that your labor in the Lord is not in vain.",
+    verse_th:
+      "1 โครินธ์ 15:58 ดังนั้น พี่น้องที่รัก ให้มั่นคง อย่าหวั่นไหว และให้ทุ่มเทกับงานขององค์เจ้าชีวิตตลอดเวลา เพราะคุณก็รู้ว่าจะได้รับรางวัลสำหรับงานหนักที่คุณทำเพื่อองค์เจ้าชีวิตนั้นแน่",
+    streamUrl: "fivefish.org/T37698",
+    trackDownloadUrl: "fivefish.org/T37698-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37698.zip",
+    programId: "37698",
+  },
+  {
+    id: 62596,
+    langId: "492",
+    iso3: "HNJ",
+    languageEn: "Hmong Blue",
+    langTh: "ม้งเขียว",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "1 Corinthians 2:11 For who knows a person's thoughts except their own spirit within them? In the same way no one knows the thoughts of God except the Spirit of God.",
+    verse_th:
+      "1 โครินธ์ 2:11 เพราะไม่มีใครรู้ความคิดของคนอื่นได้นอกจากวิญญาณที่อยู่ในตัวของเขาเอง เช่นเดียวกัน ไม่มีใครรู้ความคิดของพระเจ้าได้นอกจากพระวิญญาณของพระองค์เอง",
+    streamUrl: "fivefish.org/T62596",
+    trackDownloadUrl: "fivefish.org/T62596-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62596.zip",
+    programId: "62596",
+  },
+  {
+    id: 33020,
+    langId: "492",
+    iso3: "HNJ",
+    languageEn: "Hmong Blue",
+    langTh: "ม้งเขียว",
+    title_en: "Portrait of Jesus 1",
+    title_th: "ชีวิตของพระเยซู 1",
+    verse_en:
+      "1 Corinthians 2:12 We have not received the spirit of the world but the Spirit who is from God, that we may understand what God has freely given us.",
+    verse_th:
+      "1 โครินธ์ 2:12 เราไม่ได้รับวิญญาณของโลกนี้ แต่รับพระวิญญาณที่มาจากพระเจ้า เพื่อเราจะได้เข้าใจสิ่งต่างๆที่พระเจ้าให้เรา และพระองค์ก็ให้เราอย่างใจกว้างจริงๆ",
+    streamUrl: "fivefish.org/T33020",
+    trackDownloadUrl: "fivefish.org/T33020-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/33020.zip",
+    programId: "33020",
+  },
+  {
+    id: 33201,
+    langId: "492",
+    iso3: "HNJ",
+    languageEn: "Hmong Blue",
+    langTh: "ม้งเขียว",
+    title_en: "Portrait of Jesus 2",
+    title_th: "ชีวิตของพระเยซู 2",
+    verse_en:
+      "1 Corinthians 3:16 Don’t you know that you yourselves are God’s temple and that God’s Spirit lives in you?",
+    verse_th:
+      "1 โครินธ์ 3:16 พวกคุณไม่รู้หรือว่าพวกคุณเป็นวิหารของพระเจ้า และพระวิญญาณของพระเจ้าก็อยู่ในหมู่พวกคุณ",
+    streamUrl: "fivefish.org/T33201",
+    trackDownloadUrl: "fivefish.org/T33201-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/33201.zip",
+    programId: "33201",
+  },
+  {
+    id: 27191,
+    langId: "492",
+    iso3: "HNJ",
+    languageEn: "Hmong Blue",
+    langTh: "ม้งเขียว",
+    title_en: "Songs",
+    title_th: "เพลง",
+    verse_en:
+      "2 Corinthians 4:1 Therefore, since through God's mercy we have this ministry, we do not lose heart.",
+    verse_th:
+      "2 โครินธ์ 4:1 เราไม่ย่อท้อง่ายๆเพราะงานนี้พระเจ้าเองเป็นผู้มอบให้เราทำ",
+    streamUrl: "fivefish.org/T27191",
+    trackDownloadUrl: "fivefish.org/T27191-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27191.zip",
+    programId: "27191",
+  },
+  {
+    id: 37600,
+    langId: "20040",
+    iso3: "MWW",
+    languageEn: "Hmong Shuad",
+    langTh: "ม้งชวด",
+    title_en: "Jesus Story 1 of 2",
+    title_th: "เรื่องราวของพระเยซู 1 of 2",
+    verse_en:
+      "2 Corinthians 4:5 For we do not preach ourselves, but Jesus Christ our Lord, and ourselves as your servants for Jesus’ sake.",
+    verse_th:
+      "2 โครินธ์ 4:5 เราไม่ได้ประกาศตัวเราเอง แต่เราประกาศว่าพระเยซูคริสต์เป็นองค์เจ้าชีวิต และตัวเราเองเป็นทาสของพวกคุณ เพราะเห็นแก่พระเยซู",
+    streamUrl: "fivefish.org/T37600",
+    trackDownloadUrl: "fivefish.org/T37600-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37600.zip",
+    programId: "37600",
+  },
+  {
+    id: 37601,
+    langId: "20040",
+    iso3: "MWW",
+    languageEn: "Hmong Shuad",
+    langTh: "ม้งชวด",
+    title_en: "Jesus Story 2 of 2",
+    title_th: "เรื่องราวของพระเยซู 2 of 2",
+    verse_en:
+      "2 Corinthians 5:17 Therefore, if anyone is in Christ, he is a new creation; the old has gone, the new has come!",
+    verse_th:
+      "2 โครินธ์ 5:17 ถ้าใครก็ตามมีส่วนในพระคริสต์ คนนั้นได้เข้าสู่โลกใหม่ที่พระเจ้าได้สร้างขึ้นมาแล้ว สิ่งเก่าๆหายไปหมดแล้ว ดูสิ สิ่งใหม่ๆก็เกิดขึ้น",
+    streamUrl: "fivefish.org/T37601",
+    trackDownloadUrl: "fivefish.org/T37601-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37601.zip",
+    programId: "37601",
+  },
+  {
+    id: 3181,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Ballads",
+    title_th: "เพลง",
+    verse_en:
+      "2 Corinthians 5:21 God made Him who had no sin to be sin for us, so that in Him we might become the righteousness of God.",
+    verse_th:
+      "2 โครินธ์ 5:21 พระเจ้าทำให้พระคริสต์ผู้ที่ไม่มีบาปกลายเป็นคนบาปเพื่อเรา เพื่อว่าในพระคริสต์นั้น ความซื่อสัตย์ของพระเจ้า จะได้เห็นเด่นชัดในตัวเรา",
+    streamUrl: "fivefish.org/T3181",
+    trackDownloadUrl: "fivefish.org/T3181-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3181.zip",
+    programId: "3181",
+  },
+  {
+    id: 37699,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Christian Life 1",
+    title_th: "ชีวิตคริสเตียน 1",
+    verse_en:
+      "2 Corinthians 7:1 Therefore, since we have these promises, dear friends, let us purify ourselves from everything that contaminates body and spirit, perfecting holiness out of reverence for God.",
+    verse_th:
+      "2 โครินธ์ 7:1 เพื่อนที่รัก ในเมื่อเรามีคำสัญญาพวกนี้ ก็ขอให้เราชำระตัวเองจากทุกสิ่งทุกอย่างที่ทำให้ร่างกายและจิตใจสกปรก ทำตัวให้บริสุทธิ์ครบถ้วนเพราะยำเกรงพระเจ้า",
+    streamUrl: "fivefish.org/T37699",
+    trackDownloadUrl: "fivefish.org/T37699-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37699.zip",
+    programId: "37699",
+  },
+  {
+    id: 37758,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Christian Life 2",
+    title_th: "ชีวิตคริสเตียน 2",
+    verse_en:
+      "2 Corinthians 9:6-7 Remember this: “Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each man should give what he has decided in his heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.”",
+    verse_th:
+      "2 โครินธ์ 9:6-7 จำเอาไว้ว่า “คนที่หว่านน้อยก็จะเก็บเกี่ยวน้อย และคนที่หว่านมากก็จะเก็บเกี่ยวมากแต่ละคนควรจะให้ตามที่ตั้งใจไว้ ไม่ใช่ให้ด้วยความเสียดายหรือถูกบังคับ เพราะพระเจ้ารักคนที่ให้ด้วยใจที่ชื่นชมยินดี”",
+    streamUrl: "fivefish.org/T37758",
+    trackDownloadUrl: "fivefish.org/T37758-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37758.zip",
+    programId: "37758",
+  },
+  {
+    id: 37759,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Christian Life 3 - Armor of GOD & Giving",
+    title_th: "ชีวิตคริสเตียน 3 – ยุทธภัณฑ์ของพระเจ้าและการถวาย",
+    verse_en:
+      "Galatians 2:20 I have been crucified with Christ and I no longer live, but Christ lives in me. The life I live in the body, I live by faith in the Son of God, who loved me and gave Himself for me.",
+    verse_th:
+      "กาลาเทีย 2:20 ผมได้ถูกตรึงบนไม้กางเขนจนตายไปพร้อมกับพระคริสต์ คนที่มีชีวิตอยู่ตอนนี้ไม่ใช่ตัวผมแล้วแต่เป็นพระคริสต์ต่างหากที่อยู่ในตัวผม ชีวิตที่มีอยู่เดี๋ยวนี้ก็เป็นชีวิตที่ไว้วางใจในพระบุตรของพระเจ้า ผู้ที่รักผมและเสียสละชีวิตให้ผม",
+    streamUrl: "fivefish.org/T37759",
+    trackDownloadUrl: "fivefish.org/T37759-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37759.zip",
+    programId: "37759",
+  },
+  {
+    id: 37760,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Christian Life 4",
+    title_th: "ชีวิตคริสเตียน 4",
+    verse_en:
+      "Galatians 4:4-5 But when the set time had fully come, God sent His Son, born of a woman, born under the law, to redeem those under the law, that we might receive adoption to sonship.",
+    verse_th:
+      "กาลาเทีย 4:4-5 แต่เมื่อถึงเวลาที่เหมาะสม พระเจ้าก็ได้ส่งพระบุตรของพระองค์โดยคลอดออกมาจากผู้หญิง และมีชีวิตอยู่ภายใต้กฎ เพื่อมาปลดปล่อยคนที่อยู่ภายใต้กฎให้เป็นอิสระ และเพื่อเราทุกคนจะได้เป็นลูกของพระเจ้า",
+    streamUrl: "fivefish.org/T37760",
+    trackDownloadUrl: "fivefish.org/T37760-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37760.zip",
+    programId: "37760",
+  },
+  {
+    id: 37761,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Christian Life 5",
+    title_th: "ชีวิตคริสเตียน 5",
+    verse_en:
+      "Galatians 5:1 It is for freedom that Christ has set us free. Stand firm, then, and do not let yourselves be burdened again by a yoke of slavery.",
+    verse_th:
+      "กาลาเทีย 5:1 เมื่อพระคริสต์ได้ปลดปล่อยให้เราเป็นอิสระแล้ว ก็ให้อยู่อย่างคนอิสระเถิด รักษามันไว้ให้ดี อย่ากลับไปเป็นทาสของกฎอีก",
+    streamUrl: "fivefish.org/T37761",
+    trackDownloadUrl: "fivefish.org/T37761-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37761.zip",
+    programId: "37761",
+  },
+  {
+    id: 37700,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Creation to Christ",
+    title_th: "ตั้งแต่การสร้างจนถึงพระคริสต์",
+    verse_en:
+      "Galatians 6:10 Therefore, as we have opportunity, let us do good to all people, especially to those who belong to the family of believers.",
+    verse_th:
+      "กาลาเทีย 6:10 ดังนั้น เมื่อมีโอกาสก็ให้ทำดีกับทุกคน โดยเฉพาะอย่างยิ่งกับครอบครัวที่ไว้วางใจในพระเจ้า",
+    streamUrl: "fivefish.org/T37700",
+    trackDownloadUrl: "fivefish.org/T37700-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37700.zip",
+    programId: "37700",
+  },
+  {
+    id: 62956,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "New Birth 1: Know God, Devil, Yourself",
+    title_th: "บังเกิดใหม่ 1 รู้จักพระเจ้า มารซาตานและตัวเอง",
+    verse_en:
+      "Galatians 6:9 Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.",
+    verse_th:
+      "กาลาเทีย 6:9 อย่าเพิ่งท้อแท้ในการทำดี เพราะเมื่อถึงเวลาที่เหมาะ คุณก็จะได้เก็บเกี่ยวผลจากการทำดีนั้น ถ้าไม่เลิกไปซะก่อนนะ",
+    streamUrl: "fivefish.org/T62956",
+    trackDownloadUrl: "fivefish.org/T62956-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62956.zip",
+    programId: "62956",
+  },
+  {
+    id: 37752,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "New Birth 2: Trust Jesus",
+    title_th: "บังเกิดใหม่ 2 วางใจในพระเยซู",
+    verse_en:
+      "Ephesians 2:8-9 For it is by grace that you have been saved, through faith-and this not from yourselves, it is the gift of God-not by works, so that no one can boast.",
+    verse_th:
+      "เอเฟซัส 2:8-9 ที่พวกคุณรอดนั้นเป็นเพราะความเมตตากรุณาของพระเจ้า ผ่านมาทางความเชื่อของคุณ ไม่ได้มาจากตัวของคุณเอง แต่เป็นของขวัญที่มาจากพระเจ้ามันไม่ได้เป็นผลมาจากการกระทำของใคร เพื่อจะได้ไม่มีใครโอ้อวดได้",
+    streamUrl: "fivefish.org/T37752",
+    trackDownloadUrl: "fivefish.org/T37752-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37752.zip",
+    programId: "37752",
+  },
+  {
+    id: 27261,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Songs 1",
+    title_th: "เพลง 1",
+    verse_en:
+      "Ephesians 3:16-17 I pray that out of His glorious riches He may strengthen you with power through His Spirit in your inner being, so that Christ may dwell in your hearts through faith. And I pray that you, being rooted and established in love.",
+    verse_th:
+      "เอเฟซัส 3:16-17 ขอให้พระเจ้าที่มั่งคั่งมหาศาล ช่วยให้พวกคุณมีพลังใจที่เข้มแข็งผ่านทางพระวิญญาณของพระองค์ 17 ขอให้พระคริสต์ตั้งมั่นคงอยู่ในใจของคุณเพราะคุณไว้วางใจในพระองค์ ขอให้ลงรากลึกมั่นคงในความรัก",
+    streamUrl: "fivefish.org/T27261",
+    trackDownloadUrl: "fivefish.org/T27261-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27261.zip",
+    programId: "27261",
+  },
+  {
+    id: 27181,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Songs 2",
+    title_th: "เพลง 2",
+    verse_en:
+      "Ephesians 3:20-21 Now to Him who is able to do immeasurably more than all we ask or imagine, according to His power that is at work within us, to Him be glory in the church and in Christ Jesus throughout all generations, for ever and ever!",
+    verse_th:
+      "เอเฟซัส 3:20-21 พระเจ้าสามารถทำได้ทุกสิ่งมากยิ่งกว่าที่เราจะขอหรือคิดได้ ด้วยฤทธิ์อำนาจของพระองค์ที่กำลังทำงานอยู่ในตัวเรา ขอให้พระเจ้าได้รับเกียรติทั้งจากหมู่ประชุมของพระองค์ และจากพระเยซูคริสต์ทุกยุคทุกสมัยตลอดไป อาเมน",
+    streamUrl: "fivefish.org/T27181",
+    trackDownloadUrl: "fivefish.org/T27181-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27181.zip",
+    programId: "27181",
+  },
+  {
+    id: 27190,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Songs 3",
+    title_th: "เพลง 3",
+    verse_en:
+      "Ephesians 5:3 But among you there must not be even a hint of sexual immorality, or of any kind of impurity, or of greed, because these are improper for God’s holy people.",
+    verse_th:
+      "เอเฟซัส 5:3 เรื่องความผิดบาปทางเพศ เรื่องลามกทุกอย่าง หรือความมักมากในกาม แม้แต่จะพูดถึงก็อย่าเลย เพราะมันไม่เหมาะกับคนที่เป็นของพระเจ้า",
+    streamUrl: "fivefish.org/T27190",
+    trackDownloadUrl: "fivefish.org/T27190-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27190.zip",
+    programId: "27190",
+  },
+  {
+    id: 13240,
+    langId: "491",
+    iso3: "MWW",
+    languageEn: "Hmong White",
+    langTh: "ม้งขาว",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Philippians 2:3-4 Do nothing out of selfish ambition or vein conceit, but in humility consider others better than yourselves. Each of you should look not only to your own interests, but also the interests of others.",
+    verse_th:
+      "ฟีลิปปี 2:3-4 อย่าทำอะไรที่ชิงดีชิงเด่นกัน หรือเพราะหลงคิดว่าตัวเองเก่ง แต่ให้ถ่อมตัวลง และมองคนอื่นว่าสำคัญกว่าตัวเอง 4 อย่าให้ใครคิดเห็นแต่ประโยชน์ส่วนตัว แต่ให้คิดถึงประโยชน์ของคนอื่นด้วย",
+    streamUrl: "fivefish.org/T13240",
+    trackDownloadUrl: "fivefish.org/T13240-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/13240.zip",
+    programId: "13240",
+  },
+  {
+    id: 38079,
+    langId: "20057",
+    iso3: "CMN",
+    languageEn: "Hui",
+    langTh: "ฮุย",
+    title_en: "The Straight Path",
+    title_th: "เส้นทางตรง",
+    verse_en:
+      "Philippians 4:12 I know what it is to be in need, and I know what it is to have plenty. I have learned the secret of being content in any and every situation, whether well fed or hungry, whether living in plenty or in want.",
+    verse_th:
+      "ฟีลิปปี 4:12 ผมรู้ว่าจะพอใจได้อย่างไรทั้งตอนที่ขัดสน และตอนที่มีอย่างเหลือเฟือ ไม่ว่าจะอยู่ในสภาพไหนก็ตาม ผมได้เรียนรู้เคล็ดลับว่าจะอยู่อย่างไร ในเวลาที่อิ่มท้องหรือหิวโหย ในเวลาที่มีเหลือเฟือหรือขาดแคลน",
+    streamUrl: "fivefish.org/T38079",
+    trackDownloadUrl: "fivefish.org/T38079-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/38079.zip",
+    programId: "38079",
+  },
+  {
+    id: 37731,
+    langId: "20057",
+    iso3: "CMN",
+    languageEn: "Hui",
+    langTh: "ฮุย",
+    title_en: "The Straight Path 01 - 30",
+    title_th: "เส้นทางตรง 01 - 30",
+    verse_en:
+      "Philippians 4:13 I can do everything through Him who gives me strength.",
+    verse_th: "ฟีลิปปี 4:13 พระคริสต์ให้ผมมีกำลังที่จะทนได้กับทุกสิ่ง",
+    streamUrl: "fivefish.org/T37731",
+    trackDownloadUrl: "fivefish.org/T37731-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37731.zip",
+    programId: "37731",
+  },
+  {
+    id: 33010,
+    langId: "417",
+    iso3: "IUM",
+    languageEn: "Iu Mien",
+    langTh: "อิ้วเมี่ยน",
+    title_en: "Portrait of Jesus 1",
+    title_th: "ชีวิตของพระเยซู 1",
+    verse_en:
+      "Philippians 4:19 And my God will meet all your needs according to His glorious riches in Jesus Christ.",
+    verse_th:
+      "ฟีลิปปี 4:19 พระเจ้าของผมจะให้ทุกสิ่งที่จำเป็นสำหรับคุณ จากความมั่งคั่งอันมหาศาลของพระองค์ที่อยู่ในพระเยซูคริสต์",
+    streamUrl: "fivefish.org/T33010",
+    trackDownloadUrl: "fivefish.org/T33010-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/33010.zip",
+    programId: "33010",
+  },
+  {
+    id: 33011,
+    langId: "417",
+    iso3: "IUM",
+    languageEn: "Iu Mien",
+    langTh: "อิ้วเมี่ยน",
+    title_en: "Portrait of Jesus 2",
+    title_th: "ชีวิตของพระเยซู 2",
+    verse_en:
+      "Philippians 4:6 Do not be anxious about anything, but in everything, by prayer and petition, with thanksgiving, present your requests to God.",
+    verse_th:
+      "ฟีลิปปี 4:6 เลิกกังวลได้แล้ว แต่ให้อธิษฐานในทุกๆ สถานการณ์ และขอในสิ่งที่คุณต้องการจากพระเจ้า และเมื่ออธิษฐานก็ให้ขอบคุณพระเจ้าด้วย",
+    streamUrl: "fivefish.org/T33011",
+    trackDownloadUrl: "fivefish.org/T33011-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/33011.zip",
+    programId: "33011",
+  },
+  {
+    id: 38205,
+    langId: "417",
+    iso3: "IUM",
+    languageEn: "Iu Mien",
+    langTh: "อิ้วเมี่ยน",
+    title_en: "The Two Ways",
+    title_th: "สองทางเลือก",
+    verse_en:
+      "Philippians 4:7 And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
+    verse_th:
+      "ฟีลิปปี 4:7 แล้วสันติสุขที่มาจากพระเจ้า ซึ่งดีกว่าสันติสุขที่มาจากแผนงานต่างๆของมนุษย์ จะปกป้องรักษาจิตใจ และความคิดของคุณไว้ในพระเยซูคริสต์",
+    streamUrl: "fivefish.org/T38205",
+    trackDownloadUrl: "fivefish.org/T38205-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/38205.zip",
+    programId: "38205",
+  },
+  {
+    id: 5261,
+    langId: "417",
+    iso3: "IUM",
+    languageEn: "Iu Mien",
+    langTh: "อิ้วเมี่ยน",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Philippians 4:8 Finally, brothers and sisters, whatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely, whatever is admirable—if anything is excellent or praiseworthy—think about such things.",
+    verse_th:
+      "ฟีลิปปี 4:8 สุดท้ายนี้ พี่น้องครับ อะไรก็ตามที่จริง ที่น่านับถือ ที่ถูกต้อง ที่บริสุทธิ์ ที่น่ารัก ที่น่ายกย่อง นั่นคืออะไรก็ตามที่ยอดเยี่ยมและน่าสรรเสริญ ให้เอาใจใส่ในเรื่องเหล่านั้น",
+    streamUrl: "fivefish.org/T5261",
+    trackDownloadUrl: "fivefish.org/T5261-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/5261.zip",
+    programId: "5261",
+  },
+  {
+    id: 63085,
+    langId: "96",
+    iso3: "JPN",
+    languageEn: "Japanese",
+    langTh: "ญี่ปุ่น",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Colossians 3:1-2 Since, then, you have been raised with Christ, set your hearts on things above, where Christ is, seated at the right hand of God. Set your minds on things above, not on earthly things.",
+    verse_th:
+      "โคโลสี 3:1-2 พระเจ้าได้ทำให้คุณฟื้นขึ้นจากความตายกับพระคริสต์แล้ว อย่างนั้นให้แสวงหาสิ่งต่างๆที่อยู่เบื้องบน ซึ่งเป็นที่ที่พระคริสต์นั่งอยู่ทางขวามือของพระเจ้า 2ให้ใจของคุณจดจ่ออยู่กับสิ่งที่อยู่เบื้องบน ไม่ใช่สิ่งที่อยู่ในโลก",
+    streamUrl: "fivefish.org/T63085",
+    trackDownloadUrl: "fivefish.org/T63085-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63085.zip",
+    programId: "63085",
+  },
+  {
+    id: 32531,
+    langId: "96",
+    iso3: "JPN",
+    languageEn: "Japanese",
+    langTh: "ญี่ปุ่น",
+    title_en: "My Heart for You w/ English",
+    title_th: "สิ่งที่ใจฉันต้องการสำหรับคุณ",
+    verse_en:
+      "Colossians 3:12 Therefore, as God's chosen people, holy and dearly loved, clothe yourselves with compassion, kindness, humility, gentleness and patience.",
+    verse_th:
+      "โคโลสี 3:12 ดังนั้นในฐานะที่เราเป็นคนที่พระเจ้าได้เลือก เป็นคนของพระเจ้า และเป็นคนที่พระองค์รัก ก็ให้สวมใส่ความเห็นอกเห็นใจ ความมีน้ำใจ ความถ่อมตน ความสุภาพอ่อนโยน และความอดทน",
+    streamUrl: "fivefish.org/T32531",
+    trackDownloadUrl: "fivefish.org/T32531-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/32531.zip",
+    programId: "32531",
+  },
+  {
+    id: 37280,
+    langId: "96",
+    iso3: "JPN",
+    languageEn: "Japanese",
+    langTh: "ญี่ปุ่น",
+    title_en: "Portrait of Jesus 1",
+    title_th: "ชีวิตของพระเยซู 1",
+    verse_en:
+      "Colossians 3:15 Let the peace of Christ rule in your hearts, since as members of one body you were called to peace. And be thankful.",
+    verse_th:
+      "โคโลสี 3:15 ขอให้สันติสุขจากพระคริสต์มาครอบครองจิตใจของคุณ เพราะพระเจ้าได้เรียกคุณให้อยู่กันอย่างสันติในร่างกายเดียวกัน และขอให้เป็นคนที่รู้จักขอบคุณพระเจ้าอยู่เสมอ",
+    streamUrl: "fivefish.org/T37280",
+    trackDownloadUrl: "fivefish.org/T37280-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37280.zip",
+    programId: "37280",
+  },
+  {
+    id: 37281,
+    langId: "96",
+    iso3: "JPN",
+    languageEn: "Japanese",
+    langTh: "ญี่ปุ่น",
+    title_en: "Portrait of Jesus 2",
+    title_th: "ชีวิตของพระเยซู 2",
+    verse_en:
+      "1 Timothy 1:17 Now to the King eternal, immortal, invisible, the only God, be honor and glory for ever and ever. Amen.",
+    verse_th:
+      "1 ทิโมธี 1:17 ขอให้พระองค์ผู้เป็นกษัตริย์ของคนทุกยุคทุกสมัย ผู้ไม่มีวันตาย ผู้ไม่มีใครมองเห็นได้ และผู้เป็นพระเจ้าแต่เพียงองค์เดียว ได้รับเกียรติและสง่าราศี อยู่เสมอและตลอดไป อาเมน",
+    streamUrl: "fivefish.org/T37281",
+    trackDownloadUrl: "fivefish.org/T37281-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37281.zip",
+    programId: "37281",
+  },
+  {
+    id: 80573,
+    langId: "175",
+    iso3: "KAC",
+    languageEn: "Kachin",
+    langTh: "คะฉิ่น",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "2 Timothy 2:22 Flee the evil desires of youth and pursue righteousness, faith, love and peace, along with those who call on the Lord out of a pure heart.",
+    verse_th:
+      "2 ทิโมธี 2:22 ให้วิ่งหนีจากราคะตัณหาของคนหนุ่มสาว แต่ไล่ตามสิ่งที่ถูกต้อง เช่นความเชื่อ ความรัก และสันติสุข ร่วมกับคนเหล่านั้นที่ร้องเรียกองค์เจ้าชีวิตด้วยใจที่สะอาดบริสุทธิ์",
+    streamUrl: "fivefish.org/T80573",
+    trackDownloadUrl: "fivefish.org/T80573-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80573.zip",
+    programId: "80573",
+  },
+  {
+    id: 66535,
+    langId: "175",
+    iso3: "KAC",
+    languageEn: "Kachin",
+    langTh: "คะฉิ่น",
+    title_en: "Jesus, the Refugee",
+    title_th: "พระเยซู ผู้ลี้ภัย",
+    verse_en:
+      "2 Timothy 3:16 All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness.",
+    verse_th:
+      "2 ทิโมธี 3:16 ทุกๆข้อในพระคัมภีร์ พระเจ้าเป็นผู้ดลใจให้เขียนขึ้นมา เพื่อเป็นประโยชน์ในการสั่งสอนความจริง ชี้ให้คนเห็นถึงความบาปในชีวิต ช่วยปรับปรุงแก้ไขให้คนดีขึ้น และฝึกคนให้ทำตามใจพระเจ้า",
+    streamUrl: "fivefish.org/T66535",
+    trackDownloadUrl: "fivefish.org/T66535-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/66535.zip",
+    programId: "66535",
+  },
+  {
+    id: 6100,
+    langId: "175",
+    iso3: "KAC",
+    languageEn: "Kachin",
+    langTh: "คะฉิ่น",
+    title_en: "Word of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Titus 3:5 He saved us, not because of righteous things we had done, but because of His mercy. He saved us through the washing of rebirth and renewal by the Holy Spirit.",
+    verse_th:
+      "ทิตัส 3:5 พระองค์ได้ช่วยให้เรารอด ไม่ใช่เพราะเราทำดี แต่เป็นเพราะความเมตตากรุณาของพระองค์ต่างหาก พระองค์ได้ชำระล้างเรา ซึ่งทำให้เราเกิดใหม่ และถูกสร้างขึ้นมาใหม่ด้วยฤทธิ์เดชของพระวิญญาณบริสุทธิ์",
+    streamUrl: "fivefish.org/T6100",
+    trackDownloadUrl: "fivefish.org/T6100-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6100.zip",
+    programId: "6100",
+  },
+  {
+    id: 80870,
+    langId: "414",
+    iso3: "BWE",
+    languageEn: "Karen Bwe",
+    langTh: "กะเหรี่ยงบะเว",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Hebrews 10:24-25 And let us consider how we may spur one another on toward love and good deeds. Let us not give up meeting together as some are in the habit of doing, but let us encourage one another - and all the more as you see the Day approaching.",
+    verse_th:
+      "ฮีบรู 10:24-25 ขอให้เราทุกคนพิจารณากันและกัน เพื่อจะได้กระตุ้นกันให้มีความรักและทำแต่ความดีขออย่าให้เราทิ้งการประชุมไปเหมือนกับที่บางคนทำอยู่ แต่ให้กำลังใจกันและกันมากยิ่งขึ้น ยิ่งพวกคุณรู้อยู่แล้วว่าวันนั้นกำลังใกล้มาถึงแล้ว ก็ยิ่งน่าจะทำอย่างนี้",
+    streamUrl: "fivefish.org/T80870",
+    trackDownloadUrl: "fivefish.org/T80870-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80870.zip",
+    programId: "80870",
+  },
+  {
+    id: 9310,
+    langId: "414",
+    iso3: "BWE",
+    languageEn: "Karen Bwe",
+    langTh: "กะเหรี่ยงบะเว",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Hebrews 11:6 And without faith it is impossible to please God, because anyone who comes to Him must believe that He exists and that He rewards those who earnestly seek Him.",
+    verse_th:
+      "ฮีบรู 11:6 เขาได้รับการยกย่องว่าเป็นคนหนึ่งที่พระเจ้าพอใจ แต่ถ้าไม่มีความไว้วางใจแล้ว ก็เป็นไปไม่ได้ที่จะทำให้พระเจ้าพอใจ เพราะคนที่มาเข้าเฝ้าพระเจ้าจะต้องเชื่อว่าพระองค์มีจริง และต้องเชื่อว่าพระองค์จะให้รางวัลกับทุกคนที่แสวงหาพระองค์",
+    streamUrl: "fivefish.org/T9310",
+    trackDownloadUrl: "fivefish.org/T9310-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9310.zip",
+    programId: "9310",
+  },
+  {
+    id: 9340,
+    langId: "415",
+    iso3: "BLK",
+    languageEn: "Karen Pa'o Moulmein",
+    langTh: "กะเหรี่ยงปะโอ เมาะลำเลิง",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Hebrews 12:3 Consider Him who endured such opposition from sinful men, so that you will not grow weary and lose heart.",
+    verse_th:
+      "ฮีบรู 12:3 ขอให้ใคร่ครวญถึงพระองค์ผู้ที่ต้องทนทุกข์ทรมานอย่างแสนสาหัสจากคนบาปที่ต่อต้านพระองค์ เพื่อพวกคุณจะได้ไม่ท้อใจหรือยอมแพ้",
+    streamUrl: "fivefish.org/T9340",
+    trackDownloadUrl: "fivefish.org/T9340-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9340.zip",
+    programId: "9340",
+  },
+  {
+    id: 80827,
+    langId: "334",
+    iso3: "BLK",
+    languageEn: "Karen Pa'o Southern",
+    langTh: "กะเหรี่ยงปะโอ ใต้",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Hebrews 2:18 Because He Himself suffered when He was tempted, He is able to help those who are being tempted.",
+    verse_th:
+      "ฮีบรู 2:18 เดี๋ยวนี้ พระองค์สามารถช่วยคนที่ถูกทดลองได้แล้ว เพราะพระองค์เองได้รับความทรมานและถูกทดลองมาก่อน",
+    streamUrl: "fivefish.org/T80827",
+    trackDownloadUrl: "fivefish.org/T80827-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80827.zip",
+    programId: "80827",
+  },
+  {
+    id: 6751,
+    langId: "334",
+    iso3: "BLK",
+    languageEn: "Karen Pa'o Southern",
+    langTh: "กะเหรี่ยงปะโอ ใต้",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Hebrews 4:15-16 For we do not have a high priest who is unable to empathize with our weaknesses, but we have One who has been tempted in every way, just as we are - yet He did not sin. Let us then approach God's throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.",
+    verse_th:
+      "ฮีบรู 4:15-16 เพราะหัวหน้านักบวชสูงสุดของเราคนนี้เข้าใจและเห็นใจในจุดอ่อนทั้งหลายของเรา เพราะพระองค์ก็เคยถูกทดลองเหมือนกับเราทุกอย่าง แต่ไม่ได้ทำบาปเลย 16 ดังนั้นขอให้เราทุกคนเข้ามายืนด้วยความมั่นใจต่อหน้าบัลลังก์ของพระเจ้าผู้มีความเมตตากรุณา เพื่อเราจะได้รับความปรานี และพบกับความเมตตากรุณาที่พระเจ้าจะช่วยเราในเวลาที่เราต้องการความช่วยเหลือ",
+    streamUrl: "fivefish.org/T6751",
+    trackDownloadUrl: "fivefish.org/T6751-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6751.zip",
+    programId: "6751",
+  },
+  {
+    id: 62599,
+    langId: "19467",
+    iso3: "KJP",
+    languageEn: "Karen Pwo Eastern",
+    langTh: "กะเหรี่ยงโป ตะวันออก",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Hebrews 9:27 Just as man is destined to die once, and after that to face judgment.",
+    verse_th: "ฮีบรู 9:27 มนุษย์ตายแค่ครั้งเดียวแล้วเจอกับการพิพากษา",
+    streamUrl: "fivefish.org/T62599",
+    trackDownloadUrl: "fivefish.org/T62599-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62599.zip",
+    programId: "62599",
+  },
+  {
+    id: 9320,
+    langId: "2403",
+    iso3: "KJP",
+    languageEn: "Karen Pwo Eastern Kanjanaburi",
+    langTh: "กะเหรี่ยงโป ตะวันออก กาญจบุรี",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "James 4:14 Why, you do not even know what will happen tomorrow. What is your life? You are a mist that appears for a little while and then vanishes.",
+    verse_th:
+      "ยากอบ 4:14 ตัวคุณเองก็ยังไม่รู้เลยว่า พรุ่งนี้ชีวิตของคุณจะเป็นอย่างไรบ้าง เพราะคุณเป็นเพียงแค่หมอก ที่เกิดขึ้นประเดี๋ยวเดียว แล้วก็จางหายไป",
+    streamUrl: "fivefish.org/T9320",
+    trackDownloadUrl: "fivefish.org/T9320-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9320.zip",
+    programId: "9320",
+  },
+  {
+    id: 27180,
+    langId: "2403",
+    iso3: "KJP",
+    languageEn: "Karen Pwo Eastern Kanjanaburi",
+    langTh: "กะเหรี่ยงโป ตะวันออก กาญจบุรี",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "1 Peter 2:11 Dear friends. I urge you as aliens and strangers in the world, to abstain from sinful desires, which war against your soul.",
+    verse_th:
+      "1 เปโตร 2:11 เพื่อนรัก ให้อยู่อย่างคนต่างด้าวและคนแปลกถิ่นในสังคมนี้ ผมขอร้องว่าอย่าไปยอมแพ้กับกิเลสตัณหาของสันดานที่ต่อสู้กับใจของคุณ",
+    streamUrl: "fivefish.org/T27180",
+    trackDownloadUrl: "fivefish.org/T27180-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27180.zip",
+    programId: "27180",
+  },
+  {
+    id: 6690,
+    langId: "490",
+    iso3: "PWW",
+    languageEn: "Karen Pwo Hod",
+    langTh: "กะเหรี่ยงโป ฮอด",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "1 Peter 3:18 For Christ died for our sins once for all, the righteous for the unrighteous, to bring you to God. He was put to death in the body but made alive by the Spirit.",
+    verse_th:
+      "1 ยอห์น 3:18 ลูกเล็กๆที่รัก อย่าให้เรารักกันแค่คำพูดหรือรักแต่ปากเท่านั้น แต่ให้เรารักกันด้วยการกระทำและด้วยความจริงใจ",
+    streamUrl: "fivefish.org/T6690",
+    trackDownloadUrl: "fivefish.org/T6690-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6690.zip",
+    programId: "6690",
+  },
+  {
+    id: 17200,
+    langId: "1182",
+    iso3: "KJT",
+    languageEn: "Karen Pwo Prae",
+    langTh: "กะเหรี่ยงโป แพร่",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "1 Peter 4:16 However, if you suffer as a Christian, do not be ashamed, but praise God that you bear that name.",
+    verse_th:
+      "1 เปโตร 4:16 แต่ถ้าคุณต้องทนทุกข์เพราะเป็นคริสเตียน ก็อย่าอายเลย แต่ให้สรรเสริญพระเจ้า เพราะคุณได้ชื่อว่าคริสเตียน",
+    streamUrl: "fivefish.org/T17200",
+    trackDownloadUrl: "fivefish.org/T17200-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/17200.zip",
+    programId: "17200",
+  },
+  {
+    id: 80604,
+    langId: "416",
+    iso3: "PWO",
+    languageEn: "Karen Pwo Western",
+    langTh: "กะเหรี่ยงโป ตะวันตก",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "1 Peter 5:10 And the God of all grace, who called you to His eternal glory in Christ, after you have suffered a little while, will Himself restore you and make you strong, firm and steadfast.",
+    verse_th:
+      "1 เปโตร 5:10 พระเจ้าผู้เป็นแหล่งของความเมตตาทุกอย่างได้เรียกคุณผ่านทางพระเยซูคริสต์ ให้คุณเข้ามามีส่วนร่วมในเกียรติของพระองค์ที่ไม่มีวันหมด คุณจะต้องทนทุกข์อยู่ประเดี๋ยวหนึ่ง แล้วหลังจากนั้นพระเจ้าก็จะช่วยให้คุณกลับคืนสู่สภาพสมบูรณ์แบบ จะให้คุณเข้มแข็ง มีกำลังมากขึ้นและมั่นคง",
+    streamUrl: "fivefish.org/T80604",
+    trackDownloadUrl: "fivefish.org/T80604-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80604.zip",
+    programId: "80604",
+  },
+  {
+    id: 35850,
+    langId: "416",
+    iso3: "PWO",
+    languageEn: "Karen Pwo Western",
+    langTh: "กะเหรี่ยงโป ตะวันตก",
+    title_en: "Jesus Story 1 of 2",
+    title_th: "เรื่องราวของพระเยซู 1 of 2",
+    verse_en:
+      "1 Peter 5:5-6 Young men, in the same way be submissive to those who are older. All of you, clothe yourselves with humility toward one another, because, God opposes the proud but gives grace to the humble. Humble yourselves, therefore, under God’s mighty hand, that He may lift you up in due time.",
+    verse_th:
+      "1 เปโตร 5:5-6 ในทำนองเดียวกัน คนที่มีอายุน้อยกว่า ก็ให้เชื่อฟังพวกผู้นำอาวุโส แต่ความจริงแล้ว ทุกๆคนควรจะอ่อนน้อมถ่อมตัวรับใช้ซึ่งกันและกันเหมือนกับที่พระคัมภีร์เขียนไว้ว่า พระเจ้าต่อต้านคนที่เย่อหยิ่งจองหอง แต่มีความเมตตากรุณาต่อคนที่อ่อนน้อมถ่อมตน 6ถ้าอย่างนั้น ให้พวกคุณอ่อนน้อมถ่อมตัวลงใต้อำนาจที่ยิ่งใหญ่ของพระเจ้า เพื่อพระเจ้าจะได้ยกคุณขึ้นเมื่อถึงเวลาที่เหมาะสม",
+    streamUrl: "fivefish.org/T35850",
+    trackDownloadUrl: "fivefish.org/T35850-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/35850.zip",
+    programId: "35850",
+  },
+  {
+    id: 35851,
+    langId: "416",
+    iso3: "PWO",
+    languageEn: "Karen Pwo Western",
+    langTh: "กะเหรี่ยงโป ตะวันตก",
+    title_en: "Jesus Story 2 of 2",
+    title_th: "เรื่องราวของพระเยซู 2 of 2",
+    verse_en:
+      "1 Peter 5:7 Cast all your anxiety on Him because He cares for you.",
+    verse_th:
+      "1 เปโตร 5:7 ให้เอาความกังวลทั้งหมดของคุณฝากไว้กับพระเจ้า เพราะพระองค์ห่วงใยคุณ",
+    streamUrl: "fivefish.org/T35851",
+    trackDownloadUrl: "fivefish.org/T35851-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/35851.zip",
+    programId: "35851",
+  },
+  {
+    id: 9850,
+    langId: "416",
+    iso3: "PWO",
+    languageEn: "Karen Pwo Western",
+    langTh: "กะเหรี่ยงโป ตะวันตก",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "1 John 2:15 Do not love the world or anything in the world. If anyone loves the world, the love of the Father is not in him.",
+    verse_th:
+      "1 ยอห์น 2:15 อย่ารักโลกหรือรักสิ่งของในโลกนี้อีกต่อไป ถ้าคนไหนรักโลกนี้ คนนั้นก็ไม่ได้รักพระบิดา",
+    streamUrl: "fivefish.org/T9850",
+    trackDownloadUrl: "fivefish.org/T9850-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9850.zip",
+    programId: "9850",
+  },
+  {
+    id: 9851,
+    langId: "416",
+    iso3: "PWO",
+    languageEn: "Karen Pwo Western",
+    langTh: "กะเหรี่ยงโป ตะวันตก",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "1 John 2:16 For everything in the world - the lust of the flesh, the lust of the eyes, and the pride of life - comes not from the Father but from the world.",
+    verse_th:
+      "1 ยอห์น 2:16 เพราะทุกสิ่งทุกอย่างในโลกนี้ คือกิเลสตัณหาของสันดาน กิเลสตัณหาของตา และการโอ้อวดในสิ่งที่ทำหรือมี สิ่งเหล่านี้ไม่ได้มาจากพระบิดา แต่มาจากโลกนี้",
+    streamUrl: "fivefish.org/T9851",
+    trackDownloadUrl: "fivefish.org/T9851-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9851.zip",
+    programId: "9851",
+  },
+  {
+    id: 33121,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "Following Jesus",
+    title_th: "ติดตามพระเยซู",
+    verse_en:
+      "1 John 3:18 Dear children, let us not love with words or tongue but with actions and in truth.",
+    verse_th:
+      "1 เปโตร 3:18 พระคริสต์ทนทุกข์เพื่อจัดการกับความบาปครั้งเดียวก็เพียงพอแล้ว พระองค์ทำอย่างนี้เพื่อนำคุณไปหาพระเจ้า พระองค์ถูกฆ่าทางกายแต่มีชีวิตขึ้นมาใหม่โดยทางพระวิญญาณ",
+    streamUrl: "fivefish.org/T33121",
+    trackDownloadUrl: "fivefish.org/T33121-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/33121.zip",
+    programId: "33121",
+  },
+  {
+    id: 27200,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "Freedom in Jesus",
+    title_th: "อิสรภาพในพระเยซู",
+    verse_en:
+      "1 John 5:13 I write these things to you who believe in the name of the Son of God so that you may know that you have eternal life.",
+    verse_th:
+      "1 ยอห์น 5:13 ผมได้เขียนเรื่องนี้ถึงพวกคุณที่ไว้วางใจในพระบุตรของพระเจ้า เพื่อพวกคุณจะได้รู้ว่า คุณยังมีชีวิตตลอดไปกับพระเจ้าอยู่",
+    streamUrl: "fivefish.org/T27200",
+    trackDownloadUrl: "fivefish.org/T27200-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27200.zip",
+    programId: "27200",
+  },
+  {
+    id: 38334,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      'Revelation 1:8 "I am the Alpha and the Omega," says the Lord God, "Who is, and Who was, and Who is to come, the Almighty."',
+    verse_th:
+      "วิวรณ์ 1:8 พระเจ้าองค์เจ้าชีวิตพูดว่า “เราคือจุดเริ่มต้นและจุดจบ พระเจ้าผู้ที่เป็นอยู่ในปัจจุบัน ในอดีต และกำลังจะมาในอนาคต พระเจ้าผู้มีฤทธิ์ทั้งสิ้น”",
+    streamUrl: "fivefish.org/T38334",
+    trackDownloadUrl: "fivefish.org/T38334-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/38334.zip",
+    programId: "38334",
+  },
+  {
+    id: 64523,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Revelation 3:20 Here I am! I stand at the door and knock. If anyone hears My voice and opens the door, I will come in and eat with him, and he with Me.",
+    verse_th:
+      "วิวรณ์ 3:20 ฟังไว้ให้ดี เรายืนเคาะประตูอยู่ ถ้าใครได้ยินเสียงของเราแล้วเปิดประตู เราจะเข้าไปข้างใน และกินอาหารร่วมกับคนนั้น",
+    streamUrl: "fivefish.org/T64523",
+    trackDownloadUrl: "fivefish.org/T64523-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64523.zip",
+    programId: "64523",
+  },
+  {
+    id: 64524,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Genesis 1:1 In the beginning God created the heavens and the earth.",
+    verse_th: "ปฐมกาล 1:1 ในปฐมกาลนั้น เมื่อพระเจ้าสร้างแผ่นดินและท้องฟ้า",
+    streamUrl: "fivefish.org/T64524",
+    trackDownloadUrl: "fivefish.org/T64524-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64524.zip",
+    programId: "64524",
+  },
+  {
+    id: 64525,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      'Exodus 23:25 "Worship the LORD your God, and His blessing will be on your food and water. I will take away sickness from among you."',
+    verse_th:
+      "อพยพ 23:25 ถ้าพวกเจ้ารับใช้พระยาห์เวห์พระเจ้าของเจ้า พระองค์จะอวยพรอาหารและน้ำของเจ้า และเราจะเอาเชื้อโรคออกไปจากเจ้า",
+    streamUrl: "fivefish.org/T64525",
+    trackDownloadUrl: "fivefish.org/T64525-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64525.zip",
+    programId: "64525",
+  },
+  {
+    id: 64526,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Leviticus 19:11 Do not steal. Do not lie. Do not deceive on another.",
+    verse_th: "เลวีนิติ 19:11 เจ้าต้องไม่ขโมย ไม่โกงหรือโกหกซึ่งกันและกัน",
+    streamUrl: "fivefish.org/T64526",
+    trackDownloadUrl: "fivefish.org/T64526-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64526.zip",
+    programId: "64526",
+  },
+  {
+    id: 64527,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Numbers 23:19 God is not a man, that He should lie, nor a son of man, that He should change His mind. Does He speak and then not act? Does He promise and not fulfill?",
+    verse_th:
+      "กันดารวิถี 23:19 พระเจ้าไม่ใช่มนุษย์ที่พูดโกหก และก็ไม่ใช่มนุษย์ที่ชอบเปลี่ยนใจ มีหรือที่พระองค์พูดแล้วไม่ทำ หรือสัญญาแล้วไม่ทำตามสัญญานั้น",
+    streamUrl: "fivefish.org/T64527",
+    trackDownloadUrl: "fivefish.org/T64527-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64527.zip",
+    programId: "64527",
+  },
+  {
+    id: 64528,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      'Deuteronomy 31:6 Be strong and courageous. Do not be afraid or terrified because of them, for the LORD your God goes with you; He will never leave you nor forsake you."',
+    verse_th:
+      "เฉลยธรรมบัญญัติ 31:6 ให้เข้มแข็งและกล้าหาญไว้ ไม่ต้องกลัวหรือตื่นตกใจเพราะพวกนั้น เพราะพระยาห์เวห์พระเจ้าของท่านคือผู้ที่จะไปกับท่าน พระองค์จะไม่ละท่านไปหรือทอดทิ้งท่านหรอก”",
+    streamUrl: "fivefish.org/T64528",
+    trackDownloadUrl: "fivefish.org/T64528-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64528.zip",
+    programId: "64528",
+  },
+  {
+    id: 64529,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "Deuteronomy 6:16 Do not put the LORD your God to the test as you did at Massah.",
+    verse_th:
+      "เฉลยธรรมบัญญัติ 6:16 พวกท่านต้องไม่ลองดีกับพระยาห์เวห์พระเจ้าของท่าน เหมือนกับที่พวกท่านเคยลองดีกับพระองค์มาแล้วที่มัสสาห์",
+    streamUrl: "fivefish.org/T64529",
+    trackDownloadUrl: "fivefish.org/T64529-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64529.zip",
+    programId: "64529",
+  },
+  {
+    id: 64530,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Deuteronomy 6:5 Love the LORD your God with all your heart and with all your soul and with all your strength.",
+    verse_th:
+      "เฉลยธรรมบัญญัติ 6:5 ท่านต้องรักพระยาห์เวห์พระเจ้าของท่าน ด้วยการทุ่มสุดใจ สุดชีวิต และสุดตัว ของท่านให้กับพระองค์",
+    streamUrl: "fivefish.org/T64530",
+    trackDownloadUrl: "fivefish.org/T64530-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64530.zip",
+    programId: "64530",
+  },
+  {
+    id: 27210,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "The Works of Jesus",
+    title_th: "พระราชกิจของพระเยซู",
+    verse_en:
+      "Deuteronomy 8:3 He humbled you, causing you to hunger and then feeding you with manna, which neither you nor your ancestors had known, to teach you that man does not live on bread alone but on every word that comes from the mouth of the LORD.",
+    verse_th:
+      "เฉลยธรรมบัญญัติ 8:3 พระยาห์เวห์ทำให้ท่านต้องทนทุกข์จากความหิวแล้วพระองค์ก็เลี้ยงพวกท่านด้วยมานา ที่ทั้งท่านและบรรพบุรุษของท่านไม่เคยรู้จักมาก่อน เพื่อที่พระองค์จะได้สอนท่านว่า คนเราไม่ได้มีชีวิตอยู่ด้วยอาหารเพียงอย่างเดียว แต่คนเราจะมีชีวิตอยู่ได้ด้วยทุกๆคำพูดที่ออกมาจากปากของพระยาห์เวห์",
+    streamUrl: "fivefish.org/T27210",
+    trackDownloadUrl: "fivefish.org/T27210-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27210.zip",
+    programId: "27210",
+  },
+  {
+    id: 9420,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "Who Is Jesus?",
+    title_th: "พระเยซูคือใคร",
+    verse_en:
+      "Joshua 1:8 Do not let this Book of the Law depart from your mouth; meditate on it day and night, so that you may be careful to do everything written in it. Then you will be prosperous and successful.",
+    verse_th:
+      "โยชูวา 1:8 เจ้าต้องไม่หยุดพูดถึงกฎในหนังสือเล่มนี้ และเจ้าต้องไตร่ตรองมันทั้งวันทั้งคืน เพื่อเจ้าจะได้ทำตามสิ่งที่ได้เขียนไว้ในกฎนั้นอย่างเคร่งครัด แล้วเจ้าจะได้เจริญรุ่งเรืองและประสบความสำเร็จ",
+    streamUrl: "fivefish.org/T9420",
+    trackDownloadUrl: "fivefish.org/T9420-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9420.zip",
+    programId: "9420",
+  },
+  {
+    id: 27201,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "Words of Life 4",
+    title_th: "พระคำแห่งชีวิต 4",
+    verse_en:
+      'Joshua 1:9 Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go."',
+    verse_th:
+      "โยชูวา 1:9 อย่าลืมว่าเราได้สั่งเจ้าให้เข้มแข็งและกล้าหาญไว้ อย่าได้หวาดกลัวหรือท้อถอย เพราะเรา ยาห์เวห์ พระเจ้าของเจ้า จะอยู่กับเจ้าในทุกที่ที่เจ้าไป”",
+    streamUrl: "fivefish.org/T27201",
+    trackDownloadUrl: "fivefish.org/T27201-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27201.zip",
+    programId: "27201",
+  },
+  {
+    id: 64531,
+    langId: "238",
+    iso3: "KSW",
+    languageEn: "Karen S'gaw",
+    langTh: "กะเหรี่ยงสะกอ",
+    title_en: "Worship Songs CD 1",
+    title_th: "เพลงนมัสการ CD 1",
+    verse_en:
+      "2 Chronicles 7:14 If My people, who are called by My name, will humble themselves and pray and seek My face and turn from their wicked ways, then I will hear from heaven, and I will forgive their sin and will heal their land.",
+    verse_th:
+      "2 พงศาวดาร 7:14 ถ้าประชาชนของเราผู้ที่เราได้ประทับชื่อเราไว้ ถ่อมตัวลงและอธิษฐาน และเริ่มแสวงหาใบหน้าของเรา และหันเหออกจากวิถีทางชั่วทั้งหลายของพวกเขา เราก็จะรับฟังจากสวรรค์ และจะยกโทษบาปของพวกเขาและจะรักษาแผ่นดินของพวกเขา",
+    streamUrl: "fivefish.org/T64531",
+    trackDownloadUrl: "fivefish.org/T64531-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64531.zip",
+    programId: "64531",
+  },
+  {
+    id: 80842,
+    langId: "5169",
+    iso3: "EKY",
+    languageEn: "Kayah Eastern Presule",
+    langTh: "กะยาตะวันออก พรีซูลี",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Job 31:1 I made a covenant with my eyes not to look lustfully at a young woman.",
+    verse_th:
+      "โยบ 31:1 ข้าทำข้อตกลงกับดวงตาของข้าว่า ข้าจะไม่มองหญิงสาวด้วยความใคร่",
+    streamUrl: "fivefish.org/T80842",
+    trackDownloadUrl: "fivefish.org/T80842-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80842.zip",
+    programId: "80842",
+  },
+  {
+    id: 80838,
+    langId: "404",
+    iso3: "KYU",
+    languageEn: "Kayah Western",
+    langTh: "กะยาตะวันตก",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Psalms 103:1 Praise the LORD, my soul; all my inmost being, praise His holy name.",
+    verse_th:
+      "สดุดี 103:1 จิตใจของข้าพเจ้าเอ๋ย สรรเสริญพระยาห์เวห์เถิด หัวใจทั้งดวงของข้าพเจ้าเอ๋ย สรรเสริญชื่ออันศักดิ์สิทธิ์ของพระองค์เถิด",
+    streamUrl: "fivefish.org/T80838",
+    trackDownloadUrl: "fivefish.org/T80838-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80838.zip",
+    programId: "80838",
+  },
+  {
+    id: 62901,
+    langId: "404",
+    iso3: "KYU",
+    languageEn: "Kayah Western",
+    langTh: "กะยาตะวันตก",
+    title_en: "The Living Christ - Lessons 1 & 2",
+    title_th: "ชีวิตของพระคริสต์ - บทที่ 1 & 2",
+    verse_en:
+      "Psalms 111:10 The fear of the LORD is the beginning of wisdom; all who follow His precepts have good understanding. To Him belongs eternal praise.",
+    verse_th:
+      "สดุดี 111:10 การยำเกรงพระยาห์เวห์คือจุดเริ่มต้นแห่งสติปัญญา ทุกคนที่เชื่อฟังพระองค์ก็จะเป็นคนที่มีสติรอบคอบ พระองค์จะได้รับการสรรเสริญตลอดไป",
+    streamUrl: "fivefish.org/T62901",
+    trackDownloadUrl: "fivefish.org/T62901-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62901.zip",
+    programId: "62901",
+  },
+  {
+    id: 63010,
+    langId: "404",
+    iso3: "KYU",
+    languageEn: "Kayah Western",
+    langTh: "กะยาตะวันตก",
+    title_en: "The Living Christ - Lessons 3 & 4",
+    title_th: "ชีวิตของพระคริสต์ - บทที่ 3 & 4",
+    verse_en:
+      "Psalms 119: 9,11 How can a young man keep his way pure? By living according to Your Word. I have hidden Your Word in my heart that I might not sin against You.",
+    verse_th:
+      "สดุดี 119:9,11 คนหนุ่มๆจะรักษาชีวิตของตนให้บริสุทธิ์ได้อย่างไร ก็ด้วยการรักษาคำบัญชาของพระอง 11ข้าพเจ้าเก็บรักษาคำสัญญาของพระองค์ไว้ในใจ เพื่อข้าพเจ้าจะได้ไม่ทำบาปต่อพระองค์",
+    streamUrl: "fivefish.org/T63010",
+    trackDownloadUrl: "fivefish.org/T63010-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63010.zip",
+    programId: "63010",
+  },
+  {
+    id: 6750,
+    langId: "404",
+    iso3: "KYU",
+    languageEn: "Kayah Western",
+    langTh: "กะยาตะวันตก",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Psalms 121:1-2 I lift up my eyes to the mountains— where does my help come from? My help comes from the LORD, the Maker of heaven and earth.",
+    verse_th:
+      "สดุดี 121:1-2 ข้าพเจ้าแหงนหน้ามองขึ้นไปยังภูเขาทั้งหลาย ความช่วยเหลือของข้าพเจ้าจะมาจากที่ไหนกัน ความช่วยเหลือของข้าพเจ้ามาจากพระยาห์เวห์ ผู้สร้างสวรรค์และแผ่นดินโลก",
+    streamUrl: "fivefish.org/T6750",
+    trackDownloadUrl: "fivefish.org/T6750-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6750.zip",
+    programId: "6750",
+  },
+  {
+    id: 19141,
+    langId: "4229",
+    iso3: "BFG",
+    languageEn: "Kayan",
+    langTh: "กะยัน",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Psalms 139:13-14 For You created my inmost being; You knit me together in my mother’s womb. I praise You because I am fearfully and wonderfully made; Your works are wonderful, I know that full well.",
+    verse_th:
+      "สดุดี 139:13-14 พระองค์สร้างทั้งจิตและใจของข้าพเจ้า พระองค์ทอข้าพเจ้าเข้าด้วยกันในท้องแม่ ข้าพเจ้าจึงขอบคุณพระองค์เพราะงานของพระองค์นั้นช่างน่าเกรงขามและน่าทึ่ง พระองค์รู้จักข้าพเจ้าอย่างทะลุปรุโปร่ง",
+    streamUrl: "fivefish.org/T19141",
+    trackDownloadUrl: "fivefish.org/T19141-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/19141.zip",
+    programId: "19141",
+  },
+  {
+    id: 63793,
+    langId: "4229",
+    iso3: "BFG",
+    languageEn: "Kayan",
+    langTh: "กะยัน",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Psalms 139:8 If I go up to the heavens, You are there; if I make my bed in the depths, You are there.",
+    verse_th:
+      "สดุดี 139:8 ถ้าข้าพเจ้าจะขึ้นไปบนสวรรค์พระองค์ก็อยู่ที่นั่น ถ้าข้าพเจ้านอนลงที่แดนคนตายพระองค์ก็อยู่ที่นั่น",
+    streamUrl: "fivefish.org/T63793",
+    trackDownloadUrl: "fivefish.org/T63793-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63793.zip",
+    programId: "63793",
+  },
+  {
+    id: 75325,
+    langId: "4229",
+    iso3: "BFG",
+    languageEn: "Kayan",
+    langTh: "กะยัน",
+    title_en: "Words of Life for Women 1",
+    title_th: "พระคำแห่งชีวิต สำหรับผู้หญิง 1",
+    verse_en: "Psalms 23:1 The Lord is my Shepherd, I lack nothing.",
+    verse_th:
+      "สดุดี 23:1 พระยาห์เวห์เลี้ยงดูข้าพเจ้าเหมือนเลี้ยงแกะ ดังนั้น ข้าพเจ้าไม่ขาดอะไรเลย",
+    streamUrl: "fivefish.org/T75325",
+    trackDownloadUrl: "fivefish.org/T75325-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/75325.zip",
+    programId: "75325",
+  },
+  {
+    id: 75326,
+    langId: "4229",
+    iso3: "BFG",
+    languageEn: "Kayan",
+    langTh: "กะยัน",
+    title_en: "Words of Life for Women 2",
+    title_th: "พระคำแห่งชีวิต สำหรับผู้หญิง 2",
+    verse_en:
+      "Psalms 27:14 Wait for the Lord; be strong and take heart and wait for the Lord.",
+    verse_th:
+      "สดุดี 27:14 ให้ฝากความหวังไว้กับพระยาห์เวห์ ให้เข้มแข็งและกล้าหาญไว้ ให้ฝากความหวังไว้กับพระยาห์เวห์",
+    streamUrl: "fivefish.org/T75326",
+    trackDownloadUrl: "fivefish.org/T75326-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/75326.zip",
+    programId: "75326",
+  },
+  {
+    id: 11431,
+    langId: "487",
+    iso3: "LBN",
+    languageEn: "Khamet",
+    langTh: "ขะเม็ต",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Psalms 30:5 For His anger lasts only a moment, but His favor lasts a lifetime; weeping may stay for the night, but rejoicing comes in the morning.",
+    verse_th:
+      "สดุดี 30:5 ความโกรธเกรี้ยวของพระองค์อยู่เพียงชั่วคราว แต่ความปรานีของพระองค์นำชีวิตมาให้ เราอาจจะร้องไห้ในยามค่ำคืน แต่ในวันรุ่งขึ้น เราจะชื่นบาน",
+    streamUrl: "fivefish.org/T11431",
+    trackDownloadUrl: "fivefish.org/T11431-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/11431.zip",
+    programId: "11431",
+  },
+  {
+    id: 16030,
+    langId: "1005",
+    iso3: "KJG",
+    languageEn: "Khamu",
+    langTh: "ขมุ",
+    title_en: "Creation to Christ",
+    title_th: "ตั้งแต่การสร้างจนถึงพระคริสต์",
+    verse_en:
+      'Psalms 32:5 Then I acknowledged my sin to You and did not cover up my iniquity. I said, "I will confess my transgressions to the LORD." And You forgave the guilt of my sin.',
+    verse_th:
+      "สดุดี 32:5 ดังนั้น พระยาห์เวห์ ข้าพเจ้าขอสารภาพความบาปต่อพระองค์ โดยไม่ได้ซ่อนความผิดบาปอะไรไว้เลย ข้าพเจ้าพูดว่า “ข้าพเจ้าจะสารภาพต่อพระยาห์เวห์ถึงการกบฏทั้งหลายที่ทำไป” แล้วพระองค์ก็ได้ยกโทษให้กับความผิดบาปของข้าพเจ้า เซลาห์",
+    streamUrl: "fivefish.org/T16030",
+    trackDownloadUrl: "fivefish.org/T16030-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/16030.zip",
+    programId: "16030",
+  },
+  {
+    id: 16031,
+    langId: "1005",
+    iso3: "KJG",
+    languageEn: "Khamu",
+    langTh: "ขมุ",
+    title_en: "Growing in Jesus",
+    title_th: "เติบโตในพระเยซู",
+    verse_en:
+      "Psalms 37:4 Take delight in the Lord, and He will give you the desires of your heart.",
+    verse_th:
+      "สดุดี 37:4 ให้มีความสุขกับการรับใช้พระยาห์เวห์ แล้วพระองค์จะให้สิ่งที่ใจเจ้าต้องการ",
+    streamUrl: "fivefish.org/T16031",
+    trackDownloadUrl: "fivefish.org/T16031-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/16031.zip",
+    programId: "16031",
+  },
+  {
+    id: 35880,
+    langId: "1005",
+    iso3: "KJG",
+    languageEn: "Khamu",
+    langTh: "ขมุ",
+    title_en: "Jesus Story 1 of 2",
+    title_th: "เรื่องราวของพระเยซู 1 of 2",
+    verse_en:
+      "Psalms 4:3 Know that the LORD has set apart His faithful servant for Himself; the LORD hears when I call to Him.",
+    verse_th:
+      "สดุดี 4:3 พวกเจ้าทั้งหลาย ให้รู้ไว้เถอะว่า พระยาห์เวห์เอาใจใส่คนที่สัตย์ซื่อต่อพระองค์เป็นพิเศษ พระองค์จะฟังเสียงของเรา เมื่อเราร้องขอความช่วยเหลือจากพระองค์",
+    streamUrl: "fivefish.org/T35880",
+    trackDownloadUrl: "fivefish.org/T35880-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/35880.zip",
+    programId: "35880",
+  },
+  {
+    id: 35881,
+    langId: "1005",
+    iso3: "KJG",
+    languageEn: "Khamu",
+    langTh: "ขมุ",
+    title_en: "Jesus Story 2 of 2",
+    title_th: "เรื่องราวของพระเยซู 2 of 2",
+    verse_en:
+      "Psalms 4:8 In peace I will lie down and sleep, for You alone, LORD, make me dwell in safety.",
+    verse_th:
+      "สดุดี 4:8 ดังนั้น ข้าพเจ้านอนลงและหลับไปอย่างสงบสุขยิ่งนัก เพราะ พระยาห์เวห์ พระองค์แต่เพียงผู้เดียวเป็นผู้ที่ทำให้ข้าพเจ้านอนลงอย่างปลอดภัย",
+    streamUrl: "fivefish.org/T35881",
+    trackDownloadUrl: "fivefish.org/T35881-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/35881.zip",
+    programId: "35881",
+  },
+  {
+    id: 6700,
+    langId: "488",
+    iso3: "KJG",
+    languageEn: "Khamu Thailand",
+    langTh: "ขมุ ประเทศไทย",
+    title_en: "Power Over Fear",
+    title_th: "พลังเหนือความกลัว",
+    verse_en:
+      "Psalms 94:11 The LORD knows all human plans; He knows that they are futile.",
+    verse_th:
+      "สดุดี 94:11 พระยาห์เวห์รู้จักความคิดของมนุษย์ และพระองค์รู้ว่ามันไร้สาระ",
+    streamUrl: "fivefish.org/T6700",
+    trackDownloadUrl: "fivefish.org/T6700-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6700.zip",
+    programId: "6700",
+  },
+  {
+    id: 64394,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Proverbs 1:7 The fear of the LORD is the beginning of knowledge, but fools despise wisdom and instruction.",
+    verse_th:
+      "สุภาษิต 1:7 การยำเกรงพระยาห์เวห์คือจุดเริ่มต้นของความรู้ แต่คนโง่เกลียดชังปัญญาและคำสั่งสอน",
+    streamUrl: "fivefish.org/T64394",
+    trackDownloadUrl: "fivefish.org/T64394-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64394.zip",
+    programId: "64394",
+  },
+  {
+    id: 74832,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Proverbs 1:8 Listen, my son, to your father's instruction and do not forsake your mother's teaching.",
+    verse_th:
+      "สุภาษิต 1:8 ลูกเอ๋ย ให้เชื่อฟังคำสั่งสอนของพ่อเจ้า และอย่าได้ละทิ้งคำสอนของแม่เจ้าด้วย",
+    streamUrl: "fivefish.org/T74832",
+    trackDownloadUrl: "fivefish.org/T74832-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74832.zip",
+    programId: "74832",
+  },
+  {
+    id: 80758,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "LLL 1 Beginning with GOD (B)",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า (B)",
+    verse_en:
+      "Proverbs 10:12 Hatred stirs up conflict, but love covers over all wrongs.",
+    verse_th:
+      "สุภาษิต 10:12 ความเกลียดชังย่อมเร่งเร้าให้เกิดการทะเลาะวิวาท แต่ความรักปกปิดความผิดทั้งปวง",
+    streamUrl: "fivefish.org/T80758",
+    trackDownloadUrl: "fivefish.org/T80758-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80758.zip",
+    programId: "80758",
+  },
+  {
+    id: 74833,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Proverbs 10:4 Lazy hands make for poverty, but diligent hands bring wealth.",
+    verse_th:
+      "สุภาษิต 10:4 มือที่เกียจคร้านทำให้ยากจน แต่มือที่ขยันทำให้ร่ำรวย",
+    streamUrl: "fivefish.org/T74833",
+    trackDownloadUrl: "fivefish.org/T74833-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74833.zip",
+    programId: "74833",
+  },
+  {
+    id: 74834,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Proverbs 10:9 Whoever walks in integrity walks securely, but whoever takes crooked paths will be found out.",
+    verse_th:
+      "สุภาษิต 10:9 คนที่ใช้ชีวิตอย่างซื่อสัตย์ไม่ต้องห่วงอะไร แต่คนที่อยู่ในทางไม่ซื่อสัตย์ก็จะถูกจับได้",
+    streamUrl: "fivefish.org/T74834",
+    trackDownloadUrl: "fivefish.org/T74834-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74834.zip",
+    programId: "74834",
+  },
+  {
+    id: 74835,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Proverbs 16:3 Commit to the LORD whatever you do, and He will establish your plans.",
+    verse_th:
+      "สุภาษิต 16:3 ให้มอบการงานของเจ้าให้กับพระยาห์เวห์ แล้วแผนการของเจ้าจะสำเร็จ",
+    streamUrl: "fivefish.org/T74835",
+    trackDownloadUrl: "fivefish.org/T74835-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74835.zip",
+    programId: "74835",
+  },
+  {
+    id: 74836,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Proverbs 16:4 The Lord works out everything to its proper end— even the wicked for a day of disaster.",
+    verse_th:
+      "สุภาษิต 16:4 พระยาห์เวห์สร้างทุกสิ่งขึ้นมาอย่างมีจุดมุ่งหมาย แม้แต่คนชั่ว พระองค์ก็สร้างขึ้นมาเพื่อวันแห่งความพินาศ",
+    streamUrl: "fivefish.org/T74836",
+    trackDownloadUrl: "fivefish.org/T74836-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74836.zip",
+    programId: "74836",
+  },
+  {
+    id: 74837,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Proverbs 17:17 A friend loves at all times, and a brother is born for a time of adversity.",
+    verse_th:
+      "สุภาษิต 17:17 เพื่อนแท้ก็รักกันอยู่เสมอ ส่วนพี่น้องนั้นก็เกิดมาเพื่อช่วยเหลือกันในยามทุกข์ยาก",
+    streamUrl: "fivefish.org/T74837",
+    trackDownloadUrl: "fivefish.org/T74837-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74837.zip",
+    programId: "74837",
+  },
+  {
+    id: 80108,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "Proverbs 17:9 Whoever would foster love covers over an offense, but whoever repeats the matter separates close friends.",
+    verse_th:
+      "สุภาษิต 17:9 คนที่ปกปิดความผิดของคนอื่นไว้รักษามิตรภาพ ส่วนคนที่เล่าความผิดของเพื่อนให้คนอื่นฟังก็ทำลายมิตรภาพ",
+    streamUrl: "fivefish.org/T80108",
+    trackDownloadUrl: "fivefish.org/T80108-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80108.zip",
+    programId: "80108",
+  },
+  {
+    id: 80109,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Proverbs 18:4 The words of the mouth are deep waters, but the fountain of wisdom is a rushing stream.",
+    verse_th:
+      "สุภาษิต 18:4 คำพูดจากปาก เป็นน้ำลึกที่เกินกว่าจะเข้าใจได้ แต่แหล่งน้ำแห่งปัญญาทำให้สดชื่นเสมอ เหมือนกับลำธารที่ไหลเชี่ยว",
+    streamUrl: "fivefish.org/T80109",
+    trackDownloadUrl: "fivefish.org/T80109-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80109.zip",
+    programId: "80109",
+  },
+  {
+    id: 64395,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "Meeting the Creator God",
+    title_th: "พบพระเจ้าพระผู้สร้าง",
+    verse_en:
+      "Proverbs 21:30 There is no wisdom, no insight, no plan that can succeed against the LORD.",
+    verse_th:
+      "สุภาษิต 21:30 ถึงจะมีสติปัญญา ความเข้าใจ และคำปรึกษาดีแค่ไหนก็ตาม ก็ช่วยไม่ได้หรอก ถ้าพระยาห์เวห์ต่อต้านเจ้า",
+    streamUrl: "fivefish.org/T64395",
+    trackDownloadUrl: "fivefish.org/T64395-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64395.zip",
+    programId: "64395",
+  },
+  {
+    id: 30080,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "Portrait of Jesus 1",
+    title_th: "ชีวิตของพระเยซู 1",
+    verse_en:
+      "Proverbs 25:28 Like a city whose walls are broken through is a person who lacks self-control.",
+    verse_th:
+      "สุภาษิต 25:28 คนที่ควบคุมอารมณ์ตัวเองไม่ได้ ก็เหมือนเมืองที่ไม่มีกำแพงป้องกัน",
+    streamUrl: "fivefish.org/T30080",
+    trackDownloadUrl: "fivefish.org/T30080-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30080.zip",
+    programId: "30080",
+  },
+  {
+    id: 30081,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "Portrait of Jesus 2",
+    title_th: "ชีวิตของพระเยซู 2",
+    verse_en:
+      "Proverbs 27:17 As iron sharpens iron, so one person sharpens another.",
+    verse_th: "สุภาษิต 27:17 เหล็กลับเหล็กให้คมได้ คนก็ลับเพื่อนของเขาได้",
+    streamUrl: "fivefish.org/T30081",
+    trackDownloadUrl: "fivefish.org/T30081-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30081.zip",
+    programId: "30081",
+  },
+  {
+    id: 3400,
+    langId: "365",
+    iso3: "KHM",
+    languageEn: "Khmer",
+    langTh: "เขมร",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Proverbs 3:13-14 Blessed are those who find wisdom, those who gain understanding,for she is more profitable than silver and yields better returns than gold.",
+    verse_th:
+      "สุภาษิต 3:13-14 คนที่ค้นพบสติปัญญา มีเกียรติจริงๆ คนที่มีความเข้าใจก็มีเกียรติจริงๆ 14 กำไรที่เกิดจากสติปัญญานั้น มีค่ายิ่งกว่าเงิน รายได้ที่เกิดจากเธอ มีค่ายิ่งกว่าทองคำ",
+    streamUrl: "fivefish.org/T3400",
+    trackDownloadUrl: "fivefish.org/T3400-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3400.zip",
+    programId: "3400",
+  },
+  {
+    id: 3590,
+    langId: "3450",
+    iso3: "KXM",
+    languageEn: "Khmer Thailand",
+    langTh: "เขมร ประเทศไทย",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Proverbs 3:5-6 Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to Him, and He will make your paths straight.",
+    verse_th:
+      "สุภาษิต 3:5-6 ให้ไว้วางใจในพระยาห์เวห์ด้วยสุดใจของเจ้า และอย่าได้พึ่งความเข้าใจของตัวเจ้าเอง 6 ให้เชื่อฟังพระองค์ในทุกหนทางของเจ้า แล้วพระองค์จะทำให้เส้นทางของเจ้าราบรื่น",
+    streamUrl: "fivefish.org/T3590",
+    trackDownloadUrl: "fivefish.org/T3590-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3590.zip",
+    programId: "3590",
+  },
+  {
+    id: 9371,
+    langId: "1152",
+    iso3: "KKH",
+    languageEn: "Khun",
+    langTh: "ขืน",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Proverbs 3:9-10 Honor the Lord with your wealth, with the first fruits of all your crops; then your barns will be filled to overflowing, and your vats will brim over with new wine.",
+    verse_th:
+      "สุภาษิต 3:9-10 ให้ถวายเกียรติกับพระยาห์เวห์ด้วยทรัพย์สมบัติของเจ้า และด้วยผลผลิตแรกจากพืชผลทุกชนิดที่เจ้าปลูกไว้ ให้ถวายเกียรติกับพระยาห์เวห์ด้วยทรัพย์สมบัติของเจ้า และด้วยผลผลิตแรกจากพืชผลทุกชนิดที่เจ้าปลูกไว้แล้วยุ้งฉางของเจ้าจะเต็มเปี่ยมไปด้วยเมล็ดข้าว และถังเหล้าองุ่นของเจ้าก็จะเต็มล้นไปด้วยเหล้าองุ่นใหม่",
+    streamUrl: "fivefish.org/T9371",
+    trackDownloadUrl: "fivefish.org/T9371-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9371.zip",
+    programId: "9371",
+  },
+  {
+    id: 7581,
+    langId: "530",
+    iso3: "KDT",
+    languageEn: "Kuy",
+    langTh: "กูย",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Proverbs 4:23 The fear of the LORD is the beginning of wisdom; all who follow His precepts have good understanding. To Him belongs eternal praise.",
+    verse_th:
+      "สุภาษิต 4:23 ยิ่งกว่าสิ่งใด ให้เฝ้าระวังใจ เพราะใจเป็นแหล่งชีวิต",
+    streamUrl: "fivefish.org/T7581",
+    trackDownloadUrl: "fivefish.org/T7581-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/7581.zip",
+    programId: "7581",
+  },
+  {
+    id: 32660,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "Christmas Readings & Songs",
+    title_th: "เรื่องราวคริสต์มาส & เพลง",
+    verse_en:
+      "Isaiah 26:3 You will keep in perfect peace him whose mind is steadfast, because he trusts in You.",
+    verse_th:
+      "อิสยาห์ 26:3 พระยาห์เวห์เจ้าข้า พระองค์ประทานสันติสุขแท้จริงให้กับใจที่พึ่งพิงในพระองค์นั้น เพราะพวกเขาไว้วางใจในพระองค์",
+    streamUrl: "fivefish.org/T32660",
+    trackDownloadUrl: "fivefish.org/T32660-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/32660.zip",
+    programId: "32660",
+  },
+  {
+    id: 63277,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Isaiah 40:31 But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.",
+    verse_th:
+      "อิสยาห์ 40:31 แต่คนเหล่านั้นที่ฝากความหวังไว้กับพระยาห์เวห์จะมีกำลังขึ้นมาใหม่ และจะบินสูงขึ้นไปเหมือนติดปีกนกอินทรี พวกเขาจะวิ่งและจะไม่หมดเรี่ยวแรง พวกเขาจะเดินและจะไม่เหนื่อย",
+    streamUrl: "fivefish.org/T63277",
+    trackDownloadUrl: "fivefish.org/T63277-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63277.zip",
+    programId: "63277",
+  },
+  {
+    id: 64244,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Isaiah 41:10 So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with My righteous hand.",
+    verse_th:
+      "อิสยาห์ 41:10 ไม่ต้องกลัว เพราะเราอยู่กับเจ้า อย่ากลัวเลย เพราะเราเป็นพระเจ้าของเจ้า เราจะทำให้เจ้ามีกำลัง ใช่แล้ว เราจะช่วยเจ้า เราจะพยุงเจ้าด้วยมือขวาแห่งชัยชนะของเรา",
+    streamUrl: "fivefish.org/T64244",
+    trackDownloadUrl: "fivefish.org/T64244-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64244.zip",
+    programId: "64244",
+  },
+  {
+    id: 64245,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Isaiah 53:6 We all, like sheep, have gone astray, each of us has turned to his own way; and the Lord has laid on Him the iniquity of us all.",
+    verse_th:
+      "อิสยาห์ 53:6 พวกเราทุกคนได้หลงหายไปเหมือนแกะ พวกเราแต่ละคนต่างหลงไปคนละทิศละทาง แต่พระยาห์เวห์ปล่อยให้ความผิดของพวกเราทุกคนโจมตีเขา",
+    streamUrl: "fivefish.org/T64245",
+    trackDownloadUrl: "fivefish.org/T64245-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64245.zip",
+    programId: "64245",
+  },
+  {
+    id: 64246,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      'Isaiah 6:8 Then I heard the voice of the Lord saying, "Whom shall I send? And who will go for Us?" And I said, "Here am I. Send me!"',
+    verse_th:
+      "อิสยาห์ 6:8 และผมก็ได้ยินเสียงขององค์เจ้าชีวิตพูดว่า “เราจะส่งใครไปดี ใครจะไปแทนพวกเรา” แล้วผมก็ตอบว่า “ข้าพเจ้าอยู่นี่ครับ ส่งข้าพเจ้าไปเถิด”",
+    streamUrl: "fivefish.org/T64246",
+    trackDownloadUrl: "fivefish.org/T64246-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64246.zip",
+    programId: "64246",
+  },
+  {
+    id: 64247,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Jeremiah 1:9 Then the LORD reached out His hand and touched my mouth and said to me, I have put My words in your mouth.",
+    verse_th:
+      "เยเรมียาห์ 1:9 แล้วพระยาห์เวห์ก็ยื่นมือออกมาแตะปากของผม และพระองค์พูดกับผมว่า “เราได้ใส่คำพูดของเราเข้าไปในปากของเจ้าแล้ว",
+    streamUrl: "fivefish.org/T64247",
+    trackDownloadUrl: "fivefish.org/T64247-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64247.zip",
+    programId: "64247",
+  },
+  {
+    id: 64248,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Jeremiah 29:13 You will seek Me and find Me when you seek Me with all your heart.",
+    verse_th:
+      "เยเรมีย์ 29:13 เจ้าจะแสวงหาเรา แล้วเจ้าก็จะพบเรา เมื่อเจ้าแสวงหาเราด้วยสิ้นสุดใจของเจ้า",
+    streamUrl: "fivefish.org/T64248",
+    trackDownloadUrl: "fivefish.org/T64248-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64248.zip",
+    programId: "64248",
+  },
+  {
+    id: 64249,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Lamentations 3:22-23 Because of the Lord’s great love, we are not consumed, for His compassions never fail. They are new every morning; great is Your faithfulness.",
+    verse_th:
+      "บทเพลงร้องทุกข์ 3:22-23 แน่นอน ความรักของพระยาห์เวห์ไม่มีวันสิ้นสุด แน่นอน ความเมตตาของพระองค์ไม่มีวันหมดสิ้น 23 ความรักและความเมตตาของพระองค์เริ่มต้นใหม่ในทุกๆ เช้า ความซื่อสัตย์ของพระองค์นั้นยิ่งใหญ่",
+    streamUrl: "fivefish.org/T64249",
+    trackDownloadUrl: "fivefish.org/T64249-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64249.zip",
+    programId: "64249",
+  },
+  {
+    id: 64250,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "Micah 6:8 He has shown you, O mortal, what is good. And what does the LORD require of you? To act justly and to love mercy and to walk humbly with your God.",
+    verse_th:
+      "มีคาห์ 6:8 เจ้ามนุษย์ พระยาห์เวห์ บอกเจ้าแล้วถึงสิ่งที่ดี และสิ่งที่พระองค์ต้องการจากเจ้า คือ ให้ทำสิ่งที่ยุติธรรม รักความเมตตา และเดินกับพระเจ้าของเจ้าด้วยความถ่อมใจ",
+    streamUrl: "fivefish.org/T64250",
+    trackDownloadUrl: "fivefish.org/T64250-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64250.zip",
+    programId: "64250",
+  },
+  {
+    id: 64251,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      'Zechariah 7:9-10 “This is what the LORD Almighty said: ‘Administer true justice; show mercy and compassion to one another. Do not oppress the widow or the fatherless, the foreigner or the poor. Do not plot evil against each other.’"',
+    verse_th:
+      "เศคาริยาห์ 7:9-10 “นี่คือสิ่งที่พระยาห์เวห์ผู้มีฤทธิ์ทั้งสิ้นพูด ‘ให้ตัดสินอย่างยุติธรรม ให้มีน้ำใจต่อกันและเห็นอกเห็นใจกัน อย่ากดขี่ข่มเหงแม่หม้าย เด็กกำพร้า คนต่างชาติ หรือคนจน อย่าวางแผนชั่วในใจต่อกัน’",
+    streamUrl: "fivefish.org/T64251",
+    trackDownloadUrl: "fivefish.org/T64251-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64251.zip",
+    programId: "64251",
+  },
+  {
+    id: 6780,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Matthew 18:20 For where two or three come together in My name, there am I with them.",
+    verse_th:
+      "มัทธิว 18:20 เพราะที่ไหนก็ตาม ที่มีสองหรือสามคนมาอยู่รวมกันเพราะเป็นศิษย์ของเรา เราก็จะอยู่กับพวกเขาที่นั่น",
+    streamUrl: "fivefish.org/T6780",
+    trackDownloadUrl: "fivefish.org/T6780-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6780.zip",
+    programId: "6780",
+  },
+  {
+    id: 32651,
+    langId: "85",
+    iso3: "LHU",
+    languageEn: "Lahu Na",
+    langTh: "ลาหู่นา",
+    title_en: "Words of Life 3",
+    title_th: "พระคำแห่งชีวิต 3",
+    verse_en:
+      'Matthew 19:26 Jesus looked at them and said, "With man this is impossible, but with God all things are possible."',
+    verse_th:
+      "มัทธิว 19:26 พระเยซูมองพวกศิษย์และพูดว่า “สำหรับมนุษย์ เป็นไปไม่ได้อยู่แล้ว แต่สำหรับพระเจ้าทุกสิ่งทุกอย่างเป็นไปได้”",
+    streamUrl: "fivefish.org/T32651",
+    trackDownloadUrl: "fivefish.org/T32651-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/32651.zip",
+    programId: "32651",
+  },
+  {
+    id: 63278,
+    langId: "12683",
+    iso3: "LHU",
+    languageEn: "Lahu Shehleh",
+    langTh: "ลาหู่แซแล",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Matthew 28:19-20 Therefore, go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you. And surely, I am with you always, to the very end of the age.",
+    verse_th:
+      "มัทธิว 28:19-20 ดังนั้นให้ออกไปทำให้คนทุกชาติมาเป็นศิษย์ของเรา ให้เขาเข้าพิธีจุ่มน้ำ เพื่อจะได้กลายเป็นของพระบิดา พระบุตร และพระวิญญาณบริสุทธิ์สอนพวกเขาให้เชื่อฟังทุกสิ่งที่เราได้สั่งไว้ จำไว้ว่า เราจะอยู่กับพวกคุณเสมอ จนกว่าจะสิ้นยุค",
+    streamUrl: "fivefish.org/T63278",
+    trackDownloadUrl: "fivefish.org/T63278-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63278.zip",
+    programId: "63278",
+  },
+  {
+    id: 62806,
+    langId: "20144",
+    iso3: "LHI",
+    languageEn: "Lahu Shi Barkeo",
+    langTh: "ลาหู่ชิ บาเกียว",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Matthew 4:19 “Come, follow Me,” Jesus said, “and I will make you fishers of men.”",
+    verse_th:
+      "มัทธิว 4:19 พระองค์พูดกับเขาว่า “ตามเรามาเถอะ เราจะสอนให้จับคนแทนจับปลา”",
+    streamUrl: "fivefish.org/T62806",
+    trackDownloadUrl: "fivefish.org/T62806-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62806.zip",
+    programId: "62806",
+  },
+  {
+    id: 6771,
+    langId: "565",
+    iso3: "LHI",
+    languageEn: "Lahu Yellow",
+    langTh: "ลาหู่เหลือง",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Matthew 4:4 Jesus answered, \"It is written: 'Man shall not live on bread alone, but on every word that comes from the mouth of God.'\"",
+    verse_th:
+      "มัทธิว 4:4 พระเยซูตอบว่า “พระคัมภีร์ เขียนไว้ว่า ‘ชีวิตที่เที่ยงแท้ไม่ได้ขึ้นอยู่กับขนมปังเพียงอย่างเดียว แต่อยู่ได้ด้วยคำพูดทุกคำที่มาจากพระเจ้า’”",
+    streamUrl: "fivefish.org/T6771",
+    trackDownloadUrl: "fivefish.org/T6771-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6771.zip",
+    programId: "6771",
+  },
+  {
+    id: 64576,
+    langId: "3120",
+    iso3: "LBN",
+    languageEn: "Lamet",
+    langTh: "ลาเม็ท",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Matthew 5:16 In the same way, let your light shine before men, that they may see your good deeds and praise your Father in heaven.",
+    verse_th:
+      "มัทธิว 5:16 พวกคุณก็เหมือนกัน ให้ส่องสว่างออกไปเพื่อคนจะได้เห็นความดีที่คุณทำ และจะได้สรรเสริญพระบิดาของคุณที่อยู่บนสวรรค์",
+    streamUrl: "fivefish.org/T64576",
+    trackDownloadUrl: "fivefish.org/T64576-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64576.zip",
+    programId: "64576",
+  },
+  {
+    id: 64623,
+    langId: "3120",
+    iso3: "LBN",
+    languageEn: "Lamet",
+    langTh: "ลาเม็ท",
+    title_en: "The Lost Son",
+    title_th: "บุตรน้อยหลงหาย",
+    verse_en:
+      "Matthew 5:9 Blessed are the peacemakers, for they will be called children of God.",
+    verse_th:
+      "มัทธิว 5:9 คนที่สร้างสันติ มีเกียรติจริงๆ เพราะพระเจ้าจะเรียกเขาว่าเป็นลูก",
+    streamUrl: "fivefish.org/T64623",
+    trackDownloadUrl: "fivefish.org/T64623-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64623.zip",
+    programId: "64623",
+  },
+  {
+    id: 12600,
+    langId: "999",
+    iso3: "LAO",
+    languageEn: "Lao",
+    langTh: "ลาว",
+    title_en: "Ballads",
+    title_th: "เพลง",
+    verse_en:
+      "Matthew 6:33 But seek first His kingdom and His righteousness, and all these things will be given to you as well.",
+    verse_th:
+      "มัทธิว 6:33 แต่ให้ดิ้นรนหาอาณาจักรของพระเจ้าและชีวิตที่ทำตามใจพระองค์ก่อน แล้วพระองค์จะให้สิ่งที่จำเป็นทั้งหมดนี้กับพวกคุณเอง",
+    streamUrl: "fivefish.org/T12600",
+    trackDownloadUrl: "fivefish.org/T12600-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/12600.zip",
+    programId: "12600",
+  },
+  {
+    id: 14971,
+    langId: "999",
+    iso3: "LAO",
+    languageEn: "Lao",
+    langTh: "ลาว",
+    title_en: "FEBC-Special 1",
+    title_th: "FEBC-พิเศษ 1",
+    verse_en:
+      "Mark 10:45 For even the Son of Man did not come to be served, but to serve, and to give His life as ransom for many.",
+    verse_th:
+      "มาระโก 10:45 เพราะแม้แต่บุตรมนุษย์ ก็ยังไม่ได้มาเพื่อจะให้คนอื่นรับใช้ แต่มาเพื่อจะรับใช้คนอื่น และยอมสละชีวิตเพื่อปลดปล่อยให้คนมากมายเป็นอิสระ",
+    streamUrl: "fivefish.org/T14971",
+    trackDownloadUrl: "fivefish.org/T14971-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/14971.zip",
+    programId: "14971",
+  },
+  {
+    id: 14960,
+    langId: "999",
+    iso3: "LAO",
+    languageEn: "Lao",
+    langTh: "ลาว",
+    title_en: "FEBC-Special 2",
+    title_th: "FEBC-พิเศษ 2",
+    verse_en: 'Mark 9:29 He replied, "This kind can come out only by prayer."',
+    verse_th:
+      "มาระโก 9:29 พระองค์บอกว่า “มีทางเดียวที่จะไล่ผีชั่วชนิดนี้ออกได้ คือต้องอธิษฐาน”",
+    streamUrl: "fivefish.org/T14960",
+    trackDownloadUrl: "fivefish.org/T14960-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/14960.zip",
+    programId: "14960",
+  },
+  {
+    id: 62857,
+    langId: "999",
+    iso3: "LAO",
+    languageEn: "Lao",
+    langTh: "ลาว",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Luke 12:32 Do not be afraid, little flock, for your Father has been pleased to give you the kingdom.",
+    verse_th:
+      "ลูกา 12:32 “ฝูงแกะเล็กๆเอ๋ย ไม่ต้องกลัวนะ เพราะพระบิดาของคุณยินดีที่จะมอบอาณาจักรให้กับคุณ",
+    streamUrl: "fivefish.org/T62857",
+    trackDownloadUrl: "fivefish.org/T62857-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62857.zip",
+    programId: "62857",
+  },
+  {
+    id: 62858,
+    langId: "999",
+    iso3: "LAO",
+    languageEn: "Lao",
+    langTh: "ลาว",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en: "Luke 5:16 But Jesus often withdrew to lonely places and prayed.",
+    verse_th: "ลูกา 5:16 แต่บ่อยครั้งที่พระเยซูหลบไปที่สงบเงียบเพื่ออธิษฐาน",
+    streamUrl: "fivefish.org/T62858",
+    trackDownloadUrl: "fivefish.org/T62858-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62858.zip",
+    programId: "62858",
+  },
+  {
+    id: 34010,
+    langId: "999",
+    iso3: "LAO",
+    languageEn: "Lao",
+    langTh: "ลาว",
+    title_en: "Portrait of Jesus 1",
+    title_th: "ชีวิตของพระเยซู 1",
+    verse_en:
+      "Luke 6:42 How can you say to your brother, 'Brother, let me take the speck out of your eye,' when you yourself fail to see the plank in your own eye? You hypocrite, first take the plank out of your eye, and then you will see clearly to remove the speck from your brother's eye.",
+    verse_th:
+      "ลูกา 6:42 แล้วคุณพูดกับพี่น้องออกมาได้ยังไงว่า ‘เดี๋ยวผมจะเขี่ยขี้ผงในตาให้นะ’ ทั้งๆที่ซุงทั้งท่อนในตาตัวเองก็ยังมองไม่เห็น ไอ้หน้าซื่อใจคด เอาท่อนซุงออกจากตาของตัวเองก่อน แล้วจะได้มองเห็นชัดๆตอนเขี่ยขี้ผงออกจากตาของพี่น้อง",
+    streamUrl: "fivefish.org/T34010",
+    trackDownloadUrl: "fivefish.org/T34010-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/34010.zip",
+    programId: "34010",
+  },
+  {
+    id: 34011,
+    langId: "999",
+    iso3: "LAO",
+    languageEn: "Lao",
+    langTh: "ลาว",
+    title_en: "Portrait of Jesus 2",
+    title_th: "ชีวิตของพระเยซู 2",
+    verse_en:
+      "Luke 9:23 Then He said to them all, “If anyone would come after Me, he must deny himself and take up the cross daily and follow Me.”",
+    verse_th:
+      "ลูกา 9:23 แล้วพระองค์ก็พูดกับทุกคนว่า “ถ้าใครอยากจะติดตามเรา ต้องเลิกตามใจตัวเอง แล้วแบกไม้กางเขนของตัวเองตามเราทุกๆวัน”",
+    streamUrl: "fivefish.org/T34011",
+    trackDownloadUrl: "fivefish.org/T34011-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/34011.zip",
+    programId: "34011",
+  },
+  {
+    id: 74991,
+    langId: "999",
+    iso3: "LAO",
+    languageEn: "Lao",
+    langTh: "ลาว",
+    title_en: "Songs - Christian",
+    title_th: "เพลง – คริสเตียน",
+    verse_en:
+      "John 1:12 Yet to all who received Him to those who believed in His name, He gave the right to become children of God.",
+    verse_th:
+      "ยอห์น 1:12 แต่ส่วนคนที่ยอมรับและไว้วางใจพระองค์ พระองค์ให้สิทธิ์พวกเขาเป็นลูกของพระเจ้า",
+    streamUrl: "fivefish.org/T74991",
+    trackDownloadUrl: "fivefish.org/T74991-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74991.zip",
+    programId: "74991",
+  },
+  {
+    id: 2721,
+    langId: "999",
+    iso3: "LAO",
+    languageEn: "Lao",
+    langTh: "ลาว",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "John 10:14-15 I am the good shepherd; I know My sheep and My sheep know Me—just as the Father knows Me and I know the Father—and I lay down My life for the sheep.",
+    verse_th:
+      "ยอห์น 10:14-15 เราเป็นคนเลี้ยงแกะที่ดี เรารู้จักแกะของเรา และแกะก็รู้จักเราด้วย เหมือนกับที่พระบิดารู้จักเราและเราก็รู้จักพระบิดา เราสละชีวิตของเราเพื่อรักษาแกะของเราให้รอด",
+    streamUrl: "fivefish.org/T2721",
+    trackDownloadUrl: "fivefish.org/T2721-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2721.zip",
+    programId: "2721",
+  },
+  {
+    id: 34271,
+    langId: "16824",
+    iso3: "SOA",
+    languageEn: "Lao Song Dam",
+    langTh: "ลาวโซ่งดำ",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "John 10:27 My sheep listen to My voice; I know them, and they follow Me.",
+    verse_th:
+      "ยอห์น 10:27 แกะของเราจะฟังเสียงเรา และเราก็รู้จักแกะของเรา และแกะของเราจะตามเราไป",
+    streamUrl: "fivefish.org/T34271",
+    trackDownloadUrl: "fivefish.org/T34271-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/34271.zip",
+    programId: "34271",
+  },
+  {
+    id: 34270,
+    langId: "16824",
+    iso3: "SOA",
+    languageEn: "Lao Song Dam",
+    langTh: "ลาวโซ่งดำ",
+    title_en: "Testimonies & Songs",
+    title_th: "คำพยาน & เพลง",
+    verse_en:
+      "John 13:34 A new command I give you: Love one another. As I have loved you, so you must love one another.",
+    verse_th:
+      "ยอห์น 13:34 เราจะให้คำสั่งใหม่กับพวกคุณ คือให้รักซึ่งกันและกัน พวกคุณต้องรักกันเหมือนกับที่เรารักคุณ",
+    streamUrl: "fivefish.org/T34270",
+    trackDownloadUrl: "fivefish.org/T34270-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/34270.zip",
+    programId: "34270",
+  },
+  {
+    id: 35532,
+    langId: "16824",
+    iso3: "SOA",
+    languageEn: "Lao Song Dam",
+    langTh: "ลาวโซ่งดำ",
+    title_en: "Words of Life & Story of Joseph",
+    title_th: "พระคำแห่งชีวิต & เรื่องราวของโยเซฟ",
+    verse_en:
+      "John 13:35 By this everyone will know that you are My disciples, if you love one another.",
+    verse_th: "ยอห์น 13:35 ถ้าพวกคุณรักกัน ทุกคนก็จะรู้ว่าคุณเป็นศิษย์ของเรา",
+    streamUrl: "fivefish.org/T35532",
+    trackDownloadUrl: "fivefish.org/T35532-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/35532.zip",
+    programId: "35532",
+  },
+  {
+    id: 18020,
+    langId: "3124",
+    iso3: "LCP",
+    languageEn: "Lawa Ban Dong",
+    langTh: "ละว้าบ้านดง",
+    title_en: "Jesus, The Living Water",
+    title_th: "พระเยซูผู้ทรงเป็นน้ำแห่งชีวิต",
+    verse_en:
+      "John 14:21 Whoever has My commands and obeys them, he is the one who loves Me. He who loves Me will be loved by My Father, and I too will love him and show Myself to him.",
+    verse_th:
+      "ยอห์น 14:21 คนที่รู้จักคำสั่งสอนของเราและทำตามก็เป็นคนที่รักเรา พระบิดาจะรักคนที่รักเราด้วย เราก็จะรักพวกเขาและจะปรากฏตัวให้พวกเขาเห็น",
+    streamUrl: "fivefish.org/T18020",
+    trackDownloadUrl: "fivefish.org/T18020-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/18020.zip",
+    programId: "18020",
+  },
+  {
+    id: 18021,
+    langId: "3125",
+    iso3: "LCP",
+    languageEn: "Lawa Ban Sam",
+    langTh: "ละว้าบ้านสาม",
+    title_en: "Christ & His Resurrection",
+    title_th: "การฟื้นคืนพระชนม์ของพระเยซูคริสต์",
+    verse_en:
+      "John 14:27 Peace I leave with you; My peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.",
+    verse_th:
+      "ยอห์น 14:27 เราได้ให้สันติสุขไว้กับคุณ สันติสุขที่เราให้นี้ไม่เหมือนกับที่โลกให้ ดังนั้นคุณจึงไม่ต้องทุกข์ใจ หรือหวาดกลัวเลย",
+    streamUrl: "fivefish.org/T18021",
+    trackDownloadUrl: "fivefish.org/T18021-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/18021.zip",
+    programId: "18021",
+  },
+  {
+    id: 18030,
+    langId: "2187",
+    iso3: "LCP",
+    languageEn: "Lawa Chang Maw",
+    langTh: "ละว้าช่างหม้อ",
+    title_en: "Following Jesus",
+    title_th: "ติดตามพระเยซู",
+    verse_en:
+      'John 14:6 Jesus answered, "I am the way and the truth and the life. No one comes to the Father except through Me."',
+    verse_th:
+      'ยอห์น 14:6 พระเยซูบอกว่า "เราเป็นทางนั้น เป็นความจริงและเป็นชีวิต ไม่มีใครไปถึงพระบิดาได้นอกจากมาทางเรา"',
+    streamUrl: "fivefish.org/T18030",
+    trackDownloadUrl: "fivefish.org/T18030-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/18030.zip",
+    programId: "18030",
+  },
+  {
+    id: 18031,
+    langId: "2404",
+    iso3: "LCP",
+    languageEn: "Lawa Kawng Lawi",
+    langTh: "ละว้ากองลอย",
+    title_en: "God Cares for You",
+    title_th: "พระเจ้าทรงห่วงใยคุณ",
+    verse_en:
+      "John 15:7 If you remain in Me and My Words remain in you, ask whatever you wish, and it will be given you.",
+    verse_th:
+      "ยอห์น 15:7 ถ้าพวกคุณติดสนิทกับเรา และคำสั่งสอนของเราติดสนิทกับคุณ ไม่ว่าคุณจะขออะไรมันก็จะเป็นอย่างนั้น",
+    streamUrl: "fivefish.org/T18031",
+    trackDownloadUrl: "fivefish.org/T18031-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/18031.zip",
+    programId: "18031",
+  },
+  {
+    id: 17990,
+    langId: "1154",
+    iso3: "LCP",
+    languageEn: "Lawa La-oop",
+    langTh: "ละว้าละอุบ",
+    title_en: "What the Christian Believes",
+    title_th: "คริสเตียนเชื่ออะไร",
+    verse_en:
+      "John 5:24 I tell you the truth, whoever hears My Word and believes Him who sent Me has eternal life and will not be condemned; he has crossed over from death to life.",
+    verse_th:
+      "ยอห์น 5:24 เราจะบอกให้รู้ว่า คนที่ฟังคำพูดเราและไว้วางใจพระองค์ผู้ส่งเรามา ก็มีชีวิตกับพระเจ้าตลอดไป และเขาจะไม่ถูกตัดสินลงโทษ เขาได้ผ่านพ้นความตายไปสู่ชีวิตแล้ว",
+    streamUrl: "fivefish.org/T17990",
+    trackDownloadUrl: "fivefish.org/T17990-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/17990.zip",
+    programId: "17990",
+  },
+  {
+    id: 18010,
+    langId: "2188",
+    iso3: "LWL",
+    languageEn: "Lawa Northern",
+    langTh: "ละว้าเหนือ",
+    title_en: "Jesus, Stronger Than Satan",
+    title_th: "พระเยซูมีอำนาจเหนือซาตาน",
+    verse_en:
+      "Acts 1:8 But you will receive power when the Holy Spirit comes on you; and you will be My witnesses in Jerusalem, and in all Judea and Samaria, and to the ends of the earth.",
+    verse_th:
+      "กิจการ 1:8 เมื่อพระวิญญาณบริสุทธิ์มาอยู่กับพวกคุณ พวกคุณก็จะได้รับฤทธิ์เดช และจะเป็นพยานเล่าเรื่องของเราให้คนฟัง ทั่วเมืองเยรูซาเล็ม ในแคว้นยูเดีย ในแคว้นสะมาเรีย และทุกหนแห่งในโลกนี้",
+    streamUrl: "fivefish.org/T18010",
+    trackDownloadUrl: "fivefish.org/T18010-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/18010.zip",
+    programId: "18010",
+  },
+  {
+    id: 18011,
+    langId: "3126",
+    iso3: "LWL",
+    languageEn: "Lawa Papae",
+    langTh: "ละว้าป่าแป๋",
+    title_en: "Freedom in Christ",
+    title_th: "เสรีภาพในพระคริสต์",
+    verse_en:
+      "Acts 24:16 So I strive always to keep my conscience clear before God and man.",
+    verse_th:
+      "กิจการ 24:16 ผมจึงพยายามทำดีที่สุด เพื่อจะได้มีจิตสำนึกที่ถูกต้องต่อหน้าพระเจ้าและมนุษย์ทุกคน",
+    streamUrl: "fivefish.org/T18011",
+    trackDownloadUrl: "fivefish.org/T18011-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/18011.zip",
+    programId: "18011",
+  },
+  {
+    id: 32610,
+    langId: "13005",
+    iso3: "LIS",
+    languageEn: "Lisu Northern",
+    langTh: "ลีซูเหนือ",
+    title_en: "Songs & Messages",
+    title_th: "เพลงและคำสอน",
+    verse_en:
+      "Acts 4:12 Salvation is found in no one else, for there is no other Name under heaven given to mankind by which we must be saved.",
+    verse_th:
+      "กิจการ 4:12 นอกจากพระเยซูแล้ว ไม่มีใครที่จะให้ความรอดกับเราได้ ไม่มีชื่ออื่นภายใต้ฟ้านี้ ที่จะทำให้มนุษย์รอดได้",
+    streamUrl: "fivefish.org/T32610",
+    trackDownloadUrl: "fivefish.org/T32610-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/32610.zip",
+    programId: "32610",
+  },
+  {
+    id: 80711,
+    langId: "482",
+    iso3: "LIS",
+    languageEn: "Lisu Southern",
+    langTh: "ลีซูใต้",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Acts 4:13 When they saw the courage of Peter and John and realized that they were unschooled, ordinary men, they were astonished and they took note that these men had been with Jesus.",
+    verse_th:
+      "กิจการ 4:13 เมื่อพวกผู้นำชาวยิวเห็นถึงความกล้าหาญของเปโตรกับยอห์น และเห็นว่าทั้งสองเป็นแค่คนธรรมดาๆที่ไม่ได้รับการศึกษาหรือฝึกฝนอะไรมาเป็นพิเศษ พวกเขาก็ยิ่งแปลกใจ พวกเขาต่างก็นึกขึ้นมาได้ว่า เปโตรและยอห์นเคยอยู่กับพระเยซูมาก่อน",
+    streamUrl: "fivefish.org/T80711",
+    trackDownloadUrl: "fivefish.org/T80711-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80711.zip",
+    programId: "80711",
+  },
+  {
+    id: 80722,
+    langId: "482",
+    iso3: "LIS",
+    languageEn: "Lisu Southern",
+    langTh: "ลีซูใต้",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Romans 1:16 I am not ashamed of the Gospel, because it is the power of God for the salvation of everyone who believes: first for the Jew, then for the Gentile.",
+    verse_th:
+      "โรม 1:16 ผมไม่ละอายเกี่ยวกับข่าวดีนี้หรอก เพราะข่าวดีนี้เป็นฤทธิ์เดชของพระเจ้าที่จะช่วยชีวิตทุกคนที่ไว้วางใจให้รอด ช่วยพวกยิวก่อน แล้วต่อมาก็ช่วยคนที่ไม่ใช่ยิวด้วย",
+    streamUrl: "fivefish.org/T80722",
+    trackDownloadUrl: "fivefish.org/T80722-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80722.zip",
+    programId: "80722",
+  },
+  {
+    id: 80721,
+    langId: "482",
+    iso3: "LIS",
+    languageEn: "Lisu Southern",
+    langTh: "ลีซูใต้",
+    title_en: "Songs",
+    title_th: "เพลง",
+    verse_en:
+      "Romans 12:1 Therefore, I urge you brothers, in view of God’s mercy, to offer your bodies as living sacrifices, holy and pleasing to God-this is your spiritual act of worship.",
+    verse_th:
+      "โรม 12:1 ดังนั้นพี่น้องครับ พระเจ้าได้เมตตากรุณาต่อเรา ผมก็เลยขอร้องให้คุณมอบร่างกายของคุณเป็นเครื่องบูชาที่มีชีวิตอยู่ เป็นเครื่องบูชาที่บริสุทธิ์ และเป็นที่พอใจของพระเจ้า การ",
+    streamUrl: "fivefish.org/T80721",
+    trackDownloadUrl: "fivefish.org/T80721-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80721.zip",
+    programId: "80721",
+  },
+  {
+    id: 5820,
+    langId: "482",
+    iso3: "LIS",
+    languageEn: "Lisu Southern",
+    langTh: "ลีซูใต้",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Romans 12:2 Do not conform any longer to the pattern of this world but be transformed by the renewing of your mind. Then you will be able to test and approve what God’s will is - His good, pleasing and perfect will.",
+    verse_th:
+      "โรม 12:2 อย่าทำตามอย่างคนในโลกนี้ แต่ขอยอมให้พระเจ้าเปลี่ยนแปลงคุณ คือพระองค์จะให้จิตใจใหม่กับคุณเพื่อจะได้รู้ว่าพระเจ้าต้องการอะไร สิ่งไหนดี สิ่งไหนพระองค์ชอบใจ และสิ่งไหนสมบูรณ์แบบ",
+    streamUrl: "fivefish.org/T5820",
+    trackDownloadUrl: "fivefish.org/T5820-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/5820.zip",
+    programId: "5820",
+  },
+  {
+    id: 27160,
+    langId: "482",
+    iso3: "LIS",
+    languageEn: "Lisu Southern",
+    langTh: "ลีซูใต้",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Romans 12:9 Love must be sincere. Hate what is evil; cling to what is good.",
+    verse_th:
+      "โรม 12:9 ให้รักคนอื่นด้วยความจริงใจ เกลียดสิ่งชั่วร้าย ยึดมั่นสิ่งที่ดี",
+    streamUrl: "fivefish.org/T27160",
+    trackDownloadUrl: "fivefish.org/T27160-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27160.zip",
+    programId: "27160",
+  },
+  {
+    id: 80831,
+    langId: "5143",
+    iso3: "LIS",
+    languageEn: "Lisu White",
+    langTh: "ลีซูขาว",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Romans 15:13 May the God of hope fill you with all joy and peace as you trust in Him, so that you may overflow with hope by the power of the Holy Spirit.",
+    verse_th:
+      "โรม 15:13 ขอให้พระเจ้าผู้เป็นแหล่งของความหวัง ช่วยเติมให้คุณเต็มเปี่ยมบริบูรณ์ไปด้วยความชื่นชมยินดีและสันติสุข ตามความไว้วางใจที่คุณมีในพระองค์ เพื่อคุณจะได้มีความหวังอย่างเหลือล้น ด้วยอำนาจของพระวิญญาณบริสุทธิ์",
+    streamUrl: "fivefish.org/T80831",
+    trackDownloadUrl: "fivefish.org/T80831-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80831.zip",
+    programId: "80831",
+  },
+  {
+    id: 9311,
+    langId: "1147",
+    iso3: "KHB",
+    languageEn: "Lu",
+    langTh: "ลู",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Romans 15:13 May the God of hope fill you with all joy and peace as you trust in Him, so that you may overflow with hope by the power of the Holy Spirit.",
+    verse_th:
+      "โรม 15:13 ขอให้พระเจ้าผู้เป็นแหล่งของความหวัง ช่วยเติมให้คุณเต็มเปี่ยมบริบูรณ์ไปด้วยความชื่นชมยินดีและสันติสุข ตามความไว้วางใจที่คุณมีในพระองค์ เพื่อคุณจะได้มีความหวังอย่างเหลือล้น ด้วยอำนาจของพระวิญญาณบริสุทธิ์",
+    streamUrl: "fivefish.org/T9311",
+    trackDownloadUrl: "fivefish.org/T9311-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9311.zip",
+    programId: "9311",
+  },
+  {
+    id: 3841,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Songs",
+    title_th: "เพลง",
+    verse_en:
+      "Romans 3:23 For all have sinned and fall short of the glory of God.",
+    verse_th:
+      "โรม 3:23 เพราะทุกคนทำบาปเหมือนกันหมด และเสื่อมจากพระบารมีของพระเจ้า",
+    streamUrl: "fivefish.org/T3841",
+    trackDownloadUrl: "fivefish.org/T3841-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3841.zip",
+    programId: "3841",
+  },
+  {
+    id: 26111,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 01",
+    title_th: "พระคำแห่งชีวิต 01",
+    verse_en:
+      "Romans 4:20-21 Yet he did not waver through unbelief regarding the promise of God, but was strengthened in his faith and gave glory to God, being fully persuaded that God had power to do what He had promised.",
+    verse_th:
+      "โรม 4:20-21 แต่อับราฮัมไม่เคยสงสัยในคำสัญญาของพระเจ้าเลย กลับมีความไว้วางใจมากขึ้น ซึ่งเป็นการให้เกียรติกับพระเจ้า 21 อับราฮัมเชื่ออย่างแน่วแน่ว่า พระเจ้าสามารถทำในสิ่งที่พระองค์ได้สัญญาไว้",
+    streamUrl: "fivefish.org/T26111",
+    trackDownloadUrl: "fivefish.org/T26111-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/26111.zip",
+    programId: "26111",
+  },
+  {
+    id: 27211,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 02",
+    title_th: "พระคำแห่งชีวิต 02",
+    verse_en:
+      "Romans 5:5 And hope does not put us to shame, because God’s love has been poured out into our hearts through the Holy Spirit, Who has been given to us.",
+    verse_th:
+      "โรม 5:5 ความหวังนั้นไม่เคยทำให้เราผิดหวังเลย เพราะพระเจ้าได้เทความรักของพระองค์เข้ามาในจิตใจของเรา ผ่านทางพระวิญญาณบริสุทธิ์ที่พระองค์ได้ให้กับเราไว้",
+    streamUrl: "fivefish.org/T27211",
+    trackDownloadUrl: "fivefish.org/T27211-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27211.zip",
+    programId: "27211",
+  },
+  {
+    id: 27220,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 03",
+    title_th: "พระคำแห่งชีวิต 03",
+    verse_en:
+      "Romans 5:8 But God demonstrates His own love for us in this: While we were still sinners, Christ died for us.",
+    verse_th:
+      "โรม 5:8 แต่พระเจ้าได้แสดงความรักต่อเรา โดยยอมส่งพระคริสต์มาตายเพื่อเรา ทั้งๆที่เรายังเป็นคนบาปอยู่",
+    streamUrl: "fivefish.org/T27220",
+    trackDownloadUrl: "fivefish.org/T27220-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27220.zip",
+    programId: "27220",
+  },
+  {
+    id: 27221,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 04",
+    title_th: "พระคำแห่งชีวิต 04",
+    verse_en:
+      "Romans 6:23 For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord.",
+    verse_th:
+      "โรม 6:23 เพราะค่าจ้างที่ความบาปจ่ายให้กับเราคือความตาย แต่ของขวัญที่พระเจ้าให้กับเรานั้นคือชีวิตที่อยู่กับพระเจ้าตลอดไป ในพระเยซูคริสต์เจ้าของเรา",
+    streamUrl: "fivefish.org/T27221",
+    trackDownloadUrl: "fivefish.org/T27221-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27221.zip",
+    programId: "27221",
+  },
+  {
+    id: 27230,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 05",
+    title_th: "พระคำแห่งชีวิต 05",
+    verse_en:
+      "Romans 8:32 He who did not spare His own Son, but gave Him up for us all-how will He not also, along with Him, graciously give us all things?",
+    verse_th:
+      "โรม 8:32 พระองค์ไม่หวงแม้แต่พระบุตรของพระองค์เอง แต่กลับมอบพระบุตรนั้นให้มาตายเพื่อเราทุกคน ถ้าอย่างนั้นพระองค์จะไม่ยิ่งให้ทุกสิ่งทุกอย่างกับเราพร้อมกับพระบุตรด้วยหรือ",
+    streamUrl: "fivefish.org/T27230",
+    trackDownloadUrl: "fivefish.org/T27230-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27230.zip",
+    programId: "27230",
+  },
+  {
+    id: 27231,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 06",
+    title_th: "พระคำแห่งชีวิต 06",
+    verse_en:
+      "1 Corinthians 14:33 For God is not a God of disorder but of peace - as in all the congregations of the Lord's people.",
+    verse_th:
+      "1 โครินธ์ 14:33 เพราะพระเจ้าไม่ได้เป็นพระเจ้าแห่งความวุ่นวาย แต่เป็นพระเจ้าแห่งสันติสุข เหมือนกับที่พระองค์เป็นในที่ประชุมทุกแห่งของคนของพระเจ้า",
+    streamUrl: "fivefish.org/T27231",
+    trackDownloadUrl: "fivefish.org/T27231-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27231.zip",
+    programId: "27231",
+  },
+  {
+    id: 27240,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 07",
+    title_th: "พระคำแห่งชีวิต 07",
+    verse_en:
+      "1 Corinthians 14:40 But everything should be done in a fitting and orderly way.",
+    verse_th: "1 โครินธ์ 14:40 แต่ให้ทำทุกอย่างนี้ อย่างเหมาะสมและเป็นระเบียบ",
+    streamUrl: "fivefish.org/T27240",
+    trackDownloadUrl: "fivefish.org/T27240-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27240.zip",
+    programId: "27240",
+  },
+  {
+    id: 78071,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 08 - Why Jesus Died",
+    title_th: "พระคำแห่งชีวิต 08 - ทำไมพระเยซูจึงต้องตาย",
+    verse_en:
+      "1 Corinthians 15:58 Therefore, my dear brothers, stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord, because you know that your labor in the Lord is not in vain.",
+    verse_th:
+      "1 โครินธ์ 15:58 ดังนั้น พี่น้องที่รัก ให้มั่นคง อย่าหวั่นไหว และให้ทุ่มเทกับงานขององค์เจ้าชีวิตตลอดเวลา เพราะคุณก็รู้ว่าจะได้รับรางวัลสำหรับงานหนักที่คุณทำเพื่อองค์เจ้าชีวิตนั้นแน่",
+    streamUrl: "fivefish.org/T78071",
+    trackDownloadUrl: "fivefish.org/T78071-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78071.zip",
+    programId: "78071",
+  },
+  {
+    id: 78072,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 09 - Fear of Evil Spirits",
+    title_th: "พระคำแห่งชีวิต 09 - กลัววิญญาณชั่ว",
+    verse_en:
+      "1 Corinthians 2:11 For who knows a person's thoughts except their own spirit within them? In the same way no one knows the thoughts of God except the Spirit of God.",
+    verse_th:
+      "1 โครินธ์ 2:11 เพราะไม่มีใครรู้ความคิดของคนอื่นได้นอกจากวิญญาณที่อยู่ในตัวของเขาเอง เช่นเดียวกัน ไม่มีใครรู้ความคิดของพระเจ้าได้นอกจากพระวิญญาณของพระองค์เอง",
+    streamUrl: "fivefish.org/T78072",
+    trackDownloadUrl: "fivefish.org/T78072-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78072.zip",
+    programId: "78072",
+  },
+  {
+    id: 78076,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 10 - Life After Death",
+    title_th: "พระคำแห่งชีวิต 10 - ชีวิตหลังความตาย",
+    verse_en:
+      "1 Corinthians 2:12 We have not received the spirit of the world but the Spirit who is from God, that we may understand what God has freely given us.",
+    verse_th:
+      "1 โครินธ์ 2:12 เราไม่ได้รับวิญญาณของโลกนี้ แต่รับพระวิญญาณที่มาจากพระเจ้า เพื่อเราจะได้เข้าใจสิ่งต่างๆที่พระเจ้าให้เรา และพระองค์ก็ให้เราอย่างใจกว้างจริงๆ",
+    streamUrl: "fivefish.org/T78076",
+    trackDownloadUrl: "fivefish.org/T78076-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78076.zip",
+    programId: "78076",
+  },
+  {
+    id: 78073,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 11 - How Christians Live",
+    title_th: "พระคำแห่งชีวิต 11 - การดำเนินชีวิตคริสเตียน",
+    verse_en:
+      "1 Corinthians 3:16 Don’t you know that you yourselves are God’s temple and that God’s Spirit lives in you?",
+    verse_th:
+      "1 โครินธ์ 3:16 พวกคุณไม่รู้หรือว่าพวกคุณเป็นวิหารของพระเจ้า และพระวิญญาณของพระเจ้าก็อยู่ในหมู่พวกคุณ",
+    streamUrl: "fivefish.org/T78073",
+    trackDownloadUrl: "fivefish.org/T78073-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78073.zip",
+    programId: "78073",
+  },
+  {
+    id: 78074,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 12 - Prayer",
+    title_th: "พระคำแห่งชีวิต 12 - การอธิษฐาน",
+    verse_en:
+      "2 Corinthians 4:1 Therefore, since through God's mercy we have this ministry, we do not lose heart.",
+    verse_th:
+      "2 โครินธ์ 4:1 เราไม่ย่อท้อง่ายๆเพราะงานนี้พระเจ้าเองเป็นผู้มอบให้เราทำ",
+    streamUrl: "fivefish.org/T78074",
+    trackDownloadUrl: "fivefish.org/T78074-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78074.zip",
+    programId: "78074",
+  },
+  {
+    id: 78075,
+    langId: "1958",
+    iso3: "MFA",
+    languageEn: "Malay Pattani",
+    langTh: "มาเลปัตตานี",
+    title_en: "Words of Life 13 - God, Jesus Christ",
+    title_th: "พระคำแห่งชีวิต 13 - พระเจ้า พระเยซูคริสต์",
+    verse_en:
+      "2 Corinthians 4:5 For we do not preach ourselves, but Jesus Christ our Lord, and ourselves as your servants for Jesus’ sake.",
+    verse_th:
+      "2 โครินธ์ 4:5 เราไม่ได้ประกาศตัวเราเอง แต่เราประกาศว่าพระเยซูคริสต์เป็นองค์เจ้าชีวิต และตัวเราเองเป็นทาสของพวกคุณ เพราะเห็นแก่พระเยซู",
+    streamUrl: "fivefish.org/T78075",
+    trackDownloadUrl: "fivefish.org/T78075-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78075.zip",
+    programId: "78075",
+  },
+  {
+    id: 2691,
+    langId: "481",
+    iso3: "ZSM",
+    languageEn: "Malay Standard",
+    langTh: "มลายูกลาง",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "2 Corinthians 5:17 Therefore, if anyone is in Christ, he is a new creation; the old has gone, the new has come!",
+    verse_th:
+      "2 โครินธ์ 5:17 ถ้าใครก็ตามมีส่วนในพระคริสต์ คนนั้นได้เข้าสู่โลกใหม่ที่พระเจ้าได้สร้างขึ้นมาแล้ว สิ่งเก่าๆหายไปหมดแล้ว ดูสิ สิ่งใหม่ๆก็เกิดขึ้น",
+    streamUrl: "fivefish.org/T2691",
+    trackDownloadUrl: "fivefish.org/T2691-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2691.zip",
+    programId: "2691",
+  },
+  {
+    id: 2591,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "Becoming a Friend of God",
+    title_th: "เป็นเพื่อนของพระเจ้า",
+    verse_en:
+      "2 Corinthians 5:21 God made Him who had no sin to be sin for us, so that in Him we might become the righteousness of God.",
+    verse_th:
+      "2 โครินธ์ 5:21 พระเจ้าทำให้พระคริสต์ผู้ที่ไม่มีบาปกลายเป็นคนบาปเพื่อเรา เพื่อว่าในพระคริสต์นั้น ความซื่อสัตย์ของพระเจ้า จะได้เห็นเด่นชัดในตัวเรา",
+    streamUrl: "fivefish.org/T2591",
+    trackDownloadUrl: "fivefish.org/T2591-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2591.zip",
+    programId: "2591",
+  },
+  {
+    id: 80890,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "2 Corinthians 7:1 Therefore, since we have these promises, dear friends, let us purify ourselves from everything that contaminates body and spirit, perfecting holiness out of reverence for God.",
+    verse_th:
+      "2 โครินธ์ 7:1 เพื่อนที่รัก ในเมื่อเรามีคำสัญญาพวกนี้ ก็ขอให้เราชำระตัวเองจากทุกสิ่งทุกอย่างที่ทำให้ร่างกายและจิตใจสกปรก ทำตัวให้บริสุทธิ์ครบถ้วนเพราะยำเกรงพระเจ้า",
+    streamUrl: "fivefish.org/T80890",
+    trackDownloadUrl: "fivefish.org/T80890-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80890.zip",
+    programId: "80890",
+  },
+  {
+    id: 64259,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "Good News - Female",
+    title_th: "ข่าวประเสริฐ – ผู้หญิง",
+    verse_en:
+      "2 Corinthians 9:6-7 Remember this: “Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each man should give what he has decided in his heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.”",
+    verse_th:
+      "2 โครินธ์ 9:6-7 จำเอาไว้ว่า “คนที่หว่านน้อยก็จะเก็บเกี่ยวน้อย และคนที่หว่านมากก็จะเก็บเกี่ยวมากแต่ละคนควรจะให้ตามที่ตั้งใจไว้ ไม่ใช่ให้ด้วยความเสียดายหรือถูกบังคับ เพราะพระเจ้ารักคนที่ให้ด้วยใจที่ชื่นชมยินดี”",
+    streamUrl: "fivefish.org/T64259",
+    trackDownloadUrl: "fivefish.org/T64259-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64259.zip",
+    programId: "64259",
+  },
+  {
+    id: 62908,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "Good News^ for university students",
+    title_th: "ข่าวประเสริฐ – สำหรับนักศึกษามหาวิทยาลัย",
+    verse_en:
+      "Galatians 2:20 I have been crucified with Christ and I no longer live, but Christ lives in me. The life I live in the body, I live by faith in the Son of God, who loved me and gave Himself for me.",
+    verse_th:
+      "กาลาเทีย 2:20 ผมได้ถูกตรึงบนไม้กางเขนจนตายไปพร้อมกับพระคริสต์ คนที่มีชีวิตอยู่ตอนนี้ไม่ใช่ตัวผมแล้วแต่เป็นพระคริสต์ต่างหากที่อยู่ในตัวผม ชีวิตที่มีอยู่เดี๋ยวนี้ก็เป็นชีวิตที่ไว้วางใจในพระบุตรของพระเจ้า ผู้ที่รักผมและเสียสละชีวิตให้ผม",
+    streamUrl: "fivefish.org/T62908",
+    trackDownloadUrl: "fivefish.org/T62908-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62908.zip",
+    programId: "62908",
+  },
+  {
+    id: 80921,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Galatians 4:4-5 But when the set time had fully come, God sent His Son, born of a woman, born under the law, to redeem those under the law, that we might receive adoption to sonship.",
+    verse_th:
+      "กาลาเทีย 4:4-5 แต่เมื่อถึงเวลาที่เหมาะสม พระเจ้าก็ได้ส่งพระบุตรของพระองค์โดยคลอดออกมาจากผู้หญิง และมีชีวิตอยู่ภายใต้กฎ เพื่อมาปลดปล่อยคนที่อยู่ภายใต้กฎให้เป็นอิสระ และเพื่อเราทุกคนจะได้เป็นลูกของพระเจ้า",
+    streamUrl: "fivefish.org/T80921",
+    trackDownloadUrl: "fivefish.org/T80921-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80921.zip",
+    programId: "80921",
+  },
+  {
+    id: 80922,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Galatians 5:1 It is for freedom that Christ has set us free. Stand firm, then, and do not let yourselves be burdened again by a yoke of slavery.",
+    verse_th:
+      "กาลาเทีย 5:1 เมื่อพระคริสต์ได้ปลดปล่อยให้เราเป็นอิสระแล้ว ก็ให้อยู่อย่างคนอิสระเถิด รักษามันไว้ให้ดี อย่ากลับไปเป็นทาสของกฎอีก",
+    streamUrl: "fivefish.org/T80922",
+    trackDownloadUrl: "fivefish.org/T80922-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80922.zip",
+    programId: "80922",
+  },
+  {
+    id: 80901,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Galatians 6:10 Therefore, as we have opportunity, let us do good to all people, especially to those who belong to the family of believers.",
+    verse_th:
+      "กาลาเทีย 6:10 ดังนั้น เมื่อมีโอกาสก็ให้ทำดีกับทุกคน โดยเฉพาะอย่างยิ่งกับครอบครัวที่ไว้วางใจในพระเจ้า",
+    streamUrl: "fivefish.org/T80901",
+    trackDownloadUrl: "fivefish.org/T80901-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80901.zip",
+    programId: "80901",
+  },
+  {
+    id: 80892,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Galatians 6:9 Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.",
+    verse_th:
+      "กาลาเทีย 6:9 อย่าเพิ่งท้อแท้ในการทำดี เพราะเมื่อถึงเวลาที่เหมาะ คุณก็จะได้เก็บเกี่ยวผลจากการทำดีนั้น ถ้าไม่เลิกไปซะก่อนนะ",
+    streamUrl: "fivefish.org/T80892",
+    trackDownloadUrl: "fivefish.org/T80892-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80892.zip",
+    programId: "80892",
+  },
+  {
+    id: 80893,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Ephesians 2:8-9 For it is by grace that you have been saved, through faith-and this not from yourselves, it is the gift of God-not by works, so that no one can boast.",
+    verse_th:
+      "เอเฟซัส 2:8-9 ที่พวกคุณรอดนั้นเป็นเพราะความเมตตากรุณาของพระเจ้า ผ่านมาทางความเชื่อของคุณ ไม่ได้มาจากตัวของคุณเอง แต่เป็นของขวัญที่มาจากพระเจ้ามันไม่ได้เป็นผลมาจากการกระทำของใคร เพื่อจะได้ไม่มีใครโอ้อวดได้",
+    streamUrl: "fivefish.org/T80893",
+    trackDownloadUrl: "fivefish.org/T80893-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80893.zip",
+    programId: "80893",
+  },
+  {
+    id: 80923,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Ephesians 3:16-17 I pray that out of His glorious riches He may strengthen you with power through His Spirit in your inner being, so that Christ may dwell in your hearts through faith. And I pray that you, being rooted and established in love.",
+    verse_th:
+      "เอเฟซัส 3:16-17 ขอให้พระเจ้าที่มั่งคั่งมหาศาล ช่วยให้พวกคุณมีพลังใจที่เข้มแข็งผ่านทางพระวิญญาณของพระองค์ 17 ขอให้พระคริสต์ตั้งมั่นคงอยู่ในใจของคุณเพราะคุณไว้วางใจในพระองค์ ขอให้ลงรากลึกมั่นคงในความรัก",
+    streamUrl: "fivefish.org/T80923",
+    trackDownloadUrl: "fivefish.org/T80923-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80923.zip",
+    programId: "80923",
+  },
+  {
+    id: 80924,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "Ephesians 3:20-21 Now to Him who is able to do immeasurably more than all we ask or imagine, according to His power that is at work within us, to Him be glory in the church and in Christ Jesus throughout all generations, for ever and ever!",
+    verse_th:
+      "เอเฟซัส 3:20-21 พระเจ้าสามารถทำได้ทุกสิ่งมากยิ่งกว่าที่เราจะขอหรือคิดได้ ด้วยฤทธิ์อำนาจของพระองค์ที่กำลังทำงานอยู่ในตัวเรา ขอให้พระเจ้าได้รับเกียรติทั้งจากหมู่ประชุมของพระองค์ และจากพระเยซูคริสต์ทุกยุคทุกสมัยตลอดไป อาเมน",
+    streamUrl: "fivefish.org/T80924",
+    trackDownloadUrl: "fivefish.org/T80924-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80924.zip",
+    programId: "80924",
+  },
+  {
+    id: 80925,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Ephesians 5:3 But among you there must not be even a hint of sexual immorality, or of any kind of impurity, or of greed, because these are improper for God’s holy people.",
+    verse_th:
+      "เอเฟซัส 5:3 เรื่องความผิดบาปทางเพศ เรื่องลามกทุกอย่าง หรือความมักมากในกาม แม้แต่จะพูดถึงก็อย่าเลย เพราะมันไม่เหมาะกับคนที่เป็นของพระเจ้า",
+    streamUrl: "fivefish.org/T80925",
+    trackDownloadUrl: "fivefish.org/T80925-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80925.zip",
+    programId: "80925",
+  },
+  {
+    id: 30090,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "Portrait of Jesus (Modern)",
+    title_th: "ชีวิตของพระเยซู (Modern)",
+    verse_en:
+      "Philippians 2:3-4 Do nothing out of selfish ambition or vein conceit, but in humility consider others better than yourselves. Each of you should look not only to your own interests, but also the interests of others.",
+    verse_th:
+      "ฟีลิปปี 2:3-4 อย่าทำอะไรที่ชิงดีชิงเด่นกัน หรือเพราะหลงคิดว่าตัวเองเก่ง แต่ให้ถ่อมตัวลง และมองคนอื่นว่าสำคัญกว่าตัวเอง 4 อย่าให้ใครคิดเห็นแต่ประโยชน์ส่วนตัว แต่ให้คิดถึงประโยชน์ของคนอื่นด้วย",
+    streamUrl: "fivefish.org/T30090",
+    trackDownloadUrl: "fivefish.org/T30090-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30090.zip",
+    programId: "30090",
+  },
+  {
+    id: 30091,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "Portrait of Jesus (Union)",
+    title_th: "ชีวิตของพระเยซู (Union)",
+    verse_en:
+      "Philippians 4:12 I know what it is to be in need, and I know what it is to have plenty. I have learned the secret of being content in any and every situation, whether well fed or hungry, whether living in plenty or in want.",
+    verse_th:
+      "ฟีลิปปี 4:12 ผมรู้ว่าจะพอใจได้อย่างไรทั้งตอนที่ขัดสน และตอนที่มีอย่างเหลือเฟือ ไม่ว่าจะอยู่ในสภาพไหนก็ตาม ผมได้เรียนรู้เคล็ดลับว่าจะอยู่อย่างไร ในเวลาที่อิ่มท้องหรือหิวโหย ในเวลาที่มีเหลือเฟือหรือขาดแคลน",
+    streamUrl: "fivefish.org/T30091",
+    trackDownloadUrl: "fivefish.org/T30091-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30091.zip",
+    programId: "30091",
+  },
+  {
+    id: 62646,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "The Living Christ 1-63",
+    title_th: "ชีวิตของพระคริสต์ 1-63",
+    verse_en:
+      "Philippians 4:13 I can do everything through Him who gives me strength.",
+    verse_th: "ฟีลิปปี 4:13 พระคริสต์ให้ผมมีกำลังที่จะทนได้กับทุกสิ่ง",
+    streamUrl: "fivefish.org/T62646",
+    trackDownloadUrl: "fivefish.org/T62646-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62646.zip",
+    programId: "62646",
+  },
+  {
+    id: 62647,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "The Living Christ 64-120",
+    title_th: "ชีวิตของพระคริสต์ 64-120",
+    verse_en:
+      "Philippians 4:19 And my God will meet all your needs according to His glorious riches in Jesus Christ.",
+    verse_th:
+      "ฟีลิปปี 4:19 พระเจ้าของผมจะให้ทุกสิ่งที่จำเป็นสำหรับคุณ จากความมั่งคั่งอันมหาศาลของพระองค์ที่อยู่ในพระเยซูคริสต์",
+    streamUrl: "fivefish.org/T62647",
+    trackDownloadUrl: "fivefish.org/T62647-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62647.zip",
+    programId: "62647",
+  },
+  {
+    id: 29260,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Philippians 4:6 Do not be anxious about anything, but in everything, by prayer and petition, with thanksgiving, present your requests to God.",
+    verse_th:
+      "ฟีลิปปี 4:6 เลิกกังวลได้แล้ว แต่ให้อธิษฐานในทุกๆ สถานการณ์ และขอในสิ่งที่คุณต้องการจากพระเจ้า และเมื่ออธิษฐานก็ให้ขอบคุณพระเจ้าด้วย",
+    streamUrl: "fivefish.org/T29260",
+    trackDownloadUrl: "fivefish.org/T29260-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/29260.zip",
+    programId: "29260",
+  },
+  {
+    id: 29261,
+    langId: "37",
+    iso3: "CMN",
+    languageEn: "Mandarin",
+    langTh: "จีนกลาง",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Philippians 4:7 And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
+    verse_th:
+      "ฟีลิปปี 4:7 แล้วสันติสุขที่มาจากพระเจ้า ซึ่งดีกว่าสันติสุขที่มาจากแผนงานต่างๆของมนุษย์ จะปกป้องรักษาจิตใจ และความคิดของคุณไว้ในพระเยซูคริสต์",
+    streamUrl: "fivefish.org/T29261",
+    trackDownloadUrl: "fivefish.org/T29261-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/29261.zip",
+    programId: "29261",
+  },
+  {
+    id: 37926,
+    langId: "1136",
+    iso3: "MWT",
+    languageEn: "Moken",
+    langTh: "มอแกน",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Philippians 4:8 Finally, brothers and sisters, whatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely, whatever is admirable—if anything is excellent or praiseworthy—think about such things.",
+    verse_th:
+      "ฟีลิปปี 4:8 สุดท้ายนี้ พี่น้องครับ อะไรก็ตามที่จริง ที่น่านับถือ ที่ถูกต้อง ที่บริสุทธิ์ ที่น่ารัก ที่น่ายกย่อง นั่นคืออะไรก็ตามที่ยอดเยี่ยมและน่าสรรเสริญ ให้เอาใจใส่ในเรื่องเหล่านั้น",
+    streamUrl: "fivefish.org/T37926",
+    trackDownloadUrl: "fivefish.org/T37926-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37926.zip",
+    programId: "37926",
+  },
+  {
+    id: 64535,
+    langId: "1136",
+    iso3: "MWT",
+    languageEn: "Moken",
+    langTh: "มอแกน",
+    title_en: "Gospel of Luke Ch 01-06",
+    title_th: "พระกิตติคุณลูกา บทที่ 01-06",
+    verse_en:
+      "Colossians 3:1-2 Since, then, you have been raised with Christ, set your hearts on things above, where Christ is, seated at the right hand of God. Set your minds on things above, not on earthly things.",
+    verse_th:
+      "โคโลสี 3:1-2 พระเจ้าได้ทำให้คุณฟื้นขึ้นจากความตายกับพระคริสต์แล้ว อย่างนั้นให้แสวงหาสิ่งต่างๆที่อยู่เบื้องบน ซึ่งเป็นที่ที่พระคริสต์นั่งอยู่ทางขวามือของพระเจ้า 2ให้ใจของคุณจดจ่ออยู่กับสิ่งที่อยู่เบื้องบน ไม่ใช่สิ่งที่อยู่ในโลก",
+    streamUrl: "fivefish.org/T64535",
+    trackDownloadUrl: "fivefish.org/T64535-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64535.zip",
+    programId: "64535",
+  },
+  {
+    id: 64536,
+    langId: "1136",
+    iso3: "MWT",
+    languageEn: "Moken",
+    langTh: "มอแกน",
+    title_en: "Gospel of Luke Ch 07-11",
+    title_th: "พระกิตติคุณลูกา บทที่ 07-11",
+    verse_en:
+      "Colossians 3:12 Therefore, as God's chosen people, holy and dearly loved, clothe yourselves with compassion, kindness, humility, gentleness and patience.",
+    verse_th:
+      "โคโลสี 3:12 ดังนั้นในฐานะที่เราเป็นคนที่พระเจ้าได้เลือก เป็นคนของพระเจ้า และเป็นคนที่พระองค์รัก ก็ให้สวมใส่ความเห็นอกเห็นใจ ความมีน้ำใจ ความถ่อมตน ความสุภาพอ่อนโยน และความอดทน",
+    streamUrl: "fivefish.org/T64536",
+    trackDownloadUrl: "fivefish.org/T64536-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64536.zip",
+    programId: "64536",
+  },
+  {
+    id: 64537,
+    langId: "1136",
+    iso3: "MWT",
+    languageEn: "Moken",
+    langTh: "มอแกน",
+    title_en: "Gospel of Luke Ch 12-18",
+    title_th: "พระกิตติคุณลูกา บทที่ 12-18",
+    verse_en:
+      "Colossians 3:15 Let the peace of Christ rule in your hearts, since as members of one body you were called to peace. And be thankful.",
+    verse_th:
+      "โคโลสี 3:15 ขอให้สันติสุขจากพระคริสต์มาครอบครองจิตใจของคุณ เพราะพระเจ้าได้เรียกคุณให้อยู่กันอย่างสันติในร่างกายเดียวกัน และขอให้เป็นคนที่รู้จักขอบคุณพระเจ้าอยู่เสมอ",
+    streamUrl: "fivefish.org/T64537",
+    trackDownloadUrl: "fivefish.org/T64537-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64537.zip",
+    programId: "64537",
+  },
+  {
+    id: 64538,
+    langId: "1136",
+    iso3: "MWT",
+    languageEn: "Moken",
+    langTh: "มอแกน",
+    title_en: "Gospel of Luke Ch 19-24",
+    title_th: "พระกิตติคุณลูกา บทที่ 19-24",
+    verse_en:
+      "1 Timothy 1:17 Now to the King eternal, immortal, invisible, the only God, be honor and glory for ever and ever. Amen.",
+    verse_th:
+      "1 ทิโมธี 1:17 ขอให้พระองค์ผู้เป็นกษัตริย์ของคนทุกยุคทุกสมัย ผู้ไม่มีวันตาย ผู้ไม่มีใครมองเห็นได้ และผู้เป็นพระเจ้าแต่เพียงองค์เดียว ได้รับเกียรติและสง่าราศี อยู่เสมอและตลอดไป อาเมน",
+    streamUrl: "fivefish.org/T64538",
+    trackDownloadUrl: "fivefish.org/T64538-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64538.zip",
+    programId: "64538",
+  },
+  {
+    id: 4871,
+    langId: "1136",
+    iso3: "MWT",
+    languageEn: "Moken",
+    langTh: "มอแกน",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "2 Timothy 2:22 Flee the evil desires of youth and pursue righteousness, faith, love and peace, along with those who call on the Lord out of a pure heart.",
+    verse_th:
+      "2 ทิโมธี 2:22 ให้วิ่งหนีจากราคะตัณหาของคนหนุ่มสาว แต่ไล่ตามสิ่งที่ถูกต้อง เช่นความเชื่อ ความรัก และสันติสุข ร่วมกับคนเหล่านั้นที่ร้องเรียกองค์เจ้าชีวิตด้วยใจที่สะอาดบริสุทธิ์",
+    streamUrl: "fivefish.org/T4871",
+    trackDownloadUrl: "fivefish.org/T4871-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/4871.zip",
+    programId: "4871",
+  },
+  {
+    id: 9791,
+    langId: "1136",
+    iso3: "MWT",
+    languageEn: "Moken",
+    langTh: "มอแกน",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "2 Timothy 3:16 All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness.",
+    verse_th:
+      "2 ทิโมธี 3:16 ทุกๆข้อในพระคัมภีร์ พระเจ้าเป็นผู้ดลใจให้เขียนขึ้นมา เพื่อเป็นประโยชน์ในการสั่งสอนความจริง ชี้ให้คนเห็นถึงความบาปในชีวิต ช่วยปรับปรุงแก้ไขให้คนดีขึ้น และฝึกคนให้ทำตามใจพระเจ้า",
+    streamUrl: "fivefish.org/T9791",
+    trackDownloadUrl: "fivefish.org/T9791-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9791.zip",
+    programId: "9791",
+  },
+  {
+    id: 80865,
+    langId: "399",
+    iso3: "MNW",
+    languageEn: "Mon",
+    langTh: "มอญ",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Titus 3:5 He saved us, not because of righteous things we had done, but because of His mercy. He saved us through the washing of rebirth and renewal by the Holy Spirit.",
+    verse_th:
+      "ทิตัส 3:5 พระองค์ได้ช่วยให้เรารอด ไม่ใช่เพราะเราทำดี แต่เป็นเพราะความเมตตากรุณาของพระองค์ต่างหาก พระองค์ได้ชำระล้างเรา ซึ่งทำให้เราเกิดใหม่ และถูกสร้างขึ้นมาใหม่ด้วยฤทธิ์เดชของพระวิญญาณบริสุทธิ์",
+    streamUrl: "fivefish.org/T80865",
+    trackDownloadUrl: "fivefish.org/T80865-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80865.zip",
+    programId: "80865",
+  },
+  {
+    id: 7821,
+    langId: "399",
+    iso3: "MNW",
+    languageEn: "Mon",
+    langTh: "มอญ",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Hebrews 10:24-25 And let us consider how we may spur one another on toward love and good deeds. Let us not give up meeting together as some are in the habit of doing, but let us encourage one another - and all the more as you see the Day approaching.",
+    verse_th:
+      "ฮีบรู 10:24-25 ขอให้เราทุกคนพิจารณากันและกัน เพื่อจะได้กระตุ้นกันให้มีความรักและทำแต่ความดีขออย่าให้เราทิ้งการประชุมไปเหมือนกับที่บางคนทำอยู่ แต่ให้กำลังใจกันและกันมากยิ่งขึ้น ยิ่งพวกคุณรู้อยู่แล้วว่าวันนั้นกำลังใกล้มาถึงแล้ว ก็ยิ่งน่าจะทำอย่างนี้",
+    streamUrl: "fivefish.org/T7821",
+    trackDownloadUrl: "fivefish.org/T7821-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/7821.zip",
+    programId: "7821",
+  },
+  {
+    id: 9321,
+    langId: "2405",
+    iso3: "MNW",
+    languageEn: "Mon Takanoon",
+    langTh: "มอญ ทาคานูน",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Hebrews 11:6 And without faith it is impossible to please God, because anyone who comes to Him must believe that He exists and that He rewards those who earnestly seek Him.",
+    verse_th:
+      "ฮีบรู 11:6 เขาได้รับการยกย่องว่าเป็นคนหนึ่งที่พระเจ้าพอใจ แต่ถ้าไม่มีความไว้วางใจแล้ว ก็เป็นไปไม่ได้ที่จะทำให้พระเจ้าพอใจ เพราะคนที่มาเข้าเฝ้าพระเจ้าจะต้องเชื่อว่าพระองค์มีจริง และต้องเชื่อว่าพระองค์จะให้รางวัลกับทุกคนที่แสวงหาพระองค์",
+    streamUrl: "fivefish.org/T9321",
+    trackDownloadUrl: "fivefish.org/T9321-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9321.zip",
+    programId: "9321",
+  },
+  {
+    id: 64238,
+    langId: "6428",
+    iso3: "NPI",
+    languageEn: "Nepali",
+    langTh: "เนปาล",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Hebrews 12:3 Consider Him who endured such opposition from sinful men, so that you will not grow weary and lose heart.",
+    verse_th:
+      "ฮีบรู 12:3 ขอให้ใคร่ครวญถึงพระองค์ผู้ที่ต้องทนทุกข์ทรมานอย่างแสนสาหัสจากคนบาปที่ต่อต้านพระองค์ เพื่อพวกคุณจะได้ไม่ท้อใจหรือยอมแพ้",
+    streamUrl: "fivefish.org/T64238",
+    trackDownloadUrl: "fivefish.org/T64238-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64238.zip",
+    programId: "64238",
+  },
+  {
+    id: 64085,
+    langId: "6428",
+    iso3: "NPI",
+    languageEn: "Nepali",
+    langTh: "เนปาล",
+    title_en: "Promises of God",
+    title_th: "พระสัญญาของพระเจ้า",
+    verse_en:
+      "Hebrews 2:18 Because He Himself suffered when He was tempted, He is able to help those who are being tempted.",
+    verse_th:
+      "ฮีบรู 2:18 เดี๋ยวนี้ พระองค์สามารถช่วยคนที่ถูกทดลองได้แล้ว เพราะพระองค์เองได้รับความทรมานและถูกทดลองมาก่อน",
+    streamUrl: "fivefish.org/T64085",
+    trackDownloadUrl: "fivefish.org/T64085-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64085.zip",
+    programId: "64085",
+  },
+  {
+    id: 62307,
+    langId: "6428",
+    iso3: "NPI",
+    languageEn: "Nepali",
+    langTh: "เนปาล",
+    title_en: "Testimony",
+    title_th: "คำพยาน",
+    verse_en:
+      "Hebrews 4:15-16 For we do not have a high priest who is unable to empathize with our weaknesses, but we have One who has been tempted in every way, just as we are - yet He did not sin. Let us then approach God's throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.",
+    verse_th:
+      "ฮีบรู 4:15-16 เพราะหัวหน้านักบวชสูงสุดของเราคนนี้เข้าใจและเห็นใจในจุดอ่อนทั้งหลายของเรา เพราะพระองค์ก็เคยถูกทดลองเหมือนกับเราทุกอย่าง แต่ไม่ได้ทำบาปเลย 16 ดังนั้นขอให้เราทุกคนเข้ามายืนด้วยความมั่นใจต่อหน้าบัลลังก์ของพระเจ้าผู้มีความเมตตากรุณา เพื่อเราจะได้รับความปรานี และพบกับความเมตตากรุณาที่พระเจ้าจะช่วยเราในเวลาที่เราต้องการความช่วยเหลือ",
+    streamUrl: "fivefish.org/T62307",
+    trackDownloadUrl: "fivefish.org/T62307-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62307.zip",
+    programId: "62307",
+  },
+  {
+    id: 80350,
+    langId: "5115",
+    iso3: "NPI",
+    languageEn: "Nepali Bhutan",
+    langTh: "เนปาล ภูฏาน",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Hebrews 9:27 Just as man is destined to die once, and after that to face judgment.",
+    verse_th: "ฮีบรู 9:27 มนุษย์ตายแค่ครั้งเดียวแล้วเจอกับการพิพากษา",
+    streamUrl: "fivefish.org/T80350",
+    trackDownloadUrl: "fivefish.org/T80350-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80350.zip",
+    programId: "80350",
+  },
+  {
+    id: 65455,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "After the Earthquake",
+    title_th: "หลังเกิดแผ่นดินไหว",
+    verse_en:
+      "James 4:14 Why, you do not even know what will happen tomorrow. What is your life? You are a mist that appears for a little while and then vanishes.",
+    verse_th:
+      "ยากอบ 4:14 ตัวคุณเองก็ยังไม่รู้เลยว่า พรุ่งนี้ชีวิตของคุณจะเป็นอย่างไรบ้าง เพราะคุณเป็นเพียงแค่หมอก ที่เกิดขึ้นประเดี๋ยวเดียว แล้วก็จางหายไป",
+    streamUrl: "fivefish.org/T65455",
+    trackDownloadUrl: "fivefish.org/T65455-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65455.zip",
+    programId: "65455",
+  },
+  {
+    id: 27110,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Are You Happy?",
+    title_th: "คุณมีความสุขไหม?",
+    verse_en:
+      "1 Peter 2:11 Dear friends. I urge you as aliens and strangers in the world, to abstain from sinful desires, which war against your soul.",
+    verse_th:
+      "1 เปโตร 2:11 เพื่อนรัก ให้อยู่อย่างคนต่างด้าวและคนแปลกถิ่นในสังคมนี้ ผมขอร้องว่าอย่าไปยอมแพ้กับกิเลสตัณหาของสันดานที่ต่อสู้กับใจของคุณ",
+    streamUrl: "fivefish.org/T27110",
+    trackDownloadUrl: "fivefish.org/T27110-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27110.zip",
+    programId: "27110",
+  },
+  {
+    id: 37696,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Christmas & Easter",
+    title_th: "คริสต์มาสและอีสเตอร์",
+    verse_en:
+      "1 Peter 3:18 For Christ died for our sins once for all, the righteous for the unrighteous, to bring you to God. He was put to death in the body but made alive by the Spirit.",
+    verse_th:
+      "1 ยอห์น 3:18 ลูกเล็กๆที่รัก อย่าให้เรารักกันแค่คำพูดหรือรักแต่ปากเท่านั้น แต่ให้เรารักกันด้วยการกระทำและด้วยความจริงใจ",
+    streamUrl: "fivefish.org/T37696",
+    trackDownloadUrl: "fivefish.org/T37696-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37696.zip",
+    programId: "37696",
+  },
+  {
+    id: 37694,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Follow Up",
+    title_th: "ติดตาม",
+    verse_en:
+      "1 Peter 4:16 However, if you suffer as a Christian, do not be ashamed, but praise God that you bear that name.",
+    verse_th:
+      "1 เปโตร 4:16 แต่ถ้าคุณต้องทนทุกข์เพราะเป็นคริสเตียน ก็อย่าอายเลย แต่ให้สรรเสริญพระเจ้า เพราะคุณได้ชื่อว่าคริสเตียน",
+    streamUrl: "fivefish.org/T37694",
+    trackDownloadUrl: "fivefish.org/T37694-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37694.zip",
+    programId: "37694",
+  },
+  {
+    id: 75099,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Follow Up Messages",
+    title_th: "ติดตามข้อความ",
+    verse_en:
+      "1 Peter 5:10 And the God of all grace, who called you to His eternal glory in Christ, after you have suffered a little while, will Himself restore you and make you strong, firm and steadfast.",
+    verse_th:
+      "1 เปโตร 5:10 พระเจ้าผู้เป็นแหล่งของความเมตตาทุกอย่างได้เรียกคุณผ่านทางพระเยซูคริสต์ ให้คุณเข้ามามีส่วนร่วมในเกียรติของพระองค์ที่ไม่มีวันหมด คุณจะต้องทนทุกข์อยู่ประเดี๋ยวหนึ่ง แล้วหลังจากนั้นพระเจ้าก็จะช่วยให้คุณกลับคืนสู่สภาพสมบูรณ์แบบ จะให้คุณเข้มแข็ง มีกำลังมากขึ้นและมั่นคง",
+    streamUrl: "fivefish.org/T75099",
+    trackDownloadUrl: "fivefish.org/T75099-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/75099.zip",
+    programId: "75099",
+  },
+  {
+    id: 32951,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "1 Peter 5:5-6 Young men, in the same way be submissive to those who are older. All of you, clothe yourselves with humility toward one another, because, God opposes the proud but gives grace to the humble. Humble yourselves, therefore, under God’s mighty hand, that He may lift you up in due time.",
+    verse_th:
+      "1 เปโตร 5:5-6 ในทำนองเดียวกัน คนที่มีอายุน้อยกว่า ก็ให้เชื่อฟังพวกผู้นำอาวุโส แต่ความจริงแล้ว ทุกๆคนควรจะอ่อนน้อมถ่อมตัวรับใช้ซึ่งกันและกันเหมือนกับที่พระคัมภีร์เขียนไว้ว่า พระเจ้าต่อต้านคนที่เย่อหยิ่งจองหอง แต่มีความเมตตากรุณาต่อคนที่อ่อนน้อมถ่อมตน 6ถ้าอย่างนั้น ให้พวกคุณอ่อนน้อมถ่อมตัวลงใต้อำนาจที่ยิ่งใหญ่ของพระเจ้า เพื่อพระเจ้าจะได้ยกคุณขึ้นเมื่อถึงเวลาที่เหมาะสม",
+    streamUrl: "fivefish.org/T32951",
+    trackDownloadUrl: "fivefish.org/T32951-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/32951.zip",
+    programId: "32951",
+  },
+  {
+    id: 37693,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Gospel",
+    title_th: "พระกิตติคุณ",
+    verse_en:
+      "1 Peter 5:7 Cast all your anxiety on Him because He cares for you.",
+    verse_th:
+      "1 เปโตร 5:7 ให้เอาความกังวลทั้งหมดของคุณฝากไว้กับพระเจ้า เพราะพระองค์ห่วงใยคุณ",
+    streamUrl: "fivefish.org/T37693",
+    trackDownloadUrl: "fivefish.org/T37693-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37693.zip",
+    programId: "37693",
+  },
+  {
+    id: 79174,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "1 John 2:15 Do not love the world or anything in the world. If anyone loves the world, the love of the Father is not in him.",
+    verse_th:
+      "1 ยอห์น 2:15 อย่ารักโลกหรือรักสิ่งของในโลกนี้อีกต่อไป ถ้าคนไหนรักโลกนี้ คนนั้นก็ไม่ได้รักพระบิดา",
+    streamUrl: "fivefish.org/T79174",
+    trackDownloadUrl: "fivefish.org/T79174-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/79174.zip",
+    programId: "79174",
+  },
+  {
+    id: 79180,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "1 John 2:16 For everything in the world - the lust of the flesh, the lust of the eyes, and the pride of life - comes not from the Father but from the world.",
+    verse_th:
+      "1 ยอห์น 2:16 เพราะทุกสิ่งทุกอย่างในโลกนี้ คือกิเลสตัณหาของสันดาน กิเลสตัณหาของตา และการโอ้อวดในสิ่งที่ทำหรือมี สิ่งเหล่านี้ไม่ได้มาจากพระบิดา แต่มาจากโลกนี้",
+    streamUrl: "fivefish.org/T79180",
+    trackDownloadUrl: "fivefish.org/T79180-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/79180.zip",
+    programId: "79180",
+  },
+  {
+    id: 31200,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Songs",
+    title_th: "เพลง",
+    verse_en:
+      "1 John 3:18 Dear children, let us not love with words or tongue but with actions and in truth.",
+    verse_th:
+      "1 เปโตร 3:18 พระคริสต์ทนทุกข์เพื่อจัดการกับความบาปครั้งเดียวก็เพียงพอแล้ว พระองค์ทำอย่างนี้เพื่อนำคุณไปหาพระเจ้า พระองค์ถูกฆ่าทางกายแต่มีชีวิตขึ้นมาใหม่โดยทางพระวิญญาณ",
+    streamUrl: "fivefish.org/T31200",
+    trackDownloadUrl: "fivefish.org/T31200-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/31200.zip",
+    programId: "31200",
+  },
+  {
+    id: 37695,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Student",
+    title_th: "นักศึกษา",
+    verse_en:
+      "1 John 5:13 I write these things to you who believe in the name of the Son of God so that you may know that you have eternal life.",
+    verse_th:
+      "1 ยอห์น 5:13 ผมได้เขียนเรื่องนี้ถึงพวกคุณที่ไว้วางใจในพระบุตรของพระเจ้า เพื่อพวกคุณจะได้รู้ว่า คุณยังมีชีวิตตลอดไปกับพระเจ้าอยู่",
+    streamUrl: "fivefish.org/T37695",
+    trackDownloadUrl: "fivefish.org/T37695-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37695.zip",
+    programId: "37695",
+  },
+  {
+    id: 3080,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      'Revelation 1:8 "I am the Alpha and the Omega," says the Lord God, "Who is, and Who was, and Who is to come, the Almighty."',
+    verse_th:
+      "วิวรณ์ 1:8 พระเจ้าองค์เจ้าชีวิตพูดว่า “เราคือจุดเริ่มต้นและจุดจบ พระเจ้าผู้ที่เป็นอยู่ในปัจจุบัน ในอดีต และกำลังจะมาในอนาคต พระเจ้าผู้มีฤทธิ์ทั้งสิ้น”",
+    streamUrl: "fivefish.org/T3080",
+    trackDownloadUrl: "fivefish.org/T3080-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3080.zip",
+    programId: "3080",
+  },
+  {
+    id: 3090,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Revelation 3:20 Here I am! I stand at the door and knock. If anyone hears My voice and opens the door, I will come in and eat with him, and he with Me.",
+    verse_th:
+      "วิวรณ์ 3:20 ฟังไว้ให้ดี เรายืนเคาะประตูอยู่ ถ้าใครได้ยินเสียงของเราแล้วเปิดประตู เราจะเข้าไปข้างใน และกินอาหารร่วมกับคนนั้น",
+    streamUrl: "fivefish.org/T3090",
+    trackDownloadUrl: "fivefish.org/T3090-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3090.zip",
+    programId: "3090",
+  },
+  {
+    id: 20731,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Genesis 1:1 In the beginning God created the heavens and the earth.",
+    verse_th: "ปฐมกาล 1:1 ในปฐมกาลนั้น เมื่อพระเจ้าสร้างแผ่นดินและท้องฟ้า",
+    streamUrl: "fivefish.org/T20731",
+    trackDownloadUrl: "fivefish.org/T20731-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/20731.zip",
+    programId: "20731",
+  },
+  {
+    id: 20700,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Words of Life 3",
+    title_th: "พระคำแห่งชีวิต 3",
+    verse_en:
+      'Exodus 23:25 "Worship the LORD your God, and His blessing will be on your food and water. I will take away sickness from among you."',
+    verse_th:
+      "อพยพ 23:25 ถ้าพวกเจ้ารับใช้พระยาห์เวห์พระเจ้าของเจ้า พระองค์จะอวยพรอาหารและน้ำของเจ้า และเราจะเอาเชื้อโรคออกไปจากเจ้า",
+    streamUrl: "fivefish.org/T20700",
+    trackDownloadUrl: "fivefish.org/T20700-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/20700.zip",
+    programId: "20700",
+  },
+  {
+    id: 20781,
+    langId: "2522",
+    iso3: "NPI",
+    languageEn: "Nepali Kathmandu",
+    langTh: "เนปาล กาฐมาณฑุ",
+    title_en: "Words of Life 4",
+    title_th: "พระคำแห่งชีวิต 4",
+    verse_en:
+      "Leviticus 19:11 Do not steal. Do not lie. Do not deceive on another.",
+    verse_th: "เลวีนิติ 19:11 เจ้าต้องไม่ขโมย ไม่โกงหรือโกหกซึ่งกันและกัน",
+    streamUrl: "fivefish.org/T20781",
+    trackDownloadUrl: "fivefish.org/T20781-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/20781.zip",
+    programId: "20781",
+  },
+  {
+    id: 22510,
+    langId: "4370",
+    iso3: "ACN",
+    languageEn: "Ngochang",
+    langTh: "งอชาง",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Numbers 23:19 God is not a man, that He should lie, nor a son of man, that He should change His mind. Does He speak and then not act? Does He promise and not fulfill?",
+    verse_th:
+      "กันดารวิถี 23:19 พระเจ้าไม่ใช่มนุษย์ที่พูดโกหก และก็ไม่ใช่มนุษย์ที่ชอบเปลี่ยนใจ มีหรือที่พระองค์พูดแล้วไม่ทำ หรือสัญญาแล้วไม่ทำตามสัญญานั้น",
+    streamUrl: "fivefish.org/T22510",
+    trackDownloadUrl: "fivefish.org/T22510-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/22510.zip",
+    programId: "22510",
+  },
+  {
+    id: 22511,
+    langId: "4370",
+    iso3: "ACN",
+    languageEn: "Ngochang",
+    langTh: "งอชาง",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      'Deuteronomy 31:6 Be strong and courageous. Do not be afraid or terrified because of them, for the LORD your God goes with you; He will never leave you nor forsake you."',
+    verse_th:
+      "เฉลยธรรมบัญญัติ 31:6 ให้เข้มแข็งและกล้าหาญไว้ ไม่ต้องกลัวหรือตื่นตกใจเพราะพวกนั้น เพราะพระยาห์เวห์พระเจ้าของท่านคือผู้ที่จะไปกับท่าน พระองค์จะไม่ละท่านไปหรือทอดทิ้งท่านหรอก”",
+    streamUrl: "fivefish.org/T22511",
+    trackDownloadUrl: "fivefish.org/T22511-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/22511.zip",
+    programId: "22511",
+  },
+  {
+    id: 64992,
+    langId: "15143",
+    iso3: "CBN",
+    languageEn: "Nyah Kur",
+    langTh: "ญัฮกุร",
+    title_en: "Creation Songs",
+    title_th: "เพลงการทรงสร้าง",
+    verse_en:
+      "Deuteronomy 6:16 Do not put the LORD your God to the test as you did at Massah.",
+    verse_th:
+      "เฉลยธรรมบัญญัติ 6:16 พวกท่านต้องไม่ลองดีกับพระยาห์เวห์พระเจ้าของท่าน เหมือนกับที่พวกท่านเคยลองดีกับพระองค์มาแล้วที่มัสสาห์",
+    streamUrl: "fivefish.org/T64992",
+    trackDownloadUrl: "fivefish.org/T64992-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64992.zip",
+    programId: "64992",
+  },
+  {
+    id: 64993,
+    langId: "15143",
+    iso3: "CBN",
+    languageEn: "Nyah Kur",
+    langTh: "ญัฮกุร",
+    title_en: "Good News 1",
+    title_th: "ข่าวประเสริฐ 1",
+    verse_en:
+      "Deuteronomy 6:5 Love the LORD your God with all your heart and with all your soul and with all your strength.",
+    verse_th:
+      "เฉลยธรรมบัญญัติ 6:5 ท่านต้องรักพระยาห์เวห์พระเจ้าของท่าน ด้วยการทุ่มสุดใจ สุดชีวิต และสุดตัว ของท่านให้กับพระองค์",
+    streamUrl: "fivefish.org/T64993",
+    trackDownloadUrl: "fivefish.org/T64993-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64993.zip",
+    programId: "64993",
+  },
+  {
+    id: 64994,
+    langId: "15143",
+    iso3: "CBN",
+    languageEn: "Nyah Kur",
+    langTh: "ญัฮกุร",
+    title_en: "Good News 2",
+    title_th: "ข่าวประเสริฐ 2",
+    verse_en:
+      "Deuteronomy 8:3 He humbled you, causing you to hunger and then feeding you with manna, which neither you nor your ancestors had known, to teach you that man does not live on bread alone but on every word that comes from the mouth of the LORD.",
+    verse_th:
+      "เฉลยธรรมบัญญัติ 8:3 พระยาห์เวห์ทำให้ท่านต้องทนทุกข์จากความหิวแล้วพระองค์ก็เลี้ยงพวกท่านด้วยมานา ที่ทั้งท่านและบรรพบุรุษของท่านไม่เคยรู้จักมาก่อน เพื่อที่พระองค์จะได้สอนท่านว่า คนเราไม่ได้มีชีวิตอยู่ด้วยอาหารเพียงอย่างเดียว แต่คนเราจะมีชีวิตอยู่ได้ด้วยทุกๆคำพูดที่ออกมาจากปากของพระยาห์เวห์",
+    streamUrl: "fivefish.org/T64994",
+    trackDownloadUrl: "fivefish.org/T64994-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64994.zip",
+    programId: "64994",
+  },
+  {
+    id: 65333,
+    langId: "15143",
+    iso3: "CBN",
+    languageEn: "Nyah Kur",
+    langTh: "ญัฮกุร",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Joshua 1:8 Do not let this Book of the Law depart from your mouth; meditate on it day and night, so that you may be careful to do everything written in it. Then you will be prosperous and successful.",
+    verse_th:
+      "โยชูวา 1:8 เจ้าต้องไม่หยุดพูดถึงกฎในหนังสือเล่มนี้ และเจ้าต้องไตร่ตรองมันทั้งวันทั้งคืน เพื่อเจ้าจะได้ทำตามสิ่งที่ได้เขียนไว้ในกฎนั้นอย่างเคร่งครัด แล้วเจ้าจะได้เจริญรุ่งเรืองและประสบความสำเร็จ",
+    streamUrl: "fivefish.org/T65333",
+    trackDownloadUrl: "fivefish.org/T65333-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65333.zip",
+    programId: "65333",
+  },
+  {
+    id: 65334,
+    langId: "15143",
+    iso3: "CBN",
+    languageEn: "Nyah Kur",
+    langTh: "ญัฮกุร",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      'Joshua 1:9 Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go."',
+    verse_th:
+      "โยชูวา 1:9 อย่าลืมว่าเราได้สั่งเจ้าให้เข้มแข็งและกล้าหาญไว้ อย่าได้หวาดกลัวหรือท้อถอย เพราะเรา ยาห์เวห์ พระเจ้าของเจ้า จะอยู่กับเจ้าในทุกที่ที่เจ้าไป”",
+    streamUrl: "fivefish.org/T65334",
+    trackDownloadUrl: "fivefish.org/T65334-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65334.zip",
+    programId: "65334",
+  },
+  {
+    id: 65655,
+    langId: "15143",
+    iso3: "CBN",
+    languageEn: "Nyah Kur",
+    langTh: "ญัฮกุร",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "2 Chronicles 7:14 If My people, who are called by My name, will humble themselves and pray and seek My face and turn from their wicked ways, then I will hear from heaven, and I will forgive their sin and will heal their land.",
+    verse_th:
+      "2 พงศาวดาร ถ้าประชาชนของเราผู้ที่เราได้ประทับชื่อเราไว้ ถ่อมตัวลงและอธิษฐาน และเริ่มแสวงหาใบหน้าของเรา และหันเหออกจากวิถีทางชั่วทั้งหลายของพวกเขา เราก็จะรับฟังจากสวรรค์ และจะยกโทษบาปของพวกเขาและจะรักษาแผ่นดินของพวกเขา",
+    streamUrl: "fivefish.org/T65655",
+    trackDownloadUrl: "fivefish.org/T65655-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65655.zip",
+    programId: "65655",
+  },
+  {
+    id: 64995,
+    langId: "15143",
+    iso3: "CBN",
+    languageEn: "Nyah Kur",
+    langTh: "ญัฮกุร",
+    title_en: "Prodigal Son",
+    title_th: "บุตรน้อยหลงหาย",
+    verse_en:
+      "Job 31:1 I made a covenant with my eyes not to look lustfully at a young woman.",
+    verse_th:
+      "โยบ 31:1 ข้าทำข้อตกลงกับดวงตาของข้าว่า ข้าจะไม่มองหญิงสาวด้วยความใคร่",
+    streamUrl: "fivefish.org/T64995",
+    trackDownloadUrl: "fivefish.org/T64995-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64995.zip",
+    programId: "64995",
+  },
+  {
+    id: 65961,
+    langId: "15183",
+    iso3: "NYW",
+    languageEn: "Nyaw",
+    langTh: "ญ้อ",
+    title_en: "Becoming a Friend of God",
+    title_th: "เป็นเพื่อนของพระเจ้า",
+    verse_en:
+      "Psalms 103:1 Praise the LORD, my soul; all my inmost being, praise His holy name.",
+    verse_th:
+      "สดุดี 103:1 จิตใจของข้าพเจ้าเอ๋ย สรรเสริญพระยาห์เวห์เถิด หัวใจทั้งดวงของข้าพเจ้าเอ๋ย สรรเสริญชื่ออันศักดิ์สิทธิ์ของพระองค์เถิด",
+    streamUrl: "fivefish.org/T65961",
+    trackDownloadUrl: "fivefish.org/T65961-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65961.zip",
+    programId: "65961",
+  },
+  {
+    id: 2951,
+    langId: "1944",
+    iso3: "RYN",
+    languageEn: "Okinawan",
+    langTh: "โอกินา",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Psalms 111:10 The fear of the LORD is the beginning of wisdom; all who follow His precepts have good understanding. To Him belongs eternal praise.",
+    verse_th:
+      "สดุดี 111:10 การยำเกรงพระยาห์เวห์คือจุดเริ่มต้นแห่งสติปัญญา ทุกคนที่เชื่อฟังพระองค์ก็จะเป็นคนที่มีสติรอบคอบ พระองค์จะได้รับการสรรเสริญตลอดไป",
+    streamUrl: "fivefish.org/T2951",
+    trackDownloadUrl: "fivefish.org/T2951-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2951.zip",
+    programId: "2951",
+  },
+  {
+    id: 11340,
+    langId: "3118",
+    iso3: "PRT",
+    languageEn: "Phai Central",
+    langTh: "ไปรกลาง",
+    title_en: "Words of Life w/ PHAI: Southern",
+    title_th: "พระคำแห่งชีวิต ไปร: ใต้",
+    verse_en:
+      "Psalms 119: 9,11 How can a young man keep his way pure? By living according to Your Word. I have hidden Your Word in my heart that I might not sin against You.",
+    verse_th:
+      "สดุดี 119:9,11 คนหนุ่มๆจะรักษาชีวิตของตนให้บริสุทธิ์ได้อย่างไร ก็ด้วยการรักษาคำบัญชาของพระอง 11ข้าพเจ้าเก็บรักษาคำสัญญาของพระองค์ไว้ในใจ เพื่อข้าพเจ้าจะได้ไม่ทำบาปต่อพระองค์",
+    streamUrl: "fivefish.org/T11340",
+    trackDownloadUrl: "fivefish.org/T11340-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/11340.zip",
+    programId: "11340",
+  },
+  {
+    id: 11341,
+    langId: "2041",
+    iso3: "MLF",
+    languageEn: "Phai Northern",
+    langTh: "ไปรเหนือ",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Psalms 121:1-2 I lift up my eyes to the mountains— where does my help come from? My help comes from the LORD, the Maker of heaven and earth.",
+    verse_th:
+      "สดุดี 121:1-2 ข้าพเจ้าแหงนหน้ามองขึ้นไปยังภูเขาทั้งหลาย ความช่วยเหลือของข้าพเจ้าจะมาจากที่ไหนกัน ความช่วยเหลือของข้าพเจ้ามาจากพระยาห์เวห์ ผู้สร้างสวรรค์และแผ่นดินโลก",
+    streamUrl: "fivefish.org/T11341",
+    trackDownloadUrl: "fivefish.org/T11341-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/11341.zip",
+    programId: "11341",
+  },
+  {
+    id: 11330,
+    langId: "3119",
+    iso3: "PRT",
+    languageEn: "Phai Southern",
+    langTh: "ไปรใต้",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Psalms 139:13-14 For You created my inmost being; You knit me together in my mother’s womb. I praise You because I am fearfully and wonderfully made; Your works are wonderful, I know that full well.",
+    verse_th:
+      "สดุดี 139:13-14 พระองค์สร้างทั้งจิตและใจของข้าพเจ้า พระองค์ทอข้าพเจ้าเข้าด้วยกันในท้องแม่ ข้าพเจ้าจึงขอบคุณพระองค์เพราะงานของพระองค์นั้นช่างน่าเกรงขามและน่าทึ่ง พระองค์รู้จักข้าพเจ้าอย่างทะลุปรุโปร่ง",
+    streamUrl: "fivefish.org/T11330",
+    trackDownloadUrl: "fivefish.org/T11330-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/11330.zip",
+    programId: "11330",
+  },
+  {
+    id: 18081,
+    langId: "1711",
+    iso3: "PHT",
+    languageEn: "Phu Thai",
+    langTh: "ภูไท",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Psalms 139:8 If I go up to the heavens, You are there; if I make my bed in the depths, You are there.",
+    verse_th:
+      "สดุดี 139:8 ถ้าข้าพเจ้าจะขึ้นไปบนสวรรค์พระองค์ก็อยู่ที่นั่น ถ้าข้าพเจ้านอนลงที่แดนคนตายพระองค์ก็อยู่ที่นั่น",
+    streamUrl: "fivefish.org/T18081",
+    trackDownloadUrl: "fivefish.org/T18081-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/18081.zip",
+    programId: "18081",
+  },
+  {
+    id: 63894,
+    langId: "22139",
+    iso3: "PHT",
+    languageEn: "Phu Thai Na Kae",
+    langTh: "ภูไท นาแก",
+    title_en: "Good News 1-22 and Testimony",
+    title_th: "ข่าวประเสริฐ 1-22 และคำพยาน",
+    verse_en: "Psalms 23:1 The Lord is my Shepherd, I lack nothing.",
+    verse_th:
+      "สดุดี 23:1 พระยาห์เวห์เลี้ยงดูข้าพเจ้าเหมือนเลี้ยงแกะ ดังนั้น ข้าพเจ้าไม่ขาดอะไรเลย",
+    streamUrl: "fivefish.org/T63894",
+    trackDownloadUrl: "fivefish.org/T63894-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63894.zip",
+    programId: "63894",
+  },
+  {
+    id: 63895,
+    langId: "22139",
+    iso3: "PHT",
+    languageEn: "Phu Thai Na Kae",
+    langTh: "ภูไท นาแก",
+    title_en: "Good News 23-40",
+    title_th: "ข่าวประเสริฐ 23-40",
+    verse_en:
+      "Psalms 27:14 Wait for the Lord; be strong and take heart and wait for the Lord.",
+    verse_th:
+      "สดุดี 27:14 ให้ฝากความหวังไว้กับพระยาห์เวห์ ให้เข้มแข็งและกล้าหาญไว้ ให้ฝากความหวังไว้กับพระยาห์เวห์",
+    streamUrl: "fivefish.org/T63895",
+    trackDownloadUrl: "fivefish.org/T63895-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63895.zip",
+    programId: "63895",
+  },
+  {
+    id: 63892,
+    langId: "22140",
+    iso3: "PHT",
+    languageEn: "Phu Thai Renu",
+    langTh: "ภูไท เรณู",
+    title_en: "Good News 1-22 and Testimony",
+    title_th: "ข่าวประเสริฐ 1-22 และคำพยาน",
+    verse_en:
+      "Psalms 30:5 For His anger lasts only a moment, but His favor lasts a lifetime; weeping may stay for the night, but rejoicing comes in the morning.",
+    verse_th:
+      "สดุดี 30:5 ความโกรธเกรี้ยวของพระองค์อยู่เพียงชั่วคราว แต่ความปรานีของพระองค์นำชีวิตมาให้ เราอาจจะร้องไห้ในยามค่ำคืน แต่ในวันรุ่งขึ้น เราจะชื่นบาน",
+    streamUrl: "fivefish.org/T63892",
+    trackDownloadUrl: "fivefish.org/T63892-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63892.zip",
+    programId: "63892",
+  },
+  {
+    id: 63893,
+    langId: "22140",
+    iso3: "PHT",
+    languageEn: "Phu Thai Renu",
+    langTh: "ภูไท เรณู",
+    title_en: "Good News 23-40",
+    title_th: "ข่าวประเสริฐ 23-40",
+    verse_en:
+      'Psalms 32:5 Then I acknowledged my sin to You and did not cover up my iniquity. I said, "I will confess my transgressions to the LORD." And You forgave the guilt of my sin.',
+    verse_th:
+      "สดุดี 32:5 ดังนั้น พระยาห์เวห์ ข้าพเจ้าขอสารภาพความบาปต่อพระองค์ โดยไม่ได้ซ่อนความผิดบาปอะไรไว้เลย ข้าพเจ้าพูดว่า “ข้าพเจ้าจะสารภาพต่อพระยาห์เวห์ถึงการกบฏทั้งหลายที่ทำไป” แล้วพระองค์ก็ได้ยกโทษให้กับความผิดบาปของข้าพเจ้า เซลาห์",
+    streamUrl: "fivefish.org/T63893",
+    trackDownloadUrl: "fivefish.org/T63893-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63893.zip",
+    programId: "63893",
+  },
+  {
+    id: 65751,
+    langId: "22140",
+    iso3: "PHT",
+    languageEn: "Phu Thai Renu",
+    langTh: "ภูไท เรณู",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Psalms 37:4 Take delight in the Lord, and He will give you the desires of your heart.",
+    verse_th:
+      "สดุดี 37:4 ให้มีความสุขกับการรับใช้พระยาห์เวห์ แล้วพระองค์จะให้สิ่งที่ใจเจ้าต้องการ",
+    streamUrl: "fivefish.org/T65751",
+    trackDownloadUrl: "fivefish.org/T65751-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65751.zip",
+    programId: "65751",
+  },
+  {
+    id: 65752,
+    langId: "22140",
+    iso3: "PHT",
+    languageEn: "Phu Thai Renu",
+    langTh: "ภูไท เรณู",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Psalms 4:3 Know that the LORD has set apart His faithful servant for Himself; the LORD hears when I call to Him.",
+    verse_th:
+      "สดุดี 4:3 พวกเจ้าทั้งหลาย ให้รู้ไว้เถอะว่า พระยาห์เวห์เอาใจใส่คนที่สัตย์ซื่อต่อพระองค์เป็นพิเศษ พระองค์จะฟังเสียงของเรา เมื่อเราร้องขอความช่วยเหลือจากพระองค์",
+    streamUrl: "fivefish.org/T65752",
+    trackDownloadUrl: "fivefish.org/T65752-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65752.zip",
+    programId: "65752",
+  },
+  {
+    id: 66545,
+    langId: "22140",
+    iso3: "PHT",
+    languageEn: "Phu Thai Renu",
+    langTh: "ภูไท เรณู",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Psalms 4:8 In peace I will lie down and sleep, for You alone, LORD, make me dwell in safety.",
+    verse_th:
+      "สดุดี 4:8 ดังนั้น ข้าพเจ้านอนลงและหลับไปอย่างสงบสุขยิ่งนัก เพราะ พระยาห์เวห์ พระองค์แต่เพียงผู้เดียวเป็นผู้ที่ทำให้ข้าพเจ้านอนลงอย่างปลอดภัย",
+    streamUrl: "fivefish.org/T66545",
+    trackDownloadUrl: "fivefish.org/T66545-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/66545.zip",
+    programId: "66545",
+  },
+  {
+    id: 32211,
+    langId: "6331",
+    iso3: "CMN",
+    languageEn: "Pinghua Guangxi Nanning",
+    langTh: "จีนกวางสี หนานหนิง",
+    title_en: "Becoming a Friend of God",
+    title_th: "เป็นเพื่อนของพระเจ้า",
+    verse_en:
+      "Psalms 94:11 The LORD knows all human plans; He knows that they are futile.",
+    verse_th:
+      "สดุดี 94:11 พระยาห์เวห์รู้จักความคิดของมนุษย์ และพระองค์รู้ว่ามันไร้สาระ",
+    streamUrl: "fivefish.org/T32211",
+    trackDownloadUrl: "fivefish.org/T32211-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/32211.zip",
+    programId: "32211",
+  },
+  {
+    id: 24620,
+    langId: "3112",
+    iso3: "SKB",
+    languageEn: "Saek",
+    langTh: "แสก",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Proverbs 1:7 The fear of the LORD is the beginning of knowledge, but fools despise wisdom and instruction.",
+    verse_th:
+      "สุภาษิต 1:7 การยำเกรงพระยาห์เวห์คือจุดเริ่มต้นของความรู้ แต่คนโง่เกลียดชังปัญญาและคำสั่งสอน",
+    streamUrl: "fivefish.org/T24620",
+    trackDownloadUrl: "fivefish.org/T24620-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/24620.zip",
+    programId: "24620",
+  },
+  {
+    id: 80859,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Proverbs 1:8 Listen, my son, to your father's instruction and do not forsake your mother's teaching.",
+    verse_th:
+      "สุภาษิต 1:8 ลูกเอ๋ย ให้เชื่อฟังคำสั่งสอนของพ่อเจ้า และอย่าได้ละทิ้งคำสอนของแม่เจ้าด้วย",
+    streamUrl: "fivefish.org/T80859",
+    trackDownloadUrl: "fivefish.org/T80859-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80859.zip",
+    programId: "80859",
+  },
+  {
+    id: 62897,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Proverbs 10:12 Hatred stirs up conflict, but love covers over all wrongs.",
+    verse_th:
+      "สุภาษิต 10:12 ความเกลียดชังย่อมเร่งเร้าให้เกิดการทะเลาะวิวาท แต่ความรักปกปิดความผิดทั้งปวง",
+    streamUrl: "fivefish.org/T62897",
+    trackDownloadUrl: "fivefish.org/T62897-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62897.zip",
+    programId: "62897",
+  },
+  {
+    id: 62898,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Proverbs 10:4 Lazy hands make for poverty, but diligent hands bring wealth.",
+    verse_th:
+      "สุภาษิต 10:4 มือที่เกียจคร้านทำให้ยากจน แต่มือที่ขยันทำให้ร่ำรวย",
+    streamUrl: "fivefish.org/T62898",
+    trackDownloadUrl: "fivefish.org/T62898-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62898.zip",
+    programId: "62898",
+  },
+  {
+    id: 62899,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Proverbs 10:9 Whoever walks in integrity walks securely, but whoever takes crooked paths will be found out.",
+    verse_th:
+      "สุภาษิต 10:9 คนที่ใช้ชีวิตอย่างซื่อสัตย์ไม่ต้องห่วงอะไร แต่คนที่อยู่ในทางไม่ซื่อสัตย์ก็จะถูกจับได้",
+    streamUrl: "fivefish.org/T62899",
+    trackDownloadUrl: "fivefish.org/T62899-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62899.zip",
+    programId: "62899",
+  },
+  {
+    id: 62900,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Proverbs 16:3 Commit to the LORD whatever you do, and He will establish your plans.",
+    verse_th:
+      "สุภาษิต 16:3 ให้มอบการงานของเจ้าให้กับพระยาห์เวห์ แล้วแผนการของเจ้าจะสำเร็จ",
+    streamUrl: "fivefish.org/T62900",
+    trackDownloadUrl: "fivefish.org/T62900-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62900.zip",
+    programId: "62900",
+  },
+  {
+    id: 63416,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Proverbs 16:4 The Lord works out everything to its proper end— even the wicked for a day of disaster.",
+    verse_th:
+      "สุภาษิต 16:4 พระยาห์เวห์สร้างทุกสิ่งขึ้นมาอย่างมีจุดมุ่งหมาย แม้แต่คนชั่ว พระองค์ก็สร้างขึ้นมาเพื่อวันแห่งความพินาศ",
+    streamUrl: "fivefish.org/T63416",
+    trackDownloadUrl: "fivefish.org/T63416-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63416.zip",
+    programId: "63416",
+  },
+  {
+    id: 63417,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Proverbs 17:17 A friend loves at all times, and a brother is born for a time of adversity.",
+    verse_th:
+      "สุภาษิต 17:17 เพื่อนแท้ก็รักกันอยู่เสมอ ส่วนพี่น้องนั้นก็เกิดมาเพื่อช่วยเหลือกันในยามทุกข์ยาก",
+    streamUrl: "fivefish.org/T63417",
+    trackDownloadUrl: "fivefish.org/T63417-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63417.zip",
+    programId: "63417",
+  },
+  {
+    id: 63878,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "Proverbs 17:9 Whoever would foster love covers over an offense, but whoever repeats the matter separates close friends.",
+    verse_th:
+      "สุภาษิต 17:9 คนที่ปกปิดความผิดของคนอื่นไว้รักษามิตรภาพ ส่วนคนที่เล่าความผิดของเพื่อนให้คนอื่นฟังก็ทำลายมิตรภาพ",
+    streamUrl: "fivefish.org/T63878",
+    trackDownloadUrl: "fivefish.org/T63878-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63878.zip",
+    programId: "63878",
+  },
+  {
+    id: 63879,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Proverbs 18:4 The words of the mouth are deep waters, but the fountain of wisdom is a rushing stream.",
+    verse_th:
+      "สุภาษิต 18:4 คำพูดจากปาก เป็นน้ำลึกที่เกินกว่าจะเข้าใจได้ แต่แหล่งน้ำแห่งปัญญาทำให้สดชื่นเสมอ เหมือนกับลำธารที่ไหลเชี่ยว",
+    streamUrl: "fivefish.org/T63879",
+    trackDownloadUrl: "fivefish.org/T63879-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63879.zip",
+    programId: "63879",
+  },
+  {
+    id: 80866,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "The Living Christ - Lessons 1 & 2",
+    title_th: "ชีวิตของพระคริสต์ - บทที่ 1 & 2",
+    verse_en:
+      "Proverbs 21:30 There is no wisdom, no insight, no plan that can succeed against the LORD.",
+    verse_th:
+      "สุภาษิต 21:30 ถึงจะมีสติปัญญา ความเข้าใจ และคำปรึกษาดีแค่ไหนก็ตาม ก็ช่วยไม่ได้หรอก ถ้าพระยาห์เวห์ต่อต้านเจ้า",
+    streamUrl: "fivefish.org/T80866",
+    trackDownloadUrl: "fivefish.org/T80866-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80866.zip",
+    programId: "80866",
+  },
+  {
+    id: 62783,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "The Living Christ - Lessons 3 & 4",
+    title_th: "ชีวิตของพระคริสต์ - บทที่ 3 & 4",
+    verse_en:
+      "Proverbs 25:28 Like a city whose walls are broken through is a person who lacks self-control.",
+    verse_th:
+      "สุภาษิต 25:28 คนที่ควบคุมอารมณ์ตัวเองไม่ได้ ก็เหมือนเมืองที่ไม่มีกำแพงป้องกัน",
+    streamUrl: "fivefish.org/T62783",
+    trackDownloadUrl: "fivefish.org/T62783-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/62783.zip",
+    programId: "62783",
+  },
+  {
+    id: 6821,
+    langId: "83",
+    iso3: "SHN",
+    languageEn: "Shan",
+    langTh: "ไทใหญ่",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Proverbs 27:17 As iron sharpens iron, so one person sharpens another.",
+    verse_th: "สุภาษิต 27:17 เหล็กลับเหล็กให้คมได้ คนก็ลับเพื่อนของเขาได้",
+    streamUrl: "fivefish.org/T6821",
+    trackDownloadUrl: "fivefish.org/T6821-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6821.zip",
+    programId: "6821",
+  },
+  {
+    id: 64970,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Proverbs 3:13-14 Blessed are those who find wisdom, those who gain understanding,for she is more profitable than silver and yields better returns than gold.",
+    verse_th:
+      "สุภาษิต 3:13-14 คนที่ค้นพบสติปัญญา มีเกียรติจริงๆ คนที่มีความเข้าใจก็มีเกียรติจริงๆ 14 กำไรที่เกิดจากสติปัญญานั้น มีค่ายิ่งกว่าเงิน รายได้ที่เกิดจากเธอ มีค่ายิ่งกว่าทองคำ",
+    streamUrl: "fivefish.org/T64970",
+    trackDownloadUrl: "fivefish.org/T64970-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64970.zip",
+    programId: "64970",
+  },
+  {
+    id: 80926,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Proverbs 3:5-6 Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to Him, and He will make your paths straight.",
+    verse_th:
+      "สุภาษิต 3:5-6 ให้ไว้วางใจในพระยาห์เวห์ด้วยสุดใจของเจ้า และอย่าได้พึ่งความเข้าใจของตัวเจ้าเอง 6 ให้เชื่อฟังพระองค์ในทุกหนทางของเจ้า แล้วพระองค์จะทำให้เส้นทางของเจ้าราบรื่น",
+    streamUrl: "fivefish.org/T80926",
+    trackDownloadUrl: "fivefish.org/T80926-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80926.zip",
+    programId: "80926",
+  },
+  {
+    id: 80656,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Proverbs 3:9-10 Honor the Lord with your wealth, with the first fruits of all your crops; then your barns will be filled to overflowing, and your vats will brim over with new wine.",
+    verse_th:
+      "สุภาษิต 3:9-10 ให้ถวายเกียรติกับพระยาห์เวห์ด้วยทรัพย์สมบัติของเจ้า และด้วยผลผลิตแรกจากพืชผลทุกชนิดที่เจ้าปลูกไว้ ให้ถวายเกียรติกับพระยาห์เวห์ด้วยทรัพย์สมบัติของเจ้า และด้วยผลผลิตแรกจากพืชผลทุกชนิดที่เจ้าปลูกไว้แล้วยุ้งฉางของเจ้าจะเต็มเปี่ยมไปด้วยเมล็ดข้าว และถังเหล้าองุ่นของเจ้าก็จะเต็มล้นไปด้วยเหล้าองุ่นใหม่",
+    streamUrl: "fivefish.org/T80656",
+    trackDownloadUrl: "fivefish.org/T80656-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80656.zip",
+    programId: "80656",
+  },
+  {
+    id: 80602,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Proverbs 4:23 The fear of the LORD is the beginning of wisdom; all who follow His precepts have good understanding. To Him belongs eternal praise.",
+    verse_th:
+      "สุภาษิต 4:23 ยิ่งกว่าสิ่งใด ให้เฝ้าระวังใจ เพราะใจเป็นแหล่งชีวิต",
+    streamUrl: "fivefish.org/T80602",
+    trackDownloadUrl: "fivefish.org/T80602-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80602.zip",
+    programId: "80602",
+  },
+  {
+    id: 80603,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Isaiah 26:3 You will keep in perfect peace him whose mind is steadfast, because he trusts in You.",
+    verse_th:
+      "อิสยาห์ 26:3 พระยาห์เวห์เจ้าข้า พระองค์ประทานสันติสุขแท้จริงให้กับใจที่พึ่งพิงในพระองค์นั้น เพราะพวกเขาไว้วางใจในพระองค์",
+    streamUrl: "fivefish.org/T80603",
+    trackDownloadUrl: "fivefish.org/T80603-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80603.zip",
+    programId: "80603",
+  },
+  {
+    id: 80607,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Isaiah 40:31 But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.",
+    verse_th:
+      "อิสยาห์ 40:31 แต่คนเหล่านั้นที่ฝากความหวังไว้กับพระยาห์เวห์จะมีกำลังขึ้นมาใหม่ และจะบินสูงขึ้นไปเหมือนติดปีกนกอินทรี พวกเขาจะวิ่งและจะไม่หมดเรี่ยวแรง พวกเขาจะเดินและจะไม่เหนื่อย",
+    streamUrl: "fivefish.org/T80607",
+    trackDownloadUrl: "fivefish.org/T80607-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80607.zip",
+    programId: "80607",
+  },
+  {
+    id: 80628,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Isaiah 41:10 So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with My righteous hand.",
+    verse_th:
+      "อิสยาห์ 41:10 ไม่ต้องกลัว เพราะเราอยู่กับเจ้า อย่ากลัวเลย เพราะเราเป็นพระเจ้าของเจ้า เราจะทำให้เจ้ามีกำลัง ใช่แล้ว เราจะช่วยเจ้า เราจะพยุงเจ้าด้วยมือขวาแห่งชัยชนะของเรา",
+    streamUrl: "fivefish.org/T80628",
+    trackDownloadUrl: "fivefish.org/T80628-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80628.zip",
+    programId: "80628",
+  },
+  {
+    id: 80633,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Isaiah 53:6 We all, like sheep, have gone astray, each of us has turned to his own way; and the Lord has laid on Him the iniquity of us all.",
+    verse_th:
+      "อิสยาห์ 53:6 พวกเราทุกคนได้หลงหายไปเหมือนแกะ พวกเราแต่ละคนต่างหลงไปคนละทิศละทาง แต่พระยาห์เวห์ปล่อยให้ความผิดของพวกเราทุกคนโจมตีเขา",
+    streamUrl: "fivefish.org/T80633",
+    trackDownloadUrl: "fivefish.org/T80633-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80633.zip",
+    programId: "80633",
+  },
+  {
+    id: 3211,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      'Isaiah 6:8 Then I heard the voice of the Lord saying, "Whom shall I send? And who will go for Us?" And I said, "Here am I. Send me!"',
+    verse_th:
+      "อิสยาห์ 6:8 และผมก็ได้ยินเสียงขององค์เจ้าชีวิตพูดว่า “เราจะส่งใครไปดี ใครจะไปแทนพวกเรา” แล้วผมก็ตอบว่า “ข้าพเจ้าอยู่นี่ครับ ส่งข้าพเจ้าไปเถิด”",
+    streamUrl: "fivefish.org/T3211",
+    trackDownloadUrl: "fivefish.org/T3211-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3211.zip",
+    programId: "3211",
+  },
+  {
+    id: 18931,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Jeremiah 1:9 Then the LORD reached out His hand and touched my mouth and said to me, I have put My words in your mouth.",
+    verse_th:
+      "เยเรมียาห์ 1:9 แล้วพระยาห์เวห์ก็ยื่นมือออกมาแตะปากของผม และพระองค์พูดกับผมว่า “เราได้ใส่คำพูดของเราเข้าไปในปากของเจ้าแล้ว",
+    streamUrl: "fivefish.org/T18931",
+    trackDownloadUrl: "fivefish.org/T18931-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/18931.zip",
+    programId: "18931",
+  },
+  {
+    id: 30361,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "Words of Life 3",
+    title_th: "พระคำแห่งชีวิต 3",
+    verse_en:
+      "Jeremiah 29:13 You will seek Me and find Me when you seek Me with all your heart.",
+    verse_th:
+      "เยเรมีย์ 29:13 เจ้าจะแสวงหาเรา แล้วเจ้าก็จะพบเรา เมื่อเจ้าแสวงหาเราด้วยสิ้นสุดใจของเจ้า",
+    streamUrl: "fivefish.org/T30361",
+    trackDownloadUrl: "fivefish.org/T30361-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30361.zip",
+    programId: "30361",
+  },
+  {
+    id: 30370,
+    langId: "345",
+    iso3: "SIN",
+    languageEn: "Sinhala",
+    langTh: "สิงหล",
+    title_en: "Words of Life 4",
+    title_th: "พระคำแห่งชีวิต 4",
+    verse_en:
+      "Lamentations 3:22-23 Because of the Lord’s great love, we are not consumed, for His compassions never fail. They are new every morning; great is Your faithfulness.",
+    verse_th:
+      "บทเพลงร้องทุกข์ 3:22-23 แน่นอน ความรักของพระยาห์เวห์ไม่มีวันสิ้นสุด แน่นอน ความเมตตาของพระองค์ไม่มีวันหมดสิ้น 23 ความรักและความเมตตาของพระองค์เริ่มต้นใหม่ในทุกๆ เช้า ความซื่อสัตย์ของพระองค์นั้นยิ่งใหญ่",
+    streamUrl: "fivefish.org/T30370",
+    trackDownloadUrl: "fivefish.org/T30370-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30370.zip",
+    programId: "30370",
+  },
+  {
+    id: 65653,
+    langId: "6765",
+    iso3: "THM",
+    languageEn: "So Thavung",
+    langTh: "โซ่ทะวืง",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Micah 6:8 He has shown you, O mortal, what is good. And what does the LORD require of you? To act justly and to love mercy and to walk humbly with your God.",
+    verse_th:
+      "มีคาห์ 6:8 เจ้ามนุษย์ พระยาห์เวห์ บอกเจ้าแล้วถึงสิ่งที่ดี และสิ่งที่พระองค์ต้องการจากเจ้า คือ ให้ทำสิ่งที่ยุติธรรม รักความเมตตา และเดินกับพระเจ้าของเจ้าด้วยความถ่อมใจ",
+    streamUrl: "fivefish.org/T65653",
+    trackDownloadUrl: "fivefish.org/T65653-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65653.zip",
+    programId: "65653",
+  },
+  {
+    id: 19561,
+    langId: "1003",
+    iso3: "KDT",
+    languageEn: "Sui South",
+    langTh: "สุ่ยใต้",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      'Zechariah 7:9-10 “This is what the LORD Almighty said: ‘Administer true justice; show mercy and compassion to one another. Do not oppress the widow or the fatherless, the foreigner or the poor. Do not plot evil against each other.’"',
+    verse_th:
+      "เศคาริยาห์ 7:9-10 “นี่คือสิ่งที่พระยาห์เวห์ผู้มีฤทธิ์ทั้งสิ้นพูด ‘ให้ตัดสินอย่างยุติธรรม ให้มีน้ำใจต่อกันและเห็นอกเห็นใจกัน อย่ากดขี่ข่มเหงแม่หม้าย เด็กกำพร้า คนต่างชาติ หรือคนจน อย่าวางแผนชั่วในใจต่อกัน’",
+    streamUrl: "fivefish.org/T19561",
+    trackDownloadUrl: "fivefish.org/T19561-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/19561.zip",
+    programId: "19561",
+  },
+  {
+    id: 22900,
+    langId: "794",
+    iso3: "BLT",
+    languageEn: "Tai Black",
+    langTh: "ไทดำ",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Matthew 18:20 For where two or three come together in My name, there am I with them.",
+    verse_th:
+      "มัทธิว 18:20 เพราะที่ไหนก็ตาม ที่มีสองหรือสามคนมาอยู่รวมกันเพราะเป็นศิษย์ของเรา เราก็จะอยู่กับพวกเขาที่นั่น",
+    streamUrl: "fivefish.org/T22900",
+    trackDownloadUrl: "fivefish.org/T22900-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/22900.zip",
+    programId: "22900",
+  },
+  {
+    id: 22901,
+    langId: "794",
+    iso3: "BLT",
+    languageEn: "Tai Black",
+    langTh: "ไทดำ",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      'Matthew 19:26 Jesus looked at them and said, "With man this is impossible, but with God all things are possible."',
+    verse_th:
+      "มัทธิว 19:26 พระเยซูมองพวกศิษย์และพูดว่า “สำหรับมนุษย์ เป็นไปไม่ได้อยู่แล้ว แต่สำหรับพระเจ้าทุกสิ่งทุกอย่างเป็นไปได้”",
+    streamUrl: "fivefish.org/T22901",
+    trackDownloadUrl: "fivefish.org/T22901-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/22901.zip",
+    programId: "22901",
+  },
+  {
+    id: 6701,
+    langId: "508",
+    iso3: "TDD",
+    languageEn: "Tai Ya",
+    langTh: "ไทหย่า",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Matthew 28:19-20 Therefore, go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you. And surely, I am with you always, to the very end of the age.",
+    verse_th:
+      "มัทธิว 28:19-20 ดังนั้นให้ออกไปทำให้คนทุกชาติมาเป็นศิษย์ของเรา ให้เขาเข้าพิธีจุ่มน้ำ เพื่อจะได้กลายเป็นของพระบิดา พระบุตร และพระวิญญาณบริสุทธิ์สอนพวกเขาให้เชื่อฟังทุกสิ่งที่เราได้สั่งไว้ จำไว้ว่า เราจะอยู่กับพวกคุณเสมอ จนกว่าจะสิ้นยุค",
+    streamUrl: "fivefish.org/T6701",
+    trackDownloadUrl: "fivefish.org/T6701-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6701.zip",
+    programId: "6701",
+  },
+  {
+    id: 64971,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Matthew 4:19 “Come, follow Me,” Jesus said, “and I will make you fishers of men.”",
+    verse_th:
+      "มัทธิว 4:19 พระองค์พูดกับเขาว่า “ตามเรามาเถอะ เราจะสอนให้จับคนแทนจับปลา”",
+    streamUrl: "fivefish.org/T64971",
+    trackDownloadUrl: "fivefish.org/T64971-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64971.zip",
+    programId: "64971",
+  },
+  {
+    id: 74792,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Matthew 4:4 Jesus answered, \"It is written: 'Man shall not live on bread alone, but on every word that comes from the mouth of God.'\"",
+    verse_th:
+      "มัทธิว 4:4 พระเยซูตอบว่า “พระคัมภีร์ เขียนไว้ว่า ‘ชีวิตที่เที่ยงแท้ไม่ได้ขึ้นอยู่กับขนมปังเพียงอย่างเดียว แต่อยู่ได้ด้วยคำพูดทุกคำที่มาจากพระเจ้า’”",
+    streamUrl: "fivefish.org/T74792",
+    trackDownloadUrl: "fivefish.org/T74792-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74792.zip",
+    programId: "74792",
+  },
+  {
+    id: 80579,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Matthew 5:16 In the same way, let your light shine before men, that they may see your good deeds and praise your Father in heaven.",
+    verse_th:
+      "มัทธิว 5:16 พวกคุณก็เหมือนกัน ให้ส่องสว่างออกไปเพื่อคนจะได้เห็นความดีที่คุณทำ และจะได้สรรเสริญพระบิดาของคุณที่อยู่บนสวรรค์",
+    streamUrl: "fivefish.org/T80579",
+    trackDownloadUrl: "fivefish.org/T80579-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80579.zip",
+    programId: "80579",
+  },
+  {
+    id: 80580,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Matthew 5:9 Blessed are the peacemakers, for they will be called children of God.",
+    verse_th:
+      "มัทธิว 5:9 คนที่สร้างสันติ มีเกียรติจริงๆ เพราะพระเจ้าจะเรียกเขาว่าเป็นลูก",
+    streamUrl: "fivefish.org/T80580",
+    trackDownloadUrl: "fivefish.org/T80580-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80580.zip",
+    programId: "80580",
+  },
+  {
+    id: 80581,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Matthew 6:33 But seek first His kingdom and His righteousness, and all these things will be given to you as well.",
+    verse_th:
+      "มัทธิว 6:33 แต่ให้ดิ้นรนหาอาณาจักรของพระเจ้าและชีวิตที่ทำตามใจพระองค์ก่อน แล้วพระองค์จะให้สิ่งที่จำเป็นทั้งหมดนี้กับพวกคุณเอง",
+    streamUrl: "fivefish.org/T80581",
+    trackDownloadUrl: "fivefish.org/T80581-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80581.zip",
+    programId: "80581",
+  },
+  {
+    id: 80582,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Mark 10:45 For even the Son of Man did not come to be served, but to serve, and to give His life as ransom for many.",
+    verse_th:
+      "มาระโก 10:45 เพราะแม้แต่บุตรมนุษย์ ก็ยังไม่ได้มาเพื่อจะให้คนอื่นรับใช้ แต่มาเพื่อจะรับใช้คนอื่น และยอมสละชีวิตเพื่อปลดปล่อยให้คนมากมายเป็นอิสระ",
+    streamUrl: "fivefish.org/T80582",
+    trackDownloadUrl: "fivefish.org/T80582-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80582.zip",
+    programId: "80582",
+  },
+  {
+    id: 80583,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en: 'Mark 9:29 He replied, "This kind can come out only by prayer."',
+    verse_th:
+      "มาระโก 9:29 พระองค์บอกว่า “มีทางเดียวที่จะไล่ผีชั่วชนิดนี้ออกได้ คือต้องอธิษฐาน”",
+    streamUrl: "fivefish.org/T80583",
+    trackDownloadUrl: "fivefish.org/T80583-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80583.zip",
+    programId: "80583",
+  },
+  {
+    id: 80584,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Luke 12:32 Do not be afraid, little flock, for your Father has been pleased to give you the kingdom.",
+    verse_th:
+      "ลูกา 12:32 “ฝูงแกะเล็กๆเอ๋ย ไม่ต้องกลัวนะ เพราะพระบิดาของคุณยินดีที่จะมอบอาณาจักรให้กับคุณ",
+    streamUrl: "fivefish.org/T80584",
+    trackDownloadUrl: "fivefish.org/T80584-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80584.zip",
+    programId: "80584",
+  },
+  {
+    id: 80585,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en: "Luke 5:16 But Jesus often withdrew to lonely places and prayed.",
+    verse_th: "ลูกา 5:16 แต่บ่อยครั้งที่พระเยซูหลบไปที่สงบเงียบเพื่ออธิษฐาน",
+    streamUrl: "fivefish.org/T80585",
+    trackDownloadUrl: "fivefish.org/T80585-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80585.zip",
+    programId: "80585",
+  },
+  {
+    id: 80586,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Luke 6:42 How can you say to your brother, 'Brother, let me take the speck out of your eye,' when you yourself fail to see the plank in your own eye? You hypocrite, first take the plank out of your eye, and then you will see clearly to remove the speck from your brother's eye.",
+    verse_th:
+      "ลูกา 6:42 แล้วคุณพูดกับพี่น้องออกมาได้ยังไงว่า ‘เดี๋ยวผมจะเขี่ยขี้ผงในตาให้นะ’ ทั้งๆที่ซุงทั้งท่อนในตาตัวเองก็ยังมองไม่เห็น ไอ้หน้าซื่อใจคด เอาท่อนซุงออกจากตาของตัวเองก่อน แล้วจะได้มองเห็นชัดๆตอนเขี่ยขี้ผงออกจากตาของพี่น้อง",
+    streamUrl: "fivefish.org/T80586",
+    trackDownloadUrl: "fivefish.org/T80586-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80586.zip",
+    programId: "80586",
+  },
+  {
+    id: 34070,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "Portrait of Jesus 1",
+    title_th: "ชีวิตของพระเยซู 1",
+    verse_en:
+      "Luke 9:23 Then He said to them all, “If anyone would come after Me, he must deny himself and take up the cross daily and follow Me.”",
+    verse_th:
+      "ลูกา 9:23 แล้วพระองค์ก็พูดกับทุกคนว่า “ถ้าใครอยากจะติดตามเรา ต้องเลิกตามใจตัวเอง แล้วแบกไม้กางเขนของตัวเองตามเราทุกๆวัน”",
+    streamUrl: "fivefish.org/T34070",
+    trackDownloadUrl: "fivefish.org/T34070-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/34070.zip",
+    programId: "34070",
+  },
+  {
+    id: 34071,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "Portrait of Jesus 2",
+    title_th: "ชีวิตของพระเยซู 2",
+    verse_en:
+      "John 1:12 Yet to all who received Him to those who believed in His name, He gave the right to become children of God.",
+    verse_th:
+      "ยอห์น 1:12 แต่ส่วนคนที่ยอมรับและไว้วางใจพระองค์ พระองค์ให้สิทธิ์พวกเขาเป็นลูกของพระเจ้า",
+    streamUrl: "fivefish.org/T34071",
+    trackDownloadUrl: "fivefish.org/T34071-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/34071.zip",
+    programId: "34071",
+  },
+  {
+    id: 2790,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "John 10:14-15 I am the good shepherd; I know My sheep and My sheep know Me—just as the Father knows Me and I know the Father—and I lay down My life for the sheep.",
+    verse_th:
+      "ยอห์น 10:14-15 เราเป็นคนเลี้ยงแกะที่ดี เรารู้จักแกะของเรา และแกะก็รู้จักเราด้วย เหมือนกับที่พระบิดารู้จักเราและเราก็รู้จักพระบิดา เราสละชีวิตของเราเพื่อรักษาแกะของเราให้รอด",
+    streamUrl: "fivefish.org/T2790",
+    trackDownloadUrl: "fivefish.org/T2790-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2790.zip",
+    programId: "2790",
+  },
+  {
+    id: 2791,
+    langId: "174",
+    iso3: "TAM",
+    languageEn: "Tamil",
+    langTh: "ทมิฬ",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "John 10:27 My sheep listen to My voice; I know them, and they follow Me.",
+    verse_th:
+      "ยอห์น 10:27 แกะของเราจะฟังเสียงเรา และเราก็รู้จักแกะของเรา และแกะของเราจะตามเราไป",
+    streamUrl: "fivefish.org/T2791",
+    trackDownloadUrl: "fivefish.org/T2791-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2791.zip",
+    programId: "2791",
+  },
+  {
+    id: 3411,
+    langId: "186",
+    iso3: "NAN",
+    languageEn: "Teochew",
+    langTh: "จีนแต้จิ๋ว",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "John 13:34 A new command I give you: Love one another. As I have loved you, so you must love one another.",
+    verse_th:
+      "ยอห์น 13:34 เราจะให้คำสั่งใหม่กับพวกคุณ คือให้รักซึ่งกันและกัน พวกคุณต้องรักกันเหมือนกับที่เรารักคุณ",
+    streamUrl: "fivefish.org/T3411",
+    trackDownloadUrl: "fivefish.org/T3411-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3411.zip",
+    programId: "3411",
+  },
+  {
+    id: 18871,
+    langId: "186",
+    iso3: "NAN",
+    languageEn: "Teochew",
+    langTh: "จีนแต้จิ๋ว",
+    title_en: "Believe in Jesus",
+    title_th: "เชื่อในพระเยซู",
+    verse_en:
+      "John 13:35 By this everyone will know that you are My disciples, if you love one another.",
+    verse_th: "ยอห์น 13:35 ถ้าพวกคุณรักกัน ทุกคนก็จะรู้ว่าคุณเป็นศิษย์ของเรา",
+    streamUrl: "fivefish.org/T18871",
+    trackDownloadUrl: "fivefish.org/T18871-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/18871.zip",
+    programId: "18871",
+  },
+  {
+    id: 3670,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "Everybody Ought to Know",
+    title_th: "เรื่องที่ทุกคนควรรู้",
+    verse_en:
+      "John 14:21 Whoever has My commands and obeys them, he is the one who loves Me. He who loves Me will be loved by My Father, and I too will love him and show Myself to him.",
+    verse_th:
+      "ยอห์น 14:21 คนที่รู้จักคำสั่งสอนของเราและทำตามก็เป็นคนที่รักเรา พระบิดาจะรักคนที่รักเราด้วย เราก็จะรักพวกเขาและจะปรากฏตัวให้พวกเขาเห็น",
+    streamUrl: "fivefish.org/T3670",
+    trackDownloadUrl: "fivefish.org/T3670-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3670.zip",
+    programId: "3670",
+  },
+  {
+    id: 74673,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "Good News (Short)",
+    title_th: "ข่าวประเสริฐ (Short)",
+    verse_en:
+      "John 14:27 Peace I leave with you; My peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.",
+    verse_th:
+      "ยอห์น 14:27 เราได้ให้สันติสุขไว้กับคุณ สันติสุขที่เราให้นี้ไม่เหมือนกับที่โลกให้ ดังนั้นคุณจึงไม่ต้องทุกข์ใจ หรือหวาดกลัวเลย",
+    streamUrl: "fivefish.org/T74673",
+    trackDownloadUrl: "fivefish.org/T74673-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74673.zip",
+    programId: "74673",
+  },
+  {
+    id: 63629,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "Good News for Children",
+    title_th: "ข่าวประเสริฐ สำหรับเด็ก",
+    verse_en:
+      'John 14:6 Jesus answered, "I am the way and the truth and the life. No one comes to the Father except through Me."',
+    verse_th:
+      'ยอห์น 14:6 พระเยซูบอกว่า "เราเป็นทางนั้น เป็นความจริงและเป็นชีวิต ไม่มีใครไปถึงพระบิดาได้นอกจากมาทางเรา"',
+    streamUrl: "fivefish.org/T63629",
+    trackDownloadUrl: "fivefish.org/T63629-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63629.zip",
+    programId: "63629",
+  },
+  {
+    id: 80501,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "John 15:7 If you remain in Me and My Words remain in you, ask whatever you wish, and it will be given you.",
+    verse_th:
+      "ยอห์น 15:7 ถ้าพวกคุณติดสนิทกับเรา และคำสั่งสอนของเราติดสนิทกับคุณ ไม่ว่าคุณจะขออะไรมันก็จะเป็นอย่างนั้น",
+    streamUrl: "fivefish.org/T80501",
+    trackDownloadUrl: "fivefish.org/T80501-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80501.zip",
+    programId: "80501",
+  },
+  {
+    id: 80502,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "John 5:24 I tell you the truth, whoever hears My Word and believes Him who sent Me has eternal life and will not be condemned; he has crossed over from death to life.",
+    verse_th:
+      "ยอห์น 5:24 เราจะบอกให้รู้ว่า คนที่ฟังคำพูดเราและไว้วางใจพระองค์ผู้ส่งเรามา ก็มีชีวิตกับพระเจ้าตลอดไป และเขาจะไม่ถูกตัดสินลงโทษ เขาได้ผ่านพ้นความตายไปสู่ชีวิตแล้ว",
+    streamUrl: "fivefish.org/T80502",
+    trackDownloadUrl: "fivefish.org/T80502-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80502.zip",
+    programId: "80502",
+  },
+  {
+    id: 80503,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Acts 1:8 But you will receive power when the Holy Spirit comes on you; and you will be My witnesses in Jerusalem, and in all Judea and Samaria, and to the ends of the earth.",
+    verse_th:
+      "กิจการ 1:8 เมื่อพระวิญญาณบริสุทธิ์มาอยู่กับพวกคุณ พวกคุณก็จะได้รับฤทธิ์เดช และจะเป็นพยานเล่าเรื่องของเราให้คนฟัง ทั่วเมืองเยรูซาเล็ม ในแคว้นยูเดีย ในแคว้นสะมาเรีย และทุกหนแห่งในโลกนี้",
+    streamUrl: "fivefish.org/T80503",
+    trackDownloadUrl: "fivefish.org/T80503-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80503.zip",
+    programId: "80503",
+  },
+  {
+    id: 80504,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Acts 24:16 So I strive always to keep my conscience clear before God and man.",
+    verse_th:
+      "กิจการ 24:16 ผมจึงพยายามทำดีที่สุด เพื่อจะได้มีจิตสำนึกที่ถูกต้องต่อหน้าพระเจ้าและมนุษย์ทุกคน",
+    streamUrl: "fivefish.org/T80504",
+    trackDownloadUrl: "fivefish.org/T80504-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80504.zip",
+    programId: "80504",
+  },
+  {
+    id: 80505,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Acts 4:12 Salvation is found in no one else, for there is no other Name under heaven given to mankind by which we must be saved.",
+    verse_th:
+      "กิจการ 4:12 นอกจากพระเยซูแล้ว ไม่มีใครที่จะให้ความรอดกับเราได้ ไม่มีชื่ออื่นภายใต้ฟ้านี้ ที่จะทำให้มนุษย์รอดได้",
+    streamUrl: "fivefish.org/T80505",
+    trackDownloadUrl: "fivefish.org/T80505-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80505.zip",
+    programId: "80505",
+  },
+  {
+    id: 80506,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Acts 4:13 When they saw the courage of Peter and John and realized that they were unschooled, ordinary men, they were astonished and they took note that these men had been with Jesus.",
+    verse_th:
+      "กิจการ 4:13 เมื่อพวกผู้นำชาวยิวเห็นถึงความกล้าหาญของเปโตรกับยอห์น และเห็นว่าทั้งสองเป็นแค่คนธรรมดาๆที่ไม่ได้รับการศึกษาหรือฝึกฝนอะไรมาเป็นพิเศษ พวกเขาก็ยิ่งแปลกใจ พวกเขาต่างก็นึกขึ้นมาได้ว่า เปโตรและยอห์นเคยอยู่กับพระเยซูมาก่อน",
+    streamUrl: "fivefish.org/T80506",
+    trackDownloadUrl: "fivefish.org/T80506-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80506.zip",
+    programId: "80506",
+  },
+  {
+    id: 80507,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "Romans 1:16 I am not ashamed of the Gospel, because it is the power of God for the salvation of everyone who believes: first for the Jew, then for the Gentile.",
+    verse_th:
+      "โรม 1:16 ผมไม่ละอายเกี่ยวกับข่าวดีนี้หรอก เพราะข่าวดีนี้เป็นฤทธิ์เดชของพระเจ้าที่จะช่วยชีวิตทุกคนที่ไว้วางใจให้รอด ช่วยพวกยิวก่อน แล้วต่อมาก็ช่วยคนที่ไม่ใช่ยิวด้วย",
+    streamUrl: "fivefish.org/T80507",
+    trackDownloadUrl: "fivefish.org/T80507-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80507.zip",
+    programId: "80507",
+  },
+  {
+    id: 80508,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Romans 12:1 Therefore, I urge you brothers, in view of God’s mercy, to offer your bodies as living sacrifices, holy and pleasing to God-this is your spiritual act of worship.",
+    verse_th:
+      "โรม 12:1 ดังนั้นพี่น้องครับ พระเจ้าได้เมตตากรุณาต่อเรา ผมก็เลยขอร้องให้คุณมอบร่างกายของคุณเป็นเครื่องบูชาที่มีชีวิตอยู่ เป็นเครื่องบูชาที่บริสุทธิ์ และเป็นที่พอใจของพระเจ้า การ",
+    streamUrl: "fivefish.org/T80508",
+    trackDownloadUrl: "fivefish.org/T80508-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80508.zip",
+    programId: "80508",
+  },
+  {
+    id: 30120,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "Portrait of Jesus 1",
+    title_th: "ชีวิตของพระเยซู 1",
+    verse_en:
+      "Romans 12:2 Do not conform any longer to the pattern of this world but be transformed by the renewing of your mind. Then you will be able to test and approve what God’s will is - His good, pleasing and perfect will.",
+    verse_th:
+      "โรม 12:2 อย่าทำตามอย่างคนในโลกนี้ แต่ขอยอมให้พระเจ้าเปลี่ยนแปลงคุณ คือพระองค์จะให้จิตใจใหม่กับคุณเพื่อจะได้รู้ว่าพระเจ้าต้องการอะไร สิ่งไหนดี สิ่งไหนพระองค์ชอบใจ และสิ่งไหนสมบูรณ์แบบ",
+    streamUrl: "fivefish.org/T30120",
+    trackDownloadUrl: "fivefish.org/T30120-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30120.zip",
+    programId: "30120",
+  },
+  {
+    id: 30121,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "Portrait of Jesus 2",
+    title_th: "ชีวิตของพระเยซู 2",
+    verse_en:
+      "Romans 12:9 Love must be sincere. Hate what is evil; cling to what is good.",
+    verse_th:
+      "โรม 12:9 ให้รักคนอื่นด้วยความจริงใจ เกลียดสิ่งชั่วร้าย ยึดมั่นสิ่งที่ดี",
+    streamUrl: "fivefish.org/T30121",
+    trackDownloadUrl: "fivefish.org/T30121-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30121.zip",
+    programId: "30121",
+  },
+  {
+    id: 32420,
+    langId: "1124",
+    iso3: "THA",
+    languageEn: "Thai Central",
+    langTh: "ไทยกลาง",
+    title_en: "Testimonies & Songs",
+    title_th: "คำพยาน & เพลง",
+    verse_en:
+      "Romans 15:13 May the God of hope fill you with all joy and peace as you trust in Him, so that you may overflow with hope by the power of the Holy Spirit.",
+    verse_th:
+      "โรม 15:13 ขอให้พระเจ้าผู้เป็นแหล่งของความหวัง ช่วยเติมให้คุณเต็มเปี่ยมบริบูรณ์ไปด้วยความชื่นชมยินดีและสันติสุข ตามความไว้วางใจที่คุณมีในพระองค์ เพื่อคุณจะได้มีความหวังอย่างเหลือล้น ด้วยอำนาจของพระวิญญาณบริสุทธิ์",
+    streamUrl: "fivefish.org/T32420",
+    trackDownloadUrl: "fivefish.org/T32420-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/32420.zip",
+    programId: "32420",
+  },
+  {
+    id: 6851,
+    langId: "2286",
+    iso3: "KHB",
+    languageEn: "Thai Lu",
+    langTh: "ไทลื้อ",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Romans 15:13 May the God of hope fill you with all joy and peace as you trust in Him, so that you may overflow with hope by the power of the Holy Spirit.",
+    verse_th:
+      "โรม 15:13 ขอให้พระเจ้าผู้เป็นแหล่งของความหวัง ช่วยเติมให้คุณเต็มเปี่ยมบริบูรณ์ไปด้วยความชื่นชมยินดีและสันติสุข ตามความไว้วางใจที่คุณมีในพระองค์ เพื่อคุณจะได้มีความหวังอย่างเหลือล้น ด้วยอำนาจของพระวิญญาณบริสุทธิ์",
+    streamUrl: "fivefish.org/T6851",
+    trackDownloadUrl: "fivefish.org/T6851-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6851.zip",
+    programId: "6851",
+  },
+  {
+    id: 33831,
+    langId: "311",
+    iso3: "TTS",
+    languageEn: "Thai Northeastern",
+    langTh: "ไทยอีสาน",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Romans 3:23 For all have sinned and fall short of the glory of God.",
+    verse_th:
+      "โรม 3:23 เพราะทุกคนทำบาปเหมือนกันหมด และเสื่อมจากพระบารมีของพระเจ้า",
+    streamUrl: "fivefish.org/T33831",
+    trackDownloadUrl: "fivefish.org/T33831-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/33831.zip",
+    programId: "33831",
+  },
+  {
+    id: 2810,
+    langId: "311",
+    iso3: "TTS",
+    languageEn: "Thai Northeastern",
+    langTh: "ไทยอีสาน",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Romans 4:20-21 Yet he did not waver through unbelief regarding the promise of God, but was strengthened in his faith and gave glory to God, being fully persuaded that God had power to do what He had promised.",
+    verse_th:
+      "โรม 4:20-21 แต่อับราฮัมไม่เคยสงสัยในคำสัญญาของพระเจ้าเลย กลับมีความไว้วางใจมากขึ้น ซึ่งเป็นการให้เกียรติกับพระเจ้า 21 อับราฮัมเชื่ออย่างแน่วแน่ว่า พระเจ้าสามารถทำในสิ่งที่พระองค์ได้สัญญาไว้",
+    streamUrl: "fivefish.org/T2810",
+    trackDownloadUrl: "fivefish.org/T2810-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2810.zip",
+    programId: "2810",
+  },
+  {
+    id: 2811,
+    langId: "311",
+    iso3: "TTS",
+    languageEn: "Thai Northeastern",
+    langTh: "ไทยอีสาน",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Romans 5:5 And hope does not put us to shame, because God’s love has been poured out into our hearts through the Holy Spirit, Who has been given to us.",
+    verse_th:
+      "โรม 5:5 ความหวังนั้นไม่เคยทำให้เราผิดหวังเลย เพราะพระเจ้าได้เทความรักของพระองค์เข้ามาในจิตใจของเรา ผ่านทางพระวิญญาณบริสุทธิ์ที่พระองค์ได้ให้กับเราไว้",
+    streamUrl: "fivefish.org/T2811",
+    trackDownloadUrl: "fivefish.org/T2811-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2811.zip",
+    programId: "2811",
+  },
+  {
+    id: 3031,
+    langId: "101",
+    iso3: "NOD",
+    languageEn: "Thai Northern",
+    langTh: "ไทยเหนือ-กำเมือง",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Romans 5:8 But God demonstrates His own love for us in this: While we were still sinners, Christ died for us.",
+    verse_th:
+      "โรม 5:8 แต่พระเจ้าได้แสดงความรักต่อเรา โดยยอมส่งพระคริสต์มาตายเพื่อเรา ทั้งๆที่เรายังเป็นคนบาปอยู่",
+    streamUrl: "fivefish.org/T3031",
+    trackDownloadUrl: "fivefish.org/T3031-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3031.zip",
+    programId: "3031",
+  },
+  {
+    id: 78070,
+    langId: "1167",
+    iso3: "SOU",
+    languageEn: "Thai Southern",
+    langTh: "ไทยใต้",
+    title_en: "The Book of James; Epistle to Ephesians",
+    title_th: "พระธรรมยากอบ และพระธรรมเอเฟซัส",
+    verse_en:
+      "Romans 6:23 For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord.",
+    verse_th:
+      "โรม 6:23 เพราะค่าจ้างที่ความบาปจ่ายให้กับเราคือความตาย แต่ของขวัญที่พระเจ้าให้กับเรานั้นคือชีวิตที่อยู่กับพระเจ้าตลอดไป ในพระเยซูคริสต์เจ้าของเรา",
+    streamUrl: "fivefish.org/T78070",
+    trackDownloadUrl: "fivefish.org/T78070-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78070.zip",
+    programId: "78070",
+  },
+  {
+    id: 10920,
+    langId: "1167",
+    iso3: "SOU",
+    languageEn: "Thai Southern",
+    langTh: "ไทยใต้",
+    title_en: "Words of Life 1",
+    title_th: "พระคำแห่งชีวิต 1",
+    verse_en:
+      "Romans 8:32 He who did not spare His own Son, but gave Him up for us all-how will He not also, along with Him, graciously give us all things?",
+    verse_th:
+      "โรม 8:32 พระองค์ไม่หวงแม้แต่พระบุตรของพระองค์เอง แต่กลับมอบพระบุตรนั้นให้มาตายเพื่อเราทุกคน ถ้าอย่างนั้นพระองค์จะไม่ยิ่งให้ทุกสิ่งทุกอย่างกับเราพร้อมกับพระบุตรด้วยหรือ",
+    streamUrl: "fivefish.org/T10920",
+    trackDownloadUrl: "fivefish.org/T10920-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/10920.zip",
+    programId: "10920",
+  },
+  {
+    id: 27241,
+    langId: "1167",
+    iso3: "SOU",
+    languageEn: "Thai Southern",
+    langTh: "ไทยใต้",
+    title_en: "Words of Life 2, Believing in God",
+    title_th: "พระคำแห่งชีวิต 2, เชื่อในพระเจ้า",
+    verse_en:
+      "1 Corinthians 14:33 For God is not a God of disorder but of peace - as in all the congregations of the Lord's people.",
+    verse_th:
+      "1 โครินธ์ 14:33 เพราะพระเจ้าไม่ได้เป็นพระเจ้าแห่งความวุ่นวาย แต่เป็นพระเจ้าแห่งสันติสุข เหมือนกับที่พระองค์เป็นในที่ประชุมทุกแห่งของคนของพระเจ้า",
+    streamUrl: "fivefish.org/T27241",
+    trackDownloadUrl: "fivefish.org/T27241-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/27241.zip",
+    programId: "27241",
+  },
+  {
+    id: 25790,
+    langId: "1167",
+    iso3: "SOU",
+    languageEn: "Thai Southern",
+    langTh: "ไทยใต้",
+    title_en: "Words of Life 3, Questions and Answers",
+    title_th: "พระคำแห่งชีวิต 3, คำถามและคำตอบ",
+    verse_en:
+      "1 Corinthians 14:40 But everything should be done in a fitting and orderly way.",
+    verse_th: "1 โครินธ์ 14:40 แต่ให้ทำทุกอย่างนี้ อย่างเหมาะสมและเป็นระเบียบ",
+    streamUrl: "fivefish.org/T25790",
+    trackDownloadUrl: "fivefish.org/T25790-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/25790.zip",
+    programId: "25790",
+  },
+  {
+    id: 25791,
+    langId: "1167",
+    iso3: "SOU",
+    languageEn: "Thai Southern",
+    langTh: "ไทยใต้",
+    title_en: "Words of Life 4, Jesus Died for Us",
+    title_th: "พระคำแห่งชีวิต 4, พระเยซูสิ้นพระชนม์เพื่อเรา",
+    verse_en:
+      "1 Corinthians 15:58 Therefore, my dear brothers, stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord, because you know that your labor in the Lord is not in vain.",
+    verse_th:
+      "1 โครินธ์ 15:58 ดังนั้น พี่น้องที่รัก ให้มั่นคง อย่าหวั่นไหว และให้ทุ่มเทกับงานขององค์เจ้าชีวิตตลอดเวลา เพราะคุณก็รู้ว่าจะได้รับรางวัลสำหรับงานหนักที่คุณทำเพื่อองค์เจ้าชีวิตนั้นแน่",
+    streamUrl: "fivefish.org/T25791",
+    trackDownloadUrl: "fivefish.org/T25791-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/25791.zip",
+    programId: "25791",
+  },
+  {
+    id: 78065,
+    langId: "1167",
+    iso3: "SOU",
+    languageEn: "Thai Southern",
+    langTh: "ไทยใต้",
+    title_en: "Words of Life 5, Creation to Christ",
+    title_th: "พระคำแห่งชีวิต 5, ตั้งแต่การสร้างจนถึงพระคริสต์",
+    verse_en:
+      "1 Corinthians 2:11 For who knows a person's thoughts except their own spirit within them? In the same way no one knows the thoughts of God except the Spirit of God.",
+    verse_th:
+      "1 โครินธ์ 2:11 เพราะไม่มีใครรู้ความคิดของคนอื่นได้นอกจากวิญญาณที่อยู่ในตัวของเขาเอง เช่นเดียวกัน ไม่มีใครรู้ความคิดของพระเจ้าได้นอกจากพระวิญญาณของพระองค์เอง",
+    streamUrl: "fivefish.org/T78065",
+    trackDownloadUrl: "fivefish.org/T78065-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78065.zip",
+    programId: "78065",
+  },
+  {
+    id: 78066,
+    langId: "1167",
+    iso3: "SOU",
+    languageEn: "Thai Southern",
+    langTh: "ไทยใต้",
+    title_en: "Words of Life 6, Why Did Jesus Die?",
+    title_th: "พระคำแห่งชีวิต 6, ทำไมพระเยซูถึงสิ้นพระชนม์",
+    verse_en:
+      "1 Corinthians 2:12 We have not received the spirit of the world but the Spirit who is from God, that we may understand what God has freely given us.",
+    verse_th:
+      "1 โครินธ์ 2:12 เราไม่ได้รับวิญญาณของโลกนี้ แต่รับพระวิญญาณที่มาจากพระเจ้า เพื่อเราจะได้เข้าใจสิ่งต่างๆที่พระเจ้าให้เรา และพระองค์ก็ให้เราอย่างใจกว้างจริงๆ",
+    streamUrl: "fivefish.org/T78066",
+    trackDownloadUrl: "fivefish.org/T78066-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78066.zip",
+    programId: "78066",
+  },
+  {
+    id: 78067,
+    langId: "1167",
+    iso3: "SOU",
+    languageEn: "Thai Southern",
+    langTh: "ไทยใต้",
+    title_en: "Words of Life 7, Fear of Evil Spirits",
+    title_th: "พระคำแห่งชีวิต 7, กลัววิญญาณชั่ว",
+    verse_en:
+      "1 Corinthians 3:16 Don’t you know that you yourselves are God’s temple and that God’s Spirit lives in you?",
+    verse_th:
+      "1 โครินธ์ 3:16 พวกคุณไม่รู้หรือว่าพวกคุณเป็นวิหารของพระเจ้า และพระวิญญาณของพระเจ้าก็อยู่ในหมู่พวกคุณ",
+    streamUrl: "fivefish.org/T78067",
+    trackDownloadUrl: "fivefish.org/T78067-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78067.zip",
+    programId: "78067",
+  },
+  {
+    id: 78068,
+    langId: "1167",
+    iso3: "SOU",
+    languageEn: "Thai Southern",
+    langTh: "ไทยใต้",
+    title_en: "Words of Life 8, Life of Christ 1",
+    title_th: "พระคำแห่งชีวิต 8, ชีวิตของพระคริสต์ 1",
+    verse_en:
+      "2 Corinthians 4:1 Therefore, since through God's mercy we have this ministry, we do not lose heart.",
+    verse_th:
+      "2 โครินธ์ 4:1 เราไม่ย่อท้อง่ายๆเพราะงานนี้พระเจ้าเองเป็นผู้มอบให้เราทำ",
+    streamUrl: "fivefish.org/T78068",
+    trackDownloadUrl: "fivefish.org/T78068-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78068.zip",
+    programId: "78068",
+  },
+  {
+    id: 78069,
+    langId: "1167",
+    iso3: "SOU",
+    languageEn: "Thai Southern",
+    langTh: "ไทยใต้",
+    title_en: "Words of Life 9, Life of Christ 2",
+    title_th: "พระคำแห่งชีวิต 9, ชีวิตของพระคริสต์ 2",
+    verse_en:
+      "2 Corinthians 4:5 For we do not preach ourselves, but Jesus Christ our Lord, and ourselves as your servants for Jesus’ sake.",
+    verse_th:
+      "2 โครินธ์ 4:5 เราไม่ได้ประกาศตัวเราเอง แต่เราประกาศว่าพระเยซูคริสต์เป็นองค์เจ้าชีวิต และตัวเราเองเป็นทาสของพวกคุณ เพราะเห็นแก่พระเยซู",
+    streamUrl: "fivefish.org/T78069",
+    trackDownloadUrl: "fivefish.org/T78069-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/78069.zip",
+    programId: "78069",
+  },
+  {
+    id: 6841,
+    langId: "2289",
+    iso3: "PRT",
+    languageEn: "Tin Eastern",
+    langTh: "ลัวะ ตะวันออก",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "2 Corinthians 5:17 Therefore, if anyone is in Christ, he is a new creation; the old has gone, the new has come!",
+    verse_th:
+      "2 โครินธ์ 5:17 ถ้าใครก็ตามมีส่วนในพระคริสต์ คนนั้นได้เข้าสู่โลกใหม่ที่พระเจ้าได้สร้างขึ้นมาแล้ว สิ่งเก่าๆหายไปหมดแล้ว ดูสิ สิ่งใหม่ๆก็เกิดขึ้น",
+    streamUrl: "fivefish.org/T6841",
+    trackDownloadUrl: "fivefish.org/T6841-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/6841.zip",
+    programId: "6841",
+  },
+  {
+    id: 10841,
+    langId: "2290",
+    iso3: "MLF",
+    languageEn: "Tin Western",
+    langTh: "ลัวะ ตะวันตก",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "2 Corinthians 5:21 God made Him who had no sin to be sin for us, so that in Him we might become the righteousness of God.",
+    verse_th:
+      "2 โครินธ์ 5:21 พระเจ้าทำให้พระคริสต์ผู้ที่ไม่มีบาปกลายเป็นคนบาปเพื่อเรา เพื่อว่าในพระคริสต์นั้น ความซื่อสัตย์ของพระเจ้า จะได้เห็นเด่นชัดในตัวเรา",
+    streamUrl: "fivefish.org/T10841",
+    trackDownloadUrl: "fivefish.org/T10841-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/10841.zip",
+    programId: "10841",
+  },
+  {
+    id: 37634,
+    langId: "1135",
+    iso3: "URK",
+    languageEn: "Urak Lawoi",
+    langTh: "อูรักลาโวจ",
+    title_en: "5 loaves, 2 fishes & good diet",
+    title_th: "ขนมปังห้าก้อน ปลาสองตัวและอาหาร",
+    verse_en:
+      "2 Corinthians 7:1 Therefore, since we have these promises, dear friends, let us purify ourselves from everything that contaminates body and spirit, perfecting holiness out of reverence for God.",
+    verse_th:
+      "2 โครินธ์ 7:1 เพื่อนที่รัก ในเมื่อเรามีคำสัญญาพวกนี้ ก็ขอให้เราชำระตัวเองจากทุกสิ่งทุกอย่างที่ทำให้ร่างกายและจิตใจสกปรก ทำตัวให้บริสุทธิ์ครบถ้วนเพราะยำเกรงพระเจ้า",
+    streamUrl: "fivefish.org/T37634",
+    trackDownloadUrl: "fivefish.org/T37634-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37634.zip",
+    programId: "37634",
+  },
+  {
+    id: 37629,
+    langId: "1135",
+    iso3: "URK",
+    languageEn: "Urak Lawoi",
+    langTh: "อูรักลาโวจ",
+    title_en: "Festivals & Prayer",
+    title_th: "เทศกาลและคำอธิษฐาน",
+    verse_en:
+      "2 Corinthians 9:6-7 Remember this: “Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each man should give what he has decided in his heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.”",
+    verse_th:
+      "2 โครินธ์ 9:6-7 จำเอาไว้ว่า “คนที่หว่านน้อยก็จะเก็บเกี่ยวน้อย และคนที่หว่านมากก็จะเก็บเกี่ยวมากแต่ละคนควรจะให้ตามที่ตั้งใจไว้ ไม่ใช่ให้ด้วยความเสียดายหรือถูกบังคับ เพราะพระเจ้ารักคนที่ให้ด้วยใจที่ชื่นชมยินดี”",
+    streamUrl: "fivefish.org/T37629",
+    trackDownloadUrl: "fivefish.org/T37629-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37629.zip",
+    programId: "37629",
+  },
+  {
+    id: 37626,
+    langId: "1135",
+    iso3: "URK",
+    languageEn: "Urak Lawoi",
+    langTh: "อูรักลาโวจ",
+    title_en: "Freedom from Fear",
+    title_th: "อิสรภาพจากความกลัว",
+    verse_en:
+      "Galatians 2:20 I have been crucified with Christ and I no longer live, but Christ lives in me. The life I live in the body, I live by faith in the Son of God, who loved me and gave Himself for me.",
+    verse_th:
+      "กาลาเทีย 2:20 ผมได้ถูกตรึงบนไม้กางเขนจนตายไปพร้อมกับพระคริสต์ คนที่มีชีวิตอยู่ตอนนี้ไม่ใช่ตัวผมแล้วแต่เป็นพระคริสต์ต่างหากที่อยู่ในตัวผม ชีวิตที่มีอยู่เดี๋ยวนี้ก็เป็นชีวิตที่ไว้วางใจในพระบุตรของพระเจ้า ผู้ที่รักผมและเสียสละชีวิตให้ผม",
+    streamUrl: "fivefish.org/T37626",
+    trackDownloadUrl: "fivefish.org/T37626-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37626.zip",
+    programId: "37626",
+  },
+  {
+    id: 37635,
+    langId: "1135",
+    iso3: "URK",
+    languageEn: "Urak Lawoi",
+    langTh: "อูรักลาโวจ",
+    title_en: "Good Neighbour & Forgiveness",
+    title_th: "เพื่อนบ้านที่ดีและการให้อภัย",
+    verse_en:
+      "Galatians 4:4-5 But when the set time had fully come, God sent His Son, born of a woman, born under the law, to redeem those under the law, that we might receive adoption to sonship.",
+    verse_th:
+      "กาลาเทีย 4:4-5 แต่เมื่อถึงเวลาที่เหมาะสม พระเจ้าก็ได้ส่งพระบุตรของพระองค์โดยคลอดออกมาจากผู้หญิง และมีชีวิตอยู่ภายใต้กฎ เพื่อมาปลดปล่อยคนที่อยู่ภายใต้กฎให้เป็นอิสระ และเพื่อเราทุกคนจะได้เป็นลูกของพระเจ้า",
+    streamUrl: "fivefish.org/T37635",
+    trackDownloadUrl: "fivefish.org/T37635-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37635.zip",
+    programId: "37635",
+  },
+  {
+    id: 35660,
+    langId: "1135",
+    iso3: "URK",
+    languageEn: "Urak Lawoi",
+    langTh: "อูรักลาโวจ",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Galatians 5:1 It is for freedom that Christ has set us free. Stand firm, then, and do not let yourselves be burdened again by a yoke of slavery.",
+    verse_th:
+      "กาลาเทีย 5:1 เมื่อพระคริสต์ได้ปลดปล่อยให้เราเป็นอิสระแล้ว ก็ให้อยู่อย่างคนอิสระเถิด รักษามันไว้ให้ดี อย่ากลับไปเป็นทาสของกฎอีก",
+    streamUrl: "fivefish.org/T35660",
+    trackDownloadUrl: "fivefish.org/T35660-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/35660.zip",
+    programId: "35660",
+  },
+  {
+    id: 37628,
+    langId: "1135",
+    iso3: "URK",
+    languageEn: "Urak Lawoi",
+    langTh: "อูรักลาโวจ",
+    title_en: "Sea people & Value of Women",
+    title_th: "ชาวทะเลและคุณค่าของผู้หญิง",
+    verse_en:
+      "Galatians 6:10 Therefore, as we have opportunity, let us do good to all people, especially to those who belong to the family of believers.",
+    verse_th:
+      "กาลาเทีย 6:10 ดังนั้น เมื่อมีโอกาสก็ให้ทำดีกับทุกคน โดยเฉพาะอย่างยิ่งกับครอบครัวที่ไว้วางใจในพระเจ้า",
+    streamUrl: "fivefish.org/T37628",
+    trackDownloadUrl: "fivefish.org/T37628-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37628.zip",
+    programId: "37628",
+  },
+  {
+    id: 37636,
+    langId: "1135",
+    iso3: "URK",
+    languageEn: "Urak Lawoi",
+    langTh: "อูรักลาโวจ",
+    title_en: "Songs",
+    title_th: "เพลง",
+    verse_en:
+      "Galatians 6:9 Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.",
+    verse_th:
+      "กาลาเทีย 6:9 อย่าเพิ่งท้อแท้ในการทำดี เพราะเมื่อถึงเวลาที่เหมาะ คุณก็จะได้เก็บเกี่ยวผลจากการทำดีนั้น ถ้าไม่เลิกไปซะก่อนนะ",
+    streamUrl: "fivefish.org/T37636",
+    trackDownloadUrl: "fivefish.org/T37636-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37636.zip",
+    programId: "37636",
+  },
+  {
+    id: 34990,
+    langId: "1135",
+    iso3: "URK",
+    languageEn: "Urak Lawoi",
+    langTh: "อูรักลาโวจ",
+    title_en: "Testimonies & Songs",
+    title_th: "คำพยาน & เพลง",
+    verse_en:
+      "Ephesians 2:8-9 For it is by grace that you have been saved, through faith-and this not from yourselves, it is the gift of God-not by works, so that no one can boast.",
+    verse_th:
+      "เอเฟซัส 2:8-9 ที่พวกคุณรอดนั้นเป็นเพราะความเมตตากรุณาของพระเจ้า ผ่านมาทางความเชื่อของคุณ ไม่ได้มาจากตัวของคุณเอง แต่เป็นของขวัญที่มาจากพระเจ้ามันไม่ได้เป็นผลมาจากการกระทำของใคร เพื่อจะได้ไม่มีใครโอ้อวดได้",
+    streamUrl: "fivefish.org/T34990",
+    trackDownloadUrl: "fivefish.org/T34990-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/34990.zip",
+    programId: "34990",
+  },
+  {
+    id: 37627,
+    langId: "1135",
+    iso3: "URK",
+    languageEn: "Urak Lawoi",
+    langTh: "อูรักลาโวจ",
+    title_en: "Victory over sin & Power of Unity",
+    title_th: "ชัยชนะเหนือบาปและพลังแห่งความสามัคคี",
+    verse_en:
+      "Ephesians 3:16-17 I pray that out of His glorious riches He may strengthen you with power through His Spirit in your inner being, so that Christ may dwell in your hearts through faith. And I pray that you, being rooted and established in love.",
+    verse_th:
+      "เอเฟซัส 3:16-17 ขอให้พระเจ้าที่มั่งคั่งมหาศาล ช่วยให้พวกคุณมีพลังใจที่เข้มแข็งผ่านทางพระวิญญาณของพระองค์ 17 ขอให้พระคริสต์ตั้งมั่นคงอยู่ในใจของคุณเพราะคุณไว้วางใจในพระองค์ ขอให้ลงรากลึกมั่นคงในความรัก",
+    streamUrl: "fivefish.org/T37627",
+    trackDownloadUrl: "fivefish.org/T37627-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37627.zip",
+    programId: "37627",
+  },
+  {
+    id: 9410,
+    langId: "1135",
+    iso3: "URK",
+    languageEn: "Urak Lawoi",
+    langTh: "อูรักลาโวจ",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Ephesians 3:20-21 Now to Him who is able to do immeasurably more than all we ask or imagine, according to His power that is at work within us, to Him be glory in the church and in Christ Jesus throughout all generations, for ever and ever!",
+    verse_th:
+      "เอเฟซัส 3:20-21 พระเจ้าสามารถทำได้ทุกสิ่งมากยิ่งกว่าที่เราจะขอหรือคิดได้ ด้วยฤทธิ์อำนาจของพระองค์ที่กำลังทำงานอยู่ในตัวเรา ขอให้พระเจ้าได้รับเกียรติทั้งจากหมู่ประชุมของพระองค์ และจากพระเยซูคริสต์ทุกยุคทุกสมัยตลอดไป อาเมน",
+    streamUrl: "fivefish.org/T9410",
+    trackDownloadUrl: "fivefish.org/T9410-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/9410.zip",
+    programId: "9410",
+  },
+  {
+    id: 64433,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Ephesians 5:3 But among you there must not be even a hint of sexual immorality, or of any kind of impurity, or of greed, because these are improper for God’s holy people.",
+    verse_th:
+      "เอเฟซัส 5:3 เรื่องความผิดบาปทางเพศ เรื่องลามกทุกอย่าง หรือความมักมากในกาม แม้แต่จะพูดถึงก็อย่าเลย เพราะมันไม่เหมาะกับคนที่เป็นของพระเจ้า",
+    streamUrl: "fivefish.org/T64433",
+    trackDownloadUrl: "fivefish.org/T64433-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64433.zip",
+    programId: "64433",
+  },
+  {
+    id: 74723,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Philippians 2:3-4 Do nothing out of selfish ambition or vein conceit, but in humility consider others better than yourselves. Each of you should look not only to your own interests, but also the interests of others.",
+    verse_th:
+      "ฟีลิปปี 2:3-4 อย่าทำอะไรที่ชิงดีชิงเด่นกัน หรือเพราะหลงคิดว่าตัวเองเก่ง แต่ให้ถ่อมตัวลง และมองคนอื่นว่าสำคัญกว่าตัวเอง 4 อย่าให้ใครคิดเห็นแต่ประโยชน์ส่วนตัว แต่ให้คิดถึงประโยชน์ของคนอื่นด้วย",
+    streamUrl: "fivefish.org/T74723",
+    trackDownloadUrl: "fivefish.org/T74723-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74723.zip",
+    programId: "74723",
+  },
+  {
+    id: 74724,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Philippians 4:12 I know what it is to be in need, and I know what it is to have plenty. I have learned the secret of being content in any and every situation, whether well fed or hungry, whether living in plenty or in want.",
+    verse_th:
+      "ฟีลิปปี 4:12 ผมรู้ว่าจะพอใจได้อย่างไรทั้งตอนที่ขัดสน และตอนที่มีอย่างเหลือเฟือ ไม่ว่าจะอยู่ในสภาพไหนก็ตาม ผมได้เรียนรู้เคล็ดลับว่าจะอยู่อย่างไร ในเวลาที่อิ่มท้องหรือหิวโหย ในเวลาที่มีเหลือเฟือหรือขาดแคลน",
+    streamUrl: "fivefish.org/T74724",
+    trackDownloadUrl: "fivefish.org/T74724-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74724.zip",
+    programId: "74724",
+  },
+  {
+    id: 74725,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "Philippians 4:13 I can do everything through Him who gives me strength.",
+    verse_th: "ฟีลิปปี 4:13 พระคริสต์ให้ผมมีกำลังที่จะทนได้กับทุกสิ่ง",
+    streamUrl: "fivefish.org/T74725",
+    trackDownloadUrl: "fivefish.org/T74725-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74725.zip",
+    programId: "74725",
+  },
+  {
+    id: 74726,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "Philippians 4:19 And my God will meet all your needs according to His glorious riches in Jesus Christ.",
+    verse_th:
+      "ฟีลิปปี 4:19 พระเจ้าของผมจะให้ทุกสิ่งที่จำเป็นสำหรับคุณ จากความมั่งคั่งอันมหาศาลของพระองค์ที่อยู่ในพระเยซูคริสต์",
+    streamUrl: "fivefish.org/T74726",
+    trackDownloadUrl: "fivefish.org/T74726-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74726.zip",
+    programId: "74726",
+  },
+  {
+    id: 74727,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "Philippians 4:6 Do not be anxious about anything, but in everything, by prayer and petition, with thanksgiving, present your requests to God.",
+    verse_th:
+      "ฟีลิปปี 4:6 เลิกกังวลได้แล้ว แต่ให้อธิษฐานในทุกๆ สถานการณ์ และขอในสิ่งที่คุณต้องการจากพระเจ้า และเมื่ออธิษฐานก็ให้ขอบคุณพระเจ้าด้วย",
+    streamUrl: "fivefish.org/T74727",
+    trackDownloadUrl: "fivefish.org/T74727-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74727.zip",
+    programId: "74727",
+  },
+  {
+    id: 77480,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Philippians 4:7 And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
+    verse_th:
+      "ฟีลิปปี 4:7 แล้วสันติสุขที่มาจากพระเจ้า ซึ่งดีกว่าสันติสุขที่มาจากแผนงานต่างๆของมนุษย์ จะปกป้องรักษาจิตใจ และความคิดของคุณไว้ในพระเยซูคริสต์",
+    streamUrl: "fivefish.org/T77480",
+    trackDownloadUrl: "fivefish.org/T77480-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/77480.zip",
+    programId: "77480",
+  },
+  {
+    id: 77490,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "Philippians 4:8 Finally, brothers and sisters, whatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely, whatever is admirable—if anything is excellent or praiseworthy—think about such things.",
+    verse_th:
+      "ฟีลิปปี 4:8 สุดท้ายนี้ พี่น้องครับ อะไรก็ตามที่จริง ที่น่านับถือ ที่ถูกต้อง ที่บริสุทธิ์ ที่น่ารัก ที่น่ายกย่อง นั่นคืออะไรก็ตามที่ยอดเยี่ยมและน่าสรรเสริญ ให้เอาใจใส่ในเรื่องเหล่านั้น",
+    streamUrl: "fivefish.org/T77490",
+    trackDownloadUrl: "fivefish.org/T77490-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/77490.zip",
+    programId: "77490",
+  },
+  {
+    id: 77500,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "Colossians 3:1-2 Since, then, you have been raised with Christ, set your hearts on things above, where Christ is, seated at the right hand of God. Set your minds on things above, not on earthly things.",
+    verse_th:
+      "โคโลสี 3:1-2 พระเจ้าได้ทำให้คุณฟื้นขึ้นจากความตายกับพระคริสต์แล้ว อย่างนั้นให้แสวงหาสิ่งต่างๆที่อยู่เบื้องบน ซึ่งเป็นที่ที่พระคริสต์นั่งอยู่ทางขวามือของพระเจ้า 2ให้ใจของคุณจดจ่ออยู่กับสิ่งที่อยู่เบื้องบน ไม่ใช่สิ่งที่อยู่ในโลก",
+    streamUrl: "fivefish.org/T77500",
+    trackDownloadUrl: "fivefish.org/T77500-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/77500.zip",
+    programId: "77500",
+  },
+  {
+    id: 64434,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "Lord Your Name Be Lifted High",
+    title_th: "ยกพระนามของพระเจ้าสูงสุด",
+    verse_en:
+      "Colossians 3:12 Therefore, as God's chosen people, holy and dearly loved, clothe yourselves with compassion, kindness, humility, gentleness and patience.",
+    verse_th:
+      "โคโลสี 3:12 ดังนั้นในฐานะที่เราเป็นคนที่พระเจ้าได้เลือก เป็นคนของพระเจ้า และเป็นคนที่พระองค์รัก ก็ให้สวมใส่ความเห็นอกเห็นใจ ความมีน้ำใจ ความถ่อมตน ความสุภาพอ่อนโยน และความอดทน",
+    streamUrl: "fivefish.org/T64434",
+    trackDownloadUrl: "fivefish.org/T64434-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64434.zip",
+    programId: "64434",
+  },
+  {
+    id: 31590,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "Portrait of Jesus",
+    title_th: "ชีวิตของพระเยซู",
+    verse_en:
+      "Colossians 3:15 Let the peace of Christ rule in your hearts, since as members of one body you were called to peace. And be thankful.",
+    verse_th:
+      "โคโลสี 3:15 ขอให้สันติสุขจากพระคริสต์มาครอบครองจิตใจของคุณ เพราะพระเจ้าได้เรียกคุณให้อยู่กันอย่างสันติในร่างกายเดียวกัน และขอให้เป็นคนที่รู้จักขอบคุณพระเจ้าอยู่เสมอ",
+    streamUrl: "fivefish.org/T31590",
+    trackDownloadUrl: "fivefish.org/T31590-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/31590.zip",
+    programId: "31590",
+  },
+  {
+    id: 2781,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "Words of Life (H)",
+    title_th: "พระคำแห่งชีวิต (H)",
+    verse_en:
+      "1 Timothy 1:17 Now to the King eternal, immortal, invisible, the only God, be honor and glory for ever and ever. Amen.",
+    verse_th:
+      "1 ทิโมธี 1:17 ขอให้พระองค์ผู้เป็นกษัตริย์ของคนทุกยุคทุกสมัย ผู้ไม่มีวันตาย ผู้ไม่มีใครมองเห็นได้ และผู้เป็นพระเจ้าแต่เพียงองค์เดียว ได้รับเกียรติและสง่าราศี อยู่เสมอและตลอดไป อาเมน",
+    streamUrl: "fivefish.org/T2781",
+    trackDownloadUrl: "fivefish.org/T2781-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2781.zip",
+    programId: "2781",
+  },
+  {
+    id: 2740,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "Words of Life (M) 1",
+    title_th: "พระคำแห่งชีวิต (M) 1",
+    verse_en:
+      "2 Timothy 2:22 Flee the evil desires of youth and pursue righteousness, faith, love and peace, along with those who call on the Lord out of a pure heart.",
+    verse_th:
+      "2 ทิโมธี 2:22 ให้วิ่งหนีจากราคะตัณหาของคนหนุ่มสาว แต่ไล่ตามสิ่งที่ถูกต้อง เช่นความเชื่อ ความรัก และสันติสุข ร่วมกับคนเหล่านั้นที่ร้องเรียกองค์เจ้าชีวิตด้วยใจที่สะอาดบริสุทธิ์",
+    streamUrl: "fivefish.org/T2740",
+    trackDownloadUrl: "fivefish.org/T2740-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2740.zip",
+    programId: "2740",
+  },
+  {
+    id: 2741,
+    langId: "61",
+    iso3: "URD",
+    languageEn: "Urdu",
+    langTh: "อูรดู",
+    title_en: "Words of Life (M) 2",
+    title_th: "พระคำแห่งชีวิต (M) 2",
+    verse_en:
+      "2 Timothy 3:16 All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness.",
+    verse_th:
+      "2 ทิโมธี 3:16 ทุกๆข้อในพระคัมภีร์ พระเจ้าเป็นผู้ดลใจให้เขียนขึ้นมา เพื่อเป็นประโยชน์ในการสั่งสอนความจริง ชี้ให้คนเห็นถึงความบาปในชีวิต ช่วยปรับปรุงแก้ไขให้คนดีขึ้น และฝึกคนให้ทำตามใจพระเจ้า",
+    streamUrl: "fivefish.org/T2741",
+    trackDownloadUrl: "fivefish.org/T2741-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/2741.zip",
+    programId: "2741",
+  },
+  {
+    id: 12741,
+    langId: "4568",
+    iso3: "VIE",
+    languageEn: "Vietnamese",
+    langTh: "เวียดนาม",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "Titus 3:5 He saved us, not because of righteous things we had done, but because of His mercy. He saved us through the washing of rebirth and renewal by the Holy Spirit.",
+    verse_th:
+      "ทิตัส 3:5 พระองค์ได้ช่วยให้เรารอด ไม่ใช่เพราะเราทำดี แต่เป็นเพราะความเมตตากรุณาของพระองค์ต่างหาก พระองค์ได้ชำระล้างเรา ซึ่งทำให้เราเกิดใหม่ และถูกสร้างขึ้นมาใหม่ด้วยฤทธิ์เดชของพระวิญญาณบริสุทธิ์",
+    streamUrl: "fivefish.org/T12741",
+    trackDownloadUrl: "fivefish.org/T12741-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/12741.zip",
+    programId: "12741",
+  },
+  {
+    id: 37560,
+    langId: "4568",
+    iso3: "VIE",
+    languageEn: "Vietnamese",
+    langTh: "เวียดนาม",
+    title_en: "Jesus Story 1 of 2",
+    title_th: "เรื่องราวของพระเยซู 1 of 2",
+    verse_en:
+      "Hebrews 10:24-25 And let us consider how we may spur one another on toward love and good deeds. Let us not give up meeting together as some are in the habit of doing, but let us encourage one another - and all the more as you see the Day approaching.",
+    verse_th:
+      "ฮีบรู 10:24-25 ขอให้เราทุกคนพิจารณากันและกัน เพื่อจะได้กระตุ้นกันให้มีความรักและทำแต่ความดีขออย่าให้เราทิ้งการประชุมไปเหมือนกับที่บางคนทำอยู่ แต่ให้กำลังใจกันและกันมากยิ่งขึ้น ยิ่งพวกคุณรู้อยู่แล้วว่าวันนั้นกำลังใกล้มาถึงแล้ว ก็ยิ่งน่าจะทำอย่างนี้",
+    streamUrl: "fivefish.org/T37560",
+    trackDownloadUrl: "fivefish.org/T37560-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37560.zip",
+    programId: "37560",
+  },
+  {
+    id: 37561,
+    langId: "4568",
+    iso3: "VIE",
+    languageEn: "Vietnamese",
+    langTh: "เวียดนาม",
+    title_en: "Jesus Story 2 of 2",
+    title_th: "เรื่องราวของพระเยซู 2 of 2",
+    verse_en:
+      "Hebrews 11:6 And without faith it is impossible to please God, because anyone who comes to Him must believe that He exists and that He rewards those who earnestly seek Him.",
+    verse_th:
+      "ฮีบรู 11:6 เขาได้รับการยกย่องว่าเป็นคนหนึ่งที่พระเจ้าพอใจ แต่ถ้าไม่มีความไว้วางใจแล้ว ก็เป็นไปไม่ได้ที่จะทำให้พระเจ้าพอใจ เพราะคนที่มาเข้าเฝ้าพระเจ้าจะต้องเชื่อว่าพระองค์มีจริง และต้องเชื่อว่าพระองค์จะให้รางวัลกับทุกคนที่แสวงหาพระองค์",
+    streamUrl: "fivefish.org/T37561",
+    trackDownloadUrl: "fivefish.org/T37561-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/37561.zip",
+    programId: "37561",
+  },
+  {
+    id: 30131,
+    langId: "4568",
+    iso3: "VIE",
+    languageEn: "Vietnamese",
+    langTh: "เวียดนาม",
+    title_en: "Portrait of Jesus",
+    title_th: "ชีวิตของพระเยซู",
+    verse_en:
+      "Hebrews 12:3 Consider Him who endured such opposition from sinful men, so that you will not grow weary and lose heart.",
+    verse_th:
+      "ฮีบรู 12:3 ขอให้ใคร่ครวญถึงพระองค์ผู้ที่ต้องทนทุกข์ทรมานอย่างแสนสาหัสจากคนบาปที่ต่อต้านพระองค์ เพื่อพวกคุณจะได้ไม่ท้อใจหรือยอมแพ้",
+    streamUrl: "fivefish.org/T30131",
+    trackDownloadUrl: "fivefish.org/T30131-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/30131.zip",
+    programId: "30131",
+  },
+  {
+    id: 74687,
+    langId: "4568",
+    iso3: "VIE",
+    languageEn: "Vietnamese",
+    langTh: "เวียดนาม",
+    title_en: "Words of Life 2",
+    title_th: "พระคำแห่งชีวิต 2",
+    verse_en:
+      "Hebrews 2:18 Because He Himself suffered when He was tempted, He is able to help those who are being tempted.",
+    verse_th:
+      "ฮีบรู 2:18 เดี๋ยวนี้ พระองค์สามารถช่วยคนที่ถูกทดลองได้แล้ว เพราะพระองค์เองได้รับความทรมานและถูกทดลองมาก่อน",
+    streamUrl: "fivefish.org/T74687",
+    trackDownloadUrl: "fivefish.org/T74687-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/74687.zip",
+    programId: "74687",
+  },
+  {
+    id: 80424,
+    langId: "2",
+    iso3: "VIE",
+    languageEn: "Vietnamese South",
+    langTh: "เวียดนามใต้",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "Hebrews 4:15-16 For we do not have a high priest who is unable to empathize with our weaknesses, but we have One who has been tempted in every way, just as we are - yet He did not sin. Let us then approach God's throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.",
+    verse_th:
+      "ฮีบรู 4:15-16 เพราะหัวหน้านักบวชสูงสุดของเราคนนี้เข้าใจและเห็นใจในจุดอ่อนทั้งหลายของเรา เพราะพระองค์ก็เคยถูกทดลองเหมือนกับเราทุกอย่าง แต่ไม่ได้ทำบาปเลย 16 ดังนั้นขอให้เราทุกคนเข้ามายืนด้วยความมั่นใจต่อหน้าบัลลังก์ของพระเจ้าผู้มีความเมตตากรุณา เพื่อเราจะได้รับความปรานี และพบกับความเมตตากรุณาที่พระเจ้าจะช่วยเราในเวลาที่เราต้องการความช่วยเหลือ",
+    streamUrl: "fivefish.org/T80424",
+    trackDownloadUrl: "fivefish.org/T80424-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80424.zip",
+    programId: "80424",
+  },
+  {
+    id: 80417,
+    langId: "2",
+    iso3: "VIE",
+    languageEn: "Vietnamese South",
+    langTh: "เวียดนามใต้",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "Hebrews 9:27 Just as man is destined to die once, and after that to face judgment.",
+    verse_th: "ฮีบรู 9:27 มนุษย์ตายแค่ครั้งเดียวแล้วเจอกับการพิพากษา",
+    streamUrl: "fivefish.org/T80417",
+    trackDownloadUrl: "fivefish.org/T80417-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80417.zip",
+    programId: "80417",
+  },
+  {
+    id: 80423,
+    langId: "2",
+    iso3: "VIE",
+    languageEn: "Vietnamese South",
+    langTh: "เวียดนามใต้",
+    title_en: "LLL 3 Victory through GOD",
+    title_th: "LLL 3 ชัยชนะโดยพระเจ้า",
+    verse_en:
+      "James 4:14 Why, you do not even know what will happen tomorrow. What is your life? You are a mist that appears for a little while and then vanishes.",
+    verse_th:
+      "ยากอบ 4:14 ตัวคุณเองก็ยังไม่รู้เลยว่า พรุ่งนี้ชีวิตของคุณจะเป็นอย่างไรบ้าง เพราะคุณเป็นเพียงแค่หมอก ที่เกิดขึ้นประเดี๋ยวเดียว แล้วก็จางหายไป",
+    streamUrl: "fivefish.org/T80423",
+    trackDownloadUrl: "fivefish.org/T80423-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80423.zip",
+    programId: "80423",
+  },
+  {
+    id: 80418,
+    langId: "2",
+    iso3: "VIE",
+    languageEn: "Vietnamese South",
+    langTh: "เวียดนามใต้",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      "1 Peter 2:11 Dear friends. I urge you as aliens and strangers in the world, to abstain from sinful desires, which war against your soul.",
+    verse_th:
+      "1 เปโตร 2:11 เพื่อนรัก ให้อยู่อย่างคนต่างด้าวและคนแปลกถิ่นในสังคมนี้ ผมขอร้องว่าอย่าไปยอมแพ้กับกิเลสตัณหาของสันดานที่ต่อสู้กับใจของคุณ",
+    streamUrl: "fivefish.org/T80418",
+    trackDownloadUrl: "fivefish.org/T80418-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80418.zip",
+    programId: "80418",
+  },
+  {
+    id: 80419,
+    langId: "2",
+    iso3: "VIE",
+    languageEn: "Vietnamese South",
+    langTh: "เวียดนามใต้",
+    title_en: "LLL 5 On Trial for GOD",
+    title_th: "LLL 5 การทดสอบเพื่อพระเจ้า",
+    verse_en:
+      "1 Peter 3:18 For Christ died for our sins once for all, the righteous for the unrighteous, to bring you to God. He was put to death in the body but made alive by the Spirit.",
+    verse_th:
+      "1 ยอห์น 3:18 ลูกเล็กๆที่รัก อย่าให้เรารักกันแค่คำพูดหรือรักแต่ปากเท่านั้น แต่ให้เรารักกันด้วยการกระทำและด้วยความจริงใจ",
+    streamUrl: "fivefish.org/T80419",
+    trackDownloadUrl: "fivefish.org/T80419-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80419.zip",
+    programId: "80419",
+  },
+  {
+    id: 80420,
+    langId: "2",
+    iso3: "VIE",
+    languageEn: "Vietnamese South",
+    langTh: "เวียดนามใต้",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "1 Peter 4:16 However, if you suffer as a Christian, do not be ashamed, but praise God that you bear that name.",
+    verse_th:
+      "1 เปโตร 4:16 แต่ถ้าคุณต้องทนทุกข์เพราะเป็นคริสเตียน ก็อย่าอายเลย แต่ให้สรรเสริญพระเจ้า เพราะคุณได้ชื่อว่าคริสเตียน",
+    streamUrl: "fivefish.org/T80420",
+    trackDownloadUrl: "fivefish.org/T80420-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80420.zip",
+    programId: "80420",
+  },
+  {
+    id: 80421,
+    langId: "2",
+    iso3: "VIE",
+    languageEn: "Vietnamese South",
+    langTh: "เวียดนามใต้",
+    title_en: "LLL 7 JESUS - Lord & Saviour",
+    title_th: "LLL 7 พระเยซูเป็นพระเจ้าและพระผู้ช่วยให้รอด",
+    verse_en:
+      "1 Peter 5:10 And the God of all grace, who called you to His eternal glory in Christ, after you have suffered a little while, will Himself restore you and make you strong, firm and steadfast.",
+    verse_th:
+      "1 เปโตร 5:10 พระเจ้าผู้เป็นแหล่งของความเมตตาทุกอย่างได้เรียกคุณผ่านทางพระเยซูคริสต์ ให้คุณเข้ามามีส่วนร่วมในเกียรติของพระองค์ที่ไม่มีวันหมด คุณจะต้องทนทุกข์อยู่ประเดี๋ยวหนึ่ง แล้วหลังจากนั้นพระเจ้าก็จะช่วยให้คุณกลับคืนสู่สภาพสมบูรณ์แบบ จะให้คุณเข้มแข็ง มีกำลังมากขึ้นและมั่นคง",
+    streamUrl: "fivefish.org/T80421",
+    trackDownloadUrl: "fivefish.org/T80421-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80421.zip",
+    programId: "80421",
+  },
+  {
+    id: 80422,
+    langId: "2",
+    iso3: "VIE",
+    languageEn: "Vietnamese South",
+    langTh: "เวียดนามใต้",
+    title_en: "LLL 8 Acts of the HOLY SPIRIT",
+    title_th: "LLL 8 การงานของพระวิญญาณบริสุทธิ์",
+    verse_en:
+      "1 Peter 5:5-6 Young men, in the same way be submissive to those who are older. All of you, clothe yourselves with humility toward one another, because, God opposes the proud but gives grace to the humble. Humble yourselves, therefore, under God’s mighty hand, that He may lift you up in due time.",
+    verse_th:
+      "1 เปโตร 5:5-6 ในทำนองเดียวกัน คนที่มีอายุน้อยกว่า ก็ให้เชื่อฟังพวกผู้นำอาวุโส แต่ความจริงแล้ว ทุกๆคนควรจะอ่อนน้อมถ่อมตัวรับใช้ซึ่งกันและกันเหมือนกับที่พระคัมภีร์เขียนไว้ว่า พระเจ้าต่อต้านคนที่เย่อหยิ่งจองหอง แต่มีความเมตตากรุณาต่อคนที่อ่อนน้อมถ่อมตน 6ถ้าอย่างนั้น ให้พวกคุณอ่อนน้อมถ่อมตัวลงใต้อำนาจที่ยิ่งใหญ่ของพระเจ้า เพื่อพระเจ้าจะได้ยกคุณขึ้นเมื่อถึงเวลาที่เหมาะสม",
+    streamUrl: "fivefish.org/T80422",
+    trackDownloadUrl: "fivefish.org/T80422-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/80422.zip",
+    programId: "80422",
+  },
+  {
+    id: 28831,
+    langId: "6074",
+    iso3: "BLR",
+    languageEn: "Yi Pula in Mengzi",
+    langTh: "ยี ปูลา เม่งจื๊อ",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "1 Peter 5:7 Cast all your anxiety on Him because He cares for you.",
+    verse_th:
+      "1 เปโตร 5:7 ให้เอาความกังวลทั้งหมดของคุณฝากไว้กับพระเจ้า เพราะพระองค์ห่วงใยคุณ",
+    streamUrl: "fivefish.org/T28831",
+    trackDownloadUrl: "fivefish.org/T28831-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/28831.zip",
+    programId: "28831",
+  },
+  {
+    id: 28840,
+    langId: "6084",
+    iso3: "BLR",
+    languageEn: "Yi Pula in Yuanyang",
+    langTh: "ยี ปูลา หยวนหยาง",
+    title_en: "Words of Life (Eval)",
+    title_th: "พระคำแห่งชีวิต (Eval)",
+    verse_en:
+      "1 John 2:15 Do not love the world or anything in the world. If anyone loves the world, the love of the Father is not in him.",
+    verse_th:
+      "1 ยอห์น 2:15 อย่ารักโลกหรือรักสิ่งของในโลกนี้อีกต่อไป ถ้าคนไหนรักโลกนี้ คนนั้นก็ไม่ได้รักพระบิดา",
+    streamUrl: "fivefish.org/T28840",
+    trackDownloadUrl: "fivefish.org/T28840-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/28840.zip",
+    programId: "28840",
+  },
+  {
+    id: 65100,
+    langId: "18600",
+    iso3: "YNO",
+    languageEn: "Yong",
+    langTh: "ยอง",
+    title_en: "Good News",
+    title_th: "ข่าวประเสริฐ",
+    verse_en:
+      "1 John 2:16 For everything in the world - the lust of the flesh, the lust of the eyes, and the pride of life - comes not from the Father but from the world.",
+    verse_th:
+      "1 ยอห์น 2:16 เพราะทุกสิ่งทุกอย่างในโลกนี้ คือกิเลสตัณหาของสันดาน กิเลสตัณหาของตา และการโอ้อวดในสิ่งที่ทำหรือมี สิ่งเหล่านี้ไม่ได้มาจากพระบิดา แต่มาจากโลกนี้",
+    streamUrl: "fivefish.org/T65100",
+    trackDownloadUrl: "fivefish.org/T65100-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/65100.zip",
+    programId: "65100",
+  },
+  {
+    id: 63896,
+    langId: "18626",
+    iso3: "YOY",
+    languageEn: "Yoy",
+    langTh: "โย้ย",
+    title_en: "LLL 1 Beginning with GOD",
+    title_th: "LLL 1 เริ่มต้นกับพระเจ้า",
+    verse_en:
+      "1 John 3:18 Dear children, let us not love with words or tongue but with actions and in truth.",
+    verse_th:
+      "1 เปโตร 3:18 พระคริสต์ทนทุกข์เพื่อจัดการกับความบาปครั้งเดียวก็เพียงพอแล้ว พระองค์ทำอย่างนี้เพื่อนำคุณไปหาพระเจ้า พระองค์ถูกฆ่าทางกายแต่มีชีวิตขึ้นมาใหม่โดยทางพระวิญญาณ",
+    streamUrl: "fivefish.org/T63896",
+    trackDownloadUrl: "fivefish.org/T63896-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63896.zip",
+    programId: "63896",
+  },
+  {
+    id: 64996,
+    langId: "18626",
+    iso3: "YOY",
+    languageEn: "Yoy",
+    langTh: "โย้ย",
+    title_en: "LLL 2 Mighty Men of GOD",
+    title_th: "LLL 2 ผู้ได้รับอำนาจจากพระเจ้า",
+    verse_en:
+      "1 John 5:13 I write these things to you who believe in the name of the Son of God so that you may know that you have eternal life.",
+    verse_th:
+      "1 ยอห์น 5:13 ผมได้เขียนเรื่องนี้ถึงพวกคุณที่ไว้วางใจในพระบุตรของพระเจ้า เพื่อพวกคุณจะได้รู้ว่า คุณยังมีชีวิตตลอดไปกับพระเจ้าอยู่",
+    streamUrl: "fivefish.org/T64996",
+    trackDownloadUrl: "fivefish.org/T64996-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/64996.zip",
+    programId: "64996",
+  },
+  {
+    id: 63897,
+    langId: "18626",
+    iso3: "YOY",
+    languageEn: "Yoy",
+    langTh: "โย้ย",
+    title_en: "LLL 4 Servants of GOD",
+    title_th: "LLL 4 ผู้รับใช้ของพระเจ้า",
+    verse_en:
+      'Revelation 1:8 "I am the Alpha and the Omega," says the Lord God, "Who is, and Who was, and Who is to come, the Almighty."',
+    verse_th:
+      "วิวรณ์ 1:8 พระเจ้าองค์เจ้าชีวิตพูดว่า “เราคือจุดเริ่มต้นและจุดจบ พระเจ้าผู้ที่เป็นอยู่ในปัจจุบัน ในอดีต และกำลังจะมาในอนาคต พระเจ้าผู้มีฤทธิ์ทั้งสิ้น”",
+    streamUrl: "fivefish.org/T63897",
+    trackDownloadUrl: "fivefish.org/T63897-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63897.zip",
+    programId: "63897",
+  },
+  {
+    id: 63898,
+    langId: "18626",
+    iso3: "YOY",
+    languageEn: "Yoy",
+    langTh: "โย้ย",
+    title_en: "LLL 6 JESUS - Teacher & Healer",
+    title_th: "LLL 6 พระเยซูเป็นผู้สอนและผู้รักษา",
+    verse_en:
+      "Revelation 3:20 Here I am! I stand at the door and knock. If anyone hears My voice and opens the door, I will come in and eat with him, and he with Me.",
+    verse_th:
+      "วิวรณ์ 3:20 ฟังไว้ให้ดี เรายืนเคาะประตูอยู่ ถ้าใครได้ยินเสียงของเราแล้วเปิดประตู เราจะเข้าไปข้างใน และกินอาหารร่วมกับคนนั้น",
+    streamUrl: "fivefish.org/T63898",
+    trackDownloadUrl: "fivefish.org/T63898-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/63898.zip",
+    programId: "63898",
+  },
+  {
+    id: 3241,
+    langId: "241",
+    iso3: "CMN",
+    languageEn: "Yunnanese",
+    langTh: "จีนยูนนาน",
+    title_en: "Words of Life",
+    title_th: "พระคำแห่งชีวิต",
+    verse_en:
+      "Genesis 1:1 In the beginning God created the heavens and the earth.",
+    verse_th: "ปฐมกาล 1:1 ในปฐมกาลนั้น เมื่อพระเจ้าสร้างแผ่นดินและท้องฟ้า",
+    streamUrl: "fivefish.org/T3241",
+    trackDownloadUrl: "fivefish.org/T3241-001.mp3",
+    zipDownloadUrl:
+      "https://files.globalrecordings.net/files/set/mp3-low/3241.zip",
+    programId: "3241",
+  },
 ];

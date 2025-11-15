@@ -231,6 +231,24 @@ export const Qrcode = (props) => (
     <rect x="13" y="13" width="3" height="3" />
   </svg>
 );
+// --- ADD THIS ICON ---
+export const PlayCircle = (props) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <polygon points="10 8 16 12 10 16 10 8" />
+  </svg>
+);
 export const Volume2 = (props) => (
   <svg
     {...props}

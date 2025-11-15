@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-// Import the components we need to ensure the initialization runs
-import { app, auth, db } from "./firebaseConfig";
+// Import the new service worker registration file
+import { register } from "./serviceWorkerRegistration";
 
-// We don't need to call initializeAppIfNeeded here anymore because
-// the import above already triggers the initialization and exports.
+// We don't need these here anymore, App.jsx handles its own imports
+// import { app, auth, db } from './firebaseConfig';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,3 +14,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// Call the registration function
+register();
