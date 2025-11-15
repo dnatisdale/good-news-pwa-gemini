@@ -45,9 +45,9 @@ const copyLink = (text, callback) => {
 };
 
 // --- Reusable Components ---
-
 // Audio Player Component
 const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
+  // Check if a track is available
   if (!track || !track.trackDownloadUrl) {
     return (
       <div className="sticky bottom-0 w-full p-3 bg-gray-200 text-center text-sm text-gray-600 z-20">
@@ -55,6 +55,15 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
       </div>
     );
   }
+
+  // Determine the current language from the translation object
+  const currentLang = t.lang || "en";
+
+  // Determine the correctly translated message title
+  const displayTitle =
+    currentLang === "en"
+      ? track.title_en ?? "Unknown Title"
+      : track.title_th ?? "ข้อความไม่ทราบชื่อ";
 
   return (
     <div
@@ -69,10 +78,9 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
       >
         <PlayCircle className="w-5 h-5 text-white mr-2 flex-shrink-0" />
         <p className="text-sm font-bold text-white truncate">
+          {/* 🚨 FIX: Removed all stray comments from the rendered output 🚨 */}
           {isMinimized
-            ? (t.playing || "Playing") +
-              ": " +
-              (track.title_en ?? "Unknown Title")
+            ? (t.playing || "Playing") + ": " + displayTitle
             : t.controls || "Controls"}
         </p>
         <ChevronLeft
@@ -91,7 +99,8 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
           src={track.trackDownloadUrl}
           className="w-full"
         >
-          Your browser does not support the audio element.
+          {t.audio_not_supported ||
+            "Your browser does not support the audio element."}
         </audio>
       </div>
     </div>
@@ -1328,25 +1337,26 @@ export default function App() {
       <header
         className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
       >
-        {/* 1. Navigation Button (Left) */}
-        <button
-          onClick={() => setIsDrawerOpen(true)}
-          className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors flex-shrink-0"
-        >
-          <Menu className="w-7 h-7" />
-        </button>
+        {/* LEFT SECTION: Hamburger Menu and Logo (Now grouped) */}
+        <div className="flex items-center flex-shrink-0">
+          {/* 1. Navigation Button (Left) */}
+          <button
+            onClick={() => setIsDrawerOpen(true)}
+            className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
+          >
+            <Menu className="w-7 h-7" />
+          </button>
 
-        {/* 2. Logo and Search Bar (Center) */}
-        <div className="flex items-center w-full max-w-lg mx-3 md:mx-6">
-          {/* Logo Image (White background, Responsive, Rounded) */}
+          {/* 2. Logo Image (Now immediately after the hamburger) */}
           <img
             src={AppLogo}
             alt={t.app_name}
-            // Added bg-white, p-1, and rounded-md for the desired style
-            className="h-8 md:h-10 w-auto rounded-md shadow-sm mr-4 bg-white p-1 flex-shrink-0"
+            className="h-8 md:h-10 w-auto rounded-md shadow-sm mr-4 ml-3 bg-white p-1"
           />
+        </div>
 
-          {/* Search Input (Takes up most of the space) */}
+        {/* CENTER SECTION: Search Bar (Wider max-width for centering effect) */}
+        <div className="flex items-center w-full max-w-lg mx-3 md:mx-6">
           <div className="relative w-full">
             {/* Search Input Field */}
             <input
@@ -1358,16 +1368,15 @@ export default function App() {
               onChange={(e) => {
                 setSearchTerm(e.target.value);
                 if (currentPage.name !== "Search" && e.target.value) {
-                  navigateTo("Search"); // Auto-navigate to Search page if typing starts
-                } else if (isSearchPage && !e.target.value) {
-                  // Optionally navigate back to home if search is cleared on the search page
-                  // navigateTo('Home');
+                  navigateTo("Search");
                 }
               }}
               className="w-full p-2 pl-10 text-gray-800 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-red-300 transition duration-150"
             />
-            {/* Search Icon inside the input field */}
-            <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            {/* 🚨 FIX: Search Icon color changed to Thai Red 🚨 */}
+            <Search
+              className={`absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5 ${ACCENT_COLOR_CLASS}`}
+            />
 
             {/* Clear Button */}
             {searchTerm && (
@@ -1381,7 +1390,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* 3. Controls (Right) */}
+        {/* RIGHT SECTION: Controls */}
         <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
           <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
           <LanguageToggle lang={lang} setLang={setLang} t={t} />

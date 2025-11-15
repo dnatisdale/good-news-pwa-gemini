@@ -6,6 +6,7 @@ export const i18n = {
     menu: "Menu",
     qr_code: "QR Code",
     back: "Back",
+    forward: "Forward",
     share_app: "Share App",
 
     // Navigation
@@ -84,7 +85,10 @@ export const i18n = {
     menu: "เมนู",
     qr_code: "คิวอาร์โค้ด",
     back: "ย้อนกลับ",
+    forward: "ถัดไป",
     share_app: "แชร์แอป",
+    controls: "ควบคุม",
+    playing: "กำลังเล่น",
 
     // Navigation
     contents: "เนื้อหา",
