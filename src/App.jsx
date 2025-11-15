@@ -99,7 +99,7 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
 const LanguageCard = ({ languageName, lang, onSelect, messageCount }) => {
   return (
     <div
-      className={`bg-white p-4 mb-4 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer transition-transform hover:shadow-lg hover:scale-[1.01]`}
+      className={`bg-white p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer transition-transform hover:shadow-lg hover:scale-[1.01]`}
       onClick={() => onSelect(languageName)}
     >
       <h3 className={`text-2xl font-bold ${ACCENT_COLOR_CLASS}`}>
@@ -125,7 +125,7 @@ const ContentCard = ({ item, lang, onSelect, showLanguageName = true }) => {
 
   return (
     <div
-      className={`bg-white p-4 mb-4 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer transition-transform hover:shadow-lg hover:border-brand-red`}
+      className={`bg-white p-4 mb-3 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer transition-transform hover:shadow-lg hover:border-brand-red`}
       onClick={() => onSelect(item)}
     >
       {/* Language Name (Only shown if required, e.g., on Search/Bookmarks) */}
@@ -143,7 +143,11 @@ const ContentCard = ({ item, lang, onSelect, showLanguageName = true }) => {
         {messageTitle}
       </h3>
       {/* Program Number */}
-      <p className="text-sm text-gray-500 mt-1">Program No. {item.id}</p>
+      <p className="text-sm text-gray-500 mt-0.5">
+        {" "}
+        {/* Reduced top margin */}
+        Program No. {item.id}
+      </p>
     </div>
   );
 };
@@ -232,15 +236,22 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
       <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">
         {t.app_name}
       </h2>
-      <h3 className="text-xl font-bold text-brand-red mb-4 text-center">
+      <h3 className="text-xl font-bold text-brand-red mb-2 text-center">
+        {" "}
+        {/* Reduced mb */}
         {title} (Program {item.id})
       </h3>
 
-      <p className="text-base text-gray-700 mb-6 whitespace-pre-line text-center">
+      {/* BIBLE VERSE ADDED TO QR CARD */}
+      <p className="text-sm text-gray-700 mb-4 whitespace-pre-line text-center">
+        {" "}
+        {/* Reduced mb */}
         {verse}
       </p>
 
-      <div className="flex justify-center mb-6 p-4 bg-gray-50 rounded-lg">
+      <div className="flex justify-center mb-4 p-4 bg-gray-50 rounded-lg">
+        {" "}
+        {/* Reduced mb */}
         <QRCodeDisplay
           url={cardUrl}
           size={200}
@@ -308,10 +319,11 @@ const ContentView = ({
   const generateShareText = () => {
     return `
 ${t.app_name} - ${titleDisplay}
-${verseDisplay}
+${verseDisplay} 
 ${t.language_label || "Language"}: ${languageDisplay}
 ${t.program_number || "Program Number"}: ${item.id}
 ${t.read_more_at || "Read more"}: ${cardUrl}
+${t.download_qr_card_tip || "Download QR card for easy sharing!"}
         `.trim();
   };
 
@@ -407,10 +419,11 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
         {languageDisplay}
       </h1>
 
-      <div className="flex justify-between items-center mb-6 border-b pb-4">
+      <div className="flex justify-between items-center mb-4 border-b pb-3">
+        {" "}
+        {/* Reduced mb and pb */}
         {/* Message Title (Secondary) */}
         <p className="text-xl font-semibold text-gray-700">{titleDisplay}</p>
-
         <button
           onClick={toggleBookmark}
           className={`p-2 rounded-full transition-colors ${
@@ -486,16 +499,20 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
         <div className="md:order-2">
           {/* BIBLE VERSE */}
           <div className="bg-gray-50 p-6 rounded-xl shadow-inner mb-6">
-            <p className="text-xl leading-normal text-gray-700 whitespace-pre-line">
+            {/* FONT SIZE REDUCED to text-base */}
+            <p className="text-base leading-normal text-gray-700 whitespace-pre-line">
               {verseDisplay}
             </p>
           </div>
 
           {/* NOTES SECTION */}
-          <div className="p-4 bg-red-50 border-l-4 border-brand-red rounded-lg mt-6">
-            <h2 className="text-lg font-semibold text-gray-700">
+          <div className="p-4 bg-red-50 border-l-4 border-brand-red rounded-lg mt-4">
+            {" "}
+            {/* Reduced mt to mt-4 */}
+            <h2 className="text-lg font-semibold text-gray-700 mb-1">
               {t.my_notes || "My Notes"}
-            </h2>
+            </h2>{" "}
+            {/* Reduced mb */}
             <p className="text-sm text-gray-500">
               {t.notes_feature_tip ||
                 "Notes feature coming soon! You can view all saved notes on the Notes page."}
@@ -509,84 +526,58 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
 };
 
 // New Page: Language List Page
-const LanguageListPage = ({ lang, t, onSelectLanguage }) => {
+const LanguageListPage = ({ lang, t, onSelectLanguage, languageGroups }) => {
+  // Now receives languageGroups as prop
   const [searchTerm, setSearchTerm] = useState("");
 
-  // 1. Group content by language name (FIXED LOGIC FOR ROBUST LANGUAGE IDENTIFICATION)
-  const languageGroups = useMemo(() => {
-    const groups = new Map();
-    staticContent.forEach((item) => {
-      // CRITICAL FIX: Use item.languageEn as the stable key for grouping
-      const stableKey = item.languageEn ?? "Unknown Language";
-
-      if (!groups.has(stableKey)) {
-        // Store the first item as a representative to get langTh
-        groups.set(stableKey, {
-          repItem: item, // Store a representative item
-          messages: [],
-        });
-      }
-      groups.get(stableKey).messages.push(item);
-    });
-
-    // Convert map to array of objects for easier sorting/mapping
-    let sortedGroups = Array.from(groups.values())
-      .map((group) => {
-        // Determine the display name based on current lang
-        const languageDisplayName =
-          (lang === "en"
-            ? group.repItem.languageEn
-            : group.repItem.langTh ?? group.repItem.languageEn) ??
-          "Unknown Language";
-        return {
-          stableKey: group.repItem.languageEn ?? "Unknown Language",
-          displayName: languageDisplayName,
-          count: group.messages.length,
-        };
-      })
-      .sort((a, b) => a.displayName.localeCompare(b.displayName));
-
-    // 2. Filter groups based on search term (real-time filtering)
-    if (searchTerm) {
-      const lowerSearchTerm = searchTerm.toLowerCase();
-      sortedGroups = sortedGroups.filter((group) =>
-        group.displayName.toLowerCase().includes(lowerSearchTerm)
-      );
+  // 1. Filter the pre-calculated language groups based on search term
+  const filteredLanguageGroups = useMemo(() => {
+    if (!searchTerm) {
+      return languageGroups;
     }
 
-    return sortedGroups;
-  }, [lang, searchTerm]);
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    // We filter based on the *display name* which matches what the user sees
+    return languageGroups.filter((group) =>
+      (lang === "en" ? group.displayNameEn : group.displayNameTh)
+        .toLowerCase()
+        .includes(lowerSearchTerm)
+    );
+  }, [lang, searchTerm, languageGroups]);
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
       {/* Search fill-field with Thai red outline (Made sticky and removed 'relative') */}
-      <div className="mb-6 sticky top-0 bg-gray-100 pb-4 z-10">
-        <input
-          type="text"
-          placeholder={t.search_languages || "Search Languages..."}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full p-3 pl-10 border-2 border-brand-red rounded-xl shadow-md focus:ring-brand-red focus:border-brand-red transition-all"
-        />
-        <Search
-          className={`w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 ${ACCENT_COLOR_CLASS}`}
-        />
+      <div className="mb-4 sticky top-0 bg-gray-100 pb-3 z-10">
+        {" "}
+        {/* Reduced mb and pb */}
+        <div className="relative">
+          <input
+            type="text"
+            placeholder={t.search_languages || "Search Languages..."}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full p-3 pl-10 border-2 border-brand-red rounded-xl shadow-md focus:ring-brand-red focus:border-brand-red transition-all"
+          />
+          <Search
+            className={`w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 ${ACCENT_COLOR_CLASS}`}
+          />
+        </div>
       </div>
-
-      {/* Language count removed as requested */}
-      <div className="h-2"></div>
-
       {/* Pass stableKey (English name) to onSelectLanguage */}
-      {languageGroups.map((group) => (
+      {filteredLanguageGroups.map((group) => (
         <LanguageCard
           key={group.stableKey}
-          languageName={group.displayName}
+          languageName={
+            lang === "en" ? group.displayNameEn : group.displayNameTh
+          }
           lang={lang}
           onSelect={() => onSelectLanguage(group.stableKey)} // Use stableKey for selection
           messageCount={group.count}
         />
       ))}
-      <div className="h-20"></div>
+      <div className="h-16"></div>{" "}
+      {/* Reduced h-20 to h-16 for tighter spacing */}
     </div>
   );
 };
@@ -601,32 +592,17 @@ const MessagesByLanguagePage = ({
   hasPrev,
   hasNext,
   onSelectMessage,
+  currentMessageList,
+  languageGroups,
 }) => {
-  // Get all messages for the selected language (using the stable English key)
-  const filteredContent = useMemo(() => {
-    return staticContent
-      .filter((item) => {
-        const currentLangNameEn = item.languageEn ?? "Unknown Language";
-        return currentLangNameEn === selectedLanguageKey;
-      })
-      .sort((a, b) => {
-        // Sort messages by title alphabetically
-        const titleA = (lang === "en" ? a.title_en : a.title_th) ?? "";
-        const titleB = (lang === "en" ? b.title_en : b.title_th) ?? "";
-        return titleA.localeCompare(titleB);
-      });
-  }, [lang, selectedLanguageKey]);
-
   // Determine the display name for the header
   const languageDisplayName = useMemo(() => {
-    const repItem = filteredContent[0];
-    if (!repItem) return selectedLanguageKey;
-    return (
-      (lang === "en"
-        ? repItem.languageEn
-        : repItem.langTh ?? repItem.languageEn) ?? "Unknown Language"
+    const group = languageGroups.find(
+      (g) => g.stableKey === selectedLanguageKey
     );
-  }, [lang, selectedLanguageKey, filteredContent]);
+    if (!group) return selectedLanguageKey;
+    return lang === "en" ? group.displayNameEn : group.displayNameTh;
+  }, [lang, selectedLanguageKey, languageGroups]);
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
@@ -657,16 +633,18 @@ const MessagesByLanguagePage = ({
           <ChevronRight className="w-5 h-5 ml-1" />
         </button>
       </div>
-
       {/* Language Title - Red, emphasized */}
-      <h1 className={`text-2xl font-bold mb-2 ${ACCENT_COLOR_CLASS}`}>
+      <h1 className={`text-2xl font-bold mb-1 ${ACCENT_COLOR_CLASS}`}>
         {languageDisplayName}
-      </h1>
-      <p className="text-sm text-gray-500 mb-6 font-semibold">
-        {filteredContent.length} {t.messages || "messages"}
+      </h1>{" "}
+      {/* Reduced mb */}
+      <p className="text-sm text-gray-500 mb-4 font-semibold">
+        {" "}
+        {/* Reduced mb */}
+        {currentMessageList.length} {t.messages || "messages"}
       </p>
       {/* NOTE: showLanguageName is set to false here to remove the language name from individual message cards */}
-      {filteredContent.map((item) => (
+      {currentMessageList.map((item) => (
         <ContentCard
           key={item.id}
           item={item}
@@ -675,7 +653,7 @@ const MessagesByLanguagePage = ({
           showLanguageName={false}
         />
       ))}
-      <div className="h-20"></div>
+      <div className="h-16"></div> {/* Reduced h-20 to h-16 */}
     </div>
   );
 };
@@ -706,7 +684,7 @@ const BookmarksPage = ({ lang, t, onSelect, userData }) => {
           <p className="text-sm mt-2">{t.bookmark_tip}</p>
         </div>
       )}
-      <div className="h-20"></div>
+      <div className="h-16"></div> {/* Reduced h-20 to h-16 */}
     </div>
   );
 };
@@ -743,9 +721,11 @@ const SearchPage = ({ lang, t, onSelect }) => {
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">{t.search}</h1>
-
-      <div className="mb-4 sticky top-0 bg-gray-100 pb-4 z-10">
+      <h1 className="text-2xl font-bold text-gray-800 mb-4">{t.search}</h1>{" "}
+      {/* Reduced mb */}
+      <div className="mb-4 sticky top-0 bg-gray-100 pb-3 z-10">
+        {" "}
+        {/* Reduced pb */}
         <div className="relative">
           <input
             type="text"
@@ -759,7 +739,6 @@ const SearchPage = ({ lang, t, onSelect }) => {
           />
         </div>
       </div>
-
       {searchTerm && (
         <p className="text-sm text-gray-600 mb-4 font-semibold">
           {resultCount}{" "}
@@ -767,7 +746,6 @@ const SearchPage = ({ lang, t, onSelect }) => {
           {t.found || "found"}.
         </p>
       )}
-
       {resultCount > 0 ? (
         filteredContent.map((item) => (
           <ContentCard
@@ -796,7 +774,7 @@ const SearchPage = ({ lang, t, onSelect }) => {
           </p>
         </div>
       )}
-      <div className="h-20"></div>
+      <div className="h-16"></div> {/* Reduced h-20 to h-16 */}
     </div>
   );
 };
@@ -1338,6 +1316,8 @@ export default function App() {
             lang={lang}
             t={t}
             selectedLanguageKey={selectedLanguageKey} // Pass the stable key
+            currentMessageList={currentMessageList} // Pass the pre-filtered messages
+            languageGroups={languageGroups} // Pass the language groups for the header
             // Go back to language list
             onBack={() => handleBackToLanguages()}
             // Smart navigation for prev/next language
