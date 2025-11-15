@@ -401,12 +401,10 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
           <ChevronRight className="w-5 h-5 ml-1" />
         </button>
       </div>
-
       {/* Language Name (Thai Flag Red - Largest) */}
       <h1 className={`text-4xl font-extrabold mb-2 ${ACCENT_COLOR_CLASS}`}>
         {languageDisplay}
       </h1>
-
       <div className="flex justify-between items-center mb-6 border-b pb-4">
         {/* Message Title (Secondary) */}
         <p className="text-xl font-semibold text-gray-700">{titleDisplay}</p>
@@ -422,12 +420,12 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
           <Bookmark className="w-6 h-6 fill-current" />
         </button>
       </div>
-
+      {/* --- LISTEN BUTTON (Thai Flag Blue) --- */}
+      // ... other ContentView JSX before the two-column grid ...
       {/* --- LISTEN BUTTON (Thai Flag Blue) --- */}
       {item.trackDownloadUrl && (
         <button
           onClick={() => onPlay(item)}
-          // Using THAI_BLUE for button background
           style={{ backgroundColor: THAI_BLUE }}
           className="w-full p-4 mb-6 font-bold text-white text-lg rounded-xl transition-colors hover:opacity-90 shadow-lg flex items-center justify-center"
         >
@@ -435,58 +433,74 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
           {t.listen_offline || "Listen (Offline Enabled)"}
         </button>
       )}
+      {/* --- MAIN CONTENT GRID: Mobile (1-col) | Tablet/Laptop (2-col) --- */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {/* --- COLUMN 1: QR Code, Share/Export Buttons --- */}
+        <div className="md:order-1 flex flex-col items-center">
+          {/* QR CODE DISPLAY (Small and Expandable) */}
+          <div
+            className="flex flex-col items-center p-4 bg-white rounded-xl shadow-inner mb-6 cursor-pointer transition-all duration-300"
+            onClick={() => setIsQrLarge((p) => !p)}
+            // Adjusted sizing for desktop visibility
+            style={{
+              maxWidth: isQrLarge ? "100%" : "200px",
+              margin: "0 auto 1.5rem auto",
+            }}
+          >
+            <div className="p-2 bg-gray-50 rounded-lg">
+              <QRCodeDisplay
+                url={cardUrl}
+                size={isQrLarge ? 250 : 150} // Slightly larger default size on desktop
+                fgColor="#000000"
+              />
+            </div>
+            <p className="text-xs text-gray-500 mt-2 text-center">
+              {isQrLarge
+                ? t.tap_to_shrink || "Tap to shrink"
+                : t.tap_to_enlarge || "Tap to enlarge"}
+            </p>
+          </div>
 
-      {/* --- QR CODE DISPLAY (Small and Expandable) --- */}
-      <div
-        className="flex flex-col items-center p-4 bg-white rounded-xl shadow-inner mb-6 cursor-pointer transition-all duration-300"
-        onClick={() => setIsQrLarge((p) => !p)} // Toggle size on click
-        style={{
-          maxWidth: isQrLarge ? "100%" : "150px", // Full width or fixed width
-          margin: "0 auto 1.5rem auto", // Center the container
-        }}
-      >
-        <div className="p-2 bg-gray-50 rounded-lg">
-          <QRCodeDisplay
-            url={cardUrl}
-            // Control the size based on state
-            size={isQrLarge ? 250 : 100}
-            fgColor="#000000"
-          />
+          {/* SHARE / EXPORT SECTION */}
+          <div className="grid grid-cols-2 gap-3 mb-6 w-full">
+            <button
+              onClick={handleShare}
+              className="p-3 font-bold text-white rounded-xl bg-brand-red transition-colors hover:bg-red-800 shadow-md flex flex-col items-center justify-center text-sm leading-tight"
+            >
+              <Share2 className="w-5 h-5 mb-1" /> {t.share_copy || "Share/Copy"}
+            </button>
+            <button
+              onClick={downloadShareCard}
+              className="p-3 font-bold text-white rounded-xl bg-brand-red transition-colors hover:bg-red-800 shadow-md flex flex-col items-center justify-center text-sm leading-tight"
+            >
+              <Download className="w-5 h-5 mb-1" />
+              {t.download || "Download"} <br /> {t.qr_card || "QR Card"}
+            </button>
+          </div>
         </div>
-        <p className="text-xs text-gray-500 mt-2 text-center">
-          {isQrLarge
-            ? t.tap_to_shrink || "Tap to shrink"
-            : t.tap_to_enlarge || "Tap to enlarge"}
-        </p>
+
+        {/* --- COLUMN 2: Bible Verse and Notes --- */}
+        <div className="md:order-2">
+          {/* BIBLE VERSE */}
+          <div className="bg-gray-50 p-6 rounded-xl shadow-inner mb-6">
+            <p className="text-xl leading-normal text-gray-700 whitespace-pre-line">
+              {verseDisplay}
+            </p>
+          </div>
+
+          {/* NOTES SECTION */}
+          <div className="p-4 bg-red-50 border-l-4 border-brand-red rounded-lg mt-6">
+            <h2 className="text-lg font-semibold text-gray-700">
+              {t.my_notes || "My Notes"}
+            </h2>
+            <p className="text-sm text-gray-500">
+              {t.notes_feature_tip ||
+                "Notes feature coming soon! You can view all saved notes on the Notes page."}
+            </p>
+          </div>
+        </div>
       </div>
-
-      {/* --- SHARE / EXPORT SECTION (Thai Flag Red Buttons) --- */}
-      <div className="grid grid-cols-2 gap-3 mb-6">
-        {/* Share/Copy - Solid Red */}
-        <button
-          onClick={handleShare}
-          className="p-3 font-bold text-white rounded-xl bg-brand-red transition-colors hover:bg-red-800 shadow-md flex flex-col items-center justify-center text-sm leading-tight"
-        >
-          <Share2 className="w-5 h-5 mb-1" /> {t.share_copy || "Share/Copy"}
-        </button>
-
-        {/* Download QR Card - Solid Red, two lines */}
-        <button
-          onClick={downloadShareCard}
-          className="p-3 font-bold text-white rounded-xl bg-brand-red transition-colors hover:bg-red-800 shadow-md flex flex-col items-center justify-center text-sm leading-tight"
-        >
-          <Download className="w-5 h-5 mb-1" />
-          {t.download || "Download"} <br /> {t.qr_card || "QR Card"}
-        </button>
-      </div>
-
-      {/* --- NEW: BIBLE VERSE (Moved below buttons) --- */}
-      <div className="bg-gray-50 p-6 rounded-xl shadow-inner mb-6">
-        <p className="text-xl leading-normal text-gray-700 whitespace-pre-line">
-          {verseDisplay}
-        </p>
-      </div>
-
+      {/* --- END MAIN CONTENT GRID --- */}
       {/* --- NOTES SECTION --- */}
       <div className="p-4 bg-red-50 border-l-4 border-brand-red rounded-lg mt-6">
         <h2 className="text-lg font-semibold text-gray-700">
@@ -1301,27 +1315,28 @@ export default function App() {
   };
 
   return (
-    <div className="max-w-md mx-auto h-screen flex flex-col bg-gray-100 shadow-xl overflow-hidden">
+    <div className="max-w-md mx-auto h-screen flex flex-col bg-gray-100 shadow-xl overflow-hidden md:max-w-3xl lg:max-w-5xl">
       {/* Red Banner Header with Rounded Bottom Corners */}
       <header
-        className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl`}
+        className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
       >
+        {/* Navigation Button */}
         <button
           onClick={() => setIsDrawerOpen(true)}
           className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
         >
           <Menu className="w-7 h-7" />
         </button>
-        <h1 className="text-xl font-bold text-white tracking-wide truncate px-2">
+
+        {/* App Title / Logo Placeholder */}
+        {/* This will be the home for your logo and app title */}
+        <h1 className="text-xl font-bold text-white tracking-wide truncate px-2 md:text-2xl md:mr-auto">
           {t.app_name}
         </h1>
 
         {/* Right side controls: 1/2/3 buttons and Language Toggle */}
-        <div className="flex items-center space-x-2">
-          {/* UPDATED: 1-2-3 Font Size Buttons */}
+        <div className="flex items-center space-x-3 md:space-x-4">
           <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
-
-          {/* UPDATED: Language Toggle (A/ก) */}
           <LanguageToggle lang={lang} setLang={setLang} t={t} />
         </div>
       </header>
