@@ -1,5 +1,4 @@
-// --- Import Section (Ensure AppLogo is imported from the correct path) ---
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import ReactDOM from "react-dom/client";
 import html2canvas from "html2canvas";
 
@@ -14,7 +13,7 @@ import {
   Menu,
   X,
   ChevronLeft,
-  ChevronRight, // Forward button icon
+  ChevronRight,
   Share2,
   Zap,
   Download,
@@ -25,7 +24,6 @@ import QRCodeDisplay from "./components/QRCodeDisplay";
 
 // NEW: Import the Banner Logo
 import AppLogo from "./assets/banner-logo.svg";
-// NOTE: We don't need to explicitly import 'square-logo.svg' until we use it later (e.g., in a settings page).
 
 // --- CONSTANTS ---
 // PWA Custom Colors
@@ -36,7 +34,7 @@ const THAI_BLUE = "#2D2A4A";
 const PRIMARY_COLOR_CLASS = "bg-brand-red";
 const ACCENT_COLOR_CLASS = "text-brand-red";
 const TEXT_COLOR_CLASS = "text-gray-800";
-const DEFAULT_FONT_SIZE = "16px"; // Medium
+const DEFAULT_FONT_SIZE = "16px";
 
 // Helper for share fallback
 const copyLink = (text, callback) => {
@@ -101,19 +99,39 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
 };
 
 // Language Card Component (For initial language list)
-const LanguageCard = ({ languageName, lang, onSelect, messageCount }) => {
+const LanguageCard = ({
+  languageName,
+  lang,
+  onSelect,
+  messageCount,
+  onShowQrForLanguage,
+}) => {
   return (
     <div
       className={`bg-white p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer transition-transform hover:shadow-lg hover:scale-[1.01]`}
-      onClick={() => onSelect(languageName)}
     >
-      <h3 className={`text-2xl font-bold ${ACCENT_COLOR_CLASS}`}>
-        {languageName}
-      </h3>
-      <p className={`text-sm text-gray-500 mt-1`}>
-        {lang === "en" ? "Tap to view" : "แตะเพื่อดู"} ({messageCount}{" "}
-        {lang === "en" ? "messages" : "ข้อความ"})
-      </p>
+      <div className="flex items-center justify-between">
+        <div onClick={() => onSelect(languageName)} className="flex-grow pr-4">
+          <h3 className={`text-2xl font-bold ${ACCENT_COLOR_CLASS}`}>
+            {languageName}
+          </h3>
+          <p className={`text-sm text-gray-500 mt-1`}>
+            {lang === "en" ? "Tap to view" : "แตะเพื่อดู"} ({messageCount}{" "}
+            {lang === "en" ? "messages" : "ข้อความ"})
+          </p>
+        </div>
+        {/* NEW: QR Button for Language */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onShowQrForLanguage(languageName);
+          }}
+          className="flex-shrink-0 p-2 rounded-full bg-gray-200 text-gray-600 hover:bg-brand-red hover:text-white transition-colors"
+          title={i18n[lang].share_language_qr || "Share Language QR"}
+        >
+          <Share2 className="w-6 h-6" />
+        </button>
+      </div>
     </div>
   );
 };
@@ -148,11 +166,7 @@ const ContentCard = ({ item, lang, onSelect, showLanguageName = true }) => {
         {messageTitle}
       </h3>
       {/* Program Number */}
-      <p className="text-sm text-gray-500 mt-0.5">
-        {" "}
-        {/* Reduced top margin */}
-        Program No. {item.id}
-      </p>
+      <p className="text-sm text-gray-500 mt-0.5">Program No. {item.id}</p>
     </div>
   );
 };
@@ -169,7 +183,6 @@ const LanguageToggle = ({ lang, setLang, t }) => {
     <div className="flex items-center space-x-2">
       <button
         onClick={toggleLang}
-        // Centered text with slight padding adjustment for lift
         className={`w-10 h-10 p-1 rounded-lg font-bold transition-colors shadow-sm text-brand-red bg-white hover:bg-gray-200 text-lg flex items-center justify-center`}
       >
         {lang === "en" ? "ก" : "A"}
@@ -190,13 +203,12 @@ const FontSizeButtons = ({ fontSize, setFontSize }) => {
   // Style for selected button (White background, THAI_RED text)
   const selectedStyle = { backgroundColor: "#ffffff", color: THAI_RED };
 
-  // Base class for all buttons (thinner rectangle, rounded corners)
+  // Base class for all buttons
   const baseClass = `p-1 rounded-md font-bold transition-colors shadow-sm text-center flex items-center justify-center`;
 
   return (
-    // Adjusted spacing from negative margin to slight positive space-x-1
     <div className="flex items-center space-x-1">
-      {/* Size 1 (Wider and shorter) */}
+      {/* Size 1 */}
       <button
         onClick={() => handleFontSize("14px")}
         className={`${baseClass} w-6 h-5 text-xs z-10`}
@@ -204,19 +216,17 @@ const FontSizeButtons = ({ fontSize, setFontSize }) => {
       >
         1
       </button>
-      {/* Size 2 (Bigger overall size and text) */}
+      {/* Size 2 */}
       <button
         onClick={() => handleFontSize("16px")}
-        // Bumped text size from text-sm to text-base, slightly larger button dims
         className={`${baseClass} w-7 h-6 text-base z-20`}
         style={fontSize === "16px" ? selectedStyle : unselectedStyle}
       >
         2
       </button>
-      {/* Size 3 (Largest overall size and text) */}
+      {/* Size 3 */}
       <button
         onClick={() => handleFontSize("20px")}
-        // Bumped text size from text-base to text-xl, noticeably larger button dims
         className={`${baseClass} w-8 h-7 text-xl z-30`}
         style={fontSize === "20px" ? selectedStyle : unselectedStyle}
       >
@@ -242,21 +252,15 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
         {t.app_name}
       </h2>
       <h3 className="text-xl font-bold text-brand-red mb-2 text-center">
-        {" "}
-        {/* Reduced mb */}
         {title} (Program {item.id})
       </h3>
 
       {/* BIBLE VERSE ADDED TO QR CARD */}
       <p className="text-sm text-gray-700 mb-4 whitespace-pre-line text-center">
-        {" "}
-        {/* Reduced mb */}
         {verse}
       </p>
 
       <div className="flex justify-center mb-4 p-4 bg-gray-50 rounded-lg">
-        {" "}
-        {/* Reduced mb */}
         <QRCodeDisplay
           url={cardUrl}
           size={200}
@@ -279,6 +283,51 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
   );
 };
 
+// --- Language QR Modal Component ---
+const LanguageQrModal = ({
+  isOpen,
+  onClose,
+  languageDisplayName,
+  languageShareUrl,
+  t,
+}) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
+      <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full relative">
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
+        >
+          <X className="w-6 h-6" />
+        </button>
+        <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">
+          {t.share_language || "Share Language"}
+        </h2>
+        <h3 className="text-lg font-semibold text-brand-red mb-4 text-center">
+          {languageDisplayName}
+        </h3>
+        <div className="flex justify-center mb-4 p-4 bg-gray-50 rounded-lg">
+          <QRCodeDisplay
+            url={languageShareUrl}
+            size={200}
+            fgColor="#000000"
+            bgColor="#FFFFFF"
+          />
+        </div>
+        <p className="text-sm text-gray-600 text-center break-all mb-2">
+          {t.scan_qr_to_view_messages || "Scan QR to view all messages in"}:{" "}
+          <br />
+          <a href={languageShareUrl} className="text-brand-red underline">
+            {languageShareUrl}
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+};
+
 // --- Page Components ---
 
 // Content View Component (Detail Page)
@@ -296,7 +345,8 @@ const ContentView = ({
 }) => {
   const [isQrLarge, setIsQrLarge] = useState(false);
 
-  const isBookmarked = userData.bookmarks.includes(item.id);
+  // We rely on userData being safely initialized with an array for bookmarks
+  const isBookmarked = userData?.bookmarks?.includes(item.id) ?? false;
   const cardUrl = `https://5fi.sh/T${item.id}`;
   // FIX: Using robust check and the correct langTh field
   const languageDisplay =
@@ -312,11 +362,13 @@ const ContentView = ({
       : item.verse_th ?? t.no_verse_content;
 
   const toggleBookmark = () => {
+    // Ensure we are working with an array
+    const currentBookmarks = userData.bookmarks || [];
     let newBookmarks;
     if (isBookmarked) {
-      newBookmarks = userData.bookmarks.filter((id) => id !== item.id);
+      newBookmarks = currentBookmarks.filter((id) => id !== item.id);
     } else {
-      newBookmarks = [...userData.bookmarks, item.id];
+      newBookmarks = [...currentBookmarks, item.id];
     }
     saveUserData({ ...userData, bookmarks: newBookmarks });
   };
@@ -425,10 +477,9 @@ ${t.download_qr_card_tip || "Download QR card for easy sharing!"}
       </h1>
 
       <div className="flex justify-between items-center mb-4 border-b pb-3">
-        {" "}
-        {/* Reduced mb and pb */}
         {/* Message Title (Secondary) */}
         <p className="text-xl font-semibold text-gray-700">{titleDisplay}</p>
+
         <button
           onClick={toggleBookmark}
           className={`p-2 rounded-full transition-colors ${
@@ -462,7 +513,6 @@ ${t.download_qr_card_tip || "Download QR card for easy sharing!"}
           <div
             className="flex flex-col items-center p-4 bg-white rounded-xl shadow-inner mb-6 cursor-pointer transition-all duration-300"
             onClick={() => setIsQrLarge((p) => !p)}
-            // Adjusted sizing for desktop visibility
             style={{
               maxWidth: isQrLarge ? "100%" : "200px",
               margin: "0 auto 1.5rem auto",
@@ -471,7 +521,7 @@ ${t.download_qr_card_tip || "Download QR card for easy sharing!"}
             <div className="p-2 bg-gray-50 rounded-lg">
               <QRCodeDisplay
                 url={cardUrl}
-                size={isQrLarge ? 250 : 150} // Slightly larger default size on desktop
+                size={isQrLarge ? 250 : 150}
                 fgColor="#000000"
               />
             </div>
@@ -504,7 +554,6 @@ ${t.download_qr_card_tip || "Download QR card for easy sharing!"}
         <div className="md:order-2">
           {/* BIBLE VERSE */}
           <div className="bg-gray-50 p-6 rounded-xl shadow-inner mb-6">
-            {/* FONT SIZE REDUCED to text-base */}
             <p className="text-base leading-normal text-gray-700 whitespace-pre-line">
               {verseDisplay}
             </p>
@@ -512,12 +561,9 @@ ${t.download_qr_card_tip || "Download QR card for easy sharing!"}
 
           {/* NOTES SECTION */}
           <div className="p-4 bg-red-50 border-l-4 border-brand-red rounded-lg mt-4">
-            {" "}
-            {/* Reduced mt to mt-4 */}
             <h2 className="text-lg font-semibold text-gray-700 mb-1">
               {t.my_notes || "My Notes"}
-            </h2>{" "}
-            {/* Reduced mb */}
+            </h2>
             <p className="text-sm text-gray-500">
               {t.notes_feature_tip ||
                 "Notes feature coming soon! You can view all saved notes on the Notes page."}
@@ -531,46 +577,17 @@ ${t.download_qr_card_tip || "Download QR card for easy sharing!"}
 };
 
 // New Page: Language List Page
-const LanguageListPage = ({ lang, t, onSelectLanguage, languageGroups }) => {
-  // Now receives languageGroups as prop
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // 1. Filter the pre-calculated language groups based on search term
-  const filteredLanguageGroups = useMemo(() => {
-    if (!searchTerm) {
-      return languageGroups;
-    }
-
-    const lowerSearchTerm = searchTerm.toLowerCase();
-    // We filter based on the *display name* which matches what the user sees
-    return languageGroups.filter((group) =>
-      (lang === "en" ? group.displayNameEn : group.displayNameTh)
-        .toLowerCase()
-        .includes(lowerSearchTerm)
-    );
-  }, [lang, searchTerm, languageGroups]);
-
+const LanguageListPage = ({
+  lang,
+  t,
+  onSelectLanguage,
+  languageGroups,
+  onShowQrForLanguage,
+}) => {
+  // Search is now handled globally in the App component, so no local searchTerm here
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      {/* Search fill-field with Thai red outline (Made sticky and removed 'relative') */}
-      <div className="mb-4 sticky top-0 bg-gray-100 pb-3 z-10">
-        {" "}
-        {/* Reduced mb and pb */}
-        <div className="relative">
-          <input
-            type="text"
-            placeholder={t.search_languages || "Search Languages..."}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full p-3 pl-10 border-2 border-brand-red rounded-xl shadow-md focus:ring-brand-red focus:border-brand-red transition-all"
-          />
-          <Search
-            className={`w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 ${ACCENT_COLOR_CLASS}`}
-          />
-        </div>
-      </div>
-      {/* Pass stableKey (English name) to onSelectLanguage */}
-      {filteredLanguageGroups.map((group) => (
+      {languageGroups.map((group) => (
         <LanguageCard
           key={group.stableKey}
           languageName={
@@ -579,10 +596,10 @@ const LanguageListPage = ({ lang, t, onSelectLanguage, languageGroups }) => {
           lang={lang}
           onSelect={() => onSelectLanguage(group.stableKey)} // Use stableKey for selection
           messageCount={group.count}
+          onShowQrForLanguage={() => onShowQrForLanguage(group.stableKey)} // Pass handler for QR button
         />
       ))}
-      <div className="h-16"></div>{" "}
-      {/* Reduced h-20 to h-16 for tighter spacing */}
+      <div className="h-16"></div>
     </div>
   );
 };
@@ -638,14 +655,12 @@ const MessagesByLanguagePage = ({
           <ChevronRight className="w-5 h-5 ml-1" />
         </button>
       </div>
+
       {/* Language Title - Red, emphasized */}
       <h1 className={`text-2xl font-bold mb-1 ${ACCENT_COLOR_CLASS}`}>
         {languageDisplayName}
-      </h1>{" "}
-      {/* Reduced mb */}
+      </h1>
       <p className="text-sm text-gray-500 mb-4 font-semibold">
-        {" "}
-        {/* Reduced mb */}
         {currentMessageList.length} {t.messages || "messages"}
       </p>
       {/* NOTE: showLanguageName is set to false here to remove the language name from individual message cards */}
@@ -658,19 +673,59 @@ const MessagesByLanguagePage = ({
           showLanguageName={false}
         />
       ))}
-      <div className="h-16"></div> {/* Reduced h-20 to h-16 */}
+      <div className="h-16"></div>
     </div>
   );
 };
 
 // Bookmarks Page Component
-const BookmarksPage = ({ lang, t, onSelect, userData }) => {
+const BookmarksPage = ({
+  lang,
+  t,
+  onSelect,
+  userData,
+  onBack,
+  onForward,
+  hasPrev,
+  hasNext,
+}) => {
+  // Added nav props for consistency
   const bookmarkedItems = useMemo(() => {
-    return staticContent.filter((item) => userData.bookmarks.includes(item.id));
+    // Ensure userData.bookmarks is an array before calling includes()
+    const bookmarks = userData?.bookmarks || [];
+    return staticContent.filter((item) => bookmarks.includes(item.id));
   }, [userData.bookmarks]);
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
+      {/* Back and Forward Controls (added for consistency) */}
+      <div className="flex justify-between items-center mb-4">
+        <button
+          onClick={onBack}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasPrev
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasPrev}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        <button
+          onClick={onForward}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasNext
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasNext}
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
+      </div>
+
       <h1 className="text-2xl font-bold text-gray-800 mb-6">{t.bookmarks}</h1>
       {bookmarkedItems.length > 0 ? (
         bookmarkedItems.map((item) => (
@@ -689,15 +744,23 @@ const BookmarksPage = ({ lang, t, onSelect, userData }) => {
           <p className="text-sm mt-2">{t.bookmark_tip}</p>
         </div>
       )}
-      <div className="h-16"></div> {/* Reduced h-20 to h-16 */}
+      <div className="h-16"></div>
     </div>
   );
 };
 
 // Search Component
-const SearchPage = ({ lang, t, onSelect }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
+const SearchPage = ({
+  lang,
+  t,
+  onSelect,
+  searchTerm,
+  onBack,
+  onForward,
+  hasPrev,
+  hasNext,
+}) => {
+  // Receives searchTerm and nav props
   const filteredContent = useMemo(() => {
     if (!searchTerm) return [];
     const lowerSearchTerm = searchTerm.toLowerCase();
@@ -720,37 +783,52 @@ const SearchPage = ({ lang, t, onSelect }) => {
         verseTh.includes(lowerSearchTerm)
       );
     });
-  }, [searchTerm, lang]);
+  }, [searchTerm, lang]); // Now depends on global searchTerm
 
   const resultCount = filteredContent.length;
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mb-4">{t.search}</h1>{" "}
-      {/* Reduced mb */}
-      <div className="mb-4 sticky top-0 bg-gray-100 pb-3 z-10">
-        {" "}
-        {/* Reduced pb */}
-        <div className="relative">
-          <input
-            type="text"
-            placeholder={t.search + "..."}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full p-3 pl-10 border border-gray-300 rounded-xl shadow-md focus:ring-brand-red focus:border-brand-red transition-all"
-          />
-          <Search
-            className={`w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 ${ACCENT_COLOR_CLASS}`}
-          />
-        </div>
+      {/* Back and Forward Controls (added for consistency) */}
+      <div className="flex justify-between items-center mb-4">
+        <button
+          onClick={onBack}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasPrev
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasPrev}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        <button
+          onClick={onForward}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasNext
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasNext}
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
       </div>
+
+      <h1 className="text-2xl font-bold text-gray-800 mb-4">
+        {t.search_results || "Search Results"}
+      </h1>
+
       {searchTerm && (
         <p className="text-sm text-gray-600 mb-4 font-semibold">
           {resultCount}{" "}
           {resultCount === 1 ? t.result || "Result" : t.results || "Results"}{" "}
-          {t.found || "found"}.
+          {t.found || "found"} {t.for_query || "for"} "{searchTerm}".
         </p>
       )}
+
       {resultCount > 0 ? (
         filteredContent.map((item) => (
           <ContentCard
@@ -774,666 +852,612 @@ const SearchPage = ({ lang, t, onSelect }) => {
       ) : (
         <div className="text-center p-8 text-gray-500">
           <p>
-            {t.start_typing_to_search || "Start typing to search all"}{" "}
-            {staticContent.length} {t.items || "items"}.
+            {t.start_typing_to_search ||
+              "Start typing in the banner search bar to search all"}{" "}
+            {staticContent.length}{" "}
+            {staticContent.length === 1
+              ? t.message || "message"
+              : t.messages || "messages"}
+            .
           </p>
         </div>
       )}
-      <div className="h-16"></div> {/* Reduced h-20 to h-16 */}
+      <div className="h-16"></div>
     </div>
   );
 };
 
-// Settings Component with Auth UI
-const SettingsPage = ({
-  lang,
-  t,
-  setLang,
-  userId,
-  logOut,
-  signUp,
-  signIn,
-  fontSize,
-  setFontSize,
-}) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [authMessage, setAuthMessage] = useState(null);
-  const isAnonymous =
-    userId && userId.length > 20 && !userId.startsWith("firebase:");
+// Other Pages (NotesPage, SettingsPage, etc. are currently placeholders)
+const OtherPage = ({ titleKey, t, onBack, onForward, hasPrev, hasNext }) => (
+  <div className="p-4 pt-8 h-full overflow-y-auto">
+    {/* Back and Forward Controls (added for consistency) */}
+    <div className="flex justify-between items-center mb-4">
+      <button
+        onClick={onBack}
+        className={`text-sm font-semibold flex items-center transition-colors ${
+          hasPrev
+            ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+            : "text-gray-400 cursor-not-allowed"
+        }`}
+        disabled={!hasPrev}
+      >
+        <ChevronLeft className="w-5 h-5 mr-1" />
+        {t.back || "Back"}
+      </button>
+      <button
+        onClick={onForward}
+        className={`text-sm font-semibold flex items-center transition-colors ${
+          hasNext
+            ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+            : "text-gray-400 cursor-not-allowed"
+        }`}
+        disabled={!hasNext}
+      >
+        {t.forward || "Forward"}
+        <ChevronRight className="w-5 h-5 ml-1" />
+      </button>
+    </div>
 
-  const handleAuthAction = async (action) => {
-    if (action === "signup") {
-      const success = await signUp(email, password);
-      if (success)
-        setAuthMessage(
-          t.sign_up_success || "Sign up successful! You are now logged in."
-        );
-      else
-        setAuthMessage(
-          t.sign_up_fail ||
-            "Sign up failed. Please check the error message in the console."
-        );
-    } else if (action === "signin") {
-      const success = await signIn(email, password);
-      if (success) setAuthMessage(t.sign_in_success || "Sign in successful!");
-      else
-        setAuthMessage(
-          t.sign_in_fail || "Sign in failed. Check your email/password."
-        );
+    <h1 className="text-2xl font-bold text-gray-800 mb-4">{t[titleKey]}</h1>
+    <p className="text-gray-600">
+      {t.feature_coming_soon || "This feature is coming soon!"}
+    </p>
+  </div>
+);
+
+// --- Main App Component ---
+export default function App() {
+  // --- State Management ---
+  const initialLang = localStorage.getItem("appLang") || "en";
+  const initialFontSize =
+    localStorage.getItem("appFontSize") || DEFAULT_FONT_SIZE;
+
+  const [lang, setLang] = useState(initialLang);
+  const [fontSize, setFontSize] = useState(initialFontSize);
+  const [pageStack, setPageStack] = useState([{ name: "Home" }]);
+  const [track, setTrack] = useState(null);
+  const [isAudioMinimized, setIsAudioMinimized] = useState(true);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  // *** FIX: Changed from array to object destructuring and passed setLang ***
+  const { userData, saveUserData, isAuthReady, error } = useFirebase(setLang);
+
+  // NEW: Global Search State
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // NEW: Language QR Modal State
+  const [isLanguageQrModalOpen, setIsLanguageQrModalOpen] = useState(false);
+  const [modalLanguageName, setModalLanguageName] = useState("");
+  const [modalLanguageShareUrl, setModalLanguageShareUrl] = useState("");
+
+  const t = useMemo(() => i18n[lang], [lang]);
+
+  // Group Messages by Language (Memoized for performance)
+  const languageGroups = useMemo(() => {
+    const groups = {};
+    staticContent.forEach((item) => {
+      const stableKey = item.stableKey; // e.g., 'Central Thai'
+
+      // Check if the item matches the global search term
+      if (searchTerm) {
+        const lowerSearchTerm = searchTerm.toLowerCase();
+        const languageEn = item.languageEn?.toLowerCase() ?? "";
+        const languageTh = item.langTh?.toLowerCase() ?? "";
+        const titleEn = item.title_en?.toLowerCase() ?? "";
+        const titleTh = item.title_th?.toLowerCase() ?? "";
+        const verseEn = item.verse_en?.toLowerCase() ?? "";
+        const verseTh = item.verse_th?.toLowerCase() ?? "";
+
+        const matches =
+          languageEn.includes(lowerSearchTerm) ||
+          languageTh.includes(lowerSearchTerm) ||
+          titleEn.includes(lowerSearchTerm) ||
+          titleTh.includes(lowerSearchTerm) ||
+          verseEn.includes(lowerSearchTerm) ||
+          verseTh.includes(lowerSearchTerm);
+
+        if (!matches) {
+          return; // Skip this item if it doesn't match the search
+        }
+      }
+
+      if (!groups[stableKey]) {
+        groups[stableKey] = {
+          stableKey,
+          displayNameEn: item.languageEn,
+          displayNameTh: item.langTh,
+          count: 0,
+          messages: [],
+        };
+      }
+      groups[stableKey].count += 1;
+      groups[stableKey].messages.push(item);
+    });
+
+    // Convert object to array and sort by display name in the current language
+    return Object.values(groups).sort((a, b) => {
+      const nameA = lang === "en" ? a.displayNameEn : a.displayNameTh;
+      const nameB = lang === "en" ? b.displayNameEn : b.displayNameTh;
+      return nameA.localeCompare(nameB, lang);
+    });
+  }, [lang, searchTerm]); // Recalculate if language or searchTerm changes
+
+  // Memoize the flat list of content for current language message view
+  const currentMessageList = useMemo(() => {
+    const currentPage = pageStack[pageStack.length - 1];
+    if (currentPage.name === "MessagesByLanguage") {
+      const group = languageGroups.find((g) => g.stableKey === currentPage.key);
+      return group ? group.messages : [];
     }
-    setEmail("");
-    setPassword("");
-    setTimeout(() => setAuthMessage(null), 5000);
+    return [];
+  }, [pageStack, languageGroups]);
+
+  // Memoize the total flat list of content (used for navigation in message view)
+  const flatContentList = useMemo(() => {
+    // Only generate the full list when viewing a specific language
+    const currentPage = pageStack[pageStack.length - 1];
+    if (
+      currentPage.name === "ContentView" &&
+      currentPage.sourceList === "language"
+    ) {
+      // The item ID is currentPage.key. Find the group it belongs to.
+      const targetItem = staticContent.find((i) => i.id === currentPage.key);
+      if (!targetItem) return [];
+
+      const targetGroup = languageGroups.find(
+        (g) => g.stableKey === targetItem.stableKey
+      );
+      return targetGroup ? targetGroup.messages : [];
+    } else if (
+      currentPage.name === "ContentView" &&
+      currentPage.sourceList === "search"
+    ) {
+      // Re-use the search page's filtering logic
+      if (!searchTerm) return [];
+      const lowerSearchTerm = searchTerm.toLowerCase();
+
+      return staticContent.filter((item) => {
+        const languageEn = item.languageEn?.toLowerCase() ?? "";
+        const languageTh = item.langTh?.toLowerCase() ?? "";
+        const titleEn = item.title_en?.toLowerCase() ?? "";
+        const titleTh = item.title_th?.toLowerCase() ?? "";
+        const verseEn = item.verse_en?.toLowerCase() ?? "";
+        const verseTh = item.verse_th?.toLowerCase() ?? "";
+
+        return (
+          languageEn.includes(lowerSearchTerm) ||
+          languageTh.includes(lowerSearchTerm) ||
+          titleEn.includes(lowerSearchTerm) ||
+          titleTh.includes(lowerSearchTerm) ||
+          verseEn.includes(lowerSearchTerm) ||
+          verseTh.includes(lowerSearchTerm)
+        );
+      });
+    }
+    // Fallback for other contexts (e.g., bookmarks or direct content view)
+    return staticContent;
+  }, [pageStack, languageGroups, searchTerm]);
+
+  // --- Navigation and State Logic ---
+
+  const navigateTo = (pageName, key = null, sourceList = null) => {
+    setPageStack((prev) => [...prev, { name: pageName, key, sourceList }]);
+    setIsDrawerOpen(false);
+    // Clear search term when navigating away from Home/Search
+    if (pageName !== "Search" && pageName !== "Home") {
+      setSearchTerm("");
+    }
   };
 
-  // NOTE: The font size controls are now handled via the buttons in the main header
-  // I am keeping the logic in this component for consistency, but removing the UI rendering here
-  const handleFontSize = (size) => {
-    setFontSize(size);
-    localStorage.setItem("appFontSize", size);
+  const goBack = () => {
+    if (pageStack.length > 1) {
+      setPageStack((prev) => prev.slice(0, -1));
+    }
   };
 
-  return (
-    <div className="p-4 pt-8 h-full overflow-y-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">{t.settings}</h1>
+  const goForward = () => {
+    // Not used for navigation stack but kept for consistency
+    console.log("Forward navigation not implemented in stack model.");
+  };
 
-      <div className="bg-white p-4 rounded-xl shadow-md mb-6 border border-gray-100">
-        {/* --- APP STATUS --- */}
-        <h2 className="text-lg font-semibold mb-2">
-          {t.app_status || "App Status"}
-        </h2>
-        <p className="text-sm text-gray-600 mb-2">
-          {t.user_id || "User ID"}:{" "}
-          <span className="font-mono text-xs text-brand-red">
-            {userId ? userId : t.loading || "Loading..."}
-          </span>
+  const hasPrev = pageStack.length > 1;
+  const hasNext = false; // Always false in this stack implementation
+
+  // Handler for Language Card click
+  const handleSelectLanguage = (stableKey) => {
+    navigateTo("MessagesByLanguage", stableKey);
+  };
+
+  // Handler for Message Card click
+  const handleSelectMessage = (item, sourceList = "language") => {
+    navigateTo("ContentView", item.id, sourceList);
+  };
+
+  // Handler for Content View navigation (Next/Prev)
+  const handleNextPrevMessage = (direction) => {
+    const currentPage = pageStack[pageStack.length - 1];
+    if (currentPage.name !== "ContentView") return;
+
+    const currentItemId = currentPage.key;
+    const currentIndex = flatContentList.findIndex(
+      (item) => item.id === currentItemId
+    );
+
+    let newIndex;
+    if (direction === "next" && currentIndex < flatContentList.length - 1) {
+      newIndex = currentIndex + 1;
+    } else if (direction === "prev" && currentIndex > 0) {
+      newIndex = currentIndex - 1;
+    } else {
+      return; // Cannot move
+    }
+
+    const newItem = flatContentList[newIndex];
+    // Replace current item in stack instead of pushing a new one
+    setPageStack((prev) => {
+      const newStack = [...prev];
+      newStack[newStack.length - 1] = {
+        name: "ContentView",
+        key: newItem.id,
+        sourceList: currentPage.sourceList,
+      };
+      return newStack;
+    });
+    setTrack(newItem); // Auto-play next track if audio player is active
+  };
+
+  // Handler for Content Card play button
+  const handlePlayMessage = (item) => {
+    setTrack(item);
+    setIsAudioMinimized(false);
+  };
+
+  // Handler for Language QR Modal button
+  const handleShowQrForLanguage = (stableKey) => {
+    const group = languageGroups.find((g) => g.stableKey === stableKey);
+    if (group) {
+      setModalLanguageName(
+        lang === "en" ? group.displayNameEn : group.displayNameTh
+      );
+      // Construct the shareable URL
+      const url = `${window.location.origin}/?langKey=${encodeURIComponent(
+        stableKey
+      )}`;
+      setModalLanguageShareUrl(url);
+      setIsLanguageQrModalOpen(true);
+    }
+  };
+
+  // Close Language QR Modal
+  const handleCloseLanguageQrModal = () => {
+    setIsLanguageQrModalOpen(false);
+    setModalLanguageName("");
+    setModalLanguageShareUrl("");
+  };
+
+  // Audio Player Toggle
+  const toggleAudioMinimize = () => {
+    setIsAudioMinimized((p) => !p);
+  };
+
+  // --- Current Content and Navigation Status ---
+  const currentPage = pageStack[pageStack.length - 1];
+  const currentItem =
+    currentPage.name === "ContentView"
+      ? staticContent.find((item) => item.id === currentPage.key)
+      : null;
+
+  // Determine current index and next/prev status for ContentView
+  const currentItemIndex = currentItem
+    ? flatContentList.findIndex((item) => item.id === currentItem.id)
+    : -1;
+  const canGoPrev = currentItemIndex > 0;
+  const canGoNext =
+    currentItemIndex !== -1 && currentItemIndex < flatContentList.length - 1;
+
+  // --- URL PARAMETER EFFECT ---
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const langKey = urlParams.get("langKey");
+
+    if (langKey) {
+      const decodedLangKey = decodeURIComponent(langKey);
+      // Find the language group
+      const group = languageGroups.find((g) => g.stableKey === decodedLangKey);
+
+      if (group) {
+        // Navigate directly to the message list for that language
+        // Use replaceState to avoid cluttering history with the initial URL load
+        setPageStack([
+          { name: "Home" },
+          { name: "MessagesByLanguage", key: decodedLangKey },
+        ]);
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname
+        );
+      }
+    }
+  }, [languageGroups]); // Depend on languageGroups to ensure data is loaded
+
+  // *** FIX: Added Firebase Loading Check ***
+  // If the app is not ready (Firebase has not loaded user state), show a loading screen.
+  if (!isAuthReady) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-gray-100">
+        <Zap className="w-12 h-12 text-brand-red animate-pulse mb-4" />
+        <p className="text-xl font-semibold text-gray-700">
+          {t.loading_app || "Loading application and connecting..."}
         </p>
-        <p
-          className={`text-sm font-bold ${
-            isAnonymous ? "text-orange-500" : "text-green-600"
-          }`}
-        >
-          {t.status || "Status"}:{" "}
-          {isAnonymous
-            ? t.guest || "Guest (Anonymous)"
-            : t.registered_user || "Registered User"}
-        </p>
-
-        {/* --- LANGUAGE --- */}
-        <h2 className="text-lg font-semibold mt-4 mb-2">
-          {t.language_label || "Language"}
-        </h2>
-        <LanguageToggle lang={lang} setLang={setLang} t={t} />
-
-        {/* --- FONT RESIZER (AAA) - REMOVED UI HERE, NOW IN HEADER --- */}
-        <h2 className="text-lg font-semibold mt-4 mb-2">
-          {t.text_size || "Text Size"}
-        </h2>
-        <div className="flex space-x-2 text-gray-500 text-sm italic">
-          {t.text_size_controlled_by_header ||
-            "Adjust text size using the 1-2-3 buttons in the top banner."}
-        </div>
-        {/* --- END FONT RESIZER --- */}
+        {error && <p className="mt-4 text-red-500 text-sm">Error: {error}</p>}
       </div>
+    );
+  }
+  // --- Render Logic ---
 
-      {authMessage && (
-        <div className="p-3 mb-4 rounded-lg bg-green-100 text-green-700 font-semibold">
-          {authMessage}
-        </div>
-      )}
-
-      <div className="bg-white p-4 rounded-xl shadow-md mb-6 border border-gray-100">
-        {/* --- EMAIL AUTHENTICATION --- */}
-        <h2 className="text-lg font-bold text-gray-800 mb-4">
-          {t.email_auth || "Email Authentication"}
-        </h2>
-
-        {isAnonymous ? (
-          <>
-            <input
-              type="email"
-              placeholder={t.email || "Email"}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:ring-brand-red focus:border-brand-red"
-            />
-            <input
-              type="password"
-              placeholder={t.password || "Password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:ring-brand-red focus:border-brand-red"
-            />
-
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                onClick={() => handleAuthAction("signin")}
-                className="p-3 font-bold text-white rounded-xl bg-brand-red transition-colors hover:bg-red-800"
-              >
-                {t.sign_in || "Sign In"}
-              </button>
-              <button
-                onClick={() => handleAuthAction("signup")}
-                className="p-3 font-bold text-brand-red border border-brand-red rounded-xl transition-colors hover:bg-red-50"
-              >
-                {t.sign_up || "Sign Up"}
-              </button>
-            </div>
-          </>
-        ) : (
+  let PageContent;
+  switch (currentPage.name) {
+    case "Home":
+      PageContent = (
+        <LanguageListPage
+          lang={lang}
+          t={t}
+          onSelectLanguage={handleSelectLanguage}
+          languageGroups={languageGroups}
+          onShowQrForLanguage={handleShowQrForLanguage} // Passed handler
+        />
+      );
+      break;
+    case "MessagesByLanguage":
+      PageContent = (
+        <MessagesByLanguagePage
+          lang={lang}
+          t={t}
+          selectedLanguageKey={currentPage.key}
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+          onSelectMessage={(item) => handleSelectMessage(item, "language")}
+          currentMessageList={currentMessageList}
+          languageGroups={languageGroups}
+        />
+      );
+      break;
+    case "ContentView":
+      PageContent = (
+        <ContentView
+          item={currentItem}
+          lang={lang}
+          t={t}
+          onBack={() => handleNextPrevMessage("prev")}
+          onForward={() => handleNextPrevMessage("next")}
+          hasPrev={canGoPrev}
+          hasNext={canGoNext}
+          userData={userData}
+          saveUserData={saveUserData}
+          onPlay={handlePlayMessage}
+        />
+      );
+      break;
+    case "Search":
+      PageContent = (
+        <SearchPage
+          lang={lang}
+          t={t}
+          onSelect={(item) => handleSelectMessage(item, "search")}
+          searchTerm={searchTerm}
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+        />
+      );
+      break;
+    case "Bookmarks":
+      PageContent = (
+        <BookmarksPage
+          lang={lang}
+          t={t}
+          onSelect={(item) => handleSelectMessage(item, "bookmark")}
+          userData={userData}
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+        />
+      );
+      break;
+    case "Notes":
+      PageContent = (
+        <OtherPage
+          titleKey="notes"
+          t={t}
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+        />
+      );
+      break;
+    case "Settings":
+      PageContent = (
+        <OtherPage
+          titleKey="settings"
+          t={t}
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+        />
+      );
+      break;
+    default:
+      PageContent = (
+        <div className="p-4 pt-8 text-center text-red-500">
+          404: Page not found.
           <button
-            onClick={logOut}
-            // Log Out Button Color Fixed to Red
-            className="w-full p-3 font-bold text-white rounded-xl bg-brand-red transition-colors hover:bg-red-800"
+            onClick={() => setPageStack([{ name: "Home" }])}
+            className="mt-4 p-2 bg-red-100 rounded"
           >
-            {t.log_out || "Log Out"}
+            Go Home
           </button>
-        )}
-      </div>
-    </div>
-  );
-};
+        </div>
+      );
+  }
 
-// Side Drawer Component
-const SideDrawer = ({
-  isOpen,
-  onClose,
-  userId,
-  navigate,
-  t,
-  appUrl,
-  showInstallButton,
-  triggerInstall,
-}) => {
-  const [showQr, setShowQr] = useState(false);
-
-  const navItems = [
-    {
-      key: "home",
-      label: t.contents,
-      icon: Home,
-      action: () => navigate("home"),
-    },
-    {
-      key: "search",
-      label: t.search,
-      icon: Search,
-      action: () => navigate("search"),
-    },
-    {
-      key: "bookmarks",
-      label: t.bookmarks,
-      icon: Bookmark,
-      action: () => navigate("bookmarks"),
-    },
-    {
-      key: "notes",
-      label: t.notes,
-      icon: Pen,
-      action: () => navigate("notes"),
-    },
-    {
-      key: "share",
-      label: t.share_app,
-      icon: Share2,
-      action: () => setShowQr((p) => !p),
-    },
-    {
-      key: "settings",
-      label: t.settings,
-      icon: Settings,
-      action: () => navigate("settings"),
-    },
-    {
-      key: "website",
-      label: "5fish Website",
-      icon: Zap,
-      action: () => window.open("https://5fish.mobi", "_blank"),
-    },
-  ];
-
-  const handleNavigate = (path) => {
-    navigate(path);
-    onClose();
-  };
+  // Determine if the search bar should be fully visible or just an icon
+  const isSearchPage = currentPage.name === "Search";
 
   return (
     <div
-      className={`fixed inset-0 z-40 transform ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
-      } transition-transform duration-300 ease-in-out`}
+      className="min-h-screen bg-gray-100 flex flex-col"
+      style={{ fontSize }}
     >
-      <div
-        className="absolute inset-0 bg-black opacity-50"
-        onClick={onClose}
-      ></div>
-      <div
-        className={`relative w-64 bg-gray-50 h-full shadow-2xl flex flex-col`}
-      >
-        <div
-          className={`p-4 ${PRIMARY_COLOR_CLASS} flex justify-between items-center`}
-        >
-          <h2 className="text-xl font-bold text-white">{t.menu}</h2>
-          <button
-            onClick={onClose}
-            className="text-white p-1 hover:bg-red-800 rounded-full transition-colors"
-          >
-            <X className="w-6 h-6" />
-          </button>
-        </div>
+      {/* --- LANGUAGE QR MODAL --- */}
+      <LanguageQrModal
+        isOpen={isLanguageQrModalOpen}
+        onClose={handleCloseLanguageQrModal}
+        languageDisplayName={modalLanguageName}
+        languageShareUrl={modalLanguageShareUrl}
+        t={t}
+      />
 
-        <nav className="flex-1 overflow-y-auto p-4">
-          {/* Install PWA Button (Hidden by default, shown when ready) */}
-          {showInstallButton && (
-            <button
-              onClick={() => {
-                triggerInstall();
-                onClose();
-              }}
-              className={`flex items-center w-full p-3 rounded-xl text-left font-bold text-white bg-green-600 hover:bg-green-700 transition-colors mb-4`}
-            >
-              <Download className={`w-5 h-5 mr-3 fill-current`} />
-              <span className="font-semibold">
-                {t.install_pwa || "Install App"}
-              </span>
-            </button>
-          )}
-
-          {navItems.map((item) => (
-            <button
-              key={item.key}
-              onClick={() => {
-                item.action();
-                if (item.key !== "share" && item.key !== "website") {
-                  onClose();
-                }
-              }}
-              className={`flex items-center w-full p-3 rounded-xl text-left text-gray-700 hover:bg-gray-200 transition-colors mb-2 ${ACCENT_COLOR_CLASS}`}
-            >
-              {item.icon && (
-                <item.icon className={`w-5 h-5 mr-3 ${ACCENT_COLOR_CLASS}`} />
-              )}
-              <span className="font-semibold">{item.label}</span>
-            </button>
-          ))}
-        </nav>
-
-        <div className="p-4 border-t border-gray-200">
-          {showQr && (
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                {t.qr_code}
-              </h3>
-              <div className="p-2 bg-gray-100 rounded-lg inline-block">
-                <QRCodeDisplay url={appUrl} size={150} fgColor="#000000" />
-              </div>
-            </div>
-          )}
-        </div>
-
-        <footer className="p-4 border-t border-gray-200 text-center text-xs text-gray-500">
-          <p>Powered by 5fish</p>
-          <p>App Version 1.0</p>
-        </footer>
-      </div>
-    </div>
-  );
-};
-
-// --- MAIN APP COMPONENT ---
-export default function App() {
-  const [lang, setLang] = useState(localStorage.getItem("appLang") || "en");
-  const t = i18n[lang] || i18n.en;
-
-  const [page, setPage] = useState("home");
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [selectedLanguageKey, setSelectedLanguageKey] = useState(null); // Key = English name
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [currentTrack, setCurrentTrack] = useState(null);
-  const [isPlayerMinimized, setIsPlayerMinimized] = useState(false);
-
-  // Font size state
-  const [fontSize, setFontSize] = useState(
-    localStorage.getItem("appFontSize") || DEFAULT_FONT_SIZE
-  );
-
-  // PWA Install State
-  const [installPrompt, setInstallPrompt] = useState(null);
-  const [showInstallButton, setShowInstallButton] = useState(false);
-
-  const {
-    isAuthReady,
-    userId,
-    userData,
-    saveUserData,
-    error,
-    signUp,
-    signIn,
-    logOut,
-  } = useFirebase(setLang);
-
-  // --- Data Caching for Navigation ---
-  // Memoize the list of unique language groups (stableKey and display names)
-  const languageGroups = useMemo(() => {
-    const groups = new Map();
-    staticContent.forEach((item) => {
-      const stableKey = item.languageEn ?? "Unknown Language";
-
-      if (!groups.has(stableKey)) {
-        groups.set(stableKey, {
-          repItem: item, // Store a representative item
-          messages: [],
-        });
-      }
-      groups.get(stableKey).messages.push(item);
-    });
-
-    // Convert map to array of objects for easier sorting/mapping
-    return Array.from(groups.values())
-      .map((group) => {
-        const languageDisplayNameEn =
-          group.repItem.languageEn ?? "Unknown Language";
-        const languageDisplayNameTh =
-          group.repItem.langTh ?? languageDisplayNameEn; // Fallback to Eng
-        return {
-          stableKey: languageDisplayNameEn, // English name is the key
-          displayNameEn: languageDisplayNameEn,
-          displayNameTh: languageDisplayNameTh,
-          count: group.messages.length,
-        };
-      })
-      .sort((a, b) =>
-        (lang === "en" ? a.displayNameEn : a.displayNameTh).localeCompare(
-          lang === "en" ? b.displayNameEn : b.displayNameTh
-        )
-      );
-  }, [lang]); // Re-sorts when language changes
-
-  // Memoize the list of messages for the currently selected language
-  const currentMessageList = useMemo(() => {
-    if (!selectedLanguageKey) return [];
-
-    return staticContent
-      .filter((item) => {
-        const currentLangNameEn = item.languageEn ?? "Unknown Language";
-        return currentLangNameEn === selectedLanguageKey;
-      })
-      .sort((a, b) => {
-        const titleA = (lang === "en" ? a.title_en : a.title_th) ?? "";
-        const titleB = (lang === "en" ? b.title_en : b.title_th) ?? "";
-        return titleA.localeCompare(titleB);
-      });
-  }, [lang, selectedLanguageKey]);
-  // --- End Data Caching ---
-
-  // Navigation function for Pages (home, search, settings, etc.)
-  const navigate = (path, item = null) => {
-    setPage(path);
-    setSelectedItem(item);
-  };
-
-  // Navigation function to drill into a language
-  const handleSelectLanguage = (languageKey) => {
-    setSelectedLanguageKey(languageKey);
-    setPage("languageMessages");
-  };
-
-  // Navigation function to go back to the language list
-  const handleBackToLanguages = () => {
-    setPage("home");
-    setSelectedLanguageKey(null);
-  };
-
-  // Navigation function to view a message detail
-  const handleSelectMessage = (item) => {
-    navigate("detail", item);
-  };
-
-  // --- PWA INSTALL EFFECTS ---
-  useEffect(() => {
-    const handler = (e) => {
-      e.preventDefault();
-      setInstallPrompt(e);
-      setShowInstallButton(true);
-    };
-    window.addEventListener("beforeinstallprompt", handler);
-    return () => window.removeEventListener("beforeinstallprompt", handler);
-  }, []);
-
-  const triggerInstall = async () => {
-    if (!installPrompt) return;
-    installPrompt.prompt();
-    const { outcome } = await installPrompt.userChoice;
-    if (outcome === "accepted")
-      console.log("User accepted the install prompt.");
-    else console.log("User dismissed the install prompt.");
-    setInstallPrompt(null);
-    setShowInstallButton(false);
-  };
-  // --- END PWA INSTALL EFFECTS ---
-
-  // EFFECT: Checks URL for shared card ID on mount
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const cardId = urlParams.get("card");
-    const shareLang = urlParams.get("lang");
-
-    if (cardId) {
-      const item = staticContent.find((i) => i.id === parseInt(cardId));
-      if (item) {
-        // Find the language key for this item to set context
-        setSelectedLanguageKey(item.languageEn ?? "Unknown Language");
-        navigate("detail", item);
-        if (shareLang && (shareLang === "en" || shareLang === "th")) {
-          setLang(shareLang);
-        }
-      }
-    }
-  }, [setLang]);
-
-  // EFFECT: Apply font size to the root HTML element
-  useEffect(() => {
-    document.documentElement.style.fontSize = fontSize;
-  }, [fontSize]);
-
-  // Handler for playing audio
-  const handlePlayTrack = (item) => {
-    console.log("Setting track to play:", item.trackDownloadUrl);
-    setCurrentTrack(item);
-    setIsPlayerMinimized(false); // Show player when a new track is selected
-  };
-
-  // Handler to toggle player minimization
-  const toggleMinimize = () => {
-    setIsPlayerMinimized((p) => !p);
-  };
-
-  // --- Smart Navigation Handlers ---
-
-  // For Language List Page
-  const handleNavLanguage = (direction) => {
-    const currentIndex = languageGroups.findIndex(
-      (g) => g.stableKey === selectedLanguageKey
-    );
-    const newIndex = currentIndex + direction;
-    if (newIndex >= 0 && newIndex < languageGroups.length) {
-      setSelectedLanguageKey(languageGroups[newIndex].stableKey);
-    }
-  };
-
-  // For Message Detail Page
-  const handleNavMessage = (direction) => {
-    const currentIndex = currentMessageList.findIndex(
-      (item) => item.id === selectedItem.id
-    );
-    const newIndex = currentIndex + direction;
-    if (newIndex >= 0 && newIndex < currentMessageList.length) {
-      setSelectedItem(currentMessageList[newIndex]);
-    }
-  };
-
-  const renderContent = () => {
-    if (!isAuthReady) {
-      return (
-        <div className="p-8 text-center text-gray-600">
-          {t.loading_auth || "Loading authentication..."}
-        </div>
-      );
-    }
-
-    if (error) {
-      return (
-        <div className="p-8 text-center text-red-600 font-bold">
-          {t.error || "Error"}: {error}
-        </div>
-      );
-    }
-
-    switch (page) {
-      case "detail":
-        const currentMessageIndex = currentMessageList.findIndex(
-          (item) => item.id === selectedItem.id
-        );
-        return (
-          <ContentView
-            item={selectedItem}
-            lang={lang}
-            t={t}
-            // Go back to the message list
-            onBack={() => setPage("languageMessages")}
-            // Smart navigation for prev/next message
-            onForward={() => handleNavMessage(1)}
-            hasPrev={currentMessageIndex > 0}
-            hasNext={currentMessageIndex < currentMessageList.length - 1}
-            userData={userData}
-            saveUserData={saveUserData}
-            onPlay={handlePlayTrack}
-          />
-        );
-
-      case "languageMessages":
-        const currentLangIndex = languageGroups.findIndex(
-          (g) => g.stableKey === selectedLanguageKey
-        );
-        return (
-          <MessagesByLanguagePage
-            lang={lang}
-            t={t}
-            selectedLanguageKey={selectedLanguageKey} // Pass the stable key
-            currentMessageList={currentMessageList} // Pass the pre-filtered messages
-            languageGroups={languageGroups} // Pass the language groups for the header
-            // Go back to language list
-            onBack={() => handleBackToLanguages()}
-            // Smart navigation for prev/next language
-            onForward={() => handleNavLanguage(1)}
-            hasPrev={currentLangIndex > 0}
-            hasNext={currentLangIndex < languageGroups.length - 1}
-            onSelectMessage={handleSelectMessage}
-          />
-        );
-
-      case "search":
-        return <SearchPage lang={lang} t={t} onSelect={handleSelectMessage} />;
-
-      case "bookmarks":
-        return (
-          <BookmarksPage
-            lang={lang}
-            t={t}
-            onSelect={handleSelectMessage}
-            userData={userData}
-          />
-        );
-
-      case "notes":
-        return (
-          <div className="p-4 pt-8 text-center text-gray-500">
-            <h1 className="text-2xl font-bold mb-4">{t.notes}</h1>
-            <p>{t.notes_page_tip || "This page is ready to be built!"}</p>
-          </div>
-        );
-
-      case "settings":
-        return (
-          <SettingsPage
-            lang={lang}
-            t={t}
-            setLang={setLang}
-            userId={userId}
-            logOut={logOut}
-            signUp={signUp}
-            signIn={signIn}
-            fontSize={fontSize}
-            setFontSize={setFontSize}
-          />
-        );
-
-      case "home":
-      default:
-        // Home now renders the list of languages
-        return (
-          <LanguageListPage
-            lang={lang}
-            t={t}
-            onSelectLanguage={handleSelectLanguage}
-            languageGroups={languageGroups} // Pass pre-calculated groups
-          />
-        );
-    }
-  };
-
-  return (
-    // Main container with responsive sizing (max-w-md -> max-w-5xl)
-    <div className="max-w-md mx-auto h-screen flex flex-col bg-gray-100 shadow-xl overflow-hidden md:max-w-3xl lg:max-w-5xl">
-      // Red Banner Header with Responsive Padding
+      {/* --- HEADER (Banner) --- */}
       <header
         className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
       >
-        {/* Navigation Button */}
+        {/* 1. Navigation Button (Left) */}
         <button
           onClick={() => setIsDrawerOpen(true)}
-          className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
+          className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors flex-shrink-0"
         >
           <Menu className="w-7 h-7" />
         </button>
 
-        {/* --- Logo Image (Responsive and Rounded) --- */}
-        <div className="flex items-center mx-auto md:mx-0 md:mr-auto">
+        {/* 2. Logo and Search Bar (Center) */}
+        <div className="flex items-center w-full max-w-lg mx-3 md:mx-6">
+          {/* Logo Image (White background, Responsive, Rounded) */}
           <img
             src={AppLogo}
             alt={t.app_name}
-            className="h-8 md:h-10 w-auto rounded-md shadow-sm mr-4"
+            // Added bg-white, p-1, and rounded-md for the desired style
+            className="h-8 md:h-10 w-auto rounded-md shadow-sm mr-4 bg-white p-1 flex-shrink-0"
           />
-          <h1 className="text-xl font-bold text-white tracking-wide truncate md:text-2xl hidden md:block">
-            {t.app_name}
-          </h1>
+
+          {/* Search Input (Takes up most of the space) */}
+          <div className="relative w-full">
+            {/* Search Input Field */}
+            <input
+              type="text"
+              placeholder={
+                t.search_placeholder || "Search languages or messages..."
+              }
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                if (currentPage.name !== "Search" && e.target.value) {
+                  navigateTo("Search"); // Auto-navigate to Search page if typing starts
+                } else if (isSearchPage && !e.target.value) {
+                  // Optionally navigate back to home if search is cleared on the search page
+                  // navigateTo('Home');
+                }
+              }}
+              className="w-full p-2 pl-10 text-gray-800 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-red-300 transition duration-150"
+            />
+            {/* Search Icon inside the input field */}
+            <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+
+            {/* Clear Button */}
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm("")}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 text-gray-500 hover:text-gray-800"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
         </div>
 
-        {/* Right side controls: 1/2/3 buttons and Language Toggle */}
-        <div className="flex items-center space-x-3 md:space-x-4">
+        {/* 3. Controls (Right) */}
+        <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
           <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
           <LanguageToggle lang={lang} setLang={setLang} t={t} />
         </div>
       </header>
-      <main className="flex-1 overflow-y-auto">{renderContent()}</main>
+
+      {/* --- MAIN CONTENT AREA --- */}
+      <main className="flex-grow overflow-y-auto pb-20">{PageContent}</main>
+
+      {/* --- AUDIO PLAYER --- */}
       <AudioPlayer
-        track={currentTrack}
-        isMinimized={isPlayerMinimized}
-        toggleMinimize={toggleMinimize}
-        t={t} // Pass translation object to AudioPlayer
-      />
-      <SideDrawer
-        isOpen={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
-        userId={userId}
-        navigate={navigate}
+        track={track}
+        isMinimized={isAudioMinimized}
+        toggleMinimize={toggleAudioMinimize}
         t={t}
-        appUrl={window.location.href}
-        // Pass PWA Install props
-        showInstallButton={showInstallButton}
-        triggerInstall={triggerInstall}
       />
+
+      {/* --- NAVIGATION DRAWER (Sidebar) --- */}
+      <div
+        className={`fixed inset-0 z-40 transition-opacity duration-300 ${
+          isDrawerOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Overlay (Click to close) */}
+        <div
+          className="absolute inset-0 bg-black bg-opacity-50"
+          onClick={() => setIsDrawerOpen(false)}
+        ></div>
+
+        {/* Drawer Content */}
+        <div
+          className={`absolute left-0 top-0 w-72 h-full bg-white shadow-2xl transition-transform duration-300 transform ${
+            isDrawerOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <div
+            className={`${PRIMARY_COLOR_CLASS} p-4 flex justify-between items-center rounded-r-xl`}
+          >
+            <h2 className="text-xl font-bold text-white">{t.app_name}</h2>
+            <button
+              onClick={() => setIsDrawerOpen(false)}
+              className="text-white p-1 hover:bg-red-800 rounded-full"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          <nav className="p-4 space-y-2">
+            {/* Navigation Items */}
+            {[
+              { name: "Home", icon: Home, target: "Home" },
+              { name: "Search", icon: Search, target: "Search" },
+              { name: "Bookmarks", icon: Bookmark, target: "Bookmarks" },
+              { name: "Notes", icon: Pen, target: "Notes" },
+              { name: "Settings", icon: Settings, target: "Settings" },
+            ].map((item) => (
+              <button
+                key={item.name}
+                onClick={() => navigateTo(item.target)}
+                className={`w-full flex items-center p-3 rounded-lg font-semibold transition-colors ${
+                  currentPage.name === item.target
+                    ? `${ACCENT_COLOR_CLASS} bg-red-100`
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                <item.icon className="w-6 h-6 mr-3" />
+                {t[item.name.toLowerCase()]}
+              </button>
+            ))}
+          </nav>
+        </div>
+      </div>
     </div>
   );
 }
+// *** NOTE: The original version of this file had extraneous ReactDOM.createRoot calls at the end. ***
+// *** Please ensure those lines have been removed from your local file to resolve the duplicate root warning. ***

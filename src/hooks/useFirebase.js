@@ -2,9 +2,9 @@ import { useState, useEffect, useCallback } from "react";
 import {
   signInAnonymously,
   onAuthStateChanged,
-  createUserWithEmailAndPassword, // New Import
-  signInWithEmailAndPassword, // New Import
-  signOut, // New Import
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { doc, setDoc, onSnapshot } from "firebase/firestore";
 import { auth, db } from "../firebaseConfig";
@@ -14,6 +14,7 @@ import { i18n } from "../i18n";
 export function useFirebase(setLang) {
   const [userId, setUserId] = useState(null);
   const [isAuthReady, setIsAuthReady] = useState(false);
+  // Initial state is safe: bookmarks: []
   const [userData, setUserData] = useState({ bookmarks: [], notes: [] });
   const [error, setError] = useState(null);
 
@@ -58,6 +59,7 @@ export function useFirebase(setLang) {
       (docSnap) => {
         if (docSnap.exists()) {
           const data = docSnap.data();
+          // This ensures that bookmarks and notes are arrays, even if the data returned null/undefined
           setUserData({
             bookmarks: data.bookmarks || [],
             notes: data.notes || [],
@@ -77,8 +79,9 @@ export function useFirebase(setLang) {
       }
     );
 
+    // Added setLang to dependency array for cleaner React usage, though not critical for the bug.
     return () => unsubscribe();
-  }, [isAuthReady, userId]);
+  }, [isAuthReady, userId, setLang]);
 
   // 3. Data Setter
   const saveUserData = useCallback(
