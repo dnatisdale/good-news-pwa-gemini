@@ -25,6 +25,7 @@ import QRCodeDisplay from "./components/QRCodeDisplay";
 
 // NEW: Import the Banner Logo
 import AppLogo from "./assets/banner-logo.svg";
+// NOTE: We don't need to explicitly import 'square-logo.svg' until we use it later (e.g., in a settings page).
 
 // --- CONSTANTS ---
 // PWA Custom Colors
@@ -1385,7 +1386,6 @@ export default function App() {
   return (
     // Main container with responsive sizing (max-w-md -> max-w-5xl)
     <div className="max-w-md mx-auto h-screen flex flex-col bg-gray-100 shadow-xl overflow-hidden md:max-w-3xl lg:max-w-5xl">
-      {/* Red Banner Header with Responsive Padding */}
       // Red Banner Header with Responsive Padding
       <header
         className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
