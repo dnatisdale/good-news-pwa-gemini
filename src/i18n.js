@@ -72,6 +72,9 @@ export const i18n = {
     notes_feature_tip:
       "Notes feature coming soon! You can view all saved notes on the Notes page.",
     notes_page_tip: "This page is ready to be built!",
+    select_message_to_listen: "Select a message to listen to.", // CHANGED
+    tap_to_enlarge: "Tap to enlarge", // NEW
+    tap_to_shrink: "Tap to shrink", // NEW
   },
 
   // --- THAI TRANSLATIONS ---
@@ -146,5 +149,8 @@ export const i18n = {
     notes_feature_tip:
       "คุณสมบัติบันทึกจะมาเร็ว ๆ นี้! คุณสามารถดูบันทึกที่บันทึกไว้ทั้งหมดได้ที่หน้าบันทึก",
     notes_page_tip: "หน้านี้พร้อมให้สร้างแล้ว!",
+    select_message_to_listen: "เลือกข้อความที่จะฟัง", // NEW Thai translation for the player
+    tap_to_enlarge: "แตะเพื่อขยาย", // NEW Thai translation
+    tap_to_shrink: "แตะเพื่อย่อ", // NEW Thai translation
   },
 };

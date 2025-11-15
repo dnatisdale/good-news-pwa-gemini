@@ -13,6 +13,7 @@ import {
   Menu,
   X,
   ChevronLeft,
+  ChevronRight, // NEW: Import ChevronRight for Forward button
   Share2,
   Zap,
   Download,
@@ -22,9 +23,14 @@ import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
 
 // --- CONSTANTS ---
-const PRIMARY_COLOR = "bg-brand-red";
-const ACCENT_COLOR = "text-brand-red";
-const TEXT_COLOR = "text-gray-800";
+// PWA Custom Colors
+const THAI_RED = "#A51931";
+const THAI_BLUE = "#2D2A4A";
+
+// Tailwind Class Mapping (using inline styles for new colors where needed)
+const PRIMARY_COLOR_CLASS = "bg-brand-red"; // Assuming this maps to THAI_RED
+const ACCENT_COLOR_CLASS = "text-brand-red"; // Assuming this maps to THAI_RED
+const TEXT_COLOR_CLASS = "text-gray-800";
 const DEFAULT_FONT_SIZE = "16px"; // Medium
 
 // Helper for share fallback
@@ -38,11 +44,11 @@ const copyLink = (text, callback) => {
 // --- Reusable Components ---
 
 // Audio Player Component
-const AudioPlayer = ({ track, isMinimized, toggleMinimize }) => {
+const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
   if (!track || !track.trackDownloadUrl) {
     return (
       <div className="sticky bottom-0 w-full p-3 bg-gray-200 text-center text-sm text-gray-600">
-        Select a message to listen.
+        {t.select_message_to_listen || "Select a message to listen to."}
       </div>
     );
   }
@@ -61,8 +67,10 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize }) => {
         <PlayCircle className="w-5 h-5 text-white mr-2 flex-shrink-0" />
         <p className="text-sm font-bold text-white truncate">
           {isMinimized
-            ? "Playing: " + (track.title_en ?? "Unknown Title")
-            : "Controls"}
+            ? (t.playing || "Playing") +
+              ": " +
+              (track.title_en ?? "Unknown Title")
+            : t.controls || "Controls"}
         </p>
         <ChevronLeft
           className={`w-5 h-5 text-white ml-auto transition-transform ${
@@ -91,10 +99,12 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize }) => {
 const LanguageCard = ({ languageName, lang, onSelect, messageCount }) => {
   return (
     <div
-      className="bg-white p-4 mb-4 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer transition-transform hover:shadow-lg hover:scale-[1.01]"
+      className={`bg-white p-4 mb-4 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer transition-transform hover:shadow-lg hover:scale-[1.01]`}
       onClick={() => onSelect(languageName)}
     >
-      <h3 className={`text-2xl font-bold ${ACCENT_COLOR}`}>{languageName}</h3>
+      <h3 className={`text-2xl font-bold ${ACCENT_COLOR_CLASS}`}>
+        {languageName}
+      </h3>
       <p className={`text-sm text-gray-500 mt-1`}>
         {lang === "en" ? "Tap to view" : "แตะเพื่อดู"} ({messageCount}{" "}
         {lang === "en" ? "messages" : "ข้อความ"})
@@ -115,18 +125,18 @@ const ContentCard = ({ item, lang, onSelect, showLanguageName = true }) => {
 
   return (
     <div
-      className="bg-white p-4 mb-4 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer transition-transform hover:shadow-lg hover:border-brand-red"
+      className={`bg-white p-4 mb-4 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer transition-transform hover:shadow-lg hover:border-brand-red`}
       onClick={() => onSelect(item)}
     >
       {/* Language Name (Only shown if required, e.g., on Search/Bookmarks) */}
       {showLanguageName && (
-        <p className={`text-base font-semibold ${ACCENT_COLOR} mb-1`}>
+        <p className={`text-base font-semibold ${ACCENT_COLOR_CLASS} mb-1`}>
           {languageDisplayName}
         </p>
       )}
       {/* Message Title (Primary focus on this card) */}
       <h3
-        className={`text-lg font-bold ${TEXT_COLOR} ${
+        className={`text-lg font-bold ${TEXT_COLOR_CLASS} ${
           showLanguageName ? "" : "mt-1"
         }`}
       >
@@ -138,7 +148,7 @@ const ContentCard = ({ item, lang, onSelect, showLanguageName = true }) => {
   );
 };
 
-// Language Toggle Component
+// Language Toggle Component (UPDATED: Letter changed to A, alignment adjusted)
 const LanguageToggle = ({ lang, setLang, t }) => {
   const toggleLang = () => {
     const newLang = lang === "en" ? "th" : "en";
@@ -148,19 +158,65 @@ const LanguageToggle = ({ lang, setLang, t }) => {
 
   return (
     <div className="flex items-center space-x-2">
-      <span className="text-sm font-semibold text-white">
-        {t.language_label || "Language"}:
-      </span>
       <button
         onClick={toggleLang}
-        className={`p-2 rounded-lg font-bold transition-colors shadow-sm text-brand-red bg-white hover:bg-gray-200`}
+        // Centered text with slight padding adjustment for lift
+        className={`w-10 h-10 p-1 rounded-lg font-bold transition-colors shadow-sm text-brand-red bg-white hover:bg-gray-200 text-lg flex items-center justify-center`}
       >
-        {lang === "en" ? "ไทย" : "English"}
+        {lang === "en" ? "ก" : "A"}
       </button>
     </div>
   );
 };
 
+// Font Size Buttons (UPDATED: 1/2/3 labels, rounded rectangles, closer together)
+// Font Size Buttons
+const FontSizeButtons = ({ fontSize, setFontSize }) => {
+  const handleFontSize = (size) => {
+    setFontSize(size);
+    localStorage.setItem("appFontSize", size);
+  };
+
+  // Style for unselected buttons (THAI_BLUE)
+  const unselectedStyle = { backgroundColor: THAI_BLUE, color: "#ffffff" };
+  // Style for selected button (White background, THAI_RED text)
+  const selectedStyle = { backgroundColor: "#ffffff", color: THAI_RED };
+
+  // Base class for all buttons (thinner rectangle, rounded corners)
+  const baseClass = `p-1 rounded-md font-bold transition-colors shadow-sm text-center flex items-center justify-center`;
+
+  return (
+    // Adjusted spacing from negative margin to slight positive space-x-1
+    <div className="flex items-center space-x-1">
+      {/* Size 1 (Wider and shorter) */}
+      <button
+        onClick={() => handleFontSize("14px")}
+        className={`${baseClass} w-6 h-5 text-xs z-10`}
+        style={fontSize === "14px" ? selectedStyle : unselectedStyle}
+      >
+        1
+      </button>
+      {/* Size 2 (Bigger overall size and text) */}
+      <button
+        onClick={() => handleFontSize("16px")}
+        // Bumped text size from text-sm to text-base, slightly larger button dims
+        className={`${baseClass} w-7 h-6 text-base z-20`}
+        style={fontSize === "16px" ? selectedStyle : unselectedStyle}
+      >
+        2
+      </button>
+      {/* Size 3 (Largest overall size and text) */}
+      <button
+        onClick={() => handleFontSize("20px")}
+        // Bumped text size from text-base to text-xl, noticeably larger button dims
+        className={`${baseClass} w-8 h-7 text-xl z-30`}
+        style={fontSize === "20px" ? selectedStyle : unselectedStyle}
+      >
+        3
+      </button>
+    </div>
+  );
+};
 // --- Share Card Print View Component ---
 const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
   const title =
@@ -219,9 +275,10 @@ const ContentView = ({
   saveUserData,
   onPlay,
 }) => {
+  const [isQrLarge, setIsQrLarge] = useState(false);
+
   const isBookmarked = userData.bookmarks.includes(item.id);
   const cardUrl = `https://5fi.sh/T${item.id}`;
-  // FIX: Using robust check and the correct langTh field
   const languageDisplay =
     lang === "en" ? item.languageEn ?? "" : item.langTh ?? "";
   const titleDisplay =
@@ -310,18 +367,43 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
     }
   };
 
+  // Forward button action
+  const handleForward = () => {
+    window.history.forward();
+  };
+
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <button
-        onClick={onBack}
-        className={`text-sm font-semibold mb-4 flex items-center ${ACCENT_COLOR} hover:text-red-700 transition-colors`}
-      >
-        <ChevronLeft className="w-5 h-5 mr-1" />
-        {t.back || "Back"}
-      </button>
+      {/* Back and Forward Controls */}
+      <div className="flex justify-between items-center mb-4">
+        <button
+          onClick={onBack}
+          className={`text-sm font-semibold flex items-center ${ACCENT_COLOR_CLASS} hover:text-red-700 transition-colors`}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        <button
+          onClick={handleForward}
+          // Simple logic: if there is history, make it active (green), otherwise inactive (gray)
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            window.history.state &&
+            window.history.state.idx < window.history.length - 1
+              ? "text-green-600 hover:text-green-700"
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={
+            !window.history.state ||
+            window.history.state.idx >= window.history.length - 1
+          }
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
+      </div>
 
       {/* Language Name (Thai Flag Red - Largest) */}
-      <h1 className={`text-4xl font-extrabold mb-2 ${ACCENT_COLOR}`}>
+      <h1 className={`text-4xl font-extrabold mb-2 ${ACCENT_COLOR_CLASS}`}>
         {languageDisplay}
       </h1>
 
@@ -341,28 +423,44 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
         </button>
       </div>
 
-      <div className="bg-gray-50 p-6 rounded-xl shadow-inner mb-6">
-        {/* Line spacing adjusted with leading-normal */}
-        <p className="text-xl leading-normal text-gray-700 whitespace-pre-line">
-          {verseDisplay}
-        </p>
-      </div>
-
       {/* --- LISTEN BUTTON (Thai Flag Blue) --- */}
       {item.trackDownloadUrl && (
         <button
           onClick={() => onPlay(item)}
-          className="w-full p-4 mb-6 font-bold text-white text-lg rounded-xl bg-blue-800 transition-colors hover:bg-blue-900 shadow-lg flex items-center justify-center"
+          // Using THAI_BLUE for button background
+          style={{ backgroundColor: THAI_BLUE }}
+          className="w-full p-4 mb-6 font-bold text-white text-lg rounded-xl transition-colors hover:opacity-90 shadow-lg flex items-center justify-center"
         >
           <PlayCircle className="w-6 h-6 mr-2" />
           {t.listen_offline || "Listen (Offline Enabled)"}
         </button>
       )}
 
+      {/* --- QR CODE DISPLAY (Small and Expandable) --- */}
+      <div
+        className="flex flex-col items-center p-4 bg-white rounded-xl shadow-inner mb-6 cursor-pointer transition-all duration-300"
+        onClick={() => setIsQrLarge((p) => !p)} // Toggle size on click
+        style={{
+          maxWidth: isQrLarge ? "100%" : "150px", // Full width or fixed width
+          margin: "0 auto 1.5rem auto", // Center the container
+        }}
+      >
+        <div className="p-2 bg-gray-50 rounded-lg">
+          <QRCodeDisplay
+            url={cardUrl}
+            // Control the size based on state
+            size={isQrLarge ? 250 : 100}
+            fgColor="#000000"
+          />
+        </div>
+        <p className="text-xs text-gray-500 mt-2 text-center">
+          {isQrLarge
+            ? t.tap_to_shrink || "Tap to shrink"
+            : t.tap_to_enlarge || "Tap to enlarge"}
+        </p>
+      </div>
+
       {/* --- SHARE / EXPORT SECTION (Thai Flag Red Buttons) --- */}
-      <h2 className="text-lg font-bold mb-3 mt-6 text-gray-800">
-        {t.share_this_message || "Share This Message"}
-      </h2>
       <div className="grid grid-cols-2 gap-3 mb-6">
         {/* Share/Copy - Solid Red */}
         <button
@@ -382,15 +480,14 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
         </button>
       </div>
 
-      <div className="flex flex-col items-center p-4 bg-white rounded-xl shadow-inner">
-        <p className="text-sm text-gray-600 mb-2">
-          {t.in_app_qr_tip || "In-app QR code (download above for print-ready)"}
+      {/* --- NEW: BIBLE VERSE (Moved below buttons) --- */}
+      <div className="bg-gray-50 p-6 rounded-xl shadow-inner mb-6">
+        <p className="text-xl leading-normal text-gray-700 whitespace-pre-line">
+          {verseDisplay}
         </p>
-        <div className="p-2 bg-gray-50 rounded-lg">
-          <QRCodeDisplay url={cardUrl} size={150} fgColor="#000000" />
-        </div>
       </div>
 
+      {/* --- NOTES SECTION --- */}
       <div className="p-4 bg-red-50 border-l-4 border-brand-red rounded-lg mt-6">
         <h2 className="text-lg font-semibold text-gray-700">
           {t.my_notes || "My Notes"}
@@ -406,31 +503,29 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
 
 // New Page: Language List Page
 const LanguageListPage = ({ lang, t, onSelectLanguage }) => {
-  // New state for search term on the home page
   const [searchTerm, setSearchTerm] = useState("");
 
-  // 1. Group content by language name (using the correct language property and robust checks)
+  // 1. Group content by language name (FIXED LOGIC FOR ROBUST LANGUAGE IDENTIFICATION)
   const languageGroups = useMemo(() => {
     const groups = new Map();
     staticContent.forEach((item) => {
-      // CRITICAL FIX: Use item.langTh for Thai name if available
-      const languageKey =
-        (lang === "en" ? item.languageEn : item.langTh) ??
-        (lang === "en" ? "Unknown Language" : "ไม่ทราบภาษา");
+      // Use item.languageEn as the stable key for grouping, but display the correct language name
+      const stableKey = item.languageEn ?? "Unknown Language";
+      const languageDisplayName =
+        (lang === "en" ? item.languageEn : item.langTh) ?? stableKey; // Display preferred lang, fallback to English
 
-      if (!groups.has(languageKey)) {
-        groups.set(languageKey, []);
+      if (!groups.has(stableKey)) {
+        groups.set(stableKey, {
+          languageName: languageDisplayName,
+          messages: [],
+        });
       }
-      groups.get(languageKey).push(item);
+      groups.get(stableKey).messages.push(item);
     });
 
     // Convert map to array of objects for easier sorting/mapping
-    let sortedGroups = Array.from(groups.entries())
-      .map(([languageName, messages]) => ({
-        languageName,
-        messages,
-        count: messages.length,
-      }))
+    let sortedGroups = Array.from(groups.values())
+      .map((group) => ({ ...group, count: group.messages.length }))
       .sort((a, b) => a.languageName.localeCompare(b.languageName));
 
     // 2. Filter groups based on search term (real-time filtering)
@@ -456,20 +551,21 @@ const LanguageListPage = ({ lang, t, onSelectLanguage }) => {
           className="w-full p-3 pl-10 border-2 border-brand-red rounded-xl shadow-md focus:ring-brand-red focus:border-brand-red transition-all"
         />
         <Search
-          className={`w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 ${ACCENT_COLOR}`}
+          className={`w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 ${ACCENT_COLOR_CLASS}`}
         />
       </div>
 
-      <h1 className="text-xl font-bold text-gray-800 mb-4">
-        {languageGroups.length} {t.languages || "Languages"}
-      </h1>
+      {/* Language count removed as requested */}
+      <div className="h-2"></div>
 
+      {/* Pass languageName for display, but use stableKey to filter messages later */}
       {languageGroups.map((group) => (
         <LanguageCard
           key={group.languageName}
+          // Use the language name that was successfully grouped (Buguo or the Thai name)
           languageName={group.languageName}
           lang={lang}
-          onSelect={onSelectLanguage}
+          onSelect={() => onSelectLanguage(group.languageName)}
           messageCount={group.count}
         />
       ))}
@@ -486,14 +582,19 @@ const MessagesByLanguagePage = ({
   onBack,
   onSelectMessage,
 }) => {
+  // FIX: Using robust filtering that works in both languages
   const filteredContent = useMemo(() => {
     return staticContent
       .filter((item) => {
-        // Robust check for language name comparison
-        const currentLangName =
-          (lang === "en" ? item.languageEn : item.langTh) ??
-          (lang === "en" ? "Unknown Language" : "ไม่ทราบภาษา");
-        return currentLangName === selectedLanguage;
+        // Check against both English and Thai names, in case one is missing
+        const currentLangNameEn = item.languageEn ?? "Unknown Language";
+        const currentLangNameTh = item.langTh ?? currentLangNameEn; // Fallback to English name if Thai is missing
+
+        // The selectedLanguage will be the name displayed in the current UI lang
+        return (
+          selectedLanguage === currentLangNameEn ||
+          selectedLanguage === currentLangNameTh
+        );
       })
       .sort((a, b) => {
         // Sort messages by title alphabetically (robust check)
@@ -503,17 +604,43 @@ const MessagesByLanguagePage = ({
       });
   }, [lang, selectedLanguage]);
 
+  // Forward button action
+  const handleForward = () => {
+    window.history.forward();
+  };
+
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <button
-        onClick={onBack}
-        className={`text-sm font-semibold mb-4 flex items-center ${ACCENT_COLOR} hover:text-red-700 transition-colors`}
-      >
-        <ChevronLeft className="w-5 h-5 mr-1" />
-        {t.back_to_languages || "Back to Languages"}
-      </button>
+      {/* Back and Forward Controls */}
+      <div className="flex justify-between items-center mb-4">
+        <button
+          onClick={onBack}
+          className={`text-sm font-semibold flex items-center ${ACCENT_COLOR_CLASS} hover:text-red-700 transition-colors`}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        <button
+          onClick={handleForward}
+          // Simple logic: if there is history, make it active (green), otherwise inactive (gray)
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            window.history.state &&
+            window.history.state.idx < window.history.length - 1
+              ? "text-green-600 hover:text-green-700"
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={
+            !window.history.state ||
+            window.history.state.idx >= window.history.length - 1
+          }
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
+      </div>
+
       {/* Language Title - Red, emphasized */}
-      <h1 className={`text-2xl font-bold mb-2 ${ACCENT_COLOR}`}>
+      <h1 className={`text-2xl font-bold mb-2 ${ACCENT_COLOR_CLASS}`}>
         {selectedLanguage}
       </h1>
       <p className="text-sm text-gray-500 mb-6 font-semibold">
@@ -609,7 +736,7 @@ const SearchPage = ({ lang, t, onSelect }) => {
             className="w-full p-3 pl-10 border border-gray-300 rounded-xl shadow-md focus:ring-brand-red focus:border-brand-red transition-all"
           />
           <Search
-            className={`w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 ${ACCENT_COLOR}`}
+            className={`w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 ${ACCENT_COLOR_CLASS}`}
           />
         </div>
       </div>
@@ -698,6 +825,8 @@ const SettingsPage = ({
     setTimeout(() => setAuthMessage(null), 5000);
   };
 
+  // NOTE: The font size controls are now handled via the buttons in the main header
+  // I am keeping the logic in this component for consistency, but removing the UI rendering here
   const handleFontSize = (size) => {
     setFontSize(size);
     localStorage.setItem("appFontSize", size);
@@ -735,41 +864,13 @@ const SettingsPage = ({
         </h2>
         <LanguageToggle lang={lang} setLang={setLang} t={t} />
 
-        {/* --- FONT RESIZER (AAA) --- */}
+        {/* --- FONT RESIZER (AAA) - REMOVED UI HERE, NOW IN HEADER --- */}
         <h2 className="text-lg font-semibold mt-4 mb-2">
           {t.text_size || "Text Size"}
         </h2>
-        <div className="flex space-x-2">
-          <button
-            onClick={() => handleFontSize("14px")}
-            className={`p-2 rounded-lg font-bold text-sm ${
-              fontSize === "14px"
-                ? "bg-brand-red text-white"
-                : "bg-gray-200 text-gray-600"
-            }`}
-          >
-            A
-          </button>
-          <button
-            onClick={() => handleFontSize("16px")}
-            className={`p-2 rounded-lg font-bold text-base ${
-              fontSize === "16px"
-                ? "bg-brand-red text-white"
-                : "bg-gray-200 text-gray-600"
-            }`}
-          >
-            A
-          </button>
-          <button
-            onClick={() => handleFontSize("20px")}
-            className={`p-2 rounded-lg font-bold text-xl ${
-              fontSize === "20px"
-                ? "bg-brand-red text-white"
-                : "bg-gray-200 text-gray-600"
-            }`}
-          >
-            A
-          </button>
+        <div className="flex space-x-2 text-gray-500 text-sm italic">
+          {t.text_size_controlled_by_header ||
+            "Adjust text size using the 1-2-3 buttons in the top banner."}
         </div>
         {/* --- END FONT RESIZER --- */}
       </div>
@@ -909,7 +1010,7 @@ const SideDrawer = ({
         className={`relative w-64 bg-gray-50 h-full shadow-2xl flex flex-col`}
       >
         <div
-          className={`p-4 ${PRIMARY_COLOR} flex justify-between items-center`}
+          className={`p-4 ${PRIMARY_COLOR_CLASS} flex justify-between items-center`}
         >
           <h2 className="text-xl font-bold text-white">{t.menu}</h2>
           <button
@@ -946,10 +1047,10 @@ const SideDrawer = ({
                   onClose();
                 }
               }}
-              className={`flex items-center w-full p-3 rounded-xl text-left text-gray-700 hover:bg-gray-200 transition-colors mb-2 ${ACCENT_COLOR}`}
+              className={`flex items-center w-full p-3 rounded-xl text-left text-gray-700 hover:bg-gray-200 transition-colors mb-2 ${ACCENT_COLOR_CLASS}`}
             >
               {item.icon && (
-                <item.icon className={`w-5 h-5 mr-3 ${ACCENT_COLOR}`} />
+                <item.icon className={`w-5 h-5 mr-3 ${ACCENT_COLOR_CLASS}`} />
               )}
               <span className="font-semibold">{item.label}</span>
             </button>
@@ -1203,7 +1304,7 @@ export default function App() {
     <div className="max-w-md mx-auto h-screen flex flex-col bg-gray-100 shadow-xl overflow-hidden">
       {/* Red Banner Header with Rounded Bottom Corners */}
       <header
-        className={`sticky top-0 w-full ${PRIMARY_COLOR} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl`}
+        className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl`}
       >
         <button
           onClick={() => setIsDrawerOpen(true)}
@@ -1214,7 +1315,15 @@ export default function App() {
         <h1 className="text-xl font-bold text-white tracking-wide truncate px-2">
           {t.app_name}
         </h1>
-        <LanguageToggle lang={lang} setLang={setLang} t={t} />
+
+        {/* Right side controls: 1/2/3 buttons and Language Toggle */}
+        <div className="flex items-center space-x-2">
+          {/* UPDATED: 1-2-3 Font Size Buttons */}
+          <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
+
+          {/* UPDATED: Language Toggle (A/ก) */}
+          <LanguageToggle lang={lang} setLang={setLang} t={t} />
+        </div>
       </header>
 
       <main className="flex-1 overflow-y-auto">{renderContent()}</main>
@@ -1223,6 +1332,7 @@ export default function App() {
         track={currentTrack}
         isMinimized={isPlayerMinimized}
         toggleMinimize={toggleMinimize}
+        t={t} // Pass translation object to AudioPlayer
       />
 
       <SideDrawer
