@@ -1,0 +1,13 @@
+# Dependency Directories
+/node_modules
+
+# Build & Output Folders
+/dist
+/build
+/out
+
+# Runtime and Cache Files
+.DS_Store
+npm-debug.log
+yarn-error.log
+.cache
