@@ -1,3 +1,4 @@
+// --- Import Section (Ensure AppLogo is imported from the correct path) ---
 import React, { useState, useMemo, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import html2canvas from "html2canvas";
@@ -21,6 +22,9 @@ import {
 } from "./components/Icons";
 import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
+
+// NEW: Import the Banner Logo
+import AppLogo from "./assets/banner-logo.svg";
 
 // --- CONSTANTS ---
 // PWA Custom Colors
@@ -1382,6 +1386,7 @@ export default function App() {
     // Main container with responsive sizing (max-w-md -> max-w-5xl)
     <div className="max-w-md mx-auto h-screen flex flex-col bg-gray-100 shadow-xl overflow-hidden md:max-w-3xl lg:max-w-5xl">
       {/* Red Banner Header with Responsive Padding */}
+      // Red Banner Header with Responsive Padding
       <header
         className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
       >
@@ -1393,10 +1398,17 @@ export default function App() {
           <Menu className="w-7 h-7" />
         </button>
 
-        {/* App Title / Logo Placeholder (Left-aligned on tablet/laptop) */}
-        <h1 className="text-xl font-bold text-white tracking-wide truncate px-2 md:text-2xl md:mr-auto">
-          {t.app_name}
-        </h1>
+        {/* --- Logo Image (Responsive and Rounded) --- */}
+        <div className="flex items-center mx-auto md:mx-0 md:mr-auto">
+          <img
+            src={AppLogo}
+            alt={t.app_name}
+            className="h-8 md:h-10 w-auto rounded-md shadow-sm mr-4"
+          />
+          <h1 className="text-xl font-bold text-white tracking-wide truncate md:text-2xl hidden md:block">
+            {t.app_name}
+          </h1>
+        </div>
 
         {/* Right side controls: 1/2/3 buttons and Language Toggle */}
         <div className="flex items-center space-x-3 md:space-x-4">
@@ -1404,16 +1416,13 @@ export default function App() {
           <LanguageToggle lang={lang} setLang={setLang} t={t} />
         </div>
       </header>
-
       <main className="flex-1 overflow-y-auto">{renderContent()}</main>
-
       <AudioPlayer
         track={currentTrack}
         isMinimized={isPlayerMinimized}
         toggleMinimize={toggleMinimize}
         t={t} // Pass translation object to AudioPlayer
       />
-
       <SideDrawer
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
