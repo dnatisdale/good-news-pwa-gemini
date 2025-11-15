@@ -13,7 +13,7 @@ import {
   Menu,
   X,
   ChevronLeft,
-  ChevronRight, // NEW: Import ChevronRight for Forward button
+  ChevronRight, // Forward button icon
   Share2,
   Zap,
   Download,
@@ -28,8 +28,8 @@ const THAI_RED = "#A51931";
 const THAI_BLUE = "#2D2A4A";
 
 // Tailwind Class Mapping (using inline styles for new colors where needed)
-const PRIMARY_COLOR_CLASS = "bg-brand-red"; // Assuming this maps to THAI_RED
-const ACCENT_COLOR_CLASS = "text-brand-red"; // Assuming this maps to THAI_RED
+const PRIMARY_COLOR_CLASS = "bg-brand-red";
+const ACCENT_COLOR_CLASS = "text-brand-red";
 const TEXT_COLOR_CLASS = "text-gray-800";
 const DEFAULT_FONT_SIZE = "16px"; // Medium
 
@@ -47,7 +47,7 @@ const copyLink = (text, callback) => {
 const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
   if (!track || !track.trackDownloadUrl) {
     return (
-      <div className="sticky bottom-0 w-full p-3 bg-gray-200 text-center text-sm text-gray-600">
+      <div className="sticky bottom-0 w-full p-3 bg-gray-200 text-center text-sm text-gray-600 z-20">
         {t.select_message_to_listen || "Select a message to listen to."}
       </div>
     );
@@ -88,7 +88,7 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
           src={track.trackDownloadUrl}
           className="w-full"
         >
-          Your browser does support the audio element.
+          Your browser does not support the audio element.
         </audio>
       </div>
     </div>
@@ -148,7 +148,7 @@ const ContentCard = ({ item, lang, onSelect, showLanguageName = true }) => {
   );
 };
 
-// Language Toggle Component (UPDATED: Letter changed to A, alignment adjusted)
+// Language Toggle Component
 const LanguageToggle = ({ lang, setLang, t }) => {
   const toggleLang = () => {
     const newLang = lang === "en" ? "th" : "en";
@@ -169,7 +169,6 @@ const LanguageToggle = ({ lang, setLang, t }) => {
   );
 };
 
-// Font Size Buttons (UPDATED: 1/2/3 labels, rounded rectangles, closer together)
 // Font Size Buttons
 const FontSizeButtons = ({ fontSize, setFontSize }) => {
   const handleFontSize = (size) => {
@@ -217,6 +216,7 @@ const FontSizeButtons = ({ fontSize, setFontSize }) => {
     </div>
   );
 };
+
 // --- Share Card Print View Component ---
 const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
   const title =
@@ -271,6 +271,9 @@ const ContentView = ({
   lang,
   t,
   onBack,
+  onForward,
+  hasPrev,
+  hasNext,
   userData,
   saveUserData,
   onPlay,
@@ -279,12 +282,14 @@ const ContentView = ({
 
   const isBookmarked = userData.bookmarks.includes(item.id);
   const cardUrl = `https://5fi.sh/T${item.id}`;
+  // FIX: Using robust check and the correct langTh field
   const languageDisplay =
     lang === "en" ? item.languageEn ?? "" : item.langTh ?? "";
   const titleDisplay =
     lang === "en"
       ? item.title_en ?? "Untitled Message"
       : item.title_th ?? "ข้อความที่ไม่มีชื่อ";
+  // Save verse display for moving it later
   const verseDisplay =
     lang === "en"
       ? item.verse_en ?? t.no_verse_content
@@ -367,44 +372,41 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
     }
   };
 
-  // Forward button action
-  const handleForward = () => {
-    window.history.forward();
-  };
-
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
       {/* Back and Forward Controls */}
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={onBack}
-          className={`text-sm font-semibold flex items-center ${ACCENT_COLOR_CLASS} hover:text-red-700 transition-colors`}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasPrev
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasPrev}
         >
           <ChevronLeft className="w-5 h-5 mr-1" />
           {t.back || "Back"}
         </button>
         <button
-          onClick={handleForward}
-          // Simple logic: if there is history, make it active (green), otherwise inactive (gray)
+          onClick={onForward}
           className={`text-sm font-semibold flex items-center transition-colors ${
-            window.history.state &&
-            window.history.state.idx < window.history.length - 1
-              ? "text-green-600 hover:text-green-700"
+            hasNext
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
               : "text-gray-400 cursor-not-allowed"
           }`}
-          disabled={
-            !window.history.state ||
-            window.history.state.idx >= window.history.length - 1
-          }
+          disabled={!hasNext}
         >
           {t.forward || "Forward"}
           <ChevronRight className="w-5 h-5 ml-1" />
         </button>
       </div>
+
       {/* Language Name (Thai Flag Red - Largest) */}
       <h1 className={`text-4xl font-extrabold mb-2 ${ACCENT_COLOR_CLASS}`}>
         {languageDisplay}
       </h1>
+
       <div className="flex justify-between items-center mb-6 border-b pb-4">
         {/* Message Title (Secondary) */}
         <p className="text-xl font-semibold text-gray-700">{titleDisplay}</p>
@@ -420,12 +422,12 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
           <Bookmark className="w-6 h-6 fill-current" />
         </button>
       </div>
-      {/* --- LISTEN BUTTON (Thai Flag Blue) --- */}
-      // ... other ContentView JSX before the two-column grid ...
+
       {/* --- LISTEN BUTTON (Thai Flag Blue) --- */}
       {item.trackDownloadUrl && (
         <button
           onClick={() => onPlay(item)}
+          // Using THAI_BLUE for button background
           style={{ backgroundColor: THAI_BLUE }}
           className="w-full p-4 mb-6 font-bold text-white text-lg rounded-xl transition-colors hover:opacity-90 shadow-lg flex items-center justify-center"
         >
@@ -433,6 +435,7 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
           {t.listen_offline || "Listen (Offline Enabled)"}
         </button>
       )}
+
       {/* --- MAIN CONTENT GRID: Mobile (1-col) | Tablet/Laptop (2-col) --- */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* --- COLUMN 1: QR Code, Share/Export Buttons --- */}
@@ -501,16 +504,6 @@ ${t.read_more_at || "Read more"}: ${cardUrl}
         </div>
       </div>
       {/* --- END MAIN CONTENT GRID --- */}
-      {/* --- NOTES SECTION --- */}
-      <div className="p-4 bg-red-50 border-l-4 border-brand-red rounded-lg mt-6">
-        <h2 className="text-lg font-semibold text-gray-700">
-          {t.my_notes || "My Notes"}
-        </h2>
-        <p className="text-sm text-gray-500">
-          {t.notes_feature_tip ||
-            "Notes feature coming soon! You can view all saved notes on the Notes page."}
-        </p>
-      </div>
     </div>
   );
 };
@@ -523,14 +516,13 @@ const LanguageListPage = ({ lang, t, onSelectLanguage }) => {
   const languageGroups = useMemo(() => {
     const groups = new Map();
     staticContent.forEach((item) => {
-      // Use item.languageEn as the stable key for grouping, but display the correct language name
+      // CRITICAL FIX: Use item.languageEn as the stable key for grouping
       const stableKey = item.languageEn ?? "Unknown Language";
-      const languageDisplayName =
-        (lang === "en" ? item.languageEn : item.langTh) ?? stableKey; // Display preferred lang, fallback to English
 
       if (!groups.has(stableKey)) {
+        // Store the first item as a representative to get langTh
         groups.set(stableKey, {
-          languageName: languageDisplayName,
+          repItem: item, // Store a representative item
           messages: [],
         });
       }
@@ -539,14 +531,26 @@ const LanguageListPage = ({ lang, t, onSelectLanguage }) => {
 
     // Convert map to array of objects for easier sorting/mapping
     let sortedGroups = Array.from(groups.values())
-      .map((group) => ({ ...group, count: group.messages.length }))
-      .sort((a, b) => a.languageName.localeCompare(b.languageName));
+      .map((group) => {
+        // Determine the display name based on current lang
+        const languageDisplayName =
+          (lang === "en"
+            ? group.repItem.languageEn
+            : group.repItem.langTh ?? group.repItem.languageEn) ??
+          "Unknown Language";
+        return {
+          stableKey: group.repItem.languageEn ?? "Unknown Language",
+          displayName: languageDisplayName,
+          count: group.messages.length,
+        };
+      })
+      .sort((a, b) => a.displayName.localeCompare(b.displayName));
 
     // 2. Filter groups based on search term (real-time filtering)
     if (searchTerm) {
       const lowerSearchTerm = searchTerm.toLowerCase();
       sortedGroups = sortedGroups.filter((group) =>
-        group.languageName.toLowerCase().includes(lowerSearchTerm)
+        group.displayName.toLowerCase().includes(lowerSearchTerm)
       );
     }
 
@@ -555,8 +559,8 @@ const LanguageListPage = ({ lang, t, onSelectLanguage }) => {
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      {/* Search fill-field with Thai red outline (Replaces the title) */}
-      <div className="relative mb-6">
+      {/* Search fill-field with Thai red outline (Made sticky and removed 'relative') */}
+      <div className="mb-6 sticky top-0 bg-gray-100 pb-4 z-10">
         <input
           type="text"
           placeholder={t.search_languages || "Search Languages..."}
@@ -572,14 +576,13 @@ const LanguageListPage = ({ lang, t, onSelectLanguage }) => {
       {/* Language count removed as requested */}
       <div className="h-2"></div>
 
-      {/* Pass languageName for display, but use stableKey to filter messages later */}
+      {/* Pass stableKey (English name) to onSelectLanguage */}
       {languageGroups.map((group) => (
         <LanguageCard
-          key={group.languageName}
-          // Use the language name that was successfully grouped (Buguo or the Thai name)
-          languageName={group.languageName}
+          key={group.stableKey}
+          languageName={group.displayName}
           lang={lang}
-          onSelect={() => onSelectLanguage(group.languageName)}
+          onSelect={() => onSelectLanguage(group.stableKey)} // Use stableKey for selection
           messageCount={group.count}
         />
       ))}
@@ -592,36 +595,38 @@ const LanguageListPage = ({ lang, t, onSelectLanguage }) => {
 const MessagesByLanguagePage = ({
   lang,
   t,
-  selectedLanguage,
+  selectedLanguageKey,
   onBack,
+  onForward,
+  hasPrev,
+  hasNext,
   onSelectMessage,
 }) => {
-  // FIX: Using robust filtering that works in both languages
+  // Get all messages for the selected language (using the stable English key)
   const filteredContent = useMemo(() => {
     return staticContent
       .filter((item) => {
-        // Check against both English and Thai names, in case one is missing
         const currentLangNameEn = item.languageEn ?? "Unknown Language";
-        const currentLangNameTh = item.langTh ?? currentLangNameEn; // Fallback to English name if Thai is missing
-
-        // The selectedLanguage will be the name displayed in the current UI lang
-        return (
-          selectedLanguage === currentLangNameEn ||
-          selectedLanguage === currentLangNameTh
-        );
+        return currentLangNameEn === selectedLanguageKey;
       })
       .sort((a, b) => {
-        // Sort messages by title alphabetically (robust check)
+        // Sort messages by title alphabetically
         const titleA = (lang === "en" ? a.title_en : a.title_th) ?? "";
         const titleB = (lang === "en" ? b.title_en : b.title_th) ?? "";
         return titleA.localeCompare(titleB);
       });
-  }, [lang, selectedLanguage]);
+  }, [lang, selectedLanguageKey]);
 
-  // Forward button action
-  const handleForward = () => {
-    window.history.forward();
-  };
+  // Determine the display name for the header
+  const languageDisplayName = useMemo(() => {
+    const repItem = filteredContent[0];
+    if (!repItem) return selectedLanguageKey;
+    return (
+      (lang === "en"
+        ? repItem.languageEn
+        : repItem.langTh ?? repItem.languageEn) ?? "Unknown Language"
+    );
+  }, [lang, selectedLanguageKey, filteredContent]);
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
@@ -629,24 +634,24 @@ const MessagesByLanguagePage = ({
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={onBack}
-          className={`text-sm font-semibold flex items-center ${ACCENT_COLOR_CLASS} hover:text-red-700 transition-colors`}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasPrev
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasPrev}
         >
           <ChevronLeft className="w-5 h-5 mr-1" />
           {t.back || "Back"}
         </button>
         <button
-          onClick={handleForward}
-          // Simple logic: if there is history, make it active (green), otherwise inactive (gray)
+          onClick={onForward}
           className={`text-sm font-semibold flex items-center transition-colors ${
-            window.history.state &&
-            window.history.state.idx < window.history.length - 1
-              ? "text-green-600 hover:text-green-700"
+            hasNext
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
               : "text-gray-400 cursor-not-allowed"
           }`}
-          disabled={
-            !window.history.state ||
-            window.history.state.idx >= window.history.length - 1
-          }
+          disabled={!hasNext}
         >
           {t.forward || "Forward"}
           <ChevronRight className="w-5 h-5 ml-1" />
@@ -655,7 +660,7 @@ const MessagesByLanguagePage = ({
 
       {/* Language Title - Red, emphasized */}
       <h1 className={`text-2xl font-bold mb-2 ${ACCENT_COLOR_CLASS}`}>
-        {selectedLanguage}
+        {languageDisplayName}
       </h1>
       <p className="text-sm text-gray-500 mb-6 font-semibold">
         {filteredContent.length} {t.messages || "messages"}
@@ -1100,7 +1105,7 @@ export default function App() {
 
   const [page, setPage] = useState("home");
   const [selectedItem, setSelectedItem] = useState(null);
-  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [selectedLanguageKey, setSelectedLanguageKey] = useState(null); // Key = English name
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(null);
   const [isPlayerMinimized, setIsPlayerMinimized] = useState(false);
@@ -1125,6 +1130,60 @@ export default function App() {
     logOut,
   } = useFirebase(setLang);
 
+  // --- Data Caching for Navigation ---
+  // Memoize the list of unique language groups (stableKey and display names)
+  const languageGroups = useMemo(() => {
+    const groups = new Map();
+    staticContent.forEach((item) => {
+      const stableKey = item.languageEn ?? "Unknown Language";
+
+      if (!groups.has(stableKey)) {
+        groups.set(stableKey, {
+          repItem: item, // Store a representative item
+          messages: [],
+        });
+      }
+      groups.get(stableKey).messages.push(item);
+    });
+
+    // Convert map to array of objects for easier sorting/mapping
+    return Array.from(groups.values())
+      .map((group) => {
+        const languageDisplayNameEn =
+          group.repItem.languageEn ?? "Unknown Language";
+        const languageDisplayNameTh =
+          group.repItem.langTh ?? languageDisplayNameEn; // Fallback to Eng
+        return {
+          stableKey: languageDisplayNameEn, // English name is the key
+          displayNameEn: languageDisplayNameEn,
+          displayNameTh: languageDisplayNameTh,
+          count: group.messages.length,
+        };
+      })
+      .sort((a, b) =>
+        (lang === "en" ? a.displayNameEn : a.displayNameTh).localeCompare(
+          lang === "en" ? b.displayNameEn : b.displayNameTh
+        )
+      );
+  }, [lang]); // Re-sorts when language changes
+
+  // Memoize the list of messages for the currently selected language
+  const currentMessageList = useMemo(() => {
+    if (!selectedLanguageKey) return [];
+
+    return staticContent
+      .filter((item) => {
+        const currentLangNameEn = item.languageEn ?? "Unknown Language";
+        return currentLangNameEn === selectedLanguageKey;
+      })
+      .sort((a, b) => {
+        const titleA = (lang === "en" ? a.title_en : a.title_th) ?? "";
+        const titleB = (lang === "en" ? b.title_en : b.title_th) ?? "";
+        return titleA.localeCompare(titleB);
+      });
+  }, [lang, selectedLanguageKey]);
+  // --- End Data Caching ---
+
   // Navigation function for Pages (home, search, settings, etc.)
   const navigate = (path, item = null) => {
     setPage(path);
@@ -1132,15 +1191,15 @@ export default function App() {
   };
 
   // Navigation function to drill into a language
-  const handleSelectLanguage = (languageName) => {
-    setSelectedLanguage(languageName);
+  const handleSelectLanguage = (languageKey) => {
+    setSelectedLanguageKey(languageKey);
     setPage("languageMessages");
   };
 
   // Navigation function to go back to the language list
   const handleBackToLanguages = () => {
     setPage("home");
-    setSelectedLanguage(null);
+    setSelectedLanguageKey(null);
   };
 
   // Navigation function to view a message detail
@@ -1150,35 +1209,22 @@ export default function App() {
 
   // --- PWA INSTALL EFFECTS ---
   useEffect(() => {
-    // Event listener to capture the browser's install prompt event
     const handler = (e) => {
       e.preventDefault();
       setInstallPrompt(e);
       setShowInstallButton(true);
     };
-
     window.addEventListener("beforeinstallprompt", handler);
-
-    // Cleanup listener on unmount
     return () => window.removeEventListener("beforeinstallprompt", handler);
   }, []);
 
   const triggerInstall = async () => {
     if (!installPrompt) return;
-
-    // Show the prompt
     installPrompt.prompt();
-
-    // Wait for the user to respond
     const { outcome } = await installPrompt.userChoice;
-
-    if (outcome === "accepted") {
+    if (outcome === "accepted")
       console.log("User accepted the install prompt.");
-    } else {
-      console.log("User dismissed the install prompt.");
-    }
-
-    // The prompt can only be shown once, so hide the button afterward
+    else console.log("User dismissed the install prompt.");
     setInstallPrompt(null);
     setShowInstallButton(false);
   };
@@ -1193,6 +1239,8 @@ export default function App() {
     if (cardId) {
       const item = staticContent.find((i) => i.id === parseInt(cardId));
       if (item) {
+        // Find the language key for this item to set context
+        setSelectedLanguageKey(item.languageEn ?? "Unknown Language");
         navigate("detail", item);
         if (shareLang && (shareLang === "en" || shareLang === "th")) {
           setLang(shareLang);
@@ -1218,6 +1266,30 @@ export default function App() {
     setIsPlayerMinimized((p) => !p);
   };
 
+  // --- Smart Navigation Handlers ---
+
+  // For Language List Page
+  const handleNavLanguage = (direction) => {
+    const currentIndex = languageGroups.findIndex(
+      (g) => g.stableKey === selectedLanguageKey
+    );
+    const newIndex = currentIndex + direction;
+    if (newIndex >= 0 && newIndex < languageGroups.length) {
+      setSelectedLanguageKey(languageGroups[newIndex].stableKey);
+    }
+  };
+
+  // For Message Detail Page
+  const handleNavMessage = (direction) => {
+    const currentIndex = currentMessageList.findIndex(
+      (item) => item.id === selectedItem.id
+    );
+    const newIndex = currentIndex + direction;
+    if (newIndex >= 0 && newIndex < currentMessageList.length) {
+      setSelectedItem(currentMessageList[newIndex]);
+    }
+  };
+
   const renderContent = () => {
     if (!isAuthReady) {
       return (
@@ -1237,16 +1309,20 @@ export default function App() {
 
     switch (page) {
       case "detail":
+        const currentMessageIndex = currentMessageList.findIndex(
+          (item) => item.id === selectedItem.id
+        );
         return (
           <ContentView
             item={selectedItem}
             lang={lang}
             t={t}
-            onBack={
-              selectedLanguage
-                ? () => setPage("languageMessages")
-                : () => setPage("home")
-            }
+            // Go back to the message list
+            onBack={() => setPage("languageMessages")}
+            // Smart navigation for prev/next message
+            onForward={() => handleNavMessage(1)}
+            hasPrev={currentMessageIndex > 0}
+            hasNext={currentMessageIndex < currentMessageList.length - 1}
             userData={userData}
             saveUserData={saveUserData}
             onPlay={handlePlayTrack}
@@ -1254,18 +1330,25 @@ export default function App() {
         );
 
       case "languageMessages":
+        const currentLangIndex = languageGroups.findIndex(
+          (g) => g.stableKey === selectedLanguageKey
+        );
         return (
           <MessagesByLanguagePage
             lang={lang}
             t={t}
-            selectedLanguage={selectedLanguage}
-            onBack={handleBackToLanguages}
+            selectedLanguageKey={selectedLanguageKey} // Pass the stable key
+            // Go back to language list
+            onBack={() => handleBackToLanguages()}
+            // Smart navigation for prev/next language
+            onForward={() => handleNavLanguage(1)}
+            hasPrev={currentLangIndex > 0}
+            hasNext={currentLangIndex < languageGroups.length - 1}
             onSelectMessage={handleSelectMessage}
           />
         );
 
       case "search":
-        // Note: The main language search is now on the 'home' page (LanguageListPage)
         return <SearchPage lang={lang} t={t} onSelect={handleSelectMessage} />;
 
       case "bookmarks":
@@ -1303,20 +1386,22 @@ export default function App() {
 
       case "home":
       default:
-        // Home now renders the list of languages with the inline search field
+        // Home now renders the list of languages
         return (
           <LanguageListPage
             lang={lang}
             t={t}
             onSelectLanguage={handleSelectLanguage}
+            languageGroups={languageGroups} // Pass pre-calculated groups
           />
         );
     }
   };
 
   return (
+    // Main container with responsive sizing (max-w-md -> max-w-5xl)
     <div className="max-w-md mx-auto h-screen flex flex-col bg-gray-100 shadow-xl overflow-hidden md:max-w-3xl lg:max-w-5xl">
-      {/* Red Banner Header with Rounded Bottom Corners */}
+      {/* Red Banner Header with Responsive Padding */}
       <header
         className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
       >
@@ -1328,8 +1413,7 @@ export default function App() {
           <Menu className="w-7 h-7" />
         </button>
 
-        {/* App Title / Logo Placeholder */}
-        {/* This will be the home for your logo and app title */}
+        {/* App Title / Logo Placeholder (Left-aligned on tablet/laptop) */}
         <h1 className="text-xl font-bold text-white tracking-wide truncate px-2 md:text-2xl md:mr-auto">
           {t.app_name}
         </h1>
