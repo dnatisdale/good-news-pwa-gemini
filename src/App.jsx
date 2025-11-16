@@ -21,9 +21,10 @@ import {
 } from "./components/Icons";
 import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
+import AppLogo from "./assets/splash-screen-logo.svg";
 
 // NEW: Import the Banner Logo
-import AppLogo from "./assets/banner-logo.svg";
+import BannerLogo from "./assets/banner-logo.svg";
 
 // --- CONSTANTS ---
 // PWA Custom Colors
@@ -927,6 +928,8 @@ export default function App() {
   const [track, setTrack] = useState(null);
   const [isAudioMinimized, setIsAudioMinimized] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  // 💡 NEW STATE FOR SPLASH SCREEN
+  const [isLoading, setIsLoading] = useState(true);
 
   // *** FIX: Changed from array to object destructuring and passed setLang ***
   const { userData, saveUserData, isAuthReady, error } = useFirebase(setLang);
@@ -1165,6 +1168,17 @@ export default function App() {
     currentItemIndex !== -1 && currentItemIndex < flatContentList.length - 1;
 
   // --- URL PARAMETER EFFECT ---
+  // 💡 NEW useEffect for Splash Screen Timer
+  useEffect(() => {
+    // Set a timer to hide the splash screen after 2 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000); // 🚨 Increased to 5000ms (5 seconds) as requested
+
+    // Cleanup function to clear the timer if the component unmounts
+    return () => clearTimeout(timer);
+  }, []); // Empty dependency array ensures this runs only once on mount
+
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const langKey = urlParams.get("langKey");
@@ -1203,6 +1217,7 @@ export default function App() {
       </div>
     );
   }
+
   // --- Render Logic ---
 
   let PageContent;
@@ -1319,154 +1334,177 @@ export default function App() {
   // Determine if the search bar should be fully visible or just an icon
   const isSearchPage = currentPage.name === "Search";
 
+  // *** NOTE: The original version of this file had extraneous ReactDOM.createRoot calls at the end. ***
+  // *** Please ensure those lines have been removed from your local file to resolve the duplicate root warning. ***
+  // --- START OF MAIN RETURN ---
   return (
-    <div
-      className="min-h-screen bg-gray-100 flex flex-col"
-      style={{ fontSize }}
-    >
-      {/* --- LANGUAGE QR MODAL --- */}
-      <LanguageQrModal
-        isOpen={isLanguageQrModalOpen}
-        onClose={handleCloseLanguageQrModal}
-        languageDisplayName={modalLanguageName}
-        languageShareUrl={modalLanguageShareUrl}
-        t={t}
-      />
-
-      {/* --- HEADER (Banner) --- */}
-      <header
-        className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
-      >
-        {/* LEFT SECTION: Hamburger Menu and Logo (Now grouped) */}
-        <div className="flex items-center flex-shrink-0">
-          {/* 1. Navigation Button (Left) */}
-          <button
-            onClick={() => setIsDrawerOpen(true)}
-            className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
-          >
-            <Menu className="w-7 h-7" />
-          </button>
-
-          {/* 2. Logo Image (Now immediately after the hamburger) */}
-          <img
-            src={AppLogo}
-            alt={t.app_name}
-            className="h-8 md:h-10 w-auto rounded-md shadow-sm mr-4 ml-3 bg-white p-1"
-          />
-        </div>
-
-        {/* CENTER SECTION: Search Bar (Wider max-width for centering effect) */}
-        <div className="flex items-center w-full max-w-lg mx-3 md:mx-6">
-          <div className="relative w-full">
-            {/* Search Input Field */}
-            <input
-              type="text"
-              placeholder={
-                t.search_placeholder || "Search languages or messages..."
-              }
-              value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-                if (currentPage.name !== "Search" && e.target.value) {
-                  navigateTo("Search");
-                }
-              }}
-              className="w-full p-2 pl-10 text-gray-800 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-red-300 transition duration-150"
-            />
-            {/* 🚨 FIX: Search Icon color changed to Thai Red 🚨 */}
-            <Search
-              className={`absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5 ${ACCENT_COLOR_CLASS}`}
-            />
-
-            {/* Clear Button */}
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm("")}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 text-gray-500 hover:text-gray-800"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* RIGHT SECTION: Controls */}
-        <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
-          <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
-          <LanguageToggle lang={lang} setLang={setLang} t={t} />
-        </div>
-      </header>
-
-      {/* --- MAIN CONTENT AREA --- */}
-      <main className="flex-grow overflow-y-auto pb-20">{PageContent}</main>
-
-      {/* --- AUDIO PLAYER --- */}
-      <AudioPlayer
-        track={track}
-        isMinimized={isAudioMinimized}
-        toggleMinimize={toggleAudioMinimize}
-        t={t}
-      />
-
-      {/* --- NAVIGATION DRAWER (Sidebar) --- */}
+    // 💡 CONDITIONAL RENDER: Show Splash Screen OR the App
+    isLoading ? (
+      // 1. --- SPLASH SCREEN COMPONENT (Visible while isLoading is TRUE) ---
       <div
-        className={`fixed inset-0 z-40 transition-opacity duration-300 ${
-          isDrawerOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 flex items-center justify-center ${PRIMARY_COLOR_CLASS} z-50`}
       >
-        {/* Overlay (Click to close) */}
-        <div
-          className="absolute inset-0 bg-black bg-opacity-50"
-          onClick={() => setIsDrawerOpen(false)}
-        ></div>
+        <img
+          src={AppLogo} // Your optimized square logo source
+          alt={t.app_name || "App Loading"}
+          className="
+            // Increased Size (Doubled)
+            w-72 h-72 
+            lg:w-96 lg:h-96 
+            // Rounded Corners
+            rounded-3xl shadow-2xl animate-pulse 
+            object-cover
+          "
+        />
+      </div>
+    ) : (
+      // 2. --- NORMAL APPLICATION START (Visible while isLoading is FALSE) ---
+      <div
+        className="min-h-screen bg-gray-100 flex flex-col"
+        style={{ fontSize }}
+      >
+        {/* --- LANGUAGE QR MODAL --- */}
+        <LanguageQrModal
+          isOpen={isLanguageQrModalOpen}
+          onClose={handleCloseLanguageQrModal}
+          languageDisplayName={modalLanguageName}
+          languageShareUrl={modalLanguageShareUrl}
+          t={t}
+        />
 
-        {/* Drawer Content */}
+        {/* --- HEADER (Banner) --- */}
+        <header
+          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
+        >
+          {/* LEFT SECTION: Hamburger Menu and Logo (Now grouped) */}
+          <div className="flex items-center flex-shrink-0">
+            {/* 1. Navigation Button (Left) */}
+            <button
+              onClick={() => setIsDrawerOpen(true)}
+              className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
+            >
+              <Menu className="w-7 h-7" />
+            </button>
+
+            {/* 2. Logo Image (Now immediately after the hamburger) */}
+            <img
+              src={BannerLogo}
+              alt={t.app_name}
+              className="h-8 md:h-10 w-auto rounded-md shadow-sm mr-4 ml-3 bg-white p-1"
+            />
+          </div>
+
+          {/* CENTER SECTION: Search Bar (Wider max-width for centering effect) */}
+          <div className="flex items-center w-full max-w-lg mx-3 md:mx-6">
+            <div className="relative w-full">
+              {/* Search Input Field */}
+              <input
+                type="text"
+                placeholder={
+                  t.search_placeholder || "Search languages or messages..."
+                }
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  if (currentPage.name !== "Search" && e.target.value) {
+                    navigateTo("Search");
+                  }
+                }}
+                className="w-full p-2 pl-10 text-gray-800 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-red-300 transition duration-150"
+              />
+              {/* Search Icon color changed to Thai Red */}
+              <Search
+                className={`absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5 ${ACCENT_COLOR_CLASS}`}
+              />
+
+              {/* Clear Button */}
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm("")}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 text-gray-500 hover:text-gray-800"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* RIGHT SECTION: Controls */}
+          <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
+            <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
+            <LanguageToggle lang={lang} setLang={setLang} t={t} />
+          </div>
+        </header>
+
+        {/* --- MAIN CONTENT AREA --- */}
+        <main className="flex-grow overflow-y-auto pb-20">{PageContent}</main>
+
+        {/* --- AUDIO PLAYER --- */}
+        <AudioPlayer
+          track={track}
+          isMinimized={isAudioMinimized}
+          toggleMinimize={toggleAudioMinimize}
+          t={t}
+        />
+
+        {/* --- NAVIGATION DRAWER (Sidebar) --- */}
         <div
-          className={`absolute left-0 top-0 w-72 h-full bg-white shadow-2xl transition-transform duration-300 transform ${
-            isDrawerOpen ? "translate-x-0" : "-translate-x-full"
+          className={`fixed inset-0 z-40 transition-opacity duration-300 ${
+            isDrawerOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
           }`}
         >
+          {/* Overlay (Click to close) */}
           <div
-            className={`${PRIMARY_COLOR_CLASS} p-4 flex justify-between items-center rounded-r-xl`}
-          >
-            <h2 className="text-xl font-bold text-white">{t.app_name}</h2>
-            <button
-              onClick={() => setIsDrawerOpen(false)}
-              className="text-white p-1 hover:bg-red-800 rounded-full"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
+            className="absolute inset-0 bg-black bg-opacity-50"
+            onClick={() => setIsDrawerOpen(false)}
+          ></div>
 
-          <nav className="p-4 space-y-2">
-            {/* Navigation Items */}
-            {[
-              { name: "Home", icon: Home, target: "Home" },
-              { name: "Search", icon: Search, target: "Search" },
-              { name: "Bookmarks", icon: Bookmark, target: "Bookmarks" },
-              { name: "Notes", icon: Pen, target: "Notes" },
-              { name: "Settings", icon: Settings, target: "Settings" },
-            ].map((item) => (
+          {/* Drawer Content */}
+          <div
+            className={`absolute left-0 top-0 w-72 h-full bg-white shadow-2xl transition-transform duration-300 transform ${
+              isDrawerOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
+            <div
+              className={`${PRIMARY_COLOR_CLASS} p-4 flex justify-between items-center rounded-r-xl`}
+            >
+              <h2 className="text-xl font-bold text-white">{t.app_name}</h2>
               <button
-                key={item.name}
-                onClick={() => navigateTo(item.target)}
-                className={`w-full flex items-center p-3 rounded-lg font-semibold transition-colors ${
-                  currentPage.name === item.target
-                    ? `${ACCENT_COLOR_CLASS} bg-red-100`
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
+                onClick={() => setIsDrawerOpen(false)}
+                className="text-white p-1 hover:bg-red-800 rounded-full"
               >
-                <item.icon className="w-6 h-6 mr-3" />
-                {t[item.name.toLowerCase()]}
+                <X className="w-6 h-6" />
               </button>
-            ))}
-          </nav>
+            </div>
+
+            <nav className="p-4 space-y-2">
+              {/* Navigation Items */}
+              {[
+                { name: "Home", icon: Home, target: "Home" },
+                { name: "Search", icon: Search, target: "Search" },
+                { name: "Bookmarks", icon: Bookmark, target: "Bookmarks" },
+                { name: "Notes", icon: Pen, target: "Notes" },
+                { name: "Settings", icon: Settings, target: "Settings" },
+              ].map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => navigateTo(item.target)}
+                  className={`w-full flex items-center p-3 rounded-lg font-semibold transition-colors ${
+                    currentPage.name === item.target
+                      ? `${ACCENT_COLOR_CLASS} bg-red-100`
+                      : "text-gray-700 hover:bg-gray-100"
+                  }`}
+                >
+                  <item.icon className="w-6 h-6 mr-3" />
+                  {t[item.name.toLowerCase()]}
+                </button>
+              ))}
+            </nav>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
-// *** NOTE: The original version of this file had extraneous ReactDOM.createRoot calls at the end. ***
-// *** Please ensure those lines have been removed from your local file to resolve the duplicate root warning. ***
+    ) // This is the closing parenthesis for the entire application UI block
+  ); // This is the closing parenthesis for the main return
+} // This is the closing bracket for the App function

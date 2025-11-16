@@ -4,5 +4,31 @@
 
 /* You can add global base styles here */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+/* Container for the red screen, ensuring it sits on top */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: red; /* Change this to your desired background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* High Z-index to cover everything */
+}
+
+/* The logo element, doubling the size and adding rounded corners */
+.splash-screen-logo {
+  /* Use a relative unit (vw) for size, doubling the size as requested */
+  width: 20vw;
+  height: auto; /* Maintain aspect ratio */
+  z-index: 10000; /* Higher than the splash-screen container */
+
+  /* Add rounded corners */
+  border-radius: 10%;
+  overflow: hidden; /* Ensures the SVG respects the border-radius */
 }
