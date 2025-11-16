@@ -18,6 +18,7 @@ import {
   Zap,
   Download,
   PlayCircle,
+  ExternalLink, // NEW: Added an icon for external links
 } from "./components/Icons";
 import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
@@ -79,7 +80,6 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
       >
         <PlayCircle className="w-5 h-5 text-white mr-2 flex-shrink-0" />
         <p className="text-sm font-bold text-white truncate">
-          {/* 🚨 FIX: Removed all stray comments from the rendered output 🚨 */}
           {isMinimized
             ? (t.playing || "Playing") + ": " + displayTitle
             : t.controls || "Controls"}
@@ -877,7 +877,7 @@ const SearchPage = ({
   );
 };
 
-// Other Pages (NotesPage, SettingsPage, etc. are currently placeholders)
+// Other Pages (NotesPage, etc. are currently placeholders)
 const OtherPage = ({ titleKey, t, onBack, onForward, hasPrev, hasNext }) => (
   <div className="p-4 pt-8 h-full overflow-y-auto">
     {/* Back and Forward Controls (added for consistency) */}
@@ -915,6 +915,108 @@ const OtherPage = ({ titleKey, t, onBack, onForward, hasPrev, hasNext }) => (
   </div>
 );
 
+// --- NEW: Settings Page Component ---
+// This replaces the "OtherPage" placeholder for "Settings"
+const SettingsPage = ({
+  lang,
+  setLang,
+  fontSize,
+  setFontSize,
+  t,
+  onBack,
+  onForward,
+  hasPrev,
+  hasNext,
+}) => {
+  const handleLangChange = (e) => {
+    const newLang = e.target.value;
+    setLang(newLang);
+    localStorage.setItem("appLang", newLang);
+  };
+
+  const handleFontSizeChange = (e) => {
+    const newSize = e.target.value;
+    setFontSize(newSize);
+    localStorage.setItem("appFontSize", newSize);
+  };
+
+  return (
+    <div className="p-4 pt-8 h-full overflow-y-auto">
+      {/* Back and Forward Controls */}
+      <div className="flex justify-between items-center mb-4">
+        <button
+          onClick={onBack}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasPrev
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasPrev}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        <button
+          onClick={onForward}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasNext
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasNext}
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
+      </div>
+
+      <h1 className="text-2xl font-bold text-gray-800 mb-6">{t.settings}</h1>
+
+      {/* Settings Controls */}
+      <div className="space-y-6 bg-white p-6 rounded-xl shadow-md">
+        {/* Language Selector */}
+        <div className="space-y-2">
+          <label
+            htmlFor="language-select"
+            className="block text-sm font-medium text-gray-700"
+          >
+            {t.language_label || "Language"}
+          </label>
+          <select
+            id="language-select"
+            value={lang}
+            onChange={handleLangChange}
+            className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-brand-red focus:border-brand-red transition duration-150"
+          >
+            <option value="en">English</option>
+            <option value="th">ไทย (Thai)</option>
+          </select>
+        </div>
+
+        {/* Font Size Selector */}
+        <div className="space-y-2">
+          <label
+            htmlFor="font-size-select"
+            className="block text-sm font-medium text-gray-700"
+          >
+            {t.font_size_label || "Font Size"}
+          </label>
+          <select
+            id="font-size-select"
+            value={fontSize}
+            onChange={handleFontSizeChange}
+            className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-brand-red focus:border-brand-red transition duration-150"
+          >
+            <option value="14px">{t.font_size_small || "Small"}</option>
+            <option value="16px">{t.font_size_medium || "Medium"}</option>
+            <option value="20px">{t.font_size_large || "Large"}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // --- Main App Component ---
 export default function App() {
   // --- State Management ---
@@ -928,11 +1030,12 @@ export default function App() {
   const [track, setTrack] = useState(null);
   const [isAudioMinimized, setIsAudioMinimized] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  // 💡 NEW STATE FOR SPLASH SCREEN
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); // Splash Screen state
+  const [deferredPrompt, setDeferredPrompt] = useState(null); // Install Prompt state
 
   // *** FIX: Changed from array to object destructuring and passed setLang ***
-  const { userData, saveUserData, isAuthReady, error } = useFirebase(setLang);
+  const { userData, saveUserData, isAuthReady, error, userId } =
+    useFirebase(setLang); // Added userId
 
   // NEW: Global Search State
   const [searchTerm, setSearchTerm] = useState("");
@@ -1064,6 +1167,9 @@ export default function App() {
   const goBack = () => {
     if (pageStack.length > 1) {
       setPageStack((prev) => prev.slice(0, -1));
+    } else {
+      // Safety net: If we try to go back from the root, reset to Home.
+      setPageStack([{ name: "Home" }]);
     }
   };
 
@@ -1152,6 +1258,24 @@ export default function App() {
     setIsAudioMinimized((p) => !p);
   };
 
+  // --- NEW: PWA Install Click Handler ---
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      // Show the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === "accepted") {
+        console.log("User accepted the PWA install prompt");
+      } else {
+        console.log("User dismissed the PWA install prompt");
+      }
+      // We can only use the prompt once, so clear it
+      setDeferredPrompt(null);
+      setIsDrawerOpen(false); // Close drawer after action
+    }
+  };
+
   // --- Current Content and Navigation Status ---
   const currentPage = pageStack[pageStack.length - 1];
   const currentItem =
@@ -1167,30 +1291,26 @@ export default function App() {
   const canGoNext =
     currentItemIndex !== -1 && currentItemIndex < flatContentList.length - 1;
 
-  // --- URL PARAMETER EFFECT ---
-  // 💡 NEW useEffect for Splash Screen Timer
+  // --- Effects ---
+
+  // Splash Screen Timer
   useEffect(() => {
-    // Set a timer to hide the splash screen after 2 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000); // 🚨 Increased to 5000ms (5 seconds) as requested
-
-    // Cleanup function to clear the timer if the component unmounts
+    }, 2000); // 2 seconds
     return () => clearTimeout(timer);
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []);
 
+  // URL Parameter Effect
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const langKey = urlParams.get("langKey");
 
     if (langKey) {
       const decodedLangKey = decodeURIComponent(langKey);
-      // Find the language group
       const group = languageGroups.find((g) => g.stableKey === decodedLangKey);
 
       if (group) {
-        // Navigate directly to the message list for that language
-        // Use replaceState to avoid cluttering history with the initial URL load
         setPageStack([
           { name: "Home" },
           { name: "MessagesByLanguage", key: decodedLangKey },
@@ -1204,9 +1324,30 @@ export default function App() {
     }
   }, [languageGroups]); // Depend on languageGroups to ensure data is loaded
 
+  // --- NEW: PWA Install Prompt Listener ---
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      setDeferredPrompt(e);
+      console.log("beforeinstallprompt event captured.");
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
+    };
+  }, []);
+
   // *** FIX: Added Firebase Loading Check ***
   // If the app is not ready (Firebase has not loaded user state), show a loading screen.
-  if (!isAuthReady) {
+  if (!isAuthReady && !isLoading) {
+    // Only show auth loading AFTER splash screen
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-gray-100">
         <Zap className="w-12 h-12 text-brand-red animate-pulse mb-4" />
@@ -1306,9 +1447,13 @@ export default function App() {
       );
       break;
     case "Settings":
+      // --- NEW: Render the actual SettingsPage component ---
       PageContent = (
-        <OtherPage
-          titleKey="settings"
+        <SettingsPage
+          lang={lang}
+          setLang={setLang}
+          fontSize={fontSize}
+          setFontSize={setFontSize}
           t={t}
           onBack={goBack}
           onForward={goForward}
@@ -1334,8 +1479,6 @@ export default function App() {
   // Determine if the search bar should be fully visible or just an icon
   const isSearchPage = currentPage.name === "Search";
 
-  // *** NOTE: The original version of this file had extraneous ReactDOM.createRoot calls at the end. ***
-  // *** Please ensure those lines have been removed from your local file to resolve the duplicate root warning. ***
   // --- START OF MAIN RETURN ---
   return (
     // 💡 CONDITIONAL RENDER: Show Splash Screen OR the App
@@ -1348,10 +1491,8 @@ export default function App() {
           src={AppLogo} // Your optimized square logo source
           alt={t.app_name || "App Loading"}
           className="
-            // Increased Size (Doubled)
             w-72 h-72 
             lg:w-96 lg:h-96 
-            // Rounded Corners
             rounded-3xl shadow-2xl animate-pulse 
             object-cover
           "
@@ -1465,10 +1606,11 @@ export default function App() {
           <div
             className={`absolute left-0 top-0 w-72 h-full bg-white shadow-2xl transition-transform duration-300 transform ${
               isDrawerOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
+            } flex flex-col`}
           >
+            {/* Header */}
             <div
-              className={`${PRIMARY_COLOR_CLASS} p-4 flex justify-between items-center rounded-r-xl`}
+              className={`${PRIMARY_COLOR_CLASS} p-4 flex justify-between items-center rounded-r-xl flex-shrink-0`}
             >
               <h2 className="text-xl font-bold text-white">{t.app_name}</h2>
               <button
@@ -1479,7 +1621,8 @@ export default function App() {
               </button>
             </div>
 
-            <nav className="p-4 space-y-2">
+            {/* Navigation Links (Scrollable) */}
+            <nav className="p-4 space-y-2 overflow-y-auto flex-grow">
               {/* Navigation Items */}
               {[
                 { name: "Home", icon: Home, target: "Home" },
@@ -1487,21 +1630,83 @@ export default function App() {
                 { name: "Bookmarks", icon: Bookmark, target: "Bookmarks" },
                 { name: "Notes", icon: Pen, target: "Notes" },
                 { name: "Settings", icon: Settings, target: "Settings" },
-              ].map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => navigateTo(item.target)}
-                  className={`w-full flex items-center p-3 rounded-lg font-semibold transition-colors ${
-                    currentPage.name === item.target
-                      ? `${ACCENT_COLOR_CLASS} bg-red-100`
-                      : "text-gray-700 hover:bg-gray-100"
-                  }`}
-                >
-                  <item.icon className="w-6 h-6 mr-3" />
-                  {t[item.name.toLowerCase()]}
-                </button>
-              ))}
+                // --- NEW: 5fish Website Link ---
+                {
+                  name: "5fish Website",
+                  icon: ExternalLink,
+                  target: "5fish",
+                  url: "https://www.5fish.com/",
+                },
+              ].map((item) => {
+                // --- NEW: Logic to render a link or a button ---
+                if (item.url) {
+                  return (
+                    <a
+                      key={item.name}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex items-center p-3 rounded-lg font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
+                    >
+                      <item.icon className="w-6 h-6 mr-3" />
+                      {item.name}
+                    </a>
+                  );
+                }
+
+                // Original button logic
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => navigateTo(item.target)}
+                    className={`w-full flex items-center p-3 rounded-lg font-semibold transition-colors ${
+                      currentPage.name === item.target
+                        ? `${ACCENT_COLOR_CLASS} bg-red-100`
+                        : "text-gray-700 hover:bg-gray-100"
+                    }`}
+                  >
+                    <item.icon className="w-6 h-6 mr-3" />
+                    {t[item.name.toLowerCase()]}
+                  </button>
+                );
+              })}
             </nav>
+
+            {/* Bottom Controls (Sticky) */}
+            <div className="p-4 border-t border-gray-200 flex-shrink-0 space-y-3">
+              {/* --- NEW: Auth Status --- */}
+              <div className="text-xs text-gray-500 space-y-1">
+                <p className="truncate">
+                  {t.auth_status || "Status"}:
+                  <span
+                    className={`font-semibold ${
+                      isAuthReady ? "text-green-600" : "text-yellow-600"
+                    }`}
+                  >
+                    {isAuthReady
+                      ? t.auth_ready || " Ready"
+                      : t.auth_pending || " Pending"}
+                  </span>
+                </p>
+                <p className="truncate">
+                  {t.user_id || "User ID"}:
+                  <span className="font-mono text-gray-600 ml-1">
+                    {userId || "..."}
+                  </span>
+                </p>
+              </div>
+
+              {/* --- NEW: Install Button --- */}
+              {deferredPrompt && (
+                <button
+                  onClick={handleInstallClick}
+                  className={`w-full flex items-center justify-center p-3 rounded-lg font-semibold text-white bg-green-500 hover:bg-green-600 transition-colors`}
+                >
+                  <Download className="w-5 h-5 mr-2" />
+                  {t.install_app || "Install App"}
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
