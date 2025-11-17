@@ -1062,7 +1062,14 @@ export default function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true); // Splash Screen state
   const [deferredPrompt, setDeferredPrompt] = useState(null); // Install Prompt state
-
+  // --- NEW FUNCTION: navigateToHome (Fixes ReferenceError at line 1564) ---
+  const navigateToHome = () => {
+    // This function resets the pageStack to the single 'Home' entry
+    setPageStack([{ name: "Home" }]);
+    // Optionally, close the sidebar if it's open, if that's the desired behavior:
+    // setIsDrawerOpen(false);
+  };
+  // --------------------------------------------------------------------------
   // *** FIX: Changed from array to object destructuring and passed setLang ***
   const { userData, saveUserData, isAuthReady, error, userId } =
     useFirebase(setLang); // Added userId
