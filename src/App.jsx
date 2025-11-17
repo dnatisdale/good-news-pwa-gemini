@@ -306,28 +306,32 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
   return (
     <div
       id="print-view-container"
-      className="bg-white p-8 rounded-lg shadow-lg"
+      // Reduced p-8 to p-4 for tighter layout
+      className="bg-white p-4 rounded-lg shadow-lg"
       style={{ width: "400px", margin: "auto", fontFamily: "sans-serif" }}
     >
       <div className="flex justify-between items-start mb-4">
-        {/* --- 💡 NEW: Logo positioned top-left (Moved outside the flex column) --- */}
-        <img
-          src={AppLogo}
-          alt="App Logo"
-          style={{ width: "64px", height: "64px", borderRadius: "10px" }}
-          className="shadow-md mr-4 flex-shrink-0" // Added margin-right
-        />
+        {/* --- 💡 NEW: Logo positioned top-left (45x45) --- */}
+        <div className="flex justify-between items-start mb-4">
+          <img
+            src={AppLogo}
+            alt="App Logo"
+            style={{ width: "45px", height: "45px", borderRadius: "5px" }} // Smaller size, minimum border
+            className="shadow-sm flex-shrink-0"
+          />
+          {/* Placeholder or empty div to push content to the right/center */}
+          <div className="flex-grow"></div>
+        </div>
 
-        <div className="flex flex-col items-start flex-grow ml-auto">
-          {/* --- 💡 CHANGE: Language Display (Program Title) --- */}
-          <h2 className="text-2xl font-bold text-gray-800 mb-1 text-left w-full">
+        {/* --- 💡 NEW: Centered Text Block --- */}
+        <div className="flex flex-col items-center justify-center text-center mb-4">
+          {/* Language Display */}
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">
             {languageDisplay}
           </h2>
-          {/* --- 💡 CHANGE: Program Title/Message Name --- */}
-          <h3 className="text-xl font-bold text-brand-red text-left w-full">
-            {title}
-          </h3>
-          {/* --- 💡 NEW: Program # (Below title, no parentheses, same style as verse) --- */}
+          {/* Message Title */}
+          <h3 className="text-xl font-bold text-brand-red">{title}</h3>
+          {/* Program # */}
           <p className="text-sm text-gray-700 mt-1">Program # {item.id}</p>
         </div>
       </div>
@@ -341,11 +345,12 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
         />
       </div>
 
-      {/* Bible Verse (already in the correct style/color) */}
-      <p className="text-sm text-gray-700 mb-4 whitespace-pre-line text-center">
+      {/* --- 💡 CHANGE: Bible Verse moved directly below QR code --- */}
+      <p className="text-base text-gray-700 mb-4 whitespace-pre-line text-center italic">
         {verse}
       </p>
 
+      {/* --- Footer/Link Section --- */}
       <p className="text-sm text-gray-600 text-center break-all">
         {readMoreLabel}: <br />
         <a href={cardUrl} className="text-brand-red underline">
@@ -386,9 +391,10 @@ const LanguageQrModal = ({
         <h3 className="text-lg font-semibold text-brand-red mb-4 text-center">
           {languageDisplayName}
         </h3>
+        {/* --- QR CODE DISPLAY --- */}
         <div className="flex justify-center mb-4 p-4 bg-gray-50 rounded-lg">
           <QRCodeDisplay
-            url={languageShareUrl}
+            url={cardUrl}
             size={200}
             fgColor="#000000"
             bgColor="#FFFFFF"
