@@ -1,6 +1,6 @@
 {
   "name": "good-news-pwa",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "firebase": "^10.14.1",

@@ -1432,22 +1432,6 @@ export default function App() {
         />
       );
       break;
-    case "ContentView":
-      PageContent = (
-        <ContentView
-          item={currentItem}
-          lang={lang}
-          t={t}
-          onBack={() => handleNextPrevMessage("prev")}
-          onForward={() => handleNextPrevMessage("next")}
-          hasPrev={canGoPrev}
-          hasNext={canGoNext}
-          userData={userData}
-          saveUserData={saveUserData}
-          onPlay={handlePlayMessage}
-        />
-      );
-      break;
     case "Search":
       PageContent = (
         <SearchPage
@@ -1565,10 +1549,9 @@ export default function App() {
 
         {/* --- HEADER (Banner) --- */}
         <header
-          // Header remains sticky/fixed with the sticky top-0 class
           className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
         >
-          {/* LEFT SECTION: Hamburger Menu and Logo/Home */}
+          {/* LEFT SECTION: Hamburger Menu and Logo/Link */}
           <div className="flex items-center flex-shrink-0">
             {/* 1. Sidebar Toggle Button */}
             <button
@@ -1579,10 +1562,12 @@ export default function App() {
               <Menu className="w-7 h-7" />
             </button>
 
-            {/* 2. Logo and Home Text (หน้าแรก) - Enlarged and used for Home navigation */}
-            <button
-              onClick={navigateToHome} // Navigates to the Home page
-              title="5fish.mobi" // Reference the correct domain
+            {/* 2. Logo (Now a link to 5fish.mobi/th?r=Asia&country=Thailand) */}
+            <a
+              href="https://5fish.mobi/th?r=Asia&country=Thailand" // Set the external URL here
+              target="_blank" // Opens the link in a new tab
+              rel="noopener noreferrer" // Security best practice
+              title="5fish.mobi/th?r=Asia&country=Thailand" // Set the correct domain title
               // Added ml-3 and focused state for better UX
               className="flex items-center text-white p-1 rounded-lg hover:bg-red-800 transition-colors ml-3 focus:outline-none focus:ring-2 focus:ring-white"
             >
@@ -1590,24 +1575,19 @@ export default function App() {
               <img
                 src={BannerLogo}
                 alt={t.app_name}
-                // Increased height for "Enlarge the banner logo" request
+                // Increased height
                 className="h-9 md:h-11 w-auto rounded-md shadow-sm bg-white p-1"
               />
-              {/* Home Text (หน้าแรก) next to the logo icon */}
-              <span className="ml-2 text-lg font-bold">
-                {t.home_thai || "หน้าแรก"}
-              </span>
-            </button>
+              {/* --- "หน้าแรก" (Home Text) HAS BEEN REMOVED --- */}
+            </a>
           </div>
-
-          {/* *** REMOVED CENTER SECTION: PERSISTENT SEARCH BAR *** */}
 
           {/* RIGHT SECTION: Controls (Font, Language, Search Toggle) */}
           <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
             {/* 1. Font Size Buttons */}
             <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
 
-            {/* 2. Language Switch Button (Fixed/Mounted via sticky header CSS) */}
+            {/* 2. Language Switch Button */}
             <LanguageToggle lang={lang} setLang={setLang} t={t} />
 
             {/* 3. Search Button (Toggle for Search Input) */}
