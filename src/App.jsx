@@ -19,22 +19,12 @@ import {
   Zap,
   Download,
   PlayCircle,
-  ExternalLink, // NEW: Added an icon for external links
+  ExternalLink,
 } from "./components/Icons";
 import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
 import AppLogo from "./assets/splash-screen-logo.svg";
-
-// NEW: Import the Banner Logo
 import BannerLogo from "./assets/banner-logo.svg";
-
-// --- 2. ADD THE LOGO CLICK HANDLER ---
-const YOUTUBE_URL = "https://youtu.be/I2QSn9DJKo8?si=nmza42Y6AiuynsaI";
-
-const handleLogoClick = () => {
-  // Opens the video in a new tab so the PWA remains active
-  window.open(YOUTUBE_URL, "_blank");
-};
 
 // --- CONSTANTS ---
 // PWA Custom Colors
@@ -53,6 +43,115 @@ const copyLink = (text, callback) => {
     .writeText(text)
     .then(() => callback("Link copied!"))
     .catch(() => callback("Failed to copy link."));
+};
+
+// --- LOGO CLICK HANDLER ---
+const YOUTUBE_URL = "https://youtu.be/I2QSn9DJKo8?si=nmza42Y6AiuynsaI";
+
+const handleLogoClick = () => {
+  // Opens the video in a new tab so the PWA remains active
+  window.open(YOUTUBE_URL, "_blank");
+};
+
+// --- NEW/REFACTORED COMPONENTS (Defined outside App function) ---
+
+// Language Toggle Component
+const LanguageToggle = ({ lang, setLang, t }) => {
+  const toggleLang = () => {
+    const newLang = lang === "en" ? "th" : "en";
+    setLang(newLang);
+    localStorage.setItem("appLang", newLang);
+  };
+
+  return (
+    <div className="flex items-center space-x-2">
+      <button
+        onClick={toggleLang}
+        className={`w-10 h-10 p-1 rounded-lg font-bold transition-colors shadow-sm text-brand-red bg-white hover:bg-gray-200 text-lg flex items-center justify-center`}
+      >
+        {lang === "en" ? "ก" : "A"}
+      </button>
+    </div>
+  );
+};
+
+// Font Size Buttons
+const FontSizeButtons = ({ fontSize, setFontSize }) => {
+  const handleFontSize = (size) => {
+    setFontSize(size);
+    localStorage.setItem("appFontSize", size);
+  };
+
+  // Style for unselected buttons (THAI_BLUE)
+  const unselectedStyle = { backgroundColor: THAI_BLUE, color: "#ffffff" };
+  // Style for selected button (White background, THAI_RED text)
+  const selectedStyle = { backgroundColor: "#ffffff", color: THAI_RED };
+
+  // Base class for all buttons
+  const baseClass = `p-1 rounded-md font-bold transition-colors shadow-sm text-center flex items-center justify-center`;
+
+  return (
+    <div className="flex items-center space-x-1">
+      {/* Size 1 */}
+      <button
+        onClick={() => handleFontSize("14px")}
+        className={`${baseClass} w-6 h-5 text-xs z-10`}
+        style={fontSize === "14px" ? selectedStyle : unselectedStyle}
+      >
+        1
+      </button>
+      {/* Size 2 */}
+      <button
+        onClick={() => handleFontSize("16px")}
+        className={`${baseClass} w-7 h-6 text-base z-20`}
+        style={fontSize === "16px" ? selectedStyle : unselectedStyle}
+      >
+        2
+      </button>
+      {/* Size 3 */}
+      <button
+        onClick={() => handleFontSize("20px")}
+        className={`${baseClass} w-8 h-7 text-xl z-30`}
+        style={fontSize === "20px" ? selectedStyle : unselectedStyle}
+      >
+        3
+      </button>
+    </div>
+  );
+};
+
+// --- NEW GLOBAL SHARE FUNCTION (Uses Web Share API) ---
+const shareQRCard = (lang, programNumber, qrCodeUrl) => {
+  if (navigator.share) {
+    let title;
+    let text;
+
+    // NEW Labels based on user request
+    if (lang === "th") {
+      title = "ข่าวดี"; // Thai title
+      text = `Program #:${programNumber}\n\nฟัง แบ่งปัน ดาวน์โหลดที่: ${qrCodeUrl}\n\nค้นหาความรู้ใหม่ๆ กับ PWA ข่าวดี!`;
+    } else {
+      title = "Thai: Good News"; // English title
+      text = `Program #:${programNumber}\n\nListen, Share, Download at: ${qrCodeUrl}\n\nDiscover more with the Thai: Good News PWA!`;
+    }
+
+    navigator
+      .share({
+        title: title,
+        text: text,
+        url: qrCodeUrl,
+      })
+      .then(() => console.log("QR Card shared successfully!"))
+      .catch((error) => console.error("Error sharing QR Card:", error));
+  } else {
+    // Fallback logic for non-supporting browsers
+    const fallbackText =
+      lang === "th"
+        ? `ข่าวดี Program #:${programNumber}\nฟัง แบ่งปัน ดาวน์โหลดที่: ${qrCodeUrl}`
+        : `Thai: Good News Program #:${programNumber}\nListen, Share, Download at: ${qrCodeUrl}`;
+
+    copyLink(fallbackText, (message) => alert(message));
+  }
 };
 
 // --- Reusable Components ---
@@ -190,76 +289,16 @@ const ContentCard = ({ item, lang, onSelect, showLanguageName = true }) => {
   );
 };
 
-// Language Toggle Component
-const LanguageToggle = ({ lang, setLang, t }) => {
-  const toggleLang = () => {
-    const newLang = lang === "en" ? "th" : "en";
-    setLang(newLang);
-    localStorage.setItem("appLang", newLang);
-  };
-
-  return (
-    <div className="flex items-center space-x-2">
-      <button
-        onClick={toggleLang}
-        className={`w-10 h-10 p-1 rounded-lg font-bold transition-colors shadow-sm text-brand-red bg-white hover:bg-gray-200 text-lg flex items-center justify-center`}
-      >
-        {lang === "en" ? "ก" : "A"}
-      </button>
-    </div>
-  );
-};
-
-// Font Size Buttons
-const FontSizeButtons = ({ fontSize, setFontSize }) => {
-  const handleFontSize = (size) => {
-    setFontSize(size);
-    localStorage.setItem("appFontSize", size);
-  };
-
-  // Style for unselected buttons (THAI_BLUE)
-  const unselectedStyle = { backgroundColor: THAI_BLUE, color: "#ffffff" };
-  // Style for selected button (White background, THAI_RED text)
-  const selectedStyle = { backgroundColor: "#ffffff", color: THAI_RED };
-
-  // Base class for all buttons
-  const baseClass = `p-1 rounded-md font-bold transition-colors shadow-sm text-center flex items-center justify-center`;
-
-  return (
-    <div className="flex items-center space-x-1">
-      {/* Size 1 */}
-      <button
-        onClick={() => handleFontSize("14px")}
-        className={`${baseClass} w-6 h-5 text-xs z-10`}
-        style={fontSize === "14px" ? selectedStyle : unselectedStyle}
-      >
-        1
-      </button>
-      {/* Size 2 */}
-      <button
-        onClick={() => handleFontSize("16px")}
-        className={`${baseClass} w-7 h-6 text-base z-20`}
-        style={fontSize === "16px" ? selectedStyle : unselectedStyle}
-      >
-        2
-      </button>
-      {/* Size 3 */}
-      <button
-        onClick={() => handleFontSize("20px")}
-        className={`${baseClass} w-8 h-7 text-xl z-30`}
-        style={fontSize === "20px" ? selectedStyle : unselectedStyle}
-      >
-        3
-      </button>
-    </div>
-  );
-};
-
-// --- Share Card Print View Component ---
+// --- Share Card Print View Component (For downloadable PNG) ---
 const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
   const title =
     lang === "en" ? item.title_en ?? "Untitled" : item.title_th ?? "ไม่มีชื่อ";
   const verse = lang === "en" ? item.verse_en ?? "" : item.verse_th ?? "";
+
+  // NEW: Labels based on user request for the downloadable card
+  const appTitleDisplay = lang === "en" ? "Thai: Good News" : "ข่าวดี";
+  const readMoreLabel =
+    lang === "en" ? "Listen, Share, Download at" : "ฟัง แบ่งปัน ดาวน์โหลดที่";
 
   return (
     <div
@@ -268,10 +307,10 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
       style={{ width: "400px", margin: "auto", fontFamily: "sans-serif" }}
     >
       <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">
-        {t.app_name}
+        {appTitleDisplay} {/* NEW: Use specific title */}
       </h2>
       <h3 className="text-xl font-bold text-brand-red mb-2 text-center">
-        {title} (Program {item.id})
+        {title} (Program #:{item.id}) {/* NEW: Use Program #: label */}
       </h3>
 
       {/* BIBLE VERSE ADDED TO QR CARD */}
@@ -289,7 +328,7 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
       </div>
 
       <p className="text-sm text-gray-600 text-center break-all">
-        {t.read_more_at || "Read this message and more at"}: <br />
+        {readMoreLabel}: <br /> {/* NEW: Use specific label */}
         <a href={cardUrl} className="text-brand-red underline">
           {cardUrl}
         </a>
@@ -392,30 +431,10 @@ const ContentView = ({
     saveUserData({ ...userData, bookmarks: newBookmarks });
   };
 
-  const generateShareText = () => {
-    return `
-${t.app_name} - ${titleDisplay}
-${verseDisplay} 
-${t.language_label || "Language"}: ${languageDisplay}
-${t.program_number || "Program Number"}: ${item.id}
-${t.read_more_at || "Read more"}: ${cardUrl}
-${t.download_qr_card_tip || "Download QR card for easy sharing!"}
-        `.trim();
-  };
-
+  // --- REVISED handleShare: Calls the new global Web Share function ---
   const handleShare = () => {
-    const shareText = generateShareText();
-    if (navigator.share) {
-      navigator
-        .share({
-          title: t.app_name,
-          text: shareText,
-          url: cardUrl,
-        })
-        .catch((error) => console.log("Error sharing", error));
-    } else {
-      copyLink(shareText, (message) => alert(message));
-    }
+    // Pass the current language, program ID, and URL to the global helper
+    shareQRCard(lang, item.id, cardUrl);
   };
 
   const downloadShareCard = async () => {
