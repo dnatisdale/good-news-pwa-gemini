@@ -1061,6 +1061,9 @@ export default function App() {
   const [isAudioMinimized, setIsAudioMinimized] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true); // Splash Screen state
+  // --- NEW STATE FOR SEARCH TOGGLE (Fixes ReferenceError at line 1613) ---
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  // ----------------------------------------------------------------------
   const [deferredPrompt, setDeferredPrompt] = useState(null); // Install Prompt state
   // --- NEW FUNCTION: navigateToHome (Fixes ReferenceError at line 1564) ---
   const navigateToHome = () => {
