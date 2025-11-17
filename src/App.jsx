@@ -400,6 +400,7 @@ const ContentView = ({
   userData,
   saveUserData,
   onPlay,
+  pageStack,
 }) => {
   const [isQrLarge, setIsQrLarge] = useState(false);
 
