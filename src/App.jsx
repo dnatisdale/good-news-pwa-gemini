@@ -486,11 +486,13 @@ const ContentView = ({
         <button
           onClick={onBack}
           className={`text-sm font-semibold flex items-center transition-colors ${
-            hasPrev
-              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-              : "text-gray-400 cursor-not-allowed"
+            pageStack.length === 1 && pageStack[0].name === "Home"
+              ? "text-gray-400 cursor-not-allowed"
+              : `${ACCENT_COLOR_CLASS} hover:text-red-700`
           }`}
-          disabled={!hasPrev}
+          // Assuming pageStack and the goBack function are available in the component's scope.
+          // If not, you might need to pass `pageStack` as a prop and use `pageStack.length === 1 && pageStack[0].name === "Home"`
+          disabled={pageStack.length === 1 && pageStack[0].name === "Home"}
         >
           <ChevronLeft className="w-5 h-5 mr-1" />
           {t.back || "Back"}
@@ -1343,13 +1345,13 @@ export default function App() {
           { name: "Home" },
           { name: "MessagesByLanguage", key: decodedLangKey },
         ]);
-        window.history.replaceState(
-          {},
-          document.title,
-          window.location.pathname
-        );
+
+        // --- REMOVED window.history.replaceState(...) ---
+        // By removing the replaceState, the browser history remains intact,
+        // allowing the <Back button to function correctly.
       }
     }
+    // ... rest of useEffect
   }, [languageGroups]); // Depend on languageGroups to ensure data is loaded
 
   // --- NEW: PWA Install Prompt Listener ---
