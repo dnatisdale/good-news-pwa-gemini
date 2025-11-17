@@ -1037,7 +1037,8 @@ const SettingsPage = ({
             id="language-select"
             value={lang}
             onChange={handleLangChange}
-            className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-brand-red focus:border-brand-red transition duration-150"
+            // 💡 ADD 'text-inherit' CLASS
+            className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-brand-red focus:border-brand-red transition duration-150 text-inherit"
           >
             <option value="en">English</option>
             <option value="th">ไทย (Thai)</option>
@@ -1056,7 +1057,8 @@ const SettingsPage = ({
             id="font-size-select"
             value={fontSize}
             onChange={handleFontSizeChange}
-            className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-brand-red focus:border-brand-red transition duration-150"
+            // 💡 ADD 'text-inherit' CLASS
+            className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-brand-red focus:border-brand-red transition duration-150 text-inherit"
           >
             <option value="14px">{t.font_size_small || "Small"}</option>
             <option value="16px">{t.font_size_medium || "Medium"}</option>
@@ -1714,7 +1716,8 @@ export default function App() {
           <div
             className={`absolute left-0 top-0 w-72 h-full bg-white shadow-2xl transition-transform duration-300 transform ${
               isDrawerOpen ? "translate-x-0" : "-translate-x-full"
-            } flex flex-col`}
+              // 💡 ADD rounded-tr-xl CLASS HERE
+            } rounded-tr-xl flex flex-col`}
           >
             {/* Header */}
             <div
