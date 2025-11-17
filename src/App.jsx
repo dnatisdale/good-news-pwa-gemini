@@ -1427,6 +1427,8 @@ export default function App() {
           onSelectMessage={(item) => handleSelectMessage(item, "language")}
           currentMessageList={currentMessageList}
           languageGroups={languageGroups}
+          // --- FIX: ADDED pageStack PROP ---
+          pageStack={pageStack}
         />
       );
       break;
@@ -1457,6 +1459,8 @@ export default function App() {
           onForward={goForward}
           hasPrev={hasPrev}
           hasNext={hasNext}
+          // --- FIX: ADDED pageStack PROP ---
+          pageStack={pageStack}
         />
       );
       break;
@@ -1471,6 +1475,8 @@ export default function App() {
           onForward={goForward}
           hasPrev={hasPrev}
           hasNext={hasNext}
+          // --- FIX: ADDED pageStack PROP ---
+          pageStack={pageStack}
         />
       );
       break;
@@ -1483,6 +1489,8 @@ export default function App() {
           onForward={goForward}
           hasPrev={hasPrev}
           hasNext={hasNext}
+          // --- FIX: ADDED pageStack PROP ---
+          pageStack={pageStack}
         />
       );
       break;
@@ -1499,6 +1507,8 @@ export default function App() {
           onForward={goForward}
           hasPrev={hasPrev}
           hasNext={hasNext}
+          // --- FIX: ADDED pageStack PROP ---
+          pageStack={pageStack}
         />
       );
       break;
@@ -1708,7 +1718,7 @@ export default function App() {
                   name: "5fish Website",
                   icon: ExternalLink,
                   target: "5fish",
-                  url: "https://www.5fish.com/",
+                  url: "https://5fish.mobi/",
                 },
               ].map((item) => {
                 // --- NEW: Logic to render a link or a button ---
