@@ -1545,29 +1545,67 @@ export default function App() {
 
         {/* --- HEADER (Banner) --- */}
         <header
+          // Header remains sticky/fixed with the sticky top-0 class
           className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
         >
-          {/* LEFT SECTION: Hamburger Menu and Logo (Now grouped) */}
+          {/* LEFT SECTION: Hamburger Menu and Logo/Home */}
           <div className="flex items-center flex-shrink-0">
-            {/* 1. Navigation Button (Left) */}
+            {/* 1. Sidebar Toggle Button */}
             <button
               onClick={() => setIsDrawerOpen(true)}
               className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
+              aria-label="Open Sidebar Menu"
             >
               <Menu className="w-7 h-7" />
             </button>
 
-            {/* 2. Logo Image (Now immediately after the hamburger) */}
-            <img
-              src={BannerLogo}
-              alt={t.app_name}
-              className="h-8 md:h-10 w-auto rounded-md shadow-sm mr-4 ml-3 bg-white p-1"
-            />
+            {/* 2. Logo and Home Text (หน้าแรก) - Enlarged and used for Home navigation */}
+            <button
+              onClick={navigateToHome} // Navigates to the Home page
+              title="5fish.mobi" // Reference the correct domain
+              // Added ml-3 and focused state for better UX
+              className="flex items-center text-white p-1 rounded-lg hover:bg-red-800 transition-colors ml-3 focus:outline-none focus:ring-2 focus:ring-white"
+            >
+              {/* Enlarged Logo Image */}
+              <img
+                src={BannerLogo}
+                alt={t.app_name}
+                // Increased height for "Enlarge the banner logo" request
+                className="h-9 md:h-11 w-auto rounded-md shadow-sm bg-white p-1"
+              />
+              {/* Home Text (หน้าแรก) next to the logo icon */}
+              <span className="ml-2 text-lg font-bold">
+                {t.home_thai || "หน้าแรก"}
+              </span>
+            </button>
           </div>
 
-          {/* CENTER SECTION: Search Bar (Wider max-width for centering effect) */}
-          <div className="flex items-center w-full max-w-lg mx-3 md:mx-6">
-            <div className="relative w-full">
+          {/* *** REMOVED CENTER SECTION: PERSISTENT SEARCH BAR *** */}
+
+          {/* RIGHT SECTION: Controls (Font, Language, Search Toggle) */}
+          <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
+            {/* 1. Font Size Buttons */}
+            <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
+
+            {/* 2. Language Switch Button (Fixed/Mounted via sticky header CSS) */}
+            <LanguageToggle lang={lang} setLang={setLang} t={t} />
+
+            {/* 3. Search Button (Toggle for Search Input) */}
+            <button
+              onClick={() => setIsSearchOpen(true)} // Opens the search input field
+              className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
+              aria-label="Toggle Search"
+            >
+              <Search className="w-6 h-6" />
+            </button>
+          </div>
+        </header>
+
+        {/* --- TOGGLED SEARCH BAR (Below Header) --- */}
+        {/* Render the search bar only if isSearchOpen is true */}
+        {isSearchOpen && (
+          <div className="absolute top-16 w-full p-2 bg-white shadow-xl z-20">
+            <div className="relative w-full flex items-center">
               {/* Search Input Field */}
               <input
                 type="text"
@@ -1581,31 +1619,26 @@ export default function App() {
                     navigateTo("Search");
                   }
                 }}
+                // Full width input for better search experience
                 className="w-full p-2 pl-10 text-gray-800 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-red-300 transition duration-150"
+                autoFocus // Automatically focus when it appears
               />
               {/* Search Icon color changed to Thai Red */}
               <Search
                 className={`absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5 ${ACCENT_COLOR_CLASS}`}
               />
 
-              {/* Clear Button */}
-              {searchTerm && (
-                <button
-                  onClick={() => setSearchTerm("")}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 text-gray-500 hover:text-gray-800"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
+              {/* Close Button */}
+              <button
+                onClick={() => setIsSearchOpen(false)} // Close the search bar
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 text-gray-500 hover:text-gray-800"
+                aria-label="Close Search"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
           </div>
-
-          {/* RIGHT SECTION: Controls */}
-          <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
-            <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
-            <LanguageToggle lang={lang} setLang={setLang} t={t} />
-          </div>
-        </header>
+        )}
 
         {/* --- MAIN CONTENT AREA --- */}
         <main className="flex-grow overflow-y-auto pb-20">{PageContent}</main>
