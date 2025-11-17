@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import ReactDOM from "react-dom/client";
 import html2canvas from "html2canvas";
+import Header from "./components/Header";
 
 import { useFirebase } from "./hooks/useFirebase";
 import { i18n } from "./i18n";
@@ -27,10 +28,18 @@ import AppLogo from "./assets/splash-screen-logo.svg";
 // NEW: Import the Banner Logo
 import BannerLogo from "./assets/banner-logo.svg";
 
+// --- 2. ADD THE LOGO CLICK HANDLER ---
+const YOUTUBE_URL = "https://youtu.be/I2QSn9DJKo8?si=nmza42Y6AiuynsaI";
+
+const handleLogoClick = () => {
+  // Opens the video in a new tab so the PWA remains active
+  window.open(YOUTUBE_URL, "_blank");
+};
+
 // --- CONSTANTS ---
 // PWA Custom Colors
-const THAI_RED = "#A51931";
-const THAI_BLUE = "#2D2A4A";
+const THAI_RED = "#CC3333";
+const THAI_BLUE = "#003366";
 
 // Tailwind Class Mapping (using inline styles for new colors where needed)
 const PRIMARY_COLOR_CLASS = "bg-brand-red";

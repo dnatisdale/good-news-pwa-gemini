@@ -2,7 +2,7 @@ export const i18n = {
   // --- ENGLISH TRANSLATIONS ---
   en: {
     // App Basics
-    app_name: "5fish Gospel Messages",
+    app_name: "Thai Good News",
     menu: "Menu",
     qr_code: "QR Code",
     back: "Back",
@@ -81,7 +81,7 @@ export const i18n = {
   // --- THAI TRANSLATIONS ---
   th: {
     // App Basics
-    app_name: "ข้อความพระกิตติคุณ 5fish",
+    app_name: "ไทยข่าวดี",
     menu: "เมนู",
     qr_code: "คิวอาร์โค้ด",
     back: "ย้อนกลับ",

@@ -1,0 +1,65 @@
+/* src/components/Header.css */
+
+/* --- Main Header Container --- */
+.header {
+  background-color: #cc3333; /* The red banner color */
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column; /* Stacks the rows vertically */
+}
+
+/* --- Top Row: Logo & Controls --- */
+.header-top-row {
+  display: flex;
+  justify-content: space-between; /* Pushes logo and controls to opposite ends */
+  align-items: center;
+  margin-bottom: 10px; /* Space above the search bar */
+}
+
+.logo-container {
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.controls-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the language button and font size buttons */
+}
+
+/* --- Bottom Row: Search Bar --- */
+.header-bottom-row {
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+/* --- Responsive Styling for Small Screens (Max-width 600px) --- */
+@media (max-width: 600px) {
+  /* Shrink the logo on mobile */
+  .logo-container h1 {
+    font-size: 1.5rem;
+  }
+
+  /* Target buttons/controls inside the container */
+  .controls-container * {
+    /* Assuming your controls are buttons or elements that can be styled this way */
+    padding: 4px 8px !important; /* Reduced padding on buttons */
+    font-size: 0.85rem !important; /* Smaller font for controls */
+    min-width: unset;
+  }
+
+  /* Reduce gap between controls */
+  .controls-container {
+    gap: 5px;
+  }
+}
