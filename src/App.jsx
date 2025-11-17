@@ -1414,6 +1414,29 @@ export default function App() {
         />
       );
       break;
+
+    // --- THIS IS THE MISSING BLOCK THAT FIXES THE 404 ERROR ---
+    case "ContentView":
+      PageContent = (
+        <ContentView
+          item={currentItem}
+          lang={lang}
+          t={t}
+          onBack={goBack}
+          // Use the specific next/prev handlers for this view
+          onForward={() => handleNextPrevMessage("next")}
+          hasPrev={canGoPrev}
+          hasNext={canGoNext}
+          userData={userData}
+          saveUserData={saveUserData}
+          onPlay={handlePlayMessage}
+          // --- FIX: ADDED pageStack PROP ---
+          pageStack={pageStack}
+        />
+      );
+      break;
+    // --------------------------------------------------------
+
     case "MessagesByLanguage":
       PageContent = (
         <MessagesByLanguagePage
@@ -1496,27 +1519,6 @@ export default function App() {
         />
       );
       break;
-    // --- THIS IS THE MISSING BLOCK THAT FIXES THE 404 ERROR ---
-    case "ContentView":
-      PageContent = (
-        <ContentView
-          item={currentItem}
-          lang={lang}
-          t={t}
-          onBack={goBack}
-          // Use the specific next/prev handlers for this view
-          onForward={() => handleNextPrevMessage("next")}
-          hasPrev={canGoPrev}
-          hasNext={canGoNext}
-          userData={userData}
-          saveUserData={saveUserData}
-          onPlay={handlePlayMessage}
-          // --- FIX: ADDED pageStack PROP ---
-          pageStack={pageStack}
-        />
-      );
-      break;
-    // --------------------------------------------------------
 
     default:
       PageContent = (
