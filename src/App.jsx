@@ -1602,9 +1602,9 @@ export default function App() {
         </header>
 
         {/* --- TOGGLED SEARCH BAR (Below Header) --- */}
-        {/* Render the search bar only if isSearchOpen is true */}
         {isSearchOpen && (
-          <div className="absolute top-16 w-full p-2 bg-white shadow-xl z-20">
+          // IMPORTANT CHANGE: Increased top-16 to top-20 (5rem) and lowered z-index to z-10
+          <div className="sticky top-20 w-full p-2 bg-white shadow-xl z-10">
             <div className="relative w-full flex items-center">
               {/* Search Input Field */}
               <input
@@ -1619,13 +1619,13 @@ export default function App() {
                     navigateTo("Search");
                   }
                 }}
-                // Full width input for better search experience
                 className="w-full p-2 pl-10 text-gray-800 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-red-300 transition duration-150"
-                autoFocus // Automatically focus when it appears
+                style={{ fontSize: "1.2rem" }} // For the 1-point increase
+                autoFocus
               />
               {/* Search Icon color changed to Thai Red */}
               <Search
-                className={`absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5 ${ACCENT_COLOR_CLASS}`}
+                className={`absolute left-2 top-1.5 w-5 h-5 ${ACCENT_COLOR_CLASS}`}
               />
 
               {/* Close Button */}
