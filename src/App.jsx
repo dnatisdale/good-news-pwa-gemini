@@ -310,27 +310,28 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
       style={{ width: "400px", margin: "auto", fontFamily: "sans-serif" }}
     >
       <div className="flex justify-between items-start mb-4">
-        {/* --- 💡 NEW: LOGO (64x64) --- */}
+        {/* --- 💡 NEW: Logo positioned top-left (Moved outside the flex column) --- */}
         <img
           src={AppLogo}
           alt="App Logo"
           style={{ width: "64px", height: "64px", borderRadius: "10px" }}
-          className="shadow-md"
+          className="shadow-md mr-4 flex-shrink-0" // Added margin-right
         />
-        <div className="flex flex-col items-center flex-grow">
-          {/* --- 💡 CHANGE: Replaced App Title with Language --- */}
-          <h2 className="text-2xl font-bold text-gray-800 mb-1 text-center">
+
+        <div className="flex flex-col items-start flex-grow ml-auto">
+          {/* --- 💡 CHANGE: Language Display (Program Title) --- */}
+          <h2 className="text-2xl font-bold text-gray-800 mb-1 text-left w-full">
             {languageDisplay}
           </h2>
-          {/* --- 💡 CHANGE: Removed colon and added space for Program # --- */}
-          <h3 className="text-xl font-bold text-brand-red text-center">
-            {title} (Program # {item.id})
+          {/* --- 💡 CHANGE: Program Title/Message Name --- */}
+          <h3 className="text-xl font-bold text-brand-red text-left w-full">
+            {title}
           </h3>
+          {/* --- 💡 NEW: Program # (Below title, no parentheses, same style as verse) --- */}
+          <p className="text-sm text-gray-700 mt-1">Program # {item.id}</p>
         </div>
       </div>
 
-      {/* --- 💡 CHANGE: BIBLE VERSE MOVED BELOW QR CODE --- */}
-      {/* (It was already here in your existing code, so we can leave it!) */}
       <div className="flex justify-center mb-4 p-4 bg-gray-50 rounded-lg">
         <QRCodeDisplay
           url={cardUrl}
@@ -340,7 +341,7 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
         />
       </div>
 
-      {/* BIBLE VERSE IS ALREADY HERE (line 369 in your code) */}
+      {/* Bible Verse (already in the correct style/color) */}
       <p className="text-sm text-gray-700 mb-4 whitespace-pre-line text-center">
         {verse}
       </p>
