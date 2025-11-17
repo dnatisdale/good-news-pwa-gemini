@@ -294,9 +294,12 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
   const title =
     lang === "en" ? item.title_en ?? "Untitled" : item.title_th ?? "ไม่มีชื่อ";
   const verse = lang === "en" ? item.verse_en ?? "" : item.verse_th ?? "";
+  // NEW: Get the language display name
+  const languageDisplay =
+    lang === "en" ? item.languageEn ?? "" : item.langTh ?? "";
 
   // NEW: Labels based on user request for the downloadable card
-  const appTitleDisplay = lang === "en" ? "Thai: Good News" : "ข่าวดี";
+  const appTitleDisplay = lang === "en" ? "Thai: Good News" : "ข่าวดี"; // This label is now deprecated
   const readMoreLabel =
     lang === "en" ? "Listen, Share, Download at" : "ฟัง แบ่งปัน ดาวน์โหลดที่";
 
@@ -306,18 +309,28 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
       className="bg-white p-8 rounded-lg shadow-lg"
       style={{ width: "400px", margin: "auto", fontFamily: "sans-serif" }}
     >
-      <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">
-        {appTitleDisplay} {/* NEW: Use specific title */}
-      </h2>
-      <h3 className="text-xl font-bold text-brand-red mb-2 text-center">
-        {title} (Program #:{item.id}) {/* NEW: Use Program #: label */}
-      </h3>
+      <div className="flex justify-between items-start mb-4">
+        {/* --- 💡 NEW: LOGO (64x64) --- */}
+        <img
+          src={AppLogo}
+          alt="App Logo"
+          style={{ width: "64px", height: "64px", borderRadius: "10px" }}
+          className="shadow-md"
+        />
+        <div className="flex flex-col items-center flex-grow">
+          {/* --- 💡 CHANGE: Replaced App Title with Language --- */}
+          <h2 className="text-2xl font-bold text-gray-800 mb-1 text-center">
+            {languageDisplay}
+          </h2>
+          {/* --- 💡 CHANGE: Removed colon and added space for Program # --- */}
+          <h3 className="text-xl font-bold text-brand-red text-center">
+            {title} (Program # {item.id})
+          </h3>
+        </div>
+      </div>
 
-      {/* BIBLE VERSE ADDED TO QR CARD */}
-      <p className="text-sm text-gray-700 mb-4 whitespace-pre-line text-center">
-        {verse}
-      </p>
-
+      {/* --- 💡 CHANGE: BIBLE VERSE MOVED BELOW QR CODE --- */}
+      {/* (It was already here in your existing code, so we can leave it!) */}
       <div className="flex justify-center mb-4 p-4 bg-gray-50 rounded-lg">
         <QRCodeDisplay
           url={cardUrl}
@@ -327,12 +340,18 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
         />
       </div>
 
+      {/* BIBLE VERSE IS ALREADY HERE (line 369 in your code) */}
+      <p className="text-sm text-gray-700 mb-4 whitespace-pre-line text-center">
+        {verse}
+      </p>
+
       <p className="text-sm text-gray-600 text-center break-all">
-        {readMoreLabel}: <br /> {/* NEW: Use specific label */}
+        {readMoreLabel}: <br />
         <a href={cardUrl} className="text-brand-red underline">
           {cardUrl}
         </a>
       </p>
+
       <p className="text-xs text-gray-500 mt-4 text-center">
         {t.scan_qr_tip ||
           "Scan the QR code or visit the link to access this content."}
