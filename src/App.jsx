@@ -79,14 +79,14 @@ const LanguageToggle = ({ lang, setLang, t }) => {
 const FontSizeButtons = ({ fontSize, setFontSize }) => {
   const handleFontSize = (size) => {
     setFontSize(size);
-    localStorage.setItem("appFontSize", size);
+    // --- REMOVED: localStorage.setItem("appFontSize", size); ---
   };
 
   // Style for unselected buttons (THAI_BLUE)
   const unselectedStyle = { backgroundColor: THAI_BLUE, color: "#ffffff" };
   // Style for selected button (White background, THAI_RED text)
   const selectedStyle = { backgroundColor: "#ffffff", color: THAI_RED };
-
+  SettingsPage;
   // Base class for all buttons
   const baseClass = `p-1 rounded-md font-bold transition-colors shadow-sm text-center flex items-center justify-center`;
 
@@ -994,7 +994,7 @@ const SettingsPage = ({
   const handleFontSizeChange = (e) => {
     const newSize = e.target.value;
     setFontSize(newSize);
-    localStorage.setItem("appFontSize", newSize);
+    // --- REMOVED: localStorage.setItem("appFontSize", newSize); ---
   };
 
   return (
@@ -1413,6 +1413,18 @@ export default function App() {
     };
   }, []);
 
+  // --- ADDED: New Global Font Size Effect ---
+  useEffect(() => {
+    // Apply the selected font size to the root <html> element
+    // This will scale all rem-based Tailwind classes.
+    if (fontSize) {
+      document.documentElement.style.fontSize = fontSize;
+      // We also consolidate saving to localStorage here
+      localStorage.setItem("appFontSize", fontSize);
+    }
+  }, [fontSize]); // Rerun this effect whenever fontSize changes
+  // --- END of new block ---
+
   // *** FIX: Added Firebase Loading Check ***
   // If the app is not ready (Firebase has not loaded user state), show a loading screen.
   if (!isAuthReady && !isLoading) {
@@ -1587,10 +1599,7 @@ export default function App() {
       </div>
     ) : (
       // 2. --- NORMAL APPLICATION START (Visible while isLoading is FALSE) ---
-      <div
-        className="min-h-screen bg-gray-100 flex flex-col"
-        style={{ fontSize }} // <-- This correctly sets the base font size
-      >
+      <div className="min-h-screen bg-gray-100 flex flex-col">
         {/* --- LANGUAGE QR MODAL --- */}
         <LanguageQrModal
           isOpen={isLanguageQrModalOpen}
