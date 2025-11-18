@@ -297,30 +297,26 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
   // NEW: Get the language display name
   const languageDisplay =
     lang === "en" ? item.languageEn ?? "" : item.langTh ?? "";
-
-  // NEW: Labels based on user request for the downloadable card
-  const appTitleDisplay = lang === "en" ? "Thai: Good News" : "ข่าวดี"; // This label is now deprecated
   const readMoreLabel =
     lang === "en" ? "Listen, Share, Download at" : "ฟัง แบ่งปัน ดาวน์โหลดที่";
+  // NEW: Labels based on user request for the downloadable card
+  const appTitleDisplay = lang === "en" ? "Thai: Good News" : "ข่าวดี"; // This label is now deprecated
 
   return (
     <div
       id="print-view-container"
-      // Reduced p-8 to p-4 for tighter layout
       className="bg-white p-4 rounded-lg shadow-lg"
       style={{ width: "400px", margin: "auto", fontFamily: "sans-serif" }}
     >
       <div className="flex justify-between items-start mb-4">
-        {/* --- 💡 NEW: Logo positioned top-left (45x45) --- */}
-        <div className="flex justify-between items-start mb-4">
+        {/* --- 💡 NEW: LOGO - Top Left (45x45) --- */}
+        <div className="flex justify-start items-start mb-4">
           <img
             src={AppLogo}
             alt="App Logo"
-            style={{ width: "45px", height: "45px", borderRadius: "5px" }} // Smaller size, minimum border
+            style={{ width: "45px", height: "45px", borderRadius: "5px" }}
             className="shadow-sm flex-shrink-0"
           />
-          {/* Placeholder or empty div to push content to the right/center */}
-          <div className="flex-grow"></div>
         </div>
 
         {/* --- 💡 NEW: Centered Text Block --- */}
@@ -336,7 +332,16 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
         </div>
       </div>
 
-      <div className="flex justify-center mb-4 p-4 bg-gray-50 rounded-lg">
+      {/* --- QR CODE & VERSE BLOCK --- */}
+      {/* The verse goes here now, directly above the QR for better visual flow */}
+
+      {/* --- 💡 FIX: VERSE POSITION - Higher up (Above the QR code) --- */}
+      <p className="text-base text-gray-700 mb-4 whitespace-pre-line text-center italic">
+        {verse}
+      </p>
+
+      {/* QR CODE DISPLAY */}
+      <div className="flex justify-center mb-6 p-4 bg-gray-50 rounded-lg">
         <QRCodeDisplay
           url={cardUrl}
           size={200}
@@ -344,11 +349,6 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
           bgColor="#FFFFFF"
         />
       </div>
-
-      {/* --- 💡 CHANGE: Bible Verse moved directly below QR code --- */}
-      <p className="text-base text-gray-700 mb-4 whitespace-pre-line text-center italic">
-        {verse}
-      </p>
 
       {/* --- Footer/Link Section --- */}
       <p className="text-sm text-gray-600 text-center break-all">
