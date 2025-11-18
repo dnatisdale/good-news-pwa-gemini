@@ -1589,7 +1589,7 @@ export default function App() {
       // 2. --- NORMAL APPLICATION START (Visible while isLoading is FALSE) ---
       <div
         className="min-h-screen bg-gray-100 flex flex-col"
-        style={{ fontSize }}
+        style={{ fontSize }} // <-- This correctly sets the base font size
       >
         {/* --- LANGUAGE QR MODAL --- */}
         <LanguageQrModal
