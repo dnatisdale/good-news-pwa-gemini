@@ -5,6 +5,11 @@ import Header from "./components/Header";
 
 import { useFirebase } from "./hooks/useFirebase";
 import { i18n } from "./i18n";
+import { useContentFilter } from "./hooks/useContentFilter";
+import {
+  getFilteredMessages,
+  getLanguageIndeterminateState,
+} from "./utils/filterLogic";
 import {
   Home,
   Search,
@@ -20,6 +25,8 @@ import {
   Download,
   PlayCircle,
   ExternalLink,
+  // --- CORRECTED ICONS ---
+  Qrcode, // The system exports it as 'Qrcode'
 } from "./components/Icons";
 import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
@@ -216,19 +223,41 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
   );
 };
 
-// Language Card Component (For initial language list)
+// Language Card Component (With Checkbox)
 const LanguageCard = ({
   languageName,
   lang,
   onSelect,
   messageCount,
   onShowQrForLanguage,
+  selectionState, // "checked", "unchecked", or "indeterminate"
+  onToggle, // Function to handle the checkbox click
 }) => {
   return (
-    <div
-      className={`bg-white p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer transition-transform hover:shadow-lg hover:scale-[1.01]`}
-    >
+    <div className="bg-white p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer transition-transform hover:shadow-lg hover:scale-[1.01]">
       <div className="flex items-center justify-between">
+        {/* --- NEW: CHECKBOX AREA --- */}
+        <div
+          className="pr-4 flex items-center"
+          onClick={(e) => {
+            e.stopPropagation(); // Stop card from opening when checking box
+            onToggle();
+          }}
+        >
+          <input
+            type="checkbox"
+            className="w-6 h-6 accent-[#003366] cursor-pointer"
+            checked={selectionState === "checked"}
+            ref={(input) => {
+              if (input) {
+                input.indeterminate = selectionState === "indeterminate";
+              }
+            }}
+            readOnly // React controls the state
+          />
+        </div>
+
+        {/* Label and Info */}
         <div onClick={() => onSelect(languageName)} className="flex-grow pr-4">
           <h3 className={`text-2xl font-bold ${ACCENT_COLOR_CLASS}`}>
             {languageName}
@@ -238,7 +267,8 @@ const LanguageCard = ({
             {lang === "en" ? "messages" : "ข้อความ"})
           </p>
         </div>
-        {/* NEW: QR Button for Language */}
+
+        {/* QR Button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -254,9 +284,110 @@ const LanguageCard = ({
   );
 };
 
-// Content Card Component (For message list within a language)
-const ContentCard = ({ item, lang, onSelect, showLanguageName = true }) => {
-  // Robust data access and using the correct item.langTh field
+// src/App.jsx - New Page Component
+
+const SelectedContentPage = ({
+  lang,
+  t,
+  onBack,
+  messages,
+  selectedMessages,
+  selectedPrograms,
+  languageGroups,
+  allMessages,
+  onClearSelection,
+  onShare,
+  onCopy,
+  onDownload,
+}) => {
+  // Use the logic to get the actual message objects
+  const filteredContent = getFilteredMessages(allMessages, selectedPrograms);
+  const count = filteredContent.length;
+
+  return (
+    <div className="p-4 pt-8 h-full flex flex-col">
+      <div className="flex justify-between items-center mb-6">
+        <button
+          onClick={onBack}
+          className={`text-sm font-semibold flex items-center transition-colors ${ACCENT_COLOR_CLASS} hover:text-red-700`}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        <button
+          onClick={onClearSelection}
+          className="text-sm font-semibold text-gray-500 hover:text-red-600 transition-colors"
+        >
+          {t.clear_all || "Clear All"}
+        </button>
+      </div>
+      <h1 className="text-2xl font-bold mb-1 ${ACCENT_COLOR_CLASS}">
+        {t.selected_content || "Selected Programs"}
+      </h1>
+      <p className="text-sm text-gray-500 mb-4 font-semibold">
+        {count} {t.messages_selected || "messages selected"}
+      </p>
+
+      {/* --- Action Buttons --- */}
+      <div className="grid grid-cols-3 gap-3 mb-6">
+        <button
+          onClick={onShare}
+          className="bg-brand-blue text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
+        >
+          <Share2 className="w-6 h-6 mb-1" />
+          <span className="text-xs">{t.share || "Share"}</span>
+        </button>
+        <button
+          onClick={onCopy}
+          className="bg-brand-blue text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
+        >
+          {/* We'll use Share2 for copy since it's common for bulk action dialogs */}
+          <Share2 className="w-6 h-6 mb-1" />
+          <span className="text-xs">{t.copy || "Copy"}</span>
+        </button>
+        <button
+          onClick={onDownload}
+          className="bg-brand-blue text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
+        >
+          {/* Using Download as a stand-in for Print/Download */}
+          <Download className="w-6 h-6 mb-1" />
+          <span className="text-xs">{t.print || "Print/Download"}</span>
+        </button>
+      </div>
+      {/* --- End Action Buttons --- */}
+      <div className="flex-grow overflow-y-auto pb-4">
+        {count === 0 ? (
+          <p className="text-center text-gray-500 pt-8">
+            {t.no_content_selected ||
+              "No content selected yet. Go back and check some boxes!"}
+          </p>
+        ) : (
+          filteredContent.map((item) => (
+            <ContentCard // Re-use the card we updated earlier!
+              key={item.id}
+              item={item}
+              lang={lang}
+              onSelect={() => {
+                /* Don't navigate on this page */
+              }}
+              showLanguageName={true} // Show the Language name since they are mixed
+            />
+          ))
+        )}
+      </div>
+    </div>
+  );
+};
+
+// Content Card Component (With Checkbox)
+const ContentCard = ({
+  item,
+  lang,
+  onSelect,
+  showLanguageName = true,
+  isSelected, // NEW: Is this specific message selected?
+  onToggle, // NEW: Function to toggle this message
+}) => {
   const languageDisplayName =
     lang === "en" ? item.languageEn ?? "" : item.langTh ?? "";
   const messageTitle =
@@ -265,30 +396,44 @@ const ContentCard = ({ item, lang, onSelect, showLanguageName = true }) => {
       : item.title_th ?? "ข้อความที่ไม่มีชื่อ";
 
   return (
-    <div
-      className={`bg-white p-4 mb-3 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer transition-transform hover:shadow-lg hover:border-brand-red`}
-      onClick={() => onSelect(item)}
-    >
-      {/* Language Name (Only shown if required, e.g., on Search/Bookmarks) */}
-      {showLanguageName && (
-        <p className={`text-base font-semibold ${ACCENT_COLOR_CLASS} mb-1`}>
-          {languageDisplayName}
-        </p>
+    <div className="bg-white p-4 mb-3 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer transition-transform hover:shadow-lg hover:border-brand-red flex items-start">
+      {/* --- NEW: CHECKBOX AREA --- */}
+      {onToggle && (
+        <div
+          className="pr-4 pt-1"
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggle();
+          }}
+        >
+          <input
+            type="checkbox"
+            className="w-6 h-6 accent-[#003366] cursor-pointer"
+            checked={isSelected || false}
+            onChange={() => {}} // Handled by div click
+          />
+        </div>
       )}
-      {/* Message Title (Primary focus on this card) */}
-      <h3
-        className={`text-lg font-bold ${TEXT_COLOR_CLASS} ${
-          showLanguageName ? "" : "mt-1"
-        }`}
-      >
-        {messageTitle}
-      </h3>
-      {/* Program Number */}
-      <p className="text-sm text-gray-500 mt-0.5">Program No. {item.id}</p>
+
+      {/* Content Info */}
+      <div className="flex-grow" onClick={() => onSelect(item)}>
+        {showLanguageName && (
+          <p className={`text-base font-semibold ${ACCENT_COLOR_CLASS} mb-1`}>
+            {languageDisplayName}
+          </p>
+        )}
+        <h3
+          className={`text-lg font-bold ${TEXT_COLOR_CLASS} ${
+            showLanguageName ? "" : "mt-1"
+          }`}
+        >
+          {messageTitle}
+        </h3>
+        <p className="text-sm text-gray-500 mt-0.5">Program No. {item.id}</p>
+      </div>
     </div>
   );
 };
-
 // --- Language QR Modal Component ---
 const LanguageQrModal = ({
   isOpen,
@@ -336,15 +481,16 @@ const LanguageQrModal = ({
 };
 
 // --- Page Components ---
-// New Page: Language List Page
+// New Page: Language List Page (Updated with Selection)
 const LanguageListPage = ({
   lang,
   t,
   onSelectLanguage,
   languageGroups,
   onShowQrForLanguage,
+  selectedPrograms, // NEW: Needed to calculate state
+  onToggleLanguage, // NEW: Handler
 }) => {
-  // Search is now handled globally in the App component, so no local searchTerm here
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
       {languageGroups.map((group) => (
@@ -354,9 +500,15 @@ const LanguageListPage = ({
             lang === "en" ? group.displayNameEn : group.displayNameTh
           }
           lang={lang}
-          onSelect={() => onSelectLanguage(group.stableKey)} // Use stableKey for selection
+          onSelect={() => onSelectLanguage(group.stableKey)}
           messageCount={group.count}
-          onShowQrForLanguage={() => onShowQrForLanguage(group.stableKey)} // Pass handler for QR button
+          onShowQrForLanguage={() => onShowQrForLanguage(group.stableKey)}
+          // --- NEW PROPS FOR CHECKBOX ---
+          selectionState={getLanguageIndeterminateState(
+            group,
+            selectedPrograms
+          )}
+          onToggle={() => onToggleLanguage(group.stableKey, group.messages)}
         />
       ))}
       <div className="h-16"></div>
@@ -364,7 +516,7 @@ const LanguageListPage = ({
   );
 };
 
-// New Page: Messages By Language Page
+// New Page: Messages By Language Page (Updated with Selection)
 const MessagesByLanguagePage = ({
   lang,
   t,
@@ -376,8 +528,10 @@ const MessagesByLanguagePage = ({
   onSelectMessage,
   currentMessageList,
   languageGroups,
+  pageStack, // Keep this if you use it for back button logic
+  selectedPrograms, // NEW
+  onToggleProgram, // NEW
 }) => {
-  // Determine the display name for the header
   const languageDisplayName = useMemo(() => {
     const group = languageGroups.find(
       (g) => g.stableKey === selectedLanguageKey
@@ -388,7 +542,6 @@ const MessagesByLanguagePage = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      {/* Back and Forward Controls */}
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={onBack}
@@ -416,14 +569,13 @@ const MessagesByLanguagePage = ({
         </button>
       </div>
 
-      {/* Language Title - Red, emphasized */}
-      <h1 className={`text-2xl font-bold mb-1 ${ACCENT_COLOR_CLASS}`}>
+      <h1 className="text-2xl font-bold mb-1 ${ACCENT_COLOR_CLASS}">
         {languageDisplayName}
       </h1>
       <p className="text-sm text-gray-500 mb-4 font-semibold">
         {currentMessageList.length} {t.messages || "messages"}
       </p>
-      {/* NOTE: showLanguageName is set to false here to remove the language name from individual message cards */}
+
       {currentMessageList.map((item) => (
         <ContentCard
           key={item.id}
@@ -431,6 +583,11 @@ const MessagesByLanguagePage = ({
           lang={lang}
           onSelect={onSelectMessage}
           showLanguageName={false}
+          // --- NEW PROPS FOR CHECKBOX ---
+          isSelected={selectedPrograms.includes(item.id)}
+          onToggle={() =>
+            onToggleProgram(item.id, selectedLanguageKey, currentMessageList)
+          }
         />
       ))}
       <div className="h-16"></div>
@@ -771,6 +928,118 @@ const SettingsPage = ({
 
 // --- Main App Component ---
 export default function App() {
+  // --- NEW: Filtered Message Helper ---
+  const getSelectedContent = () => {
+    // 1. Get the list of actual message objects based on selectedPrograms
+    const filteredContent = getFilteredMessages(
+      staticContent.messages,
+      selectedPrograms
+    );
+
+    if (filteredContent.length === 0) {
+      alert(t.select_content_first || "Please select some content first!");
+      return null;
+    }
+
+    return filteredContent;
+  };
+
+  // --- NEW: Share Filtered Content ---
+  const handleShareSelected = async () => {
+    const selectedContent = getSelectedContent();
+    if (!selectedContent) return;
+
+    const exportText = selectedContent
+      .map(
+        (item) =>
+          `[${item.langTh} - ${item.title_th}]\n${item.message_th}\n\n` +
+          `[${item.languageEn} - ${item.title_en}]\n${item.message_en}`
+      )
+      .join("\n---\n");
+
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: t.bulk_share_title || "Selected Messages",
+          text: exportText,
+        });
+        setAlertMessage(t.content_shared || "Content shared successfully!");
+      } else {
+        await navigator.clipboard.writeText(exportText);
+        setAlertMessage(t.content_copied || "Content copied to clipboard!");
+      }
+    } catch (error) {
+      console.error("Sharing failed:", error);
+      setAlertMessage(t.share_failed || "Sharing failed or cancelled.");
+    }
+  };
+
+  // --- NEW: Copy Filtered Content ---
+  const handleCopySelected = async () => {
+    const selectedContent = getSelectedContent();
+    if (!selectedContent) return;
+
+    const exportText = selectedContent
+      .map(
+        (item) =>
+          `[${item.langTh} - ${item.title_th}]\n${item.message_th}\n\n` +
+          `[${item.languageEn} - ${item.title_en}]\n${item.message_en}`
+      )
+      .join("\n---\n");
+
+    try {
+      await navigator.clipboard.writeText(exportText);
+      setAlertMessage(
+        `${selectedContent.length} ${t.messages_copied || "messages copied!"}`
+      );
+    } catch (error) {
+      console.error("Copy failed:", error);
+      setAlertMessage(t.copy_failed || "Failed to copy content.");
+    }
+  };
+
+  // --- NEW: Download/Print Filtered Content ---
+  const handleDownloadSelected = () => {
+    const selectedContent = getSelectedContent();
+    if (!selectedContent) return;
+
+    // We generate a simple HTML string for printing/downloading
+    const printContent = selectedContent
+      .map(
+        (item) =>
+          `<div class="message-container" style="page-break-after: always; margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 15px;">
+            <h2 style="color: #CC3333; font-size: 1.5em;">${item.langTh} - ${item.title_th}</h2>
+            <p style="font-size: 1em; white-space: pre-wrap;">${item.message_th}</p>
+            <h2 style="color: #003366; font-size: 1.5em; margin-top: 10px;">${item.languageEn} - ${item.title_en}</h2>
+            <p style="font-size: 1em; white-space: pre-wrap;">${item.message_en}</p>
+          </div>`
+      )
+      .join("");
+
+    const newWindow = window.open();
+    newWindow.document.write(
+      `<html>
+          <head>
+              <title>${t.export_title || "Exported Content"}</title>
+          </head>
+          <body style="font-family: Arial, sans-serif; padding: 20px;">
+              <h1>${t.exported_messages_title || "Selected Messages"} (${
+        selectedContent.length
+      })</h1>
+              <div id="content">${printContent}</div>
+              <script>
+                  window.onload = function() {
+                      window.print();
+                      // Optional: close after printing/cancellation attempt
+                      // setTimeout(() => window.close(), 100); 
+                  }
+              </script>
+          </body>
+      </html>`
+    );
+    newWindow.document.close();
+  };
+
   // --- State Management ---
   const initialLang = localStorage.getItem("appLang") || "en";
   const initialFontSize =
@@ -801,6 +1070,14 @@ export default function App() {
 
   // NEW: Global Search State
   const [searchTerm, setSearchTerm] = useState("");
+  // --- NEW: Content Filter Logic ---
+  const {
+    selectedLangs,
+    selectedPrograms,
+    handleLanguageToggle,
+    handleProgramToggle,
+    clearSelection,
+  } = useContentFilter();
 
   // NEW: Language QR Modal State
   const [isLanguageQrModalOpen, setIsLanguageQrModalOpen] = useState(false);
@@ -1144,7 +1421,27 @@ export default function App() {
           t={t}
           onSelectLanguage={handleSelectLanguage}
           languageGroups={languageGroups}
-          onShowQrForLanguage={handleShowQrForLanguage} // Passed handler
+          onShowQrForLanguage={handleShowQrForLanguage}
+          // --- NEW WIRING ---
+          selectedPrograms={selectedPrograms}
+          onToggleLanguage={handleLanguageToggle}
+        />
+      );
+      break;
+
+    case "SelectedContent":
+      PageContent = (
+        <SelectedContentPage
+          lang={lang}
+          t={t}
+          onBack={goBack}
+          selectedPrograms={selectedPrograms}
+          languageGroups={languageGroups}
+          allMessages={staticContent.messages}
+          onClearSelection={clearSelection}
+          onShare={handleShareSelected}
+          onCopy={handleCopySelected}
+          onDownload={handleDownloadSelected}
         />
       );
       break;
@@ -1157,14 +1454,12 @@ export default function App() {
           lang={lang}
           t={t}
           onBack={goBack}
-          // Use the specific next/prev handlers for this view
           onForward={() => handleNextPrevMessage("next")}
           hasPrev={canGoPrev}
           hasNext={canGoNext}
           userData={userData}
           saveUserData={saveUserData}
           onPlay={handlePlayMessage}
-          // --- FIX: ADDED pageStack PROP ---
           pageStack={pageStack}
         />
       );
@@ -1184,8 +1479,10 @@ export default function App() {
           onSelectMessage={(item) => handleSelectMessage(item, "language")}
           currentMessageList={currentMessageList}
           languageGroups={languageGroups}
-          // --- FIX: ADDED pageStack PROP ---
           pageStack={pageStack}
+          // --- NEW WIRING ---
+          selectedPrograms={selectedPrograms}
+          onToggleProgram={handleProgramToggle}
         />
       );
       break;
@@ -1335,7 +1632,7 @@ export default function App() {
             </a>
           </div>
 
-          {/* RIGHT SECTION: Controls (Font, Language, Search Toggle) */}
+          {/* RIGHT SECTION: Controls (Font, Language, Search, Selected Content) */}
           <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
             {/* 1. Font Size Buttons */}
             <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
@@ -1343,7 +1640,17 @@ export default function App() {
             {/* 2. Language Switch Button */}
             <LanguageToggle lang={lang} setLang={setLang} t={t} />
 
-            {/* 3. Search Button (Toggle for Search Input) */}
+            {/* 3. QR Code / Selected Content Button (NEW) */}
+            <button
+              onClick={() => navigateTo("SelectedContent")}
+              className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
+              aria-label={t.view_selected || "View Selected Content"}
+              title={t.view_selected || "View Selected Content"}
+            >
+              <Qrcode className="w-6 h-6" />
+            </button>
+
+            {/* 4. Search Button (Toggle for Search Input) */}
             <button
               onClick={() => setIsSearchOpen(true)} // Opens the search input field
               className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
@@ -1353,7 +1660,6 @@ export default function App() {
             </button>
           </div>
         </header>
-
         {/* --- TOGGLED SEARCH BAR (Below Header) --- */}
         {isSearchOpen && (
           // IMPORTANT CHANGE: Increased top-16 to top-20 (5rem) and lowered z-index to z-10
@@ -1363,7 +1669,7 @@ export default function App() {
               <input
                 type="text"
                 placeholder={
-                  t.search_placeholder || "Search languages or messages..."
+                  t.search_placeholder || "Search languages or messages.."
                 }
                 value={searchTerm}
                 onChange={(e) => {
@@ -1427,9 +1733,21 @@ export default function App() {
           >
             {/* Header */}
             <div
-              className={`${PRIMARY_COLOR_CLASS} p-4 flex justify-between items-center rounded-r-xl flex-shrink-0`}
+              className={`${PRIMARY_COLOR_CLASS} px-3 py-4 flex justify-start items-center space-x-4 rounded-r-xl flex-shrink-0`}
             >
-              <h2 className="text-xl font-bold text-white">{t.app_name}</h2>
+              {/* 1. The Square Logo (Flush Left, Rounded) */}
+              <img
+                src={AppLogo}
+                alt="Logo"
+                className="w-11 h-11 rounded-xl bg-white shadow-md p-1"
+              />
+
+              {/* 2. The App Title */}
+              <h2 className="text-xl font-bold text-white flex-grow">
+                {t.app_name}
+              </h2>
+
+              {/* 3. Close Button (Pushed to the right automatically by flex-grow on title) */}
               <button
                 onClick={() => setIsDrawerOpen(false)}
                 className="text-white p-1 hover:bg-red-800 rounded-full"
