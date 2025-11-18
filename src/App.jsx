@@ -379,7 +379,12 @@ const LanguageQrModal = ({
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
       <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full relative">
-        {/* ... (omitted JSX) ... */}
+        <button
+          onClick={onClose} // <-- This is the close function
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
+        >
+          <X className="w-6 h-6" />
+        </button>
         <h3 className="text-lg font-semibold text-brand-red mb-4 text-center">
           {languageDisplayName}
         </h3>
