@@ -7,7 +7,7 @@ export const getFilteredMessages = (allMessages, selectedPrograms) => {
     return [];
   }
   // We simply return any message whose ID is in the "selectedPrograms" list
-  return allMessages.filter((item) => selectedPrograms.includes(item.id));
+  return allMessages.filter((item = []) => selectedPrograms.includes(item.id));
 };
 
 // 2. Get Language Checkbox State
