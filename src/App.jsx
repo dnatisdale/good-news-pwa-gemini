@@ -1304,7 +1304,7 @@ export default function App() {
 
         {/* --- HEADER (Banner) --- */}
         <header
-          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} p-4 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
+          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} py-0 px-1 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
         >
           {/* LEFT SECTION: Hamburger Menu and Logo/Link */}
           <div className="flex items-center flex-shrink-0">
@@ -1319,19 +1319,17 @@ export default function App() {
 
             {/* 2. Logo (Now a link to 5fish.mobi/th?r=Asia&country=Thailand) */}
             <a
-              href="https://5fish.mobi/th?r=Asia&country=Thailand" // Set the external URL here
-              target="_blank" // Opens the link in a new tab
-              rel="noopener noreferrer" // Security best practice
-              title="5fish.mobi/th?r=Asia&country=Thailand" // Set the correct domain title
-              // Added ml-3 and focused state for better UX
-              className="flex items-center text-white p-1 rounded-lg hover:bg-red-800 transition-colors ml-3 focus:outline-none focus:ring-2 focus:ring-white"
+              href="https://5fish.mobi/th?r=Asia&country=Thailand"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="5fish.mobi/th?r=Asia&country=Thailand"
+              className="flex items-center text-white **p-0** rounded-lg hover:bg-red-800 transition-colors **ml-2** focus:outline-none focus:ring-2 focus:ring-white"
             >
               {/* Enlarged Logo Image */}
               <img
                 src={BannerLogo}
                 alt={t.app_name}
-                // Increased height
-                className="h-9 md:h-11 w-auto rounded-md shadow-sm bg-white p-1"
+                className="**h-11** md:h-14 w-auto rounded-md shadow-sm bg-white p-1"
               />
               {/* --- "หน้าแรก" (Home Text) HAS BEEN REMOVED --- */}
             </a>
