@@ -1304,7 +1304,7 @@ export default function App() {
 
         {/* --- HEADER (Banner) --- */}
         <header
-          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} py-0 px-1 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
+          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} py-0.5 px-1 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
         >
           {/* LEFT SECTION: Hamburger Menu and Logo/Link */}
           <div className="flex items-center flex-shrink-0">
@@ -1329,7 +1329,7 @@ export default function App() {
               <img
                 src={BannerLogo}
                 alt={t.app_name}
-                className="**h-11** md:h-14 w-auto rounded-md shadow-sm bg-white p-1"
+                className="h-10 md:h-12 w-auto rounded-md shadow-sm bg-white p-1"
               />
               {/* --- "หน้าแรก" (Home Text) HAS BEEN REMOVED --- */}
             </a>
