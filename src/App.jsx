@@ -503,6 +503,7 @@ const ContentView = ({
       root.unmount();
       document.body.removeChild(tempContainer);
       alert("Could not find print view container.");
+      // --- REMOVED THE BLOCK STARTING WITH:  alert("Could not find print view container."); ---
     }
   };
 
@@ -510,31 +511,39 @@ const ContentView = ({
     <div className="p-4 pt-8 h-full overflow-y-auto">
       {/* Back and Forward Controls */}
       <div className="flex justify-between items-center mb-4">
+        {/*
+          CORRECTION 1: Changed logic to use 'hasPrev' prop for message navigation.
+          CORRECTION 2: Applied Thai Blue/White styling for active, Gray for disabled.
+          CORRECTION 3: Used the onBack prop for the action.
+        */}
         <button
-          onClick={onBack}
-          className={`text-sm font-semibold flex items-center transition-colors ${
-            pageStack.length === 1 && pageStack[0].name === "Home"
-              ? "text-gray-400 cursor-not-allowed"
-              : `${ACCENT_COLOR_CLASS} hover:text-red-700`
+          onClick={hasPrev ? onBack : null}
+          className={`flex items-center space-x-1 p-2 rounded-lg transition-colors ${
+            hasPrev
+              ? "bg-thai-blue text-white hover:bg-opacity-90"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }`}
-          // Assuming pageStack and the goBack function are available in the component's scope.
-          // If not, you might need to pass `pageStack` as a prop and use `pageStack.length === 1 && pageStack[0].name === "Home"`
-          disabled={pageStack.length === 1 && pageStack[0].name === "Home"}
+          disabled={!hasPrev}
         >
-          <ChevronLeft className="w-5 h-5 mr-1" />
-          {t.back || "Back"}
+          <ChevronLeft className="w-5 h-5" />
+          <span className="font-semibold text-xl">{t.back}</span>
         </button>
+
+        {/*
+          CORRECTION 4: Applied Thai Blue/White styling for active, Gray for disabled.
+          CORRECTION 5: Used the onForward prop for the action.
+        */}
         <button
-          onClick={onForward}
-          className={`text-sm font-semibold flex items-center transition-colors ${
+          onClick={hasNext ? onForward : null}
+          className={`flex items-center space-x-1 p-2 rounded-lg transition-colors ${
             hasNext
-              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-              : "text-gray-400 cursor-not-allowed"
+              ? "bg-thai-blue text-white hover:bg-opacity-90"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }`}
           disabled={!hasNext}
         >
-          {t.forward || "Forward"}
-          <ChevronRight className="w-5 h-5 ml-1" />
+          <span className="font-semibold text-xl">{t.forward}</span>
+          <ChevronRight className="w-5 h-5" />
         </button>
       </div>
 
@@ -542,7 +551,7 @@ const ContentView = ({
       <h1 className={`text-4xl font-extrabold mb-2 ${ACCENT_COLOR_CLASS}`}>
         {languageDisplay}
       </h1>
-
+      {/* ------------------------- End of Fixed Block -------------------------- */}
       <div className="flex justify-between items-center mb-4 border-b pb-3">
         {/* Message Title (Secondary) */}
         <p className="text-xl font-semibold text-gray-700">{titleDisplay}</p>
