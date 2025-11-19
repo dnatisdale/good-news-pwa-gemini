@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect, useRef } from "react";
 import html2canvas from "html2canvas"; // 👈 ADD THIS
 import ContentView from "./pages/ContentView";
 import Header from "./components/Header";
-
 import { useFirebase } from "./hooks/useFirebase";
 import { i18n } from "./i18n";
 import { useContentFilter } from "./hooks/useContentFilter";
@@ -30,6 +29,8 @@ import {
 } from "./components/Icons";
 import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
+import splash from "./assets/splash-screen-logo.svg";
+import { ReactComponent as LogoComponent } from "./assets/splash-screen-logo.svg";
 import AppLogo from "./assets/splash-screen-logo.svg";
 import BannerLogo from "./assets/banner-logo.svg";
 import { Copy } from "lucide-react";
@@ -133,12 +134,11 @@ const FloatingUtilityBar = ({
   t,
   lang,
   setLang,
-  searchTerm,
-  onSearchChange,
   selectedCount,
   onClearSelection,
   fontSize,
   setFontSize,
+  navigateToSelectedContent,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -164,9 +164,24 @@ const FloatingUtilityBar = ({
         <div className="mb-2 bg-white rounded-2xl shadow-xl p-3 w-72 space-y-3">
           {/* Title row */}
           <div className="flex items-center justify-between">
-            <span className="font-semibold text-gray-700 text-sm">
-              {labelTools}
-            </span>
+            {/* New container for the Logo and Label */}
+            <div className="flex items-center space-x-2">
+              {/* 1. Small Square Logo */}
+              <LogoComponent
+                className="w-8 h-8 rounded-md flex-shrink-0 bg-white p-0.5"
+                aria-label="App Logo"
+              />
+
+              {/* 2. Tools Label with Thai Blue background */}
+              <span
+                className="font-semibold text-white text-sm px-2 py-1 rounded-lg"
+                style={{ backgroundColor: THAI_BLUE }}
+              >
+                {labelTools}
+              </span>
+            </div>
+
+            {/* Close button remains on the far right */}
             <button
               onClick={() => setIsOpen(false)}
               className="p-1 rounded-full hover:bg-gray-100"
@@ -174,26 +189,6 @@ const FloatingUtilityBar = ({
               <X className="w-4 h-4" />
             </button>
           </div>
-
-          {/* Search row */}
-          <div>
-            <label className="block text-xs font-semibold text-gray-500 mb-1">
-              {labelSearch}
-            </label>
-            <div className="flex items-center space-x-2">
-              <Search className="w-4 h-4 text-gray-500" />
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => onSearchChange(e.target.value)}
-                className="flex-1 border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-red-300"
-                placeholder={
-                  t.search_placeholder || "Search languages or messages…"
-                }
-              />
-            </div>
-          </div>
-
           {/* Selected + Clear row */}
           <div className="flex items-center justify-between text-xs text-gray-700">
             <span>
@@ -207,12 +202,27 @@ const FloatingUtilityBar = ({
             </button>
           </div>
 
+          {/* Button to View Selected Programs/ Download */}
+          <button
+            key="view-selected"
+            onClick={() => {
+              navigateToSelectedContent(); // Assuming this is defined in App.jsx
+              setIsOpen(false); // Close the menu after clicking
+            }}
+            // Use a full-width button appearance
+            className="w-full py-2 text-white bg-red-700 hover:bg-red-600 rounded-lg text-center shadow-md transition-all"
+          >
+            <div className="flex items-center justify-center space-x-2">
+              {/* Using a clear icon like Share or Download */}
+              <Download className="w-5 h-5" />
+              <span className="font-semibold">Selected Programs</span>
+            </div>
+          </button>
           {/* Font size row */}
           <div className="flex items-center justify-between">
             <span className="text-xs text-gray-600">{labelFont}</span>
             <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
           </div>
-
           {/* Language row */}
           <div className="flex items-center justify-between">
             <span className="text-xs text-gray-600">{labelLang}</span>
@@ -227,16 +237,16 @@ const FloatingUtilityBar = ({
         </div>
       )}
 
-      {/* Floating main button with QR + badge */}
+      {/* Floating main button with Settings + badge */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white relative"
-        style={{ backgroundColor: THAI_RED }}
+        style={{ backgroundColor: THAI_BLUE }}
         aria-label="QR Tools"
       >
-        <Qrcode className="w-7 h-7" />
+        <Settings className="w-7 h-7" />
         {selectedCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-[#2D2A4A] text-white text-[10px] font-bold rounded-full px-1.5 py-0.5">
+          <span className="absolute -top-1 -right-1 bg-[#CC3333] text-white text-[10px] font-bold rounded-full px-1.5 py-0.5">
             {selectedCount}
           </span>
         )}
@@ -570,7 +580,7 @@ const LanguageQrModal = ({
           onClick={onClose} // <-- This is the close function
           className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
         >
-          <X className="w-6 h-6" />
+          <menu className="w-6 h-6" />
         </button>
         <h3 className="text-lg font-semibold text-brand-red mb-4 text-center">
           {languageDisplayName}
@@ -1598,6 +1608,13 @@ export default function App() {
     }
   };
 
+  // ✅ PASTE YOUR NEW FUNCTION HERE:
+  const navigateToSelectedContent = () => {
+    setPageStack((prev) => [...prev, { name: "SelectedContent" }]);
+    setSearchTerm(""); // Clear search just in case
+    setIsDrawerOpen(false); // Close sidebar if open
+  };
+
   const goBack = () => {
     if (pageStack.length > 1) {
       setPageStack((prev) => prev.slice(0, -1));
@@ -2043,25 +2060,12 @@ export default function App() {
             </a>
           </div>
 
-          {/* RIGHT SECTION: Controls (Font, Language, Search, Selected Content) */}
+          {/* RIGHT SECTION: Controls (Language and Search remain) */}
           <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
-            {/* 1. Font Size Buttons */}
-            <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
-
-            {/* 2. Language Switch Button */}
+            {/* 1. Language Switch Button */}
             <LanguageToggle lang={lang} setLang={setLang} t={t} />
 
-            {/* 3. QR Code / Selected Content Button (NEW) */}
-            <button
-              onClick={() => navigateTo("SelectedContent")}
-              className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
-              aria-label={t.view_selected || "View Selected Content"}
-              title={t.view_selected || "View Selected Content"}
-            >
-              <Qrcode className="w-6 h-6" />
-            </button>
-
-            {/* 4. Search Button (Toggle for Search Input) */}
+            {/* 2. Search Button (Toggle for Search Input) */}
             <button
               onClick={() => setIsSearchOpen(true)} // Opens the search input field
               className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
@@ -2117,17 +2121,20 @@ export default function App() {
           t={t}
         />
 
-        {/* --- FLOATING UTILITY BAR (Search + Lang + Font + Clear) --- */}
+        {/* --- FLOATING UTILITY BAR (Tools Menu) --- */}
         <FloatingUtilityBar
           t={t}
           lang={lang}
           setLang={setLang}
-          searchTerm={searchTerm}
-          onSearchChange={handleSearchChange}
+          // The next two props were removed from FloatingUtilityBar definition:
+          // searchTerm={searchTerm}
+          // onSearchChange={handleSearchChange}
           selectedCount={selectedPrograms.length}
           onClearSelection={clearSelection}
           fontSize={fontSize}
           setFontSize={setFontSize}
+          // ✅ ADDED: The Navigation Function for the new "Selected Programs" button
+          navigateToSelectedContent={navigateToSelectedContent}
         />
 
         {/* --- NAVIGATION DRAWER (Sidebar) --- */}

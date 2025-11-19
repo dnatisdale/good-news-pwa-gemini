@@ -5,6 +5,8 @@
 /dist
 /build
 /out
+/bad
+
 
 # Runtime and Cache Files
 .DS_Store
