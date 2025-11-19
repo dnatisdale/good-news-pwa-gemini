@@ -932,7 +932,7 @@ export default function App() {
   const getSelectedContent = () => {
     // 1. Get the list of actual message objects based on selectedPrograms
     const filteredContent = getFilteredMessages(
-      staticContent.messages,
+      staticContent,
       selectedPrograms
     );
 
@@ -944,6 +944,7 @@ export default function App() {
     return filteredContent;
   };
 
+  // --- NEW: Share Filtered Content ---
   // --- NEW: Share Filtered Content ---
   const handleShareSelected = async () => {
     const selectedContent = getSelectedContent();
@@ -963,17 +964,18 @@ export default function App() {
           title: t.bulk_share_title || "Selected Messages",
           text: exportText,
         });
-        setAlertMessage(t.content_shared || "Content shared successfully!");
+        alert(t.content_shared || "Content shared successfully!");
       } else {
         await navigator.clipboard.writeText(exportText);
-        setAlertMessage(t.content_copied || "Content copied to clipboard!");
+        alert(t.content_copied || "Content copied to clipboard!");
       }
     } catch (error) {
       console.error("Sharing failed:", error);
-      setAlertMessage(t.share_failed || "Sharing failed or cancelled.");
+      alert(t.share_failed || "Sharing failed or cancelled.");
     }
   };
 
+  // --- NEW: Copy Filtered Content ---
   // --- NEW: Copy Filtered Content ---
   const handleCopySelected = async () => {
     const selectedContent = getSelectedContent();
@@ -989,12 +991,12 @@ export default function App() {
 
     try {
       await navigator.clipboard.writeText(exportText);
-      setAlertMessage(
+      alert(
         `${selectedContent.length} ${t.messages_copied || "messages copied!"}`
       );
     } catch (error) {
       console.error("Copy failed:", error);
-      setAlertMessage(t.copy_failed || "Failed to copy content.");
+      alert(t.copy_failed || "Failed to copy content.");
     }
   };
 
@@ -1437,7 +1439,7 @@ export default function App() {
           onBack={goBack}
           selectedPrograms={selectedPrograms}
           languageGroups={languageGroups}
-          allMessages={staticContent.messages}
+          allMessages={staticContent}
           onClearSelection={clearSelection}
           onShare={handleShareSelected}
           onCopy={handleCopySelected}
