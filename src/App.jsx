@@ -128,6 +128,118 @@ const FontSizeButtons = ({ fontSize, setFontSize }) => {
   );
 };
 
+// --- FLOATING UTILITY BAR (Search + Lang + Font + Clear) ---
+const FloatingUtilityBar = ({
+  t,
+  lang,
+  setLang,
+  searchTerm,
+  onSearchChange,
+  selectedCount,
+  onClearSelection,
+  fontSize,
+  setFontSize,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleLang = () => {
+    const newLang = lang === "en" ? "th" : "en";
+    setLang(newLang);
+    localStorage.setItem("appLang", newLang);
+  };
+
+  const labelSearch = t.search || (lang === "th" ? "ค้นหา" : "Search");
+  const labelSelected =
+    t.selected_count_label || (lang === "th" ? "เลือกแล้ว" : "Selected");
+  const labelClear =
+    t.clear_all || (lang === "th" ? "ล้างทั้งหมด" : "Clear all");
+  const labelFont =
+    t.font_size || (lang === "th" ? "ขนาดตัวอักษร" : "Font size");
+  const labelLang = t.language || (lang === "th" ? "ภาษา" : "Language");
+  const labelTools = t.tools_panel || (lang === "th" ? "เครื่องมือ" : "Tools");
+
+  return (
+    <div className="fixed bottom-4 right-4 z-40">
+      {isOpen && (
+        <div className="mb-2 bg-white rounded-2xl shadow-xl p-3 w-72 space-y-3">
+          {/* Title row */}
+          <div className="flex items-center justify-between">
+            <span className="font-semibold text-gray-700 text-sm">
+              {labelTools}
+            </span>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="p-1 rounded-full hover:bg-gray-100"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Search row */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 mb-1">
+              {labelSearch}
+            </label>
+            <div className="flex items-center space-x-2">
+              <Search className="w-4 h-4 text-gray-500" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => onSearchChange(e.target.value)}
+                className="flex-1 border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-red-300"
+                placeholder={
+                  t.search_placeholder || "Search languages or messages…"
+                }
+              />
+            </div>
+          </div>
+
+          {/* Selected + Clear row */}
+          <div className="flex items-center justify-between text-xs text-gray-700">
+            <span>
+              {labelSelected}: <strong>{selectedCount}</strong>
+            </span>
+            <button
+              onClick={onClearSelection}
+              className="px-2 py-1 rounded-md text-xs bg-gray-200 hover:bg-gray-300"
+            >
+              {labelClear}
+            </button>
+          </div>
+
+          {/* Font size row */}
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-gray-600">{labelFont}</span>
+            <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
+          </div>
+
+          {/* Language row */}
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-gray-600">{labelLang}</span>
+            <button
+              onClick={toggleLang}
+              className="w-12 h-8 rounded-lg font-bold text-white flex items-center justify-center"
+              style={{ backgroundColor: THAI_BLUE }}
+            >
+              {lang === "en" ? "ก" : "A"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Floating main button */}
+      <button
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-white"
+        style={{ backgroundColor: THAI_RED }}
+        aria-label="Tools"
+      >
+        <Menu className="w-6 h-6" />
+      </button>
+    </div>
+  );
+};
+
 // --- NEW GLOBAL SHARE FUNCTION (Uses Web Share API) ---
 const shareQRCard = (lang, programNumber, qrCodeUrl) => {
   if (navigator.share) {
@@ -1600,6 +1712,22 @@ export default function App() {
       ? staticContent.find((item) => item.id === currentPage.key)
       : null;
 
+  // Shared Search handler (used by header + floating bar)
+  const handleSearchChange = (value) => {
+    setSearchTerm(value);
+
+    if (value) {
+      if (currentPage.name !== "Search") {
+        navigateTo("Search");
+      }
+    } else {
+      // If search cleared while on Search page, go back Home
+      if (currentPage.name === "Search") {
+        navigateTo("Home");
+      }
+    }
+  };
+
   // Determine current index and next/prev status for ContentView
   const currentItemIndex = currentItem
     ? flatContentList.findIndex((item) => item.id === currentItem.id)
@@ -1938,6 +2066,7 @@ export default function App() {
             </button>
           </div>
         </header>
+
         {/* --- TOGGLED SEARCH BAR (Below Header) --- */}
         {isSearchOpen && (
           // IMPORTANT CHANGE: Increased top-16 to top-20 (5rem) and lowered z-index to z-10
@@ -1950,12 +2079,7 @@ export default function App() {
                   t.search_placeholder || "Search languages or messages.."
                 }
                 value={searchTerm}
-                onChange={(e) => {
-                  setSearchTerm(e.target.value);
-                  if (currentPage.name !== "Search" && e.target.value) {
-                    navigateTo("Search");
-                  }
-                }}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 className="w-full p-2 pl-10 text-gray-800 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-red-300 transition duration-150"
                 style={{ fontSize: "1.2rem" }} // For the 1-point increase
                 autoFocus
@@ -1986,6 +2110,19 @@ export default function App() {
           isMinimized={isAudioMinimized}
           toggleMinimize={toggleAudioMinimize}
           t={t}
+        />
+
+        {/* --- FLOATING UTILITY BAR (Search + Lang + Font + Clear) --- */}
+        <FloatingUtilityBar
+          t={t}
+          lang={lang}
+          setLang={setLang}
+          searchTerm={searchTerm}
+          onSearchChange={handleSearchChange}
+          selectedCount={selectedPrograms.length}
+          onClearSelection={clearSelection}
+          fontSize={fontSize}
+          setFontSize={setFontSize}
         />
 
         {/* --- NAVIGATION DRAWER (Sidebar) --- */}
