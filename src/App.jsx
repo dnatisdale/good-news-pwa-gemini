@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
-// --- MOVED: ReactDOM and html2canvas to ContentView.jsx ---
+import html2canvas from "html2canvas"; // 👈 ADD THIS
 import ContentView from "./pages/ContentView";
 import Header from "./components/Header";
 
@@ -946,77 +946,194 @@ export default function App() {
     return filteredContent;
   };
 
-  // --- NEW: Share Filtered Content (single language) ---
-  const handleShareSelected = async () => {
-    const selectedContent = getSelectedContent();
-    if (!selectedContent) return;
-
+  // --- HELPER: Make a single QR Card PNG for one item ---
+  const generateQrCardPng = (item) => {
     const isThai = lang === "th";
 
-    const exportText = selectedContent
-      .map((item) => {
-        const languageDisplay = isThai
-          ? item.langTh || ""
-          : item.languageEn || "";
-        const titleDisplay = isThai
-          ? item.title_th || "ไม่มีชื่อ"
-          : item.title_en || "Untitled";
-        const verseDisplay = isThai ? item.verse_th || "" : item.verse_en || "";
-        const label = isThai
-          ? "ฟัง แบ่งปัน ดาวน์โหลดที่:"
-          : "Listen, Share, Download at:";
-        const cardUrl = `https://5fi.sh/T${item.id}`;
+    const languageDisplay = isThai ? item.langTh || "" : item.languageEn || "";
+    const titleDisplay = isThai
+      ? item.title_th || "ไม่มีชื่อ"
+      : item.title_en || "Untitled";
+    const verseDisplay = isThai ? item.verse_th || "" : item.verse_en || "";
+    const readMoreLabel = isThai
+      ? "ฟัง แบ่งปัน ดาวน์โหลดที่:"
+      : "Listen, Share, Download at:";
+    const cardUrl = `https://5fi.sh/T${item.id}`;
 
-        return `${languageDisplay} – ${titleDisplay}
-Program # ${item.id}
+    // simple QR image service
+    const qrImg = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(
+      cardUrl
+    )}`;
 
-${verseDisplay}
+    return new Promise((resolve, reject) => {
+      const tempContainer = document.createElement("div");
+      tempContainer.style.position = "fixed";
+      tempContainer.style.left = "-9999px";
+      tempContainer.style.top = "0";
+      tempContainer.innerHTML = `
+        <div id="qr-share-card"
+             style="
+               width: 420px;
+               padding: 20px 18px 22px;
+               border-radius: 26px;
+               background: #ffffff;
+               box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+               font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+               text-align: center;
+             ">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+            <div>
+              <img src="${AppLogo}" style="width:42px;height:42px;border-radius:6px;" />
+            </div>
+            <div style="flex:1;margin-left:8px;text-align:right;">
+              <div style="font-size:18px;font-weight:700;color:#111827;">${languageDisplay}</div>
+              <div style="font-size:18px;font-weight:700;color:#CC3333;">${titleDisplay}</div>
+              <div style="font-size:11px;color:#4B5563;">Program # ${
+                item.id
+              }</div>
+            </div>
+          </div>
 
-${label}
-${cardUrl}`;
-      })
-      .join("\n\n------------------------------\n\n");
+          <div style="font-size:12px;color:#374151;font-style:italic;margin:10px 6px 14px;min-height:40px;">
+            ${verseDisplay}
+          </div>
+
+          <div style="background:#F9FAFB;border-radius:18px;padding:12px;margin-bottom:10px;">
+            <img src="${qrImg}" style="width:220px;height:220px;" />
+          </div>
+
+          <div style="font-size:11px;color:#4B5563;margin-bottom:6px;">
+            ${readMoreLabel}<br />
+            <span style="color:#CC3333;word-break:break-all;">${cardUrl}</span>
+          </div>
+
+          <div style="font-size:10px;color:#9CA3AF;">
+            ${
+              t.scan_qr_tip ||
+              "Scan the QR code or visit the link to access this content."
+            }
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(tempContainer);
+      const cardElement = tempContainer.querySelector("#qr-share-card");
+
+      setTimeout(() => {
+        html2canvas(cardElement, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff",
+        })
+          .then((canvas) => {
+            canvas.toBlob(
+              (blob) => {
+                document.body.removeChild(tempContainer);
+                if (!blob) {
+                  reject(new Error("Could not create image blob"));
+                  return;
+                }
+                const fileName = `qr-card-${item.id}-${
+                  isThai ? "th" : "en"
+                }.png`;
+                const file = new File([blob], fileName, { type: "image/png" });
+                resolve(file);
+              },
+              "image/png",
+              1.0
+            );
+          })
+          .catch((err) => {
+            document.body.removeChild(tempContainer);
+            reject(err);
+          });
+      }, 200);
+    });
+  };
+
+  // --- NEW: Share Filtered Content (single language) ---
+  // --- SHARE: send first selected QR card as PNG (fallback: download) ---
+  const handleShareSelected = async () => {
+    const selectedContent = getSelectedContent();
+    if (!selectedContent || selectedContent.length === 0) return;
+
+    const item = selectedContent[0]; // use first selected card
+    const isThai = lang === "th";
+    const cardUrl = `https://5fi.sh/T${item.id}`;
+    const label = isThai
+      ? "ฟัง แบ่งปัน ดาวน์โหลดที่:"
+      : "Listen, Share, Download at:";
 
     try {
-      if (navigator.share) {
+      const file = await generateQrCardPng(item);
+
+      if (
+        navigator.share &&
+        navigator.canShare &&
+        navigator.canShare({ files: [file] })
+      ) {
         await navigator.share({
-          title: t.bulk_share_title || "QR Cards",
-          text: exportText,
+          title: isThai ? "ข่าวดี" : "Thai: Good News",
+          text: `${label} ${cardUrl}`,
+          files: [file],
         });
-        alert(t.content_shared || "Content shared successfully!");
+        alert(t.content_shared || "QR card shared successfully!");
       } else {
-        await navigator.clipboard.writeText(exportText);
-        alert(t.content_copied || "Content copied to clipboard!");
+        // fallback: just download the PNG
+        const url = URL.createObjectURL(file);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = file.name;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        alert(
+          t.share_failed_fallback ||
+            "Your device can't share images directly, so the QR card was downloaded instead."
+        );
       }
     } catch (error) {
-      console.error("Sharing failed:", error);
-      alert(t.share_failed || "Sharing failed or cancelled.");
+      console.error("Sharing QR card failed:", error);
+      alert(t.share_failed || "Sharing failed or was cancelled.");
     }
   };
 
   // --- NEW: Copy Filtered Content (single language) ---
+  // --- COPY: copy first selected QR card as image (fallback: download) ---
   const handleCopySelected = async () => {
     const selectedContent = getSelectedContent();
-    if (!selectedContent) return;
+    if (!selectedContent || selectedContent.length === 0) return;
 
-    const exportText = selectedContent
-      .map((item) => {
-        if (lang === "th") {
-          return `[${item.langTh} - ${item.title_th}]\n${item.message_th}`;
-        } else {
-          return `[${item.languageEn} - ${item.title_en}]\n${item.message_en}`;
-        }
-      })
-      .join("\n---\n");
+    const item = selectedContent[0];
 
     try {
-      await navigator.clipboard.writeText(exportText);
-      alert(
-        `${selectedContent.length} ${t.messages_copied || "messages copied!"}`
-      );
+      const file = await generateQrCardPng(item);
+
+      if (navigator.clipboard && window.ClipboardItem) {
+        const blob = new Blob([file], { type: "image/png" });
+        await navigator.clipboard.write([
+          new ClipboardItem({ "image/png": blob }),
+        ]);
+        alert(t.messages_copied || "QR card image copied!");
+      } else {
+        // fallback: download the PNG
+        const url = URL.createObjectURL(file);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = file.name;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        alert(
+          t.copy_failed_fallback ||
+            "Your device can't copy images, so the QR card was downloaded instead."
+        );
+      }
     } catch (error) {
-      console.error("Copy failed:", error);
-      alert(t.copy_failed || "Failed to copy content.");
+      console.error("Copy QR card failed:", error);
+      alert(t.copy_failed || "Failed to copy QR card.");
     }
   };
 
