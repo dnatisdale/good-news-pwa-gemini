@@ -32,6 +32,7 @@ import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
 import AppLogo from "./assets/splash-screen-logo.svg";
 import BannerLogo from "./assets/banner-logo.svg";
+import { Copy } from "lucide-react";
 
 // --- CONSTANTS ---
 // PWA Custom Colors
@@ -332,22 +333,23 @@ const SelectedContentPage = ({
       <div className="grid grid-cols-3 gap-3 mb-6">
         <button
           onClick={onShare}
-          className="bg-brand-blue text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
+          className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
         >
           <Share2 className="w-6 h-6 mb-1" />
           <span className="text-xs">{t.share || "Share"}</span>
         </button>
         <button
           onClick={onCopy}
-          className="bg-brand-blue text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
+          className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
         >
-          {/* We'll use Share2 for copy since it's common for bulk action dialogs */}
-          <Share2 className="w-6 h-6 mb-1" />
+          <Copy className="w-6 h-6 mb-1" />
+          {/* 👆 IF YOU PICK ANOTHER ICON, replace Copy with: Copy, ClipboardCopy, CopyCheck, or Files */}
           <span className="text-xs">{t.copy || "Copy"}</span>
         </button>
+
         <button
           onClick={onDownload}
-          className="bg-brand-blue text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
+          className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
         >
           {/* Using Download as a stand-in for Print/Download */}
           <Download className="w-6 h-6 mb-1" />
@@ -944,18 +946,19 @@ export default function App() {
     return filteredContent;
   };
 
-  // --- NEW: Share Filtered Content ---
-  // --- NEW: Share Filtered Content ---
+  // --- NEW: Share Filtered Content (single language) ---
   const handleShareSelected = async () => {
     const selectedContent = getSelectedContent();
     if (!selectedContent) return;
 
     const exportText = selectedContent
-      .map(
-        (item) =>
-          `[${item.langTh} - ${item.title_th}]\n${item.message_th}\n\n` +
-          `[${item.languageEn} - ${item.title_en}]\n${item.message_en}`
-      )
+      .map((item) => {
+        if (lang === "th") {
+          return `[${item.langTh} - ${item.title_th}]\n${item.message_th}`;
+        } else {
+          return `[${item.languageEn} - ${item.title_en}]\n${item.message_en}`;
+        }
+      })
       .join("\n---\n");
 
     try {
@@ -975,18 +978,19 @@ export default function App() {
     }
   };
 
-  // --- NEW: Copy Filtered Content ---
-  // --- NEW: Copy Filtered Content ---
+  // --- NEW: Copy Filtered Content (single language) ---
   const handleCopySelected = async () => {
     const selectedContent = getSelectedContent();
     if (!selectedContent) return;
 
     const exportText = selectedContent
-      .map(
-        (item) =>
-          `[${item.langTh} - ${item.title_th}]\n${item.message_th}\n\n` +
-          `[${item.languageEn} - ${item.title_en}]\n${item.message_en}`
-      )
+      .map((item) => {
+        if (lang === "th") {
+          return `[${item.langTh} - ${item.title_th}]\n${item.message_th}`;
+        } else {
+          return `[${item.languageEn} - ${item.title_en}]\n${item.message_en}`;
+        }
+      })
       .join("\n---\n");
 
     try {
@@ -1000,46 +1004,185 @@ export default function App() {
     }
   };
 
-  // --- NEW: Download/Print Filtered Content ---
+  // --- NEW: Download/Print Filtered Content (single language) ---
+  // --- Download/Print SELECTED QR CARDS (3x3 grid, shrunk) ---
   const handleDownloadSelected = () => {
     const selectedContent = getSelectedContent();
     if (!selectedContent) return;
 
-    // We generate a simple HTML string for printing/downloading
-    const printContent = selectedContent
-      .map(
-        (item) =>
-          `<div class="message-container" style="page-break-after: always; margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 15px;">
-            <h2 style="color: #CC3333; font-size: 1.5em;">${item.langTh} - ${item.title_th}</h2>
-            <p style="font-size: 1em; white-space: pre-wrap;">${item.message_th}</p>
-            <h2 style="color: #003366; font-size: 1.5em; margin-top: 10px;">${item.languageEn} - ${item.title_en}</h2>
-            <p style="font-size: 1em; white-space: pre-wrap;">${item.message_en}</p>
-          </div>`
-      )
+    // group into pages of 9 items
+    const pages = [];
+    for (let i = 0; i < selectedContent.length; i += 9) {
+      pages.push(selectedContent.slice(i, i + 9));
+    }
+
+    const isThai = lang === "th";
+
+    const htmlPages = pages
+      .map((pageItems) => {
+        const cardsHtml = pageItems
+          .map((item) => {
+            const title = isThai
+              ? item.title_th || "ไม่มีชื่อ"
+              : item.title_en || "Untitled";
+            const verse = isThai ? item.verse_th || "" : item.verse_en || "";
+            const languageDisplay = isThai
+              ? item.langTh || ""
+              : item.languageEn || "";
+            const readMoreLabel = isThai
+              ? "ฟัง แบ่งปัน ดาวน์โหลดที่:"
+              : "Listen, Share, Download at:";
+            const cardUrl = `https://5fi.sh/T${item.id}`;
+
+            // simple QR image (200x200) for the card
+            const qrImg = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(
+              cardUrl
+            )}`;
+
+            return `
+              <div class="qr-card">
+                <div class="qr-header">
+                  <div class="logo-wrap">
+                    <img src="${AppLogo}" class="logo" />
+                  </div>
+                  <div class="header-text">
+                    <div class="language">${languageDisplay}</div>
+                    <div class="series">${title}</div>
+                    <div class="program">Program # ${item.id}</div>
+                  </div>
+                </div>
+                <div class="verse">${verse}</div>
+                <div class="qr-wrap">
+                  <img src="${qrImg}" class="qr-img" />
+                </div>
+                <div class="read-more">
+                  ${readMoreLabel}<br />
+                  <span class="url">${cardUrl}</span>
+                </div>
+                <div class="footer">${
+                  t.scan_qr_tip ||
+                  "Scan the QR code or visit the link to access this content."
+                }</div>
+              </div>
+            `;
+          })
+          .join("");
+
+        return `
+          <div class="page">
+            ${cardsHtml}
+          </div>
+        `;
+      })
       .join("");
 
-    const newWindow = window.open();
-    newWindow.document.write(
-      `<html>
-          <head>
-              <title>${t.export_title || "Exported Content"}</title>
-          </head>
-          <body style="font-family: Arial, sans-serif; padding: 20px;">
-              <h1>${t.exported_messages_title || "Selected Messages"} (${
-        selectedContent.length
-      })</h1>
-              <div id="content">${printContent}</div>
-              <script>
-                  window.onload = function() {
-                      window.print();
-                      // Optional: close after printing/cancellation attempt
-                      // setTimeout(() => window.close(), 100); 
-                  }
-              </script>
-          </body>
-      </html>`
-    );
-    newWindow.document.close();
+    const printHtml = `
+      <html>
+        <head>
+          <title>${t.export_title || "QR Cards"}</title>
+          <style>
+            @page {
+              size: A4;
+              margin: 0.5in;
+            }
+            body {
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+              margin: 0;
+              padding: 0.25in;
+            }
+            .page {
+              page-break-after: always;
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 0.4in;
+            }
+            .page:last-child {
+              page-break-after: auto;
+            }
+            .qr-card {
+              border-radius: 16px;
+              box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+              padding: 10px 10px 14px;
+              text-align: center;
+              background: #ffffff;
+            }
+            .qr-header {
+              display: flex;
+              align-items: flex-start;
+              justify-content: space-between;
+              margin-bottom: 6px;
+            }
+            .logo-wrap .logo {
+              width: 28px;
+              height: 28px;
+            }
+            .header-text {
+              flex: 1;
+              margin-left: 6px;
+              text-align: right;
+            }
+            .language {
+              font-size: 12px;
+              font-weight: 700;
+              color: #111827;
+            }
+            .series {
+              font-size: 12px;
+              font-weight: 700;
+              color: #CC3333;
+            }
+            .program {
+              font-size: 9px;
+              color: #4B5563;
+            }
+            .verse {
+              font-size: 9px;
+              font-style: italic;
+              color: #374151;
+              margin: 6px 4px 6px;
+              min-height: 34px;
+            }
+            .qr-wrap {
+              background: #F9FAFB;
+              border-radius: 12px;
+              padding: 6px;
+              margin-bottom: 6px;
+            }
+            .qr-img {
+              width: 110px;
+              height: 110px;
+            }
+            .read-more {
+              font-size: 8px;
+              color: #4B5563;
+              margin-bottom: 3px;
+            }
+            .url {
+              color: #CC3333;
+              word-break: break-all;
+            }
+            .footer {
+              font-size: 7px;
+              color: #9CA3AF;
+            }
+          </style>
+        </head>
+        <body>
+          ${htmlPages}
+          <script>
+            window.onload = function() {
+              window.print();
+              setTimeout(function(){ window.close(); }, 100);
+            };
+          </script>
+        </body>
+      </html>
+    `;
+
+    const printWindow = window.open("", "_blank");
+    printWindow.document.open();
+    printWindow.document.write(printHtml);
+    printWindow.document.close();
   };
 
   // --- State Management ---
