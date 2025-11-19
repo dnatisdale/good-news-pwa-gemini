@@ -128,7 +128,7 @@ const FontSizeButtons = ({ fontSize, setFontSize }) => {
   );
 };
 
-// --- FLOATING UTILITY BAR (Search + Lang + Font + Clear) ---
+// --- FLOATING UTILITY BAR (Search + Lang + Font + Clear + QR) ---
 const FloatingUtilityBar = ({
   t,
   lang,
@@ -227,14 +227,19 @@ const FloatingUtilityBar = ({
         </div>
       )}
 
-      {/* Floating main button */}
+      {/* Floating main button with QR + badge */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-white"
+        className="w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white relative"
         style={{ backgroundColor: THAI_RED }}
-        aria-label="Tools"
+        aria-label="QR Tools"
       >
-        <Menu className="w-6 h-6" />
+        <Qrcode className="w-7 h-7" />
+        {selectedCount > 0 && (
+          <span className="absolute -top-1 -right-1 bg-[#2D2A4A] text-white text-[10px] font-bold rounded-full px-1.5 py-0.5">
+            {selectedCount}
+          </span>
+        )}
       </button>
     </div>
   );
