@@ -951,20 +951,36 @@ export default function App() {
     const selectedContent = getSelectedContent();
     if (!selectedContent) return;
 
+    const isThai = lang === "th";
+
     const exportText = selectedContent
       .map((item) => {
-        if (lang === "th") {
-          return `[${item.langTh} - ${item.title_th}]\n${item.message_th}`;
-        } else {
-          return `[${item.languageEn} - ${item.title_en}]\n${item.message_en}`;
-        }
+        const languageDisplay = isThai
+          ? item.langTh || ""
+          : item.languageEn || "";
+        const titleDisplay = isThai
+          ? item.title_th || "ไม่มีชื่อ"
+          : item.title_en || "Untitled";
+        const verseDisplay = isThai ? item.verse_th || "" : item.verse_en || "";
+        const label = isThai
+          ? "ฟัง แบ่งปัน ดาวน์โหลดที่:"
+          : "Listen, Share, Download at:";
+        const cardUrl = `https://5fi.sh/T${item.id}`;
+
+        return `${languageDisplay} – ${titleDisplay}
+Program # ${item.id}
+
+${verseDisplay}
+
+${label}
+${cardUrl}`;
       })
-      .join("\n---\n");
+      .join("\n\n------------------------------\n\n");
 
     try {
       if (navigator.share) {
         await navigator.share({
-          title: t.bulk_share_title || "Selected Messages",
+          title: t.bulk_share_title || "QR Cards",
           text: exportText,
         });
         alert(t.content_shared || "Content shared successfully!");
