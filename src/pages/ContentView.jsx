@@ -74,6 +74,7 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
       className="bg-white p-4 rounded-lg shadow-lg"
       style={{ width: "400px", margin: "auto", fontFamily: "sans-serif" }}
     >
+      {/* HEADER: logo + language + title */}
       <div className="flex justify-between items-start mb-4">
         <div className="flex justify-start items-start mb-4">
           <img
@@ -93,11 +94,8 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
         </div>
       </div>
 
-      <p className="text-base text-gray-700 mb-4 whitespace-pre-line text-center italic">
-        {verse}
-      </p>
-
-      <div className="flex justify-center mb-6 p-4 bg-gray-50 rounded-lg">
+      {/* ✅ QR BLOCK FIRST */}
+      <div className="flex justify-center mb-6 p-4 bg-gray-40 rounded-lg">
         <QRCodeDisplay
           url={cardUrl}
           size={200}
@@ -106,6 +104,12 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
         />
       </div>
 
+      {/* ✅ VERSE UNDER THE QR */}
+      <p className="text-base text-gray-700 mb-4 whitespace-pre-line text-center italic">
+        {verse}
+      </p>
+
+      {/* LINK */}
       <p className="text-sm text-gray-600 text-center break-all">
         {readMoreLabel}: <br />
         <a href={cardUrl} className="text-brand-red underline">
@@ -113,6 +117,7 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
         </a>
       </p>
 
+      {/* FOOTER TIP */}
       <p className="text-xs text-gray-500 mt-4 text-center">
         {t.scan_qr_tip ||
           "Scan the QR code or visit the link to access this content."}
