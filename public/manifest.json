@@ -1,8 +1,14 @@
 {
-  "short_name": "TGN",
+  "short_name": "Thai: Good News",
   "name": "Thai Good News",
   "description": "Sharing the story of Jesus in every language",
   "icons": [
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
