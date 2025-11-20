@@ -564,30 +564,6 @@ const ContentCard = ({
   );
 };
 // --- Language QR Modal Component ---
-const LanguageQrModal = ({
-  isOpen,
-  onClose,
-  languageDisplayName,
-  languageShareUrl,
-  t,
-}) => {
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
-      <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full relative">
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
-        >
-          {/* 💡 CHANGE THIS LINE! */}
-          <X className="w-6 h-6" />
-        </button>
-        {/* ... rest of modal content ... */}
-      </div>
-    </div>
-  );
-};
 
 // --- Page Components ---
 // New Page: Language List Page (Updated with Selection)
@@ -1116,50 +1092,20 @@ export default function App() {
       tempContainer.style.left = "-9999px";
       tempContainer.style.top = "0";
       tempContainer.innerHTML = `
-        <div id="qr-share-card"
-             style="
-               width: 420px;
-               padding: 20px 18px 22px;
-               border-radius: 26px;
-               background: #ffffff;
-               box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-               font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-               text-align: center;
-             ">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-            <div>
-              <img src="${AppLogo}" style="width:42px;height:42px;border-radius:6px;" />
-            </div>
-            <div style="flex:1;margin-left:8px;text-align:right;">
-              <div style="font-size:18px;font-weight:700;color:#111827;">${languageDisplay}</div>
-              <div style="font-size:18px;font-weight:700;color:#CC3333;">${titleDisplay}</div>
-              <div style="font-size:11px;color:#4B5563;">Program # ${
-                item.id
-              }</div>
-            </div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+             {/* ... Header info ... */}
           </div>
 
+         {/* 1. QR Code First */}
+         <div style="background:#F9FAFB; border-radius:18px; padding:12px; margin-bottom:10px; display:flex; justify-content:center; align-items:center;">
+          <img src="${qrImg}" style="width:220px;height:220px;display:block;" />
+         </div>
+
+          {/* 2. Verse Second (Moved Below) */}
+          {/* I added margin-top: 10px for spacing */}
           <div style="font-size:12px;color:#374151;font-style:italic;margin:10px 6px 14px;min-height:40px;">
             ${verseDisplay}
           </div>
-
-         <div
-           style="
-            background:#F9FAFB;
-            border-radius:18px;
-            padding:12px;
-            margin-bottom:10px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-          "
-        >
-          <img
-            src="${qrImg}"
-            style="width:220px;height:220px;display:block;"
-          />
-      </div>
-
 
           <div style="font-size:11px;color:#4B5563;margin-bottom:6px;">
             ${readMoreLabel}<br />
@@ -1385,13 +1331,13 @@ export default function App() {
               margin-bottom: 6px;
             }
             .logo-wrap .logo {
-              width: 28px;
-              height: 28px;
+              width: 24px;
+              height: 24px;
             }
             .header-text {
               flex: 1;
               margin-left: 6px;
-              text-align: right;
+              text-align: center;
             }
             .language {
               font-size: 12px;

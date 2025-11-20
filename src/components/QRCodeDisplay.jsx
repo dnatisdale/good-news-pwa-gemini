@@ -9,7 +9,7 @@ const QRCodeDisplay = ({
   size = 128,
   level = "H",
   bgColor = "#FFFFFF",
-  fgColor = "#000000", // Defaulting to black
+  fgColor = "#000000",
 }) => {
   return (
     <QRCodeSVG
@@ -18,7 +18,7 @@ const QRCodeDisplay = ({
       level={level}
       bgColor={bgColor}
       fgColor={fgColor}
-      includeMargin={false} // We handle padding in the parent component
+      includeMargin={false}
     />
   );
 };
