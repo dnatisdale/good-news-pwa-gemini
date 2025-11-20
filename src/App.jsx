@@ -129,25 +129,21 @@ const FontSizeButtons = ({ fontSize, setFontSize }) => {
   );
 };
 
-// --- NEW FLOATING UTILITY BAR (Header Version) ---
+// --- FLOATING UTILITY BAR (Yellow Badge Reacts to Hover) ---
 const FloatingUtilityBar = ({
   t,
   lang,
   setLang,
-  selectionCount, // <--- Renamed to match our new plan
+  selectionCount,
   onClearSelection,
   fontSize,
   setFontSize,
   navigateToSelectedContent,
+  isHovering, // 👈 The signal from the cards
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleLang = () => {
-    const newLang = lang === "en" ? "th" : "en";
-    setLang(newLang);
-    localStorage.setItem("appLang", newLang);
-  };
-
+  // Labels
   const labelSelected =
     t.selected_count_label || (lang === "th" ? "เลือกแล้ว" : "Selected");
   const labelClear =
@@ -156,14 +152,15 @@ const FloatingUtilityBar = ({
     t.font_size || (lang === "th" ? "ขนาดตัวอักษร" : "Font size");
   const labelLang = t.language || (lang === "th" ? "ภาษา" : "Language");
   const labelTools = t.tools_panel || (lang === "th" ? "เครื่องมือ" : "Tools");
+  const toggleLang = () => {
+    setLang(lang === "en" ? "th" : "en");
+  };
 
   return (
-    // 1. CONTAINER: Relative (not fixed) to sit in header
     <div className="relative flex-shrink-0 mr-2 z-50">
-      {/* 2. MENU DROPDOWN: Opens DOWNWARDS (top-full) */}
+      {/* Menu Dropdown (Opens Downwards) */}
       {isOpen && (
         <div className="absolute top-full right-0 mt-3 bg-white rounded-2xl shadow-xl p-3 w-72 space-y-3 ring-1 ring-black ring-opacity-5">
-          {/* Title row */}
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <LogoComponent
@@ -184,8 +181,6 @@ const FloatingUtilityBar = ({
               <X className="w-4 h-4" />
             </button>
           </div>
-
-          {/* Selected + Clear row */}
           <div className="flex items-center justify-between text-xs text-gray-700">
             <span>
               {labelSelected}: <strong>{selectionCount}</strong>
@@ -197,8 +192,6 @@ const FloatingUtilityBar = ({
               {labelClear}
             </button>
           </div>
-
-          {/* View Selected Button */}
           <button
             onClick={() => {
               navigateToSelectedContent();
@@ -211,14 +204,10 @@ const FloatingUtilityBar = ({
               <span className="font-semibold">Selected Programs</span>
             </div>
           </button>
-
-          {/* Font size row */}
           <div className="flex items-center justify-between">
             <span className="text-xs text-gray-600">{labelFont}</span>
             <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
           </div>
-
-          {/* Language row */}
           <div className="flex items-center justify-between">
             <span className="text-xs text-gray-600">{labelLang}</span>
             <button
@@ -232,30 +221,42 @@ const FloatingUtilityBar = ({
         </div>
       )}
 
-      {/* 3. BUTTON: Shake & Hover Effects + Yellow Badge */}
+      {/* BUTTON & BADGE CONTAINER */}
       <div className="relative">
+        {/* 1. THE BLUE BUTTON (Standard Hover only) */}
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          // HOVER EFFECTS: Scale up, Rotate, Brightness
-          className="w-10 h-10 rounded-full shadow-md flex items-center justify-center text-white relative transition-all duration-200 transform hover:scale-110 hover:rotate-6 hover:brightness-125"
+          className="w-10 h-10 rounded-full shadow-md flex items-center justify-center text-white relative 
+                     transition-all duration-200 transform hover:scale-110 hover:brightness-125"
           style={{ backgroundColor: THAI_BLUE }}
           aria-label="Tools Panel"
         >
           <Settings className="w-6 h-6" />
         </button>
+
+        {/* 2. THE YELLOW BADGE (Reacts to Card Hover!) */}
         {selectionCount > 0 && (
           <span
+            // Keep key to trigger a re-render "pop" when number changes
             key={selectionCount}
-            className="absolute -bottom-1 -left-1  
-               bg-yellow-400 text-black text-[10px] font-bold rounded-full 
+            className={`absolute -bottom-1 -left-1 
+               /* Base Shape & Color */
+               text-black text-[10px] font-bold rounded-full 
                w-5 h-5 flex items-center justify-center 
                border-2 border-white shadow-sm pointer-events-none
+               z-50
                
-               /* 👇 REVISED CLASSES FOR THE POP EFFECT 👇 */
-               transition-all duration-300 ease-out 
-               animate-scale-in"
-            // Note: 'animate-scale-in' is assumed to be a custom class
-            // that scales the element up (see fix below)
+               /* 👇 ANIMATION ENGINE 👇 */
+               origin-center
+               transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+               
+               /* 👇 DYNAMIC CLASSES 👇 */
+               ${
+                 isHovering
+                   ? "bg-orange-400 scale-150 -translate-y-1" // State A: Hovering (Orange + Big)
+                   : "bg-yellow-400 scale-100 translate-y-0"
+               }  // State B: Normal (Yellow + Normal)
+               `}
           >
             {selectionCount}
           </span>
@@ -361,24 +362,30 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
   );
 };
 
-// Language Card Component (With Checkbox)
+// --- UPDATED LANGUAGE CARD (Sends Signal) ---
 const LanguageCard = ({
   languageName,
   lang,
   onSelect,
   messageCount,
   onShowQrForLanguage,
-  selectionState, // "checked", "unchecked", or "indeterminate"
-  onToggle, // Function to handle the checkbox click
+  selectionState,
+  onToggle,
+  // 👇 NEW PROP
+  setHovering,
 }) => {
   return (
-    <div className="bg-white p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer transition-transform hover:shadow-lg hover:scale-[1.01]">
+    <div
+      // 👇 NEW EVENTS: Send the signal!
+      onMouseEnter={() => setHovering && setHovering(true)}
+      onMouseLeave={() => setHovering && setHovering(false)}
+      className="bg-white p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer transition-transform hover:shadow-lg hover:scale-[1.01]"
+    >
       <div className="flex items-center justify-between">
-        {/* --- NEW: CHECKBOX AREA --- */}
         <div
           className="pr-4 flex items-center"
           onClick={(e) => {
-            e.stopPropagation(); // Stop card from opening when checking box
+            e.stopPropagation();
             onToggle();
           }}
         >
@@ -391,11 +398,10 @@ const LanguageCard = ({
                 input.indeterminate = selectionState === "indeterminate";
               }
             }}
-            readOnly // React controls the state
+            readOnly
           />
         </div>
 
-        {/* Label and Info */}
         <div onClick={() => onSelect(languageName)} className="flex-grow pr-4">
           <h3 className={`text-2xl font-bold ${ACCENT_COLOR_CLASS}`}>
             {languageName}
@@ -406,7 +412,6 @@ const LanguageCard = ({
           </p>
         </div>
 
-        {/* QR Button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -576,15 +581,17 @@ const ContentCard = ({
 // --- Language QR Modal Component ---
 
 // --- Page Components ---
-// New Page: Language List Page (Updated with Selection)
+// --- UPDATED LANGUAGE LIST PAGE (Passes Signal Down) ---
 const LanguageListPage = ({
   lang,
   t,
   onSelectLanguage,
   languageGroups,
   onShowQrForLanguage,
-  selectedPrograms, // NEW: Needed to calculate state
-  onToggleLanguage, // NEW: Handler
+  selectedPrograms,
+  onToggleLanguage,
+  // 👇 NEW PROP
+  onHoverChange,
 }) => {
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
@@ -598,12 +605,13 @@ const LanguageListPage = ({
           onSelect={() => onSelectLanguage(group.stableKey)}
           messageCount={group.count}
           onShowQrForLanguage={() => onShowQrForLanguage(group.stableKey)}
-          // --- NEW PROPS FOR CHECKBOX ---
           selectionState={getLanguageIndeterminateState(
             group,
             selectedPrograms
           )}
           onToggle={() => onToggleLanguage(group.stableKey, group.messages)}
+          // 👇 CONNECT THE WIRE HERE
+          setHovering={onHoverChange}
         />
       ))}
       <div className="h-16"></div>
@@ -1572,6 +1580,8 @@ export default function App() {
   const [fontSize, setFontSize] = useState(initialFontSize);
   const [pageStack, setPageStack] = useState([{ name: "Home" }]);
   const [track, setTrack] = useState(null);
+  // 👇 ADD THIS NEW STATE SIGNAL 👇
+  const [isHoveringContent, setIsHoveringContent] = useState(false);
   const [isAudioMinimized, setIsAudioMinimized] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true); // Splash Screen state
@@ -1970,6 +1980,7 @@ export default function App() {
           // --- NEW WIRING ---
           selectedPrograms={selectedPrograms}
           onToggleLanguage={handleLanguageToggle}
+          onHoverChange={setIsHoveringContent} // 👈 GIVE IT THE CONTROLLER
         />
       );
       break;
@@ -2190,6 +2201,7 @@ export default function App() {
               fontSize={fontSize}
               setFontSize={setFontSize}
               navigateToSelectedContent={navigateToSelectedContent}
+              isHovering={isHoveringContent} // 👈 PLUG IN THE SIGNAL
             />
 
             {/* 2. Language Switch Button (Now sits to the right of Utility Bar) */}
