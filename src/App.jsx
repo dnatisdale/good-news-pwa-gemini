@@ -1125,9 +1125,23 @@ export default function App() {
             ${verseDisplay}
           </div>
 
-          <div style="background:#F9FAFB;border-radius:18px;padding:12px;margin-bottom:10px;">
-            <img src="${qrImg}" style="width:220px;height:220px;" />
-          </div>
+         <div
+           style="
+            background:#F9FAFB;
+            border-radius:18px;
+            padding:12px;
+            margin-bottom:10px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+          "
+        >
+          <img
+            src="${qrImg}"
+            style="width:220px;height:220px;display:block;"
+          />
+      </div>
+
 
           <div style="font-size:11px;color:#4B5563;margin-bottom:6px;">
             ${readMoreLabel}<br />
