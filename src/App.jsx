@@ -129,12 +129,12 @@ const FontSizeButtons = ({ fontSize, setFontSize }) => {
   );
 };
 
-// --- FLOATING UTILITY BAR (Search + Lang + Font + Clear + QR) ---
+// --- NEW FLOATING UTILITY BAR (Header Version) ---
 const FloatingUtilityBar = ({
   t,
   lang,
   setLang,
-  selectedCount,
+  selectionCount, // <--- Renamed to match our new plan
   onClearSelection,
   fontSize,
   setFontSize,
@@ -148,7 +148,6 @@ const FloatingUtilityBar = ({
     localStorage.setItem("appLang", newLang);
   };
 
-  const labelSearch = t.search || (lang === "th" ? "ค้นหา" : "Search");
   const labelSelected =
     t.selected_count_label || (lang === "th" ? "เลือกแล้ว" : "Selected");
   const labelClear =
@@ -159,20 +158,18 @@ const FloatingUtilityBar = ({
   const labelTools = t.tools_panel || (lang === "th" ? "เครื่องมือ" : "Tools");
 
   return (
-    <div className="fixed bottom-4 right-4 z-40">
+    // 1. CONTAINER: Relative (not fixed) to sit in header
+    <div className="relative flex-shrink-0 mr-2 z-50">
+      {/* 2. MENU DROPDOWN: Opens DOWNWARDS (top-full) */}
       {isOpen && (
-        <div className="mb-2 bg-white rounded-2xl shadow-xl p-3 w-72 space-y-3">
+        <div className="absolute top-full right-0 mt-3 bg-white rounded-2xl shadow-xl p-3 w-72 space-y-3 ring-1 ring-black ring-opacity-5">
           {/* Title row */}
           <div className="flex items-center justify-between">
-            {/* New container for the Logo and Label */}
             <div className="flex items-center space-x-2">
-              {/* 1. Small Square Logo */}
               <LogoComponent
                 className="w-8 h-8 rounded-md flex-shrink-0 bg-white p-0.5"
                 aria-label="App Logo"
               />
-
-              {/* 2. Tools Label with Thai Blue background */}
               <span
                 className="font-semibold text-white text-sm px-2 py-1 rounded-lg"
                 style={{ backgroundColor: THAI_BLUE }}
@@ -180,8 +177,6 @@ const FloatingUtilityBar = ({
                 {labelTools}
               </span>
             </div>
-
-            {/* Close button remains on the far right */}
             <button
               onClick={() => setIsOpen(false)}
               className="p-1 rounded-full hover:bg-gray-100"
@@ -189,10 +184,11 @@ const FloatingUtilityBar = ({
               <X className="w-4 h-4" />
             </button>
           </div>
+
           {/* Selected + Clear row */}
           <div className="flex items-center justify-between text-xs text-gray-700">
             <span>
-              {labelSelected}: <strong>{selectedCount}</strong>
+              {labelSelected}: <strong>{selectionCount}</strong>
             </span>
             <button
               onClick={onClearSelection}
@@ -202,27 +198,26 @@ const FloatingUtilityBar = ({
             </button>
           </div>
 
-          {/* Button to View Selected Programs/ Download */}
+          {/* View Selected Button */}
           <button
-            key="view-selected"
             onClick={() => {
-              navigateToSelectedContent(); // Assuming this is defined in App.jsx
-              setIsOpen(false); // Close the menu after clicking
+              navigateToSelectedContent();
+              setIsOpen(false);
             }}
-            // Use a full-width button appearance
             className="w-full py-2 text-white bg-red-700 hover:bg-red-600 rounded-lg text-center shadow-md transition-all"
           >
             <div className="flex items-center justify-center space-x-2">
-              {/* Using a clear icon like Share or Download */}
               <Download className="w-5 h-5" />
               <span className="font-semibold">Selected Programs</span>
             </div>
           </button>
+
           {/* Font size row */}
           <div className="flex items-center justify-between">
             <span className="text-xs text-gray-600">{labelFont}</span>
             <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
           </div>
+
           {/* Language row */}
           <div className="flex items-center justify-between">
             <span className="text-xs text-gray-600">{labelLang}</span>
@@ -237,20 +232,35 @@ const FloatingUtilityBar = ({
         </div>
       )}
 
-      {/* Floating main button with Settings + badge */}
-      <button
-        onClick={() => setIsOpen((prev) => !prev)}
-        className="w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white relative"
-        style={{ backgroundColor: THAI_BLUE }}
-        aria-label="QR Tools"
-      >
-        <Settings className="w-7 h-7" />
-        {selectedCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-[#CC3333] text-white text-[10px] font-bold rounded-full px-1.5 py-0.5">
-            {selectedCount}
+      {/* 3. BUTTON: Shake & Hover Effects + Yellow Badge */}
+      <div className="relative">
+        <button
+          onClick={() => setIsOpen((prev) => !prev)}
+          // HOVER EFFECTS: Scale up, Rotate, Brightness
+          className="w-10 h-10 rounded-full shadow-md flex items-center justify-center text-white relative transition-all duration-200 transform hover:scale-110 hover:rotate-6 hover:brightness-125"
+          style={{ backgroundColor: THAI_BLUE }}
+          aria-label="Tools Panel"
+        >
+          <Settings className="w-6 h-6" />
+        </button>
+        {selectionCount > 0 && (
+          <span
+            key={selectionCount}
+            className="absolute -bottom-1 -left-1  
+               bg-yellow-400 text-black text-[10px] font-bold rounded-full 
+               w-5 h-5 flex items-center justify-center 
+               border-2 border-white shadow-sm pointer-events-none
+               
+               /* 👇 REVISED CLASSES FOR THE POP EFFECT 👇 */
+               transition-all duration-300 ease-out 
+               animate-scale-in"
+            // Note: 'animate-scale-in' is assumed to be a custom class
+            // that scales the element up (see fix below)
+          >
+            {selectionCount}
           </span>
         )}
-      </button>
+      </div>
     </div>
   );
 };
@@ -1947,7 +1957,6 @@ export default function App() {
   }
 
   // --- Render Logic ---
-
   let PageContent;
   switch (currentPage.name) {
     case "Home":
@@ -2168,14 +2177,27 @@ export default function App() {
             </a>
           </div>
 
-          {/* RIGHT SECTION: Controls (Language and Search remain) */}
+          {/* 🌟 PASTE THIS INSIDE THE HEADER FLEX CONTAINER 🌟 */}
+          {/* RIGHT SECTION: Controls */}
           <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
-            {/* 1. Language Switch Button */}
+            {/* 1. UTILITY BAR (The New Button) goes FIRST */}
+            <FloatingUtilityBar
+              t={t}
+              lang={lang}
+              setLang={setLang}
+              selectionCount={selectedPrograms.length}
+              onClearSelection={clearSelection}
+              fontSize={fontSize}
+              setFontSize={setFontSize}
+              navigateToSelectedContent={navigateToSelectedContent}
+            />
+
+            {/* 2. Language Switch Button (Now sits to the right of Utility Bar) */}
             <LanguageToggle lang={lang} setLang={setLang} t={t} />
 
-            {/* 2. Search Button (Toggle for Search Input) */}
+            {/* 3. Search Button (Toggle for Search Input) */}
             <button
-              onClick={() => setIsSearchOpen(true)} // Opens the search input field
+              onClick={() => setIsSearchOpen(true)}
               className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
               aria-label="Toggle Search"
             >
@@ -2227,22 +2249,6 @@ export default function App() {
           isMinimized={isAudioMinimized}
           toggleMinimize={toggleAudioMinimize}
           t={t}
-        />
-
-        {/* --- FLOATING UTILITY BAR (Tools Menu) --- */}
-        <FloatingUtilityBar
-          t={t}
-          lang={lang}
-          setLang={setLang}
-          // The next two props were removed from FloatingUtilityBar definition:
-          // searchTerm={searchTerm}
-          // onSearchChange={handleSearchChange}
-          selectedCount={selectedPrograms.length}
-          onClearSelection={clearSelection}
-          fontSize={fontSize}
-          setFontSize={setFontSize}
-          // ✅ ADDED: The Navigation Function for the new "Selected Programs" button
-          navigateToSelectedContent={navigateToSelectedContent}
         />
 
         {/* --- NAVIGATION DRAWER (Sidebar) --- */}
