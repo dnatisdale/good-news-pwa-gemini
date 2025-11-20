@@ -1057,6 +1057,44 @@ const SettingsPage = ({
 
 // --- Main App Component ---
 export default function App() {
+  // --- NEW HELPER: Combine all selected programs into a single text string ---
+  const getShareableContent = () => {
+    const isThai = lang === "th";
+
+    // 1. Get the list of actual message objects based on selectedPrograms
+    const filteredContent = getFilteredMessages(
+      staticContent,
+      selectedPrograms
+    );
+
+    if (filteredContent.length === 0) return null;
+
+    // 2. Map the selected programs to an array of formatted strings
+    const shareableItems = filteredContent.map((program) => {
+      // Get the correct language and title for the item
+      const title = isThai
+        ? program.title_th || "ไม่มีชื่อ"
+        : program.title_en || "Untitled Program";
+      const language = isThai ? program.langTh || "" : program.languageEn || "";
+      const cardUrl = `https://5fi.sh/T${program.id}`; // The short link format
+
+      // Format: [Language] - [Title] : [URL]
+      return `[${language}] ${title}: ${cardUrl}`;
+    });
+
+    // 3. Combine the items into a single, highly readable string
+    const combinedText = [
+      t.share_header_list ||
+        (isThai ? "รายการข้อความที่เลือก:" : "Selected Program List:"),
+      ...shareableItems,
+      t.app_link_footer ||
+        (isThai
+          ? "ค้นหาเพิ่มเติมที่: [Your App Link Here]"
+          : "Find more content at: [Your App Link Here]"),
+    ].join("\n"); // Join with new lines for readability
+
+    return combinedText;
+  };
   // --- NEW: Filtered Message Helper ---
   const getSelectedContent = () => {
     // 1. Get the list of actual message objects based on selectedPrograms
@@ -1192,89 +1230,59 @@ export default function App() {
     });
   };
 
-  // --- NEW: Share Filtered Content (single language) ---
-  // --- SHARE: send first selected QR card as PNG (fallback: download) ---
+  // --- NEW: Share Filtered Content (TEXT LIST) ---
   const handleShareSelected = async () => {
-    const selectedContent = getSelectedContent();
-    if (!selectedContent || selectedContent.length === 0) return;
+    // 1. Get the combined text list
+    const contentToShare = getShareableContent();
+    if (!contentToShare) {
+      alert(t.select_content_first || "Please select some content first!");
+      return;
+    }
 
-    const item = selectedContent[0]; // use first selected card
     const isThai = lang === "th";
-    const cardUrl = `https://5fi.sh/T${item.id}`;
-    const label = isThai
-      ? "ฟัง แบ่งปัน ดาวน์โหลดที่:"
-      : "Listen, Share, Download at:";
+    const shareTitle = isThai
+      ? "ข่าวดี: รายการที่เลือก"
+      : "Thai: Good News - Selected List";
 
     try {
-      const file = await generateQrCardPng(item);
-
-      if (
-        navigator.share &&
-        navigator.canShare &&
-        navigator.canShare({ files: [file] })
-      ) {
+      if (navigator.share) {
+        // Use the native share sheet for the combined text
         await navigator.share({
-          title: isThai ? "ข่าวดี" : "Thai: Good News",
-          text: `${label} ${cardUrl}`,
-          files: [file],
+          title: shareTitle,
+          text: contentToShare,
         });
-        alert(t.content_shared || "QR card shared successfully!");
       } else {
-        // fallback: just download the PNG
-        const url = URL.createObjectURL(file);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = file.name;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
+        // Fallback: Copy to clipboard if Web Share API is not available
+        await navigator.clipboard.writeText(contentToShare);
         alert(
-          t.share_failed_fallback ||
-            "Your device can't share images directly, so the QR card was downloaded instead."
+          t.list_copied_to_clipboard || "Selected list copied to clipboard!"
         );
       }
     } catch (error) {
-      console.error("Sharing QR card failed:", error);
-      alert(t.share_failed || "Sharing failed or was cancelled.");
+      console.error("Sharing selected list failed:", error);
+      // Ignore user cancellation (AbortError)
+      if (error.name !== "AbortError") {
+        alert(t.share_failed || "Sharing failed or was cancelled.");
+      }
     }
   };
 
-  // --- NEW: Copy Filtered Content (single language) ---
-  // --- COPY: copy first selected QR card as image (fallback: download) ---
+  // --- NEW: Copy Filtered Content (TEXT LIST) ---
   const handleCopySelected = async () => {
-    const selectedContent = getSelectedContent();
-    if (!selectedContent || selectedContent.length === 0) return;
-
-    const item = selectedContent[0];
+    // 1. Get the combined text list
+    const contentToCopy = getShareableContent();
+    if (!contentToCopy) {
+      alert(t.select_content_first || "Please select some content first!");
+      return;
+    }
 
     try {
-      const file = await generateQrCardPng(item);
-
-      if (navigator.clipboard && window.ClipboardItem) {
-        const blob = new Blob([file], { type: "image/png" });
-        await navigator.clipboard.write([
-          new ClipboardItem({ "image/png": blob }),
-        ]);
-        alert(t.messages_copied || "QR card image copied!");
-      } else {
-        // fallback: download the PNG
-        const url = URL.createObjectURL(file);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = file.name;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-        alert(
-          t.copy_failed_fallback ||
-            "Your device can't copy images, so the QR card was downloaded instead."
-        );
-      }
+      // Copy the text list directly to the clipboard
+      await navigator.clipboard.writeText(contentToCopy);
+      alert(t.list_copied_to_clipboard || "Selected list copied to clipboard!");
     } catch (error) {
-      console.error("Copy QR card failed:", error);
-      alert(t.copy_failed || "Failed to copy QR card.");
+      console.error("Copying selected list failed:", error);
+      alert(t.copy_failed || "Failed to copy selected list.");
     }
   };
 
@@ -1363,12 +1371,20 @@ export default function App() {
               font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
               margin: 0;
               padding: 0.25in;
+              background: #f3f4f6; /* Light gray background for the preview window */
+            }
+            /* HIDE ELEMENTS WHEN PRINTING */
+            @media print {
+              .no-print { display: none !important; }
+              body { background: white; padding: 0; }
             }
             .page {
               page-break-after: always;
               display: grid;
               grid-template-columns: repeat(3, 1fr);
               gap: 0.4in;
+              background: white;
+              padding: 0.25in; /* Visual padding for the preview */
             }
             .page:last-child {
               page-break-after: auto;
@@ -1379,6 +1395,8 @@ export default function App() {
               padding: 10px 10px 14px;
               text-align: center;
               background: #ffffff;
+              /* Ensure cards don't split across pages */
+              break-inside: avoid; 
             }
             .qr-header {
               display: flex;
@@ -1439,14 +1457,45 @@ export default function App() {
               font-size: 7px;
               color: #9CA3AF;
             }
+            /* Close Button Style */
+            .control-bar {
+              text-align: center;
+              margin-bottom: 20px;
+              padding: 10px;
+              background: #333;
+              color: white;
+              border-radius: 8px;
+            }
+            .close-btn {
+              background: #CC3333;
+              color: white;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 6px;
+              font-size: 16px;
+              cursor: pointer;
+              font-weight: bold;
+            }
           </style>
         </head>
         <body>
+          <div class="control-bar no-print">
+             <p>Printing may not start automatically on some devices.</p>
+             <button class="close-btn" onclick="window.print()">🖨️ Print Cards</button>
+             <button class="close-btn" onclick="window.close()" style="background:#555; margin-left:10px;">Close Window</button>
+          </div>
+
           ${htmlPages}
+
           <script>
             window.onload = function() {
-              window.print();
-              setTimeout(function(){ window.close(); }, 100);
+              // Attempt to print automatically
+              setTimeout(function() {
+                window.print();
+              }, 500); // Small delay to ensure images render
+              
+              // ❌ REMOVED THE AUTO-CLOSE TIMEOUT
+              // The user must now close the window manually.
             };
           </script>
         </body>
@@ -1454,6 +1503,11 @@ export default function App() {
     `;
 
     const printWindow = window.open("", "_blank");
+    // Mobile browser pop-up blocker check
+    if (!printWindow) {
+      alert("Please allow pop-ups to print your cards.");
+      return;
+    }
     printWindow.document.open();
     printWindow.document.write(printHtml);
     printWindow.document.close();
