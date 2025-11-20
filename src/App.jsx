@@ -1366,20 +1366,27 @@ export default function App() {
                     <div class="program">Program # ${item.id}</div>
                   </div>
                 </div>
-                <div class="verse">${verse}</div>
-                <div class="qr-wrap">
-                  <img src="${qrImg}" class="qr-img" />
-                </div>
-                <div class="read-more">
-                  ${readMoreLabel}<br />
-                  <span class="url">${cardUrl}</span>
-                </div>
-                <div class="footer">${
-                  t.scan_qr_tip ||
-                  "Scan the QR code or visit the link to access this content."
-                }</div>
-              </div>
-            `;
+
+          <!-- ✅ QR ABOVE VERSE -->
+          <div class="qr-wrap">
+            <img src="${qrImg}" class="qr-img" />
+          </div>
+
+          <!-- ✅ VERSE UNDER QR -->
+          <div class="verse">
+            ${verse}
+          </div>
+
+          <div class="read-more">
+            ${readMoreLabel}<br />
+            <span class="url">${cardUrl}</span>
+          </div>
+          <div class="footer">${
+            t.scan_qr_tip ||
+            "Scan the QR code or visit the link to access this content."
+          }</div>
+        </div>
+      `;
           })
           .join("");
 

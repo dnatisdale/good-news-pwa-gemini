@@ -95,7 +95,7 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
       </div>
 
       {/* ✅ QR BLOCK FIRST */}
-      <div className="flex justify-center mb-6 p-4 bg-gray-40 rounded-lg">
+      <div className="flex justify-center mb-6 p-4 bg-white rounded-lg">
         <QRCodeDisplay
           url={cardUrl}
           size={200}
