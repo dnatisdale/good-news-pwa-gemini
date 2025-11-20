@@ -1013,6 +1013,64 @@ const SettingsPage = ({
 
 // --- Main App Component ---
 export default function App() {
+  // --- Language QR Modal (inline component, uses QRCodeDisplay) ---
+  const LanguageQrModal = ({
+    isOpen,
+    onClose,
+    languageDisplayName,
+    languageShareUrl,
+    t,
+  }) => {
+    if (!isOpen) return null;
+
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
+        <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full relative">
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
+          >
+            ✕
+          </button>
+
+          {/* Title + language name */}
+          <h2 className="text-lg font-semibold text-gray-800 text-center mb-1">
+            {t?.language_qr_title || "Language QR Card"}
+          </h2>
+          <h3 className="text-base font-semibold text-brand-red mb-4 text-center">
+            {languageDisplayName}
+          </h3>
+
+          {/* --- QR CODE DISPLAY --- */}
+          <div className="flex justify-center mb-4 p-4 bg-gray-50 rounded-lg">
+            <QRCodeDisplay
+              url={languageShareUrl}
+              size={200}
+              fgColor="#000000"
+              bgColor="#FFFFFF"
+            />
+          </div>
+
+          {/* URL under the QR */}
+          <p className="text-sm text-gray-600 text-center break-all mb-2">
+            {t?.scan_qr_to_view_messages || "Scan QR to view all messages in"}
+            :
+            <br />
+            <a
+              href={languageShareUrl}
+              className="text-brand-red underline break-all"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {languageShareUrl}
+            </a>
+          </p>
+        </div>
+      </div>
+    );
+  };
+
   // --- NEW HELPER: Combine all selected programs into a single text string ---
   const getShareableContent = () => {
     const isThai = lang === "th";
@@ -1081,7 +1139,7 @@ export default function App() {
       : "Listen, Share, Download at:";
     const cardUrl = `https://5fi.sh/T${item.id}`;
 
-    // simple QR image service
+    // Simple QR image service
     const qrImg = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(
       cardUrl
     )}`;
@@ -1091,33 +1149,74 @@ export default function App() {
       tempContainer.style.position = "fixed";
       tempContainer.style.left = "-9999px";
       tempContainer.style.top = "0";
+
+      // Clean QR card HTML with centered QR and wrapper id
       tempContainer.innerHTML = `
-<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-             {/* ... Header info ... */}
+        <div id="qr-share-card"
+             style="
+               width: 420px;
+               padding: 20px 18px 22px;
+               border-radius: 26px;
+               background: #ffffff;
+               box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+               font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+               text-align: center;
+             ">
+          
+          <!-- HEADER -->
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;">
+            <div>
+              <img src="${AppLogo}" style="width:42px;height:42px;border-radius:6px;" />
+            </div>
+            <div style="flex:1;margin-left:8px;text-align:right;">
+              <div style="font-size:18px;font-weight:700;color:#111827;">${languageDisplay}</div>
+              <div style="font-size:18px;font-weight:700;color:#A51931;">${titleDisplay}</div>
+              <div style="font-size:11px;color:#4B5563;">Program # ${
+                item.id
+              }</div>
+            </div>
           </div>
 
-         {/* 1. QR Code First */}
-         <div style="background:#F9FAFB; border-radius:18px; padding:12px; margin-bottom:10px; display:flex; justify-content:center; align-items:center;">
-          <img src="${qrImg}" style="width:220px;height:220px;display:block;" />
-         </div>
-
-          {/* 2. Verse Second (Moved Below) */}
-          {/* I added margin-top: 10px for spacing */}
-          <div style="font-size:12px;color:#374151;font-style:italic;margin:10px 6px 14px;min-height:40px;">
+                    <!-- VERSE BLOCK (NOW BELOW QR) -->
+          <div style="
+               font-size:14px;
+               color:#374151;
+               font-style:italic;
+               margin:0 6px 18px;
+               min-height:40px;
+          ">
             ${verseDisplay}
           </div>
 
-          <div style="font-size:11px;color:#4B5563;margin-bottom:6px;">
-            ${readMoreLabel}<br />
-            <span style="color:#CC3333;word-break:break-all;">${cardUrl}</span>
+          <!-- QR BLOCK (NOW COMES FIRST!) -->
+          <div style="
+               background:#F9FAFB;
+               border-radius:18px;
+               padding:16px;
+               margin-bottom:16px;
+               display:flex;
+               justify-content:center;
+               align-items:center;
+          ">
+            <img src="${qrImg}" style="width:220px;height:220px;display:block;" />
           </div>
 
-          <div style="font-size:10px;color:#9CA3AF;">
+          <!-- DOWNLOAD LINK -->
+          <div style="font-size:13px;color:#374151;margin-bottom:10px;">
+            ${readMoreLabel}<br />
+            <span style="color:#A51931;word-break:break-all;font-weight:600;">
+              ${cardUrl}
+            </span>
+          </div>
+
+          <!-- FOOTNOTE -->
+          <div style="font-size:11px;color:#9CA3AF;">
             ${
               t.scan_qr_tip ||
               "Scan the QR code or visit the link to access this content."
             }
           </div>
+
         </div>
       `;
 
@@ -1125,6 +1224,12 @@ export default function App() {
       const cardElement = tempContainer.querySelector("#qr-share-card");
 
       setTimeout(() => {
+        if (!cardElement) {
+          document.body.removeChild(tempContainer);
+          reject(new Error("QR card element not found"));
+          return;
+        }
+
         html2canvas(cardElement, {
           scale: 2,
           useCORS: true,
@@ -1141,7 +1246,9 @@ export default function App() {
                 const fileName = `qr-card-${item.id}-${
                   isThai ? "th" : "en"
                 }.png`;
-                const file = new File([blob], fileName, { type: "image/png" });
+                const file = new File([blob], {
+                  type: "image/png",
+                });
                 resolve(file);
               },
               "image/png",
