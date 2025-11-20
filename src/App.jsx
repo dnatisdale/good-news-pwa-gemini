@@ -568,7 +568,7 @@ const LanguageQrModal = ({
   isOpen,
   onClose,
   languageDisplayName,
-  languageShareUrl, // <-- This is the correct prop!
+  languageShareUrl,
   t,
 }) => {
   if (!isOpen) return null;
@@ -577,33 +577,13 @@ const LanguageQrModal = ({
     <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
       <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full relative">
         <button
-          onClick={onClose} // <-- This is the close function
+          onClick={onClose}
           className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
         >
-          <menu className="w-6 h-6" />
+          {/* 💡 CHANGE THIS LINE! */}
+          <X className="w-6 h-6" />
         </button>
-        <h3 className="text-lg font-semibold text-brand-red mb-4 text-center">
-          {languageDisplayName}
-        </h3>
-        {/* --- QR CODE DISPLAY --- */}
-        <div className="flex justify-center mb-4 p-4 bg-gray-50 rounded-lg">
-          <QRCodeDisplay
-            // -------------------------------------------------------------
-            // --- FIX APPLIED HERE: Using languageShareUrl instead of cardUrl ---
-            url={languageShareUrl}
-            // -------------------------------------------------------------
-            size={200}
-            fgColor="#000000"
-            bgColor="#FFFFFF"
-          />
-        </div>
-        <p className="text-sm text-gray-600 text-center break-all mb-2">
-          {t.scan_qr_to_view_messages || "Scan QR to view all messages in"}:{" "}
-          <br />
-          <a href={languageShareUrl} className="text-brand-red underline">
-            {languageShareUrl}
-          </a>
-        </p>
+        {/* ... rest of modal content ... */}
       </div>
     </div>
   );
