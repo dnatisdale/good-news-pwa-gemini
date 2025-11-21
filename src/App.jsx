@@ -1053,12 +1053,11 @@ export default function App() {
           </button>
 
           {/* Title + language name */}
-          <h2 className="text-lg font-bold text-brand-red mb-1 text-center">
-            {languageDisplayName}
-          </h2>
-
-          <h3 className="text-sm text-gray-600 text-center break-all mb-1">
+          <h2 className="text-sm text-gray-600 text-center break-all mb-1">
             {t?.scan_qr_to_view_messages || "Scan QR to view all messages in"}:
+          </h2>
+          <h3 className="text-lg font-bold text-brand-red mb-1 text-center">
+            {languageDisplayName}
           </h3>
 
           {/* --- QR CODE DISPLAY --- */}
@@ -1073,8 +1072,7 @@ export default function App() {
 
           {/* URL under the QR */}
           <p className="text-sm text-gray-600 text-center break-all mb-1">
-            {t?.language_qr_title || "Language QR Card"}
-            <br />
+            {t?.language_qr_title || ""}
             <a
               href={languageShareUrl}
               className="text-brand-red underline break-all"
