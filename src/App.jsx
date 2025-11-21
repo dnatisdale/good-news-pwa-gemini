@@ -1047,21 +1047,22 @@ export default function App() {
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
+            className="absolute top-3 right-5 text-gray-800"
           >
             ✕
           </button>
 
           {/* Title + language name */}
-          <h2 className="text-lg font-semibold text-gray-800 text-center mb-1">
-            {t?.language_qr_title || "Language QR Card"}
-          </h2>
-          <h3 className="text-base font-semibold text-brand-red mb-4 text-center">
+          <h2 className="text-lg font-bold text-brand-red mb-1 text-center">
             {languageDisplayName}
+          </h2>
+
+          <h3 className="text-sm text-gray-600 text-center break-all mb-1">
+            {t?.scan_qr_to_view_messages || "Scan QR to view all messages in"}:
           </h3>
 
           {/* --- QR CODE DISPLAY --- */}
-          <div className="flex justify-center mb-4 p-4 bg-gray-50 rounded-lg">
+          <div className="flex justify-center mb-3 p-4 bg-white rounded-lg">
             <QRCodeDisplay
               url={languageShareUrl}
               size={200}
@@ -1071,9 +1072,8 @@ export default function App() {
           </div>
 
           {/* URL under the QR */}
-          <p className="text-sm text-gray-600 text-center break-all mb-2">
-            {t?.scan_qr_to_view_messages || "Scan QR to view all messages in"}
-            :
+          <p className="text-sm text-gray-600 text-center break-all mb-1">
+            {t?.language_qr_title || "Language QR Card"}
             <br />
             <a
               href={languageShareUrl}
