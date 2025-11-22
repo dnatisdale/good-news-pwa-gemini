@@ -12,7 +12,7 @@ export const i18n = {
     // Navigation
     contents: "Contents",
     search: "Search",
-    bookmarks: "Bookmarks",
+    favorites: "Favorites",
     notes: "Notes",
     settings: "Settings",
     language_label: "Language",
@@ -55,9 +55,9 @@ export const i18n = {
     start_typing_to_search: "Start typing to search all",
     items: "items",
 
-    // Bookmarks
-    no_bookmarks: "You haven't bookmarked any messages yet.",
-    bookmark_tip: "Tap the bookmark icon on a message detail page to save it.",
+    // Favorites
+    no_favorites: "You haven't added any favorites yet.",
+    favorite_tip: "Tap the heart icon on a message detail page to save it.",
 
     // Share & Export
     share_this_message: "Share This Message",
@@ -119,7 +119,7 @@ export const i18n = {
     // Navigation
     contents: "สารบัญ",
     search: "ค้นหา",
-    bookmarks: "ที่คั่นหน้า",
+    favorites: "รายการโปรด",
     notes: "บันทึก",
     settings: "ตั้งค่า",
     language_label: "ภาษา",
@@ -169,9 +169,9 @@ export const i18n = {
     start_typing_to_search: "เริ่มพิมพ์เพื่อค้นหาทั้งหมด",
     items: "รายการ",
 
-    // Bookmarks
-    no_bookmarks: "คุณยังไม่ได้บันทึกข้อความใดๆ",
-    bookmark_tip: "แตะไอคอนที่คั่นหน้าในหน้ารายละเอียดข้อความเพื่อบันทึก",
+    // Favorites
+    no_favorites: "คุณยังไม่ได้เพิ่มรายการโปรด",
+    favorite_tip: "แตะไอคอนหัวใจในหน้ารายละเอียดข้อความเพื่อบันทึก",
 
     // Share & Export
     share_this_message: "แชร์ข้อความนี้",

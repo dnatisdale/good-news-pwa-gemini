@@ -8,7 +8,7 @@ import { getFilteredMessages } from "./utils/filterLogic";
 import {
   Home,
   Search,
-  Bookmark,
+  Heart,
   Pen,
   Settings,
   Menu,
@@ -30,7 +30,7 @@ import AudioPlayer from "./components/AudioPlayer";
 import LanguageListPage from "./pages/LanguageListPage";
 import SelectedContentPage from "./pages/SelectedContentPage";
 import MessagesByLanguagePage from "./pages/MessagesByLanguagePage";
-import BookmarksPage from "./pages/BookmarksPage";
+import FavoritesPage from "./pages/FavoritesPage";
 import SearchPage from "./pages/SearchPage";
 import SettingsPage from "./pages/SettingsPage";
 import NotesPage from "./pages/NotesPage";
@@ -598,7 +598,7 @@ export default function App() {
         );
       });
     }
-    // Fallback for other contexts (e.g., bookmarks or direct content view)
+    // Fallback for other contexts (e.g., favorites or direct content view)
     return staticContent;
   }, [pageStack, languageGroups, searchTerm]);
 
@@ -937,19 +937,17 @@ export default function App() {
         />
       );
       break;
-    case "Bookmarks":
+    case "Favorites":
       PageContent = (
-        <BookmarksPage
+        <FavoritesPage
           lang={lang}
           t={t}
-          onSelect={(item) => handleSelectMessage(item, "bookmark")}
           userData={userData}
+          onSelect={(item) => handleSelectMessage(item, "favorite")}
           onBack={goBack}
           onForward={goForward}
           hasPrev={hasPrev}
           hasNext={hasNext}
-          // --- FIX: ADDED pageStack PROP ---
-          pageStack={pageStack}
         />
       );
       break;
@@ -1214,7 +1212,7 @@ export default function App() {
               {/* Navigation Items */}
               {[
                 { name: "Search", icon: Search, target: "Search" },
-                { name: "Bookmarks", icon: Bookmark, target: "Bookmarks" },
+                { name: "Favorites", icon: Heart, target: "Favorites" },
                 { name: "Notes", icon: Pen, target: "Notes" },
                 // --- NEW: 5fish Website Link ---
                 {

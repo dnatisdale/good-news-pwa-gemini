@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import html2canvas from "html2canvas";
 import QRCodeDisplay from "../components/QRCodeDisplay";
 import {
-  Bookmark,
+  Heart,
   ChevronLeft,
   ChevronRight,
   Share2,
@@ -142,7 +142,7 @@ const ContentView = ({
 }) => {
   const [isQrLarge, setIsQrLarge] = useState(false);
 
-  const isBookmarked = userData?.bookmarks?.includes(item.id) ?? false;
+  const isFavorite = userData?.favorites?.includes(item.id) ?? false;
   const cardUrl = `https://5fi.sh/T${item.id}`;
   const languageDisplay =
     lang === "en" ? item.languageEn ?? "" : item.langTh ?? "";
@@ -155,15 +155,15 @@ const ContentView = ({
       ? item.verse_en ?? t.no_verse_content
       : item.verse_th ?? t.no_verse_content;
 
-  const toggleBookmark = () => {
-    const currentBookmarks = userData.bookmarks || [];
-    let newBookmarks;
-    if (isBookmarked) {
-      newBookmarks = currentBookmarks.filter((id) => id !== item.id);
+  const toggleFavorite = () => {
+    const currentFavorites = userData.favorites || [];
+    let newFavorites;
+    if (isFavorite) {
+      newFavorites = currentFavorites.filter((id) => id !== item.id);
     } else {
-      newBookmarks = [...currentBookmarks, item.id];
+      newFavorites = [...currentFavorites, item.id];
     }
-    saveUserData({ ...userData, bookmarks: newBookmarks });
+    saveUserData({ ...userData, favorites: newFavorites });
   };
 
   const handleShare = () => {
@@ -249,14 +249,16 @@ const ContentView = ({
         <p className="text-xl font-semibold text-gray-700">{titleDisplay}</p>
 
         <button
-          onClick={toggleBookmark}
+          onClick={toggleFavorite}
           className={`p-2 rounded-full transition-colors ${
-            isBookmarked
-              ? "bg-yellow-400 text-white"
-              : "bg-gray-200 text-gray-600 hover:bg-yellow-300"
+            isFavorite
+              ? "bg-red-100 text-red-500"
+              : "bg-gray-200 text-gray-600 hover:bg-red-50"
           }`}
         >
-          <Bookmark className="w-6 h-6 fill-current" />
+          <Heart
+            className={`w-6 h-6 ${isFavorite ? "fill-current" : ""}`}
+          />
         </button>
       </div>
 

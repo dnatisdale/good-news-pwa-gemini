@@ -14,8 +14,8 @@ import { i18n } from "../i18n";
 export function useFirebase(setLang) {
   const [userId, setUserId] = useState(null);
   const [isAuthReady, setIsAuthReady] = useState(false);
-  // Initial state is safe: bookmarks: []
-  const [userData, setUserData] = useState({ bookmarks: [], notes: [] });
+  // Initial state is safe: favorites: []
+  const [userData, setUserData] = useState({ favorites: [], notes: [] });
   const [error, setError] = useState(null);
 
   // 1. Authentication Listener (runs once)
@@ -59,14 +59,14 @@ export function useFirebase(setLang) {
       (docSnap) => {
         if (docSnap.exists()) {
           const data = docSnap.data();
-          // This ensures that bookmarks and notes are arrays, even if the data returned null/undefined
+          // This ensures that favorites and notes are arrays, even if the data returned null/undefined
           setUserData({
-            bookmarks: data.bookmarks || [],
+            favorites: data.favorites || [],
             notes: data.notes || [],
           });
         } else {
           // Initialize user data if it doesn't exist
-          const initialData = { bookmarks: [], notes: [] };
+          const initialData = { favorites: [], notes: [] };
           setDoc(userDataRef, initialData).catch((e) =>
             console.error("Error initializing user data:", e)
           );
