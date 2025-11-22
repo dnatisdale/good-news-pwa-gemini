@@ -1087,6 +1087,21 @@ export default function App() {
             {/* 2. Language Switch Button (Now sits to the right of Utility Bar) */}
             <LanguageToggle lang={lang} setLang={setLang} t={t} />
 
+            {/* --- NEW: Install Button (Header) --- */}
+            <button
+              onClick={deferredPrompt ? handleInstallClick : null}
+              disabled={!deferredPrompt}
+              title={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
+              className={`p-1 rounded-lg transition-colors btn-hover ${
+                deferredPrompt
+                  ? "text-white hover:bg-red-800"
+                  : "text-red-300 cursor-default"
+              }`}
+              aria-label={deferredPrompt ? "Install App" : "App Installed"}
+            >
+              <Download className="w-6 h-6" />
+            </button>
+
             {/* 3. Search Button (Toggle for Search Input) */}
             <button
               onClick={() => setIsSearchOpen(true)}
@@ -1260,14 +1275,13 @@ export default function App() {
             <div className="p-4 border-t border-gray-200 flex-shrink-0 space-y-3">
               {/* --- PWA Share QR Code --- */}
               <div className="">
-                <p className="text-xs text-gray-600 text-center mb-2 font-semibold">
-                  {t.share_pwa || "Share PWA"}
-                </p>
+                {/* Label removed as requested */}
                 <div className="flex justify-center">
                   <div className="bg-white p-2 rounded-lg shadow-sm">
                     <QRCodeSVG
                       value={window.location.origin}
-                      size={80}
+                      // Dynamic size based on font size (approx 5x the font size value)
+                      size={parseInt(fontSize || "16") * 5}
                       level="M"
                       includeMargin={false}
                     />
@@ -1275,16 +1289,7 @@ export default function App() {
                 </div>
               </div>
 
-              {/* --- Install Button --- */}
-              {deferredPrompt && (
-                <button
-                  onClick={handleInstallClick}
-                  className={`w-full flex items-center justify-center p-3 rounded-lg font-semibold text-white bg-green-500 hover:bg-green-600 transition-colors`}
-                >
-                  <Download className="w-5 h-5 mr-2" />
-                  {t.install_app || "Install App"}
-                </button>
-              )}
+              {/* Install Button removed from sidebar (moved to header) */}
               
               {/* --- User ID at very bottom --- */}
               <div className="text-xs text-gray-500 border-t border-gray-200 pt-3">
