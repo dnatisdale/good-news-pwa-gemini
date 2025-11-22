@@ -60,7 +60,7 @@ const FloatingUtilityBar = ({
                 aria-label="App Logo"
               />
               <span
-                className="font-semibold text-white text-sm px-2 py-1 rounded-lg"
+                className="font-semibold text-white text-base px-2 py-1 rounded-lg"
                 style={{ backgroundColor: THAI_BLUE }}
               >
                 {labelTools}

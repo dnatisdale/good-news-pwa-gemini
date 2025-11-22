@@ -101,6 +101,7 @@ export const i18n = {
     share_app_text: "Check out this app for Good News messages in multiple languages!",
     link_copied: "Link copied to clipboard!",
     copy_failed: "Could not copy link",
+    please_select_messages: "📋 Please select some messages first!\n\nTap the checkboxes next to messages to add them to your selection.",
   },
 
   // --- THAI TRANSLATIONS ---
@@ -222,6 +223,7 @@ export const i18n = {
     share_app_text: "ดูแอปนี้สำหรับข้อความข่าวดีในหลายภาษา!",
     link_copied: "คัดลอกลิงก์แล้ว!",
     copy_failed: "ไม่สามารถคัดลอกลิงก์ได้",
+    please_select_messages: "📋 กรุณาเลือกข้อความก่อน!\n\nแตะช่องทำเครื่องหมายข้างข้อความเพื่อเพิ่มลงในรายการที่เลือก",
 
     // Notes
     note_title_placeholder: "หัวข้อ",
