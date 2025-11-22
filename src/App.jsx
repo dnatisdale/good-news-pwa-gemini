@@ -1055,13 +1055,18 @@ export default function App() {
               title="5fish.mobi/th?r=Asia&country=Thailand"
               className="flex items-center text-white **p-0** rounded-lg hover:bg-red-800 transition-colors ml-1 md:ml-2 focus:outline-none focus:ring-2 focus:ring-white"
             >
-              {/* Enlarged Logo Image */}
+              {/* Mobile: Square Logo */}
+              <img
+                src={AppLogo}
+                alt={t.app_name}
+                className="h-8 w-8 rounded-md shadow-sm bg-white p-0.5 block md:hidden"
+              />
+              {/* Desktop: Banner Logo */}
               <img
                 src={BannerLogo}
                 alt={t.app_name}
-                className="h-8 md:h-12 w-auto rounded-md shadow-sm bg-white p-0.5 md:p-1"
+                className="h-12 w-auto rounded-md shadow-sm bg-white p-1 hidden md:block"
               />
-              {/* --- "หน้าแรก" (Home Text) HAS BEEN REMOVED --- */}
             </a>
           </div>
 

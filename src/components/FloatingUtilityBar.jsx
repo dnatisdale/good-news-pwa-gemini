@@ -49,7 +49,7 @@ const FloatingUtilityBar = ({
   };
 
   return (
-    <div className="relative flex-shrink-0 mr-2 z-50" ref={dropdownRef}>
+    <div className="relative flex-shrink-0 mr-1 md:mr-2 z-50" ref={dropdownRef}>
       {/* Menu Dropdown (Opens Downwards) */}
       {isOpen && (
         <div className="absolute top-full right-0 mt-3 bg-white rounded-2xl shadow-xl p-3 w-72 space-y-3 ring-1 ring-black ring-opacity-5">
@@ -130,11 +130,11 @@ const FloatingUtilityBar = ({
         {/* 1. THE BLUE BUTTON (Standard Hover only) */}
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className="w-10 h-10 rounded-full shadow-md flex items-center justify-center text-white relative 
+          className="w-8 h-8 md:w-10 md:h-10 rounded-full shadow-md flex items-center justify-center text-white relative 
                      transition-all duration-200 transform hover:scale-110 hover:brightness-125 bg-gradient-to-br from-brand-blue to-brand-blue-dark"
           aria-label="Tools Panel"
         >
-          <Settings className="w-6 h-6" />
+          <Settings className="w-5 h-5 md:w-6 md:h-6" />
         </button>
 
         {/* 2. THE YELLOW BADGE (Reacts to Card Hover!) */}
