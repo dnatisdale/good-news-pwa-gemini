@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Google Font: Outfit */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
 /* You can add global base styles here */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
 }
 /* Container for the red screen, ensuring it sits on top */
@@ -28,7 +31,46 @@ body {
   height: auto; /* Maintain aspect ratio */
   z-index: 10000; /* Higher than the splash-screen container */
 
-  /* Add rounded corners */
   border-radius: 10%;
   overflow: hidden; /* Ensures the SVG respects the border-radius */
+}
+
+/* --- MICRO-ANIMATIONS --- */
+
+/* 1. Button Hover Effect (Scale Up) */
+.btn-hover {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.btn-hover:hover {
+  transform: scale(1.05);
+}
+.btn-hover:active {
+  transform: scale(0.95);
+}
+
+/* 2. Card Hover Effect (Lift & Shadow) */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* 3. Fade In Animation (Page Entry) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* 4. Slide Up Animation (Element Entry) */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.slide-up {
+  animation: slideUp 0.5s ease-out forwards;
 }

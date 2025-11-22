@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ReactComponent as LogoComponent } from "../assets/splash-screen-logo.svg";
 import { X, Download, Settings } from "./Icons"; // Assuming Icons are in the same directory or adjusted path
-import FontSizeButtons from "./FontSizeButtons";
 
 const THAI_BLUE = "#003366";
 
@@ -81,7 +80,19 @@ const FloatingUtilityBar = ({
           </button>
           <div className="flex items-center justify-between">
             <span className="text-xs text-gray-600">{labelFont}</span>
-            <FontSizeButtons fontSize={fontSize} setFontSize={setFontSize} />
+            <div className="flex items-center space-x-2 flex-grow ml-2">
+              <span className="text-xs text-gray-500">A</span>
+              <input
+                type="range"
+                min="14"
+                max="24"
+                step="1"
+                value={parseInt(fontSize)}
+                onChange={(e) => setFontSize(`${e.target.value}px`)}
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-red-700"
+              />
+              <span className="text-lg text-gray-700 font-bold">A</span>
+            </div>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-xs text-gray-600">{labelLang}</span>
@@ -102,8 +113,7 @@ const FloatingUtilityBar = ({
         <button
           onClick={() => setIsOpen((prev) => !prev)}
           className="w-10 h-10 rounded-full shadow-md flex items-center justify-center text-white relative 
-                     transition-all duration-200 transform hover:scale-110 hover:brightness-125"
-          style={{ backgroundColor: THAI_BLUE }}
+                     transition-all duration-200 transform hover:scale-110 hover:brightness-125 bg-gradient-to-br from-brand-blue to-brand-blue-dark"
           aria-label="Tools Panel"
         >
           <Settings className="w-6 h-6" />

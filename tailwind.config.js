@@ -7,8 +7,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'brand-red': '#a91b0d', // A color sampled from your screenshots
-      }
+        'brand-red': '#a91b0d',
+        'brand-red-dark': '#8a160a',
+        'brand-blue': '#003366',
+        'brand-blue-dark': '#002244',
+      },
+      fontFamily: {
+        sans: ['Outfit', 'sans-serif'],
+      },
     },
   },
   plugins: [],

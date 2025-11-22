@@ -20,7 +20,7 @@ const LanguageCard = ({
       // 👇 NEW EVENTS: Send the signal!
       onMouseEnter={() => setHovering && setHovering(true)}
       onMouseLeave={() => setHovering && setHovering(false)}
-      className="bg-white p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer transition-transform hover:shadow-lg hover:scale-[1.01]"
+      className="bg-white p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer card-hover"
     >
       <div className="flex items-center justify-between">
         <div

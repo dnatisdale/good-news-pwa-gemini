@@ -73,18 +73,19 @@ export const i18n = {
     notes_feature_tip:
       "Notes feature coming soon! You can view all saved notes on the Notes page.",
     notes_page_tip: "This page is ready to be built!",
-    select_message_to_listen: "Select a message to listen to.", // CHANGED
-    tap_to_enlarge: "Tap to enlarge", // NEW
-    tap_to_shrink: "Tap to shrink", // NEW
+    // Auth & PWA
+    auth_status: "Status",
+    auth_ready: "Ready",
+    auth_pending: "Pending",
+    install_app: "Install App",
+    share_pwa: "Share PWA",
+    scan_to_share: "Scan to share this app",
     
-    // Notes
-    note_title_placeholder: "Title",
-    note_content_placeholder: "Write your note here...",
-    save: "Save",
-    cancel: "Cancel",
-    confirm_delete_note: "Delete this note?",
-    no_notes: "No notes yet. Tap + to create one!",
-    untitled: "Untitled",
+    // UI Helpers
+    select_message_to_listen: "Select a message to listen to.",
+    tap_to_enlarge: "Tap to enlarge",
+    tap_to_shrink: "Tap to shrink",
+    jump_to_letter: "Jump to letter",
   },
 
   // --- THAI TRANSLATIONS ---
@@ -98,73 +99,83 @@ export const i18n = {
     share_app: "แชร์แอป",
     controls: "ควบคุม",
     playing: "กำลังเล่น",
-
+    
     // Navigation
-    contents: "เนื้อหา",
+    contents: "สารบัญ",
     search: "ค้นหา",
-    bookmarks: "บุ๊กมาร์ก",
+    bookmarks: "ที่คั่นหน้า",
     notes: "บันทึก",
-    settings: "การตั้งค่า",
+    settings: "ตั้งค่า",
     language_label: "ภาษา",
-    back_to_languages: "กลับไปที่ภาษา",
+    back_to_languages: "กลับไปหน้าภาษา",
     languages: "ภาษา",
     messages: "ข้อความ",
 
     // Status / Authentication
     loading: "กำลังโหลด...",
-    loading_auth: "กำลังโหลดการรับรองความถูกต้อง...",
+    loading_auth: "กำลังโหลดการยืนยันตัวตน...",
     error: "ข้อผิดพลาด",
     app_status: "สถานะแอป",
     user_id: "รหัสผู้ใช้",
     status: "สถานะ",
-    guest: "ผู้เยี่ยมชม (ไม่ระบุตัวตน)",
+    guest: "ผู้เยี่ยมชม (ไม่ระบุชื่อ)",
     registered_user: "ผู้ใช้ที่ลงทะเบียน",
-    email_auth: "การรับรองความถูกต้องของอีเมล",
+    email_auth: "การยืนยันตัวตนผ่านอีเมล",
     email: "อีเมล",
     password: "รหัสผ่าน",
     sign_in: "เข้าสู่ระบบ",
     sign_up: "ลงทะเบียน",
     log_out: "ออกจากระบบ",
-    sign_up_success: "ลงทะเบียนสำเร็จ! ตอนนี้คุณเข้าสู่ระบบแล้ว",
-    sign_up_fail: "ลงทะเบียนล้มเหลว! โปรดตรวจสอบข้อผิดพลาดในคอนโซล",
+    sign_up_success: "ลงทะเบียนสำเร็จ! คุณเข้าสู่ระบบแล้ว",
+    sign_up_fail: "ลงทะเบียนล้มเหลว โปรดตรวจสอบข้อความแสดงข้อผิดพลาด",
     sign_in_success: "เข้าสู่ระบบสำเร็จ!",
     sign_in_fail: "เข้าสู่ระบบล้มเหลว ตรวจสอบอีเมล/รหัสผ่านของคุณ",
+    
+    // Auth & PWA
+    auth_status: "สถานะ",
+    auth_ready: "พร้อมใช้งาน",
+    auth_pending: "รอดำเนินการ",
+    install_app: "ติดตั้งแอป",
+    share_pwa: "แชร์แอปนี้",
+    scan_to_share: "สแกนเพื่อแชร์แอปนี้",
 
     // Content & Search
-    listen_offline: "ฟัง (เปิดใช้งานออฟไลน์)",
-    program_number: "หมายเลขโปรแกรม",
+    listen_offline: "ฟัง (ออฟไลน์)",
+    program_number: "หมายเลขรายการ",
     no_verse_content: "ไม่มีเนื้อหาข้อความ",
-    read_more_at: "อ่านเพิ่มเติมได้ที่",
+    read_more_at: "อ่านเพิ่มเติมที่",
     search_languages: "ค้นหาภาษา...",
     result: "ผลลัพธ์",
     results: "ผลลัพธ์",
     found: "พบ",
     no_results_for: "ไม่พบผลลัพธ์สำหรับ",
-    search_tip: "ลองค้นหาตามชื่อเรื่อง ภาษา หรือข้อความบางส่วน",
+    search_tip: "ลองค้นหาด้วยชื่อเรื่อง ภาษา หรือข้อความบางส่วน",
     start_typing_to_search: "เริ่มพิมพ์เพื่อค้นหาทั้งหมด",
     items: "รายการ",
 
     // Bookmarks
-    no_bookmarks: "คุณยังไม่ได้บุ๊กมาร์กข้อความใด ๆ",
-    bookmark_tip: "แตะไอคอนบุ๊กมาร์กในหน้าข้อความเพื่อบันทึก",
+    no_bookmarks: "คุณยังไม่ได้บันทึกข้อความใดๆ",
+    bookmark_tip: "แตะไอคอนที่คั่นหน้าในหน้ารายละเอียดข้อความเพื่อบันทึก",
 
     // Share & Export
     share_this_message: "แชร์ข้อความนี้",
     share_copy: "แชร์/คัดลอก",
     download: "ดาวน์โหลด",
-    qr_card: "คิวอาร์การ์ด",
-    in_app_qr_tip: "คิวอาร์โค้ดในแอป (ดาวน์โหลดสำหรับพิมพ์ได้ด้านบน)",
-    scan_qr_tip: "สแกนคิวอาร์โค้ดหรือเยี่ยมชมลิงก์เพื่อเข้าถึงเนื้อหานี้",
+    qr_card: "การ์ด QR",
+    in_app_qr_tip: "QR Code ในแอป (ดาวน์โหลดด้านบนเพื่อพิมพ์)",
+    scan_qr_tip: "สแกน QR Code หรือไปที่ลิงก์เพื่อเข้าถึงเนื้อหานี้",
 
     // Settings & Notes
     text_size: "ขนาดตัวอักษร",
     my_notes: "บันทึกของฉัน",
-    notes_feature_tip:
-      "คุณสมบัติบันทึกจะมาเร็ว ๆ นี้! คุณสามารถดูบันทึกที่บันทึกไว้ทั้งหมดได้ที่หน้าบันทึก",
-    notes_page_tip: "หน้านี้พร้อมให้สร้างแล้ว!",
-    select_message_to_listen: "เลือกข้อความที่จะฟัง", // NEW Thai translation for the player
-    tap_to_enlarge: "แตะเพื่อขยาย", // NEW Thai translation
-    tap_to_shrink: "แตะเพื่อย่อ", // NEW Thai translation
+    notes_feature_tip: "ฟีเจอร์บันทึกกำลังจะมาเร็วๆ นี้! คุณสามารถดูบันทึกที่บันทึกไว้ทั้งหมดได้ที่หน้าบันทึก",
+    notes_page_tip: "หน้านี้พร้อมที่จะสร้างแล้ว!",
+    
+    // UI Helpers
+    select_message_to_listen: "เลือกข้อความเพื่อฟัง",
+    tap_to_enlarge: "แตะเพื่อขยาย",
+    tap_to_shrink: "แตะเพื่อย่อ",
+    jump_to_letter: "ไปที่ตัวอักษร",
 
     // Notes
     note_title_placeholder: "หัวข้อ",
@@ -172,7 +183,7 @@ export const i18n = {
     save: "บันทึก",
     cancel: "ยกเลิก",
     confirm_delete_note: "ลบบันทึกนี้?",
-    no_notes: "ยังไม่มีบันทึก แตะ + เพื่อสร้าง!",
-    untitled: "ไม่มีชื่อ",
+    no_notes: "ยังไม่มีบันทึก แตะ + เพื่อสร้างใหม่!",
+    untitled: "ไม่มีหัวข้อ",
   },
 };

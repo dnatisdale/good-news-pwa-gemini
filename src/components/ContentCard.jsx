@@ -20,7 +20,7 @@ const ContentCard = ({
       : item.title_th ?? "ข้อความที่ไม่มีชื่อ";
 
   return (
-    <div className="bg-white p-4 mb-3 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer transition-transform hover:shadow-lg hover:border-brand-red flex items-start">
+    <div className="bg-white p-4 mb-3 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer card-hover flex items-start">
       {/* --- NEW: CHECKBOX AREA --- */}
       {onToggle && (
         <div

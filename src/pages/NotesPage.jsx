@@ -62,7 +62,7 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
   };
 
   return (
-    <div className="p-4 pt-8 h-full overflow-y-auto">
+    <div className="p-4 pt-8 h-full overflow-y-auto fade-in">
       {/* Navigation Header */}
       <div className="flex justify-between items-center mb-4">
         <button
@@ -98,7 +98,7 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
         {!isEditing && (
           <button
             onClick={() => startEditing()}
-            className="bg-brand-red text-white p-2 rounded-full shadow-lg hover:bg-red-700 transition-colors"
+            className="bg-gradient-to-br from-brand-red to-brand-red-dark text-white p-2 rounded-full shadow-lg hover:brightness-110 transition-all"
           >
             <Plus className="w-6 h-6" />
           </button>
@@ -106,7 +106,7 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
       </div>
 
       {isEditing ? (
-        <div className="bg-white p-4 rounded-xl shadow-md space-y-4">
+        <div className="bg-white p-4 rounded-xl shadow-md space-y-4 slide-up">
           <input
             type="text"
             placeholder={t.note_title_placeholder || "Title"}
@@ -151,24 +151,37 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
               <div
                 key={note.id}
                 onClick={() => startEditing(note)}
-                className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer relative group"
+                className="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer relative group"
               >
-                <h3 className="font-bold text-gray-800 mb-1">
+                <h3 className="font-bold text-gray-800 mb-1 pr-8">
                   {note.title || (
                     <span className="text-gray-400 italic">
                       {t.untitled || "Untitled"}
                     </span>
                   )}
                 </h3>
-                <p className="text-gray-600 text-sm line-clamp-2">
+                <p className="text-gray-600 text-sm line-clamp-2 mb-2">
                   {note.content}
                 </p>
+                {/* Date Display */}
+                <p className="text-xs text-gray-400">
+                  {note.createdAt
+                    ? new Date(note.createdAt).toLocaleDateString(undefined, {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })
+                    : ""}
+                </p>
+                
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleDeleteNote(note.id);
                   }}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors p-1"
                 >
                   <Trash2 className="w-5 h-5" />
                 </button>

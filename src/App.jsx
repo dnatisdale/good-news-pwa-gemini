@@ -19,6 +19,7 @@ import {
 } from "./components/Icons";
 import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
+import { QRCodeSVG } from "qrcode.react";
 import AppLogo from "./assets/splash-screen-logo.svg";
 import BannerLogo from "./assets/banner-logo.svg";
 
@@ -35,7 +36,7 @@ import SettingsPage from "./pages/SettingsPage";
 import NotesPage from "./pages/NotesPage";
 
 // --- CONSTANTS ---
-const PRIMARY_COLOR_CLASS = "bg-brand-red";
+const PRIMARY_COLOR_CLASS = "bg-gradient-to-r from-brand-red to-brand-red-dark";
 const ACCENT_COLOR_CLASS = "text-brand-red";
 const DEFAULT_FONT_SIZE = "16px";
 
@@ -522,6 +523,7 @@ export default function App() {
           stableKey,
           displayNameEn: item.languageEn,
           displayNameTh: item.langTh,
+          langId: item.langId, // Added langId for 5fish share links
           count: 0,
           messages: [],
         };
@@ -686,8 +688,10 @@ export default function App() {
         lang === "en" ? group.displayNameEn : group.displayNameTh
       );
       // Construct the shareable URL
-      const url = `${window.location.origin}/?langKey=${encodeURIComponent(
-        stableKey
+      // Construct the shareable URL
+      // Use 5fish.org format: https://5fi.sh/th/{langId}?language={LanguageName}
+      const url = `https://5fi.sh/th/${group.langId}?language=${encodeURIComponent(
+        group.displayNameEn
       )}`;
       setModalLanguageShareUrl(url);
       setIsLanguageQrModalOpen(true);
@@ -1031,7 +1035,7 @@ export default function App() {
             {/* 1. Sidebar Toggle Button */}
             <button
               onClick={() => setIsDrawerOpen(true)}
-              className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
+              className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
               aria-label="Open Sidebar Menu"
             >
               <Menu className="w-7 h-7" />
@@ -1077,7 +1081,7 @@ export default function App() {
             {/* 3. Search Button (Toggle for Search Input) */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors"
+              className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
               aria-label="Toggle Search"
             >
               <Search className="w-6 h-6" />
@@ -1180,11 +1184,9 @@ export default function App() {
             <nav className="p-4 space-y-2 overflow-y-auto flex-grow">
               {/* Navigation Items */}
               {[
-                { name: "Home", icon: Home, target: "Home" },
                 { name: "Search", icon: Search, target: "Search" },
                 { name: "Bookmarks", icon: Bookmark, target: "Bookmarks" },
                 { name: "Notes", icon: Pen, target: "Notes" },
-                { name: "Settings", icon: Settings, target: "Settings" },
                 // --- NEW: 5fish Website Link ---
                 {
                   name: "5fish Website",
@@ -1248,6 +1250,26 @@ export default function App() {
                   <span className="font-mono text-gray-600 ml-1">
                     {userId || "..."}
                   </span>
+                </p>
+              </div>
+
+              {/* --- PWA Share QR Code --- */}
+              <div className="border-t border-gray-200 pt-3">
+                <p className="text-xs text-gray-600 text-center mb-2 font-semibold">
+                  {t.share_pwa || "Share PWA"}
+                </p>
+                <div className="flex justify-center">
+                  <div className="bg-white p-2 rounded-lg shadow-sm">
+                    <QRCodeSVG
+                      value={window.location.origin}
+                      size={80}
+                      level="M"
+                      includeMargin={false}
+                    />
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 text-center mt-2">
+                  {t.scan_to_share || "Scan to share this app"}
                 </p>
               </div>
 
