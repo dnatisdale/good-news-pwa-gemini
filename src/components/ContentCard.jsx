@@ -8,6 +8,7 @@ const ContentCard = ({
   item,
   lang,
   onSelect,
+  t, // NEW: Translation object
   showLanguageName = true,
   isSelected, // NEW: Is this specific message selected?
   onToggle, // NEW: Function to toggle this message
@@ -53,7 +54,9 @@ const ContentCard = ({
         >
           {messageTitle}
         </h3>
-        <p className="text-sm text-gray-500 mt-0.5">Program No. {item.id}</p>
+        <p className="text-sm text-gray-500 mt-0.5">
+          {t?.program_number || "Message No."} {item.id}
+        </p>
       </div>
     </div>
   );

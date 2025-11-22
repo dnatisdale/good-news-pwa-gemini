@@ -34,10 +34,10 @@ const shareQRCard = (lang, programNumber, qrCodeUrl) => {
 
     if (lang === "th") {
       title = "ข่าวดี";
-      text = `Program #:${programNumber}\n\nฟัง แบ่งปัน ดาวน์โหลดที่: ${qrCodeUrl}\n\nค้นหาความรู้ใหม่ๆ กับ PWA ข่าวดี!`;
+      text = `Message #:${programNumber}\n\nฟัง แบ่งปัน ดาวน์โหลดที่: ${qrCodeUrl}\n\nค้นหาความรู้ใหม่ๆ กับ PWA ข่าวดี!`;
     } else {
       title = "Thai: Good News";
-      text = `Program #:${programNumber}\n\nListen, Share, Download at: ${qrCodeUrl}\n\nDiscover more with the Thai: Good News PWA!`;
+      text = `Message #:${programNumber}\n\nListen, Share, Download at: ${qrCodeUrl}\n\nDiscover more with the Thai: Good News PWA!`;
     }
 
     navigator
@@ -51,8 +51,8 @@ const shareQRCard = (lang, programNumber, qrCodeUrl) => {
   } else {
     const fallbackText =
       lang === "th"
-        ? `ข่าวดี Program #:${programNumber}\nฟัง แบ่งปัน ดาวน์โหลดที่: ${qrCodeUrl}`
-        : `Thai: Good News Program #:${programNumber}\nListen, Share, Download at: ${qrCodeUrl}`;
+        ? `ข่าวดี Message #:${programNumber}\nฟัง แบ่งปัน ดาวน์โหลดที่: ${qrCodeUrl}`
+        : `Thai: Good News Message #:${programNumber}\nListen, Share, Download at: ${qrCodeUrl}`;
 
     copyLink(fallbackText, (message) => alert(message));
   }
@@ -90,7 +90,7 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
             {languageDisplay}
           </h2>
           <h3 className="text-xl font-bold text-brand-red">{title}</h3>
-          <p className="text-sm text-gray-700 mt-1">Program # {item.id}</p>
+          <p className="text-sm text-gray-700 mt-1">Message # {item.id}</p>
         </div>
       </div>
 

@@ -93,7 +93,7 @@ const FloatingUtilityBar = ({
           >
             <div className="flex items-center justify-center space-x-2">
               <Download className="w-5 h-5" />
-              <span className="font-semibold">{t.selected_programs || "Selected Programs"}</span>
+              <span className="font-semibold">{t.selected_programs || "Selected Messages"}</span>
             </div>
           </button>
           <div className="flex items-center justify-between">

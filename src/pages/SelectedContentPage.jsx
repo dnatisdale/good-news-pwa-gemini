@@ -42,7 +42,7 @@ const SelectedContentPage = ({
         </button>
       </div>
       <h1 className={`text-2xl font-bold mb-1 ${ACCENT_COLOR_CLASS}`}>
-        {t.selected_content || "Selected Programs"}
+        {t.selected_content || "Selected Messages"}
       </h1>
       <p className="text-sm text-gray-500 mb-4 font-semibold">
         {count} {t.messages_selected || "messages selected"}

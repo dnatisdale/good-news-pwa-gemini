@@ -90,6 +90,7 @@ const SearchPage = ({
             key={item.id}
             item={item}
             lang={lang}
+            t={t}
             onSelect={onSelect}
             showLanguageName={true}
           />

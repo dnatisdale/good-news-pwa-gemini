@@ -68,6 +68,7 @@ const MessagesByLanguagePage = ({
           key={item.id}
           item={item}
           lang={lang}
+          t={t}
           onSelect={onSelectMessage}
           showLanguageName={false}
           // --- NEW PROPS FOR CHECKBOX ---

@@ -966,34 +966,9 @@ export default function App() {
           t={t}
           userData={userData}
           onSelect={(item) => handleSelectMessage(item, "favorite")}
-          onBack={goBack}
-          onForward={goForward}
-          hasPrev={hasPrev}
-          hasNext={hasNext}
-        />
-      );
-      break;
-    case "Notes":
-      PageContent = (
-        <NotesPage
-          lang={lang}
-          t={t}
-          onBack={goBack}
-          onForward={goForward}
-          hasPrev={hasPrev}
-          hasNext={hasNext}
-        />
-      );
-      break;
-    case "Settings":
-      // --- NEW: Render the actual SettingsPage component ---
-      PageContent = (
-        <SettingsPage
-          lang={lang}
           setLang={setLang}
           fontSize={fontSize}
           setFontSize={setFontSize}
-          t={t}
           onBack={goBack}
           onForward={goForward}
           hasPrev={hasPrev}
@@ -1111,13 +1086,20 @@ export default function App() {
 
             {/* --- NEW: Install Button (Header) --- */}
             <button
-              onClick={deferredPrompt ? handleInstallClick : null}
-              disabled={!deferredPrompt}
+              onClick={() => {
+                if (deferredPrompt) {
+                  handleInstallClick();
+                } else {
+                  // Bilingual hint as requested
+                  alert("App is already installed / แอปถูกติดตั้งแล้ว");
+                }
+              }}
+              // Removed disabled attribute to allow click for hint
               title={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
               className={`p-1 rounded-lg transition-colors btn-hover ${
                 deferredPrompt
                   ? "text-white hover:bg-red-800"
-                  : "text-red-300 cursor-default"
+                  : "text-red-300 cursor-pointer" // Changed to cursor-pointer
               }`}
               aria-label={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
             >

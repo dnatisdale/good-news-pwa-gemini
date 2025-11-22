@@ -3,8 +3,9 @@ import { ChevronLeft, ChevronRight, Pen, Trash2, Plus } from "lucide-react";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 
-const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
-  const [notes, setNotes] = useState([]);
+const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, saveUserData }) => {
+  // Use notes from userData directly
+  const notes = userData?.notes || [];
   const [isEditing, setIsEditing] = useState(false);
   const [currentNote, setCurrentNote] = useState({
     id: null,
@@ -12,26 +13,16 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
     content: "",
   });
 
-  // Load notes from localStorage on mount
-  useEffect(() => {
-    const savedNotes = localStorage.getItem("userNotes");
-    if (savedNotes) {
-      setNotes(JSON.parse(savedNotes));
-    }
-  }, []);
-
-  // Save notes to localStorage whenever they change
-  useEffect(() => {
-    localStorage.setItem("userNotes", JSON.stringify(notes));
-  }, [notes]);
+  // REMOVED: LocalStorage effects. Data is now managed by useFirebase.
 
   const handleSaveNote = () => {
     if (!currentNote.title.trim() && !currentNote.content.trim()) return;
 
+    let updatedNotes;
     if (currentNote.id) {
       // Update existing note
-      setNotes((prev) =>
-        prev.map((note) => (note.id === currentNote.id ? currentNote : note))
+      updatedNotes = notes.map((note) => 
+        note.id === currentNote.id ? currentNote : note
       );
     } else {
       // Create new note
@@ -40,15 +31,21 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
         id: Date.now().toString(),
         createdAt: new Date().toISOString(),
       };
-      setNotes((prev) => [newNote, ...prev]);
+      updatedNotes = [newNote, ...notes];
     }
+    
+    // Save to Firebase/LocalStorage via hook
+    saveUserData({ ...userData, notes: updatedNotes });
+    
     setIsEditing(false);
     setCurrentNote({ id: null, title: "", content: "" });
   };
 
   const handleDeleteNote = (id) => {
     if (window.confirm(t.confirm_delete_note || "Delete this note?")) {
-      setNotes((prev) => prev.filter((note) => note.id !== id));
+      const updatedNotes = notes.filter((note) => note.id !== id);
+      saveUserData({ ...userData, notes: updatedNotes });
+      
       if (currentNote.id === id) {
         setIsEditing(false);
         setCurrentNote({ id: null, title: "", content: "" });
