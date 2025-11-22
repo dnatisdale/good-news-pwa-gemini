@@ -1,8 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { PlayCircle, ChevronLeft, Download, CheckCircle, Loader } from "./Icons";
 import { useOfflineStorage } from "../hooks/useOfflineStorage";
 
 const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
+  const [audioSrc, setAudioSrc] = useState(null);
+  
+  // Check cache for offline audio
+  useEffect(() => {
+    const loadAudioSrc = async () => {
+      if (!track || !track.trackDownloadUrl) {
+        setAudioSrc(null);
+        return;
+      }
+
+      try {
+        // Try to get from cache first
+        const cache = await caches.open("offline-audio-v1");
+        const cachedResponse = await cache.match(track.trackDownloadUrl);
+        
+        if (cachedResponse) {
+          // Use cached version
+          const blob = await cachedResponse.blob();
+          const url = URL.createObjectURL(blob);
+          setAudioSrc(url);
+        } else {
+          // Use online URL
+          setAudioSrc(track.trackDownloadUrl);
+        }
+      } catch (error) {
+        console.error("Error loading audio:", error);
+        setAudioSrc(track.trackDownloadUrl);
+      }
+    };
+
+    loadAudioSrc();
+
+    // Cleanup blob URL on unmount
+    return () => {
+      if (audioSrc && audioSrc.startsWith("blob:")) {
+        URL.revokeObjectURL(audioSrc);
+      }
+    };
+  }, [track]);
+
   // Check if a track is available
   if (!track || !track.trackDownloadUrl) {
     return (
@@ -36,7 +76,7 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
         <p className="text-sm font-bold text-white truncate">
           {isMinimized
             ? (t.playing || "Playing") + ": " + displayTitle
-            : t.controls || "Controls"}
+            : t.controls || "Audio Player"}
         </p>
         <ChevronLeft
           className={`w-5 h-5 text-white ml-auto transition-transform ${
@@ -47,16 +87,20 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
 
       {/* Full Controls (Hidden when minimized) */}
       <div className={`${isMinimized ? "hidden" : "p-4"}`}>
-        <audio
-          key={track.id}
-          controls
-          autoPlay
-          src={track.trackDownloadUrl}
-          className="w-full"
-        >
-          {t.audio_not_supported ||
-            "Your browser does not support the audio element."}
-        </audio>
+        {audioSrc ? (
+          <audio
+            key={track.id + "-" + audioSrc}
+            controls
+            autoPlay
+            src={audioSrc}
+            className="w-full"
+          >
+            {t.audio_not_supported ||
+              "Your browser does not support the audio element."}
+          </audio>
+        ) : (
+          <div className="text-white text-center">Loading audio...</div>
+        )}
 
         {/* Download Button */}
         <div className="mt-3 flex justify-end">

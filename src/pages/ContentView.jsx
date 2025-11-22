@@ -230,33 +230,6 @@ const ContentView = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <div className="flex justify-between items-center mb-4">
-        <button
-          onClick={onBack}
-          className={`text-sm font-semibold flex items-center transition-colors ${
-            pageStack.length === 1 && pageStack[0].name === "Home"
-              ? "text-gray-400 cursor-not-allowed"
-              : `${ACCENT_COLOR_CLASS} hover:text-red-700`
-          }`}
-          disabled={pageStack.length === 1 && pageStack[0].name === "Home"}
-        >
-          <ChevronLeft className="w-5 h-5 mr-1" />
-          {t.back || "Back"}
-        </button>
-        <button
-          onClick={onForward}
-          className={`text-sm font-semibold flex items-center transition-colors ${
-            hasNext
-              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-              : "text-gray-400 cursor-not-allowed"
-          }`}
-          disabled={!hasNext}
-        >
-          {t.forward || "Forward"}
-          <ChevronRight className="w-5 h-5 ml-1" />
-        </button>
-      </div>
-
       <h1 className="text-4xl font-extrabold mb-2 text-brand-red">
         {languageDisplay}
       </h1>

@@ -63,9 +63,14 @@ export const i18n = {
     share_this_message: "Share This Message",
     share_copy: "Share/Copy",
     download: "Download",
+    downloaded: "Downloaded",
+    downloading: "Downloading...",
+    download_audio: "Download Audio",
     qr_card: "QR Card",
     in_app_qr_tip: "In-app QR code (download above for print-ready)",
     scan_qr_tip: "Scan the QR code or visit the link to access this content.",
+    playing: "Playing",
+    controls: "Audio Player",
 
     // Settings & Notes
     text_size: "Text Size",
@@ -88,6 +93,7 @@ export const i18n = {
     share: "Share",
     copy: "Copy",
     print: "Print/Download",
+    print_word: "Print", // NEW
     no_content_selected: "No content selected yet. Go back and check some boxes!",
   },
 
@@ -164,9 +170,14 @@ export const i18n = {
     share_this_message: "แชร์ข้อความนี้",
     share_copy: "แชร์/คัดลอก",
     download: "ดาวน์โหลด",
+    downloaded: "ดาวน์โหลดแล้ว",
+    downloading: "กำลังดาวน์โหลด...",
+    download_audio: "ดาวน์โหลดเสียง",
     qr_card: "การ์ด QR",
     in_app_qr_tip: "QR Code ในแอป (ดาวน์โหลดด้านบนเพื่อพิมพ์)",
     scan_qr_tip: "สแกน QR Code หรือไปที่ลิงก์เพื่อเข้าถึงเนื้อหานี้",
+    playing: "กำลังเล่น",
+    controls: "เครื่องเล่นเสียง",
 
     // Settings & Notes
     text_size: "ขนาดตัวอักษร",
@@ -197,6 +208,7 @@ export const i18n = {
     share: "แชร์",
     copy: "คัดลอก",
     print: "พิมพ์/ดาวน์โหลด",
+    print_word: "พิมพ์", // NEW
     no_content_selected: "ยังไม่ได้เลือกเนื้อหา กลับไปและเลือกข้อความ!",
 
     // Notes

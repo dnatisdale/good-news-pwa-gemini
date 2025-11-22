@@ -19,6 +19,7 @@ const SelectedContentPage = ({
   onShare,
   onCopy,
   onDownload,
+  onDownloadPDF,
 }) => {
   // Use the logic to get the actual message objects
   const filteredContent = getFilteredMessages(allMessages, selectedPrograms);
@@ -27,13 +28,9 @@ const SelectedContentPage = ({
   return (
     <div className="p-4 pt-8 h-full flex flex-col">
       <div className="flex justify-between items-center mb-6">
-        <button
-          onClick={onBack}
-          className={`text-sm font-semibold flex items-center transition-colors ${ACCENT_COLOR_CLASS} hover:text-red-700`}
-        >
-          <ChevronLeft className="w-5 h-5 mr-1" />
-          {t.back || "Back"}
-        </button>
+        <h1 className={`text-2xl font-bold mb-0 ${ACCENT_COLOR_CLASS}`}>
+          {t.selected_content || "Selected Messages"}
+        </h1>
         <button
           onClick={onClearSelection}
           className="text-sm font-semibold text-gray-500 hover:text-red-600 transition-colors"
@@ -41,15 +38,12 @@ const SelectedContentPage = ({
           {t.clear_all || "Clear All"}
         </button>
       </div>
-      <h1 className={`text-2xl font-bold mb-1 ${ACCENT_COLOR_CLASS}`}>
-        {t.selected_content || "Selected Messages"}
-      </h1>
       <p className="text-sm text-gray-500 mb-4 font-semibold">
         {count} {t.messages_selected || "messages selected"}
       </p>
 
       {/* --- Action Buttons --- */}
-      <div className="grid grid-cols-3 gap-3 mb-6">
+      <div className="grid grid-cols-2 gap-3 mb-6">
         <button
           onClick={onShare}
           className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244] transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
@@ -70,9 +64,21 @@ const SelectedContentPage = ({
           onClick={onDownload}
           className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244] transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
         >
-          {/* Using Download as a stand-in for Print/Download */}
+          {/* Using Download icon for Print */}
           <Download className="w-6 h-6 mb-1" />
-          <span className="text-xs">{t.print || "Print/Download"}</span>
+          <span className="text-xs text-center leading-tight">
+            {t.print_word || "Print"}
+          </span>
+        </button>
+
+        <button
+          onClick={onDownloadPDF}
+          className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244] transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
+        >
+          <Download className="w-6 h-6 mb-1" />
+          <span className="text-xs text-center leading-tight">
+            PDF
+          </span>
         </button>
       </div>
       {/* --- End Action Buttons --- */}

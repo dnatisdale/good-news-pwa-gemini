@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { ChevronLeft, ChevronRight } from "../components/Icons";
 import ContentCard from "../components/ContentCard";
 import { staticContent } from "../data/staticContent";
 
@@ -23,7 +22,7 @@ const SearchPage = ({
     return staticContent.filter((item) => {
       // Robust search logic to prevent crashes
       const languageEn = item.languageEn?.toLowerCase() ?? "";
-      const languageTh = item.langTh?.toLowerCase() ?? ""; // Corrected field access
+      const languageTh = item.langTh?.toLowerCase() ?? "";
       const titleEn = item.title_en?.toLowerCase() ?? "";
       const titleTh = item.title_th?.toLowerCase() ?? "";
       const verseEn = item.verse_en?.toLowerCase() ?? "";
@@ -38,40 +37,12 @@ const SearchPage = ({
         verseTh.includes(lowerSearchTerm)
       );
     });
-  }, [searchTerm, lang]); // Now depends on global searchTerm
+  }, [searchTerm, lang]);
 
   const resultCount = filteredContent.length;
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      {/* Back and Forward Controls (added for consistency) */}
-      <div className="flex justify-between items-center mb-4">
-        <button
-          onClick={onBack}
-          className={`text-sm font-semibold flex items-center transition-colors ${
-            hasPrev
-              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-              : "text-gray-400 cursor-not-allowed"
-          }`}
-          disabled={!hasPrev}
-        >
-          <ChevronLeft className="w-5 h-5 mr-1" />
-          {t.back || "Back"}
-        </button>
-        <button
-          onClick={onForward}
-          className={`text-sm font-semibold flex items-center transition-colors ${
-            hasNext
-              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-              : "text-gray-400 cursor-not-allowed"
-          }`}
-          disabled={!hasNext}
-        >
-          {t.forward || "Forward"}
-          <ChevronRight className="w-5 h-5 ml-1" />
-        </button>
-      </div>
-
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         {t.search_results || "Search Results"}
       </h1>
