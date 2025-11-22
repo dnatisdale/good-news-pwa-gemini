@@ -95,6 +95,12 @@ export const i18n = {
     print: "Print/Download",
     print_word: "Print", // NEW
     no_content_selected: "No content selected yet. Go back and check some boxes!",
+    
+    // Share App
+    share_app: "Share App",
+    share_app_text: "Check out this app for Good News messages in multiple languages!",
+    link_copied: "Link copied to clipboard!",
+    copy_failed: "Could not copy link",
   },
 
   // --- THAI TRANSLATIONS ---
@@ -210,6 +216,12 @@ export const i18n = {
     print: "พิมพ์/ดาวน์โหลด",
     print_word: "พิมพ์", // NEW
     no_content_selected: "ยังไม่ได้เลือกเนื้อหา กลับไปและเลือกข้อความ!",
+    
+    // Share App
+    share_app: "แชร์แอป",
+    share_app_text: "ดูแอปนี้สำหรับข้อความข่าวดีในหลายภาษา!",
+    link_copied: "คัดลอกลิงก์แล้ว!",
+    copy_failed: "ไม่สามารถคัดลอกลิงก์ได้",
 
     // Notes
     note_title_placeholder: "หัวข้อ",

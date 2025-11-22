@@ -1346,6 +1346,42 @@ export default function App() {
 
             {/* Bottom Controls (Sticky) */}
             <div className="p-4 border-t border-gray-200 flex-shrink-0 space-y-3">
+              {/* --- Share App Button --- */}
+              <button
+                onClick={async () => {
+                  const appUrl = window.location.origin;
+                  const shareData = {
+                    title: t.app_name || "Thai: Good News",
+                    text: t.share_app_text || "Check out this app for Good News messages in multiple languages!",
+                    url: appUrl,
+                  };
+
+                  // Try native share API first (mobile)
+                  if (navigator.share) {
+                    try {
+                      await navigator.share(shareData);
+                    } catch (err) {
+                      if (err.name !== "AbortError") {
+                        console.error("Share failed:", err);
+                      }
+                    }
+                  } else {
+                    // Fallback: Copy to clipboard (desktop)
+                    try {
+                      await navigator.clipboard.writeText(appUrl);
+                      alert(t.link_copied || "Link copied to clipboard!");
+                    } catch (err) {
+                      console.error("Copy failed:", err);
+                      alert(t.copy_failed || "Could not copy link");
+                    }
+                  }
+                }}
+                className="w-full flex items-center justify-center gap-2 p-3 bg-brand-red text-white rounded-lg font-semibold hover:bg-red-700 transition-colors shadow-md"
+              >
+                <ExternalLink className="w-5 h-5" />
+                {t.share_app || "Share App"}
+              </button>
+
               {/* --- PWA Share QR Code --- */}
               <div className="">
                 {/* Label removed as requested */}
