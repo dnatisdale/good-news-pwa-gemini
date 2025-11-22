@@ -52,7 +52,7 @@ const FloatingUtilityBar = ({
     <div className="relative flex-shrink-0 mr-1 md:mr-2 z-50" ref={dropdownRef}>
       {/* Menu Dropdown (Opens Downwards) */}
       {isOpen && (
-        <div className="absolute top-full right-0 mt-3 bg-white rounded-2xl shadow-xl p-3 w-72 space-y-3 ring-1 ring-black ring-opacity-5">
+        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 md:absolute md:top-full md:left-auto md:right-0 md:translate-x-0 mt-3 bg-white rounded-2xl shadow-xl p-3 w-72 space-y-3 ring-1 ring-black ring-opacity-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <LogoComponent

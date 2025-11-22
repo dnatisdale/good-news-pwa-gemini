@@ -41,6 +41,28 @@ const ACCENT_COLOR_CLASS = "text-brand-red";
 const DEFAULT_FONT_SIZE = "16px";
 
 export default function App() {
+  // --- Swipe to Close Sidebar Logic ---
+  const touchStartRef = React.useRef(null);
+  const touchEndRef = React.useRef(null);
+  const minSwipeDistance = 50; // Minimum distance for a swipe to be registered
+
+  const onTouchStart = (e) => {
+    touchEndRef.current = null;
+    touchStartRef.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchMove = (e) => {
+    touchEndRef.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStartRef.current || !touchEndRef.current) return;
+    const distance = touchStartRef.current - touchEndRef.current;
+    const isLeftSwipe = distance > minSwipeDistance;
+    if (isLeftSwipe) {
+      setIsDrawerOpen(false);
+    }
+  };
   // --- Language QR Modal (inline component, uses QRCodeDisplay) ---
   const LanguageQrModal = ({
     isOpen,
@@ -1178,6 +1200,9 @@ export default function App() {
               isDrawerOpen ? "translate-x-0" : "-translate-x-full"
               // 💡 ADD rounded-tr-xl CLASS HERE
             } rounded-tr-xl flex flex-col`}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
             {/* Header */}
             <div
@@ -1255,18 +1280,37 @@ export default function App() {
                 }
 
                 // Original button logic
+                const isFavorites = item.name === "Favorites";
+                const isNotes = item.name === "Notes";
+                
+                // Calculate counts safely
+                const count = isFavorites 
+                  ? (userData?.favorites?.length || 0) 
+                  : isNotes 
+                    ? (userData?.notes?.length || 0) 
+                    : 0;
+
                 return (
                   <button
                     key={item.name}
                     onClick={() => navigateTo(item.target)}
-                    className={`w-full flex items-center p-3 rounded-lg font-semibold transition-colors ${
+                    className={`w-full flex items-center justify-between p-3 rounded-lg font-semibold transition-colors ${
                       currentPage.name === item.target
                         ? `${ACCENT_COLOR_CLASS} bg-red-100`
                         : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
-                    <item.icon className="w-6 h-6 mr-3" />
-                    {t[item.name.toLowerCase()]}
+                    <div className="flex items-center">
+                      <item.icon className="w-6 h-6 mr-3" />
+                      {t[item.name.toLowerCase()]}
+                    </div>
+                    
+                    {/* Counter Badge */}
+                    {(isFavorites || isNotes) && count > 0 && (
+                      <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                        {count}
+                      </span>
+                    )}
                   </button>
                 );
               })}

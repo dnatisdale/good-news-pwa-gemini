@@ -43,7 +43,7 @@ export const i18n = {
 
     // Content & Search
     listen_offline: "Listen (Offline Enabled)",
-    program_number: "Program Number",
+    program_number: "Message Number",
     no_verse_content: "No message content available.",
     read_more_at: "Read more at",
     search_languages: "Search Languages...",
@@ -74,14 +74,14 @@ export const i18n = {
       "Notes feature coming soon! You can view all saved notes on the Notes page.",
     selected_count_label: "Selected",
     clear_all: "Clear all",
-    selected_programs: "Selected Programs",
+    selected_programs: "Selected Messages",
     font_size: "Font size",
     language: "Language",
     tools_panel: "Tools",
     
     // SelectedContentPage
     messages_selected: "messages selected",
-    selected_content: "Selected Programs",
+    selected_content: "Selected Messages",
     share: "Share",
     copy: "Copy",
     print: "Print/Download",
