@@ -24,8 +24,8 @@ import QRCodeDisplay from "./components/QRCodeDisplay";
 import { QRCodeSVG } from "qrcode.react";
 import AppLogo from "./assets/splash-screen-logo.svg";
 import BannerLogo from "./assets/banner-logo.svg";
-
-// --- NEW IMPORTS ---
+import { jsPDF } from "jspdf";
+import { formatContentItem } from "./utils/contentFormatter";
 import LanguageToggle from "./components/LanguageToggle";
 import FloatingUtilityBar from "./components/FloatingUtilityBar";
 import AudioPlayer from "./components/AudioPlayer";
@@ -142,16 +142,15 @@ export default function App() {
     if (filteredContent.length === 0) return null;
 
     // 2. Map the selected programs to an array of formatted strings
-    const shareableItems = filteredContent.map((program) => {
-      // Get the correct language and title for the item
-      const title = isThai
-        ? program.title_th || "ไม่มีชื่อ"
-        : program.title_en || "Untitled Program";
-      const language = isThai ? program.langTh || "" : program.languageEn || "";
-      const cardUrl = `https://5fi.sh/T${program.id}`; // The short link format
+    const shareableItems = filteredContent.map((item) => {
+      const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
+      const cardUrl = `https://5fi.sh/T${item.id}`;
 
-      // Format: [Language] - [Title] : [URL]
-      return `[${language}] ${title}: ${cardUrl}`;
+      // Format:
+      // [Language] Message Title
+      // Track Title
+      // Message #: 12345 | URL
+      return `[${languageDisplay}] ${messageTitle}\n${trackTitle}\nMessage #: ${programNumber} | ${cardUrl}`;
     });
 
     // 3. Combine the items into a single, highly readable string
@@ -163,9 +162,62 @@ export default function App() {
         (isThai
           ? "ค้นหาเพิ่มเติมที่: [Your App Link Here]"
           : "Find more content at: [Your App Link Here]"),
-    ].join("\n"); // Join with new lines for readability
+    ].join("\n\n"); // Double newline for separation
 
     return combinedText;
+  };
+
+  // --- NEW: PDF Export ---
+  const handleDownloadSelectedPDF = () => {
+    const filteredContent = getFilteredMessages(staticContent, selectedPrograms);
+    if (filteredContent.length === 0) {
+      alert(t.select_content_first || "Please select some content first!");
+      return;
+    }
+
+    const doc = new jsPDF();
+    const isThai = lang === "th";
+    
+    // Simple header
+    doc.setFontSize(18);
+    doc.text(isThai ? "Selected Messages" : "Selected Messages", 20, 20);
+    
+    doc.setFontSize(10);
+    doc.text(new Date().toLocaleDateString(), 20, 28);
+
+    // Content
+    doc.setFontSize(12);
+    let y = 40;
+    
+    filteredContent.forEach((item, index) => {
+      const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
+      
+      // Check for page break
+      if (y > 270) {
+        doc.addPage();
+        y = 20;
+      }
+
+      // Line 1: [Language] Title
+      doc.setFont("helvetica", "bold");
+      doc.text(`${index + 1}. [${languageDisplay}] ${messageTitle}`, 20, y);
+      y += 7;
+
+      // Line 2: Track Title
+      doc.setFont("helvetica", "normal");
+      doc.text(`   ${trackTitle}`, 20, y);
+      y += 7;
+
+      // Line 3: Message # and Link
+      doc.setFontSize(10);
+      doc.setTextColor(100);
+      doc.text(`   Message #: ${programNumber} | https://5fi.sh/T${item.id}`, 20, y);
+      doc.setTextColor(0); // Reset color
+      doc.setFontSize(12);
+      y += 12; // Extra space
+    });
+    
+    doc.save("good-news-selected.pdf");
   };
   // --- NEW: Filtered Message Helper ---
   const getSelectedContent = () => {
@@ -902,7 +954,8 @@ export default function App() {
           onClearSelection={clearSelection}
           onShare={handleShareSelected}
           onCopy={handleCopySelected}
-          onDownload={handleDownloadSelected}
+          onDownload={handleDownloadSelected} // This is the "Print" button (using Download icon)
+          onDownloadPDF={handleDownloadSelectedPDF} // This is the actual PDF button
         />
       );
       break;
@@ -1112,6 +1165,37 @@ export default function App() {
           </div>
 
           {/* 🌟 PASTE THIS INSIDE THE HEADER FLEX CONTAINER 🌟 */}
+          
+          {/* --- NAVIGATION CONTROLS (Feathered in) --- */}
+          {currentPage.name !== "Home" && (
+            <div className="flex items-center space-x-1 md:space-x-2 mx-2">
+              <button
+                onClick={goBack}
+                disabled={!hasPrev}
+                className={`p-1 rounded-lg transition-colors flex items-center ${
+                  hasPrev
+                    ? "text-white hover:bg-white/20"
+                    : "text-red-200 opacity-50 cursor-not-allowed"
+                }`}
+                title={t.back || "Back"}
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                onClick={goForward}
+                disabled={!hasNext}
+                className={`p-1 rounded-lg transition-colors flex items-center ${
+                  hasNext
+                    ? "text-white hover:bg-white/20"
+                    : "text-red-200 opacity-50 cursor-not-allowed"
+                }`}
+                title={t.forward || "Forward"}
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          )}
+
           {/* RIGHT SECTION: Controls */}
           <div className="flex items-center space-x-1 md:space-x-4 flex-shrink-0">
             {/* 1. UTILITY BAR (The New Button) goes FIRST */}
@@ -1166,7 +1250,7 @@ export default function App() {
         {/* --- TOGGLED SEARCH BAR (Below Header) --- */}
         {isSearchOpen && (
           // IMPORTANT CHANGE: Increased top-16 to top-20 (5rem) and lowered z-index to z-10
-          <div className="sticky top-20 w-full p-2 bg-white shadow-xl z-20">
+          <div className="sticky top-14 w-full p-2 bg-white shadow-xl z-20">
             <div className="relative w-full flex items-center">
               {/* Search Input Field */}
               <input
@@ -1192,38 +1276,6 @@ export default function App() {
                 aria-label="Close Search"
               >
                 <X className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* --- GLOBAL BACK/FORWARD NAVIGATION (Below Search, hidden on Home) --- */}
-        {currentPage.name !== "Home" && (
-          <div className={`sticky ${isSearchOpen ? 'top-36' : 'top-20'} w-full bg-white border-b border-gray-200 px-4 py-2 shadow-sm z-10 transition-all duration-200`}>
-            <div className="flex justify-between items-center max-w-screen-xl mx-auto">
-              <button
-                onClick={goBack}
-                className={`text-sm font-semibold flex items-center transition-colors ${
-                  hasPrev
-                    ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-                    : "text-gray-400 cursor-not-allowed"
-                }`}
-                disabled={!hasPrev}
-              >
-                <ChevronLeft className="w-5 h-5 mr-1" />
-                {t.back || "Back"}
-              </button>
-              <button
-                onClick={goForward}
-                className={`text-sm font-semibold flex items-center transition-colors ${
-                  hasNext
-                    ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-                    : "text-gray-400 cursor-not-allowed"
-                }`}
-                disabled={!hasNext}
-              >
-                {t.forward || "Forward"}
-                <ChevronRight className="w-5 h-5 ml-1" />
               </button>
             </div>
           </div>

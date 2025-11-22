@@ -24,33 +24,7 @@ const FavoritesPage = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      {/* Back and Forward Controls (added for consistency) */}
-      <div className="flex justify-between items-center mb-4">
-        <button
-          onClick={onBack}
-          className={`text-sm font-semibold flex items-center transition-colors ${
-            hasPrev
-              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-              : "text-gray-400 cursor-not-allowed"
-          }`}
-          disabled={!hasPrev}
-        >
-          <ChevronLeft className="w-5 h-5 mr-1" />
-          {t.back || "Back"}
-        </button>
-        <button
-          onClick={onForward}
-          className={`text-sm font-semibold flex items-center transition-colors ${
-            hasNext
-              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-              : "text-gray-400 cursor-not-allowed"
-          }`}
-          disabled={!hasNext}
-        >
-          {t.forward || "Forward"}
-          <ChevronRight className="w-5 h-5 ml-1" />
-        </button>
-      </div>
+      {/* Back and Forward Controls removed (now in Header) */}
 
       <h1 className="text-2xl font-bold text-gray-800 mb-6">{t.favorites}</h1>
       {favoriteItems.length > 0 ? (

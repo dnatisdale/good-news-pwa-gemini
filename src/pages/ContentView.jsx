@@ -15,6 +15,7 @@ import {
 import { i18n } from "../i18n";
 import AppLogo from "../assets/splash-screen-logo.svg";
 import { useOfflineStorage } from "../hooks/useOfflineStorage";
+import { formatContentItem } from "../utils/contentFormatter";
 
 // --- CONSTANTS (Copied from App.jsx for self-containment) ---
 const THAI_RED = "#CC3333";
@@ -63,11 +64,7 @@ const shareQRCard = (lang, programNumber, qrCodeUrl) => {
 
 // --- Share Card Print View Component ---
 const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
-  const title =
-    lang === "en" ? item.title_en ?? "Untitled" : item.title_th ?? "ไม่มีชื่อ";
-  const verse = lang === "en" ? item.verse_en ?? "" : item.verse_th ?? "";
-  const languageDisplay =
-    lang === "en" ? item.languageEn ?? "" : item.langTh ?? "";
+  const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
   const readMoreLabel =
     lang === "en" ? "Listen, Share, Download at" : "ฟัง แบ่งปัน ดาวน์โหลดที่";
 
@@ -92,8 +89,8 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
           <h2 className="text-2xl font-bold text-gray-800 mb-1">
             {languageDisplay}
           </h2>
-          <h3 className="text-xl font-bold text-brand-red">{title}</h3>
-          <p className="text-sm text-gray-700 mt-1">Message # {item.id}</p>
+          <h3 className="text-xl font-bold text-brand-red">{messageTitle}</h3>
+          <p className="text-sm text-gray-700 mt-1">Message # {programNumber}</p>
         </div>
       </div>
 
@@ -107,9 +104,9 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
         />
       </div>
 
-      {/* ✅ VERSE UNDER THE QR */}
+      {/* ✅ VERSE / TRACK TITLE UNDER THE QR */}
       <p className="text-base text-gray-700 mb-4 whitespace-pre-line text-center italic">
-        {verse}
+        {trackTitle}
       </p>
 
       {/* LINK */}
@@ -154,16 +151,12 @@ const ContentView = ({
 
   const isFavorite = userData?.favorites?.includes(item?.id) ?? false;
   const cardUrl = `https://5fi.sh/T${item?.id}`;
-  const languageDisplay =
-    lang === "en" ? item?.languageEn ?? "" : item?.langTh ?? "";
-  const titleDisplay =
-    lang === "en"
-      ? item?.title_en ?? "Untitled Message"
-      : item?.title_th ?? "ข้อความที่ไม่มีชื่อ";
-  const verseDisplay =
-    lang === "en"
-      ? item?.verse_en ?? t.no_verse_content
-      : item?.verse_th ?? t.no_verse_content;
+
+  // --- USE CENTRALIZED FORMATTER ---
+  const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
+  
+  // Bible Verse - currently missing from data structure, using placeholder logic
+  const verseDisplay = ""; 
 
   const toggleFavorite = () => {
     if (!item) return;
@@ -230,13 +223,24 @@ const ContentView = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <h1 className="text-4xl font-extrabold mb-2 text-brand-red">
+      {/* Line 1: Language Name - HUGE */}
+      <h1 className="text-4xl font-extrabold text-brand-red mb-3">
         {languageDisplay}
       </h1>
 
-      <div className="flex justify-between items-center mb-4 border-b pb-3">
-        <p className="text-xl font-semibold text-gray-700">{titleDisplay}</p>
+      {/* Line 2: Message Name | Track Name (Code) | message: # */}
+      <div className="mb-4">
+        <p className="text-lg text-gray-800 leading-tight">
+          <span className="font-normal">{messageTitle}</span>
+          {" | "}
+          <span className="text-2xl font-bold">{trackTitle}</span>
+          {" | "}
+          <span className="text-sm text-gray-500">message: #{item.id}</span>
+        </p>
+      </div>
 
+      {/* Favorite button */}
+      <div className="flex justify-end mb-4">
         <button
           onClick={toggleFavorite}
           className={`p-2 rounded-full transition-colors ${
@@ -251,6 +255,7 @@ const ContentView = ({
         </button>
       </div>
 
+      {/* Listen Button */}
       {item.trackDownloadUrl && (
         <button
           onClick={() => onPlay(item)}
@@ -301,7 +306,7 @@ const ContentView = ({
               {t.download || "Download"} <br /> {t.qr_card || "QR Card"}
             </button>
             
-            {/* NEW: Download Audio Button */}
+            {/* Download Audio Button */}
             {item.trackDownloadUrl && (
               <button
                 onClick={() => !isOffline && !isDownloading && downloadTrack(item)}
@@ -335,11 +340,18 @@ const ContentView = ({
           </div>
         </div>
 
+        {/* Right Column: Bible Verse Box */}
         <div className="md:order-2">
-          <div className="bg-gray-50 p-6 rounded-xl shadow-inner mb-6">
-            <p className="text-base leading-normal text-gray-700 whitespace-pre-line">
-              {verseDisplay}
-            </p>
+          <div className="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-brand-red mb-6 h-full">
+            {verseDisplay ? (
+              <p className="text-lg leading-relaxed text-gray-700 italic whitespace-pre-line">
+                {verseDisplay}
+              </p>
+            ) : (
+              <p className="text-gray-400 italic text-center mt-10">
+                {t.no_verse_content || "No verse available"}
+              </p>
+            )}
           </div>
         </div>
       </div>

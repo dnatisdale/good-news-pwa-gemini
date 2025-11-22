@@ -1,5 +1,6 @@
 import React from "react";
 import { i18n } from "../i18n"; // Assuming i18n is in src/i18n.js
+import { formatContentItem } from "../utils/contentFormatter";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 const TEXT_COLOR_CLASS = "text-gray-800";
@@ -13,14 +14,7 @@ const ContentCard = ({
   isSelected, // NEW: Is this specific message selected?
   onToggle, // NEW: Function to toggle this message
 }) => {
-  const languageDisplayName =
-    lang === "en" ? item.languageEn ?? "" : item.langTh ?? "";
-  const messageTitle =
-    lang === "en"
-      ? item.title_en ?? "Untitled Message"
-      : item.title_th ?? "ข้อความที่ไม่มีชื่อ";
-  const verseDisplay =
-    lang === "en" ? item.verse_en ?? "" : item.verse_th ?? "";
+  const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
 
   return (
     <div className="bg-white p-4 mb-3 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer card-hover flex items-start">
@@ -46,7 +40,7 @@ const ContentCard = ({
       <div className="flex-grow" onClick={() => onSelect(item)}>
         {showLanguageName && (
           <p className={`text-base font-semibold ${ACCENT_COLOR_CLASS} mb-1`}>
-            {languageDisplayName}
+            {languageDisplay}
           </p>
         )}
         <h3
@@ -57,15 +51,15 @@ const ContentCard = ({
           {messageTitle}
         </h3>
         
-        {/* NEW: Verse / Track Title Display */}
-        {verseDisplay && (
+        {/* Track Title Display (now includes M-code) */}
+        {trackTitle && (
           <p className="text-md text-gray-700 font-medium mt-1">
-            {verseDisplay}
+            {trackTitle}
           </p>
         )}
 
         <p className="text-xs text-gray-400 mt-1.5">
-          {t?.program_number || "Message No."} {item.id}
+          {t?.program_number || "Message No."} {programNumber}
         </p>
       </div>
     </div>
