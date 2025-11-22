@@ -86,6 +86,22 @@ export const i18n = {
     tap_to_enlarge: "Tap to enlarge",
     tap_to_shrink: "Tap to shrink",
     jump_to_letter: "Jump to letter",
+    
+    // FloatingUtilityBar
+    selected_count_label: "Selected",
+    clear_all: "Clear all",
+    selected_programs: "Selected Programs",
+    font_size: "Font size",
+    language: "Language",
+    tools_panel: "Tools",
+    
+    // SelectedContentPage
+    messages_selected: "messages selected",
+    selected_content: "Selected Programs",
+    share: "Share",
+    copy: "Copy",
+    print: "Print/Download",
+    no_content_selected: "No content selected yet. Go back and check some boxes!",
   },
 
   // --- THAI TRANSLATIONS ---
@@ -176,6 +192,22 @@ export const i18n = {
     tap_to_enlarge: "แตะเพื่อขยาย",
     tap_to_shrink: "แตะเพื่อย่อ",
     jump_to_letter: "ไปที่ตัวอักษร",
+    
+    // FloatingUtilityBar
+    selected_count_label: "เลือกแล้ว",
+    clear_all: "ล้างทั้งหมด",
+    selected_programs: "โปรแกรมที่เลือก",
+    font_size: "ขนาดตัวอักษร",
+    language: "ภาษา",
+    tools_panel: "เครื่องมือ",
+    
+    // SelectedContentPage  
+    messages_selected: "ข้อความที่เลือก",
+    selected_content: "โปรแกรมที่เลือก",
+    share: "แชร์",
+    copy: "คัดลอก",
+    print: "พิมพ์/ดาวน์โหลด",
+    no_content_selected: "ยังไม่ได้เลือกเนื้อหา กลับไปและเลือกข้อความ!",
 
     // Notes
     note_title_placeholder: "หัวข้อ",
