@@ -52,8 +52,14 @@ export default function App() {
     if (!isOpen) return null;
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
-        <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full relative">
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50"
+        onClick={onClose}
+      >
+        <div 
+          className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full relative"
+          onClick={(e) => e.stopPropagation()}
+        >
           {/* Close button */}
           <button
             onClick={onClose}
@@ -81,11 +87,11 @@ export default function App() {
           </div>
 
           {/* URL under the QR */}
-          <p className="text-sm text-gray-600 text-center break-all mb-1">
+          <p className="text-xs text-gray-600 text-center break-all mb-1">
             {t?.language_qr_title || ""}
             <a
               href={languageShareUrl}
-              className="text-brand-red underline break-all"
+              className="text-brand-red underline break-all text-[10px] block mt-1"
               target="_blank"
               rel="noopener noreferrer"
             >

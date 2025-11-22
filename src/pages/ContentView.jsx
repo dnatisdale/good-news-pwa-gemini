@@ -264,7 +264,7 @@ const ContentView = ({
         <button
           onClick={() => onPlay(item)}
           style={{ backgroundColor: THAI_BLUE }}
-          className="w-full p-4 mb-6 font-bold text-white text-lg rounded-xl transition-colors hover:opacity-90 shadow-lg flex items-center justify-center"
+          className="w-full p-4 mb-6 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 hover:shadow-xl"
         >
           <PlayCircle className="w-6 h-6 mr-2" />
           {t.listen_offline || "Listen (Offline Enabled)"}
@@ -298,13 +298,13 @@ const ContentView = ({
           <div className="grid grid-cols-2 gap-3 mb-6 w-full">
             <button
               onClick={handleShare}
-              className="p-3 font-bold text-white rounded-xl bg-brand-red transition-colors hover:bg-red-800 shadow-md flex flex-col items-center justify-center text-sm leading-tight"
+              className="p-3 font-bold text-white rounded-xl bg-brand-red shadow-md flex flex-col items-center justify-center text-sm leading-tight transition-all duration-200 hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
               <Share2 className="w-5 h-5 mb-1" /> {t.share_copy || "Share/Copy"}
             </button>
             <button
               onClick={downloadShareCard}
-              className="p-3 font-bold text-white rounded-xl bg-brand-red transition-colors hover:bg-red-800 shadow-md flex flex-col items-center justify-center text-sm leading-tight"
+              className="p-3 font-bold text-white rounded-xl bg-brand-red shadow-md flex flex-col items-center justify-center text-sm leading-tight transition-all duration-200 hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
               <Download className="w-5 h-5 mb-1" />
               {t.download || "Download"} <br /> {t.qr_card || "QR Card"}
@@ -316,16 +316,6 @@ const ContentView = ({
           <div className="bg-gray-50 p-6 rounded-xl shadow-inner mb-6">
             <p className="text-base leading-normal text-gray-700 whitespace-pre-line">
               {verseDisplay}
-            </p>
-          </div>
-
-          <div className="p-4 bg-red-50 border-l-4 border-brand-red rounded-lg mt-4">
-            <h2 className="text-lg font-semibold text-gray-700 mb-1">
-              {t.my_notes || "My Notes"}
-            </h2>
-            <p className="text-sm text-gray-500">
-              {t.notes_feature_tip ||
-                "Notes feature coming soon! You can view all saved notes on the Notes page."}
             </p>
           </div>
         </div>

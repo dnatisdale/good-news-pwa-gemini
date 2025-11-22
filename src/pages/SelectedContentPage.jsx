@@ -52,14 +52,14 @@ const SelectedContentPage = ({
       <div className="grid grid-cols-3 gap-3 mb-6">
         <button
           onClick={onShare}
-          className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
+          className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244] transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
         >
           <Share2 className="w-6 h-6 mb-1" />
           <span className="text-xs">{t.share || "Share"}</span>
         </button>
         <button
           onClick={onCopy}
-          className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
+          className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244] transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
         >
           <Copy className="w-6 h-6 mb-1" />
           {/* 👆 IF YOU PICK ANOTHER ICON, replace Copy with: Copy, ClipboardCopy, CopyCheck, or Files */}
@@ -68,7 +68,7 @@ const SelectedContentPage = ({
 
         <button
           onClick={onDownload}
-          className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244]"
+          className="bg-[#2D2A4A] text-white p-3 rounded-lg flex flex-col items-center justify-center shadow hover:bg-[#002244] transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
         >
           {/* Using Download as a stand-in for Print/Download */}
           <Download className="w-6 h-6 mb-1" />
