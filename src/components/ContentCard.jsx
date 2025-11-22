@@ -19,6 +19,8 @@ const ContentCard = ({
     lang === "en"
       ? item.title_en ?? "Untitled Message"
       : item.title_th ?? "ข้อความที่ไม่มีชื่อ";
+  const verseDisplay =
+    lang === "en" ? item.verse_en ?? "" : item.verse_th ?? "";
 
   return (
     <div className="bg-white p-4 mb-3 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer card-hover flex items-start">
@@ -54,7 +56,15 @@ const ContentCard = ({
         >
           {messageTitle}
         </h3>
-        <p className="text-sm text-gray-500 mt-0.5">
+        
+        {/* NEW: Verse / Track Title Display */}
+        {verseDisplay && (
+          <p className="text-md text-gray-700 font-medium mt-1">
+            {verseDisplay}
+          </p>
+        )}
+
+        <p className="text-xs text-gray-400 mt-1.5">
           {t?.program_number || "Message No."} {item.id}
         </p>
       </div>
