@@ -1179,7 +1179,7 @@ export default function App() {
                 }`}
                 title={t.back || "Back"}
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-8 h-8" />
               </button>
               <button
                 onClick={goForward}
@@ -1191,7 +1191,7 @@ export default function App() {
                 }`}
                 title={t.forward || "Forward"}
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-8 h-8" />
               </button>
             </div>
           )}
