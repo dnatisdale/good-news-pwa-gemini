@@ -1097,7 +1097,7 @@ export default function App() {
                   ? "text-white hover:bg-red-800"
                   : "text-red-300 cursor-default"
               }`}
-              aria-label={deferredPrompt ? "Install App" : "App Installed"}
+              aria-label={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
             >
               <Download className="w-6 h-6" />
             </button>
@@ -1181,7 +1181,8 @@ export default function App() {
           >
             {/* Header */}
             <div
-              className={`${PRIMARY_COLOR_CLASS} px-3 py-4 flex justify-start items-center space-x-4 rounded-r-xl flex-shrink-0`}
+              className={`${PRIMARY_COLOR_CLASS} px-3 py-4 flex justify-start items-center space-x-4 rounded-r-xl flex-shrink-0 cursor-pointer`}
+              onClick={() => setIsDrawerOpen(false)} // Close drawer on header click
             >
               {/* 1. The Square Logo (Flush Left, Rounded) */}
               <img

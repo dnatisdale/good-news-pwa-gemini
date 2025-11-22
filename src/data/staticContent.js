@@ -6001,6 +6001,38 @@ export const staticContent = [
     "stableKey": "Thai Central"
   },
   {
+    "id": 63629001,
+    "langId": "1124",
+    "iso3": "THA",
+    "languageEn": "Thai Central",
+    "langTh": "ไทยกลาง",
+    "title_en": "Good News for Children (M001)",
+    "title_th": "ข่าวประเสริฐสำหรับเด็ก (M001)",
+    "verse_en": "Song (Creation)",
+    "verse_th": "เพลง (การทรงสร้าง)",
+    "streamUrl": "fivefish.org/T63629",
+    "trackDownloadUrl": "/audio/ภาษาไทย ข่าวประเสริฐสำหรับเด็ก M001 เพลง (การทรงสร้าง) ♦ เพลง 63629.mp3",
+    "zipDownloadUrl": "https://files.globalrecordings.net/files/set/mp3-low/63629.zip",
+    "programId": "63629",
+    "stableKey": "Thai Central"
+  },
+  {
+    "id": 63629002,
+    "langId": "1124",
+    "iso3": "THA",
+    "languageEn": "Thai Central",
+    "langTh": "ไทยกลาง",
+    "title_en": "Good News for Children (M002)",
+    "title_th": "ข่าวประเสริฐสำหรับเด็ก (M002)",
+    "verse_en": "Man's Sin",
+    "verse_th": "ความบาปของมนุษย์",
+    "streamUrl": "fivefish.org/T63629",
+    "trackDownloadUrl": "/audio/ภาษาไทย ข่าวประเสริฐสำหรับเด็ก M002 (ความบาปของมนุษย์) ♦ เพลง 63629.mp3",
+    "zipDownloadUrl": "https://files.globalrecordings.net/files/set/mp3-low/63629.zip",
+    "programId": "63629",
+    "stableKey": "Thai Central"
+  },
+  {
     "id": 80501,
     "langId": "1124",
     "iso3": "THA",

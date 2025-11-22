@@ -72,22 +72,6 @@ export const i18n = {
     my_notes: "My Notes",
     notes_feature_tip:
       "Notes feature coming soon! You can view all saved notes on the Notes page.",
-    notes_page_tip: "This page is ready to be built!",
-    // Auth & PWA
-    auth_status: "Status",
-    auth_ready: "Ready",
-    auth_pending: "Pending",
-    install_app: "Install App",
-    share_pwa: "Share PWA",
-    scan_to_share: "Scan to share this app",
-    
-    // UI Helpers
-    select_message_to_listen: "Select a message to listen to.",
-    tap_to_enlarge: "Tap to enlarge",
-    tap_to_shrink: "Tap to shrink",
-    jump_to_letter: "Jump to letter",
-    
-    // FloatingUtilityBar
     selected_count_label: "Selected",
     clear_all: "Clear all",
     selected_programs: "Selected Programs",
