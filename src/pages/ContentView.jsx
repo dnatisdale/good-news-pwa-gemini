@@ -9,9 +9,12 @@ import {
   Share2,
   Download,
   PlayCircle,
+  CheckCircle,
+  Loader,
 } from "../components/Icons";
 import { i18n } from "../i18n";
 import AppLogo from "../assets/splash-screen-logo.svg";
+import { useOfflineStorage } from "../hooks/useOfflineStorage";
 
 // --- CONSTANTS (Copied from App.jsx for self-containment) ---
 const THAI_RED = "#CC3333";
@@ -141,21 +144,29 @@ const ContentView = ({
   pageStack,
 }) => {
   const [isQrLarge, setIsQrLarge] = useState(false);
+  
+  // --- NEW: Offline Storage Hook ---
+  const { downloadTrack, isTrackOffline, isTrackDownloading } = useOfflineStorage();
+  
+  // Safety check: ensure item exists before checking status
+  const isOffline = item ? isTrackOffline(item.id) : false;
+  const isDownloading = item ? isTrackDownloading(item.id) : false;
 
-  const isFavorite = userData?.favorites?.includes(item.id) ?? false;
-  const cardUrl = `https://5fi.sh/T${item.id}`;
+  const isFavorite = userData?.favorites?.includes(item?.id) ?? false;
+  const cardUrl = `https://5fi.sh/T${item?.id}`;
   const languageDisplay =
-    lang === "en" ? item.languageEn ?? "" : item.langTh ?? "";
+    lang === "en" ? item?.languageEn ?? "" : item?.langTh ?? "";
   const titleDisplay =
     lang === "en"
-      ? item.title_en ?? "Untitled Message"
-      : item.title_th ?? "ข้อความที่ไม่มีชื่อ";
+      ? item?.title_en ?? "Untitled Message"
+      : item?.title_th ?? "ข้อความที่ไม่มีชื่อ";
   const verseDisplay =
     lang === "en"
-      ? item.verse_en ?? t.no_verse_content
-      : item.verse_th ?? t.no_verse_content;
+      ? item?.verse_en ?? t.no_verse_content
+      : item?.verse_th ?? t.no_verse_content;
 
   const toggleFavorite = () => {
+    if (!item) return;
     const currentFavorites = userData.favorites || [];
     let newFavorites;
     if (isFavorite) {
@@ -167,10 +178,11 @@ const ContentView = ({
   };
 
   const handleShare = () => {
-    shareQRCard(lang, item.id, cardUrl);
+    if (item) shareQRCard(lang, item.id, cardUrl);
   };
 
   const downloadShareCard = async () => {
+    if (!item) return;
     const tempContainer = document.createElement("div");
     tempContainer.style.position = "absolute";
     tempContainer.style.left = "-9999px";
@@ -211,6 +223,10 @@ const ContentView = ({
       alert("Could not find print view container.");
     }
   };
+
+  if (!item) {
+      return <div className="p-8 text-center">Loading content...</div>;
+  }
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
@@ -311,6 +327,38 @@ const ContentView = ({
               <Download className="w-5 h-5 mb-1" />
               {t.download || "Download"} <br /> {t.qr_card || "QR Card"}
             </button>
+            
+            {/* NEW: Download Audio Button */}
+            {item.trackDownloadUrl && (
+              <button
+                onClick={() => !isOffline && !isDownloading && downloadTrack(item)}
+                disabled={isOffline || isDownloading}
+                className={`col-span-2 p-3 font-bold text-white rounded-xl shadow-md flex flex-row items-center justify-center text-sm leading-tight transition-all duration-200 ${
+                  isOffline
+                    ? "bg-green-600 cursor-default"
+                    : isDownloading
+                    ? "bg-gray-400 cursor-wait"
+                    : "bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-lg"
+                }`}
+              >
+                {isOffline ? (
+                  <>
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    {t.downloaded || "Downloaded"}
+                  </>
+                ) : isDownloading ? (
+                  <>
+                    <Loader className="w-5 h-5 mr-2 animate-spin" />
+                    {t.downloading || "Downloading..."}
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-5 h-5 mr-2" />
+                    {t.download_audio || "Download Audio"}
+                  </>
+                )}
+              </button>
+            )}
           </div>
         </div>
 

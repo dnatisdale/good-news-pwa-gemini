@@ -34,6 +34,7 @@ import FavoritesPage from "./pages/FavoritesPage";
 import SearchPage from "./pages/SearchPage";
 import SettingsPage from "./pages/SettingsPage";
 import NotesPage from "./pages/NotesPage";
+import MyLibraryPage from "./pages/MyLibraryPage";
 
 // --- CONSTANTS ---
 const PRIMARY_COLOR_CLASS = "bg-gradient-to-r from-brand-red to-brand-red-dark";
@@ -63,6 +64,7 @@ export default function App() {
       setIsDrawerOpen(false);
     }
   };
+
   // --- Language QR Modal (inline component, uses QRCodeDisplay) ---
   const LanguageQrModal = ({
     isOpen,
@@ -279,7 +281,7 @@ export default function App() {
                   <div class="header-text">
                     <div class="language">${languageDisplay}</div>
                     <div class="series">${title}</div>
-                    <div class="program">Program # ${item.id}</div>
+                    <div class="program">Message # ${item.id}</div>
                   </div>
                 </div>
 
@@ -978,6 +980,48 @@ export default function App() {
         />
       );
       break;
+    case "Notes":
+      PageContent = (
+        <NotesPage
+          lang={lang}
+          t={t}
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+          userData={userData}
+          saveUserData={saveUserData}
+        />
+      );
+      break;
+    case "MyLibrary":
+      PageContent = (
+        <MyLibraryPage
+          lang={lang}
+          t={t}
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+          onPlay={handlePlayMessage}
+        />
+      );
+      break;
+    case "Settings":
+      PageContent = (
+        <SettingsPage
+          lang={lang}
+          t={t}
+          setLang={setLang}
+          fontSize={fontSize}
+          setFontSize={setFontSize}
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+        />
+      );
+      break;
 
     default:
       PageContent = (
@@ -1236,7 +1280,9 @@ export default function App() {
               {[
                 { name: "Search", icon: Search, target: "Search" },
                 { name: "Favorites", icon: Heart, target: "Favorites" },
+                { name: "My_Library", icon: Download, target: "MyLibrary" },
                 { name: "Notes", icon: Pen, target: "Notes" },
+                { name: "Settings", icon: Settings, target: "Settings" },
                 // --- NEW: 5fish Website Link ---
                 {
                   name: "5fish Website",

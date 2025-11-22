@@ -1,5 +1,6 @@
 import React from "react";
-import { PlayCircle, ChevronLeft } from "./Icons";
+import { PlayCircle, ChevronLeft, Download, CheckCircle, Loader } from "./Icons";
+import { useOfflineStorage } from "../hooks/useOfflineStorage";
 
 const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
   // Check if a track is available
@@ -56,9 +57,52 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
           {t.audio_not_supported ||
             "Your browser does not support the audio element."}
         </audio>
+
+        {/* Download Button */}
+        <div className="mt-3 flex justify-end">
+             <DownloadButton track={track} t={t} />
+        </div>
       </div>
     </div>
   );
+};
+
+// Helper Component to avoid hook rules issues if AudioPlayer is conditionally rendered
+const DownloadButton = ({ track, t }) => {
+    const { downloadTrack, isTrackOffline, isTrackDownloading } = useOfflineStorage();
+    const isOffline = isTrackOffline(track.id);
+    const isDownloading = isTrackDownloading(track.id);
+
+    return (
+        <button
+            onClick={() => !isOffline && !isDownloading && downloadTrack(track)}
+            disabled={isOffline || isDownloading}
+            className={`flex items-center px-3 py-2 rounded-lg text-sm font-bold transition-colors ${
+                isOffline
+                ? "text-green-500 bg-green-100 cursor-default"
+                : isDownloading
+                ? "text-gray-500 bg-gray-200 cursor-wait"
+                : "text-brand-red bg-red-100 hover:bg-red-200"
+            }`}
+        >
+            {isOffline ? (
+                <>
+                    <CheckCircle className="w-4 h-4 mr-1.5" />
+                    {t.downloaded || "Downloaded"}
+                </>
+            ) : isDownloading ? (
+                <>
+                    <Loader className="w-4 h-4 mr-1.5 animate-spin" />
+                    {t.downloading || "Downloading..."}
+                </>
+            ) : (
+                <>
+                    <Download className="w-4 h-4 mr-1.5" />
+                    {t.download || "Download"}
+                </>
+            )}
+        </button>
+    );
 };
 
 export default AudioPlayer;
