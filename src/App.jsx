@@ -1034,7 +1034,7 @@ export default function App() {
 
         {/* --- HEADER (Banner) --- */}
         <header
-          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} py-0.5 px-1 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
+          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} py-1 px-2 shadow-lg z-30 flex justify-between items-center rounded-b-xl md:py-3 md:px-6`}
         >
           {/* LEFT SECTION: Hamburger Menu and Logo/Link */}
           <div className="flex items-center flex-shrink-0">
@@ -1044,7 +1044,7 @@ export default function App() {
               className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
               aria-label="Open Sidebar Menu"
             >
-              <Menu className="w-7 h-7" />
+              <Menu className="w-6 h-6 md:w-7 md:h-7" />
             </button>
 
             {/* 2. Logo (Now a link to 5fish.mobi/th?r=Asia&country=Thailand) */}
@@ -1053,13 +1053,13 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               title="5fish.mobi/th?r=Asia&country=Thailand"
-              className="flex items-center text-white **p-0** rounded-lg hover:bg-red-800 transition-colors **ml-2** focus:outline-none focus:ring-2 focus:ring-white"
+              className="flex items-center text-white **p-0** rounded-lg hover:bg-red-800 transition-colors ml-1 md:ml-2 focus:outline-none focus:ring-2 focus:ring-white"
             >
               {/* Enlarged Logo Image */}
               <img
                 src={BannerLogo}
                 alt={t.app_name}
-                className="h-10 md:h-12 w-auto rounded-md shadow-sm bg-white p-1"
+                className="h-8 md:h-12 w-auto rounded-md shadow-sm bg-white p-0.5 md:p-1"
               />
               {/* --- "หน้าแรก" (Home Text) HAS BEEN REMOVED --- */}
             </a>
@@ -1067,7 +1067,7 @@ export default function App() {
 
           {/* 🌟 PASTE THIS INSIDE THE HEADER FLEX CONTAINER 🌟 */}
           {/* RIGHT SECTION: Controls */}
-          <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
+          <div className="flex items-center space-x-1 md:space-x-4 flex-shrink-0">
             {/* 1. UTILITY BAR (The New Button) goes FIRST */}
             <FloatingUtilityBar
               t={t}
