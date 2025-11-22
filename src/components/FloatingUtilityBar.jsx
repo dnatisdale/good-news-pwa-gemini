@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ReactComponent as LogoComponent } from "../assets/splash-screen-logo.svg";
 import { X, Download, Settings } from "./Icons"; // Assuming Icons are in the same directory or adjusted path
 
@@ -16,6 +16,24 @@ const FloatingUtilityBar = ({
   isHovering,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Click outside to close
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   // Labels
   const labelSelected =
@@ -31,7 +49,7 @@ const FloatingUtilityBar = ({
   };
 
   return (
-    <div className="relative flex-shrink-0 mr-2 z-50">
+    <div className="relative flex-shrink-0 mr-2 z-50" ref={dropdownRef}>
       {/* Menu Dropdown (Opens Downwards) */}
       {isOpen && (
         <div className="absolute top-full right-0 mt-3 bg-white rounded-2xl shadow-xl p-3 w-72 space-y-3 ring-1 ring-black ring-opacity-5">
@@ -126,9 +144,9 @@ const FloatingUtilityBar = ({
             key={selectionCount}
             className={`absolute -bottom-1 -left-1 
                /* Base Shape & Color */
-               text-black text-[10px] font-bold rounded-full 
-               w-5 h-5 flex items-center justify-center 
-               border-2 border-white shadow-sm pointer-events-none
+               text-black text-xs font-bold rounded-full 
+               w-6 h-6 flex items-center justify-center 
+               border-2 border-white shadow-md pointer-events-none
                z-50
                
                /* 👇 ANIMATION ENGINE 👇 */
@@ -138,7 +156,7 @@ const FloatingUtilityBar = ({
                /* 👇 DYNAMIC CLASSES 👇 */
                ${
                  isHovering
-                   ? "bg-orange-400 scale-150 -translate-y-1" // State A: Hovering (Orange + Big)
+                   ? "bg-orange-400 scale-150 -translate-y-1 animate-bounce" // State A: Hovering (Orange + Big + Bounce)
                    : "bg-yellow-400 scale-100 translate-y-0"
                }  // State B: Normal (Yellow + Normal)
                `}

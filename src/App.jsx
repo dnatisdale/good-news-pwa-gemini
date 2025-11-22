@@ -1180,6 +1180,24 @@ export default function App() {
               </button>
             </div>
 
+            {/* Auth Status (moved directly below header) */}
+            <div className="px-4 pt-3 pb-2 border-b border-gray-200 flex-shrink-0">
+              <div className="text-xs text-gray-500 space-y-1">
+                <p className="truncate">
+                  {t.auth_status || "Status"}:
+                  <span
+                    className={`font-semibold ${
+                      isAuthReady ? "text-green-600" : "text-yellow-600"
+                    }`}
+                  >
+                    {isAuthReady
+                      ? t.auth_ready || " Ready"
+                      : t.auth_pending || " Pending"}
+                  </span>
+                </p>
+              </div>
+            </div>
+
             {/* Navigation Links (Scrollable) */}
             <nav className="p-4 space-y-2 overflow-y-auto flex-grow">
               {/* Navigation Items */}
@@ -1231,30 +1249,8 @@ export default function App() {
 
             {/* Bottom Controls (Sticky) */}
             <div className="p-4 border-t border-gray-200 flex-shrink-0 space-y-3">
-              {/* --- NEW: Auth Status --- */}
-              <div className="text-xs text-gray-500 space-y-1">
-                <p className="truncate">
-                  {t.auth_status || "Status"}:
-                  <span
-                    className={`font-semibold ${
-                      isAuthReady ? "text-green-600" : "text-yellow-600"
-                    }`}
-                  >
-                    {isAuthReady
-                      ? t.auth_ready || " Ready"
-                      : t.auth_pending || " Pending"}
-                  </span>
-                </p>
-                <p className="truncate">
-                  {t.user_id || "User ID"}:
-                  <span className="font-mono text-gray-600 ml-1">
-                    {userId || "..."}
-                  </span>
-                </p>
-              </div>
-
               {/* --- PWA Share QR Code --- */}
-              <div className="border-t border-gray-200 pt-3">
+              <div className="">
                 <p className="text-xs text-gray-600 text-center mb-2 font-semibold">
                   {t.share_pwa || "Share PWA"}
                 </p>
@@ -1268,12 +1264,9 @@ export default function App() {
                     />
                   </div>
                 </div>
-                <p className="text-xs text-gray-500 text-center mt-2">
-                  {t.scan_to_share || "Scan to share this app"}
-                </p>
               </div>
 
-              {/* --- NEW: Install Button --- */}
+              {/* --- Install Button --- */}
               {deferredPrompt && (
                 <button
                   onClick={handleInstallClick}
@@ -1283,6 +1276,16 @@ export default function App() {
                   {t.install_app || "Install App"}
                 </button>
               )}
+              
+              {/* --- User ID at very bottom --- */}
+              <div className="text-xs text-gray-500 border-t border-gray-200 pt-3">
+                <p className="truncate text-center">
+                  {t.user_id || "User ID"}:
+                  <span className="font-mono text-gray-600 ml-1">
+                    {userId || "..."}
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
