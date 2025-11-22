@@ -1,0 +1,185 @@
+import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Pen, Trash2, Plus } from "lucide-react";
+
+const ACCENT_COLOR_CLASS = "text-brand-red";
+
+const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
+  const [notes, setNotes] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentNote, setCurrentNote] = useState({
+    id: null,
+    title: "",
+    content: "",
+  });
+
+  // Load notes from localStorage on mount
+  useEffect(() => {
+    const savedNotes = localStorage.getItem("userNotes");
+    if (savedNotes) {
+      setNotes(JSON.parse(savedNotes));
+    }
+  }, []);
+
+  // Save notes to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("userNotes", JSON.stringify(notes));
+  }, [notes]);
+
+  const handleSaveNote = () => {
+    if (!currentNote.title.trim() && !currentNote.content.trim()) return;
+
+    if (currentNote.id) {
+      // Update existing note
+      setNotes((prev) =>
+        prev.map((note) => (note.id === currentNote.id ? currentNote : note))
+      );
+    } else {
+      // Create new note
+      const newNote = {
+        ...currentNote,
+        id: Date.now().toString(),
+        createdAt: new Date().toISOString(),
+      };
+      setNotes((prev) => [newNote, ...prev]);
+    }
+    setIsEditing(false);
+    setCurrentNote({ id: null, title: "", content: "" });
+  };
+
+  const handleDeleteNote = (id) => {
+    if (window.confirm(t.confirm_delete_note || "Delete this note?")) {
+      setNotes((prev) => prev.filter((note) => note.id !== id));
+      if (currentNote.id === id) {
+        setIsEditing(false);
+        setCurrentNote({ id: null, title: "", content: "" });
+      }
+    }
+  };
+
+  const startEditing = (note = { id: null, title: "", content: "" }) => {
+    setCurrentNote(note);
+    setIsEditing(true);
+  };
+
+  return (
+    <div className="p-4 pt-8 h-full overflow-y-auto">
+      {/* Navigation Header */}
+      <div className="flex justify-between items-center mb-4">
+        <button
+          onClick={onBack}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasPrev
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasPrev}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        <button
+          onClick={onForward}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasNext
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasNext}
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
+      </div>
+
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-gray-800">
+          {t.my_notes || "My Notes"}
+        </h1>
+        {!isEditing && (
+          <button
+            onClick={() => startEditing()}
+            className="bg-brand-red text-white p-2 rounded-full shadow-lg hover:bg-red-700 transition-colors"
+          >
+            <Plus className="w-6 h-6" />
+          </button>
+        )}
+      </div>
+
+      {isEditing ? (
+        <div className="bg-white p-4 rounded-xl shadow-md space-y-4">
+          <input
+            type="text"
+            placeholder={t.note_title_placeholder || "Title"}
+            value={currentNote.title}
+            onChange={(e) =>
+              setCurrentNote({ ...currentNote, title: e.target.value })
+            }
+            className="w-full text-lg font-bold border-b border-gray-200 focus:outline-none focus:border-brand-red p-2"
+          />
+          <textarea
+            placeholder={t.note_content_placeholder || "Write your note here..."}
+            value={currentNote.content}
+            onChange={(e) =>
+              setCurrentNote({ ...currentNote, content: e.target.value })
+            }
+            className="w-full h-48 p-2 resize-none focus:outline-none text-gray-700"
+          />
+          <div className="flex justify-end space-x-3">
+            <button
+              onClick={() => setIsEditing(false)}
+              className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+            >
+              {t.cancel || "Cancel"}
+            </button>
+            <button
+              onClick={handleSaveNote}
+              className="px-4 py-2 bg-brand-red text-white rounded-lg hover:bg-red-700"
+            >
+              {t.save || "Save"}
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {notes.length === 0 ? (
+            <div className="text-center text-gray-500 py-10">
+              <Pen className="w-12 h-12 mx-auto mb-3 opacity-20" />
+              <p>{t.no_notes || "No notes yet. Tap + to create one!"}</p>
+            </div>
+          ) : (
+            notes.map((note) => (
+              <div
+                key={note.id}
+                onClick={() => startEditing(note)}
+                className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer relative group"
+              >
+                <h3 className="font-bold text-gray-800 mb-1">
+                  {note.title || (
+                    <span className="text-gray-400 italic">
+                      {t.untitled || "Untitled"}
+                    </span>
+                  )}
+                </h3>
+                <p className="text-gray-600 text-sm line-clamp-2">
+                  {note.content}
+                </p>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDeleteNote(note.id);
+                  }}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
+              </div>
+            ))
+          )}
+        </div>
+      )}
+      <div className="h-16"></div>
+    </div>
+  );
+};
+
+export default NotesPage;

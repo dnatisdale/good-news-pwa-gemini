@@ -76,6 +76,15 @@ export const i18n = {
     select_message_to_listen: "Select a message to listen to.", // CHANGED
     tap_to_enlarge: "Tap to enlarge", // NEW
     tap_to_shrink: "Tap to shrink", // NEW
+    
+    // Notes
+    note_title_placeholder: "Title",
+    note_content_placeholder: "Write your note here...",
+    save: "Save",
+    cancel: "Cancel",
+    confirm_delete_note: "Delete this note?",
+    no_notes: "No notes yet. Tap + to create one!",
+    untitled: "Untitled",
   },
 
   // --- THAI TRANSLATIONS ---
@@ -156,5 +165,14 @@ export const i18n = {
     select_message_to_listen: "เลือกข้อความที่จะฟัง", // NEW Thai translation for the player
     tap_to_enlarge: "แตะเพื่อขยาย", // NEW Thai translation
     tap_to_shrink: "แตะเพื่อย่อ", // NEW Thai translation
+
+    // Notes
+    note_title_placeholder: "หัวข้อ",
+    note_content_placeholder: "เขียนบันทึกของคุณที่นี่...",
+    save: "บันทึก",
+    cancel: "ยกเลิก",
+    confirm_delete_note: "ลบบันทึกนี้?",
+    no_notes: "ยังไม่มีบันทึก แตะ + เพื่อสร้าง!",
+    untitled: "ไม่มีชื่อ",
   },
 };
