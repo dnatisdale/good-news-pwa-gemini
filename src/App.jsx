@@ -618,7 +618,7 @@ export default function App() {
           stableKey,
           displayNameEn: item.languageEn,
           displayNameTh: item.langTh,
-          langId: item.langId, // Added langId for 5fish share links
+          langId: item.langId,
           count: 0,
           messages: [],
         };
@@ -731,6 +731,7 @@ export default function App() {
     navigateTo("MessagesByLanguage", stableKey);
   };
 
+  // Handler for Message Card click
   // Handler for Message Card click
   const handleSelectMessage = (item, sourceList = "language") => {
     navigateTo("ContentView", item.id, sourceList);
@@ -1011,6 +1012,7 @@ export default function App() {
         />
       );
       break;
+
     case "Search":
       PageContent = (
         <SearchPage
