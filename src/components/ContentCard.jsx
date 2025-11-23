@@ -51,13 +51,6 @@ const ContentCard = ({
           {messageTitle}
         </h3>
         
-        {/* Track Title Display (now includes M-code) */}
-        {trackTitle && (
-          <p className="text-md text-gray-700 font-medium mt-1">
-            {trackTitle}
-          </p>
-        )}
-
         <p className="text-xs text-gray-400 mt-1.5">
           {t?.program_number || "Message No."} {programNumber}
         </p>

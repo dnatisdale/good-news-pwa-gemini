@@ -230,11 +230,9 @@ const ContentView = ({
 
       {/* Line 2: Message Name | Track Name (Code) | message: # */}
       <div className="mb-4">
-        <p className="text-lg text-gray-800 leading-tight">
-          <span className="font-normal">{messageTitle}</span>
-          {" | "}
-          <span className="text-2xl font-bold">{trackTitle}</span>
-          {" | "}
+        <p className="text-lg text-gray-800 leading-tight flex items-baseline gap-2">
+          <span className="text-2xl font-bold">{messageTitle}</span>
+          <span className="text-gray-400">|</span>
           <span className="text-sm text-gray-500">message: #{item.id}</span>
         </p>
       </div>
@@ -268,7 +266,9 @@ const ContentView = ({
       )}
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {/* Left Column: QR Code, Bible Verse, and controls */}
         <div className="md:order-1 flex flex-col items-center">
+          {/* QR Code */}
           <div
             className="flex flex-col items-center p-4 bg-white rounded-xl shadow-inner mb-6 cursor-pointer transition-all duration-300"
             onClick={() => setIsQrLarge((p) => !p)}
@@ -291,6 +291,20 @@ const ContentView = ({
             </p>
           </div>
 
+          {/* Bible Verse Box - between QR code and buttons */}
+          <div className="w-full bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-brand-red mb-6">
+            {item.verse_en || item.verse_th ? (
+              <p className="text-lg leading-relaxed text-gray-700 italic whitespace-pre-line">
+                {lang === "en" ? item.verse_en : item.verse_th}
+              </p>
+            ) : (
+              <p className="text-gray-400 italic text-center">
+                {t.no_verse_content || "No verse available"}
+              </p>
+            )}
+          </div>
+
+          {/* Buttons */}
           <div className="grid grid-cols-2 gap-3 mb-6 w-full">
             <button
               onClick={handleShare}
@@ -340,19 +354,9 @@ const ContentView = ({
           </div>
         </div>
 
-        {/* Right Column: Bible Verse Box */}
-        <div className="md:order-2">
-          <div className="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-brand-red mb-6 h-full">
-            {verseDisplay ? (
-              <p className="text-lg leading-relaxed text-gray-700 italic whitespace-pre-line">
-                {verseDisplay}
-              </p>
-            ) : (
-              <p className="text-gray-400 italic text-center mt-10">
-                {t.no_verse_content || "No verse available"}
-              </p>
-            )}
-          </div>
+        {/* Right Column: Empty on desktop, hidden on mobile */}
+        <div className="md:order-2 hidden md:block">
+          {/* Reserved for future content if needed */}
         </div>
       </div>
     </div>

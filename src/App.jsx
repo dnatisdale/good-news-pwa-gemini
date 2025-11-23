@@ -621,10 +621,34 @@ export default function App() {
           langId: item.langId,
           count: 0,
           messages: [],
+          programIds: new Set(),
         };
       }
+
+      // --- DATA FLATTENING & CLEANUP ---
+      // 1. Check if this Program ID has already been added to this group
+      const progId = item.programId || item.id;
+      if (groups[stableKey].programIds.has(progId)) {
+        return; // SKIP duplicates (tracks)
+      }
+      
+      // 2. Mark this Program ID as seen
+      groups[stableKey].programIds.add(progId);
+
+      // 3. Clean the Title (Remove "(Mxxx)" suffix)
+      // Create a shallow copy to avoid mutating the original staticContent if needed, 
+      // but for display purposes in this list, we can modify a copy.
+      const cleanedItem = { ...item };
+      if (cleanedItem.title_en) {
+        cleanedItem.title_en = cleanedItem.title_en.replace(/\s*\(M\d+\)/, "").trim();
+      }
+      if (cleanedItem.title_th) {
+        cleanedItem.title_th = cleanedItem.title_th.replace(/\s*\(M\d+\)/, "").trim();
+      }
+
+      // 4. Add the unique, cleaned message
       groups[stableKey].count += 1;
-      groups[stableKey].messages.push(item);
+      groups[stableKey].messages.push(cleanedItem);
     });
 
     // Convert object to array and sort by display name in the current language
