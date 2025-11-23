@@ -1143,8 +1143,8 @@ export default function App() {
         >
           {/* Mobile/Tablet: 3-column grid layout */}
           <div className="grid grid-cols-3 items-center md:hidden">
-            {/* LEFT: Menu + Logo */}
-            <div className="flex items-center justify-start">
+            {/* LEFT: Menu + Logo + Install */}
+            <div className="flex items-center justify-start space-x-1">
               <button
                 onClick={() => setIsDrawerOpen(true)}
                 className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
@@ -1157,7 +1157,7 @@ export default function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="5fish.mobi/th?r=Asia&country=Thailand"
-                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors ml-1"
+                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors"
               >
                 <img
                   src={AppLogo}
@@ -1165,6 +1165,24 @@ export default function App() {
                   className="h-8 w-8 rounded-md shadow-sm bg-white p-0.5"
                 />
               </a>
+              <button
+                onClick={() => {
+                  if (deferredPrompt) {
+                    handleInstallClick();
+                  } else {
+                    alert("App is already installed / แอปถูกติดตั้งแล้ว");
+                  }
+                }}
+                title={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
+                className={`p-1 rounded-lg transition-colors btn-hover ${
+                  deferredPrompt
+                    ? "text-white hover:bg-red-800"
+                    : "text-red-300 cursor-pointer"
+                }`}
+                aria-label={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
+              >
+                <Download className="w-6 h-6" />
+              </button>
             </div>
 
             {/* CENTER: Navigation Controls */}
@@ -1199,7 +1217,7 @@ export default function App() {
               )}
             </div>
 
-            {/* RIGHT: Controls */}
+            {/* RIGHT: Controls (without Install) */}
             <div className="flex items-center justify-end space-x-1">
               <FloatingUtilityBar
                 t={t}
@@ -1213,24 +1231,6 @@ export default function App() {
                 isHovering={isHoveringContent}
               />
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
-              <button
-                onClick={() => {
-                  if (deferredPrompt) {
-                    handleInstallClick();
-                  } else {
-                    alert("App is already installed / แอปถูกติดตั้งแล้ว");
-                  }
-                }}
-                title={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
-                className={`p-1 rounded-lg transition-colors btn-hover ${
-                  deferredPrompt
-                    ? "text-white hover:bg-red-800"
-                    : "text-red-300 cursor-pointer"
-                }`}
-                aria-label={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
-              >
-                <Download className="w-6 h-6" />
-              </button>
               <button
                 onClick={() => setIsSearchOpen(true)}
                 className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
