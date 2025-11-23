@@ -5,11 +5,12 @@
 /dist
 /build
 /out
-
-# Runtime and Cache Files
+# Runtime and Cache File
 .DS_Store
 npm-debug.log
 yarn-error.log
 # ... other lines ...
+/bad
 .cache
 /.cashe
+your_content_data_NEW.csv

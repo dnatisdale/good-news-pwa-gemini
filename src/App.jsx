@@ -178,7 +178,7 @@ export default function App() {
     return combinedText;
   };
 
-  // --- NEW: PDF Export ---
+  // --- NEW: PDF Export (Browser Native Print) ---
   const handleDownloadSelectedPDF = () => {
     const filteredContent = getFilteredMessages(staticContent, selectedPrograms);
     if (filteredContent.length === 0) {
@@ -186,49 +186,151 @@ export default function App() {
       return;
     }
 
-    const doc = new jsPDF();
     const isThai = lang === "th";
-    
-    // Simple header
-    doc.setFontSize(18);
-    doc.text(isThai ? "Selected Messages" : "Selected Messages", 20, 20);
-    
-    doc.setFontSize(10);
-    doc.text(new Date().toLocaleDateString(), 20, 28);
+    const titleText = isThai ? "รายการข้อความที่เลือก" : "Selected Messages";
+    const dateText = new Date().toLocaleDateString();
 
-    // Content
-    doc.setFontSize(12);
-    let y = 40;
-    
-    filteredContent.forEach((item, index) => {
+    // Generate HTML list items
+    const listItemsHtml = filteredContent.map((item, index) => {
       const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
-      
-      // Check for page break
-      if (y > 270) {
-        doc.addPage();
-        y = 20;
-      }
+      const cardUrl = `https://5fi.sh/T${item.id}`;
 
-      // Line 1: [Language] Title
-      doc.setFont("helvetica", "bold");
-      doc.text(`${index + 1}. [${languageDisplay}] ${messageTitle}`, 20, y);
-      y += 7;
+      return `
+        <div class="message-item">
+          <div class="item-header">
+            <span class="item-index">${index + 1}.</span>
+            <span class="item-lang">[${languageDisplay}]</span>
+            <span class="item-title">${messageTitle}</span>
+          </div>
+          <div class="item-track">${trackTitle}</div>
+          <div class="item-meta">
+            Message #: ${programNumber} | <a href="${cardUrl}">${cardUrl}</a>
+          </div>
+        </div>
+      `;
+    }).join("");
 
-      // Line 2: Track Title
-      doc.setFont("helvetica", "normal");
-      doc.text(`   ${trackTitle}`, 20, y);
-      y += 7;
+    const printHtml = `
+      <html>
+        <head>
+          <title>${titleText}</title>
+          <style>
+            @page {
+              size: A4;
+              margin: 1in;
+            }
+            body {
+              font-family: "Sarabun", "Prompt", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+              line-height: 1.5;
+              color: #333;
+              max-width: 800px;
+              margin: 0 auto;
+              padding: 20px;
+            }
+            h1 {
+              color: #CC3333;
+              border-bottom: 2px solid #eee;
+              padding-bottom: 10px;
+              margin-bottom: 5px;
+            }
+            .date {
+              color: #666;
+              font-size: 0.9em;
+              margin-bottom: 30px;
+            }
+            .message-item {
+              margin-bottom: 25px;
+              page-break-inside: avoid;
+            }
+            .item-header {
+              font-weight: bold;
+              font-size: 1.1em;
+              margin-bottom: 4px;
+            }
+            .item-index {
+              color: #666;
+              margin-right: 5px;
+            }
+            .item-lang {
+              color: #CC3333;
+              margin-right: 5px;
+            }
+            .item-track {
+              margin-left: 25px;
+              font-style: italic;
+              color: #444;
+              margin-bottom: 4px;
+            }
+            .item-meta {
+              margin-left: 25px;
+              font-size: 0.85em;
+              color: #666;
+            }
+            a {
+              color: #CC3333;
+              text-decoration: none;
+            }
+            /* Hide buttons when printing */
+            @media print {
+              .no-print { display: none !important; }
+            }
+            .control-bar {
+              text-align: center;
+              margin-bottom: 20px;
+              padding: 15px;
+              background: #f8f9fa;
+              border-radius: 8px;
+              border: 1px solid #e9ecef;
+            }
+            .print-btn {
+              background: #CC3333;
+              color: white;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 6px;
+              font-size: 16px;
+              cursor: pointer;
+              font-weight: bold;
+            }
+            .print-btn:hover {
+              background: #b32d2d;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="control-bar no-print">
+             <button class="print-btn" onclick="window.print()">🖨️ ${isThai ? "พิมพ์ / บันทึกเป็น PDF" : "Print / Save as PDF"}</button>
+             <p style="margin-top:10px; font-size:0.9em; color:#666;">
+               ${isThai ? "เลือก 'บันทึกเป็น PDF' ในหน้าต่างพิมพ์" : "Choose 'Save as PDF' in the print destination."}
+             </p>
+          </div>
 
-      // Line 3: Message # and Link
-      doc.setFontSize(10);
-      doc.setTextColor(100);
-      doc.text(`   Message #: ${programNumber} | https://5fi.sh/T${item.id}`, 20, y);
-      doc.setTextColor(0); // Reset color
-      doc.setFontSize(12);
-      y += 12; // Extra space
-    });
-    
-    doc.save("good-news-selected.pdf");
+          <h1>${titleText}</h1>
+          <div class="date">${dateText}</div>
+          
+          <div class="content">
+            ${listItemsHtml}
+          </div>
+
+          <script>
+            window.onload = function() {
+              setTimeout(function() {
+                window.print();
+              }, 500);
+            };
+          </script>
+        </body>
+      </html>
+    `;
+
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) {
+      alert(t.allow_popups || "Please allow pop-ups to print.");
+      return;
+    }
+    printWindow.document.open();
+    printWindow.document.write(printHtml);
+    printWindow.document.close();
   };
   // --- NEW: Filtered Message Helper ---
   const getSelectedContent = () => {

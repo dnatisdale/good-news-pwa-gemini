@@ -11,12 +11,9 @@ export const formatContentItem = (item, lang) => {
   if (!item) return { languageDisplay: "", messageTitle: "", trackTitle: "", programNumber: "" };
 
   // 1. Language Display
-  // Use the passed 'lang' to decide which language name to show primarily,
-  // but for the "Language" field in the card, we usually show the English name or both.
-  // The previous logic often just showed item.languageEn.
-  // Let's stick to item.languageEn for consistency with the "Language" label,
-  // or use a bilingual format if desired. For now, item.languageEn is safe.
-  const languageDisplay = item.languageEn || "";
+  // Use the passed 'lang' to decide which language name to show.
+  // If lang is 'th', try to show item.langTh, otherwise fall back to item.languageEn.
+  const languageDisplay = lang === "th" ? (item.langTh || item.languageEn || "") : (item.languageEn || "");
 
   // 2. Message Title
   // The user wants to display EXACTLY what is in the CSV.
