@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { PlayCircle, ChevronLeft, Download, CheckCircle, Loader } from "./Icons";
 import { useOfflineStorage } from "../hooks/useOfflineStorage";
 
-const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
+const AudioPlayer = ({ track, isMinimized, toggleMinimize, t, onGoBack, onGoForward, hasPrev, hasNext }) => {
   const [audioSrc, setAudioSrc] = useState(null);
   
   // Check cache for offline audio
@@ -46,8 +46,34 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t }) => {
   // Check if a track is available
   if (!track || !track.trackDownloadUrl) {
     return (
-      <div className="sticky bottom-0 w-full p-3 bg-gray-200 text-center text-sm text-gray-600 z-20">
-        {t.select_message_to_listen || "Select a message to listen to."}
+      <div className="sticky bottom-0 w-full p-3 bg-gray-200 flex items-center justify-between text-sm text-gray-600 z-20">
+        <button
+          onClick={onGoBack}
+          disabled={!hasPrev}
+          className={`p-2 transition-colors ${
+            hasPrev
+              ? "text-gray-600 hover:text-gray-800 cursor-pointer"
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          aria-label="Go Back"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <span className="text-center flex-grow">
+          {t.select_message_to_listen || "Select a message to listen to."}
+        </span>
+        <button
+          onClick={onGoForward}
+          disabled={!hasNext}
+          className={`p-2 transition-colors ${
+            hasNext
+              ? "text-gray-600 hover:text-gray-800 cursor-pointer"
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          aria-label="Go Forward"
+        >
+          <ChevronLeft className="w-6 h-6 rotate-180" />
+        </button>
       </div>
     );
   }

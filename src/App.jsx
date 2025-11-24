@@ -56,15 +56,8 @@ export default function App() {
   };
 
   const onTouchMove = (e) => {
+    if (!touchStartRef.current) return;
     touchEndRef.current = e.targetTouches[0].clientX;
-    
-    // Prevent default scrolling if swiping horizontally
-    if (touchStartRef.current) {
-      const currentDistance = touchStartRef.current - e.targetTouches[0].clientX;
-      if (Math.abs(currentDistance) > 10) {
-        e.preventDefault();
-      }
-    }
   };
 
   const onTouchEnd = () => {
@@ -1558,6 +1551,10 @@ export default function App() {
           isMinimized={isAudioMinimized}
           toggleMinimize={toggleAudioMinimize}
           t={t}
+          onGoBack={goBack}
+          onGoForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
         />
 
         {/* --- NAVIGATION DRAWER (Sidebar) --- */}
