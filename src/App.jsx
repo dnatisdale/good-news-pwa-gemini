@@ -1767,7 +1767,7 @@ export default function App() {
                 {/* Build Information */}
                 <div className="text-center space-y-1 pt-2 border-t border-gray-200">
                   <p className="text-gray-600">
-                    Build: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                    Build: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                   </p>
                   <p className="text-gray-600">
                     {[...new Set(staticContent.map(item => item.stableKey))].length} Languages | {staticContent.length} Messages
