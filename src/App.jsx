@@ -1377,101 +1377,94 @@ export default function App() {
           {/* Desktop: Flexbox layout */}
           <div className="hidden md:flex justify-between items-center relative">
             
-            {/* --- LEFT BOOKEND: Back Button --- */}
-            <div className="flex-shrink-0 mr-4">
+            {/* Left: Menu & Logo */}
+            <div className="flex items-center">
               <button
+                onClick={() => setIsDrawerOpen(true)}
+                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover mr-3"
+                aria-label="Open Sidebar Menu"
+              >
+                <Menu className="w-6 h-6 md:w-7 md:h-7" />
+              </button>
+              <a
+                href="https://5fish.mobi/th?r=Asia&country=Thailand"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="5fish.mobi/th?r=Asia&country=Thailand"
+                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+              >
+                <img
+                  src={BannerLogo}
+                  alt={t.app_name}
+                  className="h-12 w-auto rounded-md shadow-sm bg-white p-1"
+                />
+              </a>
+            </div>
+
+            {/* Center: Navigation Buttons */}
+            <div className="flex items-center justify-center space-x-2">
+               <button
                 onClick={goBack}
                 disabled={!hasPrev}
-                className={`h-12 w-12 flex items-center justify-center rounded-l-lg rounded-r-none transition-all ${
+                className={`p-1 rounded-lg transition-colors flex items-center ${
                   hasPrev
-                    ? "bg-[#003366] text-white hover:bg-[#002244] shadow-md"
-                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    ? "text-white hover:bg-white/20"
+                    : "text-red-200 opacity-50 cursor-not-allowed"
                 }`}
                 title={t.back || "Back"}
               >
                 <ChevronLeft className="w-8 h-8" />
               </button>
-            </div>
-
-            {/* CENTER SECTION: Hamburger, Logo, Controls */}
-            <div className="flex-grow flex items-center justify-between">
-              {/* Left-Center: Menu & Logo */}
-              <div className="flex items-center">
-                <button
-                  onClick={() => setIsDrawerOpen(true)}
-                  className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover mr-3"
-                  aria-label="Open Sidebar Menu"
-                >
-                  <Menu className="w-6 h-6 md:w-7 md:h-7" />
-                </button>
-                <a
-                  href="https://5fish.mobi/th?r=Asia&country=Thailand"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="5fish.mobi/th?r=Asia&country=Thailand"
-                  className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
-                >
-                  <img
-                    src={BannerLogo}
-                    alt={t.app_name}
-                    className="h-12 w-auto rounded-md shadow-sm bg-white p-1"
-                  />
-                </a>
-              </div>
-
-              {/* Right-Center: Controls */}
-              <div className="flex items-center space-x-4">
-                <FloatingUtilityBar
-                  t={t}
-                  lang={lang}
-                  setLang={setLang}
-                  selectionCount={selectedPrograms.length}
-                  onClearSelection={clearSelection}
-                  fontSize={fontSize}
-                  setFontSize={setFontSize}
-                  navigateToSelectedContent={navigateToSelectedContent}
-                  isHovering={isHoveringContent}
-                />
-                <LanguageToggle lang={lang} setLang={setLang} t={t} />
-                <button
-                  onClick={() => {
-                    if (deferredPrompt) {
-                      handleInstallClick();
-                    } else {
-                      alert(
-                        t.install_instructions ||
-                          "To install, tap 'Share' then 'Add to Home Screen' (iOS) or use the browser menu (Android)."
-                      );
-                    }
-                  }}
-                  className="bg-white text-brand-red px-3 py-1 rounded-full font-bold shadow-sm hover:bg-gray-100 transition-colors text-sm flex items-center"
-                >
-                  <Download className="w-4 h-4 mr-1" />
-                  {t.install || "Install"}
-                </button>
-                <button
-                  onClick={() => setIsSearchOpen(true)}
-                  className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
-                  aria-label="Toggle Search"
-                >
-                  <Search className="w-6 h-6" />
-                </button>
-              </div>
-            </div>
-
-            {/* --- RIGHT BOOKEND: Forward Button --- */}
-            <div className="flex-shrink-0 ml-4">
               <button
                 onClick={goForward}
                 disabled={!hasNext}
-                className={`h-12 w-12 flex items-center justify-center rounded-r-lg rounded-l-none transition-all ${
+                className={`p-1 rounded-lg transition-colors flex items-center ${
                   hasNext
-                    ? "bg-[#003366] text-white hover:bg-[#002244] shadow-md"
-                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    ? "text-white hover:bg-white/20"
+                    : "text-red-200 opacity-50 cursor-not-allowed"
                 }`}
                 title={t.forward || "Forward"}
               >
                 <ChevronRight className="w-8 h-8" />
+              </button>
+            </div>
+
+            {/* Right: Controls */}
+            <div className="flex items-center space-x-4">
+              <FloatingUtilityBar
+                t={t}
+                lang={lang}
+                setLang={setLang}
+                selectionCount={selectedPrograms.length}
+                onClearSelection={clearSelection}
+                fontSize={fontSize}
+                setFontSize={setFontSize}
+                navigateToSelectedContent={navigateToSelectedContent}
+                isHovering={isHoveringContent}
+              />
+              <LanguageToggle lang={lang} setLang={setLang} t={t} />
+              <button
+                onClick={() => {
+                  if (deferredPrompt) {
+                    handleInstallClick();
+                  } else {
+                    alert(
+                      t.install_instructions ||
+                        "To install, tap 'Share' then 'Add to Home Screen' (iOS) or use the browser menu (Android)."
+                    );
+                  }
+                }}
+                className="bg-white text-brand-red px-3 py-1 rounded-full font-bold shadow-sm hover:bg-gray-100 transition-colors text-sm flex items-center"
+              >
+                <Download className="w-4 h-4 mr-1" />
+                {t.install || "Install"}
+              </button>
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                aria-label="Toggle Search"
+              >
+                <Search className="w-6 h-6" />
               </button>
             </div>
           </div>

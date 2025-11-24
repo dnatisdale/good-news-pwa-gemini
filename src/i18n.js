@@ -105,6 +105,8 @@ export const i18n = {
     
     // Share App
     share_app: "Share App",
+    install: "Install", // NEW
+    install_instructions: "To install, tap 'Share' then 'Add to Home Screen' (iOS) or use the browser menu (Android).", // NEW
     share_app_text: "Check out this app for Good News messages in multiple languages!",
     link_copied: "Link copied to clipboard!",
     copy_failed: "Could not copy link",
@@ -158,7 +160,10 @@ export const i18n = {
     auth_status: "สถานะ",
     auth_ready: "พร้อมใช้งาน",
     auth_pending: "รอดำเนินการ",
+    auth_pending: "รอดำเนินการ",
     install_app: "ติดตั้งแอป",
+    install: "ติดตั้ง", // NEW
+    install_instructions: "ในการติดตั้ง ให้แตะ 'แชร์' แล้วเลือก 'เพิ่มไปยังหน้าจอหลัก' (iOS) หรือใช้เมนูเบราว์เซอร์ (Android)", // NEW
     share_pwa: "แชร์แอปนี้",
     scan_to_share: "สแกนเพื่อแชร์แอปนี้",
 
