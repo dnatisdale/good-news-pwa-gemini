@@ -26,6 +26,52 @@ const MessagesByLanguagePage = ({
     return lang === "en" ? group.displayNameEn : group.displayNameTh;
   }, [lang, selectedLanguageKey, languageGroups]);
 
+  // Audio Playback State
+  const [playingSampleId, setPlayingSampleId] = React.useState(null);
+  const audioRef = React.useRef(new Audio());
+
+  const handlePlaySample = (item) => {
+    if (playingSampleId === item.id) {
+      // Stop playing
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setPlayingSampleId(null);
+    } else {
+      // Start playing new sample
+      if (item.sampleUrl) {
+        // Stop any currently playing audio first
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        
+        // Set new source and load
+        audioRef.current.src = item.sampleUrl;
+        audioRef.current.load(); // Critical: load the new source
+        
+        // Try to play
+        audioRef.current.play()
+          .then(() => {
+            console.log('Playing sample:', item.sampleUrl);
+            setPlayingSampleId(item.id);
+          })
+          .catch(e => {
+            console.error("Error playing sample:", e);
+            console.error("Sample URL:", item.sampleUrl);
+            setPlayingSampleId(null);
+          });
+        
+        // Reset state when audio ends
+        audioRef.current.onended = () => setPlayingSampleId(null);
+      }
+    }
+  };
+
+  // Cleanup audio on unmount
+  React.useEffect(() => {
+    return () => {
+      audioRef.current.pause();
+    };
+  }, []);
+
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
       {/* Display selected language name */}
@@ -48,6 +94,8 @@ const MessagesByLanguagePage = ({
           onToggle={() =>
             onToggleProgram(item.id, selectedLanguageKey, currentMessageList)
           }
+          isPlayingSample={playingSampleId === item.id}
+          onPlaySample={() => handlePlaySample(item)}
         />
       ))}
       <div className="h-16"></div>

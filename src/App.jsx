@@ -174,7 +174,7 @@ export default function App() {
       }
 
       // Format each message with decorative lines
-      return `${divider}\n${languageDisplay} | ${messageTitle} | ${isThai ? 'ข้อความ' : 'Message'} #${programNumber}\n${divider}\n\n${isThai ? 'ฟัง • แบ่งปัน • ดาวน์โหลด' : 'Listen • Share • Download'}\nListen on 5fish: ${cardUrl}\n\n${verseQuote ? `"${verseQuote}"\n${verseRef}\n` : ""}`;
+      return `${divider}\n${languageDisplay} | ${messageTitle} | ${isThai ? 'ข้อความ' : 'Message'} #${programNumber}\n${divider}\n\n${isThai ? 'ฟัง • แบ่งปัน • ดาวน์โหลด' : 'Listen • Share • Download'}\nListen on 5fish: ${cardUrl}\n\n${verseQuote ? `${verseQuote}  ${verseRef}\n` : ""}`;
     });
 
     // 3. Combine the items with footer
@@ -1399,6 +1399,22 @@ export default function App() {
                   className="h-12 w-auto rounded-md shadow-sm bg-white p-1"
                 />
               </a>
+              <button
+                onClick={() => {
+                  if (deferredPrompt) {
+                    handleInstallClick();
+                  } else {
+                    alert(
+                      t.install_instructions ||
+                        "To install, tap 'Share' then 'Add to Home Screen' (iOS) or use the browser menu (Android)."
+                    );
+                  }
+                }}
+                className="bg-white text-brand-red px-3 py-1 rounded-full font-bold shadow-sm hover:bg-gray-100 transition-colors text-sm flex items-center ml-4"
+              >
+                <Download className="w-4 h-4 mr-1" />
+                {t.install || "Install"}
+              </button>
             </div>
 
             {/* Center: Navigation Buttons */}
@@ -1443,22 +1459,7 @@ export default function App() {
                 isHovering={isHoveringContent}
               />
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
-              <button
-                onClick={() => {
-                  if (deferredPrompt) {
-                    handleInstallClick();
-                  } else {
-                    alert(
-                      t.install_instructions ||
-                        "To install, tap 'Share' then 'Add to Home Screen' (iOS) or use the browser menu (Android)."
-                    );
-                  }
-                }}
-                className="bg-white text-brand-red px-3 py-1 rounded-full font-bold shadow-sm hover:bg-gray-100 transition-colors text-sm flex items-center"
-              >
-                <Download className="w-4 h-4 mr-1" />
-                {t.install || "Install"}
-              </button>
+
               <button
                 onClick={() => setIsSearchOpen(true)}
                 className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"

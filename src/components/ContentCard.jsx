@@ -1,6 +1,7 @@
 import React from "react";
 import { i18n } from "../i18n"; // Assuming i18n is in src/i18n.js
 import { formatContentItem } from "../utils/contentFormatter";
+import { Volume2, Pause, PlayCircle } from "./Icons"; // Import icons
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 const TEXT_COLOR_CLASS = "text-gray-800";
@@ -13,6 +14,8 @@ const ContentCard = ({
   showLanguageName = true,
   isSelected, // NEW: Is this specific message selected?
   onToggle, // NEW: Function to toggle this message
+  isPlayingSample, // NEW: Is this sample playing?
+  onPlaySample, // NEW: Function to toggle sample playback
 }) => {
   const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
 
@@ -55,6 +58,30 @@ const ContentCard = ({
           {t?.program_number || "Message No."} {programNumber}
         </p>
       </div>
+
+      {/* --- NEW: AUDIO PREVIEW BUTTON --- */}
+      {item.sampleUrl && (
+        <div className="pl-2 pt-1">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onPlaySample && onPlaySample();
+            }}
+            className={`p-2 rounded-full transition-all ${
+              isPlayingSample
+                ? "bg-amber-100 text-amber-600 animate-pulse"
+                : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+            }`}
+            title={isPlayingSample ? "Stop Preview" : "Listen to Preview"}
+          >
+            {isPlayingSample ? (
+              <Pause className="w-6 h-6" />
+            ) : (
+              <Volume2 className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

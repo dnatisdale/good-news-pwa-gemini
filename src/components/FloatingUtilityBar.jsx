@@ -89,7 +89,7 @@ const FloatingUtilityBar = ({
               navigateToSelectedContent();
               setIsOpen(false);
             }}
-            className="w-full py-2 text-white bg-red-700 hover:bg-red-600 rounded-lg text-center shadow-md transition-all"
+            className="w-full py-2 text-white bg-brand-red hover:scale-105 rounded-lg text-center shadow-md transition-all"
           >
             <div className="flex items-center justify-center space-x-2">
               <Download className="w-5 h-5" />

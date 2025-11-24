@@ -56,9 +56,9 @@ const shareQRCard = (item, lang, qrCodeUrl) => {
   
   let text;
   if (lang === "th") {
-    text = `${divider}\n${languageDisplay} | ${messageTitle} | ข้อความ #${programNumber}\n${divider}\n\nฟัง • แบ่งปัน • ดาวน์โหลด\nListen on 5fish: ${qrCodeUrl}\n\n${verseQuote ? `"${verseQuote}"\n${verseRef}\n\n` : ""}${divider}\nค้นพบภาษามากกว่า 6,000+ ภาษาที่ 5fish.mobi หรือ globalrecordings.net\nส่งความคิดเห็นไปที่: Thai@globalrecordings.net`;
+    text = `${divider}\n${languageDisplay} | ${messageTitle} | ข้อความ #${programNumber}\n${divider}\n\nฟัง • แบ่งปัน • ดาวน์โหลด\nListen on 5fish: ${qrCodeUrl}\n\n${verseQuote ? `${verseQuote}  ${verseRef}\n\n` : ""}${divider}\nค้นพบภาษามากกว่า 6,000+ ภาษาที่ 5fish.mobi หรือ globalrecordings.net\nส่งความคิดเห็นไปที่: Thai@globalrecordings.net`;
   } else {
-    text = `${divider}\n${languageDisplay} | ${messageTitle} | Message #${programNumber}\n${divider}\n\nListen • Share • Download\nListen on 5fish: ${qrCodeUrl}\n\n${verseQuote ? `"${verseQuote}"\n${verseRef}\n\n` : ""}${divider}\nDiscover 6,000+ languages at 5fish.mobi or globalrecordings.net\nEmail any feedback to: Thai@globalrecordings.net`;
+    text = `${divider}\n${languageDisplay} | ${messageTitle} | Message #${programNumber}\n${divider}\n\nListen • Share • Download\nListen on 5fish: ${qrCodeUrl}\n\n${verseQuote ? `${verseQuote}  ${verseRef}\n\n` : ""}${divider}\nDiscover 6,000+ languages at 5fish.mobi or globalrecordings.net\nEmail any feedback to: Thai@globalrecordings.net`;
   }
 
   if (navigator.share) {
@@ -286,6 +286,38 @@ const ContentView = ({
             </button>
           </div>
 
+          {/* --- MOVED: Download Audio Button (Now above Listen Button) --- */}
+          {item.trackDownloadUrl && (
+            <button
+              onClick={() => !isOffline && !isDownloading && downloadTrack(item)}
+              disabled={isOffline || isDownloading}
+              className={`w-full p-4 mb-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 ${
+                isOffline
+                  ? "bg-amber-500 cursor-default"
+                  : isDownloading
+                  ? "bg-gray-400 cursor-wait"
+                  : "bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-xl"
+              }`}
+            >
+              {isOffline ? (
+                <>
+                  <CheckCircle className="w-6 h-6 mr-2" />
+                  {t.downloaded || "Downloaded"}
+                </>
+              ) : isDownloading ? (
+                <>
+                  <Loader className="w-6 h-6 mr-2 animate-spin" />
+                  {t.downloading || "Downloading..."}
+                </>
+              ) : (
+                <>
+                  <Download className="w-6 h-6 mr-2" />
+                  {t.download_audio || "Download Audio"}
+                </>
+              )}
+            </button>
+          )}
+
           {/* --- MOVED: Listen Button (Now inside column, full width) --- */}
           {item.trackDownloadUrl && (
             <button
@@ -350,37 +382,7 @@ const ContentView = ({
               {t.download || "Download"} <br /> {t.qr_card || "QR Card"}
             </button>
             
-            {/* Download Audio Button */}
-            {item.trackDownloadUrl && (
-              <button
-                onClick={() => !isOffline && !isDownloading && downloadTrack(item)}
-                disabled={isOffline || isDownloading}
-                className={`col-span-2 p-3 font-bold text-white rounded-xl shadow-md flex flex-row items-center justify-center text-sm leading-tight transition-all duration-200 ${
-                  isOffline
-                    ? "bg-green-600 cursor-default"
-                    : isDownloading
-                    ? "bg-gray-400 cursor-wait"
-                    : "bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-lg"
-                }`}
-              >
-                {isOffline ? (
-                  <>
-                    <CheckCircle className="w-5 h-5 mr-2" />
-                    {t.downloaded || "Downloaded"}
-                  </>
-                ) : isDownloading ? (
-                  <>
-                    <Loader className="w-5 h-5 mr-2 animate-spin" />
-                    {t.downloading || "Downloading..."}
-                  </>
-                ) : (
-                  <>
-                    <Download className="w-5 h-5 mr-2" />
-                    {t.download_audio || "Download Audio"}
-                  </>
-                )}
-              </button>
-            )}
+
           </div>
         </div>
 

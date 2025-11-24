@@ -123,7 +123,7 @@ const DownloadButton = ({ track, t }) => {
             disabled={isOffline || isDownloading}
             className={`flex items-center px-3 py-2 rounded-lg text-sm font-bold transition-colors ${
                 isOffline
-                ? "text-green-500 bg-green-100 cursor-default"
+                ? "text-amber-600 bg-amber-100 cursor-default"
                 : isDownloading
                 ? "text-gray-500 bg-gray-200 cursor-wait"
                 : "text-brand-red bg-red-100 hover:bg-red-200"
