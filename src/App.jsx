@@ -79,67 +79,11 @@ export default function App() {
     touchEndRef.current = null;
   };
 
-  // --- Language QR Modal (inline component, uses QRCodeDisplay) ---
-  const LanguageQrModal = ({
-    isOpen,
-    onClose,
-    languageDisplayName,
-    languageShareUrl,
-    t,
-  }) => {
-    if (!isOpen) return null;
 
-    return (
-      <div 
-        className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50"
-        onClick={onClose}
-      >
-        <div 
-          className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full relative"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {/* Close button */}
-          <button
-            onClick={onClose}
-            className="absolute top-3 right-5 text-gray-800"
-          >
-            ✕
-          </button>
 
-          {/* Title + language name */}
-          <h2 className="text-sm text-gray-600 text-center break-all mb-1">
-            {t?.scan_qr_to_view_messages || "Scan QR to view all messages in"}:
-          </h2>
-          <h3 className="text-lg font-bold text-brand-red mb-1 text-center">
-            {languageDisplayName}
-          </h3>
 
-          {/* --- QR CODE DISPLAY --- */}
-          <div className="flex justify-center mb-3 p-4 bg-white rounded-lg">
-            <QRCodeDisplay
-              url={languageShareUrl}
-              size={200}
-              fgColor="#000000"
-              bgColor="#FFFFFF"
-            />
-          </div>
 
-          {/* URL under the QR */}
-          <p className="text-xs text-gray-600 text-center break-all mb-1">
-            {t?.language_qr_title || ""}
-            <a
-              href={languageShareUrl}
-              className="text-brand-red underline break-all text-[10px] block mt-1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {languageShareUrl}
-            </a>
-          </p>
-        </div>
-      </div>
-    );
-  };
+
 
   // --- NEW HELPER: Combine all selected programs into a single text string ---
   const getShareableContent = () => {
@@ -621,6 +565,7 @@ export default function App() {
     localStorage.getItem("appFontSize") || DEFAULT_FONT_SIZE;
 
   const [lang, setLang] = useState(initialLang);
+  const t = i18n[lang]; // Restored translation object
   const [fontSize, setFontSize] = useState(initialFontSize);
   const [pageStack, setPageStack] = useState([{ name: "Home" }]);
   const [track, setTrack] = useState(null);
@@ -678,12 +623,125 @@ export default function App() {
     clearSelection,
   } = useContentFilter();
 
-  // NEW: Language QR Modal State
-  const [isLanguageQrModalOpen, setIsLanguageQrModalOpen] = useState(false);
-  const [modalLanguageName, setModalLanguageName] = useState("");
-  const [modalLanguageShareUrl, setModalLanguageShareUrl] = useState("");
+  // --- Unified Share QR Modal ---
+  const ShareQrModal = ({
+    isOpen,
+    onClose,
+    title,
+    subtitle,
+    url,
+    footerText,
+  }) => {
+    if (!isOpen) return null;
 
-  const t = useMemo(() => i18n[lang], [lang]);
+    return (
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50"
+        onClick={onClose}
+      >
+        <div 
+          className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full relative"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute top-3 right-5 text-gray-800"
+          >
+            ✕
+          </button>
+
+          {/* Title */}
+          <h2 className="text-sm text-gray-600 text-center break-all mb-1">
+            {title}
+          </h2>
+          
+          {/* Subtitle (Language Name or Message Title) */}
+          <h3 className="text-lg font-bold text-brand-red mb-2 text-center">
+            {subtitle}
+          </h3>
+
+          {/* --- QR CODE DISPLAY --- */}
+          <div className="flex justify-center mb-3 p-4 bg-white rounded-lg">
+            <QRCodeDisplay
+              url={url}
+              size={200}
+              fgColor="#000000"
+              bgColor="#FFFFFF"
+            />
+          </div>
+
+          {/* URL under the QR */}
+          <p className="text-xs text-gray-600 text-center break-all mb-1">
+            {footerText}
+            <a
+              href={url}
+              className="text-brand-red underline break-all text-[10px] block mt-1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {url}
+            </a>
+          </p>
+        </div>
+      </div>
+    );
+  };
+
+  // --- Unified Share Modal State ---
+  const [shareModalState, setShareModalState] = useState({
+    isOpen: false,
+    title: "",
+    subtitle: "",
+    url: "",
+    footerText: "",
+  });
+
+  const handleCloseShareModal = () => {
+    setShareModalState((prev) => ({ ...prev, isOpen: false }));
+  };
+
+  const handleShowQrForLanguage = (stableKey) => {
+    const group = languageGroups.find((g) => g.stableKey === stableKey);
+    if (group) {
+      const name = lang === "en" ? group.displayNameEn : group.displayNameTh;
+      
+      // Construct URL (using first message's ISO or fallback)
+      const firstMsg = group.messages[0];
+      const iso3 = firstMsg?.iso3 || "";
+      const url = `https://5fish.mobi/${iso3}`;
+      
+      setShareModalState({
+        isOpen: true,
+        title: t?.scan_qr_to_view_messages || "Scan QR to view all messages in:",
+        subtitle: name,
+        url: url,
+        footerText: t?.language_qr_title || "",
+      });
+    }
+  };
+
+  const handleShowQrForMessage = (item, languageDisplayName) => {
+    const title = lang === "en" ? item.title_en : item.title_th;
+    
+    // Construct URL
+    let url = item.trackDownloadUrl;
+    if (url) {
+      if (!url.startsWith("http")) {
+        url = `https://${url}`;
+      }
+    } else {
+      url = `https://5fish.mobi/T${item.id}`;
+    }
+    
+    setShareModalState({
+      isOpen: true,
+      title: t?.scan_qr_to_download || "Scan QR to download:",
+      subtitle: `${languageDisplayName} - ${title}`,
+      url: url,
+      footerText: "",
+    });
+  };
 
   // Group Messages by Language (Memoized for performance)
   const languageGroups = useMemo(() => {
@@ -901,31 +959,6 @@ export default function App() {
     setIsAudioMinimized(false);
   };
 
-  // Handler for Language QR Modal button
-  const handleShowQrForLanguage = (stableKey) => {
-    const group = languageGroups.find((g) => g.stableKey === stableKey);
-    if (group) {
-      setModalLanguageName(
-        lang === "en" ? group.displayNameEn : group.displayNameTh
-      );
-      // Construct the shareable URL
-      // Construct the shareable URL
-      // Use 5fish.org format: https://5fi.sh/th/{langId}?language={LanguageName}
-      const url = `https://5fi.sh/th/${group.langId}?language=${encodeURIComponent(
-        group.displayNameEn
-      )}`;
-      setModalLanguageShareUrl(url);
-      setIsLanguageQrModalOpen(true);
-    }
-  };
-
-  // Close Language QR Modal
-  const handleCloseLanguageQrModal = () => {
-    setIsLanguageQrModalOpen(false);
-    setModalLanguageName("");
-    setModalLanguageShareUrl("");
-  };
-
   // Audio Player Toggle
   const toggleAudioMinimize = () => {
     setIsAudioMinimized((p) => !p);
@@ -1115,7 +1148,6 @@ export default function App() {
         />
       );
       break;
-    // --------------------------------------------------------
 
     case "MessagesByLanguage":
       PageContent = (
@@ -1134,6 +1166,7 @@ export default function App() {
           // --- NEW WIRING ---
           selectedPrograms={selectedPrograms}
           onToggleProgram={handleProgramToggle}
+          onShowQrForMessage={handleShowQrForMessage} // 👈 PASSED DOWN
         />
       );
       break;
@@ -1265,13 +1298,14 @@ export default function App() {
         {/* --- UPDATE NOTIFICATION BANNER --- */}
         <UpdateNotification />
         
-        {/* --- LANGUAGE QR MODAL --- */}
-        <LanguageQrModal
-          isOpen={isLanguageQrModalOpen}
-          onClose={handleCloseLanguageQrModal}
-          languageDisplayName={modalLanguageName}
-          languageShareUrl={modalLanguageShareUrl}
-          t={t}
+        {/* --- UNIFIED SHARE QR MODAL --- */}
+        <ShareQrModal
+          isOpen={shareModalState.isOpen}
+          onClose={handleCloseShareModal}
+          title={shareModalState.title}
+          subtitle={shareModalState.subtitle}
+          url={shareModalState.url}
+          footerText={shareModalState.footerText}
         />
 
         {/* --- HEADER (Banner) --- */}

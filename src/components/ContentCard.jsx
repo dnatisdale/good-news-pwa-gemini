@@ -16,6 +16,7 @@ const ContentCard = ({
   onToggle, // NEW: Function to toggle this message
   isPlayingSample, // NEW: Is this sample playing?
   onPlaySample, // NEW: Function to toggle sample playback
+  onShowQrForMessage, // 👇 NEW PROP
 }) => {
   const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
 
@@ -87,7 +88,8 @@ const ContentCard = ({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            onSelect(item); // Navigate to detail view which has sharing
+            // onSelect(item); // OLD: Navigate to detail view
+            onShowQrForMessage && onShowQrForMessage(); // NEW: Show QR Modal
           }}
           className="p-2 rounded-full bg-gray-100 text-gray-500 hover:bg-brand-red hover:text-white transition-all"
           title="Share Message"

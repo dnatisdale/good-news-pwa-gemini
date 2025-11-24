@@ -17,6 +17,7 @@ const MessagesByLanguagePage = ({
   pageStack,
   selectedPrograms,
   onToggleProgram,
+  onShowQrForMessage, // 👇 NEW PROP
 }) => {
   const languageDisplayName = useMemo(() => {
     const group = languageGroups.find(
@@ -96,6 +97,7 @@ const MessagesByLanguagePage = ({
           }
           isPlayingSample={playingSampleId === item.id}
           onPlaySample={() => handlePlaySample(item)}
+          onShowQrForMessage={() => onShowQrForMessage(item, languageDisplayName)} // 👇 PASS IT DOWN
         />
       ))}
       <div className="h-16"></div>
