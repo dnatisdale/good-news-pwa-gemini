@@ -13,6 +13,13 @@ self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());
 });
 
+// Listen for skip waiting message from the app
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
+
 self.addEventListener("activate", (event) => {
   console.log("[Service Worker] Activate");
   // Clean up old caches if any

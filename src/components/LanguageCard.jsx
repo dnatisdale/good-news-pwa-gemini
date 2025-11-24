@@ -1,5 +1,5 @@
 import React from "react";
-import { Share2 } from "./Icons";
+import { Share2, Volume2 } from "./Icons";
 import { i18n } from "../i18n";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
@@ -53,16 +53,33 @@ const LanguageCard = ({
           </p>
         </div>
 
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onShowQrForLanguage(languageName);
-          }}
-          className="flex-shrink-0 p-2 rounded-full bg-gray-200 text-gray-600 hover:bg-brand-red hover:text-white transition-colors"
-          title={i18n[lang].share_language_qr || "Share Language QR"}
-        >
-          <Share2 className="w-6 h-6" />
-        </button>
+        {/* Play and Share buttons side by side */}
+        <div className="flex-shrink-0 flex items-center gap-2">
+          {/* Play Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              // Play will be handled by parent - for now just a placeholder
+              // The parent will need to pass onPlayLanguage prop
+            }}
+            className="p-2 rounded-full bg-gray-200 text-gray-600 hover:bg-amber-500 hover:text-white transition-colors"
+            title={lang === "en" ? "Listen to sample" : "ฟังตัวอย่าง"}
+          >
+            <Volume2 className="w-6 h-6" />
+          </button>
+
+          {/* Share Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onShowQrForLanguage(languageName);
+            }}
+            className="p-2 rounded-full bg-gray-200 text-gray-600 hover:bg-brand-red hover:text-white transition-colors"
+            title={i18n[lang].share_language_qr || "Share Language QR"}
+          >
+            <Share2 className="w-6 h-6" />
+          </button>
+        </div>
       </div>
     </div>
   );

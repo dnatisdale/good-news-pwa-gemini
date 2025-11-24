@@ -1,7 +1,7 @@
 import React from "react";
 import { i18n } from "../i18n"; // Assuming i18n is in src/i18n.js
 import { formatContentItem } from "../utils/contentFormatter";
-import { Volume2, Pause, PlayCircle } from "./Icons"; // Import icons
+import { Volume2, Pause, PlayCircle, Share2 } from "./Icons"; // Import icons
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 const TEXT_COLOR_CLASS = "text-gray-800";
@@ -59,9 +59,10 @@ const ContentCard = ({
         </p>
       </div>
 
-      {/* --- NEW: AUDIO PREVIEW BUTTON --- */}
-      {item.sampleUrl && (
-        <div className="pl-2 pt-1">
+      {/* --- PLAY AND SHARE BUTTONS --- */}
+      <div className="pl-2 pt-1 flex items-center gap-2">
+        {/* Play Button (only show if sample exists) */}
+        {item.sampleUrl && (
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -80,8 +81,20 @@ const ContentCard = ({
               <Volume2 className="w-6 h-6" />
             )}
           </button>
-        </div>
-      )}
+        )}
+
+        {/* Share Button */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onSelect(item); // Navigate to detail view which has sharing
+          }}
+          className="p-2 rounded-full bg-gray-100 text-gray-500 hover:bg-brand-red hover:text-white transition-all"
+          title="Share Message"
+        >
+          <Share2 className="w-6 h-6" />
+        </button>
+      </div>
     </div>
   );
 };

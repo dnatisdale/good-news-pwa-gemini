@@ -37,6 +37,7 @@ import SearchPage from "./pages/SearchPage";
 import SettingsPage from "./pages/SettingsPage";
 import NotesPage from "./pages/NotesPage";
 import MyLibraryPage from "./pages/MyLibraryPage";
+import UpdateNotification from "./components/UpdateNotification";
 
 // --- CONSTANTS ---
 const PRIMARY_COLOR_CLASS = "bg-gradient-to-r from-brand-red to-brand-red-dark";
@@ -1261,6 +1262,9 @@ export default function App() {
     ) : (
       // 2. --- NORMAL APPLICATION START (Visible while isLoading is FALSE) ---
       <div className="min-h-screen bg-gray-100 flex flex-col">
+        {/* --- UPDATE NOTIFICATION BANNER --- */}
+        <UpdateNotification />
+        
         {/* --- LANGUAGE QR MODAL --- */}
         <LanguageQrModal
           isOpen={isLanguageQrModalOpen}
@@ -1729,6 +1733,23 @@ export default function App() {
             </div>
           </div>
         </div>
+
+        {/* --- FOOTER with App Statistics --- */}
+        <footer className="bg-gray-800 text-gray-300 text-xs py-2 px-4 text-center border-t border-gray-700">
+          <div className="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-x-4 gap-y-1">
+            <span className="whitespace-nowrap">
+              📅 {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+            </span>
+            <span className="text-gray-500">|</span>
+            <span className="whitespace-nowrap">
+              🌐 {[...new Set(staticContent.map(item => item.stableKey))].length} Languages
+            </span>
+            <span className="text-gray-500">|</span>
+            <span className="whitespace-nowrap">
+              💬 {staticContent.length} Messages
+            </span>
+          </div>
+        </footer>
       </div>
     ) // This is the closing parenthesis for the entire application UI block
   ); // This is the closing parenthesis for the main return
