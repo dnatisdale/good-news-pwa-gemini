@@ -31,34 +31,54 @@ const copyLink = (text, callback) => {
     .catch(() => callback("Failed to copy link."));
 };
 
-const shareQRCard = (lang, programNumber, qrCodeUrl) => {
-  if (navigator.share) {
-    let title;
-    let text;
-
-    if (lang === "th") {
-      title = "ข่าวดี";
-      text = `Message #:${programNumber}\n\nฟัง แบ่งปัน ดาวน์โหลดที่: ${qrCodeUrl}\n\nค้นหาความรู้ใหม่ๆ กับ PWA ข่าวดี!`;
+const shareQRCard = (item, lang, qrCodeUrl) => {
+  const { languageDisplay, messageTitle, trackTitle } = formatContentItem(item, lang);
+  const programNumber = item.id;
+  
+  // Get verse text and reference
+  const verseText = lang === "th" ? item.verse_th : item.verse_en;
+  
+  // Extract reference if verse has it (e.g., "Genesis 1:1 text..." -> ref: "Genesis 1:1", text: "text...")
+  let verseQuote = "";
+  let verseRef = "";
+  if (verseText) {
+    // Simple pattern: if verse starts with book name and chapter:verse, split it
+    const match = verseText.match(/^([^\.]+\d+:\d+)\s+(.+)$/);
+    if (match) {
+      verseRef = match[1];
+      verseQuote = match[2];
     } else {
-      title = "Thai: Good News";
-      text = `Message #:${programNumber}\n\nListen, Share, Download at: ${qrCodeUrl}\n\nDiscover more with the Thai: Good News PWA!`;
+      verseQuote = verseText;
     }
+  }
+  
+  const divider = "━━━━━━━━━━━━━━━━";
+  
+  let text;
+  if (lang === "th") {
+    text = `${divider}\n${languageDisplay} | ${messageTitle} | ข้อความ #${programNumber}\n${divider}\n\nฟัง • แบ่งปัน • ดาวน์โหลด\n${qrCodeUrl}\n\n${verseQuote ? `"${verseQuote}"\n${verseRef}\n\n` : ""}${divider}\nค้นพบภาษามากกว่า 6,000+ ภาษาที่ 5fish.mobi หรือ globalrecordings.net\nส่งความคิดเห็นไปที่: Thai@globalrecordings.net`;
+  } else {
+    text = `${divider}\n${languageDisplay} | ${messageTitle} | Message #${programNumber}\n${divider}\n\nListen • Share • Download\n${qrCodeUrl}\n\n${verseQuote ? `"${verseQuote}"\n${verseRef}\n\n` : ""}${divider}\nDiscover 6,000+ languages at 5fish.mobi or globalrecordings.net\nEmail any feedback to: Thai@globalrecordings.net`;
+  }
 
+  if (navigator.share) {
+    const title = lang === "th" ? "ข่าวดี" : "Thai: Good News";
+    
     navigator
       .share({
         title: title,
         text: text,
-        url: qrCodeUrl,
       })
       .then(() => console.log("QR Card shared successfully!"))
-      .catch((error) => console.error("Error sharing QR Card:", error));
+      .catch((error) => {
+        console.error("Error sharing QR Card:", error);
+        // Fallback to copy if share fails (e.g. user cancelled or not supported)
+        if (error.name !== "AbortError") {
+             copyLink(text, (message) => alert(message));
+        }
+      });
   } else {
-    const fallbackText =
-      lang === "th"
-        ? `ข่าวดี Message #:${programNumber}\nฟัง แบ่งปัน ดาวน์โหลดที่: ${qrCodeUrl}`
-        : `Thai: Good News Message #:${programNumber}\nListen, Share, Download at: ${qrCodeUrl}`;
-
-    copyLink(fallbackText, (message) => alert(message));
+    copyLink(text, (message) => alert(message));
   }
 };
 
@@ -171,7 +191,7 @@ const ContentView = ({
   };
 
   const handleShare = () => {
-    if (item) shareQRCard(lang, item.id, cardUrl);
+    if (item) shareQRCard(item, lang, cardUrl);
   };
 
   const downloadShareCard = async () => {
@@ -198,13 +218,21 @@ const ContentView = ({
         backgroundColor: null,
       })
         .then((canvas) => {
-          const pngFile = canvas.toDataURL("image/png");
-          const downloadLink = document.createElement("a");
-          downloadLink.href = pngFile;
-          downloadLink.download = `share-card-${item.id}-${lang}.png`;
-          document.body.appendChild(downloadLink);
-          downloadLink.click();
-          document.body.removeChild(downloadLink);
+          // Use toBlob for better browser compatibility than toDataURL
+          canvas.toBlob((blob) => {
+            if (!blob) {
+              console.error("Canvas is empty");
+              return;
+            }
+            const url = URL.createObjectURL(blob);
+            const downloadLink = document.createElement("a");
+            downloadLink.href = url;
+            downloadLink.download = `share-card-${item.id}-${lang}.png`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(url); // Clean up
+          }, "image/png");
         })
         .finally(() => {
           root.unmount();
@@ -223,51 +251,53 @@ const ContentView = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      {/* Line 1: Language Name - HUGE */}
-      <h1 className="text-4xl font-extrabold text-brand-red mb-3">
-        {languageDisplay}
-      </h1>
 
-      {/* Line 2: Message Name | Track Name (Code) | message: # */}
-      <div className="mb-4">
-        <p className="text-lg text-gray-800 leading-tight flex items-baseline gap-2">
-          <span className="text-2xl font-bold">{messageTitle}</span>
-          <span className="text-gray-400">|</span>
-          <span className="text-sm text-gray-500">message: #{item.id}</span>
-        </p>
-      </div>
-
-      {/* Favorite button */}
-      <div className="flex justify-end mb-4">
-        <button
-          onClick={toggleFavorite}
-          className={`p-2 rounded-full transition-colors ${
-            isFavorite
-              ? "bg-red-100 text-red-500"
-              : "bg-gray-200 text-gray-600 hover:bg-red-50"
-          }`}
-        >
-          <Heart
-            className={`w-6 h-6 ${isFavorite ? "fill-current" : ""}`}
-          />
-        </button>
-      </div>
 
       {/* Listen Button */}
-      {item.trackDownloadUrl && (
-        <button
-          onClick={() => onPlay(item)}
-          style={{ backgroundColor: THAI_BLUE }}
-          className="w-full p-4 mb-6 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 hover:shadow-xl"
-        >
-          <PlayCircle className="w-6 h-6 mr-2" />
-          {t.listen_offline || "Listen (Offline Enabled)"}
-        </button>
-      )}
+
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Left Column: QR Code, Bible Verse, and controls */}
-        <div className="md:order-1 flex flex-col items-center">
+        <div className="md:order-1 flex flex-col items-center w-full max-w-lg mx-auto">
+          
+          {/* --- HEADER ROW: Text Left, Heart Right --- */}
+          <div className="w-full flex justify-between items-end mb-4">
+            <div className="flex flex-col items-start">
+              <h1 className="text-3xl font-extrabold text-brand-red leading-tight">
+                {languageDisplay}
+              </h1>
+              <p className="text-lg text-gray-800 leading-tight mt-1">
+                <span className="font-bold">{messageTitle}</span>
+                <span className="text-sm text-gray-500 ml-2">#{item.id}</span>
+              </p>
+            </div>
+            
+            <button
+              onClick={toggleFavorite}
+              className={`p-2 rounded-full transition-colors flex-shrink-0 ml-4 ${
+                isFavorite
+                  ? "bg-red-100 text-red-500"
+                  : "bg-gray-200 text-gray-600 hover:bg-red-50"
+              }`}
+            >
+              <Heart
+                className={`w-6 h-6 ${isFavorite ? "fill-current" : ""}`}
+              />
+            </button>
+          </div>
+
+          {/* --- MOVED: Listen Button (Now inside column, full width) --- */}
+          {item.trackDownloadUrl && (
+            <button
+              onClick={() => onPlay(item)}
+              style={{ backgroundColor: THAI_BLUE }}
+              className="w-full p-4 mb-6 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 hover:shadow-xl"
+            >
+              <PlayCircle className="w-6 h-6 mr-2" />
+              {t.listen_offline || "Listen (Offline Enabled)"}
+            </button>
+          )}
+
           {/* QR Code */}
           <div
             className="flex flex-col items-center p-4 bg-white rounded-xl shadow-inner mb-6 cursor-pointer transition-all duration-300"

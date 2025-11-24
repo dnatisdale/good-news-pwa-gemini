@@ -54,6 +54,9 @@ export const i18n = {
     search_tip: "Try searching by title, language, or a verse snippet.",
     start_typing_to_search: "Start typing to search all",
     items: "items",
+    recent_searches: "Recent Searches", // NEW
+    clear_history: "Clear History", // NEW
+    no_recent_searches: "No recent searches", // NEW
 
     // Favorites
     no_favorites: "You haven't added any favorites yet.",
@@ -86,6 +89,10 @@ export const i18n = {
     font_size: "Font size",
     language: "Language",
     tools_panel: "Tools",
+    font_size_label: "Font Size", // NEW
+    font_size_small: "Small", // NEW
+    font_size_medium: "Medium", // NEW
+    font_size_large: "Large", // NEW
     
     // SelectedContentPage
     messages_selected: "messages selected",
@@ -168,6 +175,9 @@ export const i18n = {
     search_tip: "ลองค้นหาด้วยชื่อเรื่อง ภาษา หรือข้อความบางส่วน",
     start_typing_to_search: "เริ่มพิมพ์เพื่อค้นหาทั้งหมด",
     items: "รายการ",
+    recent_searches: "การค้นหาล่าสุด", // NEW
+    clear_history: "ล้างประวัติ", // NEW
+    no_recent_searches: "ไม่มีประวัติการค้นหา", // NEW
 
     // Favorites
     no_favorites: "คุณยังไม่ได้เพิ่มรายการโปรด",
@@ -206,6 +216,10 @@ export const i18n = {
     clear_all: "ล้างทั้งหมด",
     selected_programs: "โปรแกรมที่เลือก",
     font_size: "ขนาดตัวอักษร",
+    font_size_label: "ขนาดตัวอักษร", // NEW
+    font_size_small: "เล็ก", // NEW
+    font_size_medium: "กลาง", // NEW
+    font_size_large: "ใหญ่", // NEW
     language: "ภาษา",
     tools_panel: "เครื่องมือ",
     

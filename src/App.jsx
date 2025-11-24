@@ -152,28 +152,36 @@ export default function App() {
 
     if (filteredContent.length === 0) return null;
 
+    const divider = "━━━━━━━━━━━━━━━━";
+
     // 2. Map the selected programs to an array of formatted strings
     const shareableItems = filteredContent.map((item) => {
       const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
       const cardUrl = `https://5fi.sh/T${item.id}`;
+      
+      // Get verse text and reference
+      const verseText = isThai ? item.verse_th : item.verse_en;
+      let verseQuote = "";
+      let verseRef = "";
+      if (verseText) {
+        const match = verseText.match(/^([^\.]+\d+:\d+)\s+(.+)$/);
+        if (match) {
+          verseRef = match[1];
+          verseQuote = match[2];
+        } else {
+          verseQuote = verseText;
+        }
+      }
 
-      // Format:
-      // [Language] Message Title
-      // Track Title
-      // Message #: 12345 | URL
-      return `[${languageDisplay}] ${messageTitle}\n${trackTitle}\nMessage #: ${programNumber} | ${cardUrl}`;
+      // Format each message with decorative lines
+      return `${divider}\n${languageDisplay} | ${messageTitle} | ${isThai ? 'ข้อความ' : 'Message'} #${programNumber}\n${divider}\n\n${isThai ? 'ฟัง • แบ่งปัน • ดาวน์โหลด' : 'Listen • Share • Download'}\n${cardUrl}\n\n${verseQuote ? `"${verseQuote}"\n${verseRef}\n` : ""}`;
     });
 
-    // 3. Combine the items into a single, highly readable string
+    // 3. Combine the items with footer
     const combinedText = [
-      t.share_header_list ||
-        (isThai ? "รายการข้อความที่เลือก:" : "Selected Program List:"),
       ...shareableItems,
-      t.app_link_footer ||
-        (isThai
-          ? "ค้นหาเพิ่มเติมที่: [Your App Link Here]"
-          : "Find more content at: [Your App Link Here]"),
-    ].join("\n\n"); // Double newline for separation
+      `${divider}\n${isThai ? 'ค้นพบภาษามากกว่า 6,000+ ภาษาที่ 5fish.mobi หรือ globalrecordings.net\nส่งความคิดเห็นไปที่: Thai@globalrecordings.net' : 'Discover 6,000+ languages at 5fish.mobi or globalrecordings.net\nEmail any feedback to: Thai@globalrecordings.net'}`
+    ].join("\n\n");
 
     return combinedText;
   };
@@ -188,7 +196,12 @@ export default function App() {
 
     const isThai = lang === "th";
     const titleText = isThai ? "รายการข้อความที่เลือก" : "Selected Messages";
-    const dateText = new Date().toLocaleDateString();
+    
+    // --- NEW: Custom Filename with Timestamp ---
+    const now = new Date();
+    const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD
+    const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-').slice(0, 5); // HH-mm
+    const filename = `TGN_Selected_Messages_${dateStr}_${timeStr}`;
 
     // Generate HTML list items
     const listItemsHtml = filteredContent.map((item, index) => {
@@ -213,11 +226,11 @@ export default function App() {
     const printHtml = `
       <html>
         <head>
-          <title>${titleText}</title>
+          <title>${filename}</title>
           <style>
             @page {
               size: A4;
-              margin: 1in;
+              margin: 0.75in; /* --- CHANGED: 0.75in Margins --- */
             }
             body {
               font-family: "Sarabun", "Prompt", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -225,66 +238,29 @@ export default function App() {
               color: #333;
               max-width: 800px;
               margin: 0 auto;
-              padding: 20px;
+              padding: 0; /* Padding handled by @page */
             }
-            h1 {
-              color: #CC3333;
+            /* --- NEW: Header Layout with Logo --- */
+            .print-header {
+              display: flex;
+              align-items: center;
               border-bottom: 2px solid #eee;
               padding-bottom: 10px;
-              margin-bottom: 5px;
+              margin-bottom: 20px;
+            }
+            .header-logo {
+              height: 50px;
+              margin-right: 20px;
+            }
+            h1 {
+              color: #003366; /* --- CHANGED: Thai Blue --- */
+              margin: 0;
+              font-size: 24px;
             }
             .date {
               color: #666;
               font-size: 0.9em;
-              margin-bottom: 30px;
-            }
-            .message-item {
-              margin-bottom: 25px;
-              page-break-inside: avoid;
-            }
-            .item-header {
-              font-weight: bold;
-              font-size: 1.1em;
-              margin-bottom: 4px;
-            }
-            .item-index {
-              color: #666;
-              margin-right: 5px;
-            }
-            .item-lang {
-              color: #CC3333;
-              margin-right: 5px;
-            }
-            .item-track {
-              margin-left: 25px;
-              font-style: italic;
-              color: #444;
-              margin-bottom: 4px;
-            }
-            .item-meta {
-              margin-left: 25px;
-              font-size: 0.85em;
-              color: #666;
-            }
-            a {
-              color: #CC3333;
-              text-decoration: none;
-            }
-            /* Hide buttons when printing */
-            @media print {
-              .no-print { display: none !important; }
-            }
-            .control-bar {
-              text-align: center;
-              margin-bottom: 20px;
-              padding: 15px;
-              background: #f8f9fa;
-              border-radius: 8px;
-              border: 1px solid #e9ecef;
-            }
-            .print-btn {
-              background: #CC3333;
-              color: white;
+              margin-left: auto; /* Push to right */
               border: none;
               padding: 10px 20px;
               border-radius: 6px;
@@ -647,14 +623,36 @@ export default function App() {
   const [fontSize, setFontSize] = useState(initialFontSize);
   const [pageStack, setPageStack] = useState([{ name: "Home" }]);
   const [track, setTrack] = useState(null);
-  // 👇 ADD THIS NEW STATE SIGNAL 👇
   const [isHoveringContent, setIsHoveringContent] = useState(false);
   const [isAudioMinimized, setIsAudioMinimized] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Splash Screen state
-  // --- NEW STATE FOR SEARCH TOGGLE (Fixes ReferenceError at line 1613) ---
+  const [isLoading, setIsLoading] = useState(true);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  // ----------------------------------------------------------------------
+
+  // --- NEW: Search History State ---
+  const [searchHistory, setSearchHistory] = useState(() => {
+    const saved = localStorage.getItem("searchHistory");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  // Save history to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  }, [searchHistory]);
+
+  const addToSearchHistory = (term) => {
+    if (!term || !term.trim()) return;
+    const cleanTerm = term.trim();
+    setSearchHistory((prev) => {
+      // Remove if exists, then add to front
+      const filtered = prev.filter((item) => item !== cleanTerm);
+      return [cleanTerm, ...filtered].slice(0, 10); // Keep max 10
+    });
+  };
+
+  const clearSearchHistory = () => {
+    setSearchHistory([]);
+  };
   const [deferredPrompt, setDeferredPrompt] = useState(null); // Install Prompt state
   // --- NEW FUNCTION: navigateToHome (Fixes ReferenceError at line 1564) ---
   const navigateToHome = () => {
@@ -1152,6 +1150,13 @@ export default function App() {
           hasNext={hasNext}
           // --- FIX: ADDED pageStack PROP ---
           pageStack={pageStack}
+          // --- NEW: Search History Props ---
+          searchHistory={searchHistory}
+          onClearHistory={clearSearchHistory}
+          onHistorySelect={(term) => {
+            setSearchTerm(term);
+            addToSearchHistory(term); // Refresh position
+          }}
         />
       );
       break;
@@ -1370,104 +1375,58 @@ export default function App() {
           </div>
 
           {/* Desktop: Flexbox layout */}
-          <div className="hidden md:flex justify-between items-center">
-            {/* LEFT SECTION: Hamburger Menu, Logo, and Navigation */}
-            <div className="flex items-center flex-shrink-0">
+          <div className="hidden md:flex justify-between items-center relative">
+            
+            {/* --- LEFT BOOKEND: Back Button --- */}
+            <div className="flex-shrink-0 mr-4">
               <button
-                onClick={() => setIsDrawerOpen(true)}
-                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
-                aria-label="Open Sidebar Menu"
-              >
-                <Menu className="w-6 h-6 md:w-7 md:h-7" />
-              </button>
-              <a
-                href="https://5fish.mobi/th?r=Asia&country=Thailand"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="5fish.mobi/th?r=Asia&country=Thailand"
-                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors ml-2 focus:outline-none focus:ring-2 focus:ring-white"
-              >
-                <img
-                  src={BannerLogo}
-                  alt={t.app_name}
-                  className="h-12 w-auto rounded-md shadow-sm bg-white p-1"
-                />
-              </a>
-              
-              {/* Navigation Controls - Desktop */}
-              {currentPage.name !== "Home" && (
-                <div className="flex items-center space-x-2 ml-4">
-                  <button
-                    onClick={goBack}
-                    disabled={!hasPrev}
-                    className={`p-1 rounded-lg transition-colors flex items-center ${
-                      hasPrev
-                        ? "text-white hover:bg-white/20"
-                        : "text-red-200 opacity-50 cursor-not-allowed"
-                    }`}
-                    title={t.back || "Back"}
-                  >
-                    <ChevronLeft className="w-8 h-8" />
-                  </button>
-                  <button
-                    onClick={goForward}
-                    disabled={!hasNext}
-                    className={`p-1 rounded-lg transition-colors flex items-center ${
-                      hasNext
-                        ? "text-white hover:bg-white/20"
-                        : "text-red-200 opacity-50 cursor-not-allowed"
-                    }`}
-                    title={t.forward || "Forward"}
-                  >
-                    <ChevronRight className="w-8 h-8" />
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* RIGHT SECTION: Controls */}
-            <div className="flex items-center space-x-4 flex-shrink-0">
-              <FloatingUtilityBar
-                t={t}
-                lang={lang}
-                setLang={setLang}
-                selectionCount={selectedPrograms.length}
-                onClearSelection={clearSelection}
-                fontSize={fontSize}
-                setFontSize={setFontSize}
-                navigateToSelectedContent={navigateToSelectedContent}
-                isHovering={isHoveringContent}
-              />
-              <LanguageToggle lang={lang} setLang={setLang} t={t} />
-              <button
-                onClick={() => {
-                  if (deferredPrompt) {
-                    handleInstallClick();
-                  } else {
-                    alert("App is already installed / แอปถูกติดตั้งแล้ว");
-                  }
-                }}
-                title={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
-                className={`p-1 rounded-lg transition-colors btn-hover ${
-                  deferredPrompt
-                    ? "text-white hover:bg-red-800"
-                    : "text-red-300 cursor-pointer"
+                onClick={goBack}
+                disabled={!hasPrev}
+                className={`h-12 w-12 flex items-center justify-center rounded-l-lg rounded-r-none transition-all ${
+                  hasPrev
+                    ? "bg-[#003366] text-white hover:bg-[#002244] shadow-md"
+                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
                 }`}
-                aria-label={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
+                title={t.back || "Back"}
               >
-                <Download className="w-6 h-6" />
-              </button>
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
-                aria-label="Toggle Search"
-              >
-                <Search className="w-6 h-6" />
+                <ChevronLeft className="w-8 h-8" />
               </button>
             </div>
-          </div>
-        </header>
 
+            {/* CENTER SECTION: Hamburger, Logo, Controls */}
+            <div className="flex-grow flex items-center justify-between">
+              {/* Left-Center: Menu & Logo */}
+              <div className="flex items-center">
+                <button
+                  onClick={() => setIsDrawerOpen(true)}
+                  className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover mr-3"
+                  aria-label="Open Sidebar Menu"
+                >
+                  <Menu className="w-6 h-6 md:w-7 md:h-7" />
+                </button>
+                <a
+                  href="https://5fish.mobi/th?r=Asia&country=Thailand"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="5fish.mobi/th?r=Asia&country=Thailand"
+                  className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                  <img
+                    src={BannerLogo}
+                    alt={t.app_name}
+                    className="h-12 w-auto rounded-md shadow-sm bg-white p-1"
+                  />
+                </a>
+              </div>
+
+              {/* Right-Center: Controls */}
+              <div className="flex items-center space-x-4">
+                <FloatingUtilityBar
+                  t={t}
+                  lang={lang}
+                  setLang={setLang}
+                  selectionCount={selectedPrograms.length}
+                  onClearSelection={clearSelection}
         {/* --- TOGGLED SEARCH BAR (Below Header) --- */}
         {isSearchOpen && (
           // IMPORTANT CHANGE: Increased top-16 to top-20 (5rem) and lowered z-index to z-10
@@ -1484,6 +1443,12 @@ export default function App() {
                 className="w-full p-2 pl-10 text-gray-800 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-red-300 transition duration-150"
                 style={{ fontSize: "1.2rem" }} // For the 1-point increase
                 autoFocus
+                // --- NEW: Save history on Enter ---
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    addToSearchHistory(searchTerm);
+                  }
+                }}
               />
               {/* Search Icon color changed to Thai Red */}
               <Search
