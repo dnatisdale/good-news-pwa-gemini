@@ -14,6 +14,9 @@ const LanguageCard = ({
   onToggle,
   // 👇 NEW PROP
   setHovering,
+  // 👇 NEW: Audio playback props
+  onPlayLanguage,
+  isPlayingLanguage,
 }) => {
   return (
     <div
@@ -59,10 +62,13 @@ const LanguageCard = ({
           <button
             onClick={(e) => {
               e.stopPropagation();
-              // Play will be handled by parent - for now just a placeholder
-              // The parent will need to pass onPlayLanguage prop
+              onPlayLanguage && onPlayLanguage();
             }}
-            className="p-2 rounded-full bg-gray-200 text-gray-600 hover:bg-amber-500 hover:text-white transition-colors"
+            className={`p-2 rounded-full transition-all ${
+              isPlayingLanguage
+                ? "bg-amber-100 text-amber-600 animate-pulse"
+                : "bg-gray-200 text-gray-600 hover:bg-amber-500 hover:text-white"
+            }`}
             title={lang === "en" ? "Listen to sample" : "ฟังตัวอย่าง"}
           >
             <Volume2 className="w-6 h-6" />
