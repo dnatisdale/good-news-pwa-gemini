@@ -123,12 +123,24 @@ function updateStaticContent() {
     console.log(`Matched ${matchedCount} items with audio samples.`);
     console.log(`Unique languages with samples: ${Object.keys(audioMap).length}`);
 
+    // Filter out items with empty languageEn or id
+    const filteredData = data.filter(item => {
+        const hasValidLanguage = item.languageEn && item.languageEn.trim() !== '';
+        const hasValidId = item.id && item.id.toString().trim() !== '';
+        return hasValidLanguage && hasValidId;
+    });
+    
+    const removedCount = data.length - filteredData.length;
+    if (removedCount > 0) {
+        console.log(`Filtered out ${removedCount} items with empty language or id.`);
+    }
+
     const jsContent = `// This file was automatically generated from your CSV data on your_content_data.csv.
-export const staticContent = ${JSON.stringify(data, null, 2)};
+export const staticContent = ${JSON.stringify(filteredData, null, 2)};
 `;
 
     fs.writeFileSync(OUTPUT_FILE_PATH, jsContent);
-    console.log(`Updated ${OUTPUT_FILE_PATH}`);
+    console.log(`Updated ${OUTPUT_FILE_PATH} with ${filteredData.length} valid items.`);
 }
 
 updateStaticContent();

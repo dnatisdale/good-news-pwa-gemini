@@ -2845,22 +2845,6 @@ export const staticContent = [
     "stableKey": "Karen S'gaw"
   },
   {
-    "id": ",",
-    "iso3": "",
-    "langId": "",
-    "languageEn": "",
-    "langTh": "",
-    "title_en": "",
-    "title_th": "",
-    "verse_en": "",
-    "verse_th": "",
-    "streamUrl": "",
-    "trackDownloadUrl": "",
-    "zipDownloadUrl": "",
-    "programId": "",
-    "shareUrl": ""
-  },
-  {
     "id": 80842,
     "iso3": "EKY",
     "langId": "5169",
@@ -5507,22 +5491,6 @@ export const staticContent = [
     "stableKey": "Nyah Kur"
   },
   {
-    "id": ",fivefish.org/T65655,fivefish.org/T65655-001.mp3,https://files.globalrecordings.net/files/set/mp3-low/65655.zip,65655,5fi.sh/T65655,,,",
-    "iso3": "",
-    "langId": "",
-    "languageEn": "",
-    "langTh": "",
-    "title_en": "",
-    "title_th": "",
-    "verse_en": "",
-    "verse_th": "",
-    "streamUrl": "",
-    "trackDownloadUrl": "",
-    "zipDownloadUrl": "",
-    "programId": "",
-    "shareUrl": ""
-  },
-  {
     "id": 64995,
     "iso3": "CBN",
     "langId": "15143",
@@ -5557,22 +5525,6 @@ export const staticContent = [
     "shareUrl": "",
     "sampleUrl": "/audio/Nyaw.15183.mp3",
     "stableKey": "Nyaw"
-  },
-  {
-    "id": ",fivefish.org/T65961,fivefish.org/T65961-001.mp3,https://files.globalrecordings.net/files/set/mp3-low/65961.zip,65961,5fi.sh/T65961,,,",
-    "iso3": "",
-    "langId": "",
-    "languageEn": "",
-    "langTh": "",
-    "title_en": "",
-    "title_th": "",
-    "verse_en": "",
-    "verse_th": "",
-    "streamUrl": "",
-    "trackDownloadUrl": "",
-    "zipDownloadUrl": "",
-    "programId": "",
-    "shareUrl": ""
   },
   {
     "id": 2951,
