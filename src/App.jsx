@@ -1722,34 +1722,27 @@ export default function App() {
               {/* Install Button removed from sidebar (moved to header) */}
               
               {/* --- User ID at very bottom --- */}
-              <div className="text-xs text-gray-500 border-t border-gray-200 pt-3">
+              <div className="text-xs text-gray-500 border-t border-gray-200 pt-3 space-y-2">
                 <p className="truncate text-center">
                   {t.user_id || "User ID"}:
                   <span className="font-mono text-gray-600 ml-1">
                     {userId || "..."}
                   </span>
                 </p>
+                
+                {/* Build Information */}
+                <div className="text-center space-y-1 pt-2 border-t border-gray-200">
+                  <p className="text-gray-600">
+                    Build: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                  </p>
+                  <p className="text-gray-600">
+                    {[...new Set(staticContent.map(item => item.stableKey))].length} Languages | {staticContent.length} Messages
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        {/* --- FOOTER with App Statistics --- */}
-        <footer className="bg-gray-800 text-gray-300 text-xs py-2 px-4 text-center border-t border-gray-700">
-          <div className="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-x-4 gap-y-1">
-            <span className="whitespace-nowrap">
-              📅 {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-            </span>
-            <span className="text-gray-500">|</span>
-            <span className="whitespace-nowrap">
-              🌐 {[...new Set(staticContent.map(item => item.stableKey))].length} Languages
-            </span>
-            <span className="text-gray-500">|</span>
-            <span className="whitespace-nowrap">
-              💬 {staticContent.length} Messages
-            </span>
-          </div>
-        </footer>
       </div>
     ) // This is the closing parenthesis for the entire application UI block
   ); // This is the closing parenthesis for the main return
