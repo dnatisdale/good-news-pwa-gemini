@@ -1347,7 +1347,7 @@ export default function App() {
       </div>
     ) : (
       // 2. --- NORMAL APPLICATION START (Visible while isLoading is FALSE) ---
-      <div className="min-h-screen bg-gray-100 flex flex-col">
+      <div className="min-h-screen bg-gray-100 dark:bg-[#374151] flex flex-col">
         {/* --- UPDATE NOTIFICATION BANNER --- */}
         <UpdateNotification />
 
@@ -1463,26 +1463,7 @@ export default function App() {
                 isHovering={isHoveringContent}
               />
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
-              <button
-                onClick={toggleTheme}
-                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
-                aria-label={
-                  theme === "dark"
-                    ? "Switch to light mode"
-                    : "Switch to dark mode"
-                }
-                title={
-                  theme === "dark"
-                    ? t.light_mode || "Light mode"
-                    : t.dark_mode || "Dark mode"
-                }
-              >
-                {theme === "dark" ? (
-                  <Sun className="w-5 h-5" />
-                ) : (
-                  <Moon className="w-5 h-5" />
-                )}
-              </button>
+
 
               <button
                 onClick={() => setIsSearchOpen(true)}
@@ -1578,26 +1559,7 @@ export default function App() {
                 isHovering={isHoveringContent}
               />
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
-              <button
-                onClick={toggleTheme}
-                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
-                aria-label={
-                  theme === "dark"
-                    ? "Switch to light mode"
-                    : "Switch to dark mode"
-                }
-                title={
-                  theme === "dark"
-                    ? t.light_mode || "Light mode"
-                    : t.dark_mode || "Dark mode"
-                }
-              >
-                {theme === "dark" ? (
-                  <Sun className="w-5 h-5" />
-                ) : (
-                  <Moon className="w-5 h-5" />
-                )}
-              </button>
+
 
               <button
                 onClick={() => setIsSearchOpen(true)}
@@ -1681,7 +1643,7 @@ export default function App() {
 
           {/* Drawer Content */}
           <div
-            className={`absolute left-0 top-0 w-72 h-full bg-white shadow-2xl transition-transform duration-300 transform ${
+            className={`absolute left-0 top-0 w-72 h-full bg-white dark:bg-[#003366] shadow-2xl transition-transform duration-300 transform ${
               isDrawerOpen ? "translate-x-0" : "-translate-x-full"
               // 💡 ADD rounded-tr-xl CLASS HERE
             } rounded-tr-xl flex flex-col`}
@@ -1797,7 +1759,7 @@ export default function App() {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full flex items-center p-3 rounded-lg font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
+                      className="w-full flex items-center p-3 rounded-lg font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99] transition-colors"
                     >
                       <item.icon className="w-6 h-6 mr-3" />
                       {item.name}
@@ -1822,8 +1784,8 @@ export default function App() {
                     onClick={() => navigateTo(item.target)}
                     className={`w-full flex items-center justify-between p-3 rounded-lg font-semibold transition-colors ${
                       currentPage.name === item.target
-                        ? `${ACCENT_COLOR_CLASS} bg-red-100`
-                        : "text-gray-700 hover:bg-gray-100"
+                        ? `${ACCENT_COLOR_CLASS} bg-red-100 dark:bg-red-900/30`
+                        : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99]"
                     }`}
                   >
                     <div className="flex items-center">
@@ -1840,6 +1802,23 @@ export default function App() {
                   </button>
                 );
               })}
+
+              {/* --- Dark Mode Toggle --- */}
+              <button
+                onClick={toggleTheme}
+                className="w-full flex items-center justify-between p-3 rounded-lg font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99] transition-colors"
+              >
+                <div className="flex items-center">
+                  {theme === "dark" ? (
+                    <Sun className="w-6 h-6 mr-3" />
+                  ) : (
+                    <Moon className="w-6 h-6 mr-3" />
+                  )}
+                  {theme === "dark"
+                    ? t.light_mode || "Light Mode"
+                    : t.dark_mode || "Dark Mode"}
+                </div>
+              </button>
             </nav>
 
             {/* Bottom Controls (Sticky) */}
@@ -1863,17 +1842,17 @@ export default function App() {
               {/* Install Button removed from sidebar (moved to header) */}
 
               {/* --- User ID at very bottom --- */}
-              <div className="text-xs text-gray-500 border-t border-gray-200 pt-3 space-y-2">
+              <div className="text-xs text-gray-500 dark:text-white dark:bg-[#003366] border-t border-gray-200 dark:border-[#003366] pt-3 space-y-2">
                 <p className="truncate text-center">
                   {t.user_id || "User ID"}:
-                  <span className="font-mono text-gray-600 ml-1">
+                  <span className="font-mono text-gray-600 dark:text-white ml-1">
                     {userId || "..."}
                   </span>
                 </p>
 
                 {/* Build Information */}
-                <div className="text-center space-y-1 pt-2 border-t border-gray-200">
-                  <p className="text-gray-600">
+                <div className="text-center space-y-1 pt-2 border-t border-gray-200 dark:border-[#004d99]">
+                  <p className="text-gray-600 dark:text-white">
                     Build:{" "}
                     {new Date().toLocaleDateString("en-US", {
                       year: "numeric",
@@ -1885,7 +1864,7 @@ export default function App() {
                       minute: "2-digit",
                     })}
                   </p>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-white">
                     {
                       [...new Set(staticContent.map((item) => item.stableKey))]
                         .length

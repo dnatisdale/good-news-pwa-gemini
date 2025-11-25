@@ -76,10 +76,10 @@ const MessagesByLanguagePage = ({
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
       {/* Display selected language name */}
-      <h1 className={`text-2xl font-bold mb-1 ${ACCENT_COLOR_CLASS}`}>
+      <h1 className={`text-2xl font-bold mb-1 ${ACCENT_COLOR_CLASS} dark:text-white`}>
         {languageDisplayName}
       </h1>
-      <p className="text-sm text-gray-500 mb-4 font-semibold">
+      <p className="text-sm text-gray-500 dark:text-white mb-4 font-semibold">
         {currentMessageList.length} {t.messages || "messages"}
       </p>
 

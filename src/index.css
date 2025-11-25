@@ -27,22 +27,26 @@
   --card-hover-bg: #f9fafb;
 }
 
-/* Dark Mode overrides (activated by .dark class) */
+/* Dark Mode overrides (activated by .dark class) - Medium-Dark Gray Theme */
 .dark {
-  --bg-primary: #020617;
-  --bg-surface: #111827;
-  --bg-secondary: #1f2937;
-  --bg-tertiary: #374151;
+  /* Medium-Dark Gray backgrounds */
+  --bg-primary: #374151;        /* Medium-dark gray for page background */
+  --bg-surface: #004d99;        /* Lighter blue for cards (couple shades brighter) */
+  --bg-secondary: #002244;      /* Darker blue for secondary elements */
+  --bg-tertiary: #00509e;       /* Medium blue for hover states */
   
-  --text-primary: #e5e7eb;
-  --text-secondary: #9ca3af;
-  --text-muted: #9ca3af;
+  /* White/Light gray text for readability */
+  --text-primary: #ffffff;      /* Pure white for main text */
+  --text-secondary: #e5e7eb;    /* Light gray (Tailwind gray-200) for secondary text */
+  --text-muted: #d1d5db;        /* Slightly darker gray (Tailwind gray-300) for muted text */
   
-  --border-color: #374151;
-  --card-border: #1f2937;
+  /* Borders */
+  --border-color: #0059b3;      /* Lighter blue for borders */
+  --card-border: #0059b3;
   
-  --card-bg: #1f2937;
-  --card-hover-bg: #374151;
+  /* Cards */
+  --card-bg: #004d99;           /* Lighter blue for cards */
+  --card-hover-bg: #0059b3;     /* Even lighter blue for hover */
 }
 
 /* You can add global base styles here */

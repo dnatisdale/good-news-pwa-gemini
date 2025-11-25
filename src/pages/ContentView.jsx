@@ -263,12 +263,12 @@ const ContentView = ({
           {/* --- HEADER ROW: Text Left, Heart Right --- */}
           <div className="w-full flex justify-between items-end mb-4">
             <div className="flex flex-col items-start">
-              <h1 className="text-3xl font-extrabold text-brand-red leading-tight">
+              <h1 className="text-3xl font-extrabold text-brand-red dark:text-white leading-tight">
                 {languageDisplay}
               </h1>
-              <p className="text-lg text-gray-800 leading-tight mt-1">
+              <p className="text-lg text-gray-800 dark:text-white leading-tight mt-1">
                 <span className="font-bold">{messageTitle}</span>
-                <span className="text-sm text-gray-500 ml-2">#{item.id}</span>
+                <span className="text-sm text-gray-500 dark:text-white ml-2">#{item.id}</span>
               </p>
             </div>
             

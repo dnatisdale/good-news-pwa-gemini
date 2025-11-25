@@ -21,7 +21,7 @@ const ContentCard = ({
   const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
 
   return (
-    <div className="bg-white p-4 mb-3 rounded-xl shadow-md border-t-4 border-gray-200 cursor-pointer card-hover flex items-start">
+    <div className="bg-white dark:bg-[#374151] p-4 mb-3 rounded-xl shadow-md border-t-4 border-brand-red cursor-pointer card-hover flex items-start">
       {/* --- NEW: CHECKBOX AREA --- */}
       {onToggle && (
         <div
@@ -33,7 +33,7 @@ const ContentCard = ({
         >
           <input
             type="checkbox"
-            className="w-6 h-6 accent-[#003366] cursor-pointer"
+            className="w-6 h-6 accent-[#003366] dark:accent-[#a91b0d] cursor-pointer"
             checked={isSelected || false}
             onChange={() => {}} // Handled by div click
           />
@@ -43,19 +43,19 @@ const ContentCard = ({
       {/* Content Info */}
       <div className="flex-grow" onClick={() => onSelect(item)}>
         {showLanguageName && (
-          <p className={`text-base font-semibold ${ACCENT_COLOR_CLASS} mb-1`}>
+          <p className={`text-base font-semibold ${ACCENT_COLOR_CLASS} dark:text-white mb-1`}>
             {languageDisplay}
           </p>
         )}
         <h3
-          className={`text-lg font-bold ${TEXT_COLOR_CLASS} ${
+          className={`text-lg font-bold ${TEXT_COLOR_CLASS} dark:text-white ${
             showLanguageName ? "" : "mt-1"
           }`}
         >
           {messageTitle}
         </h3>
         
-        <p className="text-xs text-gray-400 mt-1.5">
+        <p className="text-xs text-gray-400 dark:text-white mt-1.5">
           {t?.program_number || "Message No."} {programNumber}
         </p>
       </div>
@@ -71,8 +71,8 @@ const ContentCard = ({
             }}
             className={`p-2 rounded-full transition-all ${
               isPlayingSample
-                ? "bg-amber-100 text-amber-600 animate-pulse"
-                : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                ? "bg-amber-100 dark:bg-amber-100 text-amber-600 dark:text-amber-600 animate-pulse"
+                : "bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-gray-200"
             }`}
             title={isPlayingSample ? "Stop Preview" : "Listen to Preview"}
           >
@@ -91,7 +91,7 @@ const ContentCard = ({
             // onSelect(item); // OLD: Navigate to detail view
             onShowQrForMessage && onShowQrForMessage(); // NEW: Show QR Modal
           }}
-          className="p-2 rounded-full bg-gray-100 text-gray-500 hover:bg-brand-red hover:text-white transition-all"
+          className="p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-brand-red hover:text-white transition-all"
           title="Share Message"
         >
           <Share2 className="w-6 h-6" />
