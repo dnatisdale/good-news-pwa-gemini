@@ -49,11 +49,33 @@ export const useOfflineStorage = () => {
 
       try {
         const cache = await caches.open(CACHE_NAME);
-        // We fetch the file and put it in the cache
-        // Note: We use the full URL or relative path as the key
-        const requestUrl = track.trackDownloadUrl;
         
-        await cache.add(requestUrl);
+        // Ensure URL has protocol
+        let originalUrl = track.trackDownloadUrl;
+        if (!originalUrl.startsWith('http://') && !originalUrl.startsWith('https://')) {
+          originalUrl = `https://${originalUrl}`;
+        }
+        
+        // Use Netlify proxy function to avoid CORS issues
+        // In production: /.netlify/functions/proxy-audio
+        // In development: use direct URL (will fail due to CORS, but good for testing)
+        const isProduction = window.location.hostname !== 'localhost';
+        const proxyUrl = isProduction 
+          ? `/.netlify/functions/proxy-audio?url=${encodeURIComponent(originalUrl)}`
+          : originalUrl; // For local dev, try direct (will show CORS error)
+        
+        console.log(`Downloading track ${track.id} from ${isProduction ? 'proxy' : 'direct'}: ${originalUrl}`);
+        
+        // Fetch the audio file
+        const response = await fetch(proxyUrl);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        // Store in cache using the original URL as the key
+        // This way the audio player can find it later
+        await cache.put(originalUrl, response.clone());
 
         // Add to metadata
         setOfflineTracks((prev) => {
@@ -61,8 +83,13 @@ export const useOfflineStorage = () => {
             if (prev.some(t => t.id === track.id)) return prev;
             return [...prev, {
                 id: track.id,
-                title: track.title_en || track.title_th, // Fallback title
-                lang: track.languageEn || track.langTh,
+                title_en: track.title_en,
+                title_th: track.title_th,
+                languageEn: track.languageEn,
+                langTh: track.langTh,
+                verse_en: track.verse_en,
+                verse_th: track.verse_th,
+                trackDownloadUrl: originalUrl, // Store the original URL
                 ...track // Store full track data for offline playback
             }];
         });
@@ -70,7 +97,7 @@ export const useOfflineStorage = () => {
         console.log(`Track ${track.id} downloaded successfully.`);
       } catch (error) {
         console.error(`Failed to download track ${track.id}:`, error);
-        alert("Download failed. Please check your connection.");
+        alert(`Download failed: ${error.message}\n\nNote: Offline downloads only work when deployed to Netlify.`);
       } finally {
         setDownloadingIds((prev) => prev.filter((id) => id !== track.id));
       }
