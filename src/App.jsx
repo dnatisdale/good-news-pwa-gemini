@@ -72,12 +72,6 @@ export default function App() {
     touchEndRef.current = null;
   };
 
-
-
-
-
-
-
   // --- NEW HELPER: Combine all selected programs into a single text string ---
   const getShareableContent = () => {
     const isThai = lang === "th";
@@ -94,9 +88,10 @@ export default function App() {
 
     // 2. Map the selected programs to an array of formatted strings
     const shareableItems = filteredContent.map((item) => {
-      const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
+      const { languageDisplay, messageTitle, trackTitle, programNumber } =
+        formatContentItem(item, lang);
       const cardUrl = `https://5fi.sh/T${item.id}`;
-      
+
       // Get verse text and reference
       const verseText = isThai ? item.verse_th : item.verse_en;
       let verseQuote = "";
@@ -112,13 +107,23 @@ export default function App() {
       }
 
       // Format each message with decorative lines
-      return `${divider}\n${languageDisplay} | ${messageTitle} | ${isThai ? 'ข้อความ' : 'Message'} #${programNumber}\n${divider}\n\n${isThai ? 'ฟัง • แบ่งปัน • ดาวน์โหลด' : 'Listen • Share • Download'}\nListen on 5fish: ${cardUrl}\n\n${verseQuote ? `${verseQuote}  ${verseRef}\n` : ""}`;
+      return `${divider}\n${languageDisplay} | ${messageTitle} | ${
+        isThai ? "ข้อความ" : "Message"
+      } #${programNumber}\n${divider}\n\n${
+        isThai ? "ฟัง • แบ่งปัน • ดาวน์โหลด" : "Listen • Share • Download"
+      }\nListen on 5fish: ${cardUrl}\n\n${
+        verseQuote ? `${verseQuote}  ${verseRef}\n` : ""
+      }`;
     });
 
     // 3. Combine the items with footer
     const combinedText = [
       ...shareableItems,
-      `${divider}\n${isThai ? 'ค้นพบภาษามากกว่า 6,000+ ภาษาที่ 5fish.mobi หรือ globalrecordings.net\nส่งความคิดเห็นไปที่: Thai@globalrecordings.net' : 'Discover 6,000+ languages at 5fish.mobi or globalrecordings.net\nEmail any feedback to: Thai@globalrecordings.net'}`
+      `${divider}\n${
+        isThai
+          ? "ค้นพบภาษามากกว่า 6,000+ ภาษาที่ 5fish.mobi หรือ globalrecordings.net\nส่งความคิดเห็นไปที่: Thai@globalrecordings.net"
+          : "Discover 6,000+ languages at 5fish.mobi or globalrecordings.net\nEmail any feedback to: Thai@globalrecordings.net"
+      }`,
     ].join("\n\n");
 
     return combinedText;
@@ -126,7 +131,10 @@ export default function App() {
 
   // --- NEW: PDF Export (Browser Native Print) ---
   const handleDownloadSelectedPDF = () => {
-    const filteredContent = getFilteredMessages(staticContent, selectedPrograms);
+    const filteredContent = getFilteredMessages(
+      staticContent,
+      selectedPrograms
+    );
     if (filteredContent.length === 0) {
       alert(t.select_content_first || "Please select some content first!");
       return;
@@ -134,19 +142,25 @@ export default function App() {
 
     const isThai = lang === "th";
     const titleText = isThai ? "รายการข้อความที่เลือก" : "Selected Messages";
-    
+
     // --- NEW: Custom Filename with Timestamp ---
     const now = new Date();
-    const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD
-    const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-').slice(0, 5); // HH-mm
+    const dateStr = now.toISOString().split("T")[0]; // YYYY-MM-DD
+    const timeStr = now
+      .toTimeString()
+      .split(" ")[0]
+      .replace(/:/g, "-")
+      .slice(0, 5); // HH-mm
     const filename = `TGN_Selected_Messages_${dateStr}_${timeStr}`;
 
     // Generate HTML list items
-    const listItemsHtml = filteredContent.map((item, index) => {
-      const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
-      const cardUrl = `https://5fi.sh/T${item.id}`;
+    const listItemsHtml = filteredContent
+      .map((item, index) => {
+        const { languageDisplay, messageTitle, trackTitle, programNumber } =
+          formatContentItem(item, lang);
+        const cardUrl = `https://5fi.sh/T${item.id}`;
 
-      return `
+        return `
         <div class="message-item">
           <div class="item-header">
             <span class="item-index">${index + 1}.</span>
@@ -159,7 +173,8 @@ export default function App() {
           </div>
         </div>
       `;
-    }).join("");
+      })
+      .join("");
 
     const printHtml = `
       <html>
@@ -213,9 +228,15 @@ export default function App() {
         </head>
         <body>
           <div class="control-bar no-print">
-             <button class="print-btn" onclick="window.print()">🖨️ ${isThai ? "พิมพ์ / บันทึกเป็น PDF" : "Print / Save as PDF"}</button>
+             <button class="print-btn" onclick="window.print()">🖨️ ${
+               isThai ? "พิมพ์ / บันทึกเป็น PDF" : "Print / Save as PDF"
+             }</button>
              <p style="margin-top:10px; font-size:0.9em; color:#666;">
-               ${isThai ? "เลือก 'บันทึกเป็น PDF' ในหน้าต่างพิมพ์" : "Choose 'Save as PDF' in the print destination."}
+               ${
+                 isThai
+                   ? "เลือก 'บันทึกเป็น PDF' ในหน้าต่างพิมพ์"
+                   : "Choose 'Save as PDF' in the print destination."
+               }
              </p>
           </div>
 
@@ -255,7 +276,10 @@ export default function App() {
     );
 
     if (filteredContent.length === 0) {
-      alert(t.please_select_messages || "Please select some messages first by checking the boxes next to them!");
+      alert(
+        t.please_select_messages ||
+          "Please select some messages first by checking the boxes next to them!"
+      );
       return null;
     }
 
@@ -592,6 +616,35 @@ export default function App() {
   const clearSearchHistory = () => {
     setSearchHistory([]);
   };
+  // --- Theme State (Dark Mode) ---
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") || "light";
+    }
+    return "light";
+  });
+  // Apply theme to html element (Tailwind + CSS variables)
+  useEffect(() => {
+    const root = window.document.documentElement;
+
+    if (theme === "dark") {
+      // Tailwind dark:
+      root.classList.add("dark");
+      // CSS variables dark:
+      root.setAttribute("data-theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      root.removeAttribute("data-theme");
+    }
+
+    // Persist preference
+    localStorage.setItem("theme", theme);
+    // Compatibility with the patch guide key:
+    localStorage.setItem("darkMode", String(theme === "dark"));
+  }, [theme]);
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
   const [deferredPrompt, setDeferredPrompt] = useState(null); // Install Prompt state
   // --- NEW FUNCTION: navigateToHome (Fixes ReferenceError at line 1564) ---
   const navigateToHome = () => {
@@ -628,11 +681,11 @@ export default function App() {
     if (!isOpen) return null;
 
     return (
-      <div 
+      <div
         className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50"
         onClick={onClose}
       >
-        <div 
+        <div
           className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full relative"
           onClick={(e) => e.stopPropagation()}
         >
@@ -648,7 +701,7 @@ export default function App() {
           <h2 className="text-sm text-gray-600 text-center break-all mb-1">
             {title}
           </h2>
-          
+
           {/* Subtitle (Language Name or Message Title) */}
           <h3 className="text-lg font-bold text-brand-red mb-2 text-center">
             {subtitle}
@@ -698,15 +751,16 @@ export default function App() {
     const group = languageGroups.find((g) => g.stableKey === stableKey);
     if (group) {
       const name = lang === "en" ? group.displayNameEn : group.displayNameTh;
-      
+
       // Construct URL (using first message's ISO or fallback)
       const firstMsg = group.messages[0];
       const iso3 = firstMsg?.iso3 || "";
       const url = `https://5fish.mobi/${iso3}`;
-      
+
       setShareModalState({
         isOpen: true,
-        title: t?.scan_qr_to_view_messages || "Scan QR to view all messages in:",
+        title:
+          t?.scan_qr_to_view_messages || "Scan QR to view all messages in:",
         subtitle: name,
         url: url,
         footerText: t?.language_qr_title || "",
@@ -716,7 +770,7 @@ export default function App() {
 
   const handleShowQrForMessage = (item, languageDisplayName) => {
     const title = lang === "en" ? item.title_en : item.title_th;
-    
+
     // Construct URL
     let url = item.trackDownloadUrl;
     if (url) {
@@ -726,7 +780,7 @@ export default function App() {
     } else {
       url = `https://5fish.mobi/T${item.id}`;
     }
-    
+
     setShareModalState({
       isOpen: true,
       title: t?.scan_qr_to_download || "Scan QR to download:",
@@ -783,19 +837,23 @@ export default function App() {
       if (groups[stableKey].programIds.has(progId)) {
         return; // SKIP duplicates (tracks)
       }
-      
+
       // 2. Mark this Program ID as seen
       groups[stableKey].programIds.add(progId);
 
       // 3. Clean the Title (Remove "(Mxxx)" suffix)
-      // Create a shallow copy to avoid mutating the original staticContent if needed, 
+      // Create a shallow copy to avoid mutating the original staticContent if needed,
       // but for display purposes in this list, we can modify a copy.
       const cleanedItem = { ...item };
       if (cleanedItem.title_en) {
-        cleanedItem.title_en = cleanedItem.title_en.replace(/\s*\(M\d+\)/, "").trim();
+        cleanedItem.title_en = cleanedItem.title_en
+          .replace(/\s*\(M\d+\)/, "")
+          .trim();
       }
       if (cleanedItem.title_th) {
-        cleanedItem.title_th = cleanedItem.title_th.replace(/\s*\(M\d+\)/, "").trim();
+        cleanedItem.title_th = cleanedItem.title_th
+          .replace(/\s*\(M\d+\)/, "")
+          .trim();
       }
 
       // 4. Add the unique, cleaned message
@@ -1290,7 +1348,7 @@ export default function App() {
       <div className="min-h-screen bg-gray-100 flex flex-col">
         {/* --- UPDATE NOTIFICATION BANNER --- */}
         <UpdateNotification />
-        
+
         {/* --- UNIFIED SHARE QR MODAL --- */}
         <ShareQrModal
           isOpen={shareModalState.isOpen}
@@ -1337,13 +1395,21 @@ export default function App() {
                     alert("App is already installed / แอปถูกติดตั้งแล้ว");
                   }
                 }}
-                title={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
+                title={
+                  deferredPrompt
+                    ? t.install_app || "Install App"
+                    : t.app_installed || "App Installed"
+                }
                 className={`p-1 rounded-lg transition-colors btn-hover ${
                   deferredPrompt
                     ? "text-white hover:bg-red-800"
                     : "text-red-300 cursor-pointer"
                 }`}
-                aria-label={deferredPrompt ? (t.install_app || "Install App") : (t.app_installed || "App Installed")}
+                aria-label={
+                  deferredPrompt
+                    ? t.install_app || "Install App"
+                    : t.app_installed || "App Installed"
+                }
               >
                 <Download className="w-6 h-6" />
               </button>
@@ -1396,6 +1462,25 @@ export default function App() {
               />
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
               <button
+                onClick={toggleTheme}
+                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                aria-label={
+                  theme === "dark"
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"
+                }
+                title={
+                  theme === "dark"
+                    ? t.light_mode || "Light mode"
+                    : t.dark_mode || "Dark mode"
+                }
+              >
+                <span className="text-xl">
+                  {theme === "dark" ? "☀️" : "🌙"}
+                </span>
+              </button>
+
+              <button
                 onClick={() => setIsSearchOpen(true)}
                 className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
                 aria-label="Toggle Search"
@@ -1407,7 +1492,6 @@ export default function App() {
 
           {/* Desktop: Flexbox layout */}
           <div className="hidden md:flex justify-between items-center relative">
-            
             {/* Left: Menu & Logo */}
             <div className="flex items-center">
               <button
@@ -1450,7 +1534,7 @@ export default function App() {
 
             {/* Center: Navigation Buttons */}
             <div className="flex items-center justify-center space-x-2">
-               <button
+              <button
                 onClick={goBack}
                 disabled={!hasPrev}
                 className={`p-1 rounded-lg transition-colors flex items-center ${
@@ -1490,6 +1574,24 @@ export default function App() {
                 isHovering={isHoveringContent}
               />
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
+              <button
+                onClick={toggleTheme}
+                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                aria-label={
+                  theme === "dark"
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"
+                }
+                title={
+                  theme === "dark"
+                    ? t.light_mode || "Light mode"
+                    : t.dark_mode || "Dark mode"
+                }
+              >
+                <span className="text-xl">
+                  {theme === "dark" ? "☀️" : "🌙"}
+                </span>
+              </button>
 
               <button
                 onClick={() => setIsSearchOpen(true)}
@@ -1625,14 +1727,16 @@ export default function App() {
                     </span>
                   </p>
                 </div>
-                
+
                 {/* Share App Button - Compact */}
                 <button
                   onClick={async () => {
                     const appUrl = window.location.origin;
                     const shareData = {
                       title: t.app_name || "Thai: Good News",
-                      text: t.share_app_text || "Check out this app for Good News messages in multiple languages!",
+                      text:
+                        t.share_app_text ||
+                        "Check out this app for Good News messages in multiple languages!",
                       url: appUrl,
                     };
 
@@ -1698,13 +1802,13 @@ export default function App() {
                 // Original button logic
                 const isFavorites = item.name === "Favorites";
                 const isNotes = item.name === "Notes";
-                
+
                 // Calculate counts safely
-                const count = isFavorites 
-                  ? (userData?.favorites?.length || 0) 
-                  : isNotes 
-                    ? (userData?.notes?.length || 0) 
-                    : 0;
+                const count = isFavorites
+                  ? userData?.favorites?.length || 0
+                  : isNotes
+                  ? userData?.notes?.length || 0
+                  : 0;
 
                 return (
                   <button
@@ -1720,7 +1824,7 @@ export default function App() {
                       <item.icon className="w-6 h-6 mr-3" />
                       {t[item.name.toLowerCase()]}
                     </div>
-                    
+
                     {/* Counter Badge */}
                     {(isFavorites || isNotes) && count > 0 && (
                       <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
@@ -1751,7 +1855,7 @@ export default function App() {
               </div>
 
               {/* Install Button removed from sidebar (moved to header) */}
-              
+
               {/* --- User ID at very bottom --- */}
               <div className="text-xs text-gray-500 border-t border-gray-200 pt-3 space-y-2">
                 <p className="truncate text-center">
@@ -1760,14 +1864,27 @@ export default function App() {
                     {userId || "..."}
                   </span>
                 </p>
-                
+
                 {/* Build Information */}
                 <div className="text-center space-y-1 pt-2 border-t border-gray-200">
                   <p className="text-gray-600">
-                    Build: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                    Build:{" "}
+                    {new Date().toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}{" "}
+                    {new Date().toLocaleTimeString("en-US", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
                   </p>
                   <p className="text-gray-600">
-                    {[...new Set(staticContent.map(item => item.stableKey))].length} Languages | {staticContent.length} Messages
+                    {
+                      [...new Set(staticContent.map((item) => item.stableKey))]
+                        .length
+                    }{" "}
+                    Languages | {staticContent.length} Messages
                   </p>
                 </div>
               </div>
