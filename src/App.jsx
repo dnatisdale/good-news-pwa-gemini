@@ -1842,7 +1842,7 @@ export default function App() {
               {/* Install Button removed from sidebar (moved to header) */}
 
               {/* --- User ID at very bottom --- */}
-              <div className="text-xs text-gray-500 dark:text-white dark:bg-[#003366] border-t border-gray-200 dark:border-[#003366] pt-3 space-y-2">
+              <div className="text-xs text-gray-500 dark:text-white dark:bg-[#374151] border-t border-gray-200 dark:border-[#374151] pt-3 space-y-2">
                 <p className="truncate text-center">
                   {t.user_id || "User ID"}:
                   <span className="font-mono text-gray-600 dark:text-white ml-1">
@@ -1851,7 +1851,7 @@ export default function App() {
                 </p>
 
                 {/* Build Information */}
-                <div className="text-center space-y-1 pt-2 border-t border-gray-200 dark:border-[#004d99]">
+                <div className="text-center space-y-1 pt-2 border-t border-gray-200 dark:border-white">
                   <p className="text-gray-600 dark:text-white">
                     Build:{" "}
                     {new Date().toLocaleDateString("en-US", {
