@@ -12,20 +12,38 @@ exports.handler = async (event, context) => {
     };
   }
 
-  // Validate that the URL is from fivefish.org for security
-  if (!audioUrl.includes('fivefish.org')) {
+  // Validate that the URL is from fivefish.org or globalrecordings.net for security
+  if (!audioUrl.includes('fivefish.org') && !audioUrl.includes('globalrecordings.net')) {
     return {
       statusCode: 403,
-      body: JSON.stringify({ error: 'Only fivefish.org URLs are allowed' }),
+      body: JSON.stringify({ error: 'Only fivefish.org and globalrecordings.net URLs are allowed' }),
     };
   }
 
   try {
-    // Fetch the audio file from fivefish.org
-    const response = await fetch(audioUrl);
+    // Extract the track ID from the URL (e.g., "T62808-001.mp3")
+    const match = audioUrl.match(/T(\d+)-(\d+)\.mp3/);
+    
+    if (!match) {
+      throw new Error('Invalid audio URL format');
+    }
+    
+    const trackId = match[1];
+    const trackNumber = match[2];
+    
+    // Construct the correct URL using files.globalrecordings.net
+    // This is the actual CDN that serves the MP3 files
+    const cdnUrl = `https://files.globalrecordings.net/files/mp3-low/T${trackId}-${trackNumber}.mp3`;
+    
+    console.log(`Fetching audio from CDN: ${cdnUrl}`);
+    
+    // Fetch the audio file from the CDN
+    const response = await fetch(cdnUrl, {
+      redirect: 'follow', // Follow redirects
+    });
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch audio: ${response.status}`);
+      throw new Error(`Failed to fetch audio: ${response.status} ${response.statusText}`);
     }
 
     // Get the audio data as a buffer
