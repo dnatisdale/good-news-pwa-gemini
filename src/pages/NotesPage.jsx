@@ -89,7 +89,7 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, sav
       </div>
 
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
           {t.my_notes || "My Notes"}
         </h1>
         {!isEditing && (

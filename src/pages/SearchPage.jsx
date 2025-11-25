@@ -46,7 +46,7 @@ const SearchPage = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mb-4">
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
         {t.search_results || "Search Results"}
       </h1>
 

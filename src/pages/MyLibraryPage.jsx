@@ -46,7 +46,7 @@ const MyLibraryPage = ({
       </div>
 
       <div className="flex justify-between items-end mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
           {t.my_library || "My Library"}
         </h1>
         {offlineTracks.length > 0 && (

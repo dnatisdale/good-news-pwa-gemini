@@ -26,7 +26,7 @@ const FavoritesPage = ({
     <div className="p-4 pt-8 h-full overflow-y-auto">
       {/* Back and Forward Controls removed (now in Header) */}
 
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">{t.favorites}</h1>
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">{t.favorites}</h1>
       {favoriteItems.length > 0 ? (
         favoriteItems.map((item) => (
           // Show language name on search/favorite cards
