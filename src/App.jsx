@@ -18,6 +18,8 @@ import {
   Zap,
   ChevronLeft,
   ChevronRight,
+  Moon,
+  Sun,
 } from "./components/Icons";
 import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
@@ -1475,9 +1477,11 @@ export default function App() {
                     : t.dark_mode || "Dark mode"
                 }
               >
-                <span className="text-xl">
-                  {theme === "dark" ? "☀️" : "🌙"}
-                </span>
+                {theme === "dark" ? (
+                  <Sun className="w-5 h-5" />
+                ) : (
+                  <Moon className="w-5 h-5" />
+                )}
               </button>
 
               <button
@@ -1588,9 +1592,11 @@ export default function App() {
                     : t.dark_mode || "Dark mode"
                 }
               >
-                <span className="text-xl">
-                  {theme === "dark" ? "☀️" : "🌙"}
-                </span>
+                {theme === "dark" ? (
+                  <Sun className="w-5 h-5" />
+                ) : (
+                  <Moon className="w-5 h-5" />
+                )}
               </button>
 
               <button
