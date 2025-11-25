@@ -1643,7 +1643,7 @@ export default function App() {
 
           {/* Drawer Content */}
           <div
-            className={`absolute left-0 top-0 w-72 h-full bg-white dark:bg-[#003366] shadow-2xl transition-transform duration-300 transform ${
+            className={`absolute left-0 top-0 w-72 h-full bg-white dark:bg-[#374151] shadow-2xl transition-transform duration-300 transform ${
               isDrawerOpen ? "translate-x-0" : "-translate-x-full"
               // 💡 ADD rounded-tr-xl CLASS HERE
             } rounded-tr-xl flex flex-col`}
