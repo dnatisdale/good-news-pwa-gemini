@@ -169,26 +169,13 @@ const ContentView = ({
   const isOffline = item ? isTrackOffline(item.id) : false;
   const isDownloading = item ? isTrackDownloading(item.id) : false;
 
-  const isFavorite = userData?.favorites?.includes(item?.id) ?? false;
   const cardUrl = `https://5fi.sh/T${item?.id}`;
 
   // --- USE CENTRALIZED FORMATTER ---
   const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
   
   // Bible Verse - currently missing from data structure, using placeholder logic
-  const verseDisplay = ""; 
-
-  const toggleFavorite = () => {
-    if (!item) return;
-    const currentFavorites = userData.favorites || [];
-    let newFavorites;
-    if (isFavorite) {
-      newFavorites = currentFavorites.filter((id) => id !== item.id);
-    } else {
-      newFavorites = [...currentFavorites, item.id];
-    }
-    saveUserData({ ...userData, favorites: newFavorites });
-  };
+  const verseDisplay = "";
 
   const handleShare = () => {
     if (item) shareQRCard(item, lang, cardUrl);
@@ -272,18 +259,6 @@ const ContentView = ({
               </p>
             </div>
             
-            <button
-              onClick={toggleFavorite}
-              className={`p-2 rounded-full transition-colors flex-shrink-0 ml-4 ${
-                isFavorite
-                  ? "bg-red-100 text-red-500"
-                  : "bg-gray-200 text-gray-600 hover:bg-red-50"
-              }`}
-            >
-              <Heart
-                className={`w-6 h-6 ${isFavorite ? "fill-current" : ""}`}
-              />
-            </button>
           </div>
 
           {/* --- MOVED: Download Audio Button (Now above Listen Button) --- */}
