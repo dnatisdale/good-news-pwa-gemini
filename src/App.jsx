@@ -1502,22 +1502,6 @@ export default function App() {
               </a>
               <button
                 onClick={() => {
-                  if (deferredPrompt) {
-                    handleInstallClick();
-                  } else {
-                    alert(
-                      t.install_instructions ||
-                        "To install, tap 'Share' then 'Add to Home Screen' (iOS) or use the browser menu (Android)."
-                    );
-                  }
-                }}
-                className="bg-white text-brand-red px-3 py-1 rounded-full font-bold shadow-sm hover:bg-gray-100 transition-colors text-sm flex items-center ml-4"
-              >
-                <Download className="w-4 h-4 mr-1" />
-                {t.install || "Install"}
-              </button>
-              <button
-                onClick={() => {
                   navigateToHome();
                   setIsDrawerOpen(false);
                 }}
