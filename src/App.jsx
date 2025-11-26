@@ -1389,32 +1389,7 @@ export default function App() {
                   className="h-8 w-8 rounded-md shadow-sm bg-white p-0.5"
                 />
               </a>
-              <button
-                onClick={() => {
-                  if (deferredPrompt) {
-                    handleInstallClick();
-                  } else {
-                    alert("App is already installed / แอปถูกติดตั้งแล้ว");
-                  }
-                }}
-                title={
-                  deferredPrompt
-                    ? t.install_app || "Install App"
-                    : t.app_installed || "App Installed"
-                }
-                className={`p-1 rounded-lg transition-colors btn-hover ${
-                  deferredPrompt
-                    ? "text-white hover:bg-red-800"
-                    : "text-red-300 cursor-pointer"
-                }`}
-                aria-label={
-                  deferredPrompt
-                    ? t.install_app || "Install App"
-                    : t.app_installed || "App Installed"
-                }
-              >
-                <Download className="w-6 h-6" />
-              </button>
+
             </div>
 
             {/* CENTER: Navigation Controls */}
@@ -1449,8 +1424,34 @@ export default function App() {
               )}
             </div>
 
-            {/* RIGHT: Controls (without Install) */}
+            {/* RIGHT: Controls */}
             <div className="flex items-center justify-end space-x-1">
+              <button
+                onClick={() => {
+                  if (deferredPrompt) {
+                    handleInstallClick();
+                  } else {
+                    alert("App is already installed / แอปถูกติดตั้งแล้ว");
+                  }
+                }}
+                title={
+                  deferredPrompt
+                    ? t.install_app || "Install App"
+                    : t.app_installed || "App Installed"
+                }
+                className={`p-1 rounded-lg transition-colors btn-hover ${
+                  deferredPrompt
+                    ? "text-white hover:bg-red-800"
+                    : "text-red-300 cursor-pointer"
+                }`}
+                aria-label={
+                  deferredPrompt
+                    ? t.install_app || "Install App"
+                    : t.app_installed || "App Installed"
+                }
+              >
+                <Download className="w-6 h-6" />
+              </button>
               <FloatingUtilityBar
                 t={t}
                 lang={lang}
@@ -1664,87 +1665,89 @@ export default function App() {
           >
             {/* Header */}
             <div
-              className={`${PRIMARY_COLOR_CLASS} px-3 py-4 flex flex-col space-y-1 rounded-r-xl flex-shrink-0 cursor-pointer`}
-              onClick={() => setIsDrawerOpen(false)} // Close drawer on header click
+              className={`${PRIMARY_COLOR_CLASS} px-3 py-4 flex flex-col space-y-2 rounded-r-xl flex-shrink-0`}
             >
-              <div className="flex justify-start items-center space-x-4">
-                {/* 1. The Square Logo (Flush Left, Rounded) */}
-                <img
-                  src={AppLogo}
-                  alt="Logo"
-                  className="w-11 h-11 rounded-xl bg-white shadow-md p-1"
-                />
+              {/* Top Row: Logo, Share Button, Status, Close */}
+              <div className="flex justify-between items-center">
+                <div className="flex items-center space-x-2">
+                  {/* 1. The Square Logo */}
+                  <img
+                    src={AppLogo}
+                    alt="Logo"
+                    className="w-11 h-11 rounded-xl bg-white shadow-md p-1"
+                  />
+                  
+                  {/* 2. Share App Button - Thai Blue */}
+                  <button
+                    onClick={async (e) => {
+                      e.stopPropagation(); // Prevent drawer close
+                      const appUrl = window.location.origin;
+                      const shareData = {
+                        title: t.app_name || "Thai: Good News",
+                        text:
+                          t.share_app_text ||
+                          "Check out this app for Good News messages in multiple languages!",
+                        url: appUrl,
+                      };
 
-                {/* 2. The App Title */}
-                <h2 className="text-xl font-bold text-white flex-grow">
-                  {t.app_name}
-                </h2>
-
-                {/* 3. Close Button (Pushed to the right automatically by flex-grow on title) */}
-                <button
-                  onClick={() => setIsDrawerOpen(false)}
-                  className="text-white p-1 hover:bg-red-800 rounded-full"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-              
-              {/* Status Indicator */}
-              <div className="text-xs text-white pl-15">
-                {t.auth_status || "Status"}:
-                <span
-                  className={`font-semibold ml-1 ${
-                    isAuthReady ? "text-amber-500" : "text-yellow-300"
-                  }`}
-                >
-                  {isAuthReady
-                    ? t.auth_ready || "Ready"
-                    : t.auth_pending || "Pending"}
-                </span>
-              </div>
-            </div>
-
-            {/* Share App Button Section */}
-            <div className="px-4 pt-3 pb-2 border-b border-gray-200 flex-shrink-0">
-              <div className="flex items-center justify-center gap-2">
-                {/* Share App Button - Compact */}
-                <button
-                  onClick={async () => {
-                    const appUrl = window.location.origin;
-                    const shareData = {
-                      title: t.app_name || "Thai: Good News",
-                      text:
-                        t.share_app_text ||
-                        "Check out this app for Good News messages in multiple languages!",
-                      url: appUrl,
-                    };
-
-                    if (navigator.share) {
-                      try {
-                        await navigator.share(shareData);
-                      } catch (err) {
-                        if (err.name !== "AbortError") {
-                          console.error("Share failed:", err);
+                      if (navigator.share) {
+                        try {
+                          await navigator.share(shareData);
+                        } catch (err) {
+                          if (err.name !== "AbortError") {
+                            console.error("Share failed:", err);
+                          }
+                        }
+                      } else {
+                        try {
+                          await navigator.clipboard.writeText(appUrl);
+                          alert(t.link_copied || "Link copied to clipboard!");
+                        } catch (err) {
+                          console.error("Copy failed:", err);
+                          alert(t.copy_failed || "Could not copy link");
                         }
                       }
-                    } else {
-                      try {
-                        await navigator.clipboard.writeText(appUrl);
-                        alert(t.link_copied || "Link copied to clipboard!");
-                      } catch (err) {
-                        console.error("Copy failed:", err);
-                        alert(t.copy_failed || "Could not copy link");
-                      }
-                    }
-                  }}
-                  className="flex items-center gap-1 px-2 py-1 bg-brand-red text-white rounded text-xs font-semibold hover:bg-red-700 transition-colors whitespace-nowrap"
-                  title={t.share_app || "Share App"}
-                >
-                  <ExternalLink className="w-3 h-3" />
-                  {t.share_app || "Share"}
-                </button>
+                    }}
+                    className="flex items-center gap-1 px-2 py-1 bg-[#003366] text-white rounded text-xs font-semibold hover:bg-[#004d99] transition-colors whitespace-nowrap"
+                    title={t.share_app || "Share App"}
+                  >
+                    <ExternalLink className="w-3 h-3" />
+                    {t.share_app || "Share"}
+                  </button>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  {/* 3. Status Indicator */}
+                  <div className="text-xs text-white">
+                    {t.auth_status || "Status"}:
+                    <span
+                      className={`font-bold ml-1 text-sm ${
+                        isAuthReady ? "text-black" : "text-yellow-300"
+                      }`}
+                    >
+                      {isAuthReady
+                        ? t.auth_ready || "Ready"
+                        : t.auth_pending || "Pending"}
+                    </span>
+                  </div>
+
+                  {/* 4. Close Button */}
+                  <button
+                    onClick={() => setIsDrawerOpen(false)}
+                    className="text-white p-1 hover:bg-red-800 rounded-full"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
               </div>
+              
+              {/* Bottom Row: App Title */}
+              <h2 className="text-xl font-bold text-white">
+                {t.app_name}
+              </h2>
             </div>
+
+
 
             {/* Navigation Links (Scrollable) - Tighter spacing */}
             <nav className="p-4 space-y-1 overflow-y-auto flex-grow">
