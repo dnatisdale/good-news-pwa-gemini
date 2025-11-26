@@ -73,15 +73,22 @@ export const useOfflineStorage = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         
+        console.log(`useOfflineStorage: Storing in cache with key: ${originalUrl}`);
         // Store in cache using the original URL as the key
         // This way the audio player can find it later
         await cache.put(originalUrl, response.clone());
+        
+        console.log(`useOfflineStorage: Successfully cached audio file`);
 
         // Add to metadata
         setOfflineTracks((prev) => {
             // Avoid duplicates
-            if (prev.some(t => t.id === track.id)) return prev;
-            return [...prev, {
+            if (prev.some(t => t.id === track.id)) {
+              console.log(`useOfflineStorage: Track ${track.id} already in library, skipping`);
+              return prev;
+            }
+            
+            const newTrack = {
                 ...track, // Store full track data first
                 id: track.id,
                 title_en: track.title_en,
@@ -91,7 +98,10 @@ export const useOfflineStorage = () => {
                 verse_en: track.verse_en,
                 verse_th: track.verse_th,
                 trackDownloadUrl: originalUrl, // Override with the correct URL (with https)
-            }];
+            };
+            
+            console.log(`useOfflineStorage: Adding track to library:`, newTrack);
+            return [...prev, newTrack];
         });
         
         console.log(`Track ${track.id} downloaded successfully.`);
