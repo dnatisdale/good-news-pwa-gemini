@@ -21,24 +21,10 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Extract the track ID from the URL (e.g., "T62808-001.mp3")
-    const match = audioUrl.match(/T(\d+)-(\d+)\.mp3/);
+    console.log(`Fetching audio from: ${audioUrl}`);
     
-    if (!match) {
-      throw new Error('Invalid audio URL format');
-    }
-    
-    const trackId = match[1];
-    const trackNumber = match[2];
-    
-    // Construct the correct URL using files.globalrecordings.net
-    // This is the actual CDN that serves the MP3 files
-    const cdnUrl = `https://files.globalrecordings.net/files/mp3-low/T${trackId}-${trackNumber}.mp3`;
-    
-    console.log(`Fetching audio from CDN: ${cdnUrl}`);
-    
-    // Fetch the audio file from the CDN
-    const response = await fetch(cdnUrl, {
+    // Fetch the audio file
+    const response = await fetch(audioUrl, {
       redirect: 'follow', // Follow redirects
     });
 
