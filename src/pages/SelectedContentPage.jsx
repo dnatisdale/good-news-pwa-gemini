@@ -35,12 +35,12 @@ const SelectedContentPage = ({
         </h1>
         <button
           onClick={onClearSelection}
-          className="text-sm font-semibold text-gray-500 hover:text-red-600 transition-colors"
+          className="text-sm font-semibold text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 transition-colors"
         >
           {t.clear_all || "Clear All"}
         </button>
       </div>
-      <p className="text-sm text-gray-500 mb-4 font-semibold">
+      <p className="text-sm text-gray-500 dark:text-gray-300 mb-4 font-semibold">
         {count} {t.messages_selected || "messages selected"}
       </p>
 
@@ -86,7 +86,7 @@ const SelectedContentPage = ({
       {/* --- End Action Buttons --- */}
       <div className="flex-grow overflow-y-auto pb-4">
         {count === 0 ? (
-          <p className="text-center text-gray-500 pt-8">
+          <p className="text-center text-gray-500 dark:text-gray-400 pt-8">
             {t.no_content_selected ||
               "No content selected yet. Go back and check some boxes!"}
           </p>
