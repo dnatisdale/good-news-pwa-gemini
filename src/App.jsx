@@ -1669,6 +1669,7 @@ export default function App() {
           onGoForward={goForward}
           hasPrev={hasPrev}
           hasNext={hasNext}
+          onClose={() => setTrack(null)}
         />
 
         {/* --- NAVIGATION DRAWER (Sidebar) --- */}

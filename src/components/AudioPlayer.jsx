@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { PlayCircle, ChevronLeft, Download, CheckCircle, Loader } from "./Icons";
+import { PlayCircle, ChevronLeft, Download, CheckCircle, Loader, X } from "./Icons";
 import { useOfflineStorage } from "../hooks/useOfflineStorage";
 
-const AudioPlayer = ({ track, isMinimized, toggleMinimize, t, onGoBack, onGoForward, hasPrev, hasNext }) => {
+const AudioPlayer = ({ track, isMinimized, toggleMinimize, t, onGoBack, onGoForward, hasPrev, hasNext, onClose }) => {
   const [audioSrc, setAudioSrc] = useState(null);
   
   // Check cache for offline audio
@@ -135,8 +135,22 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t, onGoBack, onGoForw
             ? (t.playing || "Playing") + ": " + displayTitle
             : t.controls || "Audio Player"}
         </p>
+        {/* Close Button */}
+        {onClose && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent minimize/maximize toggle
+              onClose();
+            }}
+            className="ml-auto mr-2 p-1 hover:bg-gray-700 rounded-full transition-colors"
+            title="Close Player"
+            aria-label="Close Player"
+          >
+            <X className="w-5 h-5 text-white" />
+          </button>
+        )}
         <ChevronLeft
-          className={`w-5 h-5 text-white ml-auto transition-transform ${
+          className={`w-5 h-5 text-white ${!onClose ? 'ml-auto' : ''} transition-transform ${
             isMinimized ? "rotate-90" : "-rotate-90"
           }`}
         />
