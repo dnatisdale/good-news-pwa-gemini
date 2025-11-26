@@ -71,7 +71,7 @@ const ContentCard = ({
               e.stopPropagation();
               onPlaySample && onPlaySample();
             }}
-            className={`p-2 rounded-full transition-all ${
+            className={`p-1 md:p-2 rounded-full transition-all ${
               isPlayingSample
                 ? "bg-amber-100 dark:bg-amber-100 text-amber-600 dark:text-amber-600 animate-pulse"
                 : "bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-gray-200"
@@ -93,7 +93,7 @@ const ContentCard = ({
               e.stopPropagation();
               onToggleFavorite();
             }}
-            className={`p-2 rounded-full transition-all ${
+            className={`p-1 md:p-2 rounded-full transition-all ${
               isFavorite
                 ? "bg-red-100 dark:bg-red-100 text-red-600 dark:text-red-600"
                 : "bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-red-100 hover:text-red-600"
@@ -110,7 +110,7 @@ const ContentCard = ({
             e.stopPropagation();
             onShowQrForMessage && onShowQrForMessage();
           }}
-          className="p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-brand-red hover:text-white transition-all"
+          className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-brand-red hover:text-white transition-all"
           title="Share Message"
         >
           <Share2 className="w-6 h-6" />
