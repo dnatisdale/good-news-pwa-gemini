@@ -15,6 +15,7 @@ import {
   X,
   ExternalLink,
   Download,
+  Upload,
   Zap,
   ChevronLeft,
   ChevronRight,
@@ -39,6 +40,7 @@ import SearchPage from "./pages/SearchPage";
 import SettingsPage from "./pages/SettingsPage";
 import NotesPage from "./pages/NotesPage";
 import MyLibraryPage from "./pages/MyLibraryPage";
+import ImportPage from "./pages/ImportPage";
 import UpdateNotification from "./components/UpdateNotification";
 
 // --- CONSTANTS ---
@@ -1308,6 +1310,18 @@ export default function App() {
         />
       );
       break;
+    case "Import":
+      PageContent = (
+        <ImportPage
+          lang={lang}
+          t={t}
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+        />
+      );
+      break;
 
     default:
       PageContent = (
@@ -1769,6 +1783,7 @@ export default function App() {
                 { name: "Search", icon: Search, target: "Search" },
                 { name: "Favorites", icon: Heart, target: "Favorites" },
                 { name: "My_Library", icon: Download, target: "MyLibrary" },
+                { name: "Import", icon: Upload, target: "Import" },
                 { name: "Notes", icon: Pen, target: "Notes" },
                 // --- 5fish Website Link ---
                 {
