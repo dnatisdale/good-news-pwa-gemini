@@ -620,6 +620,12 @@ export default function App() {
   const clearSearchHistory = () => {
     setSearchHistory([]);
   };
+
+  // --- Audio Player Minimize Toggle ---
+  const toggleAudioMinimize = () => {
+    setIsAudioMinimized((prev) => !prev);
+  };
+
   // --- Theme State (Dark Mode) ---
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
@@ -661,6 +667,32 @@ export default function App() {
   // *** FIX: Changed from array to object destructuring and passed setLang ***
   const { userData, saveUserData, isAuthReady, error, userId } =
     useFirebase(setLang); // Added userId
+
+  // --- NEW: Toggle Favorite (Message) ---
+  const handleToggleFavorite = (id) => {
+    if (!userData) return;
+    const currentFavorites = userData.favorites || [];
+    let newFavorites;
+    if (currentFavorites.includes(id)) {
+      newFavorites = currentFavorites.filter((favId) => favId !== id);
+    } else {
+      newFavorites = [...currentFavorites, id];
+    }
+    saveUserData({ ...userData, favorites: newFavorites });
+  };
+
+  // --- NEW: Toggle Favorite Language ---
+  const handleToggleFavoriteLanguage = (stableKey) => {
+    if (!userData) return;
+    const currentFavorites = userData.favoriteLanguages || [];
+    let newFavorites;
+    if (currentFavorites.includes(stableKey)) {
+      newFavorites = currentFavorites.filter((key) => key !== stableKey);
+    } else {
+      newFavorites = [...currentFavorites, stableKey];
+    }
+    saveUserData({ ...userData, favoriteLanguages: newFavorites });
+  };
 
   // NEW: Global Search State
   const [searchTerm, setSearchTerm] = useState("");
@@ -1009,8 +1041,7 @@ export default function App() {
   };
 
   // Handler for Content Card play button
-  const handlePlayMessage = (item) => {
-  };
+  const handlePlayMessage = (item) => {};
 
   // --- NEW: PWA Install Click Handler ---
   const handleInstallClick = async () => {
@@ -1264,9 +1295,14 @@ export default function App() {
           onForward={goForward}
           hasPrev={hasPrev}
           hasNext={hasNext}
-          // --- FIX: ADDED pageStack PROP ---
           pageStack={pageStack}
           onToggleFavorite={handleToggleFavorite}
+          // 🔴 NEW: give FavoritesPage what it needs for LANGUAGES
+          languageGroups={languageGroups}
+          onToggleFavoriteLanguage={handleToggleFavoriteLanguage}
+          onSelectLanguage={(stableKey) =>
+            navigateTo("MessagesByLanguage", stableKey)
+          }
         />
       );
       break;
@@ -1413,7 +1449,6 @@ export default function App() {
               >
                 <Home className="w-6 h-6" />
               </button>
-
             </div>
 
             {/* CENTER: Navigation Controls */}
@@ -1533,7 +1568,6 @@ export default function App() {
                   />
                 </button>
               )}
-
 
               <button
                 onClick={() => setIsSearchOpen(true)}
@@ -1808,7 +1842,7 @@ export default function App() {
                       className="w-10 h-10 rounded-xl bg-white shadow-md p-1"
                     />
                   </button>
-                  
+
                   {/* 2. App Title */}
                   <h2 className="text-lg font-bold text-white leading-tight">
                     {t.app_name}
@@ -1823,7 +1857,7 @@ export default function App() {
                   <X className="w-6 h-6" />
                 </button>
               </div>
-              
+
               {/* Bottom Row: Share App Button (Right Aligned) */}
               <div className="flex justify-end">
                 <button
@@ -1864,8 +1898,6 @@ export default function App() {
                 </button>
               </div>
             </div>
-
-
 
             {/* Navigation Links (Scrollable) - Tighter spacing */}
             <nav className="p-4 space-y-1 overflow-y-auto flex-grow">
@@ -2005,9 +2037,15 @@ export default function App() {
                     Languages | {staticContent.length} Messages | Status
                     <span
                       className={`inline-block w-2 h-2 rounded-full ${
-                        isAuthReady ? "bg-green-500 animate-pulse" : "bg-red-500 animate-pulse"
+                        isAuthReady
+                          ? "bg-green-500 animate-pulse"
+                          : "bg-red-500 animate-pulse"
                       }`}
-                      title={isAuthReady ? t.auth_ready || "Ready" : t.auth_pending || "Pending"}
+                      title={
+                        isAuthReady
+                          ? t.auth_ready || "Ready"
+                          : t.auth_pending || "Pending"
+                      }
                     ></span>
                   </p>
                 </div>

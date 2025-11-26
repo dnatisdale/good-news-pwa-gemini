@@ -7,20 +7,21 @@ const MessagesByLanguagePage = ({
   lang,
   t,
   selectedLanguageKey,
-  onBack,
-  onForward,
-  hasPrev,
-  hasNext,
+  onBack, // currently not used here, but safe to keep
+  onForward, // "
+  hasPrev, // "
+  hasNext, // "
   onSelectMessage,
   currentMessageList,
   languageGroups,
-  pageStack,
+  pageStack, // currently not used here
   selectedPrograms,
   onToggleProgram,
-  onShowQrForMessage, // 👇 NEW PROP
-  userData, // 👇 NEW PROP
-  onToggleFavorite, // 👇 NEW PROP
+  onShowQrForMessage,
+  userData,
+  onToggleFavorite,
 }) => {
+  // Find the language object from languageGroups using the stableKey
   const languageDisplayName = useMemo(() => {
     const group = languageGroups.find(
       (g) => g.stableKey === selectedLanguageKey
@@ -29,82 +30,122 @@ const MessagesByLanguagePage = ({
     return lang === "en" ? group.displayNameEn : group.displayNameTh;
   }, [lang, selectedLanguageKey, languageGroups]);
 
-  // Audio Playback State
+  // Optional: you can also get message count from the group if it's there
+  const languageMessageCount = useMemo(() => {
+    const group = languageGroups.find(
+      (g) => g.stableKey === selectedLanguageKey
+    );
+    if (!group) return currentMessageList?.length || 0;
+    return group.count ?? currentMessageList?.length ?? 0;
+  }, [languageGroups, selectedLanguageKey, currentMessageList]);
+
+  // --- Audio Playback State for "sample" ---
   const [playingSampleId, setPlayingSampleId] = React.useState(null);
   const audioRef = React.useRef(new Audio());
 
   const handlePlaySample = (item) => {
+    // If this item is already playing, stop it
     if (playingSampleId === item.id) {
-      // Stop playing
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
       setPlayingSampleId(null);
     } else {
-      // Start playing new sample
+      // Start a new sample if we have a URL
       if (item.sampleUrl) {
-        // Stop any currently playing audio first
+        // Stop any current audio
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
-        
-        // Set new source and load
+
+        // Load new URL
         audioRef.current.src = item.sampleUrl;
-        audioRef.current.load(); // Critical: load the new source
-        
-        // Try to play
-        audioRef.current.play()
+        audioRef.current
+          .play()
           .then(() => {
-            console.log('Playing sample:', item.sampleUrl);
             setPlayingSampleId(item.id);
           })
-          .catch(e => {
+          .catch((e) => {
             console.error("Error playing sample:", e);
             console.error("Sample URL:", item.sampleUrl);
             setPlayingSampleId(null);
           });
-        
-        // Reset state when audio ends
+
+        // Reset state when audio finishes
         audioRef.current.onended = () => setPlayingSampleId(null);
       }
     }
   };
 
-  // Cleanup audio on unmount
+  // Cleanup audio when page is unmounted
   React.useEffect(() => {
     return () => {
       audioRef.current.pause();
+      audioRef.current.currentTime = 0;
     };
   }, []);
 
-  return (
-    <div className="p-4 pt-8 h-full overflow-y-auto">
-      {/* Display selected language name */}
-      <h1 className={`text-2xl font-bold mb-1 ${ACCENT_COLOR_CLASS} dark:text-white`}>
-        {languageDisplayName}
-      </h1>
-      <p className="text-sm text-gray-500 dark:text-white mb-4 font-semibold">
-        {currentMessageList.length} {t.messages || "messages"}
-      </p>
+  // If no messages, show a friendly empty state
+  if (!currentMessageList || currentMessageList.length === 0) {
+    return (
+      <div className="p-4">
+        <h1 className={`text-lg font-semibold mb-2 ${ACCENT_COLOR_CLASS}`}>
+          {languageDisplayName}
+        </h1>
+        <p className="text-sm text-slate-600">
+          {t.no_messages_for_language ||
+            "No messages available for this language yet."}
+        </p>
+      </div>
+    );
+  }
 
-      {currentMessageList.map((item) => (
-        <ContentCard
-          key={item.id}
-          item={item}
-          lang={lang}
-          t={t}
-          onSelect={onSelectMessage}
-          showLanguageName={false}
-          isSelected={selectedPrograms.includes(item.id)}
-          onToggle={() =>
-            onToggleProgram(item.id, selectedLanguageKey, currentMessageList)
-          }
-          isPlayingSample={playingSampleId === item.id}
-          onPlaySample={() => handlePlaySample(item)}
-          onShowQrForMessage={() => onShowQrForMessage(item, languageDisplayName)} // 👇 PASS IT DOWN
-          isFavorite={userData?.favorites?.includes(item.id)}
-          onToggleFavorite={() => onToggleFavorite(item.id)}
-        />
-      ))}
-      <div className="h-16"></div>
+  return (
+    <div className="flex flex-col h-full">
+      {/* Simple header for this page area */}
+      <div className="px-4 pt-3 pb-2 border-b border-slate-200 bg-white">
+        <div className="flex items-baseline justify-between gap-3">
+          <div>
+            <div className={`text-base font-semibold ${ACCENT_COLOR_CLASS}`}>
+              {languageDisplayName}
+            </div>
+            <div className="text-xs text-slate-500">
+              {languageMessageCount} {t.messages || "messages"}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scrollable list of messages */}
+      <div className="flex-1 overflow-y-auto px-3 pb-4 space-y-2">
+        {currentMessageList.map((item) => (
+          <ContentCard
+            key={item.id}
+            item={item}
+            lang={lang}
+            t={t}
+            onSelect={onSelectMessage}
+            showLanguageName={false}
+            // --- Program selection (for bulk actions / playlist, etc.)
+            isSelected={selectedPrograms.includes(item.id)}
+            onToggle={() =>
+              onToggleProgram(item.id, selectedLanguageKey, currentMessageList)
+            }
+            // --- Sample audio controls
+            isPlayingSample={playingSampleId === item.id}
+            onPlaySample={() => handlePlaySample(item)}
+            // --- QR share for this message
+            onShowQrForMessage={() =>
+              onShowQrForMessage(item, languageDisplayName)
+            }
+            // --- Message favorites (hearts)
+            // This tells ContentCard whether to show the heart as "on"
+            isFavorite={userData?.favorites?.includes(item.id)}
+            // This tells App to update favorites in Firestore
+            onToggleFavorite={() => onToggleFavorite(item.id)}
+          />
+        ))}
+        {/* Spacer at bottom so floating bars don’t cover last card */}
+        <div className="h-16"></div>
+      </div>
     </div>
   );
 };

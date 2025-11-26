@@ -1,7 +1,7 @@
 import React from "react";
-import { i18n } from "../i18n"; // Assuming i18n is in src/i18n.js
+// Removed unused i18n import
 import { formatContentItem } from "../utils/contentFormatter";
-import { Volume2, Pause, PlayCircle, Share2, Heart } from "./Icons"; // Import icons
+import { Volume2, Pause, Share2, Heart } from "./Icons"; // Removed unused PlayCircle
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 const TEXT_COLOR_CLASS = "text-gray-800";
@@ -10,21 +10,22 @@ const ContentCard = ({
   item,
   lang,
   onSelect,
-  t, // NEW: Translation object
+  t, // Translation object
   showLanguageName = true,
-  isSelected, // NEW: Is this specific message selected?
-  onToggle, // NEW: Function to toggle this message
-  isPlayingSample, // NEW: Is this sample playing?
-  onPlaySample, // NEW: Function to toggle sample playback
-  onShowQrForMessage, // NEW: Show QR modal
-  isFavorite, // NEW: Is this item a favorite?
-  onToggleFavorite, // NEW: Function to toggle favorite
+  isSelected, // Is this specific message selected?
+  onToggle, // Function to toggle this message
+  isPlayingSample, // Is this sample playing?
+  onPlaySample, // Function to toggle sample playback
+  onShowQrForMessage, // Show QR modal
+  isFavorite, // Is this item a favorite?
+  onToggleFavorite, // Function to toggle favorite
 }) => {
-  const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
+  const { languageDisplay, messageTitle, trackTitle, programNumber } =
+    formatContentItem(item, lang);
 
   return (
     <div className="bg-white dark:bg-[#374151] p-4 mb-3 rounded-xl shadow-md border-t-4 border-brand-red cursor-pointer card-hover flex items-start">
-      {/* --- NEW: CHECKBOX AREA --- */}
+      {/* --- CHECKBOX AREA --- */}
       {onToggle && (
         <div
           className="pr-4 pt-1"
@@ -45,7 +46,9 @@ const ContentCard = ({
       {/* Content Info */}
       <div className="flex-grow" onClick={() => onSelect(item)}>
         {showLanguageName && (
-          <p className={`text-base font-semibold ${ACCENT_COLOR_CLASS} dark:text-white mb-1`}>
+          <p
+            className={`text-base font-semibold ${ACCENT_COLOR_CLASS} dark:text-white mb-1`}
+          >
             {languageDisplay}
           </p>
         )}
@@ -56,7 +59,7 @@ const ContentCard = ({
         >
           {messageTitle}
         </h3>
-        
+
         <p className="text-xs text-gray-400 dark:text-white mt-1.5">
           {t?.program_number || "Message No."} {programNumber}
         </p>
@@ -95,12 +98,19 @@ const ContentCard = ({
             }}
             className={`p-1 md:p-2 rounded-full transition-all ${
               isFavorite
-                ? "bg-red-100 dark:bg-red-100 text-red-600 dark:text-red-600"
-                : "bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-red-100 hover:text-red-600"
+                ? "bg-red-100 dark:bg-red-100"
+                : "bg-gray-100 dark:bg-white hover:bg-red-100"
             }`}
             title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           >
-            <Heart className="w-6 h-6" />
+            <Heart
+              className={`w-6 h-6 ${
+                isFavorite
+                  ? "fill-brand-red text-brand-red"
+                  : "text-gray-500 dark:text-gray-600"
+              }`}
+              style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : {}}
+            />
           </button>
         )}
 
