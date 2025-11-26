@@ -1693,9 +1693,9 @@ export default function App() {
             <div
               className={`${PRIMARY_COLOR_CLASS} px-3 py-4 flex flex-col space-y-2 rounded-r-xl flex-shrink-0`}
             >
-              {/* Top Row: Logo, Share Button, Status, Close */}
+              {/* Top Row: Logo, Title, Close */}
               <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-4">
                   {/* 1. The Square Logo */}
                   <img
                     src={AppLogo}
@@ -1703,60 +1703,60 @@ export default function App() {
                     className="w-11 h-11 rounded-xl bg-white shadow-md p-1"
                   />
                   
-                  {/* 2. Share App Button - Thai Blue */}
-                  <button
-                    onClick={async (e) => {
-                      e.stopPropagation(); // Prevent drawer close
-                      const appUrl = window.location.origin;
-                      const shareData = {
-                        title: t.app_name || "Thai: Good News",
-                        text:
-                          t.share_app_text ||
-                          "Check out this app for Good News messages in multiple languages!",
-                        url: appUrl,
-                      };
-
-                      if (navigator.share) {
-                        try {
-                          await navigator.share(shareData);
-                        } catch (err) {
-                          if (err.name !== "AbortError") {
-                            console.error("Share failed:", err);
-                          }
-                        }
-                      } else {
-                        try {
-                          await navigator.clipboard.writeText(appUrl);
-                          alert(t.link_copied || "Link copied to clipboard!");
-                        } catch (err) {
-                          console.error("Copy failed:", err);
-                          alert(t.copy_failed || "Could not copy link");
-                        }
-                      }
-                    }}
-                    className="flex items-center gap-1 px-2 py-1 bg-[#003366] text-white rounded text-xs font-semibold hover:bg-[#004d99] transition-colors whitespace-nowrap"
-                    title={t.share_app || "Share App"}
-                  >
-                    <ExternalLink className="w-3 h-3" />
-                    {t.share_app || "Share"}
-                  </button>
+                  {/* 2. App Title */}
+                  <h2 className="text-xl font-bold text-white">
+                    {t.app_name}
+                  </h2>
                 </div>
 
-                <div className="flex items-center space-x-3">
-                  {/* 3. Close Button */}
-                  <button
-                    onClick={() => setIsDrawerOpen(false)}
-                    className="text-white p-1 hover:bg-red-800 rounded-full"
-                  >
-                    <X className="w-6 h-6" />
-                  </button>
-                </div>
+                {/* 3. Close Button */}
+                <button
+                  onClick={() => setIsDrawerOpen(false)}
+                  className="text-white p-1 hover:bg-red-800 rounded-full"
+                >
+                  <X className="w-6 h-6" />
+                </button>
               </div>
               
-              {/* Bottom Row: App Title */}
-              <h2 className="text-xl font-bold text-white">
-                {t.app_name}
-              </h2>
+              {/* Bottom Row: Share App Button (Far Right) */}
+              <div className="flex justify-end">
+                <button
+                  onClick={async (e) => {
+                    e.stopPropagation(); // Prevent drawer close
+                    const appUrl = window.location.origin;
+                    const shareData = {
+                      title: t.app_name || "Thai: Good News",
+                      text:
+                        t.share_app_text ||
+                        "Check out this app for Good News messages in multiple languages!",
+                      url: appUrl,
+                    };
+
+                    if (navigator.share) {
+                      try {
+                        await navigator.share(shareData);
+                      } catch (err) {
+                        if (err.name !== "AbortError") {
+                          console.error("Share failed:", err);
+                        }
+                      }
+                    } else {
+                      try {
+                        await navigator.clipboard.writeText(appUrl);
+                        alert(t.link_copied || "Link copied to clipboard!");
+                      } catch (err) {
+                        console.error("Copy failed:", err);
+                        alert(t.copy_failed || "Could not copy link");
+                      }
+                    }
+                  }}
+                  className="flex items-center gap-1 px-2 py-1 bg-[#003366] text-white rounded text-xs font-semibold hover:bg-[#004d99] transition-colors whitespace-nowrap"
+                  title={t.share_app || "Share App"}
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  {t.share_app || "Share"}
+                </button>
+              </div>
             </div>
 
 
