@@ -12,7 +12,16 @@ export const useOfflineStorage = () => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
-        setOfflineTracks(JSON.parse(saved));
+        const tracks = JSON.parse(saved);
+        // Normalize URLs to ensure they have https:// protocol
+        const normalizedTracks = tracks.map(track => ({
+          ...track,
+          trackDownloadUrl: track.trackDownloadUrl && !track.trackDownloadUrl.startsWith('http')
+            ? `https://${track.trackDownloadUrl}`
+            : track.trackDownloadUrl
+        }));
+        console.log('useOfflineStorage: Loaded and normalized tracks from localStorage:', normalizedTracks);
+        setOfflineTracks(normalizedTracks);
       } catch (e) {
         console.error("Failed to parse offline library metadata", e);
       }
