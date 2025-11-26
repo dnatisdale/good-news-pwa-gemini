@@ -78,6 +78,7 @@ export const i18n = {
     // Settings & Notes
     text_size: "Text Size",
     my_library: "My Library",
+    import: "Import",
     library_empty: "Your library is empty",
     library_empty_tip: "Download messages to listen offline. Look for the download button on message pages.",
     my_notes: "My Notes",
@@ -204,6 +205,7 @@ export const i18n = {
     // Settings & Notes
     text_size: "ขนาดตัวอักษร",
     my_library: "คลังของฉัน",
+   import: "นำเข้า",
     library_empty: "คลังของคุณว่างเปล่า",
     library_empty_tip: "ดาวน์โหลดข้อความเพื่อฟังแบบออฟไลน์ มองหาปุ่มดาวน์โหลดในหน้าข้อความ",
     my_notes: "บันทึกของฉัน",
