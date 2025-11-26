@@ -82,6 +82,7 @@ export const useOfflineStorage = () => {
             // Avoid duplicates
             if (prev.some(t => t.id === track.id)) return prev;
             return [...prev, {
+                ...track, // Store full track data first
                 id: track.id,
                 title_en: track.title_en,
                 title_th: track.title_th,
@@ -89,8 +90,7 @@ export const useOfflineStorage = () => {
                 langTh: track.langTh,
                 verse_en: track.verse_en,
                 verse_th: track.verse_th,
-                trackDownloadUrl: originalUrl, // Store the original URL
-                ...track // Store full track data for offline playback
+                trackDownloadUrl: originalUrl, // Override with the correct URL (with https)
             }];
         });
         

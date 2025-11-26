@@ -16,7 +16,14 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t, onGoBack, onGoForw
       try {
         // Try to get from cache first
         const cache = await caches.open("offline-audio-v1");
-        const cachedResponse = await cache.match(track.trackDownloadUrl);
+        
+        // Ensure URL has protocol for cache matching
+        let urlToCheck = track.trackDownloadUrl;
+        if (urlToCheck && !urlToCheck.startsWith("http")) {
+            urlToCheck = "https://" + urlToCheck;
+        }
+        
+        const cachedResponse = await cache.match(urlToCheck);
         
         if (cachedResponse) {
           // Use cached version
@@ -24,12 +31,17 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t, onGoBack, onGoForw
           const url = URL.createObjectURL(blob);
           setAudioSrc(url);
         } else {
-          // Use online URL
-          setAudioSrc(track.trackDownloadUrl);
+          // Use online URL (ensure protocol)
+          setAudioSrc(urlToCheck);
         }
       } catch (error) {
         console.error("Error loading audio:", error);
-        setAudioSrc(track.trackDownloadUrl);
+        // Fallback to online URL with protocol
+        let fallbackUrl = track.trackDownloadUrl;
+        if (fallbackUrl && !fallbackUrl.startsWith("http")) {
+            fallbackUrl = "https://" + fallbackUrl;
+        }
+        setAudioSrc(fallbackUrl);
       }
     };
 
