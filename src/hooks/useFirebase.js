@@ -15,7 +15,7 @@ export function useFirebase(setLang) {
   const [userId, setUserId] = useState(null);
   const [isAuthReady, setIsAuthReady] = useState(false);
   // Initial state is safe: favorites: []
-  const [userData, setUserData] = useState({ favorites: [], notes: [] });
+  const [userData, setUserData] = useState({ favorites: [], favoriteLanguages: [], notes: [] });
   const [error, setError] = useState(null);
 
   // 1. Authentication Listener (runs once)
@@ -62,11 +62,12 @@ export function useFirebase(setLang) {
           // This ensures that favorites and notes are arrays, even if the data returned null/undefined
           setUserData({
             favorites: data.favorites || [],
+            favoriteLanguages: data.favoriteLanguages || [], // 👇 NEW
             notes: data.notes || [],
           });
         } else {
           // Initialize user data if it doesn't exist
-          const initialData = { favorites: [], notes: [] };
+          const initialData = { favorites: [], favoriteLanguages: [], notes: [] }; // 👇 NEW
           setDoc(userDataRef, initialData).catch((e) =>
             console.error("Error initializing user data:", e)
           );

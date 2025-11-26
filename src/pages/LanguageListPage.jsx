@@ -12,6 +12,8 @@ const LanguageListPage = ({
   onToggleLanguage,
   // 👇 NEW PROP
   onHoverChange,
+  userData, // 👇 NEW
+  onToggleFavoriteLanguage, // 👇 NEW
 }) => {
   // Audio Playback State
   const [playingLanguageKey, setPlayingLanguageKey] = React.useState(null);
@@ -89,6 +91,8 @@ const LanguageListPage = ({
           // 👇 NEW: Audio playback props
           onPlayLanguage={() => handlePlayLanguageSample(group)}
           isPlayingLanguage={playingLanguageKey === group.stableKey}
+          isFavorite={userData?.favoriteLanguages?.includes(group.stableKey)} // 👇 NEW
+          onToggleFavorite={() => onToggleFavoriteLanguage(group.stableKey)} // 👇 NEW
         />
       ))}
       <div className="h-16"></div>

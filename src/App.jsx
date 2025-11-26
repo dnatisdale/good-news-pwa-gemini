@@ -1010,30 +1010,6 @@ export default function App() {
 
   // Handler for Content Card play button
   const handlePlayMessage = (item) => {
-    setTrack(item);
-    setIsAudioMinimized(false);
-  };
-
-  // Handler for toggling favorites
-  const handleToggleFavorite = (itemId) => {
-    if (!userData || !saveUserData) return;
-    
-    const favorites = userData.favorites || [];
-    const isFavorited = favorites.includes(itemId);
-    
-    const newFavorites = isFavorited
-      ? favorites.filter(id => id !== itemId)
-      : [...favorites, itemId];
-    
-    saveUserData({
-      ...userData,
-      favorites: newFavorites,
-    });
-  };
-
-  // Audio Player Toggle
-  const toggleAudioMinimize = () => {
-    setIsAudioMinimized((p) => !p);
   };
 
   // --- NEW: PWA Install Click Handler ---
@@ -1180,6 +1156,8 @@ export default function App() {
           selectedPrograms={selectedPrograms}
           onToggleLanguage={handleLanguageToggle}
           onHoverChange={setIsHoveringContent} // 👈 GIVE IT THE CONTROLLER
+          userData={userData} // 👇 NEW
+          onToggleFavoriteLanguage={handleToggleFavoriteLanguage} // 👇 NEW
         />
       );
       break;
@@ -1534,6 +1512,28 @@ export default function App() {
                 </button>
               )}
 
+              {/* --- FAVORITE LANGUAGE BUTTON (Mobile) --- */}
+              {currentPage.name === "MessagesByLanguage" && (
+                <button
+                  onClick={() => handleToggleFavoriteLanguage(currentPage.key)}
+                  className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                  title={t.favorite_language || "Favorite Language"}
+                >
+                  <Heart
+                    className={`w-6 h-6 ${
+                      userData?.favoriteLanguages?.includes(currentPage.key)
+                        ? "fill-brand-red text-brand-red"
+                        : "text-white"
+                    }`}
+                    style={
+                      userData?.favoriteLanguages?.includes(currentPage.key)
+                        ? { fill: "#CC3333", color: "#CC3333" }
+                        : {}
+                    }
+                  />
+                </button>
+              )}
+
 
               <button
                 onClick={() => setIsSearchOpen(true)}
@@ -1666,6 +1666,28 @@ export default function App() {
                     }`}
                     style={
                       userData?.favorites?.includes(currentItem.id)
+                        ? { fill: "#CC3333", color: "#CC3333" }
+                        : {}
+                    }
+                  />
+                </button>
+              )}
+
+              {/* --- FAVORITE LANGUAGE BUTTON (Desktop) --- */}
+              {currentPage.name === "MessagesByLanguage" && (
+                <button
+                  onClick={() => handleToggleFavoriteLanguage(currentPage.key)}
+                  className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                  title={t.favorite_language || "Favorite Language"}
+                >
+                  <Heart
+                    className={`w-6 h-6 ${
+                      userData?.favoriteLanguages?.includes(currentPage.key)
+                        ? "fill-brand-red text-brand-red"
+                        : "text-white"
+                    }`}
+                    style={
+                      userData?.favoriteLanguages?.includes(currentPage.key)
                         ? { fill: "#CC3333", color: "#CC3333" }
                         : {}
                     }

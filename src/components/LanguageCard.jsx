@@ -1,5 +1,5 @@
 import React from "react";
-import { Share2, Volume2 } from "./Icons";
+import { Share2, Volume2, Heart } from "./Icons";
 import { i18n } from "../i18n";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
@@ -17,6 +17,8 @@ const LanguageCard = ({
   // 👇 NEW: Audio playback props
   onPlayLanguage,
   isPlayingLanguage,
+  isFavorite, // 👇 NEW
+  onToggleFavorite, // 👇 NEW
 }) => {
   return (
     <div
@@ -56,7 +58,6 @@ const LanguageCard = ({
           </p>
         </div>
 
-        {/* Play and Share buttons side by side */}
         <div className="flex-shrink-0 flex items-center gap-2">
           {/* Play Button */}
           <button
@@ -64,7 +65,7 @@ const LanguageCard = ({
               e.stopPropagation();
               onPlayLanguage && onPlayLanguage();
             }}
-            className={`p-2 rounded-full transition-all ${
+            className={`p-1 md:p-2 rounded-full transition-all ${
               isPlayingLanguage
                 ? "bg-amber-100 dark:bg-amber-100 text-amber-600 dark:text-amber-600 animate-pulse"
                 : "bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-amber-500 hover:text-white"
@@ -74,13 +75,38 @@ const LanguageCard = ({
             <Volume2 className="w-6 h-6" />
           </button>
 
+          {/* Favorite Button */}
+          {onToggleFavorite && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleFavorite();
+              }}
+              className={`p-1 md:p-2 rounded-full transition-all ${
+                isFavorite
+                  ? "bg-red-100 dark:bg-red-100 text-red-600 dark:text-red-600"
+                  : "bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-red-100 hover:text-red-600"
+              }`}
+              title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+            >
+              <Heart
+                className={`w-6 h-6 ${
+                  isFavorite ? "fill-brand-red text-brand-red" : ""
+                }`}
+                style={
+                  isFavorite ? { fill: "#CC3333", color: "#CC3333" } : {}
+                }
+              />
+            </button>
+          )}
+
           {/* Share Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               onShowQrForLanguage(languageName);
             }}
-            className="p-2 rounded-full bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-brand-red hover:text-white transition-colors"
+            className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-brand-red hover:text-white transition-colors"
             title={i18n[lang].share_language_qr || "Share Language QR"}
           >
             <Share2 className="w-6 h-6" />
