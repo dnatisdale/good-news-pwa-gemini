@@ -1513,11 +1513,11 @@ export default function App() {
                   navigateToHome();
                   setIsDrawerOpen(false);
                 }}
-                className="bg-white text-brand-red p-2 rounded-full font-bold shadow-sm hover:bg-gray-100 transition-colors flex items-center ml-2"
+                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover ml-2"
                 title={t.home || "Home"}
                 aria-label={t.home || "Home"}
               >
-                <Home className="w-5 h-5" />
+                <Home className="w-6 h-6" />
               </button>
             </div>
 
