@@ -12,24 +12,25 @@ const LanguageCard = ({
   onShowQrForLanguage,
   selectionState,
   onToggle,
-  // 👇 NEW PROP
+  // 👇 Hover state
   setHovering,
-  // 👇 NEW: Audio playback props
+  // 👇 Audio playback props
   onPlayLanguage,
   isPlayingLanguage,
-  isFavorite, // 👇 NEW
-  onToggleFavorite, // 👇 NEW
+  isFavorite,
+  onToggleFavorite,
 }) => {
   return (
     <div
-      // 👇 NEW EVENTS: Send the signal!
       onMouseEnter={() => setHovering && setHovering(true)}
       onMouseLeave={() => setHovering && setHovering(false)}
       className="bg-white dark:bg-[#374151] p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer card-hover transition-colors"
     >
-      <div className="flex items-center justify-between">
+      {/* MAIN ROW */}
+      <div className="flex items-center gap-3">
+        {/* Checkbox */}
         <div
-          className="pr-4 flex items-center"
+          className="pr-2 flex items-center shrink-0"
           onClick={(e) => {
             e.stopPropagation();
             onToggle();
@@ -48,17 +49,24 @@ const LanguageCard = ({
           />
         </div>
 
-        <div onClick={() => onSelect(languageName)} className="flex-grow pr-4">
-          <h3 className={`text-2xl font-bold ${ACCENT_COLOR_CLASS} dark:text-white`}>
+        {/* TEXT AREA – takes all remaining width */}
+        <div
+          onClick={() => onSelect(languageName)}
+          className="flex-1 min-w-0 pr-2"
+        >
+          <h3
+            className={`text-xl font-bold ${ACCENT_COLOR_CLASS} dark:text-white`}
+          >
             {languageName}
           </h3>
-          <p className={`text-sm text-gray-500 dark:text-gray-300 mt-1`}>
+          <p className="text-xs text-gray-500 dark:text-gray-300 mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">
             {lang === "en" ? "Tap to view" : "แตะเพื่อดู"} ({messageCount}{" "}
             {lang === "en" ? "messages" : "ข้อความ"})
           </p>
         </div>
 
-        <div className="flex-shrink-0 flex items-center gap-2">
+        {/* ICONS – fixed width, don’t squeeze text */}
+        <div className="flex items-center gap-2 shrink-0">
           {/* Play Button */}
           <button
             onClick={(e) => {
@@ -93,9 +101,7 @@ const LanguageCard = ({
                 className={`w-6 h-6 ${
                   isFavorite ? "fill-brand-red text-brand-red" : ""
                 }`}
-                style={
-                  isFavorite ? { fill: "#CC3333", color: "#CC3333" } : {}
-                }
+                style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : {}}
               />
             </button>
           )}
