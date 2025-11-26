@@ -1505,11 +1505,11 @@ export default function App() {
                   navigateToHome();
                   setIsDrawerOpen(false);
                 }}
-                className="bg-white text-brand-red px-3 py-1 rounded-full font-bold shadow-sm hover:bg-gray-100 transition-colors text-sm flex items-center ml-2"
+                className="bg-white text-brand-red p-2 rounded-full font-bold shadow-sm hover:bg-gray-100 transition-colors flex items-center ml-2"
                 title={t.home || "Home"}
+                aria-label={t.home || "Home"}
               >
-                <Home className="w-4 h-4 mr-1" />
-                {t.home || "Home"}
+                <Home className="w-5 h-5" />
               </button>
             </div>
 
