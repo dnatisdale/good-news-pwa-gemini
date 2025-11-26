@@ -1675,7 +1675,7 @@ export default function App() {
           >
             {/* Header */}
             <div
-              className={`${PRIMARY_COLOR_CLASS} px-3 py-4 flex flex-col space-y-2 rounded-r-xl flex-shrink-0`}
+              className={`${PRIMARY_COLOR_CLASS} px-3 py-3 flex flex-col space-y-1 rounded-r-xl flex-shrink-0`}
             >
               {/* Top Row: Logo, Title, Close */}
               <div className="flex justify-between items-center">
@@ -1702,8 +1702,12 @@ export default function App() {
                 </button>
               </div>
               
-              {/* Bottom Row: Share App Button (Far Right) */}
-              <div className="flex justify-end">
+              {/* Bottom Row: House Icon + Share App Button (Left Aligned) */}
+              <div className="flex items-center gap-2 pl-15">
+                {/* White Outline House Icon */}
+                <Home className="w-4 h-4 text-white" />
+                
+                {/* Share App Button */}
                 <button
                   onClick={async (e) => {
                     e.stopPropagation(); // Prevent drawer close
