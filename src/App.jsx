@@ -34,6 +34,7 @@ import FloatingUtilityBar from "./components/FloatingUtilityBar";
 import AudioPlayer from "./components/AudioPlayer";
 import LanguageListPage from "./pages/LanguageListPage";
 import SelectedContentPage from "./pages/SelectedContentPage";
+import LanguageFinderPage from "./pages/LanguageFinderPage";
 import MessagesByLanguagePage from "./pages/MessagesByLanguagePage";
 import FavoritesPage from "./pages/FavoritesPage";
 import SearchPage from "./pages/SearchPage";
@@ -1281,6 +1282,25 @@ export default function App() {
         />
       );
       break;
+
+    case "BrowseLanguages":
+      PageContent = (
+        <LanguageFinderPage
+          lang={lang}
+          t={t}
+          userData={userData}
+          onToggleFavoriteLanguage={handleToggleFavoriteLanguage}
+          onSelectLanguage={(stableKey) =>
+            navigateTo("MessagesByLanguage", stableKey)
+          }
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+        />
+      );
+      break;
+
     case "Favorites":
       PageContent = (
         <FavoritesPage
@@ -1306,6 +1326,7 @@ export default function App() {
         />
       );
       break;
+
     case "Notes":
       PageContent = (
         <NotesPage
@@ -1320,6 +1341,7 @@ export default function App() {
         />
       );
       break;
+
     case "MyLibrary":
       PageContent = (
         <MyLibraryPage
@@ -1333,6 +1355,7 @@ export default function App() {
         />
       );
       break;
+
     case "Settings":
       PageContent = (
         <SettingsPage
@@ -1348,6 +1371,7 @@ export default function App() {
         />
       );
       break;
+
     case "Import":
       PageContent = (
         <ImportPage
@@ -1904,6 +1928,11 @@ export default function App() {
               {/* Navigation Items */}
               {[
                 { name: "Search", icon: Search, target: "Search" },
+                {
+                  name: "Language_Finder",
+                  icon: Search,
+                  target: "BrowseLanguages",
+                },
                 { name: "Favorites", icon: Heart, target: "Favorites" },
                 { name: "My_Library", icon: Download, target: "MyLibrary" },
                 { name: "Import", icon: Upload, target: "Import" },

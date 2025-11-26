@@ -18,6 +18,7 @@ export const i18n = {
     language_label: "Language",
     back_to_languages: "Back to Languages",
     languages: "Languages",
+    language_finder: "Language Finder",
     messages: "messages",
 
     // Status / Authentication
@@ -80,7 +81,8 @@ export const i18n = {
     my_library: "My Library",
     import: "Import",
     library_empty: "Your library is empty",
-    library_empty_tip: "Download messages to listen offline. Look for the download button on message pages.",
+    library_empty_tip:
+      "Download messages to listen offline. Look for the download button on message pages.",
     my_notes: "My Notes",
     notes_feature_tip:
       "Notes feature coming soon! You can view all saved notes on the Notes page.",
@@ -94,7 +96,7 @@ export const i18n = {
     font_size_small: "Small", // NEW
     font_size_medium: "Medium", // NEW
     font_size_large: "Large", // NEW
-    
+
     // SelectedContentPage
     messages_selected: "messages selected",
     selected_content: "Selected Messages",
@@ -102,16 +104,20 @@ export const i18n = {
     copy: "Copy",
     print: "Print/Download",
     print_word: "Print", // NEW
-    no_content_selected: "No content selected yet. Go back and check some boxes!",
-    
+    no_content_selected:
+      "No content selected yet. Go back and check some boxes!",
+
     // Share App
     share_app: "Share App",
     install: "Install", // NEW
-    install_instructions: "To install, tap 'Share' then 'Add to Home Screen' (iOS) or use the browser menu (Android).", // NEW
-    share_app_text: "Check out this app for Good News messages in multiple languages!",
+    install_instructions:
+      "To install, tap 'Share' then 'Add to Home Screen' (iOS) or use the browser menu (Android).", // NEW
+    share_app_text:
+      "Check out this app for Good News messages in multiple languages!",
     link_copied: "Link copied to clipboard!",
     copy_failed: "Could not copy link",
-    please_select_messages: "📋 Please select some messages first!\n\nTap the checkboxes next to messages to add them to your selection.",
+    please_select_messages:
+      "📋 Please select some messages first!\n\nTap the checkboxes next to messages to add them to your selection.",
   },
 
   // --- THAI TRANSLATIONS ---
@@ -125,7 +131,7 @@ export const i18n = {
     share_app: "แชร์แอป",
     controls: "ควบคุม",
     playing: "กำลังเล่น",
-    
+
     // Navigation
     contents: "สารบัญ",
     search: "ค้นหา",
@@ -135,6 +141,7 @@ export const i18n = {
     language_label: "ภาษา",
     back_to_languages: "กลับไปหน้าภาษา",
     languages: "ภาษา",
+    language_finder: "ค้นหาภาษา",
     messages: "ข้อความ",
 
     // Status / Authentication
@@ -156,7 +163,7 @@ export const i18n = {
     sign_up_fail: "ลงทะเบียนล้มเหลว โปรดตรวจสอบข้อความแสดงข้อผิดพลาด",
     sign_in_success: "เข้าสู่ระบบสำเร็จ!",
     sign_in_fail: "เข้าสู่ระบบล้มเหลว ตรวจสอบอีเมล/รหัสผ่านของคุณ",
-    
+
     // Auth & PWA
     auth_status: "สถานะ",
     auth_ready: "พร้อมใช้งาน",
@@ -164,7 +171,8 @@ export const i18n = {
     auth_pending: "รอดำเนินการ",
     install_app: "ติดตั้งแอป",
     install: "ติดตั้ง", // NEW
-    install_instructions: "ในการติดตั้ง ให้แตะ 'แชร์' แล้วเลือก 'เพิ่มไปยังหน้าจอหลัก' (iOS) หรือใช้เมนูเบราว์เซอร์ (Android)", // NEW
+    install_instructions:
+      "ในการติดตั้ง ให้แตะ 'แชร์' แล้วเลือก 'เพิ่มไปยังหน้าจอหลัก' (iOS) หรือใช้เมนูเบราว์เซอร์ (Android)", // NEW
     share_pwa: "แชร์แอปนี้",
     scan_to_share: "สแกนเพื่อแชร์แอปนี้",
 
@@ -205,19 +213,21 @@ export const i18n = {
     // Settings & Notes
     text_size: "ขนาดตัวอักษร",
     my_library: "คลังของฉัน",
-   import: "นำเข้า",
+    import: "นำเข้า",
     library_empty: "คลังของคุณว่างเปล่า",
-    library_empty_tip: "ดาวน์โหลดข้อความเพื่อฟังแบบออฟไลน์ มองหาปุ่มดาวน์โหลดในหน้าข้อความ",
+    library_empty_tip:
+      "ดาวน์โหลดข้อความเพื่อฟังแบบออฟไลน์ มองหาปุ่มดาวน์โหลดในหน้าข้อความ",
     my_notes: "บันทึกของฉัน",
-    notes_feature_tip: "ฟีเจอร์บันทึกกำลังจะมาเร็วๆ นี้! คุณสามารถดูบันทึกที่บันทึกไว้ทั้งหมดได้ที่หน้าบันทึก",
+    notes_feature_tip:
+      "ฟีเจอร์บันทึกกำลังจะมาเร็วๆ นี้! คุณสามารถดูบันทึกที่บันทึกไว้ทั้งหมดได้ที่หน้าบันทึก",
     notes_page_tip: "หน้านี้พร้อมที่จะสร้างแล้ว!",
-    
+
     // UI Helpers
     select_message_to_listen: "เลือกข้อความเพื่อฟัง",
     tap_to_enlarge: "แตะเพื่อขยาย",
     tap_to_shrink: "แตะเพื่อย่อ",
     jump_to_letter: "ไปที่ตัวอักษร",
-    
+
     // FloatingUtilityBar
     selected_count_label: "เลือกแล้ว",
     clear_all: "ล้างทั้งหมด",
@@ -229,8 +239,8 @@ export const i18n = {
     font_size_large: "ใหญ่", // NEW
     language: "ภาษา",
     tools_panel: "เครื่องมือ",
-    
-    // SelectedContentPage  
+
+    // SelectedContentPage
     messages_selected: "ข้อความที่เลือก",
     selected_content: "โปรแกรมที่เลือก",
     share: "แชร์",
@@ -238,13 +248,14 @@ export const i18n = {
     print: "พิมพ์/ดาวน์โหลด",
     print_word: "พิมพ์", // NEW
     no_content_selected: "ยังไม่ได้เลือกเนื้อหา กลับไปและเลือกข้อความ!",
-    
+
     // Share App
     share_app: "แชร์แอป",
     share_app_text: "ดูแอปนี้สำหรับข้อความข่าวดีในหลายภาษา!",
     link_copied: "คัดลอกลิงก์แล้ว!",
     copy_failed: "ไม่สามารถคัดลอกลิงก์ได้",
-    please_select_messages: "📋 กรุณาเลือกข้อความก่อน!\n\nแตะช่องทำเครื่องหมายข้างข้อความเพื่อเพิ่มลงในรายการที่เลือก",
+    please_select_messages:
+      "📋 กรุณาเลือกข้อความก่อน!\n\nแตะช่องทำเครื่องหมายข้างข้อความเพื่อเพิ่มลงในรายการที่เลือก",
 
     // Notes
     note_title_placeholder: "หัวข้อ",
