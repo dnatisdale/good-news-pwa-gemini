@@ -1717,21 +1717,7 @@ export default function App() {
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  {/* 3. Status Indicator */}
-                  <div className="text-xs text-white">
-                    {t.auth_status || "Status"}:
-                    <span
-                      className={`font-bold ml-1 text-sm ${
-                        isAuthReady ? "text-black" : "text-yellow-300"
-                      }`}
-                    >
-                      {isAuthReady
-                        ? t.auth_ready || "Ready"
-                        : t.auth_pending || "Pending"}
-                    </span>
-                  </div>
-
-                  {/* 4. Close Button */}
+                  {/* 3. Close Button */}
                   <button
                     onClick={() => setIsDrawerOpen(false)}
                     className="text-white p-1 hover:bg-red-800 rounded-full"
@@ -1878,12 +1864,18 @@ export default function App() {
                       minute: "2-digit",
                     })}
                   </p>
-                  <p className="text-gray-600 dark:text-white">
+                  <p className="text-gray-600 dark:text-white flex items-center justify-center gap-2">
                     {
                       [...new Set(staticContent.map((item) => item.stableKey))]
                         .length
                     }{" "}
-                    Languages | {staticContent.length} Messages
+                    Languages | {staticContent.length} Messages | Status
+                    <span
+                      className={`inline-block w-2 h-2 rounded-full ${
+                        isAuthReady ? "bg-green-500 animate-pulse" : "bg-red-500 animate-pulse"
+                      }`}
+                      title={isAuthReady ? t.auth_ready || "Ready" : t.auth_pending || "Pending"}
+                    ></span>
                   </p>
                 </div>
               </div>
