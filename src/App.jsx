@@ -1651,6 +1651,27 @@ export default function App() {
               />
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
 
+              {/* --- FAVORITE BUTTON (Desktop) --- */}
+              {currentPage.name === "ContentView" && currentItem && (
+                <button
+                  onClick={() => handleToggleFavorite(currentItem.id)}
+                  className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                  title={t.favorite || "Favorite"}
+                >
+                  <Heart
+                    className={`w-6 h-6 ${
+                      userData?.favorites?.includes(currentItem.id)
+                        ? "fill-brand-red text-brand-red" // Red fill and text
+                        : "text-white"
+                    }`}
+                    style={
+                      userData?.favorites?.includes(currentItem.id)
+                        ? { fill: "#CC3333", color: "#CC3333" }
+                        : {}
+                    }
+                  />
+                </button>
+              )}
 
               <button
                 onClick={() => setIsSearchOpen(true)}
