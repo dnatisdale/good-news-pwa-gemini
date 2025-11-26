@@ -13,7 +13,6 @@ const FavoritesPage = ({
   onBack,
   onForward,
   hasPrev,
-  hasPrev,
   hasNext,
   onToggleFavorite, // 👇 NEW PROP
 }) => {
