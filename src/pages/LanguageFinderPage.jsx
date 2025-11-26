@@ -101,7 +101,7 @@ const LanguageFinderPage = ({
     <div className="flex flex-col h-full p-4 gap-3">
       {/* Title */}
       <h1 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
-        {t.languages}
+        {t.language_finder || t.languages}
       </h1>
       <p className="text-xs text-gray-500 dark:text-gray-200">
         {t.search_languages || "Search languages..."}
@@ -121,7 +121,7 @@ const LanguageFinderPage = ({
               : "bg-slate-800 text-slate-100 border-slate-600"
           }`}
         >
-          ก ก ข ค (ไทย)
+          ก
         </button>
         <button
           type="button"
@@ -135,7 +135,7 @@ const LanguageFinderPage = ({
               : "bg-slate-800 text-slate-100 border-slate-600"
           }`}
         >
-          A B C (English)
+          A
         </button>
       </div>
 
