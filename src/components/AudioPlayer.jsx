@@ -32,7 +32,19 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t, onGoBack, onGoForw
         if (cachedResponse) {
           // Use cached version
           console.log("AudioPlayer: Found cached audio!");
+          console.log("AudioPlayer: Response headers:", cachedResponse.headers);
+          console.log("AudioPlayer: Response status:", cachedResponse.status);
+          
           const blob = await cachedResponse.blob();
+          console.log("AudioPlayer: Blob type:", blob.type);
+          console.log("AudioPlayer: Blob size:", blob.size, "bytes");
+          
+          if (blob.size === 0) {
+            console.error("AudioPlayer: Blob is empty! Falling back to online URL");
+            setAudioSrc(urlToCheck);
+            return;
+          }
+          
           const url = URL.createObjectURL(blob);
           setAudioSrc(url);
           console.log("AudioPlayer: Set audio source to blob URL:", url);
