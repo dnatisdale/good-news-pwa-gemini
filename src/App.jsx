@@ -1683,20 +1683,29 @@ export default function App() {
           >
             {/* Header */}
             <div
-              className={`${PRIMARY_COLOR_CLASS} px-3 py-3 flex flex-col space-y-1 rounded-r-xl flex-shrink-0`}
+              className={`${PRIMARY_COLOR_CLASS} px-3 py-2 flex flex-col space-y-1 rounded-r-xl flex-shrink-0`}
             >
-              {/* Top Row: Logo, Title, Close */}
+              {/* Top Row: Logo (Home Button), Title, Close */}
               <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-4">
-                  {/* 1. The Square Logo */}
-                  <img
-                    src={AppLogo}
-                    alt="Logo"
-                    className="w-11 h-11 rounded-xl bg-white shadow-md p-1"
-                  />
+                <div className="flex items-center space-x-3">
+                  {/* 1. The Square Logo (Now acts as Home Button) */}
+                  <button
+                    onClick={() => {
+                      navigateToHome();
+                      setIsDrawerOpen(false);
+                    }}
+                    className="focus:outline-none transition-transform active:scale-95"
+                    title={t.home || "Home"}
+                  >
+                    <img
+                      src={AppLogo}
+                      alt="Logo"
+                      className="w-10 h-10 rounded-xl bg-white shadow-md p-1"
+                    />
+                  </button>
                   
                   {/* 2. App Title */}
-                  <h2 className="text-xl font-bold text-white">
+                  <h2 className="text-lg font-bold text-white leading-tight">
                     {t.app_name}
                   </h2>
                 </div>
@@ -1710,12 +1719,8 @@ export default function App() {
                 </button>
               </div>
               
-              {/* Bottom Row: House Icon + Share App Button (Left Aligned) */}
-              <div className="flex items-center gap-2 pl-15">
-                {/* White Outline House Icon */}
-                <Home className="w-4 h-4 text-white" />
-                
-                {/* Share App Button */}
+              {/* Bottom Row: Share App Button (Right Aligned) */}
+              <div className="flex justify-end">
                 <button
                   onClick={async (e) => {
                     e.stopPropagation(); // Prevent drawer close
@@ -1746,7 +1751,7 @@ export default function App() {
                       }
                     }
                   }}
-                  className="flex items-center gap-1 px-2 py-1 bg-[#003366] text-white rounded text-xs font-semibold hover:bg-[#004d99] transition-colors whitespace-nowrap"
+                  className="flex items-center gap-1 px-2 py-0.5 bg-[#003366] text-white rounded text-[10px] font-semibold hover:bg-[#004d99] transition-colors whitespace-nowrap shadow-sm"
                   title={t.share_app || "Share App"}
                 >
                   <ExternalLink className="w-3 h-3" />
