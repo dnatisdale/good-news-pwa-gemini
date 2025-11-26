@@ -1,7 +1,7 @@
 import React from "react";
 import { i18n } from "../i18n"; // Assuming i18n is in src/i18n.js
 import { formatContentItem } from "../utils/contentFormatter";
-import { Volume2, Pause, PlayCircle, Share2 } from "./Icons"; // Import icons
+import { Volume2, Pause, PlayCircle, Share2, Heart } from "./Icons"; // Import icons
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 const TEXT_COLOR_CLASS = "text-gray-800";
@@ -16,7 +16,9 @@ const ContentCard = ({
   onToggle, // NEW: Function to toggle this message
   isPlayingSample, // NEW: Is this sample playing?
   onPlaySample, // NEW: Function to toggle sample playback
-  onShowQrForMessage, // 👇 NEW PROP
+  onShowQrForMessage, // NEW: Show QR modal
+  isFavorite, // NEW: Is this item a favorite?
+  onToggleFavorite, // NEW: Function to toggle favorite
 }) => {
   const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
 
@@ -60,7 +62,7 @@ const ContentCard = ({
         </p>
       </div>
 
-      {/* --- PLAY AND SHARE BUTTONS --- */}
+      {/* --- ACTION BUTTONS (Play, Favorite, Share) --- */}
       <div className="pl-2 pt-1 flex items-center gap-2">
         {/* Play Button (only show if sample exists) */}
         {item.sampleUrl && (
@@ -84,12 +86,29 @@ const ContentCard = ({
           </button>
         )}
 
+        {/* Favorite Button */}
+        {onToggleFavorite && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleFavorite();
+            }}
+            className={`p-2 rounded-full transition-all ${
+              isFavorite
+                ? "bg-red-100 dark:bg-red-100 text-red-600 dark:text-red-600"
+                : "bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-red-100 hover:text-red-600"
+            }`}
+            title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+          >
+            <Heart className="w-6 h-6" />
+          </button>
+        )}
+
         {/* Share Button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
-            // onSelect(item); // OLD: Navigate to detail view
-            onShowQrForMessage && onShowQrForMessage(); // NEW: Show QR Modal
+            onShowQrForMessage && onShowQrForMessage();
           }}
           className="p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-brand-red hover:text-white transition-all"
           title="Share Message"
