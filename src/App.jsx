@@ -1389,6 +1389,14 @@ export default function App() {
                   className="h-8 w-8 rounded-md shadow-sm bg-white p-0.5"
                 />
               </a>
+              <button
+                onClick={navigateToHome}
+                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                title={t.home || "Home"}
+                aria-label={t.home || "Home"}
+              >
+                <Home className="w-6 h-6" />
+              </button>
 
             </div>
 
