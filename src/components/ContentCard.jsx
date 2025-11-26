@@ -12,6 +12,7 @@ const ContentCard = ({
   onSelect,
   t, // Translation object
   showLanguageName = true,
+  largeLanguage = false, // ✅ NEW: make language text as big as the message title when true
   isSelected, // Is this specific message selected?
   onToggle, // Function to toggle this message
   isPlayingSample, // Is this sample playing?
@@ -47,7 +48,9 @@ const ContentCard = ({
       <div className="flex-grow" onClick={() => onSelect(item)}>
         {showLanguageName && (
           <p
-            className={`text-base font-semibold ${ACCENT_COLOR_CLASS} dark:text-white mb-1`}
+            className={`${
+              largeLanguage ? "text-lg" : "text-base"
+            } font-semibold ${ACCENT_COLOR_CLASS} dark:text-white mb-1`}
           >
             {languageDisplay}
           </p>
