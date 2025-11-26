@@ -1014,6 +1014,23 @@ export default function App() {
     setIsAudioMinimized(false);
   };
 
+  // Handler for toggling favorites
+  const handleToggleFavorite = (itemId) => {
+    if (!userData || !saveUserData) return;
+    
+    const favorites = userData.favorites || [];
+    const isFavorited = favorites.includes(itemId);
+    
+    const newFavorites = isFavorited
+      ? favorites.filter(id => id !== itemId)
+      : [...favorites, itemId];
+    
+    saveUserData({
+      ...userData,
+      favorites: newFavorites,
+    });
+  };
+
   // Audio Player Toggle
   const toggleAudioMinimize = () => {
     setIsAudioMinimized((p) => !p);
@@ -1181,6 +1198,8 @@ export default function App() {
           onCopy={handleCopySelected}
           onDownload={handleDownloadSelected} // This is the "Print" button (using Download icon)
           onDownloadPDF={handleDownloadSelectedPDF} // This is the actual PDF button
+          userData={userData}
+          onToggleFavorite={handleToggleFavorite}
         />
       );
       break;
@@ -1222,6 +1241,8 @@ export default function App() {
           selectedPrograms={selectedPrograms}
           onToggleProgram={handleProgramToggle}
           onShowQrForMessage={handleShowQrForMessage} // 👈 PASSED DOWN
+          userData={userData}
+          onToggleFavorite={handleToggleFavorite}
         />
       );
       break;
@@ -1246,6 +1267,8 @@ export default function App() {
             setSearchTerm(term);
             addToSearchHistory(term); // Refresh position
           }}
+          userData={userData}
+          onToggleFavorite={handleToggleFavorite}
         />
       );
       break;
@@ -1265,6 +1288,7 @@ export default function App() {
           hasNext={hasNext}
           // --- FIX: ADDED pageStack PROP ---
           pageStack={pageStack}
+          onToggleFavorite={handleToggleFavorite}
         />
       );
       break;

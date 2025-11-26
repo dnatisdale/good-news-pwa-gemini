@@ -18,6 +18,8 @@ const MessagesByLanguagePage = ({
   selectedPrograms,
   onToggleProgram,
   onShowQrForMessage, // 👇 NEW PROP
+  userData, // 👇 NEW PROP
+  onToggleFavorite, // 👇 NEW PROP
 }) => {
   const languageDisplayName = useMemo(() => {
     const group = languageGroups.find(
@@ -98,6 +100,8 @@ const MessagesByLanguagePage = ({
           isPlayingSample={playingSampleId === item.id}
           onPlaySample={() => handlePlaySample(item)}
           onShowQrForMessage={() => onShowQrForMessage(item, languageDisplayName)} // 👇 PASS IT DOWN
+          isFavorite={userData?.favorites?.includes(item.id)}
+          onToggleFavorite={() => onToggleFavorite(item.id)}
         />
       ))}
       <div className="h-16"></div>

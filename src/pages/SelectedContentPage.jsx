@@ -20,6 +20,8 @@ const SelectedContentPage = ({
   onCopy,
   onDownload,
   onDownloadPDF,
+  userData, // 👇 NEW PROP
+  onToggleFavorite, // 👇 NEW PROP
 }) => {
   // Use the logic to get the actual message objects
   const filteredContent = getFilteredMessages(allMessages, selectedPrograms);
@@ -94,10 +96,13 @@ const SelectedContentPage = ({
               key={item.id}
               item={item}
               lang={lang}
+              t={t} // 👇 PASS t PROP
               onSelect={() => {
                 /* Don't navigate on this page */
               }}
               showLanguageName={true} // Show the Language name since they are mixed
+              isFavorite={userData?.favorites?.includes(item.id)}
+              onToggleFavorite={() => onToggleFavorite(item.id)}
             />
           ))
         )}

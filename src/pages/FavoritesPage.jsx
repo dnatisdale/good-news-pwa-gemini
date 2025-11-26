@@ -13,7 +13,9 @@ const FavoritesPage = ({
   onBack,
   onForward,
   hasPrev,
+  hasPrev,
   hasNext,
+  onToggleFavorite, // 👇 NEW PROP
 }) => {
   // Added nav props for consistency
   const favoriteItems = useMemo(() => {
@@ -37,6 +39,8 @@ const FavoritesPage = ({
             t={t}
             onSelect={onSelect}
             showLanguageName={true}
+            isFavorite={true} // Always true in favorites list
+            onToggleFavorite={() => onToggleFavorite(item.id)}
           />
         ))
       ) : (

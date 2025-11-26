@@ -16,6 +16,8 @@ const SearchPage = ({
   searchHistory = [],
   onClearHistory,
   onHistorySelect,
+  userData, // 👇 NEW PROP
+  onToggleFavorite, // 👇 NEW PROP
 }) => {
   // Receives searchTerm and nav props
   const filteredContent = useMemo(() => {
@@ -67,6 +69,8 @@ const SearchPage = ({
             t={t}
             onSelect={onSelect}
             showLanguageName={true}
+            isFavorite={userData?.favorites?.includes(item.id)}
+            onToggleFavorite={() => onToggleFavorite(item.id)}
           />
         ))
       ) : searchTerm ? (
