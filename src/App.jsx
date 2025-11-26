@@ -1937,10 +1937,16 @@ export default function App() {
                 const isNotes = item.name === "Notes";
 
                 // Calculate counts safely
+                const favoritesCount =
+                  (userData?.favorites?.length || 0) +
+                  (userData?.favoriteLanguages?.length || 0);
+
+                const notesCount = userData?.notes?.length || 0;
+
                 const count = isFavorites
-                  ? userData?.favorites?.length || 0
+                  ? favoritesCount
                   : isNotes
-                  ? userData?.notes?.length || 0
+                  ? notesCount
                   : 0;
 
                 return (

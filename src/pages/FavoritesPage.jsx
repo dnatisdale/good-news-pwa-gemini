@@ -19,7 +19,7 @@ const FavoritesPage = ({
   setFontSize,
   pageStack,
   onToggleFavorite,
-  // 🔴 NEW props from App.jsx
+  // from App.jsx
   languageGroups,
   onToggleFavoriteLanguage,
   onSelectLanguage,
@@ -61,7 +61,7 @@ const FavoritesPage = ({
         </h2>
 
         {favoriteLanguageGroups.length === 0 ? (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-200">
             {t.no_favorite_languages || "No favorite languages yet."}
           </p>
         ) : (
@@ -71,6 +71,12 @@ const FavoritesPage = ({
                 lang === "en" ? group.displayNameEn : group.displayNameTh;
               const count = group.count ?? group.messages?.length ?? 0;
               const isFav = favoriteLanguageKeys.includes(group.stableKey);
+
+              // 🔴 Light mode: red if favorite
+              // ⚪ Dark mode: always white text for readability
+              const nameClasses = isFav
+                ? "text-brand-red dark:text-white"
+                : "text-gray-800 dark:text-white";
 
               return (
                 <div
@@ -84,16 +90,8 @@ const FavoritesPage = ({
                     }
                     className="flex-1 text-left"
                   >
-                    <div
-                      className={`font-semibold ${
-                        isFav
-                          ? ACCENT_COLOR_CLASS
-                          : "text-gray-800 dark:text-white"
-                      }`}
-                    >
-                      {name}
-                    </div>
-                    <div className="text-xs text-gray-500">
+                    <div className={`font-semibold ${nameClasses}`}>{name}</div>
+                    <div className="text-xs text-gray-500 dark:text-gray-200">
                       {count} {t.messages || "messages"}
                     </div>
                   </button>
