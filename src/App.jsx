@@ -1653,49 +1653,49 @@ export default function App() {
           >
             {/* Header */}
             <div
-              className={`${PRIMARY_COLOR_CLASS} px-3 py-4 flex justify-start items-center space-x-4 rounded-r-xl flex-shrink-0 cursor-pointer`}
+              className={`${PRIMARY_COLOR_CLASS} px-3 py-4 flex flex-col space-y-1 rounded-r-xl flex-shrink-0 cursor-pointer`}
               onClick={() => setIsDrawerOpen(false)} // Close drawer on header click
             >
-              {/* 1. The Square Logo (Flush Left, Rounded) */}
-              <img
-                src={AppLogo}
-                alt="Logo"
-                className="w-11 h-11 rounded-xl bg-white shadow-md p-1"
-              />
+              <div className="flex justify-start items-center space-x-4">
+                {/* 1. The Square Logo (Flush Left, Rounded) */}
+                <img
+                  src={AppLogo}
+                  alt="Logo"
+                  className="w-11 h-11 rounded-xl bg-white shadow-md p-1"
+                />
 
-              {/* 2. The App Title */}
-              <h2 className="text-xl font-bold text-white flex-grow">
-                {t.app_name}
-              </h2>
+                {/* 2. The App Title */}
+                <h2 className="text-xl font-bold text-white flex-grow">
+                  {t.app_name}
+                </h2>
 
-              {/* 3. Close Button (Pushed to the right automatically by flex-grow on title) */}
-              <button
-                onClick={() => setIsDrawerOpen(false)}
-                className="text-white p-1 hover:bg-red-800 rounded-full"
-              >
-                <X className="w-6 h-6" />
-              </button>
+                {/* 3. Close Button (Pushed to the right automatically by flex-grow on title) */}
+                <button
+                  onClick={() => setIsDrawerOpen(false)}
+                  className="text-white p-1 hover:bg-red-800 rounded-full"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              
+              {/* Status Indicator */}
+              <div className="text-xs text-white pl-15">
+                {t.auth_status || "Status"}:
+                <span
+                  className={`font-semibold ml-1 ${
+                    isAuthReady ? "text-amber-500" : "text-yellow-300"
+                  }`}
+                >
+                  {isAuthReady
+                    ? t.auth_ready || "Ready"
+                    : t.auth_pending || "Pending"}
+                </span>
+              </div>
             </div>
 
-            {/* Auth Status with Share App Button */}
+            {/* Share App Button Section */}
             <div className="px-4 pt-3 pb-2 border-b border-gray-200 flex-shrink-0">
-              <div className="flex items-center justify-between gap-2">
-                {/* Status Info */}
-                <div className="text-xs text-gray-500">
-                  <p className="truncate">
-                    {t.auth_status || "Status"}:
-                    <span
-                      className={`font-semibold ${
-                        isAuthReady ? "text-green-600" : "text-yellow-600"
-                      }`}
-                    >
-                      {isAuthReady
-                        ? t.auth_ready || " Ready"
-                        : t.auth_pending || " Pending"}
-                    </span>
-                  </p>
-                </div>
-
+              <div className="flex items-center justify-center gap-2">
                 {/* Share App Button - Compact */}
                 <button
                   onClick={async () => {
