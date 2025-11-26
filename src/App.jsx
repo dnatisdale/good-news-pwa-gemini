@@ -1559,6 +1559,32 @@ export default function App() {
 
             {/* Right: Controls */}
             <div className="flex items-center space-x-4">
+              <button
+                onClick={() => {
+                  if (deferredPrompt) {
+                    handleInstallClick();
+                  } else {
+                    alert("App is already installed / แอปถูกติดตั้งแล้ว");
+                  }
+                }}
+                title={
+                  deferredPrompt
+                    ? t.install_app || "Install App"
+                    : t.app_installed || "App Installed"
+                }
+                className={`p-1 rounded-lg transition-colors btn-hover ${
+                  deferredPrompt
+                    ? "text-white hover:bg-red-800"
+                    : "text-red-300 cursor-pointer"
+                }`}
+                aria-label={
+                  deferredPrompt
+                    ? t.install_app || "Install App"
+                    : t.app_installed || "App Installed"
+                }
+              >
+                <Download className="w-6 h-6" />
+              </button>
               <FloatingUtilityBar
                 t={t}
                 lang={lang}
