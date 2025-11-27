@@ -1553,8 +1553,6 @@ export default function App() {
               />
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
 
-
-
               <button
                 onClick={() => setIsSearchOpen(true)}
                 className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
@@ -1670,8 +1668,6 @@ export default function App() {
                 isHovering={isHoveringContent}
               />
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
-
-
 
               <button
                 onClick={() => setIsSearchOpen(true)}
@@ -1875,7 +1871,13 @@ export default function App() {
                       rel="noopener noreferrer"
                       className="w-full flex items-center p-3 rounded-lg font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99] transition-colors"
                     >
-                      <item.icon className="w-6 h-6 mr-3" />
+                      <item.icon
+                        className={`mr-3 ${
+                          item.name === "Language_Finder"
+                            ? "w-7 h-7"
+                            : "w-6 h-6"
+                        }`}
+                      />
                       {item.name}
                     </a>
                   );
@@ -1909,7 +1911,13 @@ export default function App() {
                     }`}
                   >
                     <div className="flex items-center">
-                      <item.icon className="w-6 h-6 mr-3" />
+                      <item.icon
+                        className={`mr-3 ${
+                          item.name === "Language_Finder"
+                            ? "w-7 h-7"
+                            : "w-6 h-6"
+                        }`}
+                      />
                       {t[item.name.toLowerCase()]}
                     </div>
 
