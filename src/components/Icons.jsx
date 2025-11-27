@@ -15,8 +15,7 @@ export const Home = (props) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-    <polyline points="9 22 9 12 15 12 15 22" />
+    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H15V12H9v10H5a2 2 0 0 1-2-2z" />
   </svg>
 );
 
@@ -408,17 +407,18 @@ export const Languages = (props) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    {/* 舟-style character, wider and centered */}
-    {/* top stroke */}
-    <path d="M9 5h6" />
-    {/* main vertical */}
-    <path d="M12 5v11" />
-    {/* middle bar */}
-    <path d="M7 10h10" />
-    {/* lower left curve */}
-    <path d="M10 16c-1.5 1.5-2.5 3-3.5 4.5" />
-    {/* lower right curve */}
-    <path d="M14 16c1.5 1.5 2.5 3 3.5 4.5" />
+    {/* 舟 (Boat) Character */}
+    {/* Top dash */}
+    <path d="M12 3l-2 2" />
+    {/* Main horizontal bar */}
+    <path d="M4 11h16" />
+    {/* Left curved side */}
+    <path d="M8 6c-1 4-1 10 1 14" />
+    {/* Right vertical side with hook */}
+    <path d="M16 6v11c0 2 2 2 3 1" />
+    {/* Inside dashes */}
+    <path d="M11 14l1 1" />
+    <path d="M13 14l1 1" />
   </svg>
 );
 

@@ -261,71 +261,78 @@ const ContentView = ({
             
           </div>
 
-          {/* --- MOVED: Download Audio Button (Now above Listen Button) --- */}
-          {item.trackDownloadUrl && (
-            <button
-              onClick={() => !isOffline && !isDownloading && downloadTrack(item)}
-              disabled={isOffline || isDownloading}
-              className={`w-full p-4 mb-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 ${
-                isOffline
-                  ? "bg-amber-500 cursor-default"
-                  : isDownloading
-                  ? "bg-gray-400 cursor-wait"
-                  : "bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-xl"
-              }`}
+          {/* --- NEW LAYOUT: QR Code Left, Buttons Right --- */}
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-6 w-full">
+            
+            {/* QR Code (Left) */}
+            <div
+              className="flex-shrink-0 flex flex-col items-center p-3 bg-white rounded-xl shadow-inner cursor-pointer transition-all duration-300"
+              onClick={() => setIsQrLarge((p) => !p)}
+              style={{
+                width: isQrLarge ? "100%" : "auto",
+                maxWidth: isQrLarge ? "100%" : "200px",
+              }}
             >
-              {isOffline ? (
-                <>
-                  <CheckCircle className="w-6 h-6 mr-2" />
-                  {t.downloaded || "Downloaded"}
-                </>
-              ) : isDownloading ? (
-                <>
-                  <Loader className="w-6 h-6 mr-2 animate-spin" />
-                  {t.downloading || "Downloading..."}
-                </>
-              ) : (
-                <>
-                  <Download className="w-6 h-6 mr-2" />
-                  {t.download_audio || "Download Audio"}
-                </>
-              )}
-            </button>
-          )}
-
-          {/* --- MOVED: Listen Button (Now inside column, full width) --- */}
-          {item.trackDownloadUrl && (
-            <button
-              onClick={() => onPlay(item)}
-              style={{ backgroundColor: THAI_BLUE }}
-              className="w-full p-4 mb-6 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 hover:shadow-xl"
-            >
-              <PlayCircle className="w-6 h-6 mr-2" />
-              {t.listen_offline || "Listen (Offline Enabled)"}
-            </button>
-          )}
-
-          {/* QR Code */}
-          <div
-            className="flex flex-col items-center p-4 bg-white rounded-xl shadow-inner mb-6 cursor-pointer transition-all duration-300"
-            onClick={() => setIsQrLarge((p) => !p)}
-            style={{
-              maxWidth: isQrLarge ? "100%" : "200px",
-              margin: "0 auto 1.5rem auto",
-            }}
-          >
-            <div className="p-2 bg-gray-50 rounded-lg">
-              <QRCodeDisplay
-                url={cardUrl}
-                size={isQrLarge ? 250 : 150}
-                fgColor="#000000"
-              />
+              <div className="p-2 bg-gray-50 rounded-lg">
+                <QRCodeDisplay
+                  url={cardUrl}
+                  size={isQrLarge ? 250 : 140}
+                  fgColor="#000000"
+                />
+              </div>
+              <p className="text-xs text-gray-500 mt-2 text-center whitespace-nowrap">
+                {isQrLarge
+                  ? t.tap_to_shrink || "Tap to shrink"
+                  : t.tap_to_enlarge || "Tap to enlarge"}
+              </p>
             </div>
-            <p className="text-xs text-gray-500 mt-2 text-center">
-              {isQrLarge
-                ? t.tap_to_shrink || "Tap to shrink"
-                : t.tap_to_enlarge || "Tap to enlarge"}
-            </p>
+
+            {/* Buttons Column (Right) */}
+            <div className="flex-grow w-full flex flex-col gap-4">
+              {/* Download Audio Button */}
+              {item.trackDownloadUrl && (
+                <button
+                  onClick={() => !isOffline && !isDownloading && downloadTrack(item)}
+                  disabled={isOffline || isDownloading}
+                  className={`w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 ${
+                    isOffline
+                      ? "bg-amber-500 cursor-default"
+                      : isDownloading
+                      ? "bg-gray-400 cursor-wait"
+                      : "bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-xl"
+                  }`}
+                >
+                  {isOffline ? (
+                    <>
+                      <CheckCircle className="w-6 h-6 mr-2" />
+                      {t.downloaded || "Downloaded"}
+                    </>
+                  ) : isDownloading ? (
+                    <>
+                      <Loader className="w-6 h-6 mr-2 animate-spin" />
+                      {t.downloading || "Downloading..."}
+                    </>
+                  ) : (
+                    <>
+                      <Download className="w-6 h-6 mr-2" />
+                      {t.download_audio || "Download Audio"}
+                    </>
+                  )}
+                </button>
+              )}
+
+              {/* Listen Button */}
+              {item.trackDownloadUrl && (
+                <button
+                  onClick={() => onPlay(item)}
+                  style={{ backgroundColor: THAI_BLUE }}
+                  className="w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 hover:shadow-xl"
+                >
+                  <PlayCircle className="w-6 h-6 mr-2" />
+                  {t.listen_offline || "Listen (Offline Enabled)"}
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Bible Verse Box - between QR code and buttons */}
