@@ -115,7 +115,7 @@ const LanguageFinderPage = ({
             setScriptMode("th");
             setLetterFilter(null);
           }}
-          className={`flex-1 py-2 rounded-full text-sm font-semibold border ${
+          className={`flex-1 py-2 rounded-full text-sm sm:text-base md:text-lg font-semibold border ${
             scriptMode === "th"
               ? "bg-red-700 text-white border-red-700"
               : "bg-slate-800 text-slate-100 border-slate-600"
@@ -129,7 +129,7 @@ const LanguageFinderPage = ({
             setScriptMode("en");
             setLetterFilter(null);
           }}
-          className={`flex-1 py-2 rounded-full text-sm font-semibold border ${
+          className={`flex-1 py-2 rounded-full text-sm sm:text-base md:text-lg font-semibold border ${
             scriptMode === "en"
               ? "bg-red-700 text-white border-red-700"
               : "bg-slate-800 text-slate-100 border-slate-600"
@@ -159,7 +159,7 @@ const LanguageFinderPage = ({
       </div>
 
       {/* Alphabet Bar */}
-      <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap text-xs text-slate-300 mt-1 pb-1">
+      <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap text-xs sm:text-sm md:text-base text-slate-300 mt-1 pb-1">
         <button
           type="button"
           onClick={() => setLetterFilter(null)}
