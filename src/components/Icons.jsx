@@ -394,9 +394,6 @@ export const Volume2 = (props) => (
     <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
   </svg>
 );
-
-// --- EXPORT ALL ICONS ---
-// (No need for a separate export list when using export const for each)
 export const Languages = (props) => (
   <svg
     {...props}
@@ -410,18 +407,21 @@ export const Languages = (props) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    {/* Left card with "A" style */}
+    {/* Left “A” card */}
     <rect x="3" y="4" width="9" height="9" rx="1" ry="1" />
     <path d="M7.5 11L9 7l1.5 4" />
     <path d="M7 9h4" />
 
-    {/* Right card with "文" style */}
+    {/* Right “文” card */}
     <rect x="12" y="11" width="9" height="9" rx="1" ry="1" />
     <path d="M14 13h5" />
     <path d="M15.5 13v5" />
     <path d="M14 16h3" />
   </svg>
 );
+
+// --- EXPORT ALL ICONS ---
+// (No need for a separate export list when using export const for each)
 
 export const CheckCircle = (props) => (
   <svg
