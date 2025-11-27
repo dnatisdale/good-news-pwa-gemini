@@ -99,6 +99,7 @@ export const i18n = {
     pro_tip_button: "Pro Tip",
     feedback: "Feedback", // NEW
     feedback_intro: "We value your feedback! Please let us know if you have any suggestions, questions, or issues.", // NEW
+    feedback_placeholder: "Type your message here...", // NEW
     send_feedback: "Send Feedback Email", // NEW
 
     // Import Page
@@ -270,6 +271,7 @@ export const i18n = {
     pro_tip_button: "ทิปดี ๆ",
     feedback: "ข้อเสนอแนะ", // NEW
     feedback_intro: "เราให้ความสำคัญกับความคิดเห็นของคุณ! โปรดแจ้งให้เราทราบหากคุณมีข้อเสนอแนะ คำถาม หรือปัญหาใดๆ", // NEW
+    feedback_placeholder: "พิมพ์ข้อความของคุณที่นี่...", // NEW
     send_feedback: "ส่งอีเมลข้อเสนอแนะ", // NEW
 
     // Import Page
