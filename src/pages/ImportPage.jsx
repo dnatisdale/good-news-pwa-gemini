@@ -5,7 +5,7 @@ import { staticContent } from '../data/staticContent';
 
 const ImportPage = ({ t }) => {
   const [importedData, setImportedData] = useState([]);
-  const [inputUrl, setInputUrl] = useState('');
+  const [programId, setProgramId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -49,9 +49,17 @@ const ImportPage = ({ t }) => {
   // Temporary state for the item being added
   const [currentItem, setCurrentItem] = useState(null);
 
-  const extractProgramId = (url) => {
-    // Matches /program/12345 or just 12345
-    const match = url.match(/program\/(\d+)/) || url.match(/(\d{5,})/);
+  const extractProgramId = (input) => {
+    // Clean the input - remove whitespace
+    const cleaned = input.trim();
+    
+    // If it's just numbers, return it
+    if (/^\d+$/.test(cleaned)) {
+      return cleaned;
+    }
+    
+    // Otherwise try to extract from URL patterns
+    const match = cleaned.match(/program\/(\d+)/) || cleaned.match(/(\d{4,})/);
     return match ? match[1] : null;
   };
 
@@ -105,10 +113,10 @@ const ImportPage = ({ t }) => {
     setIsLoading(true);
     setCurrentItem(null);
 
-    const id = extractProgramId(inputUrl);
+    const id = extractProgramId(programId);
 
     if (!id) {
-      setError('Could not extract Program ID from URL. Please enter a valid GRN Program URL (e.g., https://globalrecordings.net/en/program/62808)');
+      setError('Please enter a valid Program ID (e.g., 62808)');
       setIsLoading(false);
       return;
     }
@@ -146,7 +154,7 @@ const ImportPage = ({ t }) => {
     if (currentItem) {
       setImportedData([...importedData, currentItem]);
       setCurrentItem(null);
-      setInputUrl('');
+      setProgramId('');
       // Reset manual entry for next time
       setManualEntry(prev => ({ ...prev, trackNumber: '1' }));
     }
@@ -168,13 +176,13 @@ const ImportPage = ({ t }) => {
     <div className="p-4 max-w-3xl mx-auto pb-24">
       <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">{t.import_content_title || 'Import Content'}</h1>
 
-      {/* URL Input Section */}
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm mb-8">
+      {/* Program ID Input Section */}
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm mb-4">
         <form onSubmit={handleUrlSubmit}>
           <div className="flex gap-4 mb-4">
             <div className="flex-grow">
                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t.grn_url_label || 'GRN Program URL'}
+                {t.program_id_label || 'Program ID'}
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -183,11 +191,14 @@ const ImportPage = ({ t }) => {
                 <input
                   type="text"
                   className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-                  placeholder="https://globalrecordings.net/en/program/62808"
-                  value={inputUrl}
-                  onChange={(e) => setInputUrl(e.target.value)}
+                  placeholder="62808"
+                  value={programId}
+                  onChange={(e) => setProgramId(e.target.value)}
                 />
               </div>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                {t.program_id_hint || 'Enter the GRN Program ID number (e.g., 62808)'}
+              </p>
             </div>
             <div className="w-24">
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -211,6 +222,23 @@ const ImportPage = ({ t }) => {
           </button>
         </form>
         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+      </div>
+      
+      {/* Info Notes Box */}
+      <div className="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+        <h3 className="text-sm font-bold text-blue-900 dark:text-blue-300 mb-2 flex items-center gap-2">
+          <Music className="w-4 h-4" />
+          {t.url_pattern_info || 'Auto-Generated URL Pattern'}
+        </h3>
+        <div className="text-xs text-blue-800 dark:text-blue-200 space-y-1">
+          <p className="font-semibold mb-1">Download URL Format:</p>
+          <div className="bg-white dark:bg-gray-800 p-2 rounded border border-blue-200 dark:border-blue-700 font-mono text-xs break-all">
+            https://api.globalrecordings.net/files/track/mp3-low/<span className="text-red-600 dark:text-red-400 font-bold">{'{'}{' PROGRAM_ID '}{'}'}</span>/<span className="text-green-600 dark:text-green-400 font-bold">{'{'}{' TRACK_NUMBER '}{'}'}</span>
+          </div>
+          <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+            💡 {t.url_pattern_note || 'The app automatically generates the download URL using your Program ID and Track Number. In production, this is proxied through Netlify (/api/proxy-audio/*) to avoid CORS issues.'}
+          </p>
+        </div>
       </div>
 
       {/* Review & Edit Section */}
