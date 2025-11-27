@@ -12,7 +12,16 @@ const FeedbackPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
         ? "ความคิดเห็นเกี่ยวกับแอป Thai Good News"
         : "Feedback for Thai Good News App";
 
-    const emailText = `${subject}\n\n${message}\n\n---\nPlease send to: Kow-D@globalrecordings.net`;
+    const emailAddress = "Kow-D@globalrecordings.net";
+    
+    // Copy email address to clipboard for easy pasting
+    try {
+      await navigator.clipboard.writeText(emailAddress);
+    } catch (err) {
+      console.log("Clipboard copy failed:", err);
+    }
+
+    const emailText = `${subject}\n\n${message}\n\n---\nTo: ${emailAddress}\n(Email address copied to clipboard - paste it in the To field)`;
 
     // Try Web Share API first (works better on mobile/PWA)
     if (navigator.share) {
@@ -33,7 +42,7 @@ const FeedbackPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
     // Fallback to mailto if share not available or failed
     const encodedSubject = encodeURIComponent(subject);
     const encodedBody = encodeURIComponent(message);
-    window.location.href = `mailto:Kow-D@globalrecordings.net?subject=${encodedSubject}&body=${encodedBody}`;
+    window.location.href = `mailto:${emailAddress}?subject=${encodedSubject}&body=${encodedBody}`;
   };
 
   return (
