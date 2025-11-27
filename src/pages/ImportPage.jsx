@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Download, Plus, Trash2, Copy, CheckCircle, Search, Globe, Music } from 'lucide-react';
 import { generateId } from '../utils/importUtils';
+import { staticContent } from '../data/staticContent';
 
 const ImportPage = ({ t }) => {
   const [importedData, setImportedData] = useState([]);
@@ -11,6 +12,39 @@ const ImportPage = ({ t }) => {
   const [manualEntry, setManualEntry] = useState({
     trackNumber: '1'
   });
+
+  // --- Smart Input Logic ---
+  const { topTitlesEn, topTitlesTh, existingLanguagesEn, existingLanguagesTh } = React.useMemo(() => {
+    // 1. Top 5 Titles (EN)
+    const countsEn = {};
+    staticContent.forEach(item => {
+      const t = item.title_en?.trim();
+      if (t) countsEn[t] = (countsEn[t] || 0) + 1;
+    });
+    const topEn = Object.entries(countsEn)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(e => e[0]);
+
+    // 2. Top 5 Titles (TH)
+    const countsTh = {};
+    staticContent.forEach(item => {
+      const t = item.title_th?.trim();
+      if (t) countsTh[t] = (countsTh[t] || 0) + 1;
+    });
+    const topTh = Object.entries(countsTh)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(e => e[0]);
+
+    // 3. All Languages (EN)
+    const langsEn = Array.from(new Set(staticContent.map(i => i.languageEn?.trim()).filter(Boolean))).sort();
+
+    // 4. All Languages (TH)
+    const langsTh = Array.from(new Set(staticContent.map(i => i.langTh?.trim()).filter(Boolean))).sort();
+
+    return { topTitlesEn: topEn, topTitlesTh: topTh, existingLanguagesEn: langsEn, existingLanguagesTh: langsTh };
+  }, []);
 
   // Temporary state for the item being added
   const [currentItem, setCurrentItem] = useState(null);
@@ -189,37 +223,53 @@ const ImportPage = ({ t }) => {
               <label className="block text-xs font-medium text-gray-500 uppercase mb-1">{t.lang_en_label || 'Language (EN)'}</label>
               <input
                 type="text"
+                list="languages-en"
                 className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 value={currentItem.languageEn}
                 onChange={(e) => setCurrentItem({...currentItem, languageEn: e.target.value})}
               />
+              <datalist id="languages-en">
+                {existingLanguagesEn.map((lang, i) => <option key={i} value={lang} />)}
+              </datalist>
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-500 uppercase mb-1">{t.lang_th_label || 'Language (TH)'}</label>
               <input
                 type="text"
+                list="languages-th"
                 className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 value={currentItem.langTh}
                 onChange={(e) => setCurrentItem({...currentItem, langTh: e.target.value})}
               />
+              <datalist id="languages-th">
+                {existingLanguagesTh.map((lang, i) => <option key={i} value={lang} />)}
+              </datalist>
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-500 uppercase mb-1">{t.title_en_label || 'Title (EN)'}</label>
               <input
                 type="text"
+                list="titles-en"
                 className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 value={currentItem.title_en}
                 onChange={(e) => setCurrentItem({...currentItem, title_en: e.target.value})}
               />
+              <datalist id="titles-en">
+                {topTitlesEn.map((title, i) => <option key={i} value={title} />)}
+              </datalist>
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-500 uppercase mb-1">{t.title_th_label || 'Title (TH)'}</label>
               <input
                 type="text"
+                list="titles-th"
                 className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 value={currentItem.title_th}
                 onChange={(e) => setCurrentItem({...currentItem, title_th: e.target.value})}
               />
+              <datalist id="titles-th">
+                {topTitlesTh.map((title, i) => <option key={i} value={title} />)}
+              </datalist>
             </div>
           </div>
 
