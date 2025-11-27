@@ -407,14 +407,12 @@ export const Languages = (props) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    {/* Single card with a "文"-style character */}
-    <rect x="5" y="5" width="14" height="14" rx="1" ry="1" />
     {/* top horizontal stroke */}
     <path d="M7 9h10" />
     {/* vertical stroke */}
-    <path d="M11.5 9v8" />
+    <path d="M12 9v8" />
     {/* middle horizontal stroke */}
-    <path d="M7 13h6" />
+    <path d="M7 13h7" />
   </svg>
 );
 
