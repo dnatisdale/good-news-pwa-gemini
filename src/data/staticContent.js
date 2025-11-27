@@ -16,7 +16,8 @@ export const staticContent = [
     "programId": "62808",
     "shareUrl": "5fi.sh/T62808",
     "sampleUrl": "/audio/Akeu.1148.mp3",
-    "stableKey": "Akeu"
+    "stableKey": "Akeu",
+    "duration": 5
   },
   {
     "id": 6760,
@@ -34,7 +35,8 @@ export const staticContent = [
     "programId": "6760",
     "shareUrl": "5fi.sh/T6760",
     "sampleUrl": "/audio/Akha.529.mp3",
-    "stableKey": "Akha"
+    "stableKey": "Akha",
+    "duration": 3
   },
   {
     "id": 6761,
@@ -52,7 +54,8 @@ export const staticContent = [
     "programId": "6761",
     "shareUrl": "5fi.sh/T6761",
     "sampleUrl": "/audio/Akha.529.mp3",
-    "stableKey": "Akha"
+    "stableKey": "Akha",
+    "duration": 3
   },
   {
     "id": 74874,
@@ -70,7 +73,8 @@ export const staticContent = [
     "programId": "74874",
     "shareUrl": "5fi.sh/T74874",
     "sampleUrl": "/audio/Akha.Thailand.3127.mp3",
-    "stableKey": "Akha Thailand"
+    "stableKey": "Akha Thailand",
+    "duration": 7
   },
   {
     "id": 6850,
@@ -88,7 +92,8 @@ export const staticContent = [
     "programId": "6850",
     "shareUrl": "5fi.sh/T6850",
     "sampleUrl": "/audio/Akha.Thailand.3127.mp3",
-    "stableKey": "Akha Thailand"
+    "stableKey": "Akha Thailand",
+    "duration": 7
   },
   {
     "id": 62691,
@@ -106,7 +111,8 @@ export const staticContent = [
     "programId": "62691",
     "shareUrl": "5fi.sh/T62691",
     "sampleUrl": "/audio/Bangla.Chittagonian.3259.mp3",
-    "stableKey": "Bangla Chittagonian"
+    "stableKey": "Bangla Chittagonian",
+    "duration": 7
   },
   {
     "id": 75171,
@@ -124,7 +130,8 @@ export const staticContent = [
     "programId": "75171",
     "shareUrl": "5fi.sh/T75171",
     "sampleUrl": "/audio/Bangla.Chittagonian.3259.mp3",
-    "stableKey": "Bangla Chittagonian"
+    "stableKey": "Bangla Chittagonian",
+    "duration": 7
   },
   {
     "id": 62692,
@@ -142,7 +149,8 @@ export const staticContent = [
     "programId": "62692",
     "shareUrl": "5fi.sh/T62692",
     "sampleUrl": "/audio/Bangla.Chittagonian.3259.mp3",
-    "stableKey": "Bangla Chittagonian"
+    "stableKey": "Bangla Chittagonian",
+    "duration": 7
   },
   {
     "id": 62695,
@@ -160,7 +168,8 @@ export const staticContent = [
     "programId": "62695",
     "shareUrl": "5fi.sh/T62695",
     "sampleUrl": "/audio/Bangla.Chittagonian.3259.mp3",
-    "stableKey": "Bangla Chittagonian"
+    "stableKey": "Bangla Chittagonian",
+    "duration": 7
   },
   {
     "id": 62710,
@@ -178,7 +187,8 @@ export const staticContent = [
     "programId": "62710",
     "shareUrl": "5fi.sh/T62710",
     "sampleUrl": "/audio/Bangla.Chittagonian.3259.mp3",
-    "stableKey": "Bangla Chittagonian"
+    "stableKey": "Bangla Chittagonian",
+    "duration": 7
   },
   {
     "id": 62834,
@@ -196,7 +206,8 @@ export const staticContent = [
     "programId": "62834",
     "shareUrl": "5fi.sh/T62834",
     "sampleUrl": "/audio/Bangla.Chittagonian.3259.mp3",
-    "stableKey": "Bangla Chittagonian"
+    "stableKey": "Bangla Chittagonian",
+    "duration": 7
   },
   {
     "id": 75170,
@@ -214,7 +225,8 @@ export const staticContent = [
     "programId": "75170",
     "shareUrl": "5fi.sh/T75170",
     "sampleUrl": "/audio/Bangla.Chittagonian.3259.mp3",
-    "stableKey": "Bangla Chittagonian"
+    "stableKey": "Bangla Chittagonian",
+    "duration": 7
   },
   {
     "id": 2760,
@@ -232,7 +244,8 @@ export const staticContent = [
     "programId": "2760",
     "shareUrl": "5fi.sh/T2760",
     "sampleUrl": "/audio/Bangla.Chittagonian.3259.mp3",
-    "stableKey": "Bangla Chittagonian"
+    "stableKey": "Bangla Chittagonian",
+    "duration": 7
   },
   {
     "id": 33761,
@@ -250,7 +263,8 @@ export const staticContent = [
     "programId": "33761",
     "shareUrl": "5fi.sh/T33761",
     "sampleUrl": "/audio/Bisu.8185.mp3",
-    "stableKey": "Bisu"
+    "stableKey": "Bisu",
+    "duration": 7
   },
   {
     "id": 29841,
@@ -268,7 +282,8 @@ export const staticContent = [
     "programId": "29841",
     "shareUrl": "5fi.sh/T29841",
     "sampleUrl": "/audio/Blang.Shan.6164.mp3",
-    "stableKey": "Blang-Shan"
+    "stableKey": "Blang-Shan",
+    "duration": 6
   },
   {
     "id": 63352,
@@ -286,7 +301,8 @@ export const staticContent = [
     "programId": "63352",
     "shareUrl": "5fi.sh/T63352",
     "sampleUrl": "/audio/Blang.Shan.6164.mp3",
-    "stableKey": "Blang-Shan"
+    "stableKey": "Blang-Shan",
+    "duration": 6
   },
   {
     "id": 29770,
@@ -304,7 +320,8 @@ export const staticContent = [
     "programId": "29770",
     "shareUrl": "5fi.sh/T29770",
     "sampleUrl": "/audio/Blang.Shan.6164.mp3",
-    "stableKey": "Blang-Shan"
+    "stableKey": "Blang-Shan",
+    "duration": 6
   },
   {
     "id": 29771,
@@ -322,7 +339,8 @@ export const staticContent = [
     "programId": "29771",
     "shareUrl": "5fi.sh/T29771",
     "sampleUrl": "/audio/Blang.Shan.6164.mp3",
-    "stableKey": "Blang-Shan"
+    "stableKey": "Blang-Shan",
+    "duration": 6
   },
   {
     "id": 37411,
@@ -340,7 +358,8 @@ export const staticContent = [
     "programId": "37411",
     "shareUrl": "5fi.sh/T37411",
     "sampleUrl": "/audio/Bru.Eastern.Tri.8378.mp3",
-    "stableKey": "Bru Eastern Tri"
+    "stableKey": "Bru Eastern Tri",
+    "duration": 7
   },
   {
     "id": 37420,
@@ -358,7 +377,8 @@ export const staticContent = [
     "programId": "37420",
     "shareUrl": "5fi.sh/T37420",
     "sampleUrl": "/audio/Bru.Eastern.Tri.8378.mp3",
-    "stableKey": "Bru Eastern Tri"
+    "stableKey": "Bru Eastern Tri",
+    "duration": 7
   },
   {
     "id": 37421,
@@ -376,7 +396,8 @@ export const staticContent = [
     "programId": "37421",
     "shareUrl": "5fi.sh/T37421",
     "sampleUrl": "/audio/Bru.Eastern.Tri.8378.mp3",
-    "stableKey": "Bru Eastern Tri"
+    "stableKey": "Bru Eastern Tri",
+    "duration": 7
   },
   {
     "id": 37410,
@@ -394,7 +415,8 @@ export const staticContent = [
     "programId": "37410",
     "shareUrl": "5fi.sh/T37410",
     "sampleUrl": "/audio/Bru.Eastern.Tri.8378.mp3",
-    "stableKey": "Bru Eastern Tri"
+    "stableKey": "Bru Eastern Tri",
+    "duration": 7
   },
   {
     "id": 37370,
@@ -412,7 +434,8 @@ export const staticContent = [
     "programId": "37370",
     "shareUrl": "5fi.sh/T37370",
     "sampleUrl": "/audio/Bru.Western.Dong.Luang.8379.mp3",
-    "stableKey": "Bru Western Dong Luang"
+    "stableKey": "Bru Western Dong Luang",
+    "duration": 7
   },
   {
     "id": 37371,
@@ -430,7 +453,8 @@ export const staticContent = [
     "programId": "37371",
     "shareUrl": "5fi.sh/T37371",
     "sampleUrl": "/audio/Bru.Western.Dong.Luang.8379.mp3",
-    "stableKey": "Bru Western Dong Luang"
+    "stableKey": "Bru Western Dong Luang",
+    "duration": 7
   },
   {
     "id": 37380,
@@ -448,7 +472,8 @@ export const staticContent = [
     "programId": "37380",
     "shareUrl": "5fi.sh/T37380",
     "sampleUrl": "/audio/Bru.Western.Dong.Luang.8379.mp3",
-    "stableKey": "Bru Western Dong Luang"
+    "stableKey": "Bru Western Dong Luang",
+    "duration": 7
   },
   {
     "id": 37381,
@@ -466,7 +491,8 @@ export const staticContent = [
     "programId": "37381",
     "shareUrl": "5fi.sh/T37381",
     "sampleUrl": "/audio/Bru.Western.Dong.Luang.8379.mp3",
-    "stableKey": "Bru Western Dong Luang"
+    "stableKey": "Bru Western Dong Luang",
+    "duration": 7
   },
   {
     "id": 37390,
@@ -484,7 +510,8 @@ export const staticContent = [
     "programId": "37390",
     "shareUrl": "5fi.sh/T37390",
     "sampleUrl": "/audio/Bru.Western.Dong.Luang.8379.mp3",
-    "stableKey": "Bru Western Dong Luang"
+    "stableKey": "Bru Western Dong Luang",
+    "duration": 7
   },
   {
     "id": 37391,
@@ -502,7 +529,8 @@ export const staticContent = [
     "programId": "37391",
     "shareUrl": "5fi.sh/T37391",
     "sampleUrl": "/audio/Bru.Western.Dong.Luang.8379.mp3",
-    "stableKey": "Bru Western Dong Luang"
+    "stableKey": "Bru Western Dong Luang",
+    "duration": 7
   },
   {
     "id": 37526,
@@ -520,7 +548,8 @@ export const staticContent = [
     "programId": "37526",
     "shareUrl": "5fi.sh/T37526",
     "sampleUrl": "/audio/Bru.Western.Dong.Luang.8379.mp3",
-    "stableKey": "Bru Western Dong Luang"
+    "stableKey": "Bru Western Dong Luang",
+    "duration": 7
   },
   {
     "id": 37401,
@@ -538,7 +567,8 @@ export const staticContent = [
     "programId": "37401",
     "shareUrl": "5fi.sh/T37401",
     "sampleUrl": "/audio/Buguo.20037.mp3",
-    "stableKey": "Buguo"
+    "stableKey": "Buguo",
+    "duration": 37
   },
   {
     "id": 80570,
@@ -556,7 +586,8 @@ export const staticContent = [
     "programId": "80570",
     "shareUrl": "5fi.sh/T80570",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 74797,
@@ -574,7 +605,8 @@ export const staticContent = [
     "programId": "74797",
     "shareUrl": "5fi.sh/T74797",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 65957,
@@ -592,7 +624,8 @@ export const staticContent = [
     "programId": "65957",
     "shareUrl": "5fi.sh/T65957",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 62603,
@@ -610,7 +643,8 @@ export const staticContent = [
     "programId": "62603",
     "shareUrl": "5fi.sh/T62603",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 62605,
@@ -628,7 +662,8 @@ export const staticContent = [
     "programId": "62605",
     "shareUrl": "5fi.sh/T62605",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 62604,
@@ -646,7 +681,8 @@ export const staticContent = [
     "programId": "62604",
     "shareUrl": "5fi.sh/T62604",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 62606,
@@ -664,7 +700,8 @@ export const staticContent = [
     "programId": "62606",
     "shareUrl": "5fi.sh/T62606",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 62607,
@@ -682,7 +719,8 @@ export const staticContent = [
     "programId": "62607",
     "shareUrl": "5fi.sh/T62607",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 62708,
@@ -700,7 +738,8 @@ export const staticContent = [
     "programId": "62708",
     "shareUrl": "5fi.sh/T62708",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 62608,
@@ -718,7 +757,8 @@ export const staticContent = [
     "programId": "62608",
     "shareUrl": "5fi.sh/T62608",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 62609,
@@ -736,7 +776,8 @@ export const staticContent = [
     "programId": "62609",
     "shareUrl": "5fi.sh/T62609",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 74799,
@@ -754,7 +795,8 @@ export const staticContent = [
     "programId": "74799",
     "shareUrl": "5fi.sh/T74799",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 74798,
@@ -772,7 +814,8 @@ export const staticContent = [
     "programId": "74798",
     "shareUrl": "5fi.sh/T74798",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 80864,
@@ -790,7 +833,8 @@ export const staticContent = [
     "programId": "80864",
     "shareUrl": "5fi.sh/T80864",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 62602,
@@ -808,7 +852,8 @@ export const staticContent = [
     "programId": "62602",
     "shareUrl": "5fi.sh/T62602",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 80851,
@@ -826,7 +871,8 @@ export const staticContent = [
     "programId": "80851",
     "shareUrl": "5fi.sh/T80851",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 80852,
@@ -844,7 +890,8 @@ export const staticContent = [
     "programId": "80852",
     "shareUrl": "5fi.sh/T80852",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 3240,
@@ -862,7 +909,8 @@ export const staticContent = [
     "programId": "3240",
     "shareUrl": "5fi.sh/T3240",
     "sampleUrl": "/audio/Burmese.195.mp3",
-    "stableKey": "Burmese"
+    "stableKey": "Burmese",
+    "duration": 7
   },
   {
     "id": 14200,
@@ -880,7 +928,8 @@ export const staticContent = [
     "programId": "14200",
     "shareUrl": "5fi.sh/T14200",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 70590,
@@ -898,7 +947,8 @@ export const staticContent = [
     "programId": "70590",
     "shareUrl": "5fi.sh/T70590",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 70600,
@@ -916,7 +966,8 @@ export const staticContent = [
     "programId": "70600",
     "shareUrl": "5fi.sh/T70600",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 80172,
@@ -934,7 +985,8 @@ export const staticContent = [
     "programId": "80172",
     "shareUrl": "5fi.sh/T80172",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 80245,
@@ -952,7 +1004,8 @@ export const staticContent = [
     "programId": "80245",
     "shareUrl": "5fi.sh/T80245",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 62456,
@@ -970,7 +1023,8 @@ export const staticContent = [
     "programId": "62456",
     "shareUrl": "5fi.sh/T62456",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 70610,
@@ -988,7 +1042,8 @@ export const staticContent = [
     "programId": "70610",
     "shareUrl": "5fi.sh/T70610",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 62457,
@@ -1006,7 +1061,8 @@ export const staticContent = [
     "programId": "62457",
     "shareUrl": "5fi.sh/T62457",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 70620,
@@ -1024,7 +1080,8 @@ export const staticContent = [
     "programId": "70620",
     "shareUrl": "5fi.sh/T70620",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 30011,
@@ -1042,7 +1099,8 @@ export const staticContent = [
     "programId": "30011",
     "shareUrl": "5fi.sh/T30011",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 2890,
@@ -1060,7 +1118,8 @@ export const staticContent = [
     "programId": "2890",
     "shareUrl": "5fi.sh/T2890",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 2891,
@@ -1078,7 +1137,8 @@ export const staticContent = [
     "programId": "2891",
     "shareUrl": "5fi.sh/T2891",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 13250,
@@ -1096,7 +1156,8 @@ export const staticContent = [
     "programId": "13250",
     "shareUrl": "5fi.sh/T13250",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 20340,
@@ -1114,7 +1175,8 @@ export const staticContent = [
     "programId": "20340",
     "shareUrl": "5fi.sh/T20340",
     "sampleUrl": "/audio/Cantonese.13.mp3",
-    "stableKey": "Cantonese"
+    "stableKey": "Cantonese",
+    "duration": 7
   },
   {
     "id": 3410,
@@ -1132,7 +1194,8 @@ export const staticContent = [
     "programId": "3410",
     "shareUrl": "5fi.sh/T3410",
     "sampleUrl": "/audio/Cham.Cambodia.1024.mp3",
-    "stableKey": "Cham Cambodia"
+    "stableKey": "Cham Cambodia",
+    "duration": 7
   },
   {
     "id": 31891,
@@ -1150,7 +1213,8 @@ export const staticContent = [
     "programId": "31891",
     "shareUrl": "5fi.sh/T31891",
     "sampleUrl": "/audio/Chinese.Huang.Yuan.6238.mp3",
-    "stableKey": "Chinese Huang Yuan"
+    "stableKey": "Chinese Huang Yuan",
+    "duration": 7
   },
   {
     "id": 31111,
@@ -1168,7 +1232,8 @@ export const staticContent = [
     "programId": "31111",
     "shareUrl": "5fi.sh/T31111",
     "sampleUrl": "/audio/Chinese.Hubei.Chongyanghua.6276.mp3",
-    "stableKey": "Chinese Hubei Chongyanghua"
+    "stableKey": "Chinese Hubei Chongyanghua",
+    "duration": 14
   },
   {
     "id": 30170,
@@ -1186,7 +1251,8 @@ export const staticContent = [
     "programId": "30170",
     "shareUrl": "5fi.sh/T30170",
     "sampleUrl": "/audio/Chinese.Hubei.Dangyanghua.6278.mp3",
-    "stableKey": "Chinese Hubei Dangyanghua"
+    "stableKey": "Chinese Hubei Dangyanghua",
+    "duration": 15
   },
   {
     "id": 30630,
@@ -1204,7 +1270,8 @@ export const staticContent = [
     "programId": "30630",
     "shareUrl": "5fi.sh/T30630",
     "sampleUrl": "/audio/Chinese.Hubei.Wuhandayehua.6277.mp3",
-    "stableKey": "Chinese Hubei Wuhandayehua"
+    "stableKey": "Chinese Hubei Wuhandayehua",
+    "duration": 17
   },
   {
     "id": 29501,
@@ -1222,7 +1289,8 @@ export const staticContent = [
     "programId": "29501",
     "shareUrl": "5fi.sh/T29501",
     "sampleUrl": "/audio/Chinese.Liansan.6143.mp3",
-    "stableKey": "Chinese Liansan"
+    "stableKey": "Chinese Liansan",
+    "duration": 16
   },
   {
     "id": 31900,
@@ -1240,7 +1308,8 @@ export const staticContent = [
     "programId": "31900",
     "shareUrl": "5fi.sh/T31900",
     "sampleUrl": "/audio/Chinese.Min.Zhou.6239.mp3",
-    "stableKey": "Chinese Min Zhou"
+    "stableKey": "Chinese Min Zhou",
+    "duration": 6
   },
   {
     "id": 25310,
@@ -1258,7 +1327,8 @@ export const staticContent = [
     "programId": "25310",
     "shareUrl": "5fi.sh/T25310",
     "sampleUrl": "/audio/Chinese.Ningxia.4665.mp3",
-    "stableKey": "Chinese Ningxia"
+    "stableKey": "Chinese Ningxia",
+    "duration": 7
   },
   {
     "id": 27500,
@@ -1276,7 +1346,8 @@ export const staticContent = [
     "programId": "27500",
     "shareUrl": "5fi.sh/T27500",
     "sampleUrl": "/audio/Chinese.Sichuan.4837.mp3",
-    "stableKey": "Chinese Sichuan"
+    "stableKey": "Chinese Sichuan",
+    "duration": 7
   },
   {
     "id": 31870,
@@ -1294,7 +1365,8 @@ export const staticContent = [
     "programId": "31870",
     "shareUrl": "5fi.sh/T31870",
     "sampleUrl": "/audio/Chinese.Zang.Ye.6241.mp3",
-    "stableKey": "Chinese Zang Ye"
+    "stableKey": "Chinese Zang Ye",
+    "duration": 7
   },
   {
     "id": 64447,
@@ -1312,7 +1384,8 @@ export const staticContent = [
     "programId": "64447",
     "shareUrl": "5fi.sh/T64447",
     "sampleUrl": "/audio/Chong.8901.mp3",
-    "stableKey": "Chong"
+    "stableKey": "Chong",
+    "duration": 8
   },
   {
     "id": 31030,
@@ -1330,7 +1403,8 @@ export const staticContent = [
     "programId": "31030",
     "shareUrl": "5fi.sh/T31030",
     "sampleUrl": "/audio/Deang.Hongfenglong.6296.mp3",
-    "stableKey": "Deang Hongfenglong"
+    "stableKey": "Deang Hongfenglong",
+    "duration": 4
   },
   {
     "id": 31020,
@@ -1348,7 +1422,8 @@ export const staticContent = [
     "programId": "31020",
     "shareUrl": "5fi.sh/T31020",
     "sampleUrl": "/audio/Deang.Hongfenglong.6296.mp3",
-    "stableKey": "Deang Hongfenglong"
+    "stableKey": "Deang Hongfenglong",
+    "duration": 4
   },
   {
     "id": 29270,
@@ -1366,7 +1441,8 @@ export const staticContent = [
     "programId": "29270",
     "shareUrl": "5fi.sh/T29270",
     "sampleUrl": "/audio/English.Australia.4405.mp3",
-    "stableKey": "English Australia"
+    "stableKey": "English Australia",
+    "duration": 8
   },
   {
     "id": 64560,
@@ -1384,7 +1460,8 @@ export const staticContent = [
     "programId": "64560",
     "shareUrl": "5fi.sh/T64560",
     "sampleUrl": "/audio/English.USA.25.mp3",
-    "stableKey": "English USA"
+    "stableKey": "English USA",
+    "duration": 4
   },
   {
     "id": 65955,
@@ -1402,7 +1479,8 @@ export const staticContent = [
     "programId": "65955",
     "shareUrl": "5fi.sh/T65955",
     "sampleUrl": "/audio/English.USA.25.mp3",
-    "stableKey": "English USA"
+    "stableKey": "English USA",
+    "duration": 4
   },
   {
     "id": 65688,
@@ -1420,7 +1498,8 @@ export const staticContent = [
     "programId": "65688",
     "shareUrl": "5fi.sh/T65688",
     "sampleUrl": "/audio/English.USA.25.mp3",
-    "stableKey": "English USA"
+    "stableKey": "English USA",
+    "duration": 4
   },
   {
     "id": 65689,
@@ -1438,7 +1517,8 @@ export const staticContent = [
     "programId": "65689",
     "shareUrl": "5fi.sh/T65689",
     "sampleUrl": "/audio/English.USA.25.mp3",
-    "stableKey": "English USA"
+    "stableKey": "English USA",
+    "duration": 4
   },
   {
     "id": 65761,
@@ -1456,7 +1536,8 @@ export const staticContent = [
     "programId": "65761",
     "shareUrl": "5fi.sh/T65761",
     "sampleUrl": "/audio/English.USA.25.mp3",
-    "stableKey": "English USA"
+    "stableKey": "English USA",
+    "duration": 4
   },
   {
     "id": 65762,
@@ -1474,7 +1555,8 @@ export const staticContent = [
     "programId": "65762",
     "shareUrl": "5fi.sh/T65762",
     "sampleUrl": "/audio/English.USA.25.mp3",
-    "stableKey": "English USA"
+    "stableKey": "English USA",
+    "duration": 4
   },
   {
     "id": 65763,
@@ -1492,7 +1574,8 @@ export const staticContent = [
     "programId": "65763",
     "shareUrl": "5fi.sh/T65763",
     "sampleUrl": "/audio/English.USA.25.mp3",
-    "stableKey": "English USA"
+    "stableKey": "English USA",
+    "duration": 4
   },
   {
     "id": 65764,
@@ -1510,7 +1593,8 @@ export const staticContent = [
     "programId": "65764",
     "shareUrl": "5fi.sh/T65764",
     "sampleUrl": "/audio/English.USA.25.mp3",
-    "stableKey": "English USA"
+    "stableKey": "English USA",
+    "duration": 4
   },
   {
     "id": 65765,
@@ -1528,7 +1612,8 @@ export const staticContent = [
     "programId": "65765",
     "shareUrl": "5fi.sh/T65765",
     "sampleUrl": "/audio/English.USA.25.mp3",
-    "stableKey": "English USA"
+    "stableKey": "English USA",
+    "duration": 4
   },
   {
     "id": 65766,
@@ -1546,7 +1631,8 @@ export const staticContent = [
     "programId": "65766",
     "shareUrl": "5fi.sh/T65766",
     "sampleUrl": "/audio/English.USA.25.mp3",
-    "stableKey": "English USA"
+    "stableKey": "English USA",
+    "duration": 4
   },
   {
     "id": 3630,
@@ -1564,7 +1650,8 @@ export const staticContent = [
     "programId": "3630",
     "shareUrl": "5fi.sh/T3630",
     "sampleUrl": "/audio/Foochow.Colloquial.Chinese.113.mp3",
-    "stableKey": "Foochow Colloquial Chinese"
+    "stableKey": "Foochow Colloquial Chinese",
+    "duration": 7
   },
   {
     "id": 28330,
@@ -1582,7 +1669,8 @@ export const staticContent = [
     "programId": "28330",
     "shareUrl": "5fi.sh/T28330",
     "sampleUrl": "/audio/Guiliu.6039.mp3",
-    "stableKey": "Guiliu"
+    "stableKey": "Guiliu",
+    "duration": 7
   },
   {
     "id": 80909,
@@ -1600,7 +1688,8 @@ export const staticContent = [
     "programId": "80909",
     "shareUrl": "5fi.sh/T80909",
     "sampleUrl": "/audio/Guiliu.6039.mp3",
-    "stableKey": "Guiliu"
+    "stableKey": "Guiliu",
+    "duration": 7
   },
   {
     "id": 30741,
@@ -1618,7 +1707,8 @@ export const staticContent = [
     "programId": "30741",
     "shareUrl": "5fi.sh/T30741",
     "sampleUrl": "/audio/Hainanese.366.mp3",
-    "stableKey": "Hainanese"
+    "stableKey": "Hainanese",
+    "duration": 8
   },
   {
     "id": 30750,
@@ -1636,7 +1726,8 @@ export const staticContent = [
     "programId": "30750",
     "shareUrl": "5fi.sh/T30750",
     "sampleUrl": "/audio/Hainanese.366.mp3",
-    "stableKey": "Hainanese"
+    "stableKey": "Hainanese",
+    "duration": 8
   },
   {
     "id": 3600,
@@ -1654,7 +1745,8 @@ export const staticContent = [
     "programId": "3600",
     "shareUrl": "5fi.sh/T3600",
     "sampleUrl": "/audio/Hainanese.366.mp3",
-    "stableKey": "Hainanese"
+    "stableKey": "Hainanese",
+    "duration": 8
   },
   {
     "id": 18870,
@@ -1672,7 +1764,8 @@ export const staticContent = [
     "programId": "18870",
     "shareUrl": "5fi.sh/T18870",
     "sampleUrl": "/audio/Hainanese.366.mp3",
-    "stableKey": "Hainanese"
+    "stableKey": "Hainanese",
+    "duration": 8
   },
   {
     "id": 17390,
@@ -1690,7 +1783,8 @@ export const staticContent = [
     "programId": "17390",
     "shareUrl": "5fi.sh/T17390",
     "sampleUrl": "/audio/Hakka.340.mp3",
-    "stableKey": "Hakka"
+    "stableKey": "Hakka",
+    "duration": 7
   },
   {
     "id": 2590,
@@ -1708,7 +1802,8 @@ export const staticContent = [
     "programId": "2590",
     "shareUrl": "5fi.sh/T2590",
     "sampleUrl": "/audio/Hakka.340.mp3",
-    "stableKey": "Hakka"
+    "stableKey": "Hakka",
+    "duration": 7
   },
   {
     "id": 37698,
@@ -1726,7 +1821,8 @@ export const staticContent = [
     "programId": "37698",
     "shareUrl": "5fi.sh/T37698",
     "sampleUrl": "/audio/Hmong.Blue.492.mp3",
-    "stableKey": "Hmong Blue"
+    "stableKey": "Hmong Blue",
+    "duration": 3
   },
   {
     "id": 62596,
@@ -1744,7 +1840,8 @@ export const staticContent = [
     "programId": "62596",
     "shareUrl": "5fi.sh/T62596",
     "sampleUrl": "/audio/Hmong.Blue.492.mp3",
-    "stableKey": "Hmong Blue"
+    "stableKey": "Hmong Blue",
+    "duration": 3
   },
   {
     "id": 33020,
@@ -1762,7 +1859,8 @@ export const staticContent = [
     "programId": "33020",
     "shareUrl": "5fi.sh/T33020",
     "sampleUrl": "/audio/Hmong.Blue.492.mp3",
-    "stableKey": "Hmong Blue"
+    "stableKey": "Hmong Blue",
+    "duration": 3
   },
   {
     "id": 33201,
@@ -1780,7 +1878,8 @@ export const staticContent = [
     "programId": "33201",
     "shareUrl": "5fi.sh/T33201",
     "sampleUrl": "/audio/Hmong.Blue.492.mp3",
-    "stableKey": "Hmong Blue"
+    "stableKey": "Hmong Blue",
+    "duration": 3
   },
   {
     "id": 27191,
@@ -1798,7 +1897,8 @@ export const staticContent = [
     "programId": "27191",
     "shareUrl": "5fi.sh/T27191",
     "sampleUrl": "/audio/Hmong.Blue.492.mp3",
-    "stableKey": "Hmong Blue"
+    "stableKey": "Hmong Blue",
+    "duration": 3
   },
   {
     "id": 37600,
@@ -1816,7 +1916,8 @@ export const staticContent = [
     "programId": "37600",
     "shareUrl": "5fi.sh/T37600",
     "sampleUrl": "/audio/Hmong.Shuad.20040.mp3",
-    "stableKey": "Hmong Shuad"
+    "stableKey": "Hmong Shuad",
+    "duration": 42
   },
   {
     "id": 37601,
@@ -1834,7 +1935,8 @@ export const staticContent = [
     "programId": "37601",
     "shareUrl": "5fi.sh/T37601",
     "sampleUrl": "/audio/Hmong.Shuad.20040.mp3",
-    "stableKey": "Hmong Shuad"
+    "stableKey": "Hmong Shuad",
+    "duration": 42
   },
   {
     "id": 3181,
@@ -1852,7 +1954,8 @@ export const staticContent = [
     "programId": "3181",
     "shareUrl": "5fi.sh/T3181",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 37699,
@@ -1870,7 +1973,8 @@ export const staticContent = [
     "programId": "37699",
     "shareUrl": "5fi.sh/T37699",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 37758,
@@ -1888,7 +1992,8 @@ export const staticContent = [
     "programId": "37758",
     "shareUrl": "5fi.sh/T37758",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 37759,
@@ -1906,7 +2011,8 @@ export const staticContent = [
     "programId": "37759",
     "shareUrl": "5fi.sh/T37759",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 37760,
@@ -1924,7 +2030,8 @@ export const staticContent = [
     "programId": "37760",
     "shareUrl": "5fi.sh/T37760",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 37761,
@@ -1942,7 +2049,8 @@ export const staticContent = [
     "programId": "37761",
     "shareUrl": "5fi.sh/T37761",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 37700,
@@ -1960,7 +2068,8 @@ export const staticContent = [
     "programId": "37700",
     "shareUrl": "5fi.sh/T37700",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 62956,
@@ -1978,7 +2087,8 @@ export const staticContent = [
     "programId": "62956",
     "shareUrl": "5fi.sh/T62956",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 37752,
@@ -1996,7 +2106,8 @@ export const staticContent = [
     "programId": "37752",
     "shareUrl": "5fi.sh/T37752",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 27261,
@@ -2014,7 +2125,8 @@ export const staticContent = [
     "programId": "27261",
     "shareUrl": "5fi.sh/T27261",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 27181,
@@ -2032,7 +2144,8 @@ export const staticContent = [
     "programId": "27181",
     "shareUrl": "5fi.sh/T27181",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 27190,
@@ -2050,7 +2163,8 @@ export const staticContent = [
     "programId": "27190",
     "shareUrl": "5fi.sh/T27190",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 13240,
@@ -2068,7 +2182,8 @@ export const staticContent = [
     "programId": "13240",
     "shareUrl": "5fi.sh/T13240",
     "sampleUrl": "/audio/Hmong.White.491.mp3",
-    "stableKey": "Hmong White"
+    "stableKey": "Hmong White",
+    "duration": 259
   },
   {
     "id": 38079,
@@ -2086,7 +2201,8 @@ export const staticContent = [
     "programId": "38079",
     "shareUrl": "5fi.sh/T38079",
     "sampleUrl": "/audio/Hui.20057.mp3",
-    "stableKey": "Hui"
+    "stableKey": "Hui",
+    "duration": 5
   },
   {
     "id": 37731,
@@ -2104,7 +2220,8 @@ export const staticContent = [
     "programId": "37731",
     "shareUrl": "5fi.sh/T37731",
     "sampleUrl": "/audio/Hui.20057.mp3",
-    "stableKey": "Hui"
+    "stableKey": "Hui",
+    "duration": 5
   },
   {
     "id": 33010,
@@ -2122,7 +2239,8 @@ export const staticContent = [
     "programId": "33010",
     "shareUrl": "5fi.sh/T33010",
     "sampleUrl": "/audio/Iu.Mien.Yao.417.mp3",
-    "stableKey": "Iu Mien"
+    "stableKey": "Iu Mien",
+    "duration": 96
   },
   {
     "id": 33011,
@@ -2140,7 +2258,8 @@ export const staticContent = [
     "programId": "33011",
     "shareUrl": "5fi.sh/T33011",
     "sampleUrl": "/audio/Iu.Mien.Yao.417.mp3",
-    "stableKey": "Iu Mien"
+    "stableKey": "Iu Mien",
+    "duration": 96
   },
   {
     "id": 38205,
@@ -2158,7 +2277,8 @@ export const staticContent = [
     "programId": "38205",
     "shareUrl": "5fi.sh/T38205",
     "sampleUrl": "/audio/Iu.Mien.Yao.417.mp3",
-    "stableKey": "Iu Mien"
+    "stableKey": "Iu Mien",
+    "duration": 96
   },
   {
     "id": 5261,
@@ -2176,7 +2296,8 @@ export const staticContent = [
     "programId": "5261",
     "shareUrl": "5fi.sh/T5261",
     "sampleUrl": "/audio/Iu.Mien.Yao.417.mp3",
-    "stableKey": "Iu Mien"
+    "stableKey": "Iu Mien",
+    "duration": 96
   },
   {
     "id": 63085,
@@ -2194,7 +2315,8 @@ export const staticContent = [
     "programId": "63085",
     "shareUrl": "5fi.sh/T63085",
     "sampleUrl": "/audio/Japanese.96.mp3",
-    "stableKey": "Japanese"
+    "stableKey": "Japanese",
+    "duration": 21
   },
   {
     "id": 32531,
@@ -2212,7 +2334,8 @@ export const staticContent = [
     "programId": "32531",
     "shareUrl": "5fi.sh/T32531",
     "sampleUrl": "/audio/Japanese.96.mp3",
-    "stableKey": "Japanese"
+    "stableKey": "Japanese",
+    "duration": 21
   },
   {
     "id": 37280,
@@ -2230,7 +2353,8 @@ export const staticContent = [
     "programId": "37280",
     "shareUrl": "5fi.sh/T37280",
     "sampleUrl": "/audio/Japanese.96.mp3",
-    "stableKey": "Japanese"
+    "stableKey": "Japanese",
+    "duration": 21
   },
   {
     "id": 37281,
@@ -2248,7 +2372,8 @@ export const staticContent = [
     "programId": "37281",
     "shareUrl": "5fi.sh/T37281",
     "sampleUrl": "/audio/Japanese.96.mp3",
-    "stableKey": "Japanese"
+    "stableKey": "Japanese",
+    "duration": 21
   },
   {
     "id": 80573,
@@ -2266,7 +2391,8 @@ export const staticContent = [
     "programId": "80573",
     "shareUrl": "5fi.sh/T80573",
     "sampleUrl": "/audio/Kachin.175.mp3",
-    "stableKey": "Kachin"
+    "stableKey": "Kachin",
+    "duration": 7
   },
   {
     "id": 66535,
@@ -2284,7 +2410,8 @@ export const staticContent = [
     "programId": "66535",
     "shareUrl": "5fi.sh/T66535",
     "sampleUrl": "/audio/Kachin.175.mp3",
-    "stableKey": "Kachin"
+    "stableKey": "Kachin",
+    "duration": 7
   },
   {
     "id": 6100,
@@ -2302,7 +2429,8 @@ export const staticContent = [
     "programId": "6100",
     "shareUrl": "5fi.sh/T6100",
     "sampleUrl": "/audio/Kachin.175.mp3",
-    "stableKey": "Kachin"
+    "stableKey": "Kachin",
+    "duration": 7
   },
   {
     "id": 80870,
@@ -2320,7 +2448,8 @@ export const staticContent = [
     "programId": "80870",
     "shareUrl": "5fi.sh/T80870",
     "sampleUrl": "/audio/Karen.Bwe.414.mp3",
-    "stableKey": "Karen Bwe"
+    "stableKey": "Karen Bwe",
+    "duration": 4
   },
   {
     "id": 9310,
@@ -2338,7 +2467,8 @@ export const staticContent = [
     "programId": "9310",
     "shareUrl": "5fi.sh/T9310",
     "sampleUrl": "/audio/Karen.Bwe.414.mp3",
-    "stableKey": "Karen Bwe"
+    "stableKey": "Karen Bwe",
+    "duration": 4
   },
   {
     "id": 9340,
@@ -2356,7 +2486,8 @@ export const staticContent = [
     "programId": "9340",
     "shareUrl": "5fi.sh/T9340",
     "sampleUrl": "/audio/Karen.Pao.Moulmein.415.mp3",
-    "stableKey": "Karen Pa'o Moulmein"
+    "stableKey": "Karen Pa'o Moulmein",
+    "duration": 7
   },
   {
     "id": 80827,
@@ -2374,7 +2505,8 @@ export const staticContent = [
     "programId": "80827",
     "shareUrl": "5fi.sh/T80827",
     "sampleUrl": "/audio/Karen.Pao.Southern.334.mp3",
-    "stableKey": "Karen Pa'o Southern"
+    "stableKey": "Karen Pa'o Southern",
+    "duration": 7
   },
   {
     "id": 6751,
@@ -2392,7 +2524,8 @@ export const staticContent = [
     "programId": "6751",
     "shareUrl": "5fi.sh/T6751",
     "sampleUrl": "/audio/Karen.Pao.Southern.334.mp3",
-    "stableKey": "Karen Pa'o Southern"
+    "stableKey": "Karen Pa'o Southern",
+    "duration": 7
   },
   {
     "id": 62599,
@@ -2410,7 +2543,8 @@ export const staticContent = [
     "programId": "62599",
     "shareUrl": "5fi.sh/T62599",
     "sampleUrl": "/audio/Karen.Pwo.Eastern.19467.mp3",
-    "stableKey": "Karen Pwo Eastern"
+    "stableKey": "Karen Pwo Eastern",
+    "duration": 157
   },
   {
     "id": 9320,
@@ -2428,7 +2562,8 @@ export const staticContent = [
     "programId": "9320",
     "shareUrl": "5fi.sh/T9320",
     "sampleUrl": "/audio/Karen.Pwo.Eastern.Kanjanaburi.2403.mp3",
-    "stableKey": "Karen Pwo Eastern Kanjanaburi"
+    "stableKey": "Karen Pwo Eastern Kanjanaburi",
+    "duration": 7
   },
   {
     "id": 27180,
@@ -2446,7 +2581,8 @@ export const staticContent = [
     "programId": "27180",
     "shareUrl": "5fi.sh/T27180",
     "sampleUrl": "/audio/Karen.Pwo.Eastern.Kanjanaburi.2403.mp3",
-    "stableKey": "Karen Pwo Eastern Kanjanaburi"
+    "stableKey": "Karen Pwo Eastern Kanjanaburi",
+    "duration": 7
   },
   {
     "id": 6690,
@@ -2464,7 +2600,8 @@ export const staticContent = [
     "programId": "6690",
     "shareUrl": "5fi.sh/T6690",
     "sampleUrl": "/audio/Karen.Pwo.Hod.490.mp3",
-    "stableKey": "Karen Pwo Hod"
+    "stableKey": "Karen Pwo Hod",
+    "duration": 80
   },
   {
     "id": 17200,
@@ -2482,7 +2619,8 @@ export const staticContent = [
     "programId": "17200",
     "shareUrl": "5fi.sh/T17200",
     "sampleUrl": "/audio/Karen.Pwo.Prae.1182.mp3",
-    "stableKey": "Karen Pwo Prae"
+    "stableKey": "Karen Pwo Prae",
+    "duration": 32
   },
   {
     "id": 80604,
@@ -2500,7 +2638,8 @@ export const staticContent = [
     "programId": "80604",
     "shareUrl": "5fi.sh/T80604",
     "sampleUrl": "/audio/Karen.Pwo.Western.416.mp3",
-    "stableKey": "Karen Pwo Western"
+    "stableKey": "Karen Pwo Western",
+    "duration": 4
   },
   {
     "id": 35850,
@@ -2518,7 +2657,8 @@ export const staticContent = [
     "programId": "35850",
     "shareUrl": "5fi.sh/T35850",
     "sampleUrl": "/audio/Karen.Pwo.Western.416.mp3",
-    "stableKey": "Karen Pwo Western"
+    "stableKey": "Karen Pwo Western",
+    "duration": 4
   },
   {
     "id": 35851,
@@ -2536,7 +2676,8 @@ export const staticContent = [
     "programId": "35851",
     "shareUrl": "5fi.sh/T35851",
     "sampleUrl": "/audio/Karen.Pwo.Western.416.mp3",
-    "stableKey": "Karen Pwo Western"
+    "stableKey": "Karen Pwo Western",
+    "duration": 4
   },
   {
     "id": 9850,
@@ -2554,7 +2695,8 @@ export const staticContent = [
     "programId": "9850",
     "shareUrl": "5fi.sh/T9850",
     "sampleUrl": "/audio/Karen.Pwo.Western.416.mp3",
-    "stableKey": "Karen Pwo Western"
+    "stableKey": "Karen Pwo Western",
+    "duration": 4
   },
   {
     "id": 9851,
@@ -2572,7 +2714,8 @@ export const staticContent = [
     "programId": "9851",
     "shareUrl": "5fi.sh/T9851",
     "sampleUrl": "/audio/Karen.Pwo.Western.416.mp3",
-    "stableKey": "Karen Pwo Western"
+    "stableKey": "Karen Pwo Western",
+    "duration": 4
   },
   {
     "id": 33121,
@@ -2590,7 +2733,8 @@ export const staticContent = [
     "programId": "33121",
     "shareUrl": "5fi.sh/T33121",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 27200,
@@ -2608,7 +2752,8 @@ export const staticContent = [
     "programId": "27200",
     "shareUrl": "5fi.sh/T27200",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 38334,
@@ -2626,7 +2771,8 @@ export const staticContent = [
     "programId": "38334",
     "shareUrl": "5fi.sh/T38334",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 64523,
@@ -2644,7 +2790,8 @@ export const staticContent = [
     "programId": "64523",
     "shareUrl": "5fi.sh/T64523",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 64524,
@@ -2662,7 +2809,8 @@ export const staticContent = [
     "programId": "64524",
     "shareUrl": "5fi.sh/T64524",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 64525,
@@ -2680,7 +2828,8 @@ export const staticContent = [
     "programId": "64525",
     "shareUrl": "5fi.sh/T64525",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 64526,
@@ -2698,7 +2847,8 @@ export const staticContent = [
     "programId": "64526",
     "shareUrl": "5fi.sh/T64526",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 64527,
@@ -2716,7 +2866,8 @@ export const staticContent = [
     "programId": "64527",
     "shareUrl": "5fi.sh/T64527",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 64528,
@@ -2734,7 +2885,8 @@ export const staticContent = [
     "programId": "64528",
     "shareUrl": "5fi.sh/T64528",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 64529,
@@ -2752,7 +2904,8 @@ export const staticContent = [
     "programId": "64529",
     "shareUrl": "5fi.sh/T64529",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 64530,
@@ -2770,7 +2923,8 @@ export const staticContent = [
     "programId": "64530",
     "shareUrl": "5fi.sh/T64530",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 27210,
@@ -2788,7 +2942,8 @@ export const staticContent = [
     "programId": "27210",
     "shareUrl": "5fi.sh/T27210",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 9420,
@@ -2806,7 +2961,8 @@ export const staticContent = [
     "programId": "9420",
     "shareUrl": "5fi.sh/T9420",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 27201,
@@ -2824,7 +2980,8 @@ export const staticContent = [
     "programId": "27201",
     "shareUrl": "5fi.sh/T27201",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 64531,
@@ -2842,7 +2999,8 @@ export const staticContent = [
     "programId": "64531",
     "shareUrl": "5fi.sh/T64531",
     "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
-    "stableKey": "Karen S'gaw"
+    "stableKey": "Karen S'gaw",
+    "duration": 6
   },
   {
     "id": 80842,
@@ -2860,7 +3018,8 @@ export const staticContent = [
     "programId": "80842",
     "shareUrl": "5fi.sh/T80842",
     "sampleUrl": "/audio/Kayah.Eastern.Presule.5169.mp3",
-    "stableKey": "Kayah Eastern Presule"
+    "stableKey": "Kayah Eastern Presule",
+    "duration": 4
   },
   {
     "id": 80838,
@@ -2878,7 +3037,8 @@ export const staticContent = [
     "programId": "80838",
     "shareUrl": "5fi.sh/T80838",
     "sampleUrl": "/audio/Kayah.Western.404.mp3",
-    "stableKey": "Kayah Western"
+    "stableKey": "Kayah Western",
+    "duration": 4
   },
   {
     "id": 62901,
@@ -2896,7 +3056,8 @@ export const staticContent = [
     "programId": "62901",
     "shareUrl": "5fi.sh/T62901",
     "sampleUrl": "/audio/Kayah.Western.404.mp3",
-    "stableKey": "Kayah Western"
+    "stableKey": "Kayah Western",
+    "duration": 4
   },
   {
     "id": 63010,
@@ -2914,7 +3075,8 @@ export const staticContent = [
     "programId": "63010",
     "shareUrl": "5fi.sh/T63010",
     "sampleUrl": "/audio/Kayah.Western.404.mp3",
-    "stableKey": "Kayah Western"
+    "stableKey": "Kayah Western",
+    "duration": 4
   },
   {
     "id": 6750,
@@ -2932,7 +3094,8 @@ export const staticContent = [
     "programId": "6750",
     "shareUrl": "5fi.sh/T6750",
     "sampleUrl": "/audio/Kayah.Western.404.mp3",
-    "stableKey": "Kayah Western"
+    "stableKey": "Kayah Western",
+    "duration": 4
   },
   {
     "id": 19141,
@@ -2950,7 +3113,8 @@ export const staticContent = [
     "programId": "19141",
     "shareUrl": "5fi.sh/T19141",
     "sampleUrl": "/audio/Kayan.4229.mp3",
-    "stableKey": "Kayan"
+    "stableKey": "Kayan",
+    "duration": 4
   },
   {
     "id": 63793,
@@ -2968,7 +3132,8 @@ export const staticContent = [
     "programId": "63793",
     "shareUrl": "5fi.sh/T63793",
     "sampleUrl": "/audio/Kayan.4229.mp3",
-    "stableKey": "Kayan"
+    "stableKey": "Kayan",
+    "duration": 4
   },
   {
     "id": 75325,
@@ -2986,7 +3151,8 @@ export const staticContent = [
     "programId": "75325",
     "shareUrl": "5fi.sh/T75325",
     "sampleUrl": "/audio/Kayan.4229.mp3",
-    "stableKey": "Kayan"
+    "stableKey": "Kayan",
+    "duration": 4
   },
   {
     "id": 75326,
@@ -3004,7 +3170,8 @@ export const staticContent = [
     "programId": "75326",
     "shareUrl": "5fi.sh/T75326",
     "sampleUrl": "/audio/Kayan.4229.mp3",
-    "stableKey": "Kayan"
+    "stableKey": "Kayan",
+    "duration": 4
   },
   {
     "id": 11431,
@@ -3022,7 +3189,8 @@ export const staticContent = [
     "programId": "11431",
     "shareUrl": "5fi.sh/T11431",
     "sampleUrl": "/audio/Khamet.487.mp3",
-    "stableKey": "Khamet"
+    "stableKey": "Khamet",
+    "duration": 19
   },
   {
     "id": 16030,
@@ -3040,7 +3208,8 @@ export const staticContent = [
     "programId": "16030",
     "shareUrl": "5fi.sh/T16030",
     "sampleUrl": "/audio/Khamu.1005.mp3",
-    "stableKey": "Khamu"
+    "stableKey": "Khamu",
+    "duration": 45
   },
   {
     "id": 16031,
@@ -3058,7 +3227,8 @@ export const staticContent = [
     "programId": "16031",
     "shareUrl": "5fi.sh/T16031",
     "sampleUrl": "/audio/Khamu.1005.mp3",
-    "stableKey": "Khamu"
+    "stableKey": "Khamu",
+    "duration": 45
   },
   {
     "id": 35880,
@@ -3076,7 +3246,8 @@ export const staticContent = [
     "programId": "35880",
     "shareUrl": "5fi.sh/T35880",
     "sampleUrl": "/audio/Khamu.1005.mp3",
-    "stableKey": "Khamu"
+    "stableKey": "Khamu",
+    "duration": 45
   },
   {
     "id": 35881,
@@ -3094,7 +3265,8 @@ export const staticContent = [
     "programId": "35881",
     "shareUrl": "5fi.sh/T35881",
     "sampleUrl": "/audio/Khamu.1005.mp3",
-    "stableKey": "Khamu"
+    "stableKey": "Khamu",
+    "duration": 45
   },
   {
     "id": 6700,
@@ -3112,7 +3284,8 @@ export const staticContent = [
     "programId": "6700",
     "shareUrl": "5fi.sh/T6700",
     "sampleUrl": "/audio/Khamu.Thailand.488.mp3",
-    "stableKey": "Khamu Thailand"
+    "stableKey": "Khamu Thailand",
+    "duration": 7
   },
   {
     "id": 64394,
@@ -3130,7 +3303,8 @@ export const staticContent = [
     "programId": "64394",
     "shareUrl": "5fi.sh/T64394",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 74832,
@@ -3148,7 +3322,8 @@ export const staticContent = [
     "programId": "74832",
     "shareUrl": "5fi.sh/T74832",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 80758,
@@ -3166,7 +3341,8 @@ export const staticContent = [
     "programId": "80758",
     "shareUrl": "5fi.sh/T80758",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 74833,
@@ -3184,7 +3360,8 @@ export const staticContent = [
     "programId": "74833",
     "shareUrl": "5fi.sh/T74833",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 74834,
@@ -3202,7 +3379,8 @@ export const staticContent = [
     "programId": "74834",
     "shareUrl": "5fi.sh/T74834",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 74835,
@@ -3220,7 +3398,8 @@ export const staticContent = [
     "programId": "74835",
     "shareUrl": "5fi.sh/T74835",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 74836,
@@ -3238,7 +3417,8 @@ export const staticContent = [
     "programId": "74836",
     "shareUrl": "5fi.sh/T74836",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 74837,
@@ -3256,7 +3436,8 @@ export const staticContent = [
     "programId": "74837",
     "shareUrl": "5fi.sh/T74837",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 80108,
@@ -3274,7 +3455,8 @@ export const staticContent = [
     "programId": "80108",
     "shareUrl": "5fi.sh/T80108",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 80109,
@@ -3292,7 +3474,8 @@ export const staticContent = [
     "programId": "80109",
     "shareUrl": "5fi.sh/T80109",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 64395,
@@ -3310,7 +3493,8 @@ export const staticContent = [
     "programId": "64395",
     "shareUrl": "5fi.sh/T64395",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 30080,
@@ -3328,7 +3512,8 @@ export const staticContent = [
     "programId": "30080",
     "shareUrl": "5fi.sh/T30080",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 30081,
@@ -3346,7 +3531,8 @@ export const staticContent = [
     "programId": "30081",
     "shareUrl": "5fi.sh/T30081",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 3400,
@@ -3364,7 +3550,8 @@ export const staticContent = [
     "programId": "3400",
     "shareUrl": "5fi.sh/T3400",
     "sampleUrl": "/audio/Khmer.365.mp3",
-    "stableKey": "Khmer"
+    "stableKey": "Khmer",
+    "duration": 9
   },
   {
     "id": 3590,
@@ -3382,7 +3569,8 @@ export const staticContent = [
     "programId": "3590",
     "shareUrl": "5fi.sh/T3590",
     "sampleUrl": "/audio/Khmer.Thailand.3450.mp3",
-    "stableKey": "Khmer Thailand"
+    "stableKey": "Khmer Thailand",
+    "duration": 8
   },
   {
     "id": 9371,
@@ -3400,7 +3588,8 @@ export const staticContent = [
     "programId": "9371",
     "shareUrl": "5fi.sh/T9371",
     "sampleUrl": "/audio/Khun.1152.mp3",
-    "stableKey": "Khun"
+    "stableKey": "Khun",
+    "duration": 183
   },
   {
     "id": 7581,
@@ -3418,7 +3607,8 @@ export const staticContent = [
     "programId": "7581",
     "shareUrl": "5fi.sh/T7581",
     "sampleUrl": "/audio/Kuy.530.mp3",
-    "stableKey": "Kuy"
+    "stableKey": "Kuy",
+    "duration": 7
   },
   {
     "id": 32660,
@@ -3436,7 +3626,8 @@ export const staticContent = [
     "programId": "32660",
     "shareUrl": "5fi.sh/T32660",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 63277,
@@ -3454,7 +3645,8 @@ export const staticContent = [
     "programId": "63277",
     "shareUrl": "5fi.sh/T63277",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 64244,
@@ -3472,7 +3664,8 @@ export const staticContent = [
     "programId": "64244",
     "shareUrl": "5fi.sh/T64244",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 64245,
@@ -3490,7 +3683,8 @@ export const staticContent = [
     "programId": "64245",
     "shareUrl": "5fi.sh/T64245",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 64246,
@@ -3508,7 +3702,8 @@ export const staticContent = [
     "programId": "64246",
     "shareUrl": "5fi.sh/T64246",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 64247,
@@ -3526,7 +3721,8 @@ export const staticContent = [
     "programId": "64247",
     "shareUrl": "5fi.sh/T64247",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 64248,
@@ -3544,7 +3740,8 @@ export const staticContent = [
     "programId": "64248",
     "shareUrl": "5fi.sh/T64248",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 64249,
@@ -3562,7 +3759,8 @@ export const staticContent = [
     "programId": "64249",
     "shareUrl": "5fi.sh/T64249",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 64250,
@@ -3580,7 +3778,8 @@ export const staticContent = [
     "programId": "64250",
     "shareUrl": "5fi.sh/T64250",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 64251,
@@ -3598,7 +3797,8 @@ export const staticContent = [
     "programId": "64251",
     "shareUrl": "5fi.sh/T64251",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 6780,
@@ -3616,7 +3816,8 @@ export const staticContent = [
     "programId": "6780",
     "shareUrl": "5fi.sh/T6780",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 32651,
@@ -3634,7 +3835,8 @@ export const staticContent = [
     "programId": "32651",
     "shareUrl": "5fi.sh/T32651",
     "sampleUrl": "/audio/Lahu.Na.85.mp3",
-    "stableKey": "Lahu Na"
+    "stableKey": "Lahu Na",
+    "duration": 3
   },
   {
     "id": 63278,
@@ -3652,7 +3854,8 @@ export const staticContent = [
     "programId": "63278",
     "shareUrl": "5fi.sh/T63278",
     "sampleUrl": "/audio/Lahu.Shehleh.12683.mp3",
-    "stableKey": "Lahu Shehleh"
+    "stableKey": "Lahu Shehleh",
+    "duration": 4
   },
   {
     "id": 62806,
@@ -3670,7 +3873,8 @@ export const staticContent = [
     "programId": "62806",
     "shareUrl": "5fi.sh/T62806",
     "sampleUrl": "/audio/Lahu.Shi.Barkeo.20144.mp3",
-    "stableKey": "Lahu Shi Barkeo"
+    "stableKey": "Lahu Shi Barkeo",
+    "duration": 7
   },
   {
     "id": 6771,
@@ -3706,7 +3910,8 @@ export const staticContent = [
     "programId": "64576",
     "shareUrl": "5fi.sh/T64576",
     "sampleUrl": "/audio/Lamet.3120.mp3",
-    "stableKey": "Lamet"
+    "stableKey": "Lamet",
+    "duration": 7
   },
   {
     "id": 64623,
@@ -3724,7 +3929,8 @@ export const staticContent = [
     "programId": "64623",
     "shareUrl": "5fi.sh/T64623",
     "sampleUrl": "/audio/Lamet.3120.mp3",
-    "stableKey": "Lamet"
+    "stableKey": "Lamet",
+    "duration": 7
   },
   {
     "id": 12600,
@@ -3742,7 +3948,8 @@ export const staticContent = [
     "programId": "12600",
     "shareUrl": "5fi.sh/T12600",
     "sampleUrl": "/audio/Lao.999.mp3",
-    "stableKey": "Lao"
+    "stableKey": "Lao",
+    "duration": 34
   },
   {
     "id": 14971,
@@ -3760,7 +3967,8 @@ export const staticContent = [
     "programId": "14971",
     "shareUrl": "5fi.sh/T14971",
     "sampleUrl": "/audio/Lao.999.mp3",
-    "stableKey": "Lao"
+    "stableKey": "Lao",
+    "duration": 34
   },
   {
     "id": 14960,
@@ -3778,7 +3986,8 @@ export const staticContent = [
     "programId": "14960",
     "shareUrl": "5fi.sh/T14960",
     "sampleUrl": "/audio/Lao.999.mp3",
-    "stableKey": "Lao"
+    "stableKey": "Lao",
+    "duration": 34
   },
   {
     "id": 62857,
@@ -3796,7 +4005,8 @@ export const staticContent = [
     "programId": "62857",
     "shareUrl": "5fi.sh/T62857",
     "sampleUrl": "/audio/Lao.999.mp3",
-    "stableKey": "Lao"
+    "stableKey": "Lao",
+    "duration": 34
   },
   {
     "id": 62858,
@@ -3814,7 +4024,8 @@ export const staticContent = [
     "programId": "62858",
     "shareUrl": "5fi.sh/T62858",
     "sampleUrl": "/audio/Lao.999.mp3",
-    "stableKey": "Lao"
+    "stableKey": "Lao",
+    "duration": 34
   },
   {
     "id": 34010,
@@ -3832,7 +4043,8 @@ export const staticContent = [
     "programId": "34010",
     "shareUrl": "5fi.sh/T34010",
     "sampleUrl": "/audio/Lao.999.mp3",
-    "stableKey": "Lao"
+    "stableKey": "Lao",
+    "duration": 34
   },
   {
     "id": 34011,
@@ -3850,7 +4062,8 @@ export const staticContent = [
     "programId": "34011",
     "shareUrl": "5fi.sh/T34011",
     "sampleUrl": "/audio/Lao.999.mp3",
-    "stableKey": "Lao"
+    "stableKey": "Lao",
+    "duration": 34
   },
   {
     "id": 74991,
@@ -3868,7 +4081,8 @@ export const staticContent = [
     "programId": "74991",
     "shareUrl": "5fi.sh/T74991",
     "sampleUrl": "/audio/Lao.999.mp3",
-    "stableKey": "Lao"
+    "stableKey": "Lao",
+    "duration": 34
   },
   {
     "id": 2721,
@@ -3886,7 +4100,8 @@ export const staticContent = [
     "programId": "2721",
     "shareUrl": "5fi.sh/T2721",
     "sampleUrl": "/audio/Lao.999.mp3",
-    "stableKey": "Lao"
+    "stableKey": "Lao",
+    "duration": 34
   },
   {
     "id": 34271,
@@ -3904,7 +4119,8 @@ export const staticContent = [
     "programId": "34271",
     "shareUrl": "5fi.sh/T34271",
     "sampleUrl": "/audio/Lao.Song.Dam.16824.mp3",
-    "stableKey": "Lao Song Dam"
+    "stableKey": "Lao Song Dam",
+    "duration": 7
   },
   {
     "id": 34270,
@@ -3922,7 +4138,8 @@ export const staticContent = [
     "programId": "34270",
     "shareUrl": "5fi.sh/T34270",
     "sampleUrl": "/audio/Lao.Song.Dam.16824.mp3",
-    "stableKey": "Lao Song Dam"
+    "stableKey": "Lao Song Dam",
+    "duration": 7
   },
   {
     "id": 35532,
@@ -3940,7 +4157,8 @@ export const staticContent = [
     "programId": "35532",
     "shareUrl": "5fi.sh/T35532",
     "sampleUrl": "/audio/Lao.Song.Dam.16824.mp3",
-    "stableKey": "Lao Song Dam"
+    "stableKey": "Lao Song Dam",
+    "duration": 7
   },
   {
     "id": 18020,
@@ -3958,7 +4176,8 @@ export const staticContent = [
     "programId": "18020",
     "shareUrl": "5fi.sh/T18020",
     "sampleUrl": "/audio/Lawa.Ban.Dong.3124.mp3",
-    "stableKey": "Lawa Ban Dong"
+    "stableKey": "Lawa Ban Dong",
+    "duration": 7
   },
   {
     "id": 18021,
@@ -3976,7 +4195,8 @@ export const staticContent = [
     "programId": "18021",
     "shareUrl": "5fi.sh/T18021",
     "sampleUrl": "/audio/Lawa.Ban.Sam.3125.mp3",
-    "stableKey": "Lawa Ban Sam"
+    "stableKey": "Lawa Ban Sam",
+    "duration": 6
   },
   {
     "id": 18030,
@@ -3994,7 +4214,8 @@ export const staticContent = [
     "programId": "18030",
     "shareUrl": "5fi.sh/T18030",
     "sampleUrl": "/audio/Lawa.Chang.Maw.2187.mp3",
-    "stableKey": "Lawa Chang Maw"
+    "stableKey": "Lawa Chang Maw",
+    "duration": 7
   },
   {
     "id": 18031,
@@ -4012,7 +4233,8 @@ export const staticContent = [
     "programId": "18031",
     "shareUrl": "5fi.sh/T18031",
     "sampleUrl": "/audio/Lawa.Kawng.Lawi.2404.mp3",
-    "stableKey": "Lawa Kawng Lawi"
+    "stableKey": "Lawa Kawng Lawi",
+    "duration": 8
   },
   {
     "id": 17990,
@@ -4030,7 +4252,8 @@ export const staticContent = [
     "programId": "17990",
     "shareUrl": "5fi.sh/T17990",
     "sampleUrl": "/audio/Lawa.La.oop.1154.mp3",
-    "stableKey": "Lawa La-oop"
+    "stableKey": "Lawa La-oop",
+    "duration": 6
   },
   {
     "id": 18010,
@@ -4048,7 +4271,8 @@ export const staticContent = [
     "programId": "18010",
     "shareUrl": "5fi.sh/T18010",
     "sampleUrl": "/audio/Lawa.Northern.2188.mp3",
-    "stableKey": "Lawa Northern"
+    "stableKey": "Lawa Northern",
+    "duration": 7
   },
   {
     "id": 18011,
@@ -4066,7 +4290,8 @@ export const staticContent = [
     "programId": "18011",
     "shareUrl": "5fi.sh/T18011",
     "sampleUrl": "/audio/Lawa.Papae.3126.mp3",
-    "stableKey": "Lawa Papae"
+    "stableKey": "Lawa Papae",
+    "duration": 6
   },
   {
     "id": 32610,
@@ -4084,7 +4309,8 @@ export const staticContent = [
     "programId": "32610",
     "shareUrl": "5fi.sh/T32610",
     "sampleUrl": "/audio/Lisu.Northern.13005.mp3",
-    "stableKey": "Lisu Northern"
+    "stableKey": "Lisu Northern",
+    "duration": 36
   },
   {
     "id": 80711,
@@ -4102,7 +4328,8 @@ export const staticContent = [
     "programId": "80711",
     "shareUrl": "5fi.sh/T80711",
     "sampleUrl": "/audio/Lisu.Southern.482.mp3",
-    "stableKey": "Lisu Southern"
+    "stableKey": "Lisu Southern",
+    "duration": 4
   },
   {
     "id": 80722,
@@ -4120,7 +4347,8 @@ export const staticContent = [
     "programId": "80722",
     "shareUrl": "5fi.sh/T80722",
     "sampleUrl": "/audio/Lisu.Southern.482.mp3",
-    "stableKey": "Lisu Southern"
+    "stableKey": "Lisu Southern",
+    "duration": 4
   },
   {
     "id": 80721,
@@ -4138,7 +4366,8 @@ export const staticContent = [
     "programId": "80721",
     "shareUrl": "5fi.sh/T80721",
     "sampleUrl": "/audio/Lisu.Southern.482.mp3",
-    "stableKey": "Lisu Southern"
+    "stableKey": "Lisu Southern",
+    "duration": 4
   },
   {
     "id": 5820,
@@ -4156,7 +4385,8 @@ export const staticContent = [
     "programId": "5820",
     "shareUrl": "5fi.sh/T5820",
     "sampleUrl": "/audio/Lisu.Southern.482.mp3",
-    "stableKey": "Lisu Southern"
+    "stableKey": "Lisu Southern",
+    "duration": 4
   },
   {
     "id": 27160,
@@ -4174,7 +4404,8 @@ export const staticContent = [
     "programId": "27160",
     "shareUrl": "5fi.sh/T27160",
     "sampleUrl": "/audio/Lisu.Southern.482.mp3",
-    "stableKey": "Lisu Southern"
+    "stableKey": "Lisu Southern",
+    "duration": 4
   },
   {
     "id": 80831,
@@ -4192,7 +4423,8 @@ export const staticContent = [
     "programId": "80831",
     "shareUrl": "5fi.sh/T80831",
     "sampleUrl": "/audio/Lisu.White.5143.mp3",
-    "stableKey": "Lisu White"
+    "stableKey": "Lisu White",
+    "duration": 3
   },
   {
     "id": 9311,
@@ -4210,7 +4442,8 @@ export const staticContent = [
     "programId": "9311",
     "shareUrl": "5fi.sh/T9311",
     "sampleUrl": "/audio/Lu.1147.mp3",
-    "stableKey": "Lu"
+    "stableKey": "Lu",
+    "duration": 5
   },
   {
     "id": 3841,
@@ -4228,7 +4461,8 @@ export const staticContent = [
     "programId": "3841",
     "shareUrl": "5fi.sh/T3841",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 26111,
@@ -4246,7 +4480,8 @@ export const staticContent = [
     "programId": "26111",
     "shareUrl": "5fi.sh/T26111",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 27211,
@@ -4264,7 +4499,8 @@ export const staticContent = [
     "programId": "27211",
     "shareUrl": "5fi.sh/T27211",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 27220,
@@ -4282,7 +4518,8 @@ export const staticContent = [
     "programId": "27220",
     "shareUrl": "5fi.sh/T27220",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 27221,
@@ -4300,7 +4537,8 @@ export const staticContent = [
     "programId": "27221",
     "shareUrl": "5fi.sh/T27221",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 27230,
@@ -4318,7 +4556,8 @@ export const staticContent = [
     "programId": "27230",
     "shareUrl": "5fi.sh/T27230",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 27231,
@@ -4336,7 +4575,8 @@ export const staticContent = [
     "programId": "27231",
     "shareUrl": "5fi.sh/T27231",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 27240,
@@ -4354,7 +4594,8 @@ export const staticContent = [
     "programId": "27240",
     "shareUrl": "5fi.sh/T27240",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 78071,
@@ -4372,7 +4613,8 @@ export const staticContent = [
     "programId": "78071",
     "shareUrl": "5fi.sh/T78071",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 78072,
@@ -4390,7 +4632,8 @@ export const staticContent = [
     "programId": "78072",
     "shareUrl": "5fi.sh/T78072",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 78076,
@@ -4408,7 +4651,8 @@ export const staticContent = [
     "programId": "78076",
     "shareUrl": "5fi.sh/T78076",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 78073,
@@ -4426,7 +4670,8 @@ export const staticContent = [
     "programId": "78073",
     "shareUrl": "5fi.sh/T78073",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 78074,
@@ -4444,7 +4689,8 @@ export const staticContent = [
     "programId": "78074",
     "shareUrl": "5fi.sh/T78074",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 78075,
@@ -4462,7 +4708,8 @@ export const staticContent = [
     "programId": "78075",
     "shareUrl": "5fi.sh/T78075",
     "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
-    "stableKey": "Malay Pattani"
+    "stableKey": "Malay Pattani",
+    "duration": 599
   },
   {
     "id": 2691,
@@ -4480,7 +4727,8 @@ export const staticContent = [
     "programId": "2691",
     "shareUrl": "5fi.sh/T2691",
     "sampleUrl": "/audio/Malay.Standard.481.mp3",
-    "stableKey": "Malay Standard"
+    "stableKey": "Malay Standard",
+    "duration": 44
   },
   {
     "id": 2591,
@@ -4498,7 +4746,8 @@ export const staticContent = [
     "programId": "2591",
     "shareUrl": "5fi.sh/T2591",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 80890,
@@ -4516,7 +4765,8 @@ export const staticContent = [
     "programId": "80890",
     "shareUrl": "5fi.sh/T80890",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 64259,
@@ -4534,7 +4784,8 @@ export const staticContent = [
     "programId": "64259",
     "shareUrl": "5fi.sh/T64259",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 62908,
@@ -4552,7 +4803,8 @@ export const staticContent = [
     "programId": "62908",
     "shareUrl": "5fi.sh/T62908",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 80921,
@@ -4570,7 +4822,8 @@ export const staticContent = [
     "programId": "80921",
     "shareUrl": "5fi.sh/T80921",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 80922,
@@ -4588,7 +4841,8 @@ export const staticContent = [
     "programId": "80922",
     "shareUrl": "5fi.sh/T80922",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 80901,
@@ -4606,7 +4860,8 @@ export const staticContent = [
     "programId": "80901",
     "shareUrl": "5fi.sh/T80901",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 80892,
@@ -4624,7 +4879,8 @@ export const staticContent = [
     "programId": "80892",
     "shareUrl": "5fi.sh/T80892",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 80893,
@@ -4642,7 +4898,8 @@ export const staticContent = [
     "programId": "80893",
     "shareUrl": "5fi.sh/T80893",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 80923,
@@ -4660,7 +4917,8 @@ export const staticContent = [
     "programId": "80923",
     "shareUrl": "5fi.sh/T80923",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 80924,
@@ -4678,7 +4936,8 @@ export const staticContent = [
     "programId": "80924",
     "shareUrl": "5fi.sh/T80924",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 80925,
@@ -4696,7 +4955,8 @@ export const staticContent = [
     "programId": "80925",
     "shareUrl": "5fi.sh/T80925",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 30090,
@@ -4714,7 +4974,8 @@ export const staticContent = [
     "programId": "30090",
     "shareUrl": "5fi.sh/T30090",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 30091,
@@ -4732,7 +4993,8 @@ export const staticContent = [
     "programId": "30091",
     "shareUrl": "5fi.sh/T30091",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 62646,
@@ -4750,7 +5012,8 @@ export const staticContent = [
     "programId": "62646",
     "shareUrl": "5fi.sh/T62646",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 62647,
@@ -4768,7 +5031,8 @@ export const staticContent = [
     "programId": "62647",
     "shareUrl": "5fi.sh/T62647",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 29260,
@@ -4786,7 +5050,8 @@ export const staticContent = [
     "programId": "29260",
     "shareUrl": "5fi.sh/T29260",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 29261,
@@ -4804,7 +5069,8 @@ export const staticContent = [
     "programId": "29261",
     "shareUrl": "5fi.sh/T29261",
     "sampleUrl": "/audio/Mandarin.37.mp3",
-    "stableKey": "Mandarin"
+    "stableKey": "Mandarin",
+    "duration": 7
   },
   {
     "id": 37926,
@@ -4822,7 +5088,8 @@ export const staticContent = [
     "programId": "37926",
     "shareUrl": "5fi.sh/T37926",
     "sampleUrl": "/audio/Moken.1136.mp3",
-    "stableKey": "Moken"
+    "stableKey": "Moken",
+    "duration": 7
   },
   {
     "id": 64535,
@@ -4840,7 +5107,8 @@ export const staticContent = [
     "programId": "64535",
     "shareUrl": "5fi.sh/T64535",
     "sampleUrl": "/audio/Moken.1136.mp3",
-    "stableKey": "Moken"
+    "stableKey": "Moken",
+    "duration": 7
   },
   {
     "id": 64536,
@@ -4858,7 +5126,8 @@ export const staticContent = [
     "programId": "64536",
     "shareUrl": "5fi.sh/T64536",
     "sampleUrl": "/audio/Moken.1136.mp3",
-    "stableKey": "Moken"
+    "stableKey": "Moken",
+    "duration": 7
   },
   {
     "id": 64537,
@@ -4876,7 +5145,8 @@ export const staticContent = [
     "programId": "64537",
     "shareUrl": "5fi.sh/T64537",
     "sampleUrl": "/audio/Moken.1136.mp3",
-    "stableKey": "Moken"
+    "stableKey": "Moken",
+    "duration": 7
   },
   {
     "id": 64538,
@@ -4894,7 +5164,8 @@ export const staticContent = [
     "programId": "64538",
     "shareUrl": "5fi.sh/T64538",
     "sampleUrl": "/audio/Moken.1136.mp3",
-    "stableKey": "Moken"
+    "stableKey": "Moken",
+    "duration": 7
   },
   {
     "id": 4871,
@@ -4912,7 +5183,8 @@ export const staticContent = [
     "programId": "4871",
     "shareUrl": "5fi.sh/T4871",
     "sampleUrl": "/audio/Moken.1136.mp3",
-    "stableKey": "Moken"
+    "stableKey": "Moken",
+    "duration": 7
   },
   {
     "id": 9791,
@@ -4930,7 +5202,8 @@ export const staticContent = [
     "programId": "9791",
     "shareUrl": "5fi.sh/T9791",
     "sampleUrl": "/audio/Moken.1136.mp3",
-    "stableKey": "Moken"
+    "stableKey": "Moken",
+    "duration": 7
   },
   {
     "id": 80865,
@@ -4948,7 +5221,8 @@ export const staticContent = [
     "programId": "80865",
     "shareUrl": "5fi.sh/T80865",
     "sampleUrl": "/audio/Mon.399.mp3",
-    "stableKey": "Mon"
+    "stableKey": "Mon",
+    "duration": 5
   },
   {
     "id": 7821,
@@ -4966,7 +5240,8 @@ export const staticContent = [
     "programId": "7821",
     "shareUrl": "5fi.sh/T7821",
     "sampleUrl": "/audio/Mon.399.mp3",
-    "stableKey": "Mon"
+    "stableKey": "Mon",
+    "duration": 5
   },
   {
     "id": 9321,
@@ -4984,7 +5259,8 @@ export const staticContent = [
     "programId": "9321",
     "shareUrl": "5fi.sh/T9321",
     "sampleUrl": "/audio/Mon.Takanoon.2405.mp3",
-    "stableKey": "Mon Takanoon"
+    "stableKey": "Mon Takanoon",
+    "duration": 7
   },
   {
     "id": 64238,
@@ -5002,7 +5278,8 @@ export const staticContent = [
     "programId": "64238",
     "shareUrl": "5fi.sh/T64238",
     "sampleUrl": "/audio/Nepali.6428.mp3",
-    "stableKey": "Nepali"
+    "stableKey": "Nepali",
+    "duration": 8
   },
   {
     "id": 64085,
@@ -5020,7 +5297,8 @@ export const staticContent = [
     "programId": "64085",
     "shareUrl": "5fi.sh/T64085",
     "sampleUrl": "/audio/Nepali.6428.mp3",
-    "stableKey": "Nepali"
+    "stableKey": "Nepali",
+    "duration": 8
   },
   {
     "id": 62307,
@@ -5038,7 +5316,8 @@ export const staticContent = [
     "programId": "62307",
     "shareUrl": "5fi.sh/T62307",
     "sampleUrl": "/audio/Nepali.6428.mp3",
-    "stableKey": "Nepali"
+    "stableKey": "Nepali",
+    "duration": 8
   },
   {
     "id": 80350,
@@ -5056,7 +5335,8 @@ export const staticContent = [
     "programId": "80350",
     "shareUrl": "5fi.sh/T80350",
     "sampleUrl": "/audio/Nepali.Bhutan.5115.mp3",
-    "stableKey": "Nepali Bhutan"
+    "stableKey": "Nepali Bhutan",
+    "duration": 7
   },
   {
     "id": 65455,
@@ -5074,7 +5354,8 @@ export const staticContent = [
     "programId": "65455",
     "shareUrl": "5fi.sh/T65455",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 27110,
@@ -5092,7 +5373,8 @@ export const staticContent = [
     "programId": "27110",
     "shareUrl": "5fi.sh/T27110",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 37696,
@@ -5110,7 +5392,8 @@ export const staticContent = [
     "programId": "37696",
     "shareUrl": "5fi.sh/T37696",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 37694,
@@ -5128,7 +5411,8 @@ export const staticContent = [
     "programId": "37694",
     "shareUrl": "5fi.sh/T37694",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 75099,
@@ -5146,7 +5430,8 @@ export const staticContent = [
     "programId": "75099",
     "shareUrl": "5fi.sh/T75099",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 32951,
@@ -5164,7 +5449,8 @@ export const staticContent = [
     "programId": "32951",
     "shareUrl": "5fi.sh/T32951",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 37693,
@@ -5182,7 +5468,8 @@ export const staticContent = [
     "programId": "37693",
     "shareUrl": "5fi.sh/T37693",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 79174,
@@ -5200,7 +5487,8 @@ export const staticContent = [
     "programId": "79174",
     "shareUrl": "5fi.sh/T79174",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 79180,
@@ -5218,7 +5506,8 @@ export const staticContent = [
     "programId": "79180",
     "shareUrl": "5fi.sh/T79180",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 31200,
@@ -5236,7 +5525,8 @@ export const staticContent = [
     "programId": "31200",
     "shareUrl": "5fi.sh/T31200",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 37695,
@@ -5254,7 +5544,8 @@ export const staticContent = [
     "programId": "37695",
     "shareUrl": "5fi.sh/T37695",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 3080,
@@ -5272,7 +5563,8 @@ export const staticContent = [
     "programId": "3080",
     "shareUrl": "5fi.sh/T3080",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 3090,
@@ -5290,7 +5582,8 @@ export const staticContent = [
     "programId": "3090",
     "shareUrl": "5fi.sh/T3090",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 20731,
@@ -5308,7 +5601,8 @@ export const staticContent = [
     "programId": "20731",
     "shareUrl": "5fi.sh/T20731",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 20700,
@@ -5326,7 +5620,8 @@ export const staticContent = [
     "programId": "20700",
     "shareUrl": "5fi.sh/T20700",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 20781,
@@ -5344,7 +5639,8 @@ export const staticContent = [
     "programId": "20781",
     "shareUrl": "5fi.sh/T20781",
     "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
-    "stableKey": "Nepali Kathmandu"
+    "stableKey": "Nepali Kathmandu",
+    "duration": 7
   },
   {
     "id": 22510,
@@ -5362,7 +5658,8 @@ export const staticContent = [
     "programId": "22510",
     "shareUrl": "5fi.sh/T22510",
     "sampleUrl": "/audio/Ngochang.4370.mp3",
-    "stableKey": "Ngochang"
+    "stableKey": "Ngochang",
+    "duration": 7
   },
   {
     "id": 22511,
@@ -5380,7 +5677,8 @@ export const staticContent = [
     "programId": "22511",
     "shareUrl": "5fi.sh/T22511",
     "sampleUrl": "/audio/Ngochang.4370.mp3",
-    "stableKey": "Ngochang"
+    "stableKey": "Ngochang",
+    "duration": 7
   },
   {
     "id": 64992,
@@ -5398,7 +5696,8 @@ export const staticContent = [
     "programId": "64992",
     "shareUrl": "5fi.sh/T64992",
     "sampleUrl": "/audio/Nyah.Kur.15143.mp3",
-    "stableKey": "Nyah Kur"
+    "stableKey": "Nyah Kur",
+    "duration": 7
   },
   {
     "id": 64993,
@@ -5416,7 +5715,8 @@ export const staticContent = [
     "programId": "64993",
     "shareUrl": "5fi.sh/T64993",
     "sampleUrl": "/audio/Nyah.Kur.15143.mp3",
-    "stableKey": "Nyah Kur"
+    "stableKey": "Nyah Kur",
+    "duration": 7
   },
   {
     "id": 64994,
@@ -5434,7 +5734,8 @@ export const staticContent = [
     "programId": "64994",
     "shareUrl": "5fi.sh/T64994",
     "sampleUrl": "/audio/Nyah.Kur.15143.mp3",
-    "stableKey": "Nyah Kur"
+    "stableKey": "Nyah Kur",
+    "duration": 7
   },
   {
     "id": 65333,
@@ -5452,7 +5753,8 @@ export const staticContent = [
     "programId": "65333",
     "shareUrl": "5fi.sh/T65333",
     "sampleUrl": "/audio/Nyah.Kur.15143.mp3",
-    "stableKey": "Nyah Kur"
+    "stableKey": "Nyah Kur",
+    "duration": 7
   },
   {
     "id": 65334,
@@ -5470,7 +5772,8 @@ export const staticContent = [
     "programId": "65334",
     "shareUrl": "5fi.sh/T65334",
     "sampleUrl": "/audio/Nyah.Kur.15143.mp3",
-    "stableKey": "Nyah Kur"
+    "stableKey": "Nyah Kur",
+    "duration": 7
   },
   {
     "id": 65655,
@@ -5488,7 +5791,8 @@ export const staticContent = [
     "programId": "",
     "shareUrl": "5fi.sh/T65655",
     "sampleUrl": "/audio/Nyah.Kur.15143.mp3",
-    "stableKey": "Nyah Kur"
+    "stableKey": "Nyah Kur",
+    "duration": 7
   },
   {
     "id": 64995,
@@ -5506,7 +5810,8 @@ export const staticContent = [
     "programId": "64995",
     "shareUrl": "5fi.sh/T64995",
     "sampleUrl": "/audio/Nyah.Kur.15143.mp3",
-    "stableKey": "Nyah Kur"
+    "stableKey": "Nyah Kur",
+    "duration": 7
   },
   {
     "id": 65961,
@@ -5524,7 +5829,8 @@ export const staticContent = [
     "programId": "",
     "shareUrl": "5fi.sh/T65961",
     "sampleUrl": "/audio/Nyaw.15183.mp3",
-    "stableKey": "Nyaw"
+    "stableKey": "Nyaw",
+    "duration": 149
   },
   {
     "id": 2951,
@@ -5542,7 +5848,8 @@ export const staticContent = [
     "programId": "2951",
     "shareUrl": "5fi.sh/T2951",
     "sampleUrl": "/audio/Okinawan.1944.mp3",
-    "stableKey": "Okinawan"
+    "stableKey": "Okinawan",
+    "duration": 7
   },
   {
     "id": 11340,
@@ -5560,7 +5867,8 @@ export const staticContent = [
     "programId": "11340",
     "shareUrl": "5fi.sh/T11340",
     "sampleUrl": "/audio/Phai.Central.3118.mp3",
-    "stableKey": "Phai Central"
+    "stableKey": "Phai Central",
+    "duration": 72
   },
   {
     "id": 11341,
@@ -5578,7 +5886,8 @@ export const staticContent = [
     "programId": "11341",
     "shareUrl": "5fi.sh/T11341",
     "sampleUrl": "/audio/Phai.Northern.2041.mp3",
-    "stableKey": "Phai Northern"
+    "stableKey": "Phai Northern",
+    "duration": 7
   },
   {
     "id": 11330,
@@ -5596,7 +5905,8 @@ export const staticContent = [
     "programId": "11330",
     "shareUrl": "5fi.sh/T11330",
     "sampleUrl": "/audio/Phai.Southern.3119.mp3",
-    "stableKey": "Phai Southern"
+    "stableKey": "Phai Southern",
+    "duration": 7
   },
   {
     "id": 18081,
@@ -5614,7 +5924,8 @@ export const staticContent = [
     "programId": "18081",
     "shareUrl": "5fi.sh/T18081",
     "sampleUrl": "/audio/Phu.Thai.1711.mp3",
-    "stableKey": "Phu Thai"
+    "stableKey": "Phu Thai",
+    "duration": 7
   },
   {
     "id": 63894,
@@ -5632,7 +5943,8 @@ export const staticContent = [
     "programId": "63894",
     "shareUrl": "5fi.sh/T63894",
     "sampleUrl": "/audio/Phu.Thai.Na.Kae.22139.mp3",
-    "stableKey": "Phu Thai Na Kae"
+    "stableKey": "Phu Thai Na Kae",
+    "duration": 7
   },
   {
     "id": 63895,
@@ -5650,7 +5962,8 @@ export const staticContent = [
     "programId": "63895",
     "shareUrl": "5fi.sh/T63895",
     "sampleUrl": "/audio/Phu.Thai.Na.Kae.22139.mp3",
-    "stableKey": "Phu Thai Na Kae"
+    "stableKey": "Phu Thai Na Kae",
+    "duration": 7
   },
   {
     "id": 63892,
@@ -5668,7 +5981,8 @@ export const staticContent = [
     "programId": "63892",
     "shareUrl": "5fi.sh/T63892",
     "sampleUrl": "/audio/Phu.Thai.Renu.22140.mp3",
-    "stableKey": "Phu Thai Renu"
+    "stableKey": "Phu Thai Renu",
+    "duration": 7
   },
   {
     "id": 63893,
@@ -5686,7 +6000,8 @@ export const staticContent = [
     "programId": "63893",
     "shareUrl": "5fi.sh/T63893",
     "sampleUrl": "/audio/Phu.Thai.Renu.22140.mp3",
-    "stableKey": "Phu Thai Renu"
+    "stableKey": "Phu Thai Renu",
+    "duration": 7
   },
   {
     "id": 65751,
@@ -5704,7 +6019,8 @@ export const staticContent = [
     "programId": "65751",
     "shareUrl": "5fi.sh/T65751",
     "sampleUrl": "/audio/Phu.Thai.Renu.22140.mp3",
-    "stableKey": "Phu Thai Renu"
+    "stableKey": "Phu Thai Renu",
+    "duration": 7
   },
   {
     "id": 65752,
@@ -5722,7 +6038,8 @@ export const staticContent = [
     "programId": "65752",
     "shareUrl": "5fi.sh/T65752",
     "sampleUrl": "/audio/Phu.Thai.Renu.22140.mp3",
-    "stableKey": "Phu Thai Renu"
+    "stableKey": "Phu Thai Renu",
+    "duration": 7
   },
   {
     "id": 66545,
@@ -5740,7 +6057,8 @@ export const staticContent = [
     "programId": "66545",
     "shareUrl": "5fi.sh/T66545",
     "sampleUrl": "/audio/Phu.Thai.Renu.22140.mp3",
-    "stableKey": "Phu Thai Renu"
+    "stableKey": "Phu Thai Renu",
+    "duration": 7
   },
   {
     "id": 32211,
@@ -5758,7 +6076,8 @@ export const staticContent = [
     "programId": "32211",
     "shareUrl": "5fi.sh/T32211",
     "sampleUrl": "/audio/Pinghua.Guangxi.Nanning.6331.mp3",
-    "stableKey": "Pinghua Guangxi Nanning"
+    "stableKey": "Pinghua Guangxi Nanning",
+    "duration": 19
   },
   {
     "id": 24620,
@@ -5776,7 +6095,8 @@ export const staticContent = [
     "programId": "24620",
     "shareUrl": "5fi.sh/T24620",
     "sampleUrl": "/audio/Saek.3112.mp3",
-    "stableKey": "Saek"
+    "stableKey": "Saek",
+    "duration": 7
   },
   {
     "id": 80859,
@@ -5794,7 +6114,8 @@ export const staticContent = [
     "programId": "80859",
     "shareUrl": "5fi.sh/T80859",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 62897,
@@ -5812,7 +6133,8 @@ export const staticContent = [
     "programId": "62897",
     "shareUrl": "5fi.sh/T62897",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 62898,
@@ -5830,7 +6152,8 @@ export const staticContent = [
     "programId": "62898",
     "shareUrl": "5fi.sh/T62898",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 62899,
@@ -5848,7 +6171,8 @@ export const staticContent = [
     "programId": "62899",
     "shareUrl": "5fi.sh/T62899",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 62900,
@@ -5866,7 +6190,8 @@ export const staticContent = [
     "programId": "62900",
     "shareUrl": "5fi.sh/T62900",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 63416,
@@ -5884,7 +6209,8 @@ export const staticContent = [
     "programId": "63416",
     "shareUrl": "5fi.sh/T63416",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 63417,
@@ -5902,7 +6228,8 @@ export const staticContent = [
     "programId": "63417",
     "shareUrl": "5fi.sh/T63417",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 63878,
@@ -5920,7 +6247,8 @@ export const staticContent = [
     "programId": "63878",
     "shareUrl": "5fi.sh/T63878",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 63879,
@@ -5938,7 +6266,8 @@ export const staticContent = [
     "programId": "63879",
     "shareUrl": "5fi.sh/T63879",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 80866,
@@ -5956,7 +6285,8 @@ export const staticContent = [
     "programId": "80866",
     "shareUrl": "5fi.sh/T80866",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 62783,
@@ -5974,7 +6304,8 @@ export const staticContent = [
     "programId": "62783",
     "shareUrl": "5fi.sh/T62783",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 6821,
@@ -5992,7 +6323,8 @@ export const staticContent = [
     "programId": "6821",
     "shareUrl": "5fi.sh/T6821",
     "sampleUrl": "/audio/Shan.83.mp3",
-    "stableKey": "Shan"
+    "stableKey": "Shan",
+    "duration": 8
   },
   {
     "id": 64970,
@@ -6010,7 +6342,8 @@ export const staticContent = [
     "programId": "64970",
     "shareUrl": "5fi.sh/T64970",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 80926,
@@ -6028,7 +6361,8 @@ export const staticContent = [
     "programId": "80926",
     "shareUrl": "5fi.sh/T80926",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 80656,
@@ -6046,7 +6380,8 @@ export const staticContent = [
     "programId": "80656",
     "shareUrl": "5fi.sh/T80656",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 80602,
@@ -6064,7 +6399,8 @@ export const staticContent = [
     "programId": "80602",
     "shareUrl": "5fi.sh/T80602",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 80603,
@@ -6082,7 +6418,8 @@ export const staticContent = [
     "programId": "80603",
     "shareUrl": "5fi.sh/T80603",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 80607,
@@ -6100,7 +6437,8 @@ export const staticContent = [
     "programId": "80607",
     "shareUrl": "5fi.sh/T80607",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 80628,
@@ -6118,7 +6456,8 @@ export const staticContent = [
     "programId": "80628",
     "shareUrl": "5fi.sh/T80628",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 80633,
@@ -6136,7 +6475,8 @@ export const staticContent = [
     "programId": "80633",
     "shareUrl": "5fi.sh/T80633",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 3211,
@@ -6154,7 +6494,8 @@ export const staticContent = [
     "programId": "3211",
     "shareUrl": "5fi.sh/T3211",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 18931,
@@ -6172,7 +6513,8 @@ export const staticContent = [
     "programId": "18931",
     "shareUrl": "5fi.sh/T18931",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 30361,
@@ -6190,7 +6532,8 @@ export const staticContent = [
     "programId": "30361",
     "shareUrl": "5fi.sh/T30361",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 30370,
@@ -6208,7 +6551,8 @@ export const staticContent = [
     "programId": "30370",
     "shareUrl": "5fi.sh/T30370",
     "sampleUrl": "/audio/Sinhala.345.mp3",
-    "stableKey": "Sinhala"
+    "stableKey": "Sinhala",
+    "duration": 7
   },
   {
     "id": 65653,
@@ -6226,7 +6570,8 @@ export const staticContent = [
     "programId": "65653",
     "shareUrl": "5fi.sh/T65653",
     "sampleUrl": "/audio/So.Thavung.6765.mp3",
-    "stableKey": "So Thavung"
+    "stableKey": "So Thavung",
+    "duration": 5
   },
   {
     "id": 19561,
@@ -6244,7 +6589,8 @@ export const staticContent = [
     "programId": "19561",
     "shareUrl": "5fi.sh/T19561",
     "sampleUrl": "/audio/Sui.South.1003.mp3",
-    "stableKey": "Sui South"
+    "stableKey": "Sui South",
+    "duration": 8
   },
   {
     "id": 22900,
@@ -6262,7 +6608,8 @@ export const staticContent = [
     "programId": "22900",
     "shareUrl": "5fi.sh/T22900",
     "sampleUrl": "/audio/Tai.Black.794.mp3",
-    "stableKey": "Tai Black"
+    "stableKey": "Tai Black",
+    "duration": 7
   },
   {
     "id": 22901,
@@ -6280,7 +6627,8 @@ export const staticContent = [
     "programId": "22901",
     "shareUrl": "5fi.sh/T22901",
     "sampleUrl": "/audio/Tai.Black.794.mp3",
-    "stableKey": "Tai Black"
+    "stableKey": "Tai Black",
+    "duration": 7
   },
   {
     "id": 6701,
@@ -6298,7 +6646,8 @@ export const staticContent = [
     "programId": "6701",
     "shareUrl": "5fi.sh/T6701",
     "sampleUrl": "/audio/Tai.Ya.508.mp3",
-    "stableKey": "Tai Ya"
+    "stableKey": "Tai Ya",
+    "duration": 7
   },
   {
     "id": 64971,
@@ -6316,7 +6665,8 @@ export const staticContent = [
     "programId": "64971",
     "shareUrl": "5fi.sh/T64971",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 74792,
@@ -6334,7 +6684,8 @@ export const staticContent = [
     "programId": "74792",
     "shareUrl": "5fi.sh/T74792",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 80579,
@@ -6352,7 +6703,8 @@ export const staticContent = [
     "programId": "80579",
     "shareUrl": "5fi.sh/T80579",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 80580,
@@ -6370,7 +6722,8 @@ export const staticContent = [
     "programId": "80580",
     "shareUrl": "5fi.sh/T80580",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 80581,
@@ -6388,7 +6741,8 @@ export const staticContent = [
     "programId": "80581",
     "shareUrl": "5fi.sh/T80581",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 80582,
@@ -6406,7 +6760,8 @@ export const staticContent = [
     "programId": "80582",
     "shareUrl": "5fi.sh/T80582",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 80583,
@@ -6424,7 +6779,8 @@ export const staticContent = [
     "programId": "80583",
     "shareUrl": "5fi.sh/T80583",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 80584,
@@ -6442,7 +6798,8 @@ export const staticContent = [
     "programId": "80584",
     "shareUrl": "5fi.sh/T80584",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 80585,
@@ -6460,7 +6817,8 @@ export const staticContent = [
     "programId": "80585",
     "shareUrl": "5fi.sh/T80585",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 80586,
@@ -6478,7 +6836,8 @@ export const staticContent = [
     "programId": "80586",
     "shareUrl": "5fi.sh/T80586",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 34070,
@@ -6496,7 +6855,8 @@ export const staticContent = [
     "programId": "34070",
     "shareUrl": "5fi.sh/T34070",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 34071,
@@ -6514,7 +6874,8 @@ export const staticContent = [
     "programId": "34071",
     "shareUrl": "5fi.sh/T34071",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 2790,
@@ -6532,7 +6893,8 @@ export const staticContent = [
     "programId": "2790",
     "shareUrl": "5fi.sh/T2790",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 2791,
@@ -6550,7 +6912,8 @@ export const staticContent = [
     "programId": "2791",
     "shareUrl": "5fi.sh/T2791",
     "sampleUrl": "/audio/Tamil.174.mp3",
-    "stableKey": "Tamil"
+    "stableKey": "Tamil",
+    "duration": 8
   },
   {
     "id": 3411,
@@ -6568,7 +6931,8 @@ export const staticContent = [
     "programId": "3411",
     "shareUrl": "5fi.sh/T3411",
     "sampleUrl": "/audio/Teochew.186.mp3",
-    "stableKey": "Teochew"
+    "stableKey": "Teochew",
+    "duration": 8
   },
   {
     "id": 18871,
@@ -6586,7 +6950,8 @@ export const staticContent = [
     "programId": "18871",
     "shareUrl": "5fi.sh/T18871",
     "sampleUrl": "/audio/Teochew.186.mp3",
-    "stableKey": "Teochew"
+    "stableKey": "Teochew",
+    "duration": 8
   },
   {
     "id": 3670,
@@ -6604,7 +6969,8 @@ export const staticContent = [
     "programId": "3670",
     "shareUrl": "5fi.sh/T3670",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 74673,
@@ -6622,7 +6988,8 @@ export const staticContent = [
     "programId": "74673",
     "shareUrl": "5fi.sh/T74673",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 63629,
@@ -6640,7 +7007,8 @@ export const staticContent = [
     "programId": "63629",
     "shareUrl": "5fi.sh/T63629",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 80501,
@@ -6658,7 +7026,8 @@ export const staticContent = [
     "programId": "80501",
     "shareUrl": "5fi.sh/T80501",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 80502,
@@ -6676,7 +7045,8 @@ export const staticContent = [
     "programId": "80502",
     "shareUrl": "5fi.sh/T80502",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 80503,
@@ -6694,7 +7064,8 @@ export const staticContent = [
     "programId": "80503",
     "shareUrl": "5fi.sh/T80503",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 80504,
@@ -6712,7 +7083,8 @@ export const staticContent = [
     "programId": "80504",
     "shareUrl": "5fi.sh/T80504",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 80505,
@@ -6730,7 +7102,8 @@ export const staticContent = [
     "programId": "80505",
     "shareUrl": "5fi.sh/T80505",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 80506,
@@ -6748,7 +7121,8 @@ export const staticContent = [
     "programId": "80506",
     "shareUrl": "5fi.sh/T80506",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 80507,
@@ -6766,7 +7140,8 @@ export const staticContent = [
     "programId": "80507",
     "shareUrl": "5fi.sh/T80507",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 80508,
@@ -6784,7 +7159,8 @@ export const staticContent = [
     "programId": "80508",
     "shareUrl": "5fi.sh/T80508",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 30120,
@@ -6802,7 +7178,8 @@ export const staticContent = [
     "programId": "30120",
     "shareUrl": "5fi.sh/T30120",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 30121,
@@ -6820,7 +7197,8 @@ export const staticContent = [
     "programId": "30121",
     "shareUrl": "5fi.sh/T30121",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 32420,
@@ -6838,7 +7216,8 @@ export const staticContent = [
     "programId": "32420",
     "shareUrl": "5fi.sh/T32420",
     "sampleUrl": "/audio/Thai.Central.1124.mp3",
-    "stableKey": "Thai Central"
+    "stableKey": "Thai Central",
+    "duration": 7
   },
   {
     "id": 6851,
@@ -6856,7 +7235,8 @@ export const staticContent = [
     "programId": "6851",
     "shareUrl": "5fi.sh/T6851",
     "sampleUrl": "/audio/Thai.Lu.2286.mp3",
-    "stableKey": "Thai Lu"
+    "stableKey": "Thai Lu",
+    "duration": 7
   },
   {
     "id": 33831,
@@ -6874,7 +7254,8 @@ export const staticContent = [
     "programId": "33831",
     "shareUrl": "5fi.sh/T33831",
     "sampleUrl": "/audio/Thai.Northeastern.311.mp3",
-    "stableKey": "Thai Northeastern"
+    "stableKey": "Thai Northeastern",
+    "duration": 7
   },
   {
     "id": 2810,
@@ -6892,7 +7273,8 @@ export const staticContent = [
     "programId": "2810",
     "shareUrl": "5fi.sh/T2810",
     "sampleUrl": "/audio/Thai.Northeastern.311.mp3",
-    "stableKey": "Thai Northeastern"
+    "stableKey": "Thai Northeastern",
+    "duration": 7
   },
   {
     "id": 2811,
@@ -6910,7 +7292,8 @@ export const staticContent = [
     "programId": "2811",
     "shareUrl": "5fi.sh/T2811",
     "sampleUrl": "/audio/Thai.Northeastern.311.mp3",
-    "stableKey": "Thai Northeastern"
+    "stableKey": "Thai Northeastern",
+    "duration": 7
   },
   {
     "id": 3031,
@@ -6928,7 +7311,8 @@ export const staticContent = [
     "programId": "3031",
     "shareUrl": "5fi.sh/T3031",
     "sampleUrl": "/audio/Thai.Northern.101.mp3",
-    "stableKey": "Thai Northern"
+    "stableKey": "Thai Northern",
+    "duration": 7
   },
   {
     "id": 78070,
@@ -6946,7 +7330,8 @@ export const staticContent = [
     "programId": "78070",
     "shareUrl": "5fi.sh/T78070",
     "sampleUrl": "/audio/Thai.Southern.1167.mp3",
-    "stableKey": "Thai Southern"
+    "stableKey": "Thai Southern",
+    "duration": 148
   },
   {
     "id": 10920,
@@ -6964,7 +7349,8 @@ export const staticContent = [
     "programId": "10920",
     "shareUrl": "5fi.sh/T10920",
     "sampleUrl": "/audio/Thai.Southern.1167.mp3",
-    "stableKey": "Thai Southern"
+    "stableKey": "Thai Southern",
+    "duration": 148
   },
   {
     "id": 27241,
@@ -6982,7 +7368,8 @@ export const staticContent = [
     "programId": "27241",
     "shareUrl": "5fi.sh/T27241",
     "sampleUrl": "/audio/Thai.Southern.1167.mp3",
-    "stableKey": "Thai Southern"
+    "stableKey": "Thai Southern",
+    "duration": 148
   },
   {
     "id": 25790,
@@ -7000,7 +7387,8 @@ export const staticContent = [
     "programId": "25790",
     "shareUrl": "5fi.sh/T25790",
     "sampleUrl": "/audio/Thai.Southern.1167.mp3",
-    "stableKey": "Thai Southern"
+    "stableKey": "Thai Southern",
+    "duration": 148
   },
   {
     "id": 25791,
@@ -7018,7 +7406,8 @@ export const staticContent = [
     "programId": "25791",
     "shareUrl": "5fi.sh/T25791",
     "sampleUrl": "/audio/Thai.Southern.1167.mp3",
-    "stableKey": "Thai Southern"
+    "stableKey": "Thai Southern",
+    "duration": 148
   },
   {
     "id": 78065,
@@ -7036,7 +7425,8 @@ export const staticContent = [
     "programId": "78065",
     "shareUrl": "5fi.sh/T78065",
     "sampleUrl": "/audio/Thai.Southern.1167.mp3",
-    "stableKey": "Thai Southern"
+    "stableKey": "Thai Southern",
+    "duration": 148
   },
   {
     "id": 78066,
@@ -7054,7 +7444,8 @@ export const staticContent = [
     "programId": "78066",
     "shareUrl": "5fi.sh/T78066",
     "sampleUrl": "/audio/Thai.Southern.1167.mp3",
-    "stableKey": "Thai Southern"
+    "stableKey": "Thai Southern",
+    "duration": 148
   },
   {
     "id": 78067,
@@ -7072,7 +7463,8 @@ export const staticContent = [
     "programId": "78067",
     "shareUrl": "5fi.sh/T78067",
     "sampleUrl": "/audio/Thai.Southern.1167.mp3",
-    "stableKey": "Thai Southern"
+    "stableKey": "Thai Southern",
+    "duration": 148
   },
   {
     "id": 78068,
@@ -7090,7 +7482,8 @@ export const staticContent = [
     "programId": "78068",
     "shareUrl": "5fi.sh/T78068",
     "sampleUrl": "/audio/Thai.Southern.1167.mp3",
-    "stableKey": "Thai Southern"
+    "stableKey": "Thai Southern",
+    "duration": 148
   },
   {
     "id": 78069,
@@ -7108,7 +7501,8 @@ export const staticContent = [
     "programId": "78069",
     "shareUrl": "5fi.sh/T78069",
     "sampleUrl": "/audio/Thai.Southern.1167.mp3",
-    "stableKey": "Thai Southern"
+    "stableKey": "Thai Southern",
+    "duration": 148
   },
   {
     "id": 6841,
@@ -7126,7 +7520,8 @@ export const staticContent = [
     "programId": "6841",
     "shareUrl": "5fi.sh/T6841",
     "sampleUrl": "/audio/Tin.Eastern.2289.mp3",
-    "stableKey": "Tin Eastern"
+    "stableKey": "Tin Eastern",
+    "duration": 59
   },
   {
     "id": 10841,
@@ -7144,7 +7539,8 @@ export const staticContent = [
     "programId": "10841",
     "shareUrl": "5fi.sh/T10841",
     "sampleUrl": "/audio/Tin.Western.2290.mp3",
-    "stableKey": "Tin Western"
+    "stableKey": "Tin Western",
+    "duration": 25
   },
   {
     "id": 37634,
@@ -7162,7 +7558,8 @@ export const staticContent = [
     "programId": "37634",
     "shareUrl": "5fi.sh/T37634",
     "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
-    "stableKey": "Urak Lawoi"
+    "stableKey": "Urak Lawoi",
+    "duration": 7
   },
   {
     "id": 37629,
@@ -7180,7 +7577,8 @@ export const staticContent = [
     "programId": "37629",
     "shareUrl": "5fi.sh/T37629",
     "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
-    "stableKey": "Urak Lawoi"
+    "stableKey": "Urak Lawoi",
+    "duration": 7
   },
   {
     "id": 37626,
@@ -7198,7 +7596,8 @@ export const staticContent = [
     "programId": "37626",
     "shareUrl": "5fi.sh/T37626",
     "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
-    "stableKey": "Urak Lawoi"
+    "stableKey": "Urak Lawoi",
+    "duration": 7
   },
   {
     "id": 37635,
@@ -7216,7 +7615,8 @@ export const staticContent = [
     "programId": "37635",
     "shareUrl": "5fi.sh/T37635",
     "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
-    "stableKey": "Urak Lawoi"
+    "stableKey": "Urak Lawoi",
+    "duration": 7
   },
   {
     "id": 35660,
@@ -7234,7 +7634,8 @@ export const staticContent = [
     "programId": "35660",
     "shareUrl": "5fi.sh/T35660",
     "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
-    "stableKey": "Urak Lawoi"
+    "stableKey": "Urak Lawoi",
+    "duration": 7
   },
   {
     "id": 37628,
@@ -7252,7 +7653,8 @@ export const staticContent = [
     "programId": "37628",
     "shareUrl": "5fi.sh/T37628",
     "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
-    "stableKey": "Urak Lawoi"
+    "stableKey": "Urak Lawoi",
+    "duration": 7
   },
   {
     "id": 37636,
@@ -7270,7 +7672,8 @@ export const staticContent = [
     "programId": "37636",
     "shareUrl": "5fi.sh/T37636",
     "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
-    "stableKey": "Urak Lawoi"
+    "stableKey": "Urak Lawoi",
+    "duration": 7
   },
   {
     "id": 34990,
@@ -7288,7 +7691,8 @@ export const staticContent = [
     "programId": "34990",
     "shareUrl": "5fi.sh/T34990",
     "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
-    "stableKey": "Urak Lawoi"
+    "stableKey": "Urak Lawoi",
+    "duration": 7
   },
   {
     "id": 37627,
@@ -7306,7 +7710,8 @@ export const staticContent = [
     "programId": "37627",
     "shareUrl": "5fi.sh/T37627",
     "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
-    "stableKey": "Urak Lawoi"
+    "stableKey": "Urak Lawoi",
+    "duration": 7
   },
   {
     "id": 9410,
@@ -7324,7 +7729,8 @@ export const staticContent = [
     "programId": "9410",
     "shareUrl": "5fi.sh/T9410",
     "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
-    "stableKey": "Urak Lawoi"
+    "stableKey": "Urak Lawoi",
+    "duration": 7
   },
   {
     "id": 64433,
@@ -7342,7 +7748,8 @@ export const staticContent = [
     "programId": "64433",
     "shareUrl": "5fi.sh/T64433",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 74723,
@@ -7360,7 +7767,8 @@ export const staticContent = [
     "programId": "74723",
     "shareUrl": "5fi.sh/T74723",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 74724,
@@ -7378,7 +7786,8 @@ export const staticContent = [
     "programId": "74724",
     "shareUrl": "5fi.sh/T74724",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 74725,
@@ -7396,7 +7805,8 @@ export const staticContent = [
     "programId": "74725",
     "shareUrl": "5fi.sh/T74725",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 74726,
@@ -7414,7 +7824,8 @@ export const staticContent = [
     "programId": "74726",
     "shareUrl": "5fi.sh/T74726",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 74727,
@@ -7432,7 +7843,8 @@ export const staticContent = [
     "programId": "74727",
     "shareUrl": "5fi.sh/T74727",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 77480,
@@ -7450,7 +7862,8 @@ export const staticContent = [
     "programId": "77480",
     "shareUrl": "5fi.sh/T77480",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 77490,
@@ -7468,7 +7881,8 @@ export const staticContent = [
     "programId": "77490",
     "shareUrl": "5fi.sh/T77490",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 77500,
@@ -7486,7 +7900,8 @@ export const staticContent = [
     "programId": "77500",
     "shareUrl": "5fi.sh/T77500",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 64434,
@@ -7504,7 +7919,8 @@ export const staticContent = [
     "programId": "64434",
     "shareUrl": "5fi.sh/T64434",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 31590,
@@ -7522,7 +7938,8 @@ export const staticContent = [
     "programId": "31590",
     "shareUrl": "5fi.sh/T31590",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 2781,
@@ -7540,7 +7957,8 @@ export const staticContent = [
     "programId": "2781",
     "shareUrl": "5fi.sh/T2781",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 2740,
@@ -7558,7 +7976,8 @@ export const staticContent = [
     "programId": "2740",
     "shareUrl": "5fi.sh/T2740",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 2741,
@@ -7576,7 +7995,8 @@ export const staticContent = [
     "programId": "2741",
     "shareUrl": "5fi.sh/T2741",
     "sampleUrl": "/audio/Urdu.61.mp3",
-    "stableKey": "Urdu"
+    "stableKey": "Urdu",
+    "duration": 7
   },
   {
     "id": 12741,
@@ -7594,7 +8014,8 @@ export const staticContent = [
     "programId": "12741",
     "shareUrl": "5fi.sh/T12741",
     "sampleUrl": "/audio/Vietnamese.4568.mp3",
-    "stableKey": "Vietnamese"
+    "stableKey": "Vietnamese",
+    "duration": 6
   },
   {
     "id": 37560,
@@ -7612,7 +8033,8 @@ export const staticContent = [
     "programId": "37560",
     "shareUrl": "5fi.sh/T37560",
     "sampleUrl": "/audio/Vietnamese.4568.mp3",
-    "stableKey": "Vietnamese"
+    "stableKey": "Vietnamese",
+    "duration": 6
   },
   {
     "id": 37561,
@@ -7630,7 +8052,8 @@ export const staticContent = [
     "programId": "37561",
     "shareUrl": "5fi.sh/T37561",
     "sampleUrl": "/audio/Vietnamese.4568.mp3",
-    "stableKey": "Vietnamese"
+    "stableKey": "Vietnamese",
+    "duration": 6
   },
   {
     "id": 30131,
@@ -7648,7 +8071,8 @@ export const staticContent = [
     "programId": "30131",
     "shareUrl": "5fi.sh/T30131",
     "sampleUrl": "/audio/Vietnamese.4568.mp3",
-    "stableKey": "Vietnamese"
+    "stableKey": "Vietnamese",
+    "duration": 6
   },
   {
     "id": 74687,
@@ -7666,7 +8090,8 @@ export const staticContent = [
     "programId": "74687",
     "shareUrl": "5fi.sh/T74687",
     "sampleUrl": "/audio/Vietnamese.4568.mp3",
-    "stableKey": "Vietnamese"
+    "stableKey": "Vietnamese",
+    "duration": 6
   },
   {
     "id": 80424,
@@ -7684,7 +8109,8 @@ export const staticContent = [
     "programId": "80424",
     "shareUrl": "5fi.sh/T80424",
     "sampleUrl": "/audio/Vietnamese.South.2.mp3",
-    "stableKey": "Vietnamese South"
+    "stableKey": "Vietnamese South",
+    "duration": 7
   },
   {
     "id": 80417,
@@ -7702,7 +8128,8 @@ export const staticContent = [
     "programId": "80417",
     "shareUrl": "5fi.sh/T80417",
     "sampleUrl": "/audio/Vietnamese.South.2.mp3",
-    "stableKey": "Vietnamese South"
+    "stableKey": "Vietnamese South",
+    "duration": 7
   },
   {
     "id": 80423,
@@ -7720,7 +8147,8 @@ export const staticContent = [
     "programId": "80423",
     "shareUrl": "5fi.sh/T80423",
     "sampleUrl": "/audio/Vietnamese.South.2.mp3",
-    "stableKey": "Vietnamese South"
+    "stableKey": "Vietnamese South",
+    "duration": 7
   },
   {
     "id": 80418,
@@ -7738,7 +8166,8 @@ export const staticContent = [
     "programId": "80418",
     "shareUrl": "5fi.sh/T80418",
     "sampleUrl": "/audio/Vietnamese.South.2.mp3",
-    "stableKey": "Vietnamese South"
+    "stableKey": "Vietnamese South",
+    "duration": 7
   },
   {
     "id": 80419,
@@ -7756,7 +8185,8 @@ export const staticContent = [
     "programId": "80419",
     "shareUrl": "5fi.sh/T80419",
     "sampleUrl": "/audio/Vietnamese.South.2.mp3",
-    "stableKey": "Vietnamese South"
+    "stableKey": "Vietnamese South",
+    "duration": 7
   },
   {
     "id": 80420,
@@ -7774,7 +8204,8 @@ export const staticContent = [
     "programId": "80420",
     "shareUrl": "5fi.sh/T80420",
     "sampleUrl": "/audio/Vietnamese.South.2.mp3",
-    "stableKey": "Vietnamese South"
+    "stableKey": "Vietnamese South",
+    "duration": 7
   },
   {
     "id": 80421,
@@ -7792,7 +8223,8 @@ export const staticContent = [
     "programId": "80421",
     "shareUrl": "5fi.sh/T80421",
     "sampleUrl": "/audio/Vietnamese.South.2.mp3",
-    "stableKey": "Vietnamese South"
+    "stableKey": "Vietnamese South",
+    "duration": 7
   },
   {
     "id": 80422,
@@ -7810,7 +8242,8 @@ export const staticContent = [
     "programId": "80422",
     "shareUrl": "5fi.sh/T80422",
     "sampleUrl": "/audio/Vietnamese.South.2.mp3",
-    "stableKey": "Vietnamese South"
+    "stableKey": "Vietnamese South",
+    "duration": 7
   },
   {
     "id": 28831,
@@ -7828,7 +8261,8 @@ export const staticContent = [
     "programId": "28831",
     "shareUrl": "5fi.sh/T28831",
     "sampleUrl": "/audio/Yi.Pula.in.Mengzi.6074.mp3",
-    "stableKey": "Yi Pula in Mengzi"
+    "stableKey": "Yi Pula in Mengzi",
+    "duration": 8
   },
   {
     "id": 28840,
@@ -7846,7 +8280,8 @@ export const staticContent = [
     "programId": "28840",
     "shareUrl": "5fi.sh/T28840",
     "sampleUrl": "/audio/Yi.Pula.in.Yuanyang.6084.mp3",
-    "stableKey": "Yi Pula in Yuanyang"
+    "stableKey": "Yi Pula in Yuanyang",
+    "duration": 7
   },
   {
     "id": 65100,
@@ -7864,7 +8299,8 @@ export const staticContent = [
     "programId": "65100",
     "shareUrl": "5fi.sh/T65100",
     "sampleUrl": "/audio/Yong.18600.mp3",
-    "stableKey": "Yong"
+    "stableKey": "Yong",
+    "duration": 6
   },
   {
     "id": 63896,
@@ -7882,7 +8318,8 @@ export const staticContent = [
     "programId": "63896",
     "shareUrl": "5fi.sh/T63896",
     "sampleUrl": "/audio/Yoy.18626.mp3",
-    "stableKey": "Yoy"
+    "stableKey": "Yoy",
+    "duration": 5
   },
   {
     "id": 64996,
@@ -7900,7 +8337,8 @@ export const staticContent = [
     "programId": "64996",
     "shareUrl": "5fi.sh/T64996",
     "sampleUrl": "/audio/Yoy.18626.mp3",
-    "stableKey": "Yoy"
+    "stableKey": "Yoy",
+    "duration": 5
   },
   {
     "id": 63897,
@@ -7918,7 +8356,8 @@ export const staticContent = [
     "programId": "63897",
     "shareUrl": "5fi.sh/T63897",
     "sampleUrl": "/audio/Yoy.18626.mp3",
-    "stableKey": "Yoy"
+    "stableKey": "Yoy",
+    "duration": 5
   },
   {
     "id": 63898,
@@ -7936,7 +8375,8 @@ export const staticContent = [
     "programId": "63898",
     "shareUrl": "5fi.sh/T63898",
     "sampleUrl": "/audio/Yoy.18626.mp3",
-    "stableKey": "Yoy"
+    "stableKey": "Yoy",
+    "duration": 5
   },
   {
     "id": 3241,
@@ -7954,7 +8394,8 @@ export const staticContent = [
     "programId": "3241",
     "shareUrl": "5fi.sh/T3241",
     "sampleUrl": "/audio/Yunnanese.241.mp3",
-    "stableKey": "Yunnanese"
+    "stableKey": "Yunnanese",
+    "duration": 7
   },
   {
     "id": 2927001,

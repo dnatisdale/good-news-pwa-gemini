@@ -24,6 +24,14 @@ const ContentCard = ({
   const { languageDisplay, messageTitle, trackTitle, programNumber } =
     formatContentItem(item, lang);
 
+  // Format duration as MM:SS
+  const formatDuration = (seconds) => {
+    if (!seconds || isNaN(seconds)) return null;
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
   return (
     <div className="bg-white dark:bg-[#374151] p-4 mb-3 rounded-xl shadow-md border-t-4 border-brand-red cursor-pointer card-hover flex items-start">
       {/* --- CHECKBOX AREA --- */}
@@ -129,6 +137,15 @@ const ContentCard = ({
           <Share2 className="w-6 h-6" />
         </button>
       </div>
+
+      {/* --- DURATION DISPLAY --- */}
+      {item.duration && (
+        <div className="pl-2 pt-1 flex items-center justify-end">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            {formatDuration(item.duration)}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

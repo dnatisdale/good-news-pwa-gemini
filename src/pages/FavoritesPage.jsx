@@ -46,6 +46,50 @@ const FavoritesPage = ({
     );
   }, [languageGroups, favoriteLanguageKeys]);
 
+  // --- Audio Playback State for "sample" ---
+  const [playingSampleId, setPlayingSampleId] = React.useState(null);
+  const audioRef = React.useRef(new Audio());
+
+  const handlePlaySample = (item) => {
+    // If this item is already playing, stop it
+    if (playingSampleId === item.id) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setPlayingSampleId(null);
+    } else {
+      // Start a new sample if we have a URL
+      if (item.sampleUrl) {
+        // Stop any current audio
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+
+        // Load new URL
+        audioRef.current.src = item.sampleUrl;
+        audioRef.current
+          .play()
+          .then(() => {
+            setPlayingSampleId(item.id);
+          })
+          .catch((e) => {
+            console.error("Error playing sample:", e);
+            console.error("Sample URL:", item.sampleUrl);
+            setPlayingSampleId(null);
+          });
+
+        // Reset state when audio finishes
+        audioRef.current.onended = () => setPlayingSampleId(null);
+      }
+    }
+  };
+
+  // Cleanup audio when page is unmounted
+  React.useEffect(() => {
+    return () => {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    };
+  }, []);
+
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
       <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
@@ -147,6 +191,8 @@ const FavoritesPage = ({
               showLanguageName={true}
               isFavorite={userData?.favorites?.includes(item.id)}
               onToggleFavorite={() => onToggleFavorite(item.id)}
+              isPlayingSample={playingSampleId === item.id}
+              onPlaySample={() => handlePlaySample(item)}
             />
           ))
         ) : (
