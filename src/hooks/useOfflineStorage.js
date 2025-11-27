@@ -65,13 +65,19 @@ export const useOfflineStorage = () => {
           originalUrl = `https://${originalUrl}`;
         }
         
-        // Use Netlify proxy function to avoid CORS issues
-        // In production: /.netlify/functions/proxy-audio
+        // Use Netlify redirect proxy to avoid CORS issues
+        // In production: /api/proxy-audio/* redirects to https://api.globalrecordings.net/*
         // In development: use direct URL (will fail due to CORS, but good for testing)
         const isProduction = window.location.hostname !== 'localhost';
-        const proxyUrl = isProduction 
-          ? `/.netlify/functions/proxy-audio?url=${encodeURIComponent(originalUrl)}`
-          : originalUrl; // For local dev, try direct (will show CORS error)
+        
+        // Extract the path after the domain for the proxy
+        // e.g., "https://api.globalrecordings.net/files/track/mp3-low/62808/1" 
+        // becomes "/api/proxy-audio/files/track/mp3-low/62808/1"
+        let proxyUrl = originalUrl;
+        if (isProduction && originalUrl.includes('api.globalrecordings.net')) {
+          const urlPath = originalUrl.replace('https://api.globalrecordings.net', '');
+          proxyUrl = `/api/proxy-audio${urlPath}`;
+        }
         
         console.log(`Downloading track ${track.id} from ${isProduction ? 'proxy' : 'direct'}: ${originalUrl}`);
         
