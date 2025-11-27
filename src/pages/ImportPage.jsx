@@ -206,9 +206,18 @@ const ImportPage = ({ t }) => {
 
   return (
     <div className="p-4 max-w-3xl mx-auto pb-24">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
-        {t.import_content_title || "Import Content"}
-      </h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+          {t.import_content_title || "Import Content"}
+        </h1>
+        <button
+          type="button"
+          onClick={() => setShowProTip((prev) => !prev)}
+          className="px-4 py-2 rounded-full bg-red-700 text-white text-xs sm:text-sm font-semibold shadow-md hover:bg-red-800 transition-colors"
+        >
+          {t.pro_tip_button || "Pro Tip / ทิปดี ๆ"}
+        </button>
+      </div>
 
       {/* Program ID Input Section */}
       <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm mb-4">
@@ -262,17 +271,6 @@ const ImportPage = ({ t }) => {
           </button>
         </form>
         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-      </div>
-
-      {/* Pro Tip toggle button */}
-      <div className="mt-4 mb-2 flex justify-center">
-        <button
-          type="button"
-          onClick={() => setShowProTip((prev) => !prev)}
-          className="px-4 sm:px-6 py-1.5 sm:py-2 rounded-full bg-red-700 text-white text-xs sm:text-sm font-semibold shadow-md"
-        >
-          {t.pro_tip_button || "Pro Tip / ทิปดี ๆ"}
-        </button>
       </div>
 
       {/* Info Notes Box (hidden until Pro Tip is clicked) */}
