@@ -96,6 +96,31 @@ export const i18n = {
     font_size_small: "Small", // NEW
     font_size_medium: "Medium", // NEW
     font_size_large: "Large", // NEW
+    pro_tip_button: "Pro Tip",
+
+    // Import Page
+    import_content_title: "Import Content",
+    program_id_label: "Program ID",
+    program_id_hint: "Enter the GRN Program ID number (e.g., 62808)",
+    program_id_error: "Please enter a valid Program ID (e.g., 62808)",
+    track_number_label: "Track #",
+    fetch_generate_btn: "Fetch & Generate",
+    url_pattern_info: "Auto-Generated URL Pattern",
+    download_url_label: "Download URL Format:",
+    url_pattern_note:
+      "The app automatically generates the download URL using your Program ID and Track Number. In production, this is proxied through Netlify (/api/proxy-audio/*) to avoid CORS issues.",
+    review_edit_title: "Review & Edit",
+    lang_en_label: "Language (EN)",
+    lang_th_label: "Language (TH)",
+    title_en_label: "Title (EN)",
+    title_th_label: "Title (TH)",
+    generated_urls_label: "Generated URLs (Read-only)",
+    add_to_list_btn: "Add to List",
+    ready_to_export_title: "Ready to Export",
+    copy_json_btn: "Copy JSON",
+    json_copied_alert:
+      "JSON copied to clipboard! You can now paste it into src/data/staticContent.js",
+    clear_data_confirm: "Are you sure you want to clear all imported data?",
 
     // SelectedContentPage
     messages_selected: "messages selected",
@@ -133,7 +158,8 @@ export const i18n = {
     add_to_list_btn: "Add to List",
     ready_to_export_title: "Ready to Export",
     copy_json_btn: "Copy JSON",
-    json_copied_alert: "JSON copied to clipboard! You can now paste it into src/data/staticContent.js",
+    json_copied_alert:
+      "JSON copied to clipboard! You can now paste it into src/data/staticContent.js",
     clear_data_confirm: "Are you sure you want to clear all imported data?",
   },
 
@@ -238,6 +264,31 @@ export const i18n = {
     notes_feature_tip:
       "ฟีเจอร์บันทึกกำลังจะมาเร็วๆ นี้! คุณสามารถดูบันทึกที่บันทึกไว้ทั้งหมดได้ที่หน้าบันทึก",
     notes_page_tip: "หน้านี้พร้อมที่จะสร้างแล้ว!",
+    pro_tip_button: "ทิปดี ๆ",
+
+    // Import Page
+    import_content_title: "นำเข้าเนื้อหา",
+    program_id_label: "รหัสโปรแกรม",
+    program_id_hint: "กรอกหมายเลข Program ID ของ GRN (เช่น 62808)",
+    program_id_error: "กรุณากรอก Program ID ให้ถูกต้อง (เช่น 62808)",
+    track_number_label: "แทร็ก #",
+    fetch_generate_btn: "ดึงข้อมูล & สร้าง",
+    url_pattern_info: "รูปแบบ URL ที่สร้างอัตโนมัติ",
+    download_url_label: "รูปแบบ URL สำหรับดาวน์โหลด:",
+    url_pattern_note:
+      "แอปจะสร้าง URL สำหรับดาวน์โหลดให้อัตโนมัติจาก Program ID และหมายเลขแทร็กของคุณ ในการใช้งานจริงจะเรียกผ่าน Netlify (/api/proxy-audio/*) เพื่อหลีกเลี่ยงปัญหา CORS",
+    review_edit_title: "ตรวจสอบ & แก้ไข",
+    lang_en_label: "ภาษา (อังกฤษ)",
+    lang_th_label: "ภาษา (ไทย)",
+    title_en_label: "ชื่อเรื่อง (อังกฤษ)",
+    title_th_label: "ชื่อเรื่อง (ไทย)",
+    generated_urls_label: "URL ที่สร้างขึ้น (อ่านอย่างเดียว)",
+    add_to_list_btn: "เพิ่มลงในรายการ",
+    ready_to_export_title: "พร้อมส่งออก",
+    copy_json_btn: "คัดลอก JSON",
+    json_copied_alert:
+      "คัดลอก JSON แล้ว! คุณสามารถวางลงในไฟล์ src/data/staticContent.js ได้เลย",
+    clear_data_confirm: "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลที่นำเข้าทั้งหมด?",
 
     // UI Helpers
     select_message_to_listen: "เลือกข้อความเพื่อฟัง",
@@ -297,7 +348,8 @@ export const i18n = {
     add_to_list_btn: "เพิ่มลงในรายการ",
     ready_to_export_title: "พร้อมส่งออก",
     copy_json_btn: "คัดลอก JSON",
-    json_copied_alert: "คัดลอก JSON แล้ว! คุณสามารถวางลงใน src/data/staticContent.js ได้เลย",
+    json_copied_alert:
+      "คัดลอก JSON แล้ว! คุณสามารถวางลงใน src/data/staticContent.js ได้เลย",
     clear_data_confirm: "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลที่นำเข้าทั้งหมด?",
   },
 };

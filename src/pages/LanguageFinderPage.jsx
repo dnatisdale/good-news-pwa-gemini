@@ -177,7 +177,7 @@ const LanguageFinderPage = ({
             key={letter}
             type="button"
             onClick={() => setLetterFilter(letter)}
-            className={`px-2 py-1 rounded-full border text-xs sm:text-sm md:text-base transition-transform duration-150 ${
+            className={`px-2 py-1 rounded-full border text-xs sm:text-sm md:text-base transition-transform duration-180 ${
               letterFilter === letter
                 ? "bg-red-600 text-white border-red-600"
                 : "border-transparent hover:bg-slate-800 hover:text-white dark:hover:bg-slate-700 hover:scale-150"
