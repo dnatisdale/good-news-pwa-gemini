@@ -13,14 +13,33 @@ const FeedbackPage = ({
 }) => {
   const [message, setMessage] = useState("");
 
-  const handleSend = () => {
-    const subject = encodeURIComponent(
-      lang === "th"
-        ? "ความคิดเห็นเกี่ยวกับแอป Thai Good News"
-        : "Feedback for Thai Good News App"
-    );
-    const body = encodeURIComponent(message);
-    window.location.href = `mailto:Kow-D@globalrecordings.net?subject=${subject}&body=${body}`;
+  const handleSend = async () => {
+    const subject = lang === "th"
+      ? "ความคิดเห็นเกี่ยวกับแอป Thai Good News"
+      : "Feedback for Thai Good News App";
+    
+    const emailText = `${subject}\n\n${message}\n\n---\nPlease send to: Kow-D@globalrecordings.net`;
+
+    // Try Web Share API first (works better on mobile/PWA)
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: subject,
+          text: emailText,
+        });
+        return; // Success, exit early
+      } catch (err) {
+        // User cancelled or share failed, fall through to mailto
+        if (err.name !== 'AbortError') {
+          console.log('Share failed, trying mailto fallback:', err);
+        }
+      }
+    }
+
+    // Fallback to mailto if share not available or failed
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(message);
+    window.location.href = `mailto:Kow-D@globalrecordings.net?subject=${encodedSubject}&body=${encodedBody}`;
   };
 
   return (
