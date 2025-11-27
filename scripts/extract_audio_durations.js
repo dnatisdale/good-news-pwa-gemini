@@ -1,5 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+const mp3Duration = require('mp3-duration');
+const util = require('util');
+
+// Promisify mp3Duration
+const getDuration = util.promisify(mp3Duration);
 
 // Folders to scan
 const AUDIO_FOLDERS = [
@@ -12,70 +17,9 @@ const AUDIO_FOLDERS = [
 const OUTPUT_FILE = path.join(__dirname, 'audio_durations.json');
 
 /**
- * Get duration from MP3 file by reading the file header
- * This is a simple implementation that reads MP3 frame headers
- */
-function getMP3Duration(filePath) {
-  try {
-    const buffer = fs.readFileSync(filePath);
-    
-    // Look for MP3 frame header
-    let duration = 0;
-    let offset = 0;
-    let frameCount = 0;
-    
-    // Scan first 100KB to estimate duration (faster than full file scan)
-    const scanLength = Math.min(buffer.length, 100000);
-    
-    while (offset < scanLength) {
-      // Look for frame sync (11 bits set to 1)
-      if (buffer[offset] === 0xFF && (buffer[offset + 1] & 0xE0) === 0xE0) {
-        frameCount++;
-        
-        // Parse frame header to get frame length
-        const version = (buffer[offset + 1] >> 3) & 0x03;
-        const layer = (buffer[offset + 1] >> 1) & 0x03;
-        const bitrateIndex = (buffer[offset + 2] >> 4) & 0x0F;
-        const samplingRateIndex = (buffer[offset + 2] >> 2) & 0x03;
-        
-        // Bitrate table (simplified for Layer III)
-        const bitrateTable = [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320];
-        const samplingRateTable = [44100, 48000, 32000];
-        
-        const bitrate = bitrateTable[bitrateIndex] * 1000;
-        const samplingRate = samplingRateTable[samplingRateIndex];
-        
-        if (bitrate > 0 && samplingRate > 0) {
-          // Calculate frame length
-          const frameLength = Math.floor((144 * bitrate) / samplingRate);
-          offset += frameLength;
-        } else {
-          offset++;
-        }
-      } else {
-        offset++;
-      }
-    }
-    
-    // Estimate total duration based on file size and average bitrate
-    if (frameCount > 0) {
-      const avgFrameSize = scanLength / frameCount;
-      const totalFrames = buffer.length / avgFrameSize;
-      // Each frame is ~0.026 seconds for MP3
-      duration = Math.round(totalFrames * 0.026);
-    }
-    
-    return duration > 0 ? duration : null;
-  } catch (error) {
-    console.error(`Error reading ${filePath}:`, error.message);
-    return null;
-  }
-}
-
-/**
  * Scan a folder for MP3 files and get their durations
  */
-function scanFolder(folderPath) {
+async function scanFolder(folderPath) {
   console.log(`\nScanning folder: ${folderPath}`);
   
   if (!fs.existsSync(folderPath)) {
@@ -90,38 +34,43 @@ function scanFolder(folderPath) {
 
   const durations = {};
   let processed = 0;
+  let errors = 0;
 
   for (const file of mp3Files) {
     const filePath = path.join(folderPath, file);
-    const duration = getMP3Duration(filePath);
     
-    if (duration !== null) {
-      durations[file] = duration;
-      processed++;
-      
-      // Progress indicator
-      if (processed % 10 === 0) {
-        console.log(`  Processed ${processed}/${mp3Files.length} files...`);
+    try {
+      const duration = await getDuration(filePath);
+      if (duration > 0) {
+        durations[file] = Math.round(duration);
       }
+    } catch (err) {
+      console.error(`  ❌ Error reading ${file}: ${err.message}`);
+      errors++;
+    }
+    
+    processed++;
+    if (processed % 20 === 0) {
+      process.stdout.write(`  Processed ${processed}/${mp3Files.length}...\r`);
     }
   }
 
-  console.log(`  ✅ Successfully processed ${processed}/${mp3Files.length} files`);
+  console.log(`  ✅ Finished: ${Object.keys(durations).length} durations found (${errors} errors)`);
   return durations;
 }
 
 /**
  * Main function
  */
-function main() {
-  console.log('🎵 Audio Duration Extractor (No Dependencies)');
-  console.log('==============================================\n');
+async function main() {
+  console.log('🎵 Accurate Audio Duration Extractor');
+  console.log('====================================\n');
   
   const allDurations = {};
 
   // Scan each folder
   for (const folder of AUDIO_FOLDERS) {
-    const durations = scanFolder(folder);
+    const durations = await scanFolder(folder);
     Object.assign(allDurations, durations);
   }
 
@@ -134,17 +83,15 @@ function main() {
 
   console.log(`\n✅ Done! Durations saved to: ${OUTPUT_FILE}`);
   console.log(`   Total files processed: ${Object.keys(allDurations).length}`);
-  console.log('\nSample durations:');
   
-  // Show first 5 durations as examples
-  const samples = Object.entries(allDurations).slice(0, 5);
-  samples.forEach(([file, duration]) => {
-    const mins = Math.floor(duration / 60);
-    const secs = duration % 60;
-    console.log(`   ${file}: ${mins}:${secs.toString().padStart(2, '0')}`);
-  });
-  
-  console.log('\nNext step: Review audio_durations.json and merge into staticContent.js');
+  // Show sample check for the file user mentioned
+  const checkFile = "Akeu.1148.mp3";
+  if (allDurations[checkFile]) {
+    const d = allDurations[checkFile];
+    const mins = Math.floor(d / 60);
+    const secs = d % 60;
+    console.log(`\n🔍 CHECK: ${checkFile} duration is ${d}s (${mins}:${secs.toString().padStart(2, '0')})`);
+  }
 }
 
-main();
+main().catch(console.error);

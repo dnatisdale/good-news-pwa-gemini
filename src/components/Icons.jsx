@@ -16,7 +16,7 @@ export const Home = (props) => (
     strokeLinejoin="round"
   >
     <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-    <path d="M9 22V12h6v10" />
+    <polyline points="9 22 9 12 15 12 15 22" />
   </svg>
 );
 
@@ -33,8 +33,8 @@ export const Search = (props) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <circle cx="11" cy="11" r="8" />
-    <line x1="21" y1="21" x2="16" y2="16" />
+    <circle cx="10" cy="10" r="7" />
+    <line x1="21" y1="21" x2="15" y2="15" />
   </svg>
 );
 
@@ -408,17 +408,17 @@ export const Languages = (props) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    {/* 舟-style character, centered and with margin so nothing is clipped */}
+    {/* 舟-style character, wider and centered */}
     {/* top stroke */}
-    <path d="M10 5h4" />
+    <path d="M9 5h6" />
     {/* main vertical */}
-    <path d="M12 5v10" />
+    <path d="M12 5v11" />
     {/* middle bar */}
-    <path d="M8 10h8" />
+    <path d="M7 10h10" />
     {/* lower left curve */}
-    <path d="M11 15c-1 1.5-2 3-3 4.5" />
+    <path d="M10 16c-1.5 1.5-2.5 3-3.5 4.5" />
     {/* lower right curve */}
-    <path d="M13 15c1 1.5 2 3 3 4.5" />
+    <path d="M14 16c1.5 1.5 2.5 3 3.5 4.5" />
   </svg>
 );
 
