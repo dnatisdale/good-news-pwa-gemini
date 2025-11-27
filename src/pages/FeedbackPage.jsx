@@ -3,21 +3,15 @@ import { ChevronLeft, ChevronRight, MessageSquare } from "../components/Icons";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 
-const FeedbackPage = ({
-  lang,
-  t,
-  onBack,
-  onForward,
-  hasPrev,
-  hasNext,
-}) => {
+const FeedbackPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
   const [message, setMessage] = useState("");
 
   const handleSend = async () => {
-    const subject = lang === "th"
-      ? "ความคิดเห็นเกี่ยวกับแอป Thai Good News"
-      : "Feedback for Thai Good News App";
-    
+    const subject =
+      lang === "th"
+        ? "ความคิดเห็นเกี่ยวกับแอป Thai Good News"
+        : "Feedback for Thai Good News App";
+
     const emailText = `${subject}\n\n${message}\n\n---\nPlease send to: Kow-D@globalrecordings.net`;
 
     // Try Web Share API first (works better on mobile/PWA)
@@ -30,8 +24,8 @@ const FeedbackPage = ({
         return; // Success, exit early
       } catch (err) {
         // User cancelled or share failed, fall through to mailto
-        if (err.name !== 'AbortError') {
-          console.log('Share failed, trying mailto fallback:', err);
+        if (err.name !== "AbortError") {
+          console.log("Share failed, trying mailto fallback:", err);
         }
       }
     }
@@ -100,7 +94,7 @@ const FeedbackPage = ({
             className="bg-brand-red text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-red-800 transition-colors flex items-center"
           >
             <MessageSquare className="w-5 h-5 mr-2" />
-            {t.send_feedback || "Send Feedback Email"}
+            {t.send_feedback || "Send Feedback"}
           </button>
         </div>
 

@@ -98,9 +98,10 @@ export const i18n = {
     font_size_large: "Large", // NEW
     pro_tip_button: "Pro Tip",
     feedback: "Feedback", // NEW
-    feedback_intro: "We value your feedback! Please let us know if you have any suggestions, questions, or issues.", // NEW
+    feedback_intro:
+      "We value your feedback! Please let us know if you have any suggestions, questions, or issues.", // NEW
     feedback_placeholder: "Type your message here...", // NEW
-    send_feedback: "Send Feedback Email", // NEW
+    send_feedback: "Send Feedback", // NEW
 
     // Import Page
     import_content_title: "Import Content",
@@ -270,7 +271,8 @@ export const i18n = {
     notes_page_tip: "หน้านี้พร้อมที่จะสร้างแล้ว!",
     pro_tip_button: "ทิปดี ๆ",
     feedback: "ข้อเสนอแนะ", // NEW
-    feedback_intro: "เราให้ความสำคัญกับความคิดเห็นของคุณ! โปรดแจ้งให้เราทราบหากคุณมีข้อเสนอแนะ คำถาม หรือปัญหาใดๆ", // NEW
+    feedback_intro:
+      "เราให้ความสำคัญกับความคิดเห็นของคุณ! โปรดแจ้งให้เราทราบหากคุณมีข้อเสนอแนะ คำถาม หรือปัญหาใดๆ", // NEW
     feedback_placeholder: "พิมพ์ข้อความของคุณที่นี่...", // NEW
     send_feedback: "ส่งอีเมลข้อเสนอแนะ", // NEW
 
