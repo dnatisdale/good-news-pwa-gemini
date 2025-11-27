@@ -407,16 +407,17 @@ export const Languages = (props) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    {/* Big top stroke */}
-    <path d="M4 6h16" />
-    {/* Main vertical */}
-    <path d="M8 6v12" />
-    {/* Middle bar */}
-    <path d="M4 12h10" />
-    {/* Curved tail / flourish */}
-    <path d="M12 18c3 0 5-2 6-5" />
-    {/* Small dot / vowel mark */}
-    <circle cx="18" cy="8" r="1" />
+    {/* Rough 舟-style shape, built from simple strokes */}
+    {/* top slanted stroke */}
+    <path d="M10 5l3-2" />
+    {/* main vertical */}
+    <path d="M12 4v15" />
+    {/* middle horizontal bar */}
+    <path d="M6 11h12" />
+    {/* lower left curve */}
+    <path d="M9 18l-3 2" />
+    {/* lower right curve */}
+    <path d="M12 19l4-2" />
   </svg>
 );
 
