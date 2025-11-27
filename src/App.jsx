@@ -21,7 +21,6 @@ import {
   ChevronRight,
   Moon,
   Sun,
-  Sun,
   Languages, // ✅ NEW
   MessageSquare, // NEW
 } from "./components/Icons";
