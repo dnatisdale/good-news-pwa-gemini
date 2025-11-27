@@ -24,12 +24,21 @@ const ContentCard = ({
   const { languageDisplay, messageTitle, trackTitle, programNumber } =
     formatContentItem(item, lang);
 
-  // Format duration as MM:SS
+  // Format duration as H:MM:SS or MM:SS
   const formatDuration = (seconds) => {
     if (!seconds || isNaN(seconds)) return null;
-    const mins = Math.floor(seconds / 60);
+    
+    const hours = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
     const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
+    
+    if (hours > 0) {
+      // Format as H:MM:SS
+      return `${hours}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    } else {
+      // Format as MM:SS
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
   };
 
   return (
@@ -78,6 +87,13 @@ const ContentCard = ({
 
       {/* --- ACTION BUTTONS (Play, Favorite, Share) --- */}
       <div className="pl-2 pt-1 flex items-center gap-2">
+        {/* Duration Display - Left of Play Button */}
+        {item.duration && (
+          <p className="text-xs text-gray-500 dark:text-white mr-1">
+            {formatDuration(item.duration)}
+          </p>
+        )}
+
         {/* Play Button (only show if sample exists) */}
         {item.sampleUrl && (
           <button
@@ -137,15 +153,6 @@ const ContentCard = ({
           <Share2 className="w-6 h-6" />
         </button>
       </div>
-
-      {/* --- DURATION DISPLAY --- */}
-      {item.duration && (
-        <div className="pl-2 pt-1 flex items-center justify-end">
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            {formatDuration(item.duration)}
-          </p>
-        </div>
-      )}
     </div>
   );
 };
