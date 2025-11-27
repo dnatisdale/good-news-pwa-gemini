@@ -8,6 +8,10 @@ const ImportPage = ({ t }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const [manualEntry, setManualEntry] = useState({
+    trackNumber: '1'
+  });
+
   // Temporary state for the item being added
   const [currentItem, setCurrentItem] = useState(null);
 
@@ -117,18 +121,18 @@ const ImportPage = ({ t }) => {
   const handleCopyJson = () => {
     const jsonString = JSON.stringify(importedData, null, 2);
     navigator.clipboard.writeText(jsonString);
-    alert('JSON copied to clipboard! You can now paste it into src/data/staticContent.js');
+    alert(t.json_copied_alert || 'JSON copied to clipboard!');
   };
 
   const handleClearData = () => {
-    if (window.confirm('Are you sure you want to clear all imported data?')) {
+    if (window.confirm(t.clear_data_confirm || 'Are you sure?')) {
       setImportedData([]);
     }
   };
 
   return (
     <div className="p-4 max-w-3xl mx-auto pb-24">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Import Content</h1>
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">{t.import_content_title || 'Import Content'}</h1>
 
       {/* URL Input Section */}
       <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm mb-8">
@@ -136,7 +140,7 @@ const ImportPage = ({ t }) => {
           <div className="flex gap-4 mb-4">
             <div className="flex-grow">
                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                GRN Program URL
+                {t.grn_url_label || 'GRN Program URL'}
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -153,7 +157,7 @@ const ImportPage = ({ t }) => {
             </div>
             <div className="w-24">
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Track #
+                {t.track_number_label || 'Track #'}
               </label>
               <input
                 type="text"
@@ -169,7 +173,7 @@ const ImportPage = ({ t }) => {
               className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
             >
               {isLoading ? 'Loading...' : <Search className="w-5 h-5" />}
-              Fetch & Generate
+              {t.fetch_generate_btn || 'Fetch & Generate'}
           </button>
         </form>
         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
@@ -178,11 +182,11 @@ const ImportPage = ({ t }) => {
       {/* Review & Edit Section */}
       {currentItem && (
         <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm mb-8 border-2 border-red-100 dark:border-red-900/30">
-          <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Review & Edit</h2>
+          <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4">{t.review_edit_title || 'Review & Edit'}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">Language (EN)</label>
+              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">{t.lang_en_label || 'Language (EN)'}</label>
               <input
                 type="text"
                 className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
@@ -191,7 +195,7 @@ const ImportPage = ({ t }) => {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">Language (TH)</label>
+              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">{t.lang_th_label || 'Language (TH)'}</label>
               <input
                 type="text"
                 className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
@@ -200,7 +204,7 @@ const ImportPage = ({ t }) => {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">Title (EN)</label>
+              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">{t.title_en_label || 'Title (EN)'}</label>
               <input
                 type="text"
                 className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
@@ -209,7 +213,7 @@ const ImportPage = ({ t }) => {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">Title (TH)</label>
+              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">{t.title_th_label || 'Title (TH)'}</label>
               <input
                 type="text"
                 className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
@@ -220,7 +224,7 @@ const ImportPage = ({ t }) => {
           </div>
 
           <div className="mb-4">
-             <label className="block text-xs font-medium text-gray-500 uppercase mb-1">Generated URLs (Read-only)</label>
+             <label className="block text-xs font-medium text-gray-500 uppercase mb-1">{t.generated_urls_label || 'Generated URLs'}</label>
              <div className="text-xs text-gray-500 font-mono bg-gray-50 dark:bg-gray-900 p-2 rounded space-y-1">
                 <p>Stream: {currentItem.streamUrl}</p>
                 <p>Download: {currentItem.trackDownloadUrl}</p>
@@ -232,7 +236,7 @@ const ImportPage = ({ t }) => {
             className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
           >
             <Plus className="w-5 h-5" />
-            Add to List
+            {t.add_to_list_btn || 'Add to List'}
           </button>
         </div>
       )}
@@ -242,7 +246,7 @@ const ImportPage = ({ t }) => {
         <div>
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold text-gray-800 dark:text-white">
-              Ready to Export ({importedData.length})
+              {t.ready_to_export_title || 'Ready to Export'} ({importedData.length})
             </h2>
             <div className="flex gap-2">
               <button
@@ -257,7 +261,7 @@ const ImportPage = ({ t }) => {
                 className="bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors"
               >
                 <Copy className="w-5 h-5" />
-                Copy JSON
+                {t.copy_json_btn || 'Copy JSON'}
               </button>
             </div>
           </div>

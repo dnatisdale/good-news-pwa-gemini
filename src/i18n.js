@@ -118,6 +118,23 @@ export const i18n = {
     copy_failed: "Could not copy link",
     please_select_messages:
       "📋 Please select some messages first!\n\nTap the checkboxes next to messages to add them to your selection.",
+
+    // Import Page
+    import_content_title: "Import Content",
+    grn_url_label: "GRN Program URL",
+    track_number_label: "Track #",
+    fetch_generate_btn: "Fetch & Generate",
+    review_edit_title: "Review & Edit",
+    lang_en_label: "Language (EN)",
+    lang_th_label: "Language (TH)",
+    title_en_label: "Title (EN)",
+    title_th_label: "Title (TH)",
+    generated_urls_label: "Generated URLs (Read-only)",
+    add_to_list_btn: "Add to List",
+    ready_to_export_title: "Ready to Export",
+    copy_json_btn: "Copy JSON",
+    json_copied_alert: "JSON copied to clipboard! You can now paste it into src/data/staticContent.js",
+    clear_data_confirm: "Are you sure you want to clear all imported data?",
   },
 
   // --- THAI TRANSLATIONS ---
@@ -265,5 +282,22 @@ export const i18n = {
     confirm_delete_note: "ลบบันทึกนี้?",
     no_notes: "ยังไม่มีบันทึก แตะ + เพื่อสร้างใหม่!",
     untitled: "ไม่มีหัวข้อ",
+
+    // Import Page
+    import_content_title: "นำเข้าเนื้อหา",
+    grn_url_label: "URL รายการ GRN",
+    track_number_label: "แทร็ก #",
+    fetch_generate_btn: "ดึงข้อมูล & สร้าง",
+    review_edit_title: "ตรวจสอบ & แก้ไข",
+    lang_en_label: "ภาษา (อังกฤษ)",
+    lang_th_label: "ภาษา (ไทย)",
+    title_en_label: "ชื่อเรื่อง (อังกฤษ)",
+    title_th_label: "ชื่อเรื่อง (ไทย)",
+    generated_urls_label: "URL ที่สร้างขึ้น (อ่านอย่างเดียว)",
+    add_to_list_btn: "เพิ่มลงในรายการ",
+    ready_to_export_title: "พร้อมส่งออก",
+    copy_json_btn: "คัดลอก JSON",
+    json_copied_alert: "คัดลอก JSON แล้ว! คุณสามารถวางลงใน src/data/staticContent.js ได้เลย",
+    clear_data_confirm: "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลที่นำเข้าทั้งหมด?",
   },
 };
