@@ -6,7 +6,7 @@ import { staticContent } from "../data/staticContent";
  * LanguageFinderPage
  * -------------------
  * One screen to browse all languages using:
- * - A/ก script toggle
+ * - A / ก script toggle
  * - Search bar (Thai + English)
  * - Alphabet bar
  * - Scrollable list with hearts
@@ -73,7 +73,7 @@ const LanguageFinderPage = ({
       const letter = getInitialLetter(lg);
       if (letter) set.add(letter);
     });
-    return Array.from(set).sort();
+    return Array.from(set).sort((a, b) => (a > b ? 1 : -1));
   }, [filteredBySearch, scriptMode]);
 
   // 4) Apply letter filter
@@ -100,11 +100,11 @@ const LanguageFinderPage = ({
   return (
     <div className="flex flex-col h-full p-4 gap-3">
       {/* Title */}
-      <h1 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-1">
         {t.language_finder || t.languages}
       </h1>
-      <p className="text-xs text-gray-500 dark:text-gray-200">
-        {t.search_languages || "Search languages..."}
+      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-200">
+        {t.search_languages || "Search Languages..."}
       </p>
 
       {/* A / ก Script Toggle */}
@@ -144,7 +144,7 @@ const LanguageFinderPage = ({
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
         <input
           type="text"
-          className="w-full pl-10 pr-3 py-2 rounded-full bg-slate-900 text-slate-100 placeholder:text-slate-500 border border-slate-700 text-sm"
+          className="w-full pl-10 pr-3 py-2 rounded-full bg-slate-900 text-slate-100 placeholder:text-slate-500 border border-slate-700 text-sm sm:text-base"
           placeholder={
             scriptMode === "th"
               ? "ค้นหาภาษา… / Search languages…"
@@ -159,11 +159,11 @@ const LanguageFinderPage = ({
       </div>
 
       {/* Alphabet Bar */}
-      <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap text-xs sm:text-sm md:text-base text-slate-300 mt-1 pb-1">
+      <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap text-xs sm:text-sm md:text-base text-slate-800 dark:text-slate-100 mt-1 pb-1">
         <button
           type="button"
           onClick={() => setLetterFilter(null)}
-          className={`px-2 py-1 rounded-full border ${
+          className={`px-3 py-1 rounded-full border text-xs sm:text-sm md:text-base ${
             !letterFilter
               ? "bg-red-600 text-white border-red-600"
               : "border-transparent"
@@ -177,10 +177,10 @@ const LanguageFinderPage = ({
             key={letter}
             type="button"
             onClick={() => setLetterFilter(letter)}
-            className={`px-2 py-1 rounded-full border ${
+            className={`px-2 py-1 rounded-full border text-xs sm:text-sm md:text-base ${
               letterFilter === letter
                 ? "bg-red-600 text-white border-red-600"
-                : "border-transparent hover:bg-slate-800"
+                : "border-transparent hover:bg-slate-800 hover:text-white dark:hover:bg-slate-700"
             }`}
           >
             {letter}
@@ -192,15 +192,23 @@ const LanguageFinderPage = ({
       <div className="flex-1 overflow-y-auto mt-2 space-y-3">
         {groupedLanguages.map(([letter, langs]) => (
           <div key={letter}>
-            {/* Group header */}
-            <div className="text-xs font-semibold text-slate-400 uppercase mb-1">
-              {letter}
+            {/* Group header – big letter that scales, with theme-aware color */}
+            <div className="mt-4 mb-2 flex items-center gap-2">
+              <div className="text-base sm:text-lg md:text-2xl font-extrabold text-slate-900 dark:text-slate-100">
+                {letter}
+              </div>
+              <div className="flex-1 h-px bg-slate-300 dark:bg-slate-700" />
             </div>
 
             {/* Items in this letter */}
-            <div className="space-y-1">
+            <div className="space-y-2">
               {langs.map((langItem) => {
                 const isFav = favoriteLanguageKeys.includes(langItem.stableKey);
+                const primaryName =
+                  scriptMode === "th"
+                    ? langItem.nameTh || langItem.nameEn
+                    : langItem.nameEn || langItem.nameTh;
+
                 return (
                   <button
                     key={langItem.stableKey}
@@ -208,13 +216,13 @@ const LanguageFinderPage = ({
                     onClick={() =>
                       onSelectLanguage && onSelectLanguage(langItem.stableKey)
                     }
-                    className="w-full text-left px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 transition flex justify-between items-center"
+                    className="w-full text-left px-3 py-2 rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition flex justify-between items-center"
                   >
-                    <div>
-                      <div className="text-sm font-semibold text-white">
-                        {langItem.nameTh || langItem.nameEn}
+                    <div className="min-w-0">
+                      <div className="text-sm sm:text-base font-semibold text-white truncate">
+                        {primaryName}
                       </div>
-                      <div className="text-xs text-slate-300">
+                      <div className="text-xs sm:text-sm text-slate-300 truncate">
                         {langItem.nameEn}
                         {langItem.isoCode ? ` · ${langItem.isoCode}` : ""}
                       </div>
