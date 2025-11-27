@@ -21,7 +21,9 @@ import {
   ChevronRight,
   Moon,
   Sun,
+  Languages, // ✅ NEW
 } from "./components/Icons";
+
 import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
 import { QRCodeSVG } from "qrcode.react";
@@ -1930,7 +1932,7 @@ export default function App() {
                 { name: "Search", icon: Search, target: "Search" },
                 {
                   name: "Language_Finder",
-                  icon: Search,
+                  icon: Languages,
                   target: "BrowseLanguages",
                 },
                 { name: "Favorites", icon: Heart, target: "Favorites" },
