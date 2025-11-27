@@ -97,6 +97,9 @@ export const i18n = {
     font_size_medium: "Medium", // NEW
     font_size_large: "Large", // NEW
     pro_tip_button: "Pro Tip",
+    feedback: "Feedback", // NEW
+    feedback_intro: "We value your feedback! Please let us know if you have any suggestions, questions, or issues.", // NEW
+    send_feedback: "Send Feedback Email", // NEW
 
     // Import Page
     import_content_title: "Import Content",
@@ -265,6 +268,9 @@ export const i18n = {
       "ฟีเจอร์บันทึกกำลังจะมาเร็วๆ นี้! คุณสามารถดูบันทึกที่บันทึกไว้ทั้งหมดได้ที่หน้าบันทึก",
     notes_page_tip: "หน้านี้พร้อมที่จะสร้างแล้ว!",
     pro_tip_button: "ทิปดี ๆ",
+    feedback: "ข้อเสนอแนะ", // NEW
+    feedback_intro: "เราให้ความสำคัญกับความคิดเห็นของคุณ! โปรดแจ้งให้เราทราบหากคุณมีข้อเสนอแนะ คำถาม หรือปัญหาใดๆ", // NEW
+    send_feedback: "ส่งอีเมลข้อเสนอแนะ", // NEW
 
     // Import Page
     import_content_title: "นำเข้าเนื้อหา",

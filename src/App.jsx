@@ -21,7 +21,9 @@ import {
   ChevronRight,
   Moon,
   Sun,
+  Sun,
   Languages, // ✅ NEW
+  MessageSquare, // NEW
 } from "./components/Icons";
 
 import { staticContent } from "./data/staticContent";
@@ -44,6 +46,7 @@ import SettingsPage from "./pages/SettingsPage";
 import NotesPage from "./pages/NotesPage";
 import MyLibraryPage from "./pages/MyLibraryPage";
 import ImportPage from "./pages/ImportPage";
+import FeedbackPage from "./pages/FeedbackPage"; // NEW
 import UpdateNotification from "./components/UpdateNotification";
 
 // --- CONSTANTS ---
@@ -1390,6 +1393,19 @@ export default function App() {
       );
       break;
 
+    case "Feedback": // NEW
+      PageContent = (
+        <FeedbackPage
+          lang={lang}
+          t={t}
+          onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+        />
+      );
+      break;
+
     default:
       PageContent = (
         <div className="p-4 pt-8 text-center text-red-500">
@@ -1860,6 +1876,7 @@ export default function App() {
                   target: "5fish",
                   url: "https://5fish.mobi/",
                 },
+                { name: "Feedback", icon: MessageSquare, target: "Feedback" }, // NEW
               ].map((item) => {
                 // --- NEW: Logic to render a link or a button ---
                 if (item.url) {
