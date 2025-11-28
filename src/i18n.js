@@ -135,7 +135,8 @@ export const i18n = {
     print: "Print/Download",
     print_word: "Print", // NEW
     no_content_selected:
-      "No content selected yet. Go back and check some boxes!",
+      "It looks like you haven't selected any messages yet. To get started, click here to go back to the Language Finder and check the messages you want to use. Once you return, we can help you with sharing, copying, or printing your selections.",
+    go_back: "Go Back",
 
     // Share App
     share_app: "Share App",
@@ -325,7 +326,9 @@ export const i18n = {
     copy: "คัดลอก",
     print: "พิมพ์/ดาวน์โหลด",
     print_word: "พิมพ์", // NEW
-    no_content_selected: "ยังไม่ได้เลือกเนื้อหา กลับไปและเลือกข้อความ!",
+    no_content_selected:
+      "ดูเหมือนว่าคุณยังไม่ได้เลือกข้อความใดๆ เลย ในการเริ่มต้น ให้คลิกที่นี่เพื่อกลับไปที่หน้าค้นหาภาษา (Language Finder) และทำเครื่องหมายข้อความที่คุณต้องการใช้ เมื่อคุณกลับมา เราจะสามารถช่วยคุณในการแชร์ คัดลอก หรือพิมพ์รายการที่คุณเลือกได้",
+    go_back: "กลับไป",
 
     // Share App
     share_app: "แชร์แอป",
