@@ -66,14 +66,22 @@ const ContentCard = ({
         {showLanguageName && (
           <p
             className={`${
-              largeLanguage ? "text-lg" : "text-base"
+              largeLanguage
+                ? lang === "th"
+                  ? "text-xl"
+                  : "text-lg"
+                : lang === "th"
+                ? "text-lg"
+                : "text-base"
             } font-semibold ${ACCENT_COLOR_CLASS} dark:text-white mb-1`}
           >
             {languageDisplay}
           </p>
         )}
         <h3
-          className={`text-lg font-bold ${TEXT_COLOR_CLASS} dark:text-white ${
+          className={`${
+            lang === "th" ? "text-xl" : "text-lg"
+          } font-bold ${TEXT_COLOR_CLASS} dark:text-white ${
             showLanguageName ? "" : "mt-1"
           }`}
         >

@@ -706,7 +706,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
                       {item.languageEn}
                     </h3>
                     {item.langTh && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-base text-gray-500 dark:text-gray-400">
                         {item.langTh}
                       </p>
                     )}
@@ -714,7 +714,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
                       {item.title_en}
                     </p>
                     {item.title_th && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-base text-gray-500 dark:text-gray-400">
                         {item.title_th}
                       </p>
                     )}

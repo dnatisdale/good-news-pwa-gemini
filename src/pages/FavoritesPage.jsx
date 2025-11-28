@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Heart } from "../components/Icons";
+import { Heart, ChevronLeft, ChevronRight } from "../components/Icons";
 import ContentCard from "../components/ContentCard";
 import { staticContent } from "../data/staticContent";
 
@@ -92,118 +92,155 @@ const FavoritesPage = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center">
-        <Heart className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
-        {t.favorites}
-      </h1>
+      {/* Navigation Header */}
+      <div className="flex justify-between items-center mb-4">
+        <button
+          onClick={onBack}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasPrev
+              ? "text-brand-red dark:text-white hover:text-red-700"
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasPrev}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        <button
+          onClick={onForward}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasNext
+              ? "text-brand-red dark:text-white hover:text-red-700"
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasNext}
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
+      </div>
 
-      {/* =======================
-          FAVORITE LANGUAGES
-         ======================= */}
-      <section className="mb-8">
-        <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
-          {t.favorite_languages || "Favorite Languages"}
-        </h2>
+      {/* Centered Content */}
+      <div className="max-w-lg mx-auto">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center justify-center">
+          <Heart className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
+          {t.favorites}
+        </h1>
 
-        {favoriteLanguageGroups.length === 0 ? (
-          <p className="text-sm text-gray-500 dark:text-gray-200">
-            {t.no_favorite_languages || "No favorite languages yet."}
-          </p>
-        ) : (
-          <div className="space-y-2">
-            {favoriteLanguageGroups.map((group) => {
-              const name =
-                lang === "en" ? group.displayNameEn : group.displayNameTh;
-              const count = group.count ?? group.messages?.length ?? 0;
-              const isFav = favoriteLanguageKeys.includes(group.stableKey);
+        {/* =======================
+            FAVORITE LANGUAGES
+           ======================= */}
+        <section className="mb-8">
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
+            {t.favorite_languages || "Favorite Languages"}
+          </h2>
 
-              // 🔴 Light mode: red if favorite
-              // ⚪ Dark mode: always white text for readability
-              const nameClasses = isFav
-                ? "text-brand-red dark:text-white"
-                : "text-gray-800 dark:text-white";
+          {favoriteLanguageGroups.length === 0 ? (
+            <p className="text-sm text-gray-500 dark:text-gray-200">
+              {t.no_favorite_languages || "No favorite languages yet."}
+            </p>
+          ) : (
+            <div className="space-y-2">
+              {favoriteLanguageGroups.map((group) => {
+                const name =
+                  lang === "en" ? group.displayNameEn : group.displayNameTh;
+                const count = group.count ?? group.messages?.length ?? 0;
+                const isFav = favoriteLanguageKeys.includes(group.stableKey);
 
-              return (
-                <div
-                  key={group.stableKey}
-                  className="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-[#374151] shadow-sm"
-                >
-                  {/* Click name to jump to MessagesByLanguage */}
-                  <button
-                    onClick={() =>
-                      onSelectLanguage && onSelectLanguage(group.stableKey)
-                    }
-                    className="flex-1 text-left"
+                // 🔴 Light mode: red if favorite
+                // ⚪ Dark mode: always white text for readability
+                const nameClasses = isFav
+                  ? "text-brand-red dark:text-white"
+                  : "text-gray-800 dark:text-white";
+
+                return (
+                  <div
+                    key={group.stableKey}
+                    className="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-[#374151] shadow-sm"
                   >
-                    <div className={`font-semibold ${nameClasses}`}>{name}</div>
-                    <div className="text-xs text-gray-500 dark:text-gray-200">
-                      {count} {t.messages || "messages"}
-                    </div>
-                  </button>
-
-                  {/* Heart to toggle favorite language */}
-                  {onToggleFavoriteLanguage && (
+                    {/* Click name to jump to MessagesByLanguage */}
                     <button
-                      onClick={() => onToggleFavoriteLanguage(group.stableKey)}
-                      className={`ml-2 p-2 rounded-full transition-all ${
-                        isFav ? "bg-red-100" : "bg-gray-100 hover:bg-red-100"
-                      }`}
-                      title={
-                        isFav
-                          ? t.unfavorite_language || "Remove favorite language"
-                          : t.favorite_language || "Favorite language"
+                      onClick={() =>
+                        onSelectLanguage && onSelectLanguage(group.stableKey)
                       }
+                      className="flex-1 text-left"
                     >
-                      <Heart
-                        className={`w-5 h-5 ${
-                          isFav
-                            ? "fill-brand-red text-brand-red"
-                            : "text-gray-500"
+                      <div
+                        className={`font-semibold ${nameClasses} ${
+                          lang === "th" ? "text-lg" : "text-base"
                         }`}
-                        style={
-                          isFav ? { fill: "#CC3333", color: "#CC3333" } : {}
-                        }
-                      />
+                      >
+                        {name}
+                      </div>
+                      <div className="text-xs text-gray-500 dark:text-gray-200">
+                        {count} {t.messages || "messages"}
+                      </div>
                     </button>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </section>
 
-      {/* =======================
-          FAVORITE MESSAGES
-         ======================= */}
-      <section>
-        <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
-          {t.favorite_messages || "Favorite Messages"}
-        </h2>
+                    {/* Heart to toggle favorite language */}
+                    {onToggleFavoriteLanguage && (
+                      <button
+                        onClick={() => onToggleFavoriteLanguage(group.stableKey)}
+                        className={`ml-2 p-2 rounded-full transition-all ${
+                          isFav ? "bg-red-100" : "bg-gray-100 hover:bg-red-100"
+                        }`}
+                        title={
+                          isFav
+                            ? t.unfavorite_language || "Remove favorite language"
+                            : t.favorite_language || "Favorite language"
+                        }
+                      >
+                        <Heart
+                          className={`w-5 h-5 ${
+                            isFav
+                              ? "fill-brand-red text-brand-red"
+                              : "text-gray-500"
+                          }`}
+                          style={
+                            isFav ? { fill: "#CC3333", color: "#CC3333" } : {}
+                          }
+                        />
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </section>
 
-        {favoriteMessageItems.length > 0 ? (
-          favoriteMessageItems.map((item) => (
-            <ContentCard
-              key={item.id}
-              item={item}
-              lang={lang}
-              t={t}
-              onSelect={onSelect}
-              showLanguageName={true}
-              isFavorite={userData?.favorites?.includes(item.id)}
-              onToggleFavorite={() => onToggleFavorite(item.id)}
-              isPlayingSample={playingSampleId === item.id}
-              onPlaySample={() => handlePlaySample(item)}
-            />
-          ))
-        ) : (
-          <div className="text-center p-8 text-gray-500">
-            <Heart className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-            <p>{t.no_favorites}</p>
-            <p className="text-sm mt-2">{t.favorite_tip}</p>
-          </div>
-        )}
-      </section>
+        {/* =======================
+            FAVORITE MESSAGES
+           ======================= */}
+        <section>
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
+            {t.favorite_messages || "Favorite Messages"}
+          </h2>
+
+          {favoriteMessageItems.length > 0 ? (
+            favoriteMessageItems.map((item) => (
+              <ContentCard
+                key={item.id}
+                item={item}
+                lang={lang}
+                t={t}
+                onSelect={onSelect}
+                showLanguageName={true}
+                isFavorite={userData?.favorites?.includes(item.id)}
+                onToggleFavorite={() => onToggleFavorite(item.id)}
+                isPlayingSample={playingSampleId === item.id}
+                onPlaySample={() => handlePlaySample(item)}
+              />
+            ))
+          ) : (
+            <div className="text-center p-8 text-gray-500">
+              <Heart className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+              <p>{t.no_favorites}</p>
+              <p className="text-sm mt-2">{t.favorite_tip}</p>
+            </div>
+          )}
+        </section>
+      </div>
 
       {/* Spacer at bottom so fixed bars don't cover content */}
       <div className="h-16"></div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronLeft, ChevronRight } from "../components/Icons";
+import { ChevronLeft, ChevronRight, Settings } from "../components/Icons";
 
 const ACCENT_COLOR_CLASS = "text-brand-red dark:text-white";
 
@@ -56,7 +56,10 @@ const SettingsPage = ({
         </button>
       </div>
 
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">{t.settings}</h1>
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center justify-center">
+        <Settings className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
+        {t.settings}
+      </h1>
 
       {/* Settings Controls */}
       <div className="space-y-6 bg-white p-6 rounded-xl shadow-md">

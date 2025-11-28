@@ -88,12 +88,12 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, sav
         </button>
       </div>
 
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-white flex items-center">
+      <div className="flex flex-col items-center mb-6">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white flex items-center mb-3">
           <Pen className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
           {t.my_notes || "My Notes"}
         </h1>
-        {!isEditing && (
+        {!isEditing && notes.length > 0 && (
           <button
             onClick={() => startEditing()}
             className="bg-gradient-to-br from-brand-red to-brand-red-dark text-white p-2 rounded-full shadow-lg hover:brightness-110 transition-all"
@@ -140,9 +140,15 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, sav
       ) : (
         <div className="space-y-4">
           {notes.length === 0 ? (
-            <div className="text-center text-gray-500 py-10">
-              <Pen className="w-12 h-12 mx-auto mb-3 opacity-20" />
-              <p>{t.no_notes || "No notes yet. Tap + to create one!"}</p>
+            <div className="text-center text-gray-500 pt-4">
+              <Pen className="w-16 h-16 mx-auto mb-4 opacity-20" />
+              <p className="mb-6">{t.no_notes || "No notes yet. Tap + to create one!"}</p>
+              <button
+                onClick={() => startEditing()}
+                className="bg-gradient-to-br from-brand-red to-brand-red-dark text-white p-3 rounded-full shadow-lg hover:brightness-110 transition-all mx-auto"
+              >
+                <Plus className="w-7 h-7" />
+              </button>
             </div>
           ) : (
             notes.map((note) => (

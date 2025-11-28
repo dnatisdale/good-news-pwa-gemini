@@ -1,5 +1,5 @@
 import React from "react";
-import { Share2, Download, ChevronLeft, Music } from "../components/Icons";
+import { Share2, Download, ChevronLeft, ChevronRight, Music } from "../components/Icons";
 import { Copy } from "lucide-react";
 import ContentCard from "../components/ContentCard";
 import { getFilteredMessages } from "../utils/filterLogic";
@@ -10,6 +10,9 @@ const SelectedContentPage = ({
   lang,
   t,
   onBack,
+  onForward,
+  hasPrev,
+  hasNext,
   messages,
   selectedMessages,
   selectedPrograms,
@@ -28,13 +31,42 @@ const SelectedContentPage = ({
   const count = filteredContent.length;
 
   return (
-    <div className="p-4 pt-8 h-full flex flex-col items-center">
-      <div className="w-full max-w-md">
+    <div className="p-4 pt-8 h-full flex flex-col">
+      {/* Navigation Header */}
+      <div className="flex justify-between items-center mb-4">
+        <button
+          onClick={onBack}
+          disabled={!hasPrev}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasPrev
+              ? "text-brand-red dark:text-white hover:text-red-700"
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        
+        <button
+          onClick={onForward}
+          disabled={!hasNext}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasNext
+              ? "text-brand-red dark:text-white hover:text-red-700"
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
+      </div>
+
+      <div className="w-full max-w-lg mx-auto flex flex-col items-center flex-grow overflow-hidden">
         {/* Centered and stacked header */}
         <div className="flex flex-col items-center mb-4">
           <div className="flex items-center gap-2 mb-2">
-            <Music className="w-6 h-6 text-white dark:text-white" />
-            <h1 className="text-2xl font-bold mb-0 text-white dark:text-white">
+            <Music className="w-6 h-6 text-brand-red dark:text-white" />
+            <h1 className="text-2xl font-bold mb-0 text-gray-800 dark:text-white">
               {t.selected_content || "Selected Messages"}
             </h1>
           </div>
@@ -106,7 +138,7 @@ const SelectedContentPage = ({
           </div>
         )}
 
-        <div className="flex-grow overflow-y-auto pb-4">
+        <div className="flex-grow w-full overflow-y-auto pb-4">
           {count === 0 ? (
             null
           ) : (

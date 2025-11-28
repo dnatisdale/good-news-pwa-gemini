@@ -139,6 +139,7 @@ export const i18n = {
 
     // SelectedContentPage
     messages_selected: "messages selected",
+    selected_messages: "Selected Messages",
     selected_content: "Selected Messages",
     share: "Share",
     copy: "Copy",
@@ -342,6 +343,7 @@ export const i18n = {
 
     // SelectedContentPage
     messages_selected: "ข้อความที่เลือก",
+    selected_messages: "ข้อความที่เลือก",
     selected_content: "โปรแกรมที่เลือก",
     share: "แชร์",
     copy: "คัดลอก",

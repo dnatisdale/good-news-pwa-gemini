@@ -23,6 +23,7 @@ import {
   Sun,
   Languages, // ✅ NEW
   MessageSquare, // NEW
+  Music,
 } from "./components/Icons";
 
 import { staticContent } from "./data/staticContent";
@@ -1217,6 +1218,9 @@ export default function App() {
           lang={lang}
           t={t}
           onBack={goBack}
+          onForward={goForward}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
           selectedPrograms={selectedPrograms}
           languageGroups={languageGroups}
           allMessages={staticContent}
@@ -1628,30 +1632,34 @@ export default function App() {
 
             {/* Center: Navigation Buttons */}
             <div className="flex items-center justify-center space-x-2">
-              <button
-                onClick={goBack}
-                disabled={!hasPrev}
-                className={`p-1 rounded-lg transition-colors flex items-center ${
-                  hasPrev
-                    ? "text-white hover:bg-white/20"
-                    : "text-red-200 opacity-50 cursor-not-allowed"
-                }`}
-                title={t.back || "Back"}
-              >
-                <ChevronLeft className="w-8 h-8" />
-              </button>
-              <button
-                onClick={goForward}
-                disabled={!hasNext}
-                className={`p-1 rounded-lg transition-colors flex items-center ${
-                  hasNext
-                    ? "text-white hover:bg-white/20"
-                    : "text-red-200 opacity-50 cursor-not-allowed"
-                }`}
-                title={t.forward || "Forward"}
-              >
-                <ChevronRight className="w-8 h-8" />
-              </button>
+              {currentPage.name !== "Home" && (
+                <>
+                  <button
+                    onClick={goBack}
+                    disabled={!hasPrev}
+                    className={`p-1 rounded-lg transition-colors flex items-center ${
+                      hasPrev
+                        ? "text-white hover:bg-white/20"
+                        : "text-red-200 opacity-50 cursor-not-allowed"
+                    }`}
+                    title={t.back || "Back"}
+                  >
+                    <ChevronLeft className="w-8 h-8" />
+                  </button>
+                  <button
+                    onClick={goForward}
+                    disabled={!hasNext}
+                    className={`p-1 rounded-lg transition-colors flex items-center ${
+                      hasNext
+                        ? "text-white hover:bg-white/20"
+                        : "text-red-200 opacity-50 cursor-not-allowed"
+                    }`}
+                    title={t.forward || "Forward"}
+                  >
+                    <ChevronRight className="w-8 h-8" />
+                  </button>
+                </>
+              )}
             </div>
 
             {/* Right: Controls */}
@@ -1879,6 +1887,12 @@ export default function App() {
                 { name: "My_Library", icon: Download, target: "MyLibrary" },
                 { name: "Import", icon: Upload, target: "Import" },
                 { name: "Notes", icon: Pen, target: "Notes" },
+                {
+                  name: "Selected_Messages",
+                  icon: Music,
+                  target: "SelectedContent",
+                },
+                { name: "Feedback", icon: MessageSquare, target: "Feedback" },
                 // --- 5fish Website Link ---
                 {
                   name: "5fish Website",
@@ -1886,7 +1900,6 @@ export default function App() {
                   target: "5fish",
                   url: "https://5fish.mobi/",
                 },
-                { name: "Feedback", icon: MessageSquare, target: "Feedback" }, // NEW
               ].map((item) => {
                 // --- NEW: Logic to render a link or a button ---
                 if (item.url) {
