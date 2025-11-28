@@ -665,6 +665,7 @@ export default function App() {
   const navigateToHome = () => {
     // This function resets the pageStack to the single 'Home' entry
     setPageStack([{ name: "Home" }]);
+    setIsSearchOpen(false); // Close search bar
     // Optionally, close the sidebar if it's open, if that's the desired behavior:
     // setIsDrawerOpen(false);
   };
@@ -971,6 +972,7 @@ export default function App() {
   const navigateTo = (pageName, key = null, sourceList = null) => {
     setPageStack((prev) => [...prev, { name: pageName, key, sourceList }]);
     setIsDrawerOpen(false);
+    setIsSearchOpen(false); // Close search bar
     // Clear search term when navigating away from Home/Search
     if (pageName !== "Search" && pageName !== "Home") {
       setSearchTerm("");
@@ -982,9 +984,17 @@ export default function App() {
     setPageStack((prev) => [...prev, { name: "SelectedContent" }]);
     setSearchTerm(""); // Clear search just in case
     setIsDrawerOpen(false); // Close sidebar if open
+    setIsSearchOpen(false); // Close search bar
   };
 
   const goBack = () => {
+    // If we are on Search page and going back, we might want to keep it open?
+    // But usually "Back" implies leaving the current context.
+    // Let's close it to be safe, unless we want to preserve state.
+    // Actually, if we are LEAVING search page, it should close.
+    // If we are ON another page and hit back, it should stay closed.
+    setIsSearchOpen(false);
+
     if (pageStack.length > 1) {
       setPageStack((prev) => prev.slice(0, -1));
     } else {
