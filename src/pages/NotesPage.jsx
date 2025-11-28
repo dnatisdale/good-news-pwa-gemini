@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Pen, Trash2, Plus } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pen, Trash2, Plus } from "../components/Icons";
 
-const ACCENT_COLOR_CLASS = "text-brand-red";
+const ACCENT_COLOR_CLASS = "text-brand-red dark:text-white";
 
 const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, saveUserData }) => {
   // Use notes from userData directly
@@ -89,7 +89,8 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, sav
       </div>
 
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white flex items-center">
+          <Pen className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
           {t.my_notes || "My Notes"}
         </h1>
         {!isEditing && (
@@ -103,7 +104,7 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, sav
       </div>
 
       {isEditing ? (
-        <div className="bg-white p-4 rounded-xl shadow-md space-y-4 slide-up">
+        <div className="max-w-lg mx-auto bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md space-y-6 slide-up">
           <input
             type="text"
             placeholder={t.note_title_placeholder || "Title"}
@@ -111,7 +112,7 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, sav
             onChange={(e) =>
               setCurrentNote({ ...currentNote, title: e.target.value })
             }
-            className="w-full text-lg font-bold border-b border-gray-200 focus:outline-none focus:border-brand-red p-2"
+            className="w-full text-lg font-bold border-b border-gray-300 dark:border-gray-500 focus:outline-none focus:border-brand-red p-2 text-gray-900 dark:text-white bg-transparent placeholder-gray-400"
           />
           <textarea
             placeholder={t.note_content_placeholder || "Write your note here..."}
@@ -119,18 +120,18 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, sav
             onChange={(e) =>
               setCurrentNote({ ...currentNote, content: e.target.value })
             }
-            className="w-full h-48 p-2 resize-none focus:outline-none text-gray-700"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-red focus:border-transparent dark:bg-gray-600 dark:border-gray-500 dark:text-white placeholder-gray-400 h-48 resize-none"
           />
           <div className="flex justify-end space-x-3">
             <button
               onClick={() => setIsEditing(false)}
-              className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+              className="px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors"
             >
               {t.cancel || "Cancel"}
             </button>
             <button
               onClick={handleSaveNote}
-              className="px-4 py-2 bg-brand-red text-white rounded-lg hover:bg-red-700"
+              className="px-4 py-2 bg-brand-red text-white rounded-lg hover:bg-red-700 shadow-md transition-colors"
             >
               {t.save || "Save"}
             </button>
@@ -148,16 +149,16 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, sav
               <div
                 key={note.id}
                 onClick={() => startEditing(note)}
-                className="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer relative group"
+                className="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow cursor-pointer relative group"
               >
-                <h3 className="font-bold text-gray-800 mb-1 pr-8">
+                <h3 className="font-bold text-gray-800 dark:text-white mb-1 pr-8">
                   {note.title || (
                     <span className="text-gray-400 italic">
                       {t.untitled || "Untitled"}
                     </span>
                   )}
                 </h3>
-                <p className="text-gray-600 text-sm line-clamp-2 mb-2">
+                <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-2 mb-2">
                   {note.content}
                 </p>
                 {/* Date Display */}

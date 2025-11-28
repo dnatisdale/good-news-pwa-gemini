@@ -9,10 +9,13 @@ import {
   Globe,
   Music,
 } from "lucide-react";
+import { ChevronLeft, ChevronRight, Upload } from "../components/Icons"; // Use App icons for nav
 import { generateId } from "../utils/importUtils";
 import { staticContent } from "../data/staticContent";
 
-const ImportPage = ({ t }) => {
+const ACCENT_COLOR_CLASS = "text-brand-red dark:text-white";
+
+const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
   const [importedData, setImportedData] = useState([]);
   const [programId, setProgramId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -22,6 +25,42 @@ const ImportPage = ({ t }) => {
   const [manualEntry, setManualEntry] = useState({
     trackNumber: "1",
   });
+
+  // --- Program ID Finder State ---
+  const [finderLang, setFinderLang] = useState("");
+  const [finderMessageId, setFinderMessageId] = useState("");
+  const [finderTrack, setFinderTrack] = useState("1");
+
+  const availableMessages = React.useMemo(() => {
+    if (!finderLang) return [];
+    return staticContent
+      .filter((item) => item.languageEn === finderLang)
+      .map((item) => ({
+        id: item.programId,
+        title: item.title_en || item.title_th || "Unknown Title",
+      }))
+      .sort((a, b) => a.title.localeCompare(b.title));
+  }, [finderLang]);
+
+  const handleFinderLangChange = (e) => {
+    setFinderLang(e.target.value);
+    setFinderMessageId("");
+    setProgramId(""); // Clear program ID when language changes
+  };
+
+  const handleFinderMessageChange = (e) => {
+    const newId = e.target.value;
+    setFinderMessageId(newId);
+    if (newId) {
+      setProgramId(newId);
+    }
+  };
+
+  const handleFinderTrackChange = (e) => {
+    const newTrack = e.target.value;
+    setFinderTrack(newTrack);
+    setManualEntry((prev) => ({ ...prev, trackNumber: newTrack }));
+  };
 
   // --- Smart Input Logic ---
   const { topTitlesEn, topTitlesTh, existingLanguagesEn, existingLanguagesTh } =
@@ -205,266 +244,373 @@ const ImportPage = ({ t }) => {
   };
 
   return (
-    <div className="p-4 max-w-3xl mx-auto pb-24">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
-          {t.import_content_title || "Import Content"}
-        </h1>
+    <div className="p-4 pt-8 h-full overflow-y-auto">
+      {/* Navigation Header */}
+      <div className="flex justify-between items-center mb-4">
         <button
-          type="button"
-          onClick={() => setShowProTip((prev) => !prev)}
-          className="px-4 py-2 rounded-full bg-red-700 text-white text-xs sm:text-sm font-semibold shadow-md hover:bg-red-800 transition-colors"
+          onClick={onBack}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasPrev
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasPrev}
         >
-          {t.pro_tip_button || "Pro Tip / ทิปดี ๆ"}
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        <button
+          onClick={onForward}
+          className={`text-sm font-semibold flex items-center transition-colors ${
+            hasNext
+              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          disabled={!hasNext}
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
         </button>
       </div>
 
-      {/* Program ID Input Section */}
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm mb-4">
-        <form onSubmit={handleUrlSubmit}>
-          <div className="flex gap-4 mb-4">
-            <div className="flex-grow">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t.program_id_label || "Program ID"}
+      {/* Title - Centered */}
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center justify-center">
+        <Upload className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
+        {t.import_content_title || "Import Content"}
+      </h1>
+
+      {/* Main Content Container - Centered & Narrow */}
+      <div className="max-w-lg mx-auto space-y-6">
+        
+        {/* Program ID Finder */}
+        <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md border-2 border-blue-100 dark:border-blue-900/30">
+          <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+            <Search className="w-5 h-5 text-brand-red" />
+            {t.find_program_id || "Find Program ID"}
+          </h2>
+          
+          <div className="space-y-4">
+            {/* Step 1: Language */}
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
+                1. {t.select_language || "Select Language"}
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Globe className="h-5 w-5 text-gray-400" />
+              <select
+                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors"
+                value={finderLang}
+                onChange={handleFinderLangChange}
+              >
+                <option value="">-- Select Language --</option>
+                {existingLanguagesEn.map((lang, i) => (
+                  <option key={i} value={lang}>
+                    {lang}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Step 2: Message */}
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
+                2. {t.select_message || "Select Message"}
+              </label>
+              <select
+                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                value={finderMessageId}
+                onChange={handleFinderMessageChange}
+                disabled={!finderLang}
+              >
+                <option value="">-- Select Message --</option>
+                {availableMessages.map((msg, i) => (
+                  <option key={i} value={msg.id}>
+                    {msg.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Step 3: Track */}
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
+                3. {t.select_track || "Select Track"}
+              </label>
+              <select
+                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                value={finderTrack}
+                onChange={handleFinderTrackChange}
+                disabled={!finderMessageId}
+              >
+                {[...Array(20)].map((_, i) => (
+                  <option key={i} value={i + 1}>
+                    Track {i + 1}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Input Card */}
+        <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md">
+          <div className="flex justify-end mb-2">
+             <button
+              type="button"
+              onClick={() => setShowProTip((prev) => !prev)}
+              className="text-xs font-bold text-brand-red hover:text-red-400 transition-colors flex items-center"
+            >
+              {showProTip ? (
+                  <>Hide Pro Tip</>
+              ) : (
+                  <>{t.pro_tip_button || "Pro Tip"}</>
+              )}
+            </button>
+          </div>
+
+          <form onSubmit={handleUrlSubmit}>
+            <div className="flex gap-4 mb-6">
+              <div className="flex-grow">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+                  {t.program_id_label || "Program ID"}
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Globe className="h-5 w-5 text-gray-400" />
+                  </div>
+                  <input
+                    type="text"
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-600 dark:border-gray-500 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent sm:text-sm transition-colors"
+                    placeholder="62808"
+                    value={programId}
+                    onChange={(e) => setProgramId(e.target.value)}
+                  />
                 </div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  {t.program_id_hint ||
+                    "Enter the GRN Program ID number (e.g., 62808)"}
+                </p>
+              </div>
+              <div className="w-24">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+                  {t.track_number_label || "Track #"}
+                </label>
                 <input
                   type="text"
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
-                  placeholder="62808"
-                  value={programId}
-                  onChange={(e) => setProgramId(e.target.value)}
+                  className="block w-full px-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-600 dark:border-gray-500 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent sm:text-sm text-center transition-colors"
+                  value={manualEntry.trackNumber}
+                  onChange={(e) =>
+                    setManualEntry({
+                      ...manualEntry,
+                      trackNumber: e.target.value,
+                    })
+                  }
                 />
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                {t.program_id_hint ||
-                  "Enter the GRN Program ID number (e.g., 62808)"}
+            </div>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-brand-red hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50 hover:scale-[1.02] active:scale-95"
+            >
+              {isLoading ? "Loading..." : <Search className="w-5 h-5" />}
+              {t.fetch_generate_btn || "Fetch & Generate"}
+            </button>
+          </form>
+          {error && <p className="text-red-500 text-sm mt-4 text-center">{error}</p>}
+        </div>
+
+        {/* Info Notes Box */}
+        {showProTip && (
+          <div className="p-4 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-xl slide-up">
+            <h3 className="text-sm font-bold text-blue-900 dark:text-blue-300 mb-2 flex items-center gap-2">
+              <Music className="w-4 h-4" />
+              {t.url_pattern_info || "Auto-Generated URL Pattern"}
+            </h3>
+            <div className="text-xs text-blue-800 dark:text-blue-200 space-y-1">
+              <p className="font-semibold mb-1">
+                {t.download_url_label || "Download URL Format:"}
+              </p>
+              <div className="bg-slate-950 dark:bg-slate-900 text-slate-50 p-2 rounded-lg border border-blue-200 dark:border-blue-700 font-mono text-xs overflow-x-auto">
+                https://api.globalrecordings.net/files/track/mp3-low/
+                <span className="text-orange-300 font-bold">
+                  {"{ PROGRAM_ID }"}
+                </span>
+                /
+                <span className="text-green-300 font-bold">
+                  {"{ TRACK_NUMBER }"}
+                </span>
+              </div>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                💡{" "}
+                {t.url_pattern_note ||
+                  "The app automatically generates the download URL using your Program ID and Track Number. In production, this is proxied through Netlify (/api/proxy-audio/*) to avoid CORS issues."}
               </p>
             </div>
-            <div className="w-24">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t.track_number_label || "Track #"}
-              </label>
-              <input
-                type="text"
-                className="block w-full px-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm text-center"
-                value={manualEntry.trackNumber}
-                onChange={(e) =>
-                  setManualEntry({
-                    ...manualEntry,
-                    trackNumber: e.target.value,
-                  })
-                }
-              />
-            </div>
           </div>
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
-          >
-            {isLoading ? "Loading..." : <Search className="w-5 h-5" />}
-            {t.fetch_generate_btn || "Fetch & Generate"}
-          </button>
-        </form>
-        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-      </div>
+        )}
 
-      {/* Info Notes Box (hidden until Pro Tip is clicked) */}
-      {showProTip && (
-        <div className="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-          <h3 className="text-sm font-bold text-blue-900 dark:text-blue-300 mb-2 flex items-center gap-2">
-            <Music className="w-4 h-4" />
-            {t.url_pattern_info || "Auto-Generated URL Pattern"}
-          </h3>
-          <div className="text-xs text-blue-800 dark:text-blue-200 space-y-1">
-            <p className="font-semibold mb-1">
-              {t.download_url_label || "Download URL Format:"}
-            </p>
-            <div className="bg-slate-950 dark:bg-slate-900 text-slate-50 p-2 rounded-lg border border-blue-200 dark:border-blue-700 font-mono text-xs overflow-x-auto">
-              https://api.globalrecordings.net/files/track/mp3-low/
-              <span className="text-orange-300 font-bold">
-                {"{ PROGRAM_ID }"}
-              </span>
-              /
-              <span className="text-green-300 font-bold">
-                {"{ TRACK_NUMBER }"}
-              </span>
-            </div>
-            <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
-              💡{" "}
-              {t.url_pattern_note ||
-                "The app automatically generates the download URL using your Program ID and Track Number. In production, this is proxied through Netlify (/api/proxy-audio/*) to avoid CORS issues."}
-            </p>
-          </div>
-        </div>
-      )}
-
-      {/* Review & Edit Section */}
-      {currentItem && (
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm mb-8 border-2 border-red-100 dark:border-red-900/30">
-          <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4">
-            {t.review_edit_title || "Review & Edit"}
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">
-                {t.lang_en_label || "Language (EN)"}
-              </label>
-              <input
-                type="text"
-                list="languages-en"
-                className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                value={currentItem.languageEn}
-                onChange={(e) =>
-                  setCurrentItem({ ...currentItem, languageEn: e.target.value })
-                }
-              />
-              <datalist id="languages-en">
-                {existingLanguagesEn.map((lang, i) => (
-                  <option key={i} value={lang} />
-                ))}
-              </datalist>
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">
-                {t.lang_th_label || "Language (TH)"}
-              </label>
-              <input
-                type="text"
-                list="languages-th"
-                className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                value={currentItem.langTh}
-                onChange={(e) =>
-                  setCurrentItem({ ...currentItem, langTh: e.target.value })
-                }
-              />
-              <datalist id="languages-th">
-                {existingLanguagesTh.map((lang, i) => (
-                  <option key={i} value={lang} />
-                ))}
-              </datalist>
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">
-                {t.title_en_label || "Title (EN)"}
-              </label>
-              <input
-                type="text"
-                list="titles-en"
-                className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                value={currentItem.title_en}
-                onChange={(e) =>
-                  setCurrentItem({ ...currentItem, title_en: e.target.value })
-                }
-              />
-              <datalist id="titles-en">
-                {topTitlesEn.map((title, i) => (
-                  <option key={i} value={title} />
-                ))}
-              </datalist>
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-500 uppercase mb-1">
-                {t.title_th_label || "Title (TH)"}
-              </label>
-              <input
-                type="text"
-                list="titles-th"
-                className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                value={currentItem.title_th}
-                onChange={(e) =>
-                  setCurrentItem({ ...currentItem, title_th: e.target.value })
-                }
-              />
-              <datalist id="titles-th">
-                {topTitlesTh.map((title, i) => (
-                  <option key={i} value={title} />
-                ))}
-              </datalist>
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-xs font-medium text-gray-500 uppercase mb-1">
-              {t.generated_urls_label || "Generated URLs"}
-            </label>
-            <div className="text-xs text-gray-500 font-mono bg-gray-50 dark:bg-gray-900 p-2 rounded space-y-1">
-              <p>Stream: {currentItem.streamUrl}</p>
-              <p>Download: {currentItem.trackDownloadUrl}</p>
-            </div>
-          </div>
-
-          <button
-            onClick={handleAddItem}
-            className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
-          >
-            <Plus className="w-5 h-5" />
-            {t.add_to_list_btn || "Add to List"}
-          </button>
-        </div>
-      )}
-
-      {/* List of Imported Items */}
-      {importedData.length > 0 && (
-        <div>
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold text-gray-800 dark:text-white">
-              {t.ready_to_export_title || "Ready to Export"} (
-              {importedData.length})
+        {/* Review & Edit Section */}
+        {currentItem && (
+          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md border-2 border-red-100 dark:border-red-900/30 slide-up">
+            <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4 text-center">
+              {t.review_edit_title || "Review & Edit"}
             </h2>
-            <div className="flex gap-2">
-              <button
-                onClick={handleClearData}
-                className="text-red-500 hover:text-red-700 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20"
-                title="Clear All"
-              >
-                <Trash2 className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleCopyJson}
-                className="bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors"
-              >
-                <Copy className="w-5 h-5" />
-                {t.copy_json_btn || "Copy JSON"}
-              </button>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
+                  {t.lang_en_label || "Language (EN)"}
+                </label>
+                <input
+                  type="text"
+                  list="languages-en"
+                  className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none"
+                  value={currentItem.languageEn}
+                  onChange={(e) =>
+                    setCurrentItem({ ...currentItem, languageEn: e.target.value })
+                  }
+                />
+                <datalist id="languages-en">
+                  {existingLanguagesEn.map((lang, i) => (
+                    <option key={i} value={lang} />
+                  ))}
+                </datalist>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
+                  {t.lang_th_label || "Language (TH)"}
+                </label>
+                <input
+                  type="text"
+                  list="languages-th"
+                  className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none"
+                  value={currentItem.langTh}
+                  onChange={(e) =>
+                    setCurrentItem({ ...currentItem, langTh: e.target.value })
+                  }
+                />
+                <datalist id="languages-th">
+                  {existingLanguagesTh.map((lang, i) => (
+                    <option key={i} value={lang} />
+                  ))}
+                </datalist>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
+                  {t.title_en_label || "Title (EN)"}
+                </label>
+                <input
+                  type="text"
+                  list="titles-en"
+                  className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none"
+                  value={currentItem.title_en}
+                  onChange={(e) =>
+                    setCurrentItem({ ...currentItem, title_en: e.target.value })
+                  }
+                />
+                <datalist id="titles-en">
+                  {topTitlesEn.map((title, i) => (
+                    <option key={i} value={title} />
+                  ))}
+                </datalist>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
+                  {t.title_th_label || "Title (TH)"}
+                </label>
+                <input
+                  type="text"
+                  list="titles-th"
+                  className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none"
+                  value={currentItem.title_th}
+                  onChange={(e) =>
+                    setCurrentItem({ ...currentItem, title_th: e.target.value })
+                  }
+                />
+                <datalist id="titles-th">
+                  {topTitlesTh.map((title, i) => (
+                    <option key={i} value={title} />
+                  ))}
+                </datalist>
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
+                {t.generated_urls_label || "Generated URLs"}
+              </label>
+              <div className="text-xs text-gray-500 dark:text-gray-400 font-mono bg-gray-50 dark:bg-gray-900 p-2 rounded space-y-1 overflow-x-auto">
+                <p>Stream: {currentItem.streamUrl}</p>
+                <p>Download: {currentItem.trackDownloadUrl}</p>
+              </div>
+            </div>
+
+            <button
+              onClick={handleAddItem}
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-md"
+            >
+              <Plus className="w-5 h-5" />
+              {t.add_to_list_btn || "Add to List"}
+            </button>
+          </div>
+        )}
+
+        {/* List of Imported Items */}
+        {importedData.length > 0 && (
+          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold text-gray-800 dark:text-white">
+                {t.ready_to_export_title || "Ready to Export"} (
+                {importedData.length})
+              </h2>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleClearData}
+                  className="text-red-500 hover:text-red-700 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                  title="Clear All"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={handleCopyJson}
+                  className="bg-gray-800 hover:bg-gray-900 dark:bg-gray-600 dark:hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors shadow-sm"
+                >
+                  <Copy className="w-5 h-5" />
+                  {t.copy_json_btn || "Copy JSON"}
+                </button>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {importedData.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 flex justify-between items-center"
+                >
+                  <div>
+                    <h3 className="font-bold text-gray-900 dark:text-white">
+                      {item.languageEn}{" "}
+                      <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                        ({item.langTh})
+                      </span>
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      {item.title_en}
+                    </p>
+                    <p className="text-xs text-gray-400 mt-1 font-mono">
+                      ID: {item.programId}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {item.trackDownloadUrl && (
+                      <Music className="w-4 h-4 text-green-500" />
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-
-          <div className="space-y-4">
-            {importedData.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 flex justify-between items-center"
-              >
-                <div>
-                  <h3 className="font-bold text-gray-900 dark:text-white">
-                    {item.languageEn}{" "}
-                    <span className="text-sm font-normal text-gray-500">
-                      ({item.langTh})
-                    </span>
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {item.title_en}
-                  </p>
-                  <p className="text-xs text-gray-400 mt-1 font-mono">
-                    ID: {item.programId}
-                  </p>
-                </div>
-                <div className="flex items-center gap-2">
-                  {item.trackDownloadUrl && (
-                    <Music className="w-4 h-4 text-green-500" />
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

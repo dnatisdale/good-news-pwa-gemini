@@ -92,7 +92,8 @@ const FavoritesPage = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center">
+        <Heart className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
         {t.favorites}
       </h1>
 

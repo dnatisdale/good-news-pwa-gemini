@@ -1,7 +1,7 @@
 import React from "react";
 import { ChevronLeft, ChevronRight } from "../components/Icons";
 
-const ACCENT_COLOR_CLASS = "text-brand-red";
+const ACCENT_COLOR_CLASS = "text-brand-red dark:text-white";
 
 const SettingsPage = ({
   lang,

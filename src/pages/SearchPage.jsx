@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { Search } from "../components/Icons";
 import ContentCard from "../components/ContentCard";
 import { staticContent } from "../data/staticContent";
 
@@ -48,7 +49,8 @@ const SearchPage = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
+        <Search className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
         {t.search_results || "Search Results"}
       </h1>
 

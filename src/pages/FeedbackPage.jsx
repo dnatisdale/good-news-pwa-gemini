@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, MessageSquare } from "../components/Icons";
 
-const ACCENT_COLOR_CLASS = "text-brand-red";
+const ACCENT_COLOR_CLASS = "text-brand-red dark:text-white";
 
 const FeedbackPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
   const [message, setMessage] = useState("");

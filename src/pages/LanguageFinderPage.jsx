@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Search, Heart } from "../components/Icons";
+import { Search, Heart, Languages } from "../components/Icons";
 import { staticContent } from "../data/staticContent";
 
 /**
@@ -100,7 +100,8 @@ const LanguageFinderPage = ({
   return (
     <div className="flex flex-col h-full p-4 gap-3">
       {/* Title */}
-      <h1 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-1">
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-1 flex items-center">
+        <Languages className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
         {t.language_finder || t.languages}
       </h1>
       <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-200">
