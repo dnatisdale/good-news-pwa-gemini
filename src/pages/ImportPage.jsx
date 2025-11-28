@@ -15,7 +15,7 @@ import { staticContent } from "../data/staticContent";
 
 const ACCENT_COLOR_CLASS = "text-brand-red dark:text-white";
 
-const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
+const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
   const [importedData, setImportedData] = useState([]);
   const [programId, setProgramId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -33,14 +33,23 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
 
   const availableMessages = React.useMemo(() => {
     if (!finderLang) return [];
+    
+    // Use language-specific field based on current UI language
+    const langField = lang === "th" ? "langTh" : "languageEn";
+    
     return staticContent
-      .filter((item) => item.languageEn === finderLang)
+      .filter((item) => {
+        const itemLang = lang === "th" ? item.langTh : item.languageEn;
+        return itemLang === finderLang;
+      })
       .map((item) => ({
         id: item.programId,
-        title: item.title_en || item.title_th || "Unknown Title",
+        title: lang === "th" 
+          ? (item.title_th || item.title_en || "ไม่ระบุชื่อ") 
+          : (item.title_en || item.title_th || "Unknown Title"),
       }))
-      .sort((a, b) => a.title.localeCompare(b.title));
-  }, [finderLang]);
+      .sort((a, b) => a.title.localeCompare(b.title, lang));
+  }, [finderLang, lang]);
 
   const handleFinderLangChange = (e) => {
     setFinderLang(e.target.value);
@@ -52,7 +61,20 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
     const newId = e.target.value;
     setFinderMessageId(newId);
     if (newId) {
+      // Set the Program ID in the input field
       setProgramId(newId);
+      
+      // Auto-populate language and title fields from the selected message
+      const selectedItem = staticContent.find(item => item.programId === newId);
+      if (selectedItem && currentItem) {
+        setCurrentItem({
+          ...currentItem,
+          languageEn: selectedItem.languageEn || "",
+          langTh: selectedItem.langTh || "",
+          title_en: selectedItem.title_en || "",
+          title_th: selectedItem.title_th || "",
+        });
+      }
     }
   };
 
@@ -104,6 +126,22 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
         existingLanguagesTh: langsTh,
       };
     }, []);
+
+  // Get random verses from staticContent
+  const getRandomVerses = () => {
+    const itemsWithVerses = staticContent.filter(
+      (item) => item.verse_en && item.verse_th
+    );
+    if (itemsWithVerses.length > 0) {
+      const randomItem =
+        itemsWithVerses[Math.floor(Math.random() * itemsWithVerses.length)];
+      return {
+        verse_en: randomItem.verse_en,
+        verse_th: randomItem.verse_th,
+      };
+    }
+    return { verse_en: "", verse_th: "" };
+  };
 
   // Temporary state for the item being added
   const [currentItem, setCurrentItem] = useState(null);
@@ -203,20 +241,42 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
     // 2. Try to fetch metadata (Slow, might fail)
     const metadata = await fetchMetadata(id);
 
+    // 3. Get random verses
+    const randomVerses = getRandomVerses();
+
+    // 4. Try to get iso3 and langId from staticContent
+    const existingItem = staticContent.find(item => item.programId === id);
+    const iso3 = existingItem?.iso3 || "ENG";
+    const langId = existingItem?.langId || "0000";
+
     setCurrentItem({
       id: generateId(), // Internal ID
       programId: id, // GRN ID
-      iso3: "ENG", // Placeholder
-      langId: "0000", // Placeholder
+      iso3: iso3,
+      langId: langId,
       ...metadata,
-      verse_en: "",
-      verse_th: "",
+      verse_en: randomVerses.verse_en,
+      verse_th: randomVerses.verse_th,
       streamUrl,
       trackDownloadUrl,
       zipDownloadUrl,
       shareUrl,
       stableKey: metadata.languageEn || "New Import",
     });
+    
+    // If a message was selected from finder, auto-populate from staticContent
+    if (finderMessageId) {
+      const selectedItem = staticContent.find(item => item.programId === id);
+      if (selectedItem) {
+        setCurrentItem(prev => ({
+          ...prev,
+          languageEn: selectedItem.languageEn || metadata.languageEn,
+          langTh: selectedItem.langTh || metadata.langTh,
+          title_en: selectedItem.title_en || metadata.title_en,
+          title_th: selectedItem.title_th || metadata.title_th,
+        }));
+      }
+    }
 
     setIsLoading(false);
   };
@@ -276,87 +336,19 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
       {/* Title - Centered */}
       <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center justify-center">
         <Upload className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
-        {t.import_content_title || "Import Content"}
+        {t.import_new_content_title || "Import New Content"}
       </h1>
 
       {/* Main Content Container - Centered & Narrow */}
       <div className="max-w-lg mx-auto space-y-6">
         
-        {/* Program ID Finder */}
-        <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md border-2 border-blue-100 dark:border-blue-900/30">
-          <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
-            <Search className="w-5 h-5 text-brand-red" />
-            {t.find_program_id || "Find Program ID"}
-          </h2>
-          
-          <div className="space-y-4">
-            {/* Step 1: Language */}
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                1. {t.select_language || "Select Language"}
-              </label>
-              <select
-                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors"
-                value={finderLang}
-                onChange={handleFinderLangChange}
-              >
-                <option value="">-- Select Language --</option>
-                {existingLanguagesEn.map((lang, i) => (
-                  <option key={i} value={lang}>
-                    {lang}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Step 2: Message */}
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                2. {t.select_message || "Select Message"}
-              </label>
-              <select
-                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                value={finderMessageId}
-                onChange={handleFinderMessageChange}
-                disabled={!finderLang}
-              >
-                <option value="">-- Select Message --</option>
-                {availableMessages.map((msg, i) => (
-                  <option key={i} value={msg.id}>
-                    {msg.title}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Step 3: Track */}
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                3. {t.select_track || "Select Track"}
-              </label>
-              <select
-                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                value={finderTrack}
-                onChange={handleFinderTrackChange}
-                disabled={!finderMessageId}
-              >
-                {[...Array(20)].map((_, i) => (
-                  <option key={i} value={i + 1}>
-                    Track {i + 1}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* Input Card */}
+        {/* Message ID Input - Top Section */}
         <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md">
           <div className="flex justify-end mb-2">
              <button
               type="button"
               onClick={() => setShowProTip((prev) => !prev)}
-              className="text-xs font-bold text-brand-red hover:text-red-400 transition-colors flex items-center"
+              className="px-3 py-1 bg-brand-red hover:bg-red-800 text-white text-xs font-bold rounded-md transition-colors shadow-sm"
             >
               {showProTip ? (
                   <>Hide Pro Tip</>
@@ -366,56 +358,46 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
             </button>
           </div>
 
-          <form onSubmit={handleUrlSubmit}>
-            <div className="flex gap-4 mb-6">
-              <div className="flex-grow">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                  {t.program_id_label || "Program ID"}
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Globe className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    type="text"
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-600 dark:border-gray-500 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent sm:text-sm transition-colors"
-                    placeholder="62808"
-                    value={programId}
-                    onChange={(e) => setProgramId(e.target.value)}
-                  />
+          <div className="flex gap-4 mb-2">
+            <div className="flex-grow">
+              <label className="block text-lg font-bold text-gray-700 dark:text-gray-200 mb-2 flex items-center">
+                <Search className="w-5 h-5 inline mr-2 text-white" />
+                {t.find_message_id_label || "Find Message ID"}
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Globe className="h-5 w-5 text-gray-400" />
                 </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                  {t.program_id_hint ||
-                    "Enter the GRN Program ID number (e.g., 62808)"}
-                </p>
-              </div>
-              <div className="w-24">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                  {t.track_number_label || "Track #"}
-                </label>
                 <input
                   type="text"
-                  className="block w-full px-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-600 dark:border-gray-500 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent sm:text-sm text-center transition-colors"
-                  value={manualEntry.trackNumber}
-                  onChange={(e) =>
-                    setManualEntry({
-                      ...manualEntry,
-                      trackNumber: e.target.value,
-                    })
-                  }
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-600 dark:border-gray-500 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent text-base transition-colors"
+                  placeholder="63629"
+                  value={programId}
+                  onChange={(e) => setProgramId(e.target.value)}
                 />
               </div>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                {t.find_message_id_hint ||
+                  "Enter the GRN Program Message ID number (e.g., 63629)"}
+              </p>
             </div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-brand-red hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50 hover:scale-[1.02] active:scale-95"
-            >
-              {isLoading ? "Loading..." : <Search className="w-5 h-5" />}
-              {t.fetch_generate_btn || "Fetch & Generate"}
-            </button>
-          </form>
-          {error && <p className="text-red-500 text-sm mt-4 text-center">{error}</p>}
+            <div className="w-24">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+                {t.track_number_label || "Track #"}
+              </label>
+              <input
+                type="text"
+                className="block w-full px-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-600 dark:border-gray-500 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent sm:text-sm text-center transition-colors"
+                value={manualEntry.trackNumber}
+                onChange={(e) =>
+                  setManualEntry({
+                    ...manualEntry,
+                    trackNumber: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
         </div>
 
         {/* Info Notes Box */}
@@ -447,6 +429,81 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
             </div>
           </div>
         )}
+        
+        {/* Finder Section */}
+        <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md border-2 border-blue-100 dark:border-blue-900/30">
+          
+          <div className="space-y-4">
+            {/* Language */}
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
+                {t.select_language || "Select Language"}
+              </label>
+              <select
+                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors"
+                value={finderLang}
+                onChange={handleFinderLangChange}
+              >
+                <option value="">-- {lang === "th" ? "เลือกภาษา" : "Select Language"} --</option>
+                {(lang === "th" ? existingLanguagesTh : existingLanguagesEn).map((langName, i) => (
+                  <option key={i} value={langName}>
+                    {langName}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Message */}
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
+                {t.select_message || "Select Message"}
+              </label>
+              <select
+                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                value={finderMessageId}
+                onChange={handleFinderMessageChange}
+                disabled={!finderLang}
+              >
+                <option value="">-- {lang === "th" ? "เลือกข้อความ" : "Select Message"} --</option>
+                {availableMessages.map((msg, i) => (
+                  <option key={i} value={msg.id}>
+                    {msg.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Track */}
+            <div>
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
+                {t.select_track || "Select Track"}
+              </label>
+              <select
+                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                value={finderTrack}
+                onChange={handleFinderTrackChange}
+                disabled={!finderMessageId}
+              >
+                {[...Array(20)].map((_, i) => (
+                  <option key={i} value={i + 1}>
+                    Track {i + 1}
+                  </option>
+                ))}
+              </select>
+            </div>
+            
+            {/* Fetch & Generate Button */}
+            <button
+              onClick={handleUrlSubmit}
+              disabled={isLoading}
+              className="w-full bg-brand-red hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50 hover:scale-[1.02] active:scale-95"
+            >
+              {isLoading ? "Loading..." : <Search className="w-5 h-5 text-white" />}
+              {t.fetch_generate_btn || "Fetch & Generate"}
+            </button>
+            {error && <p className="text-red-500 text-sm mt-2 text-center">{error}</p>}
+          </div>
+        </div>
 
         {/* Review & Edit Section */}
         {currentItem && (
@@ -456,6 +513,34 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
+                  ISO3 Code
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none"
+                  value={currentItem.iso3 || ""}
+                  onChange={(e) =>
+                    setCurrentItem({ ...currentItem, iso3: e.target.value })
+                  }
+                  placeholder="e.g., KSW"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
+                  Lang ID
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none"
+                  value={currentItem.langId || ""}
+                  onChange={(e) =>
+                    setCurrentItem({ ...currentItem, langId: e.target.value })
+                  }
+                  placeholder="e.g., 238"
+                />
+              </div>
               <div>
                 <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
                   {t.lang_en_label || "Language (EN)"}
@@ -536,6 +621,36 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
 
             <div className="mb-4">
               <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
+                Verse (EN)
+              </label>
+              <textarea
+                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none"
+                value={currentItem.verse_en || ""}
+                onChange={(e) =>
+                  setCurrentItem({ ...currentItem, verse_en: e.target.value })
+                }
+                rows="2"
+                placeholder="English verse text"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
+                Verse (TH)
+              </label>
+              <textarea
+                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none"
+                value={currentItem.verse_th || ""}
+                onChange={(e) =>
+                  setCurrentItem({ ...currentItem, verse_th: e.target.value })
+                }
+                rows="2"
+                placeholder="Thai verse text"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-1">
                 {t.generated_urls_label || "Generated URLs"}
               </label>
               <div className="text-xs text-gray-500 dark:text-gray-400 font-mono bg-gray-50 dark:bg-gray-900 p-2 rounded space-y-1 overflow-x-auto">
@@ -565,7 +680,7 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
               <div className="flex gap-2">
                 <button
                   onClick={handleClearData}
-                  className="text-red-500 hover:text-red-700 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                  className="text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                   title="Clear All"
                 >
                   <Trash2 className="w-5 h-5" />
@@ -580,7 +695,7 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="max-h-96 overflow-y-auto space-y-4">
               {importedData.map((item, index) => (
                 <div
                   key={index}
@@ -588,14 +703,21 @@ const ImportPage = ({ t, onBack, onForward, hasPrev, hasNext }) => {
                 >
                   <div>
                     <h3 className="font-bold text-gray-900 dark:text-white">
-                      {item.languageEn}{" "}
-                      <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                        ({item.langTh})
-                      </span>
+                      {item.languageEn}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {item.langTh && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {item.langTh}
+                      </p>
+                    )}
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                       {item.title_en}
                     </p>
+                    {item.title_th && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {item.title_th}
+                      </p>
+                    )}
                     <p className="text-xs text-gray-400 mt-1 font-mono">
                       ID: {item.programId}
                     </p>

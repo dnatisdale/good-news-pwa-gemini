@@ -106,8 +106,13 @@ export const i18n = {
 
     // Import Page
     import_content_title: "Import Content",
+    import_new_content_title: "Import New Content",
     program_id_label: "Program ID",
+    message_id_label: "Message ID",
+    find_message_id_label: "Find Message ID",
     program_id_hint: "Enter the GRN Program ID number (e.g., 62808)",
+    message_id_hint: "Enter the GRN Message ID number (e.g., 63629)",
+    find_message_id_hint: "Enter the GRN Program Message ID number (e.g., 63629)",
     program_id_error: "Please enter a valid Program ID (e.g., 62808)",
     track_number_label: "Track #",
     fetch_generate_btn: "Fetch & Generate",
@@ -127,6 +132,10 @@ export const i18n = {
     json_copied_alert:
       "JSON copied to clipboard! You can now paste it into src/data/staticContent.js",
     clear_data_confirm: "Are you sure you want to clear all imported data?",
+    find_program_id: "Find Program ID",
+    select_language: "Select Language",
+    select_message: "Select Message",
+    select_track: "Select Track",
 
     // SelectedContentPage
     messages_selected: "messages selected",
@@ -281,8 +290,13 @@ export const i18n = {
 
     // Import Page
     import_content_title: "นำเข้าเนื้อหา",
+    import_new_content_title: "นำเข้าเนื้อหาใหม่",
     program_id_label: "รหัสโปรแกรม",
+    message_id_label: "รหัสข้อความ",
+    find_message_id_label: "ค้นหารหัสข้อความ",
     program_id_hint: "กรอกหมายเลข Program ID ของ GRN (เช่น 62808)",
+    message_id_hint: "กรอกหมายเลข Message ID ของ GRN (เช่น 63629)",
+    find_message_id_hint: "กรอกหมายเลข Program Message ID ของ GRN (เช่น 63629)",
     program_id_error: "กรุณากรอก Program ID ให้ถูกต้อง (เช่น 62808)",
     track_number_label: "แทร็ก #",
     fetch_generate_btn: "ดึงข้อมูล & สร้าง",
@@ -302,6 +316,11 @@ export const i18n = {
     json_copied_alert:
       "คัดลอก JSON แล้ว! คุณสามารถวางลงในไฟล์ src/data/staticContent.js ได้เลย",
     clear_data_confirm: "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลที่นำเข้าทั้งหมด?",
+    find_program_id: "ค้นหารหัสโปรแกรม",
+    select_language: "เลือกภาษา",
+    select_message: "เลือกข้อความ",
+    select_track: "เลือกแทร็ก",
+    pro_tip_button: "เคล็ดลับมืออาชีพ",
 
     // UI Helpers
     select_message_to_listen: "เลือกข้อความเพื่อฟัง",

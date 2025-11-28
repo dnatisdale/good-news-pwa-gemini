@@ -125,13 +125,13 @@ const SearchPage = ({
           )}
 
           <p>
-            {t.start_typing_to_search ||
-              "Start typing in the banner search bar to search all"}{" "}
+            {t.search_prompt ||
+              "Please use the Search box above to find any one of our"}{" "}
             {staticContent.length}{" "}
             {staticContent.length === 1
               ? t.message || "message"
               : t.messages || "messages"}
-            .
+            !
           </p>
         </div>
       )}
