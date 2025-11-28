@@ -1286,6 +1286,7 @@ export default function App() {
           }}
           userData={userData}
           onToggleFavorite={handleToggleFavorite}
+          onOpenSearch={() => setIsSearchOpen(true)} // Auto-open search bar
         />
       );
       break;

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import { Search } from "../components/Icons";
 import ContentCard from "../components/ContentCard";
 import { staticContent } from "../data/staticContent";
@@ -19,6 +19,7 @@ const SearchPage = ({
   onHistorySelect,
   userData, // 👇 NEW PROP
   onToggleFavorite, // 👇 NEW PROP
+  onOpenSearch, // 👇 NEW PROP - function to open search bar
 }) => {
   // Receives searchTerm and nav props
   const filteredContent = useMemo(() => {
@@ -47,9 +48,16 @@ const SearchPage = ({
 
   const resultCount = filteredContent.length;
 
+  // Auto-open search bar when there are no results and no search term
+  useEffect(() => {
+    if (!searchTerm && onOpenSearch) {
+      onOpenSearch();
+    }
+  }, [searchTerm, onOpenSearch]);
+
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 flex items-center justify-center">
         <Search className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
         {t.search_results || "Search Results"}
       </h1>
