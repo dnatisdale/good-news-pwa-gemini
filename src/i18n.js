@@ -54,6 +54,7 @@ export const i18n = {
     no_results_for: "No results found for",
     search_tip: "Try searching by title, language, or a verse snippet.",
     start_typing_to_search: "Start typing to search all",
+    search_prompt: "Please use the Search box above to find any one of our",
     items: "items",
     recent_searches: "Recent Searches", // NEW
     clear_history: "Clear History", // NEW
@@ -237,6 +238,7 @@ export const i18n = {
     no_results_for: "ไม่พบผลลัพธ์สำหรับ",
     search_tip: "ลองค้นหาด้วยชื่อเรื่อง ภาษา หรือข้อความบางส่วน",
     start_typing_to_search: "เริ่มพิมพ์เพื่อค้นหาทั้งหมด",
+    search_prompt: "โปรดใช้ช่องค้นหาด้านบนเพื่อค้นหาข้อความใดข้อความหนึ่งจาก",
     items: "รายการ",
     recent_searches: "การค้นหาล่าสุด", // NEW
     clear_history: "ล้างประวัติ", // NEW
