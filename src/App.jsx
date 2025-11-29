@@ -1506,7 +1506,7 @@ export default function App() {
                 title={t.home || "Home"}
                 aria-label={t.home || "Home"}
               >
-                <Home className="w-6 h-6" />
+                <Home className="w-5 h-5" />
               </button>
             </div>
 
@@ -1544,6 +1544,7 @@ export default function App() {
 
             {/* RIGHT: Controls */}
             <div className="flex items-center justify-end space-x-1">
+              <LanguageToggle lang={lang} setLang={setLang} t={t} />
               <FloatingUtilityBar
                 t={t}
                 lang={lang}
@@ -1581,7 +1582,6 @@ export default function App() {
               >
                 <Download className="w-6 h-6" />
               </button>
-              <LanguageToggle lang={lang} setLang={setLang} t={t} />
 
               <button
                 onClick={() => setIsSearchOpen(true)}
@@ -1626,7 +1626,7 @@ export default function App() {
                 title={t.home || "Home"}
                 aria-label={t.home || "Home"}
               >
-                <Home className="w-6 h-6" />
+                <Home className="w-5 h-5" />
               </button>
             </div>
 

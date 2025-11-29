@@ -52,7 +52,7 @@ const FloatingUtilityBar = ({
     <div className="relative flex-shrink-0 mr-1 md:mr-2 z-50" ref={dropdownRef}>
 
       {/* BUTTON & BADGE CONTAINER */}
-      <div className="relative flex flex-col md:flex-row items-center gap-0.5 md:gap-1">
+      <div className="relative flex flex-col md:flex-row items-center gap-px md:gap-1">
         {/* Plus Button (on top for mobile) */}
         <button
           onClick={() => {

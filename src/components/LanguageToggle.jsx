@@ -19,7 +19,7 @@ const LanguageToggle = ({ lang, setLang, t }) => {
         <img 
           src={LanguageIconPng} 
           alt="Language Toggle" 
-          className="w-8 h-8 md:w-10 md:h-10 rounded-lg"
+          className="w-8 h-8 md:w-10 md:h-10 rounded-lg object-cover"
         />
       </button>
     </div>
