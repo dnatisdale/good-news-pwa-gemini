@@ -52,29 +52,8 @@ const FloatingUtilityBar = ({
     <div className="relative flex-shrink-0 mr-1 md:mr-2 z-50" ref={dropdownRef}>
 
       {/* BUTTON & BADGE CONTAINER */}
-      <div className="relative flex items-center gap-1">
-        {/* Minus Button */}
-        <button
-          onClick={() => {
-            const currentSize = parseInt(fontSize);
-            if (currentSize > 12) {
-              setFontSize(`${currentSize - 1}px`);
-            }
-          }}
-          disabled={parseInt(fontSize) <= 12}
-          className={`w-6 h-6 md:w-8 md:h-8 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-lg
-                     transition-all duration-200 ${
-                       parseInt(fontSize) <= 12
-                         ? 'opacity-50 cursor-not-allowed'
-                         : 'hover:brightness-125'
-                     }`}
-          style={{ backgroundColor: THAI_BLUE }}
-          aria-label="Decrease Font Size"
-        >
-          −
-        </button>
-        
-        {/* Plus Button */}
+      <div className="relative flex flex-col md:flex-row items-center gap-0.5 md:gap-1">
+        {/* Plus Button (on top for mobile) */}
         <button
           onClick={() => {
             const currentSize = parseInt(fontSize);
@@ -83,7 +62,7 @@ const FloatingUtilityBar = ({
             }
           }}
           disabled={parseInt(fontSize) >= 36}
-          className={`w-6 h-6 md:w-8 md:h-8 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-lg
+          className={`w-5 h-5 md:w-8 md:h-8 rounded shadow-md flex items-center justify-center text-white font-bold text-sm md:text-lg
                      transition-all duration-200 ${
                        parseInt(fontSize) >= 36
                          ? 'opacity-50 cursor-not-allowed'
@@ -93,6 +72,27 @@ const FloatingUtilityBar = ({
           aria-label="Increase Font Size"
         >
           +
+        </button>
+        
+        {/* Minus Button (on bottom for mobile) */}
+        <button
+          onClick={() => {
+            const currentSize = parseInt(fontSize);
+            if (currentSize > 12) {
+              setFontSize(`${currentSize - 1}px`);
+            }
+          }}
+          disabled={parseInt(fontSize) <= 12}
+          className={`w-5 h-5 md:w-8 md:h-8 rounded shadow-md flex items-center justify-center text-white font-bold text-sm md:text-lg
+                     transition-all duration-200 ${
+                       parseInt(fontSize) <= 12
+                         ? 'opacity-50 cursor-not-allowed'
+                         : 'hover:brightness-125'
+                     }`}
+          style={{ backgroundColor: THAI_BLUE }}
+          aria-label="Decrease Font Size"
+        >
+          −
         </button>
 
         {/* 2. THE YELLOW BADGE (Reacts to Card Hover!) */}
