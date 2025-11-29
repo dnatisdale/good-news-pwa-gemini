@@ -1544,6 +1544,17 @@ export default function App() {
 
             {/* RIGHT: Controls */}
             <div className="flex items-center justify-end space-x-1">
+              <FloatingUtilityBar
+                t={t}
+                lang={lang}
+                setLang={setLang}
+                selectionCount={selectedPrograms.length}
+                onClearSelection={clearSelection}
+                fontSize={fontSize}
+                setFontSize={setFontSize}
+                navigateToSelectedContent={navigateToSelectedContent}
+                isHovering={isHoveringContent}
+              />
               <button
                 onClick={() => {
                   if (deferredPrompt) {
@@ -1570,17 +1581,6 @@ export default function App() {
               >
                 <Download className="w-6 h-6" />
               </button>
-              <FloatingUtilityBar
-                t={t}
-                lang={lang}
-                setLang={setLang}
-                selectionCount={selectedPrograms.length}
-                onClearSelection={clearSelection}
-                fontSize={fontSize}
-                setFontSize={setFontSize}
-                navigateToSelectedContent={navigateToSelectedContent}
-                isHovering={isHoveringContent}
-              />
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
 
               <button
