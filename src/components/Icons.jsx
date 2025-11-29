@@ -576,3 +576,82 @@ export const MessageSquare = (props) => (
     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
   </svg>
 );
+
+export const FontSize = (props) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    {/* Small "A" */}
+    <text
+      x="2"
+      y="18"
+      fontSize="10"
+      fontWeight="bold"
+      fill="currentColor"
+      fontFamily="'Outfit', sans-serif"
+    >
+      A
+    </text>
+    {/* Medium "A" */}
+    <text
+      x="9"
+      y="18"
+      fontSize="13"
+      fontWeight="bold"
+      fill="currentColor"
+      fontFamily="'Outfit', sans-serif"
+    >
+      A
+    </text>
+    {/* Large "A" */}
+    <text
+      x="16"
+      y="18"
+      fontSize="16"
+      fontWeight="bold"
+      fill="currentColor"
+      fontFamily="'Outfit', sans-serif"
+    >
+      A
+    </text>
+  </svg>
+);
+
+export const LanguageIcon = (props) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    {/* Large "A" - styled like the logo */}
+    <text
+      x="4"
+      y="18"
+      fontSize="18"
+      fontWeight="900"
+      fill="currentColor"
+      fontFamily="'Outfit', Arial, sans-serif"
+    >
+      A
+    </text>
+    {/* Thai "ก" - styled like the logo */}
+    <text
+      x="14"
+      y="18"
+      fontSize="14"
+      fontWeight="700"
+      fill="currentColor"
+      fontFamily="'Noto Sans Thai', 'Sarabun', sans-serif"
+    >
+      ก
+    </text>
+  </svg>
+);

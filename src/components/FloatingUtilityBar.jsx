@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ReactComponent as LogoComponent } from "../assets/splash-screen-logo.svg";
-import { X, Download, Settings } from "./Icons"; // Assuming Icons are in the same directory or adjusted path
+import { X, Download, Settings, FontSize } from "./Icons"; // Assuming Icons are in the same directory or adjusted path
 
 const THAI_BLUE = "#003366";
 
@@ -50,91 +50,49 @@ const FloatingUtilityBar = ({
 
   return (
     <div className="relative flex-shrink-0 mr-1 md:mr-2 z-50" ref={dropdownRef}>
-      {/* Menu Dropdown (Opens Downwards) */}
-      {isOpen && (
-        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 md:absolute md:top-full md:left-auto md:right-0 md:translate-x-0 mt-3 bg-white rounded-2xl shadow-xl p-3 w-72 space-y-3 ring-1 ring-black ring-opacity-5">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <LogoComponent
-                className="w-8 h-8 rounded-md flex-shrink-0 bg-white p-0.5"
-                aria-label="App Logo"
-              />
-              <span
-                className="font-semibold text-white text-base px-2 py-1 rounded-lg"
-                style={{ backgroundColor: THAI_BLUE }}
-              >
-                {labelTools}
-              </span>
-            </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="p-1 rounded-full hover:bg-gray-100"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-          <div className="flex items-center justify-between text-xs text-gray-700">
-            <span>
-              {labelSelected}: <strong>{selectionCount}</strong>
-            </span>
-            <button
-              onClick={onClearSelection}
-              className="px-2 py-1 rounded-md text-xs bg-gray-200 hover:bg-gray-300"
-            >
-              {labelClear}
-            </button>
-          </div>
-          <button
-            onClick={() => {
-              navigateToSelectedContent();
-              setIsOpen(false);
-            }}
-            className="w-full py-2 text-white bg-brand-red hover:scale-105 rounded-lg text-center shadow-md transition-all"
-          >
-            <div className="flex items-center justify-center space-x-2">
-              <Download className="w-5 h-5" />
-              <span className="font-semibold">{t.selected_programs || "Selected Messages"}</span>
-            </div>
-          </button>
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-600">{labelFont}</span>
-            <div className="flex items-center space-x-2 flex-grow ml-2">
-              <span className="text-xs text-gray-500">A</span>
-              <input
-                type="range"
-                min="14"
-                max="24"
-                step="1"
-                value={parseInt(fontSize)}
-                onChange={(e) => setFontSize(`${e.target.value}px`)}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-red-700"
-              />
-              <span className="text-lg text-gray-700 font-bold">A</span>
-            </div>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-600">{labelLang}</span>
-            <button
-              onClick={toggleLang}
-              className="w-12 h-8 rounded-lg font-bold text-white flex items-center justify-center"
-              style={{ backgroundColor: THAI_BLUE }}
-            >
-              {lang === "en" ? "ก" : "A"}
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* BUTTON & BADGE CONTAINER */}
-      <div className="relative">
-        {/* 1. THE BLUE BUTTON (Standard Hover only) */}
+      <div className="relative flex items-center gap-1">
+        {/* Minus Button */}
         <button
-          onClick={() => setIsOpen((prev) => !prev)}
-          className="w-8 h-8 md:w-10 md:h-10 rounded-full shadow-md flex items-center justify-center text-white relative 
-                     transition-all duration-200 transform hover:scale-110 hover:brightness-125 bg-gradient-to-br from-brand-blue to-brand-blue-dark"
-          aria-label="Tools Panel"
+          onClick={() => {
+            const currentSize = parseInt(fontSize);
+            if (currentSize > 12) {
+              setFontSize(`${currentSize - 1}px`);
+            }
+          }}
+          disabled={parseInt(fontSize) <= 12}
+          className={`w-6 h-6 md:w-8 md:h-8 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-lg
+                     transition-all duration-200 ${
+                       parseInt(fontSize) <= 12
+                         ? 'opacity-50 cursor-not-allowed'
+                         : 'hover:brightness-125'
+                     }`}
+          style={{ backgroundColor: THAI_BLUE }}
+          aria-label="Decrease Font Size"
         >
-          <Settings className="w-5 h-5 md:w-6 md:h-6" />
+          −
+        </button>
+        
+        {/* Plus Button */}
+        <button
+          onClick={() => {
+            const currentSize = parseInt(fontSize);
+            if (currentSize < 36) {
+              setFontSize(`${currentSize + 1}px`);
+            }
+          }}
+          disabled={parseInt(fontSize) >= 36}
+          className={`w-6 h-6 md:w-8 md:h-8 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-lg
+                     transition-all duration-200 ${
+                       parseInt(fontSize) >= 36
+                         ? 'opacity-50 cursor-not-allowed'
+                         : 'hover:brightness-125'
+                     }`}
+          style={{ backgroundColor: THAI_BLUE }}
+          aria-label="Increase Font Size"
+        >
+          +
         </button>
 
         {/* 2. THE YELLOW BADGE (Reacts to Card Hover!) */}

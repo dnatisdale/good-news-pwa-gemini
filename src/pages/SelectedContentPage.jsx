@@ -83,38 +83,38 @@ const SelectedContentPage = ({
 
         {/* --- Action Buttons --- */}
         <div className="flex justify-center mb-4">
-          <div className="grid grid-cols-2 gap-2.5 max-w-[240px] w-full">
+          <div className="grid grid-cols-2 gap-5 max-w-[480px] w-full">
             <button
               onClick={onShare}
-              className="aspect-square bg-brand-red-dark text-white p-2 rounded-lg flex flex-col items-center justify-center shadow hover:bg-brand-red transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
+              className="aspect-square bg-brand-red-dark text-white p-6 rounded-lg flex flex-col items-center justify-center shadow hover:bg-brand-red transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
-              <Share2 className="w-5 h-5 mb-1" />
-              <span className="text-sm font-medium leading-tight">{t.share || "Share"}</span>
+              <Share2 className="w-10 h-10 mb-2" />
+              <span className="text-base font-medium leading-tight">{t.share || "Share"}</span>
             </button>
             <button
               onClick={onCopy}
-              className="aspect-square bg-brand-red-dark text-white p-2 rounded-lg flex flex-col items-center justify-center shadow hover:bg-brand-red transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
+              className="aspect-square bg-brand-red-dark text-white p-6 rounded-lg flex flex-col items-center justify-center shadow hover:bg-brand-red transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
-              <Copy className="w-5 h-5 mb-1" />
-              <span className="text-sm font-medium leading-tight">{t.copy || "Copy"}</span>
+              <Copy className="w-10 h-10 mb-2" />
+              <span className="text-base font-medium leading-tight">{t.copy || "Copy"}</span>
             </button>
 
             <button
               onClick={onDownload}
-              className="aspect-square bg-brand-red-dark text-white p-2 rounded-lg flex flex-col items-center justify-center shadow hover:bg-brand-red transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
+              className="aspect-square bg-brand-red-dark text-white p-6 rounded-lg flex flex-col items-center justify-center shadow hover:bg-brand-red transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
-              <Download className="w-5 h-5 mb-1" />
-              <span className="text-sm font-medium text-center leading-tight">
+              <Download className="w-10 h-10 mb-2" />
+              <span className="text-base font-medium text-center leading-tight">
                 {t.print_word || "Print"}
               </span>
             </button>
 
             <button
               onClick={onDownloadPDF}
-              className="aspect-square bg-brand-red-dark text-white p-2 rounded-lg flex flex-col items-center justify-center shadow hover:bg-brand-red transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
+              className="aspect-square bg-brand-red-dark text-white p-6 rounded-lg flex flex-col items-center justify-center shadow hover:bg-brand-red transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
-              <Download className="w-5 h-5 mb-1" />
-              <span className="text-sm font-medium text-center leading-tight">
+              <Download className="w-10 h-10 mb-2" />
+              <span className="text-base font-medium text-center leading-tight">
                 PDF
               </span>
             </button>
