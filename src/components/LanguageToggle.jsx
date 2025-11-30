@@ -1,5 +1,5 @@
 import React from "react";
-import LanguageIconPng from "../assets/language-icon.png";
+import LanguageIconPng from "../assets/language-icon.svg";
 
 const LanguageToggle = ({ lang, setLang, t }) => {
   const toggleLang = () => {
@@ -16,9 +16,9 @@ const LanguageToggle = ({ lang, setLang, t }) => {
         title="Th-Eng Switcher"
         aria-label="Th-Eng Switcher"
       >
-        <img 
-          src={LanguageIconPng} 
-          alt="Language Toggle" 
+        <img
+          src={LanguageIconPng}
+          alt="Language Toggle"
           className="w-8 h-8 md:w-10 md:h-10 rounded-lg object-cover"
         />
       </button>
