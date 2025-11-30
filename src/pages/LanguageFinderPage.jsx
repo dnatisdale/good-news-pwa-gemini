@@ -249,9 +249,38 @@ const LanguageFinderPage = ({
                       onClick={() =>
                         onSelectLanguage && onSelectLanguage(langItem.stableKey)
                       }
-                      className="w-full text-left px-3 py-2 rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition flex justify-between items-center"
+                      className="w-full text-left px-3 py-2 rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition flex items-center"
                     >
-                      <div className="min-w-0">
+                      {/* Favorite Heart - Left Side */}
+                      {onToggleFavoriteLanguage && (
+                        <div
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onToggleFavoriteLanguage(langItem.stableKey);
+                          }}
+                          className="pr-3 flex-shrink-0"
+                        >
+                          <Heart
+                            className={`w-5 h-5 cursor-pointer transition-all ${
+                              isFav
+                                ? "fill-brand-red text-brand-red"
+                                : "text-gray-400 hover:text-brand-red hover:fill-brand-red"
+                            }`}
+                            style={
+                              isFav ? { fill: "#CC3333", color: "#CC3333" } : {}
+                            }
+                            title={
+                              isFav
+                                ? t.unfavorite_language ||
+                                  "Remove favorite language"
+                                : t.favorite_language || "Favorite language"
+                            }
+                          />
+                        </div>
+                      )}
+
+                      {/* Language Name and Info */}
+                      <div className="min-w-0 flex-grow">
                         <div
                           className={`${
                             scriptMode === "th"
@@ -266,37 +295,6 @@ const LanguageFinderPage = ({
                           {langItem.isoCode ? ` · ${langItem.isoCode}` : ""}
                         </div>
                       </div>
-
-                      {/* Favorite Heart */}
-                      {onToggleFavoriteLanguage && (
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onToggleFavoriteLanguage(langItem.stableKey);
-                          }}
-                          className={`ml-2 p-2 rounded-full transition-all ${
-                            isFav ? "bg-red-100" : "bg-gray-100 hover:bg-red-100"
-                          }`}
-                          title={
-                            isFav
-                              ? t.unfavorite_language ||
-                                "Remove favorite language"
-                              : t.favorite_language || "Favorite language"
-                          }
-                        >
-                          <Heart
-                            className={`w-5 h-5 ${
-                              isFav
-                                ? "fill-brand-red text-brand-red"
-                                : "text-gray-500"
-                            }`}
-                            style={
-                              isFav ? { fill: "#CC3333", color: "#CC3333" } : {}
-                            }
-                          />
-                        </button>
-                      )}
                     </button>
                   );
                 })}

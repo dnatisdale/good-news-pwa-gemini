@@ -46,7 +46,7 @@ const ContentCard = ({
       {/* --- CHECKBOX AREA --- */}
       {onToggle && (
         <div
-          className="pr-4 pt-1"
+          className="pr-3 pt-1"
           onClick={(e) => {
             e.stopPropagation();
             onToggle();
@@ -57,6 +57,27 @@ const ContentCard = ({
             className="w-6 h-6 accent-[#003366] dark:accent-[#a91b0d] cursor-pointer"
             checked={isSelected || false}
             onChange={() => {}} // Handled by div click
+          />
+        </div>
+      )}
+
+      {/* --- FAVORITE HEART (right after checkbox) --- */}
+      {onToggleFavorite && (
+        <div
+          className="pr-3 pt-1"
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleFavorite();
+          }}
+        >
+          <Heart
+            className={`w-5 h-5 cursor-pointer transition-all ${
+              isFavorite
+                ? "fill-brand-red text-brand-red"
+                : "text-gray-400 dark:text-gray-500 hover:text-brand-red hover:fill-brand-red"
+            }`}
+            style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : {}}
+            title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           />
         </div>
       )}
@@ -93,7 +114,7 @@ const ContentCard = ({
         </p>
       </div>
 
-      {/* --- ACTION BUTTONS (Play, Favorite, Share) --- */}
+      {/* --- ACTION BUTTONS (Play, Share) --- */}
       <div className="pl-2 pt-1 flex items-center gap-2">
         {/* Duration Display - Left of Play Button */}
         {item.duration && (
@@ -121,31 +142,6 @@ const ContentCard = ({
             ) : (
               <Volume2 className="w-6 h-6" />
             )}
-          </button>
-        )}
-
-        {/* Favorite Button */}
-        {onToggleFavorite && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggleFavorite();
-            }}
-            className={`p-1 md:p-2 rounded-full transition-all ${
-              isFavorite
-                ? "bg-red-100 dark:bg-red-100"
-                : "bg-gray-100 dark:bg-white hover:bg-red-100"
-            }`}
-            title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-          >
-            <Heart
-              className={`w-6 h-6 ${
-                isFavorite
-                  ? "fill-brand-red text-brand-red"
-                  : "text-gray-500 dark:text-gray-600"
-              }`}
-              style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : {}}
-            />
           </button>
         )}
 
