@@ -9,17 +9,17 @@ const LanguageToggle = ({ lang, setLang, t }) => {
   };
 
   return (
-    <div className="flex items-center space-x-1 md:space-x-2">
+    <div className="flex items-center space-x-1 md:space-x-2 flex-shrink-0">
       <button
         onClick={toggleLang}
-        className="transition-opacity hover:opacity-80"
+        className="transition-opacity hover:opacity-80 flex-shrink-0"
         title="Th-Eng Switcher"
         aria-label="Th-Eng Switcher"
       >
         <img
           src={LanguageIconPng}
           alt="Language Toggle"
-          className="w-8 h-8 md:w-10 md:h-10 rounded-lg object-cover"
+          className="w-8 h-8 md:w-10 md:h-10 rounded-lg object-cover flex-shrink-0"
         />
       </button>
     </div>

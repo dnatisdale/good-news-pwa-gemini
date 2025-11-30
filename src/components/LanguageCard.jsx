@@ -49,6 +49,27 @@ const LanguageCard = ({
           />
         </div>
 
+        {/* Favorite Heart - Right after checkbox */}
+        {onToggleFavorite && (
+          <div
+            className="pr-3 flex items-center shrink-0"
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleFavorite();
+            }}
+          >
+            <Heart
+              className={`w-5 h-5 cursor-pointer transition-all ${
+                isFavorite
+                  ? "fill-brand-red text-brand-red"
+                  : "text-gray-400 dark:text-gray-500 hover:text-brand-red hover:fill-brand-red"
+              }`}
+              style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : {}}
+              title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+            />
+          </div>
+        )}
+
         {/* TEXT AREA – takes all remaining width */}
         <div
           onClick={() => onSelect(languageName)}
@@ -65,7 +86,7 @@ const LanguageCard = ({
           </p>
         </div>
 
-        {/* ICONS – fixed width, don’t squeeze text */}
+        {/* ICONS – fixed width, don't squeeze text */}
         <div className="flex items-center gap-2 shrink-0">
           {/* Play Button */}
           <button
@@ -82,29 +103,6 @@ const LanguageCard = ({
           >
             <Volume2 className="w-6 h-6" />
           </button>
-
-          {/* Favorite Button */}
-          {onToggleFavorite && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onToggleFavorite();
-              }}
-              className={`p-1 md:p-2 rounded-full transition-all ${
-                isFavorite
-                  ? "bg-red-100 dark:bg-red-100 text-red-600 dark:text-red-600"
-                  : "bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-red-100 hover:text-red-600"
-              }`}
-              title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-            >
-              <Heart
-                className={`w-6 h-6 ${
-                  isFavorite ? "fill-brand-red text-brand-red" : ""
-                }`}
-                style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : {}}
-              />
-            </button>
-          )}
 
           {/* Share Button */}
           <button
