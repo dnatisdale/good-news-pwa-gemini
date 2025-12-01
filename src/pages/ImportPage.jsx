@@ -382,12 +382,12 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
               </p>
             </div>
             <div className="w-24">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+              <label className="block text-lg font-bold text-gray-700 dark:text-gray-200 mb-2">
                 {t.track_number_label || "Track #"}
               </label>
               <input
                 type="text"
-                className="block w-full px-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-600 dark:border-gray-500 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent sm:text-sm text-center transition-colors"
+                className="block w-full px-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-600 dark:border-gray-500 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent text-base text-center transition-colors"
                 value={manualEntry.trackNumber}
                 onChange={(e) =>
                   setManualEntry({
