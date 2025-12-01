@@ -100,7 +100,7 @@ const MessagesByLanguagePage = ({
   }
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full p-4 pt-8">
       {/* Navigation Bar (Dark/Light) */}
       <div className="bg-slate-100 dark:bg-slate-700 text-gray-600 dark:text-white px-4 py-2 flex justify-between items-center shrink-0 border-b border-slate-200 dark:border-slate-600">
         <button
@@ -132,20 +132,6 @@ const MessagesByLanguagePage = ({
           <div className={`text-lg font-semibold ${ACCENT_COLOR_CLASS} dark:text-white`}>
             {languageDisplayName}
           </div>
-          <div className="text-xs text-slate-500 dark:text-white">
-            {languageMessageCount} {t.messages || "messages"}
-          </div>
-        </div>
-      </div>
-
-      {/* Scrollable list of messages */}
-      <div className="flex-1 overflow-y-auto px-3 pb-4 space-y-2">
-        {currentMessageList.map((item) => (
-          <ContentCard
-            key={item.id}
-            item={item}
-            lang={lang}
-            t={t}
             onSelect={onSelectMessage}
             showLanguageName={false}
             // --- Program selection (for bulk actions / playlist, etc.)
