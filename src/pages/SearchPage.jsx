@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect } from "react";
-import { Search } from "../components/Icons";
+import { Search, ChevronLeft, ChevronRight } from "../components/Icons";
 import ContentCard from "../components/ContentCard";
 import { staticContent } from "../data/staticContent";
 
@@ -57,6 +57,30 @@ const SearchPage = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
+      {/* Navigation Header */}
+      <div className="bg-slate-100 dark:bg-slate-700 text-gray-600 dark:text-white px-4 py-2 flex justify-between items-center mb-4 border-b border-slate-200 dark:border-slate-600">
+        <button
+          onClick={onBack}
+          disabled={!hasPrev}
+          className={`flex items-center text-base font-semibold transition-colors ${
+            hasPrev ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+          }`}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        <button
+          onClick={onForward}
+          disabled={!hasNext}
+          className={`flex items-center text-base font-semibold transition-colors ${
+            hasNext ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+          }`}
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
+      </div>
+
       <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 flex items-center justify-center">
         <Search className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
         {t.search_results || "Search Results"}

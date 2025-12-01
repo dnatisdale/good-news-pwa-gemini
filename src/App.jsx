@@ -1244,8 +1244,8 @@ export default function App() {
           t={t}
           onBack={goBack}
           onForward={() => handleNextPrevMessage("next")}
-          hasPrev={canGoPrev}
-          hasNext={canGoNext}
+          hasPrev={hasPrev}
+          hasNext={hasNext}
           userData={userData}
           saveUserData={saveUserData}
           onPlay={handlePlayMessage}
@@ -1492,12 +1492,12 @@ export default function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="5fish.mobi/th?r=Asia&country=Thailand"
-                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors"
+                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors flex-shrink-0"
               >
                 <img
                   src={AppLogo}
                   alt={t.app_name}
-                  className="h-8 w-8 rounded-md shadow-sm bg-white p-0.5"
+                  className="h-8 w-8 rounded-md shadow-sm bg-white p-0.5 flex-shrink-0"
                 />
               </a>
               <button

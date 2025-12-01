@@ -29,10 +29,18 @@ const ProgramDetailsPage = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
-      <div className="flex items-center mb-4">
-        <button onClick={onBack} className="mr-2 p-2 rounded-full hover:bg-gray-100">
-          <ChevronLeft className="w-6 h-6 text-gray-600" />
+      {/* Navigation Header */}
+      <div className="bg-slate-100 dark:bg-slate-700 text-gray-600 dark:text-white px-4 py-2 flex items-center mb-4 border-b border-slate-200 dark:border-slate-600">
+        <button
+          onClick={onBack}
+          className="flex items-center text-base font-semibold transition-colors hover:text-gray-900 dark:hover:text-gray-300"
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
         </button>
+      </div>
+
+      <div className="flex items-center mb-4">
         <h1 className={`text-xl font-bold ${ACCENT_COLOR_CLASS}`}>
           {programTitle}
         </h1>

@@ -106,7 +106,7 @@ const MessagesByLanguagePage = ({
         <button
           onClick={onBack}
           disabled={!hasPrev}
-          className={`flex items-center text-sm font-medium transition-colors ${
+          className={`flex items-center text-base font-semibold transition-colors ${
             hasPrev ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
           }`}
         >
@@ -117,7 +117,7 @@ const MessagesByLanguagePage = ({
         <button
           onClick={onForward}
           disabled={!hasNext}
-          className={`flex items-center text-sm font-medium transition-colors ${
+          className={`flex items-center text-base font-semibold transition-colors ${
             hasNext ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
           }`}
         >

@@ -61,27 +61,23 @@ const NotesPage = ({ lang, t, onBack, onForward, hasPrev, hasNext, userData, sav
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto fade-in">
       {/* Navigation Header */}
-      <div className="flex justify-between items-center mb-4">
+      <div className="bg-slate-100 dark:bg-slate-700 text-gray-600 dark:text-white px-4 py-2 flex justify-between items-center mb-4 border-b border-slate-200 dark:border-slate-600">
         <button
           onClick={onBack}
-          className={`text-sm font-semibold flex items-center transition-colors ${
-            hasPrev
-              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-              : "text-gray-400 cursor-not-allowed"
-          }`}
           disabled={!hasPrev}
+          className={`flex items-center text-base font-semibold transition-colors ${
+            hasPrev ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+          }`}
         >
           <ChevronLeft className="w-5 h-5 mr-1" />
           {t.back || "Back"}
         </button>
         <button
           onClick={onForward}
-          className={`text-sm font-semibold flex items-center transition-colors ${
-            hasNext
-              ? `${ACCENT_COLOR_CLASS} hover:text-red-700`
-              : "text-gray-400 cursor-not-allowed"
-          }`}
           disabled={!hasNext}
+          className={`flex items-center text-base font-semibold transition-colors ${
+            hasNext ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+          }`}
         >
           {t.forward || "Forward"}
           <ChevronRight className="w-5 h-5 ml-1" />

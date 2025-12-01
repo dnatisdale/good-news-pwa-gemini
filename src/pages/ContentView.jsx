@@ -238,139 +238,149 @@ const ContentView = ({
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
+      {/* Navigation Header */}
+      <div className="bg-slate-100 dark:bg-slate-700 text-gray-600 dark:text-white px-4 py-2 flex justify-between items-center mb-4 border-b border-slate-200 dark:border-slate-600">
+        <button
+          onClick={onBack}
+          disabled={!hasPrev}
+          className={`flex items-center text-base font-semibold transition-colors ${
+            hasPrev ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+          }`}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        
+        <button
+          onClick={onForward}
+          disabled={!hasNext}
+          className={`flex items-center text-base font-semibold transition-colors ${
+            hasNext ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+          }`}
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
+      </div>
 
-
-      {/* Listen Button */}
-
-
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {/* Left Column: QR Code, Bible Verse, and controls */}
-        <div className="md:order-1 flex flex-col items-center w-full max-w-lg mx-auto">
-          
-          {/* --- HEADER ROW: Text Left, Heart Right --- */}
-          <div className="w-full flex justify-between items-end mb-4">
-            <div className="flex flex-col items-start">
-              <h1 className="text-3xl font-extrabold text-brand-red dark:text-white leading-tight">
-                {languageDisplay}
-              </h1>
-              <p className="text-lg text-gray-800 dark:text-white leading-tight mt-1">
-                <span className="font-bold">{messageTitle}</span>
-                <span className="text-sm text-gray-500 dark:text-white ml-2">#{item.id}</span>
-              </p>
-            </div>
-            
-          </div>
-
-          {/* --- NEW LAYOUT: QR Code Left, Buttons Right --- */}
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-6 w-full">
-            
-            {/* QR Code (Left) */}
-            <div
-              className="flex-shrink-0 flex flex-col items-center p-3 bg-white rounded-xl shadow-inner cursor-pointer transition-all duration-300"
-              onClick={() => setIsQrLarge((p) => !p)}
-              style={{
-                width: isQrLarge ? "100%" : "auto",
-                maxWidth: isQrLarge ? "100%" : "200px",
-              }}
-            >
-              <div className="p-2 bg-gray-50 rounded-lg">
-                <QRCodeDisplay
-                  url={cardUrl}
-                  size={isQrLarge ? 250 : 140}
-                  fgColor="#000000"
-                />
-              </div>
-              <p className="text-xs text-gray-500 mt-2 text-center whitespace-nowrap">
-                {isQrLarge
-                  ? t.tap_to_shrink || "Tap to shrink"
-                  : t.tap_to_enlarge || "Tap to enlarge"}
-              </p>
-            </div>
-
-            {/* Buttons Column (Right) */}
-            <div className="flex-grow w-full flex flex-col gap-4">
-              {/* Download Audio Button */}
-              {item.trackDownloadUrl && (
-                <button
-                  onClick={() => !isOffline && !isDownloading && downloadTrack(item)}
-                  disabled={isOffline || isDownloading}
-                  className={`w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 ${
-                    isOffline
-                      ? "bg-amber-500 cursor-default"
-                      : isDownloading
-                      ? "bg-gray-400 cursor-wait"
-                      : "bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-xl"
-                  }`}
-                >
-                  {isOffline ? (
-                    <>
-                      <CheckCircle className="w-6 h-6 mr-2" />
-                      {t.downloaded || "Downloaded"}
-                    </>
-                  ) : isDownloading ? (
-                    <>
-                      <Loader className="w-6 h-6 mr-2 animate-spin" />
-                      {t.downloading || "Downloading..."}
-                    </>
-                  ) : (
-                    <>
-                      <Download className="w-6 h-6 mr-2" />
-                      {t.download_audio || "Download Audio"}
-                    </>
-                  )}
-                </button>
-              )}
-
-              {/* Listen Button */}
-              {item.trackDownloadUrl && (
-                <button
-                  onClick={() => onPlay(item)}
-                  style={{ backgroundColor: THAI_BLUE }}
-                  className="w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 hover:shadow-xl"
-                >
-                  <PlayCircle className="w-6 h-6 mr-2" />
-                  {t.listen_offline || "Listen (Offline Enabled)"}
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Bible Verse Box - between QR code and buttons */}
-          <div className="w-full bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-brand-red mb-6">
-            {item.verse_en || item.verse_th ? (
-              <p className="text-lg leading-relaxed text-gray-700 italic whitespace-pre-line">
-                {lang === "en" ? item.verse_en : item.verse_th}
-              </p>
-            ) : (
-              <p className="text-gray-400 italic text-center">
-                {t.no_verse_content || "No verse available"}
-              </p>
-            )}
-          </div>
-
-          {/* Buttons */}
-          <div className="grid grid-cols-2 gap-3 mb-6 w-full">
-            <button
-              onClick={handleShare}
-              className="p-3 font-bold text-white rounded-xl bg-brand-red shadow-md flex flex-col items-center justify-center text-sm leading-tight transition-all duration-200 hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-lg"
-            >
-              <Share2 className="w-5 h-5 mb-1" /> {t.share_copy || "Share/Copy"}
-            </button>
-            <button
-              onClick={downloadShareCard}
-              className="p-3 font-bold text-white rounded-xl bg-brand-red shadow-md flex flex-col items-center justify-center text-sm leading-tight transition-all duration-200 hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-lg"
-            >
-              <Download className="w-5 h-5 mb-1" />
-              {t.download || "Download"} <br /> {t.qr_card || "QR Card"}
-            </button>
-            
-
+      {/* Centered Container */}
+      <div className="flex flex-col items-center w-full max-w-lg mx-auto">
+        
+        {/* --- HEADER ROW: Text Left, Heart Right --- */}
+        <div className="w-full flex justify-between items-end mb-4">
+          <div className="flex flex-col items-start">
+            <h1 className="text-3xl font-extrabold text-brand-red dark:text-white leading-tight">
+              {languageDisplay}
+            </h1>
+            <p className="text-lg text-gray-800 dark:text-white leading-tight mt-1">
+              <span className="font-bold">{messageTitle}</span>
+              <span className="text-sm text-gray-500 dark:text-white ml-2">#{item.id}</span>
+            </p>
           </div>
         </div>
 
-        {/* Right Column: Empty on desktop, hidden on mobile */}
-        <div className="md:order-2 hidden md:block">
-          {/* Reserved for future content if needed */}
+        {/* --- NEW LAYOUT: QR Code Left, Buttons Right --- */}
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-6 w-full">
+          
+          {/* QR Code (Left) */}
+          <div
+            className="flex-shrink-0 flex flex-col items-center p-3 bg-white rounded-xl shadow-inner cursor-pointer transition-all duration-300"
+            onClick={() => setIsQrLarge((p) => !p)}
+            style={{
+              width: isQrLarge ? "100%" : "auto",
+              maxWidth: isQrLarge ? "100%" : "200px",
+            }}
+          >
+            <div className="p-2 bg-gray-50 rounded-lg">
+              <QRCodeDisplay
+                url={cardUrl}
+                size={isQrLarge ? 250 : 140}
+                fgColor="#000000"
+              />
+            </div>
+            <p className="text-xs text-gray-500 mt-2 text-center whitespace-nowrap">
+              {isQrLarge
+                ? t.tap_to_shrink || "Tap to shrink"
+                : t.tap_to_enlarge || "Tap to enlarge"}
+            </p>
+          </div>
+
+          {/* Buttons Column (Right) */}
+          <div className="flex-grow w-full flex flex-col gap-4">
+            {/* Download Audio Button */}
+            {item.trackDownloadUrl && (
+              <button
+                onClick={() => !isOffline && !isDownloading && downloadTrack(item)}
+                disabled={isOffline || isDownloading}
+                className={`w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 ${
+                  isOffline
+                    ? "bg-amber-500 cursor-default"
+                    : isDownloading
+                    ? "bg-gray-400 cursor-wait"
+                    : "bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-xl"
+                }`}
+              >
+                {isOffline ? (
+                  <>
+                    <CheckCircle className="w-6 h-6 mr-2" />
+                    {t.downloaded || "Downloaded"}
+                  </>
+                ) : isDownloading ? (
+                  <>
+                    <Loader className="w-6 h-6 mr-2 animate-spin" />
+                    {t.downloading || "Downloading..."}
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-6 h-6 mr-2" />
+                    {t.download_audio || "Download Audio"}
+                  </>
+                )}
+              </button>
+            )}
+
+            {/* Listen Button */}
+            {item.trackDownloadUrl && (
+              <button
+                onClick={() => onPlay(item)}
+                style={{ backgroundColor: THAI_BLUE }}
+                className="w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 hover:shadow-xl"
+              >
+                <PlayCircle className="w-6 h-6 mr-2" />
+                {t.listen_offline || "Listen (Offline Enabled)"}
+              </button>
+            )}
+
+            {/* Share/Copy and Download QR Card buttons - stacked, matching Download Audio style */}
+            <div className="flex flex-col gap-4 w-full">
+              <button
+                onClick={handleShare}
+                className="w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-xl"
+              >
+                <Share2 className="w-6 h-6 mr-2" /> {t.share_copy || "Share/Copy"}
+              </button>
+              <button
+                onClick={downloadShareCard}
+                className="w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-xl"
+              >
+                <Download className="w-6 h-6 mr-2" />
+                {t.download || "Download"} {t.qr_card || "QR Card"}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bible Verse Box */}
+        <div className="w-full bg-gray-50 p-4 rounded-xl shadow-inner border-l-4 border-brand-red mb-6">
+          {item.verse_en || item.verse_th ? (
+            <p className="text-lg leading-relaxed text-gray-700 italic whitespace-pre-line">
+              {lang === "en" ? item.verse_en : item.verse_th}
+            </p>
+          ) : (
+            <p className="text-gray-400 italic text-center">
+              {t.no_verse_content || "No verse available"}
+            </p>
+          )}
         </div>
       </div>
     </div>
