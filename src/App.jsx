@@ -1609,12 +1609,12 @@ export default function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="5fish.mobi/th?r=Asia&country=Thailand"
-                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white flex-shrink-0"
               >
                 <img
                   src={BannerLogo}
                   alt={t.app_name}
-                  className="h-12 w-auto rounded-md shadow-sm bg-white p-1"
+                  className="h-12 w-auto rounded-md shadow-sm bg-white p-1 flex-shrink-0"
                 />
               </a>
               <button
@@ -1663,7 +1663,7 @@ export default function App() {
             </div>
 
             {/* Right: Controls */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 flex-shrink-0">
               <button
                 onClick={() => {
                   if (deferredPrompt) {
@@ -1796,9 +1796,9 @@ export default function App() {
           >
             {/* Header */}
             <div
-              className={`${PRIMARY_COLOR_CLASS} px-3 py-2 flex flex-col space-y-1 rounded-r-xl flex-shrink-0`}
+              className={`${PRIMARY_COLOR_CLASS} px-3 py-1.5 flex flex-col space-y-0 rounded-r-xl flex-shrink-0`}
             >
-              {/* Top Row: Logo (Home Button), Title, Close */}
+              {/* Top Row: Logo, Title, Close */}
               <div className="flex justify-between items-center">
                 <div className="flex items-center space-x-3">
                   {/* 1. The Square Logo (Now acts as Home Button) */}
@@ -1807,18 +1807,18 @@ export default function App() {
                       navigateToHome();
                       setIsDrawerOpen(false);
                     }}
-                    className="focus:outline-none transition-transform active:scale-95"
+                    className="focus:outline-none transition-transform active:scale-95 flex-shrink-0"
                     title={t.home || "Home"}
                   >
                     <img
                       src={AppLogo}
                       alt="Logo"
-                      className="w-10 h-10 rounded-xl bg-white shadow-md p-1"
+                      className="w-10 h-10 rounded-xl bg-white shadow-md p-1 flex-shrink-0"
                     />
                   </button>
 
                   {/* 2. App Title */}
-                  <h2 className="text-lg font-bold text-white leading-tight">
+                  <h2 className="text-lg font-bold text-white leading-none">
                     {t.app_name}
                   </h2>
                 </div>
@@ -1826,14 +1826,14 @@ export default function App() {
                 {/* 3. Close Button */}
                 <button
                   onClick={() => setIsDrawerOpen(false)}
-                  className="text-white p-1 hover:bg-red-800 rounded-full"
+                  className="text-white p-1 hover:bg-red-800 rounded-full flex-shrink-0"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
-              {/* Bottom Row: Share App Button (Right Aligned) */}
-              <div className="flex justify-end">
+              {/* Bottom Row: Share App Button (Left Aligned with Title) */}
+              <div className="flex justify-start -mt-1" style={{ paddingLeft: '60px' }}>
                 <button
                   onClick={async (e) => {
                     e.stopPropagation(); // Prevent drawer close
@@ -1864,17 +1864,17 @@ export default function App() {
                       }
                     }
                   }}
-                  className="flex items-center gap-1 px-2 py-0.5 bg-[#003366] text-white rounded text-[10px] font-semibold hover:bg-[#004d99] transition-colors whitespace-nowrap shadow-sm"
+                  className="flex items-center gap-1.5 px-2 py-1 bg-[#003366] text-white rounded text-xs font-semibold hover:bg-[#004d99] transition-colors whitespace-nowrap shadow-sm"
                   title={t.share_app || "Share App"}
                 >
-                  <ExternalLink className="w-3 h-3" />
+                  <ExternalLink className="w-3.5 h-3.5" />
                   {t.share_app || "Share"}
                 </button>
               </div>
             </div>
 
             {/* Navigation Links (Scrollable) - Tighter spacing */}
-            <nav className="p-4 space-y-1 overflow-y-auto flex-grow">
+            <nav className="p-4 space-y-0.5 overflow-y-auto flex-grow">
               {/* Navigation Items */}
               {[
                 { name: "Search", icon: Search, target: "Search" },
@@ -1909,7 +1909,7 @@ export default function App() {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full flex items-center p-3 rounded-lg font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99] transition-colors"
+                      className="w-full flex items-center p-2 rounded-lg font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99] transition-colors"
                     >
                       <item.icon
                         className={`mr-3 ${
@@ -1944,7 +1944,7 @@ export default function App() {
                   <button
                     key={item.name}
                     onClick={() => navigateTo(item.target)}
-                    className={`w-full flex items-center justify-between p-3 rounded-lg font-semibold transition-colors ${
+                    className={`w-full flex items-center justify-between p-2 rounded-lg font-semibold transition-colors ${
                       currentPage.name === item.target
                         ? `${ACCENT_COLOR_CLASS} bg-red-100 dark:bg-red-900/30`
                         : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99]"
@@ -1974,7 +1974,7 @@ export default function App() {
               {/* --- Dark Mode Toggle --- */}
               <button
                 onClick={toggleTheme}
-                className="w-full flex items-center justify-between p-3 rounded-lg font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99] transition-colors"
+                className="w-full flex items-center justify-between p-2 rounded-lg font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99] transition-colors"
               >
                 <div className="flex items-center">
                   {theme === "dark" ? (
@@ -1990,18 +1990,33 @@ export default function App() {
             </nav>
 
             {/* Bottom Controls (Sticky) */}
-            <div className="p-4 border-t border-gray-200 flex-shrink-0 space-y-3">
+            <div className="p-2 pt-3 border-t border-gray-200 flex-shrink-0 space-y-2">
               {/* --- PWA Share QR Code --- */}
               <div className="">
                 {/* Label removed as requested */}
                 <div className="flex justify-center">
-                  <div className="bg-white p-2 rounded-lg shadow-sm">
+                  <div 
+                    className="bg-white p-1.5 rounded shadow-sm cursor-pointer hover:shadow-md transition-shadow"
+                    onClick={() => {
+                      // Create modal for enlarged QR
+                      const modal = document.createElement('div');
+                      modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+                      modal.onclick = () => modal.remove();
+                      modal.innerHTML = `<div class="bg-white p-6 rounded-lg shadow-2xl"><div id="enlarged-qr"></div></div>`;
+                      document.body.appendChild(modal);
+                      const qrContainer = modal.querySelector('#enlarged-qr');
+                      const enlargedQR = document.createElement('div');
+                      enlargedQR.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 ' + (parseInt(fontSize || "16") * 3.5) + ' ' + (parseInt(fontSize || "16") * 3.5) + '">' + document.querySelector('.sidebar-qr-code').innerHTML + '</svg>';
+                      qrContainer.appendChild(enlargedQR.firstChild);
+                    }}
+                    title="Click to enlarge"
+                  >
                     <QRCodeSVG
                       value={window.location.origin}
-                      // Dynamic size based on font size (approx 5x the font size value)
-                      size={parseInt(fontSize || "16") * 5}
+                      size={parseInt(fontSize || "16") * 3.5}
                       level="M"
                       includeMargin={false}
+                      className="sidebar-qr-code"
                     />
                   </div>
                 </div>
@@ -2010,7 +2025,7 @@ export default function App() {
               {/* Install Button removed from sidebar (moved to header) */}
 
               {/* --- User ID at very bottom --- */}
-              <div className="text-xs text-gray-500 dark:text-white dark:bg-[#374151] border-t border-gray-200 dark:border-[#374151] pt-3 space-y-2">
+              <div className="text-xs text-gray-500 dark:text-white dark:bg-[#374151] pt-2 space-y-2">
                 <p className="truncate text-center">
                   {t.user_id || "User ID"}:
                   <span className="font-mono text-gray-600 dark:text-white ml-1">

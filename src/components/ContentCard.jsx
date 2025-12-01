@@ -74,9 +74,9 @@ const ContentCard = ({
             className={`w-5 h-5 cursor-pointer transition-all ${
               isFavorite
                 ? "fill-brand-red text-brand-red"
-                : "text-gray-400 dark:text-gray-500 hover:text-brand-red hover:fill-brand-red"
+                : "text-brand-red"
             }`}
-            style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : {}}
+            style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : { fill: "none", color: "#CC3333", strokeWidth: "2" }}
             title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           />
         </div>

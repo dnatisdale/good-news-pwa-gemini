@@ -264,10 +264,10 @@ const LanguageFinderPage = ({
                             className={`w-5 h-5 cursor-pointer transition-all ${
                               isFav
                                 ? "fill-brand-red text-brand-red"
-                                : "text-gray-400 hover:text-brand-red hover:fill-brand-red"
+                                : "text-brand-red"
                             }`}
                             style={
-                              isFav ? { fill: "#CC3333", color: "#CC3333" } : {}
+                              isFav ? { fill: "#CC3333", color: "#CC3333" } : { fill: "none", color: "#CC3333", strokeWidth: "2" }
                             }
                             title={
                               isFav
