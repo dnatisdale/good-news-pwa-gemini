@@ -1723,7 +1723,7 @@ export default function App() {
               <input
                 type="text"
                 placeholder={
-                  t.search_placeholder || "Search languages or messages.."
+                  t.search_placeholder || "Search languages or messages..."
                 }
                 value={searchTerm}
                 onChange={(e) => handleSearchChange(e.target.value)}
