@@ -267,7 +267,7 @@ const LanguageFinderPage = ({
                                 : "text-brand-red"
                             }`}
                             style={
-                              isFav ? { fill: "#CC3333", color: "#CC3333" } : { fill: "none", color: "#CC3333", strokeWidth: "2" }
+                              isFav ? { fill: "#CC3333", color: "#CC3333" } : { fill: "white", color: "#CC3333", strokeWidth: "2" }
                             }
                             title={
                               isFav

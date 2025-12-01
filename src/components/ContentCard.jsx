@@ -1,7 +1,7 @@
 import React from "react";
 // Removed unused i18n import
 import { formatContentItem } from "../utils/contentFormatter";
-import { Volume2, Pause, Share2, Heart } from "./Icons"; // Removed unused PlayCircle
+import { Volume2, Pause, Share2, Heart, Download } from "./Icons"; // Removed unused PlayCircle
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 const TEXT_COLOR_CLASS = "text-gray-800";
@@ -76,7 +76,7 @@ const ContentCard = ({
                 ? "fill-brand-red text-brand-red"
                 : "text-brand-red"
             }`}
-            style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : { fill: "none", color: "#CC3333", strokeWidth: "2" }}
+            style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : { fill: "white", color: "#CC3333", strokeWidth: "2" }}
             title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           />
         </div>
@@ -121,6 +121,19 @@ const ContentCard = ({
           <p className="text-xs text-gray-500 dark:text-white mr-1">
             {formatDuration(item.duration)}
           </p>
+        )}
+
+        {/* Download Button */}
+        {(item.downloadUrl || item.audioUrl || item.sampleUrl) && (
+          <a
+            href={item.downloadUrl || item.audioUrl || item.sampleUrl}
+            download
+            onClick={(e) => e.stopPropagation()}
+            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-gray-200 transition-all"
+            title="Download"
+          >
+            <Download className="w-6 h-6" />
+          </a>
         )}
 
         {/* Play Button (only show if sample exists) */}

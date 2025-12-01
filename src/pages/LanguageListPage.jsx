@@ -93,6 +93,7 @@ const LanguageListPage = ({
           isPlayingLanguage={playingLanguageKey === group.stableKey}
           isFavorite={userData?.favoriteLanguages?.includes(group.stableKey)} // 👇 NEW
           onToggleFavorite={() => onToggleFavoriteLanguage(group.stableKey)} // 👇 NEW
+          sampleUrl={group.messages.find(msg => msg.sampleUrl)?.sampleUrl} // 👇 NEW: Pass sample URL for download
         />
       ))}
       <div className="h-16"></div>

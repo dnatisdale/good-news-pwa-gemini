@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import ContentCard from "../components/ContentCard";
+import { ChevronLeft, ChevronRight } from "../components/Icons";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 
@@ -100,16 +101,39 @@ const MessagesByLanguagePage = ({
 
   return (
     <div className="flex flex-col h-full">
+      {/* Navigation Bar (Dark/Light) */}
+      <div className="bg-slate-100 dark:bg-slate-700 text-gray-600 dark:text-white px-4 py-2 flex justify-between items-center shrink-0 border-b border-slate-200 dark:border-slate-600">
+        <button
+          onClick={onBack}
+          disabled={!hasPrev}
+          className={`flex items-center text-sm font-medium transition-colors ${
+            hasPrev ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+          }`}
+        >
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          {t.back || "Back"}
+        </button>
+        
+        <button
+          onClick={onForward}
+          disabled={!hasNext}
+          className={`flex items-center text-sm font-medium transition-colors ${
+            hasNext ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+          }`}
+        >
+          {t.forward || "Forward"}
+          <ChevronRight className="w-5 h-5 ml-1" />
+        </button>
+      </div>
+
       {/* Simple header for this page area */}
-      <div className="px-4 pt-3 pb-2 border-b border-slate-200 bg-white">
-        <div className="flex items-baseline justify-between gap-3">
-          <div>
-            <div className={`text-base font-semibold ${ACCENT_COLOR_CLASS}`}>
-              {languageDisplayName}
-            </div>
-            <div className="text-xs text-slate-500">
-              {languageMessageCount} {t.messages || "messages"}
-            </div>
+      <div className="px-4 pt-3 pb-2 border-b border-slate-200 dark:border-slate-600 bg-slate-100 dark:bg-slate-700">
+        <div className="flex items-baseline gap-2">
+          <div className={`text-lg font-semibold ${ACCENT_COLOR_CLASS} dark:text-white`}>
+            {languageDisplayName}
+          </div>
+          <div className="text-xs text-slate-500 dark:text-white">
+            {languageMessageCount} {t.messages || "messages"}
           </div>
         </div>
       </div>

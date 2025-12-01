@@ -1795,45 +1795,32 @@ export default function App() {
             onTouchEnd={onTouchEnd}
           >
             {/* Header */}
-            <div
-              className={`${PRIMARY_COLOR_CLASS} px-3 py-1.5 flex flex-col space-y-0 rounded-r-xl flex-shrink-0`}
-            >
-              {/* Top Row: Logo, Title, Close */}
-              <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-3">
-                  {/* 1. The Square Logo (Now acts as Home Button) */}
-                  <button
-                    onClick={() => {
-                      navigateToHome();
-                      setIsDrawerOpen(false);
-                    }}
-                    className="focus:outline-none transition-transform active:scale-95 flex-shrink-0"
-                    title={t.home || "Home"}
-                  >
-                    <img
-                      src={AppLogo}
-                      alt="Logo"
-                      className="w-10 h-10 rounded-xl bg-white shadow-md p-1 flex-shrink-0"
-                    />
-                  </button>
+          <div className={`${PRIMARY_COLOR_CLASS} px-3 py-2 flex items-center justify-between rounded-r-xl flex-shrink-0`}>
+            <div className="flex items-center gap-3">
+              {/* 1. The Square Logo (Now acts as Home Button) */}
+              <button
+                onClick={() => {
+                  navigateToHome();
+                  setIsDrawerOpen(false);
+                }}
+                className="focus:outline-none transition-transform active:scale-95 flex-shrink-0"
+                title={t.home || "Home"}
+              >
+                <img
+                  src={AppLogo}
+                  alt="Logo"
+                  className="w-12 h-12 rounded-xl bg-white shadow-md p-1 flex-shrink-0"
+                />
+              </button>
 
-                  {/* 2. App Title */}
-                  <h2 className="text-lg font-bold text-white leading-none">
-                    {t.app_name}
-                  </h2>
-                </div>
+              {/* Column: Title + Share Button */}
+              <div className="flex flex-col items-start space-y-0.5">
+                {/* 2. App Title */}
+                <h2 className="text-lg font-bold text-white leading-none">
+                  {t.app_name}
+                </h2>
 
-                {/* 3. Close Button */}
-                <button
-                  onClick={() => setIsDrawerOpen(false)}
-                  className="text-white p-1 hover:bg-red-800 rounded-full flex-shrink-0"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-
-              {/* Bottom Row: Share App Button (Left Aligned with Title) */}
-              <div className="flex justify-start -mt-1" style={{ paddingLeft: '60px' }}>
+                {/* 3. Share App Button */}
                 <button
                   onClick={async (e) => {
                     e.stopPropagation(); // Prevent drawer close
@@ -1850,28 +1837,30 @@ export default function App() {
                       try {
                         await navigator.share(shareData);
                       } catch (err) {
-                        if (err.name !== "AbortError") {
-                          console.error("Share failed:", err);
-                        }
+                        console.error("Error sharing:", err);
                       }
                     } else {
-                      try {
-                        await navigator.clipboard.writeText(appUrl);
-                        alert(t.link_copied || "Link copied to clipboard!");
-                      } catch (err) {
-                        console.error("Copy failed:", err);
-                        alert(t.copy_failed || "Could not copy link");
-                      }
+                      navigator.clipboard.writeText(appUrl);
+                      alert(t.link_copied || "Link copied to clipboard!");
                     }
                   }}
-                  className="flex items-center gap-1.5 px-2 py-1 bg-[#003366] text-white rounded text-xs font-semibold hover:bg-[#004d99] transition-colors whitespace-nowrap shadow-sm"
+                  className="bg-[#003366] hover:bg-[#002244] text-white text-[10px] px-2 py-0.5 rounded flex items-center space-x-1 transition-colors shadow-sm border border-white/20"
                   title={t.share_app || "Share App"}
                 >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  {t.share_app || "Share"}
+                  <ExternalLink className="w-3 h-3" />
+                  <span>{t.share_app || "Share App"}</span>
                 </button>
               </div>
             </div>
+
+            {/* 4. Close Button */}
+            <button
+              onClick={() => setIsDrawerOpen(false)}
+              className="text-white p-1 hover:bg-red-800 rounded-full flex-shrink-0 self-start"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
 
             {/* Navigation Links (Scrollable) - Tighter spacing */}
             <nav className="p-4 space-y-0.5 overflow-y-auto flex-grow">

@@ -1,5 +1,5 @@
 import React from "react";
-import { Share2, Volume2, Heart } from "./Icons";
+import { Share2, Volume2, Heart, Download } from "./Icons";
 import { i18n } from "../i18n";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
@@ -19,6 +19,7 @@ const LanguageCard = ({
   isPlayingLanguage,
   isFavorite,
   onToggleFavorite,
+  sampleUrl, // 👇 NEW: Sample URL for download
 }) => {
   return (
     <div
@@ -64,7 +65,7 @@ const LanguageCard = ({
                   ? "fill-brand-red text-brand-red"
                   : "text-brand-red"
               }`}
-              style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : { fill: "none", color: "#CC3333", strokeWidth: "2" }}
+              style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : { fill: "white", color: "#CC3333", strokeWidth: "2" }}
               title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
             />
           </div>
@@ -88,6 +89,19 @@ const LanguageCard = ({
 
         {/* ICONS – fixed width, don't squeeze text */}
         <div className="flex items-center gap-2 shrink-0">
+          {/* Download Button */}
+          {sampleUrl && (
+            <a
+              href={sampleUrl}
+              download
+              onClick={(e) => e.stopPropagation()}
+              className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-amber-500 hover:text-white transition-all"
+              title="Download Sample"
+            >
+              <Download className="w-6 h-6" />
+            </a>
+          )}
+
           {/* Play Button */}
           <button
             onClick={(e) => {
