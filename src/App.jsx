@@ -2000,14 +2000,24 @@ export default function App() {
                     onClick={() => {
                       // Create modal for enlarged QR
                       const modal = document.createElement('div');
-                      modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+                      modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4';
                       modal.onclick = () => modal.remove();
-                      modal.innerHTML = `<div class="bg-white p-6 rounded-lg shadow-2xl"><div id="enlarged-qr"></div></div>`;
                       document.body.appendChild(modal);
-                      const qrContainer = modal.querySelector('#enlarged-qr');
-                      const enlargedQR = document.createElement('div');
-                      enlargedQR.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 ' + (parseInt(fontSize || "16") * 3.5) + ' ' + (parseInt(fontSize || "16") * 3.5) + '">' + document.querySelector('.sidebar-qr-code').innerHTML + '</svg>';
-                      qrContainer.appendChild(enlargedQR.firstChild);
+                      
+                      // Create container with minimal padding
+                      const container = document.createElement('div');
+                      container.className = 'bg-white p-3 rounded-lg shadow-2xl';
+                      container.onclick = (e) => e.stopPropagation();
+                      
+                      // Clone and scale the existing QR code
+                      const originalQR = document.querySelector('.sidebar-qr-code');
+                      const clonedQR = originalQR.cloneNode(true);
+                      clonedQR.setAttribute('width', '256');
+                      clonedQR.setAttribute('height', '256');
+                      clonedQR.style.display = 'block';
+                      
+                      container.appendChild(clonedQR);
+                      modal.appendChild(container);
                     }}
                     title="Click to enlarge"
                   >
