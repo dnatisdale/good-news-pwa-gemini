@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Search, Heart, Languages, ChevronLeft, ChevronRight } from "../components/Icons";
+import { Search, Heart, Globe, ChevronLeft, ChevronRight } from "../components/Icons";
 import { staticContent } from "../data/staticContent";
 
 /**
@@ -123,12 +123,14 @@ const LanguageFinderPage = ({
         </button>
       </div>
 
+
+
       {/* Centered Content */}
       <div className="max-w-lg mx-auto w-full flex flex-col flex-1 overflow-hidden">
         {/* Title */}
         <div className="flex flex-col items-center justify-center mb-1">
           <h1 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white flex items-center">
-            <Languages className="w-8 h-8 mr-3 text-brand-red dark:text-white" />
+            <Globe className="w-8 h-8 mr-3 text-gray-700 dark:text-white" />
             {t.language_finder || t.languages}
           </h1>
           <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-200 mt-1">

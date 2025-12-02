@@ -46,7 +46,7 @@ const ContentCard = ({
       {/* --- CHECKBOX AREA --- */}
       {onToggle && (
         <div
-          className="pr-3 pt-1"
+          className="pr-1 pt-1"
           onClick={(e) => {
             e.stopPropagation();
             onToggle();
@@ -64,7 +64,7 @@ const ContentCard = ({
       {/* --- FAVORITE HEART (right after checkbox) --- */}
       {onToggleFavorite && (
         <div
-          className="pr-3 pt-1"
+          className="pr-1 pt-1"
           onClick={(e) => {
             e.stopPropagation();
             onToggleFavorite();

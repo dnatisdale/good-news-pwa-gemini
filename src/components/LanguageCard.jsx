@@ -28,10 +28,10 @@ const LanguageCard = ({
       className="bg-white dark:bg-[#374151] p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer card-hover transition-colors"
     >
       {/* MAIN ROW */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-1.5">
         {/* Checkbox */}
         <div
-          className="pr-2 flex items-center shrink-0"
+          className="pr-1 flex items-center shrink-0"
           onClick={(e) => {
             e.stopPropagation();
             onToggle();
@@ -53,7 +53,7 @@ const LanguageCard = ({
         {/* Favorite Heart - Right after checkbox */}
         {onToggleFavorite && (
           <div
-            className="pr-3 flex items-center shrink-0"
+            className="pr-1 flex items-center shrink-0"
             onClick={(e) => {
               e.stopPropagation();
               onToggleFavorite();
@@ -74,7 +74,7 @@ const LanguageCard = ({
         {/* TEXT AREA – takes all remaining width */}
         <div
           onClick={() => onSelect(languageName)}
-          className="flex-1 min-w-0 pr-2"
+          className="flex-1 min-w-0"
         >
           <h3
             className={`text-xl font-bold ${ACCENT_COLOR_CLASS} dark:text-white`}
@@ -83,7 +83,10 @@ const LanguageCard = ({
           </h3>
           <p className="text-xs text-gray-500 dark:text-gray-300 mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">
             {lang === "en" ? "Tap to view" : "แตะเพื่อดู"} ({messageCount}{" "}
-            {lang === "en" ? "messages" : "ข้อความ"})
+            {messageCount === 1 
+              ? (lang === "en" ? "message" : "ข้อความ")
+              : (lang === "en" ? "messages" : "ข้อความ")
+            })
           </p>
         </div>
 

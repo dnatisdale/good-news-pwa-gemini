@@ -15,7 +15,10 @@ export const Home = (props) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H15V12H9v10H5a2 2 0 0 1-2-2z" />
+    {/* Roof with extended eaves */}
+    <path d="M1 9l11-8 11 8" />
+    {/* Walls and Door (continuous path to avoid bottom line) */}
+    <path d="M3 9v13h6v-8h6v8h6V9" />
   </svg>
 );
 
@@ -496,7 +499,7 @@ export const Globe = (props) => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="2"
+    strokeWidth="1.5"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
@@ -585,40 +588,16 @@ export const FontSize = (props) => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
-    {/* Small "A" */}
-    <text
-      x="2"
-      y="18"
-      fontSize="10"
-      fontWeight="bold"
-      fill="currentColor"
-      fontFamily="'Outfit', sans-serif"
-    >
-      A
-    </text>
-    {/* Medium "A" */}
-    <text
-      x="9"
-      y="18"
-      fontSize="13"
-      fontWeight="bold"
-      fill="currentColor"
-      fontFamily="'Outfit', sans-serif"
-    >
-      A
-    </text>
-    {/* Large "A" */}
-    <text
-      x="16"
-      y="18"
-      fontSize="16"
-      fontWeight="bold"
-      fill="currentColor"
-      fontFamily="'Outfit', sans-serif"
-    >
-      A
-    </text>
+    {/* Small "A" in the back */}
+    <path d="M6 17 L8.5 10 L11 17 M6.8 15 L10.2 15" />
+    
+    {/* Large "A" in the front */}
+    <path d="M13 20 L17 7 L21 20 M14.2 16.5 L19.8 16.5" />
   </svg>
 );
 

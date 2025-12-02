@@ -24,6 +24,7 @@ import {
   Languages, // ✅ NEW
   MessageSquare, // NEW
   Music,
+  Globe,
 } from "./components/Icons";
 
 import { staticContent } from "./data/staticContent";
@@ -1869,7 +1870,7 @@ export default function App() {
                 { name: "Search", icon: Search, target: "Search" },
                 {
                   name: "Language_Finder",
-                  icon: Languages,
+                  icon: Globe,
                   target: "BrowseLanguages",
                 },
                 { name: "Favorites", icon: Heart, target: "Favorites" },
@@ -1903,7 +1904,7 @@ export default function App() {
                       <item.icon
                         className={`mr-3 ${
                           item.name === "Language_Finder"
-                            ? "w-7 h-7"
+                            ? "w-7 h-7 text-gray-500 dark:text-gray-400"
                             : "w-6 h-6"
                         }`}
                       />
@@ -1943,7 +1944,7 @@ export default function App() {
                       <item.icon
                         className={`mr-3 ${
                           item.name === "Language_Finder"
-                            ? "w-7 h-7"
+                            ? `w-7 h-7 ${currentPage.name === item.target ? "" : "text-gray-700 dark:text-white"}`
                             : "w-6 h-6"
                         }`}
                       />

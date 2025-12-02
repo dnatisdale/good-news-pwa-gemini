@@ -53,47 +53,50 @@ const FloatingUtilityBar = ({
 
       {/* BUTTON & BADGE CONTAINER */}
       <div className="relative flex flex-col md:flex-row items-center gap-px md:gap-1">
-        {/* Plus Button (on top for mobile) */}
+        {/* Font Size Icon Button */}
         <button
-          onClick={() => {
-            const currentSize = parseInt(fontSize);
-            if (currentSize < 36) {
-              setFontSize(`${currentSize + 1}px`);
-            }
-          }}
-          disabled={parseInt(fontSize) >= 36}
-          className={`w-5 h-5 md:w-8 md:h-8 rounded shadow-md flex items-center justify-center text-white font-bold text-sm md:text-lg
-                     transition-all duration-200 ${
-                       parseInt(fontSize) >= 36
-                         ? 'opacity-50 cursor-not-allowed'
-                         : 'hover:brightness-125'
-                     }`}
-          style={{ backgroundColor: THAI_BLUE }}
-          aria-label="Increase Font Size"
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover flex-shrink-0"
+          style={{ backgroundColor: isOpen ? '#a91b0d' : 'transparent' }}
+          aria-label="Font Size"
+          title="Font Size"
         >
-          +
+          <FontSize className="w-6 h-6" />
         </button>
-        
-        {/* Minus Button (on bottom for mobile) */}
-        <button
-          onClick={() => {
-            const currentSize = parseInt(fontSize);
-            if (currentSize > 12) {
-              setFontSize(`${currentSize - 1}px`);
-            }
-          }}
-          disabled={parseInt(fontSize) <= 12}
-          className={`w-5 h-5 md:w-8 md:h-8 rounded shadow-md flex items-center justify-center text-white font-bold text-sm md:text-lg
-                     transition-all duration-200 ${
-                       parseInt(fontSize) <= 12
-                         ? 'opacity-50 cursor-not-allowed'
-                         : 'hover:brightness-125'
-                     }`}
-          style={{ backgroundColor: THAI_BLUE }}
-          aria-label="Decrease Font Size"
-        >
-          −
-        </button>
+
+        {/* Font Size Dropdown Menu */}
+        {isOpen && (
+          <div className="absolute top-full right-0 mt-2 bg-white dark:bg-slate-700 rounded-lg shadow-xl border border-gray-200 dark:border-slate-600 py-2 min-w-[140px] z-50">
+            {[
+              { label: lang === 'en' ? 'Small' : 'เล็ก', size: '12px' },
+              { label: lang === 'en' ? 'Medium' : 'กลาง', size: '16px' },
+              { label: lang === 'en' ? 'Large' : 'ใหญ่', size: '20px' },
+              { label: lang === 'en' ? 'X-Large' : 'ใหญ่มาก', size: '24px' },
+              { label: lang === 'en' ? 'XX-Large' : 'ใหญ่พิเศษ', size: '28px' },
+            ].map(({ label, size }) => (
+              <button
+                key={size}
+                onClick={() => {
+                  setFontSize(size);
+                  setIsOpen(false);
+                }}
+                className={`w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-slate-600 transition-colors ${
+                  fontSize === size
+                    ? 'font-semibold'
+                    : 'text-gray-700 dark:text-gray-200'
+                }`}
+                style={fontSize === size ? { backgroundColor: '#FCD34D', color: '#1F2937' } : {}}
+              >
+                <span className="flex items-center justify-between">
+                  <span>{label}</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400 ml-2">
+                    {parseInt(size)}px
+                  </span>
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* 2. THE YELLOW BADGE (Reacts to Card Hover!) */}
         {selectionCount > 0 && (
