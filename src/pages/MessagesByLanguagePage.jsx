@@ -132,6 +132,24 @@ const MessagesByLanguagePage = ({
           <div className={`text-lg font-semibold ${ACCENT_COLOR_CLASS} dark:text-white`}>
             {languageDisplayName}
           </div>
+          <div className="text-sm text-slate-500 dark:text-slate-400">
+            ({languageMessageCount}{" "}
+            {languageMessageCount === 1
+              ? t.message || "message"
+              : t.messages || "messages"}
+            )
+          </div>
+        </div>
+      </div>
+
+      {/* Scrollable message list */}
+      <div className="flex-1 overflow-y-auto bg-white dark:bg-slate-800">
+        {currentMessageList.map((item) => (
+          <ContentCard
+            key={item.id}
+            item={item}
+            lang={lang}
+            t={t}
             onSelect={onSelectMessage}
             showLanguageName={false}
             // --- Program selection (for bulk actions / playlist, etc.)
@@ -153,7 +171,7 @@ const MessagesByLanguagePage = ({
             onToggleFavorite={() => onToggleFavorite(item.id)}
           />
         ))}
-        {/* Spacer at bottom so floating bars don’t cover last card */}
+        {/* Spacer at bottom so floating bars don't cover last card */}
         <div className="h-16"></div>
       </div>
     </div>

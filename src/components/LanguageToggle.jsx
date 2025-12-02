@@ -1,5 +1,5 @@
 import React from "react";
-import LanguageIconPng from "../assets/language-icon.svg";
+import { Globe } from "./Icons";
 
 const LanguageToggle = ({ lang, setLang, t }) => {
   const toggleLang = () => {
@@ -12,15 +12,11 @@ const LanguageToggle = ({ lang, setLang, t }) => {
     <div className="flex items-center space-x-1 md:space-x-2 flex-shrink-0">
       <button
         onClick={toggleLang}
-        className="transition-opacity hover:opacity-80 flex-shrink-0"
+        className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover flex-shrink-0"
         title="Th-Eng Switcher"
         aria-label="Th-Eng Switcher"
       >
-        <img
-          src={LanguageIconPng}
-          alt="Language Toggle"
-          className="w-8 h-8 md:w-10 md:h-10 rounded-lg object-cover flex-shrink-0"
-        />
+        <Globe className="w-5 h-5 md:w-6 md:h-6" />
       </button>
     </div>
   );
