@@ -1475,15 +1475,15 @@ export default function App() {
 
         {/* --- HEADER (Banner) --- */}
         <header
-          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} py-0.5 px-2 shadow-lg z-30 rounded-b-xl md:py-3 md:px-6`}
+          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} shadow-lg z-30 rounded-b-xl md:py-3 md:px-6`}
         >
           {/* Mobile/Tablet: 3-column grid layout */}
-          <div className="grid grid-cols-3 items-center md:hidden">
+          <div className="grid grid-cols-3 items-center h-14 md:hidden px-2">
             {/* LEFT: Menu + Logo + Install */}
             <div className="flex items-center justify-start space-x-1">
               <button
                 onClick={() => setIsDrawerOpen(true)}
-                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                className="text-white px-1 rounded-lg hover:bg-red-800 transition-colors btn-hover flex items-center"
                 aria-label="Open Sidebar Menu"
               >
                 <Menu className="w-6 h-6" />
@@ -1496,14 +1496,14 @@ export default function App() {
                 className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors flex-shrink-0"
               >
                 <img
-                  src={AppLogo}
+                  src={BannerLogo}
                   alt={t.app_name}
-                  className="h-10 w-10 flex-shrink-0 object-cover rounded-lg"
+                  className="h-14 w-14 -my-1 flex-shrink-0 object-cover rounded-lg"
                 />
               </a>
               <button
                 onClick={navigateToHome}
-                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                className="text-white px-1 rounded-lg hover:bg-red-800 transition-colors btn-hover flex items-center"
                 title={t.home || "Home"}
                 aria-label={t.home || "Home"}
               >
@@ -1795,12 +1795,13 @@ export default function App() {
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
-            {/* Header */}
+            {/* Header - Match PWA header height */}
             <div
-              className={`${PRIMARY_COLOR_CLASS} px-3 py-2 flex items-center justify-between rounded-r-xl flex-shrink-0`}
+              className={`${PRIMARY_COLOR_CLASS} px-2 py-1 rounded-r-xl flex-shrink-0 flex items-center justify-between`}
             >
-              <div className="flex items-center gap-3">
-                {/* 1. The Square Logo (Now acts as Home Button) */}
+              {/* Left: Logo and Title with Share Button */}
+              <div className="flex items-center gap-2">
+                {/* 1. The Square Logo */}
                 <button
                   onClick={() => {
                     navigateToHome();
@@ -1812,18 +1813,18 @@ export default function App() {
                   <img
                     src={AppLogo}
                     alt="Logo"
-                    className="w-14 h-14 flex-shrink-0"
+                    className="h-12 w-12 flex-shrink-0 object-cover"
                   />
                 </button>
 
-                {/* Column: Title + Share Button */}
-                <div className="flex flex-col items-start space-y-0.5">
+                {/* Title and Share Button Column */}
+                <div className="flex flex-col items-start justify-center gap-0.5">
                   {/* 2. App Title */}
-                  <h2 className="text-lg font-bold text-white leading-none">
+                  <h2 className="text-base font-bold text-white leading-tight">
                     {t.app_name}
                   </h2>
 
-                  {/* 3. Share App Button */}
+                  {/* 3. Share App Button with centered icon */}
                   <button
                     onClick={async (e) => {
                       e.stopPropagation(); // Prevent drawer close
@@ -1847,7 +1848,8 @@ export default function App() {
                         alert(t.link_copied || "Link copied to clipboard!");
                       }
                     }}
-                    className="bg-[#003366] hover:bg-[#002244] text-white text-[10px] px-2 py-0.5 rounded flex items-center space-x-1 transition-colors shadow-sm border border-white/20"
+                    className="bg-[#003366] hover:bg-[#002244] text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center justify-center space-x-1 transition-colors shadow-sm border border-white/20"
+                    style={{ minWidth: "110px" }}
                     title={t.share_app || "Share App"}
                   >
                     <ExternalLink className="w-3 h-3" />
@@ -1859,9 +1861,9 @@ export default function App() {
               {/* 4. Close Button */}
               <button
                 onClick={() => setIsDrawerOpen(false)}
-                className="text-white p-1 hover:bg-red-800 rounded-full flex-shrink-0 self-start"
+                className="text-white p-1 hover:bg-red-800 rounded-full flex-shrink-0"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
