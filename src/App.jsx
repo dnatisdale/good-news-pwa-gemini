@@ -1475,7 +1475,7 @@ export default function App() {
 
         {/* --- HEADER (Banner) --- */}
         <header
-          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} py-1 px-2 shadow-lg z-30 rounded-b-xl md:py-3 md:px-6`}
+          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} py-0.5 px-2 shadow-lg z-30 rounded-b-xl md:py-3 md:px-6`}
         >
           {/* Mobile/Tablet: 3-column grid layout */}
           <div className="grid grid-cols-3 items-center md:hidden">
@@ -1498,7 +1498,7 @@ export default function App() {
                 <img
                   src={AppLogo}
                   alt={t.app_name}
-                  className="h-8 w-8 rounded-md shadow-sm bg-white p-0.5 flex-shrink-0"
+                  className="h-10 w-10 flex-shrink-0 object-cover rounded-lg"
                 />
               </a>
               <button
@@ -1796,72 +1796,74 @@ export default function App() {
             onTouchEnd={onTouchEnd}
           >
             {/* Header */}
-          <div className={`${PRIMARY_COLOR_CLASS} px-3 py-2 flex items-center justify-between rounded-r-xl flex-shrink-0`}>
-            <div className="flex items-center gap-3">
-              {/* 1. The Square Logo (Now acts as Home Button) */}
-              <button
-                onClick={() => {
-                  navigateToHome();
-                  setIsDrawerOpen(false);
-                }}
-                className="focus:outline-none transition-transform active:scale-95 flex-shrink-0"
-                title={t.home || "Home"}
-              >
-                <img
-                  src={AppLogo}
-                  alt="Logo"
-                  className="w-14 h-14 flex-shrink-0"
-                />
-              </button>
-
-              {/* Column: Title + Share Button */}
-              <div className="flex flex-col items-start space-y-0.5">
-                {/* 2. App Title */}
-                <h2 className="text-lg font-bold text-white leading-none">
-                  {t.app_name}
-                </h2>
-
-                {/* 3. Share App Button */}
-                <button
-                  onClick={async (e) => {
-                    e.stopPropagation(); // Prevent drawer close
-                    const appUrl = window.location.origin;
-                    const shareData = {
-                      title: t.app_name || "Thai: Good News",
-                      text:
-                        t.share_app_text ||
-                        "Check out this app for Good News messages in multiple languages!",
-                      url: appUrl,
-                    };
-
-                    if (navigator.share) {
-                      try {
-                        await navigator.share(shareData);
-                      } catch (err) {
-                        console.error("Error sharing:", err);
-                      }
-                    } else {
-                      navigator.clipboard.writeText(appUrl);
-                      alert(t.link_copied || "Link copied to clipboard!");
-                    }
-                  }}
-                  className="bg-[#003366] hover:bg-[#002244] text-white text-[10px] px-2 py-0.5 rounded flex items-center space-x-1 transition-colors shadow-sm border border-white/20"
-                  title={t.share_app || "Share App"}
-                >
-                  <ExternalLink className="w-3 h-3" />
-                  <span>{t.share_app || "Share App"}</span>
-                </button>
-              </div>
-            </div>
-
-            {/* 4. Close Button */}
-            <button
-              onClick={() => setIsDrawerOpen(false)}
-              className="text-white p-1 hover:bg-red-800 rounded-full flex-shrink-0 self-start"
+            <div
+              className={`${PRIMARY_COLOR_CLASS} px-3 py-2 flex items-center justify-between rounded-r-xl flex-shrink-0`}
             >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
+              <div className="flex items-center gap-3">
+                {/* 1. The Square Logo (Now acts as Home Button) */}
+                <button
+                  onClick={() => {
+                    navigateToHome();
+                    setIsDrawerOpen(false);
+                  }}
+                  className="focus:outline-none transition-transform active:scale-95 flex-shrink-0"
+                  title={t.home || "Home"}
+                >
+                  <img
+                    src={AppLogo}
+                    alt="Logo"
+                    className="w-14 h-14 flex-shrink-0"
+                  />
+                </button>
+
+                {/* Column: Title + Share Button */}
+                <div className="flex flex-col items-start space-y-0.5">
+                  {/* 2. App Title */}
+                  <h2 className="text-lg font-bold text-white leading-none">
+                    {t.app_name}
+                  </h2>
+
+                  {/* 3. Share App Button */}
+                  <button
+                    onClick={async (e) => {
+                      e.stopPropagation(); // Prevent drawer close
+                      const appUrl = window.location.origin;
+                      const shareData = {
+                        title: t.app_name || "Thai: Good News",
+                        text:
+                          t.share_app_text ||
+                          "Check out this app for Good News messages in multiple languages!",
+                        url: appUrl,
+                      };
+
+                      if (navigator.share) {
+                        try {
+                          await navigator.share(shareData);
+                        } catch (err) {
+                          console.error("Error sharing:", err);
+                        }
+                      } else {
+                        navigator.clipboard.writeText(appUrl);
+                        alert(t.link_copied || "Link copied to clipboard!");
+                      }
+                    }}
+                    className="bg-[#003366] hover:bg-[#002244] text-white text-[10px] px-2 py-0.5 rounded flex items-center space-x-1 transition-colors shadow-sm border border-white/20"
+                    title={t.share_app || "Share App"}
+                  >
+                    <ExternalLink className="w-3 h-3" />
+                    <span>{t.share_app || "Share App"}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* 4. Close Button */}
+              <button
+                onClick={() => setIsDrawerOpen(false)}
+                className="text-white p-1 hover:bg-red-800 rounded-full flex-shrink-0 self-start"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
 
             {/* Navigation Links (Scrollable) - Tighter spacing */}
             <nav className="p-4 space-y-0.5 overflow-y-auto flex-grow">
@@ -1944,7 +1946,11 @@ export default function App() {
                       <item.icon
                         className={`mr-3 ${
                           item.name === "Language_Finder"
-                            ? `w-7 h-7 ${currentPage.name === item.target ? "" : "text-gray-700 dark:text-white"}`
+                            ? `w-7 h-7 ${
+                                currentPage.name === item.target
+                                  ? ""
+                                  : "text-gray-700 dark:text-white"
+                              }`
                             : "w-6 h-6"
                         }`}
                       />
@@ -1985,27 +1991,30 @@ export default function App() {
               <div className="">
                 {/* Label removed as requested */}
                 <div className="flex justify-center">
-                  <div 
+                  <div
                     className="bg-white p-1.5 rounded shadow-sm cursor-pointer hover:shadow-md transition-shadow"
                     onClick={() => {
                       // Create modal for enlarged QR
-                      const modal = document.createElement('div');
-                      modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4';
+                      const modal = document.createElement("div");
+                      modal.className =
+                        "fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4";
                       modal.onclick = () => modal.remove();
                       document.body.appendChild(modal);
-                      
+
                       // Create container with minimal padding
-                      const container = document.createElement('div');
-                      container.className = 'bg-white p-3 rounded-lg shadow-2xl';
+                      const container = document.createElement("div");
+                      container.className =
+                        "bg-white p-3 rounded-lg shadow-2xl";
                       container.onclick = (e) => e.stopPropagation();
-                      
+
                       // Clone and scale the existing QR code
-                      const originalQR = document.querySelector('.sidebar-qr-code');
+                      const originalQR =
+                        document.querySelector(".sidebar-qr-code");
                       const clonedQR = originalQR.cloneNode(true);
-                      clonedQR.setAttribute('width', '256');
-                      clonedQR.setAttribute('height', '256');
-                      clonedQR.style.display = 'block';
-                      
+                      clonedQR.setAttribute("width", "256");
+                      clonedQR.setAttribute("height", "256");
+                      clonedQR.style.display = "block";
+
                       container.appendChild(clonedQR);
                       modal.appendChild(container);
                     }}
