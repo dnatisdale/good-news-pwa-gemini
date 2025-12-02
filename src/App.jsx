@@ -1615,7 +1615,7 @@ export default function App() {
                 <img
                   src={BannerLogo}
                   alt={t.app_name}
-                  className="h-12 w-auto rounded-md shadow-sm bg-white p-1 flex-shrink-0"
+                  className="h-14 w-auto flex-shrink-0"
                 />
               </a>
               <button
@@ -1810,7 +1810,7 @@ export default function App() {
                 <img
                   src={AppLogo}
                   alt="Logo"
-                  className="w-12 h-12 rounded-xl bg-white shadow-md p-1 flex-shrink-0"
+                  className="w-14 h-14 flex-shrink-0"
                 />
               </button>
 
