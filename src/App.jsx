@@ -30,8 +30,8 @@ import {
 import { staticContent } from "./data/staticContent";
 import QRCodeDisplay from "./components/QRCodeDisplay";
 import { QRCodeSVG } from "qrcode.react";
-import AppLogo from "./assets/splash-screen-logo.svg";
-import BannerLogo from "./assets/banner-logo.svg";
+import AppLogo from "./assets/logo.png";
+import BannerLogo from "./assets/logo.png";
 import { jsPDF } from "jspdf";
 import { formatContentItem } from "./utils/contentFormatter";
 import LanguageToggle from "./components/LanguageToggle";

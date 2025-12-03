@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ReactComponent as LogoComponent } from "../assets/splash-screen-logo.svg";
+
 import { X, Download, Settings, FontSize } from "./Icons"; // Assuming Icons are in the same directory or adjusted path
 
 const THAI_BLUE = "#003366";

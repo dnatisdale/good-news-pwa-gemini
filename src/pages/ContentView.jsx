@@ -13,7 +13,7 @@ import {
   Loader,
 } from "../components/Icons";
 import { i18n } from "../i18n";
-import AppLogo from "../assets/splash-screen-logo.svg";
+import AppLogo from "../assets/logo.png";
 import { useOfflineStorage } from "../hooks/useOfflineStorage";
 import { formatContentItem } from "../utils/contentFormatter";
 
