@@ -79,8 +79,8 @@ body {
   height: auto; /* Maintain aspect ratio */
   z-index: 10000; /* Higher than the splash-screen container */
 
-  border-radius: 10%;
-  overflow: hidden; /* Ensures the SVG respects the border-radius */
+  /* border-radius: 10%; - Removed to allow natural circular shape */
+  overflow: visible; /* Changed to visible */
 }
 
 /* --- MICRO-ANIMATIONS --- */
