@@ -29,6 +29,8 @@ const SelectedContentPage = ({
   // Use the logic to get the actual message objects
   const filteredContent = getFilteredMessages(allMessages, selectedPrograms);
   const count = filteredContent.length;
+  
+  console.log("Debug Translation:", { lang, clear_all: t.clear_all, t });
 
   return (
     <div className="p-4 pt-8 h-full flex flex-col">
@@ -73,7 +75,7 @@ const SelectedContentPage = ({
             onClick={onClearSelection}
             className="mt-2 px-5 py-1.5 bg-orange-400 text-white text-sm font-bold rounded-full shadow-md hover:bg-orange-500 transition-all duration-200 hover:scale-105 active:scale-95"
           >
-            Clear All
+            {t.clear_all || "Clear All"}
           </button>
         </div>
 
