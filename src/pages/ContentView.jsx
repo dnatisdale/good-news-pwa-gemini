@@ -100,7 +100,7 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
           <img
             src={AppLogo}
             alt="App Logo"
-            style={{ width: "45px", height: "45px", borderRadius: "5px" }}
+            style={{ width: "60px", height: "60px", borderRadius: "5px" }}
             className="shadow-sm flex-shrink-0"
           />
         </div>
@@ -110,7 +110,7 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
             {languageDisplay}
           </h2>
           <h3 className="text-xl font-bold text-brand-red">{messageTitle}</h3>
-          <p className="text-sm text-gray-700 mt-1">Message # {programNumber}</p>
+          <p className="text-sm text-gray-700 mt-1">{t.message_label || "Message"} # {programNumber}</p>
         </div>
       </div>
 
@@ -284,7 +284,9 @@ const ContentView = ({
           
           {/* QR Code (Left) */}
           <div
-            className="flex-shrink-0 flex flex-col items-center p-3 bg-white rounded-xl shadow-inner cursor-pointer transition-all duration-300"
+            className={`flex-shrink-0 flex flex-col items-center bg-white rounded-xl shadow-inner cursor-pointer transition-all duration-300 ${
+              isQrLarge ? "py-3" : "p-3"
+            }`}
             onClick={() => setIsQrLarge((p) => !p)}
             style={{
               width: isQrLarge ? "100%" : "auto",

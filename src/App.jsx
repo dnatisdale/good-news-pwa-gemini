@@ -48,6 +48,7 @@ import NotesPage from "./pages/NotesPage";
 import MyLibraryPage from "./pages/MyLibraryPage";
 import ImportPage from "./pages/ImportPage";
 import FeedbackPage from "./pages/FeedbackPage"; // NEW
+import SelectionBadge from "./components/SelectionBadge";
 import UpdateNotification from "./components/UpdateNotification";
 
 // --- CONSTANTS ---
@@ -1452,7 +1453,7 @@ export default function App() {
           className="
             w-72 h-72 
             lg:w-96 lg:h-96 
-            rounded-3xl shadow-2xl animate-pulse 
+            rounded-full shadow-2xl 
             object-cover
           "
         />
@@ -1475,30 +1476,40 @@ export default function App() {
 
         {/* --- HEADER (Banner) --- */}
         <header
-          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} shadow-lg z-30 rounded-b-xl md:py-3 md:px-6`}
+          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} shadow-lg z-30 rounded-b-xl md:py-3 md:px-1`}
         >
           {/* Mobile/Tablet: 3-column grid layout */}
-          <div className="grid grid-cols-3 items-center h-14 md:hidden px-2">
+          <div className="grid grid-cols-3 items-center h-14 md:hidden px-1">
             {/* LEFT: Menu + Logo + Install */}
             <div className="flex items-center justify-start space-x-1">
-              <button
-                onClick={() => setIsDrawerOpen(true)}
-                className="text-white px-1 rounded-lg hover:bg-red-800 transition-colors btn-hover flex items-center"
-                aria-label="Open Sidebar Menu"
-              >
-                <Menu className="w-6 h-6" />
-              </button>
+              <div className="relative">
+                <button
+                  onClick={() => setIsDrawerOpen(true)}
+                  className="text-white px-1 rounded-lg hover:bg-red-800 transition-colors btn-hover flex items-center"
+                  aria-label="Open Sidebar Menu"
+                >
+                  <Menu className="w-6 h-6" />
+                </button>
+                <SelectionBadge
+                  selectionCount={selectedPrograms.length}
+                  isHovering={isHoveringContent}
+                  navigateToSelectedContent={navigateToSelectedContent}
+                  t={t}
+                  lang={lang}
+                />
+              </div>
               <a
                 href="https://5fish.mobi/th?r=Asia&country=Thailand"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="5fish.mobi/th?r=Asia&country=Thailand"
-                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors flex-shrink-0"
+                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors flex-shrink-0 -ml-1"
               >
                 <img
                   src={BannerLogo}
                   alt={t.app_name}
-                  className="h-14 w-14 -my-1 flex-shrink-0 object-cover rounded-lg"
+                  className="w-auto flex-shrink-0 object-cover rounded-lg"
+                  style={{ height: '4rem' }}
                 />
               </a>
               <button
@@ -1555,7 +1566,6 @@ export default function App() {
                 fontSize={fontSize}
                 setFontSize={setFontSize}
                 navigateToSelectedContent={navigateToSelectedContent}
-                isHovering={isHoveringContent}
               />
               <button
                 onClick={() => {
@@ -1598,24 +1608,34 @@ export default function App() {
           <div className="hidden md:flex justify-between items-center relative">
             {/* Left: Menu & Logo */}
             <div className="flex items-center">
-              <button
-                onClick={() => setIsDrawerOpen(true)}
-                className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover mr-3"
-                aria-label="Open Sidebar Menu"
-              >
-                <Menu className="w-6 h-6 md:w-7 md:h-7" />
-              </button>
+              <div className="relative mr-3">
+                <button
+                  onClick={() => setIsDrawerOpen(true)}
+                  className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                  aria-label="Open Sidebar Menu"
+                >
+                  <Menu className="w-6 h-6 md:w-7 md:h-7" />
+                </button>
+                <SelectionBadge
+                  selectionCount={selectedPrograms.length}
+                  isHovering={isHoveringContent}
+                  navigateToSelectedContent={navigateToSelectedContent}
+                  t={t}
+                  lang={lang}
+                />
+              </div>
               <a
                 href="https://5fish.mobi/th?r=Asia&country=Thailand"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="5fish.mobi/th?r=Asia&country=Thailand"
-                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white flex-shrink-0"
+                className="flex items-center text-white rounded-lg hover:bg-red-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white flex-shrink-0 -ml-1"
               >
                 <img
                   src={BannerLogo}
                   alt={t.app_name}
-                  className="h-14 w-auto flex-shrink-0"
+                  className="w-auto flex-shrink-0 rounded-lg"
+                  style={{ height: '4rem' }}
                 />
               </a>
               <button

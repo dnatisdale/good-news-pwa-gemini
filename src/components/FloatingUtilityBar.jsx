@@ -13,7 +13,6 @@ const FloatingUtilityBar = ({
   fontSize,
   setFontSize,
   navigateToSelectedContent,
-  isHovering,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -51,7 +50,7 @@ const FloatingUtilityBar = ({
   return (
     <div className="relative flex-shrink-0 mr-1 md:mr-2 z-50" ref={dropdownRef}>
 
-      {/* BUTTON & BADGE CONTAINER */}
+      {/* BUTTON CONTAINER */}
       <div className="relative flex flex-col md:flex-row items-center gap-px md:gap-1">
         {/* Font Size Icon Button */}
         <button
@@ -96,34 +95,6 @@ const FloatingUtilityBar = ({
               </button>
             ))}
           </div>
-        )}
-
-        {/* 2. THE YELLOW BADGE (Reacts to Card Hover!) */}
-        {selectionCount > 0 && (
-          <span
-            // Keep key to trigger a re-render "pop" when number changes
-            key={selectionCount}
-            className={`absolute -bottom-1 -left-1 
-               /* Base Shape & Color */
-               text-black text-xs font-bold rounded-full 
-               w-6 h-6 flex items-center justify-center 
-               border-2 border-white shadow-md pointer-events-none
-               z-50
-               
-               /* 👇 ANIMATION ENGINE 👇 */
-               origin-center
-               transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-               
-               /* 👇 DYNAMIC CLASSES 👇 */
-               ${
-                 isHovering
-                   ? "bg-orange-400 scale-150 -translate-y-1 animate-bounce" // State A: Hovering (Orange + Big + Bounce)
-                   : "bg-yellow-400 scale-100 translate-y-0"
-               }  // State B: Normal (Yellow + Normal)
-               `}
-          >
-            {selectionCount}
-          </span>
         )}
       </div>
     </div>

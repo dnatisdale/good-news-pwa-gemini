@@ -20,6 +20,7 @@ export const i18n = {
     languages: "Languages",
     language_finder: "Language Finder",
     messages: "messages",
+    message_label: "Message",
 
     // Status / Authentication
     loading: "Loading...",
@@ -203,6 +204,7 @@ export const i18n = {
     languages: "ภาษา",
     language_finder: "ค้นหาภาษา",
     messages: "ข้อความ",
+    message_label: "ข้อความ",
 
     // Status / Authentication
     loading: "กำลังโหลด...",
