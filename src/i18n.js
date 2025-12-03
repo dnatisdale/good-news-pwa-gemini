@@ -161,6 +161,7 @@ export const i18n = {
     copy_failed: "Could not copy link",
     please_select_messages:
       "📋 Please select some messages first!\n\nTap the checkboxes next to messages to add them to your selection.",
+    "5fish website": "5fish Website",
 
     // Import Page
     import_content_title: "Import Content",
@@ -362,6 +363,7 @@ export const i18n = {
     copy_failed: "ไม่สามารถคัดลอกลิงก์ได้",
     please_select_messages:
       "📋 กรุณาเลือกข้อความก่อน!\n\nแตะช่องทำเครื่องหมายข้างข้อความเพื่อเพิ่มลงในรายการที่เลือก",
+    "5fish website": "เว็บไซต์ 5fish",
 
     // Notes
     note_title_placeholder: "หัวข้อ",

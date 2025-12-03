@@ -1926,13 +1926,9 @@ export default function App() {
                       className="w-full flex items-center p-2 rounded-lg font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99] transition-colors"
                     >
                       <item.icon
-                        className={`mr-3 ${
-                          item.name === "Language_Finder"
-                            ? "w-7 h-7 text-gray-500 dark:text-gray-400"
-                            : "w-6 h-6"
-                        }`}
+                        className="mr-3 w-6 h-6"
                       />
-                      {item.name}
+                      {t[item.name.toLowerCase()]}
                     </a>
                   );
                 }
@@ -1966,14 +1962,10 @@ export default function App() {
                   >
                     <div className="flex items-center">
                       <item.icon
-                        className={`mr-3 ${
-                          item.name === "Language_Finder"
-                            ? `w-7 h-7 ${
-                                currentPage.name === item.target
-                                  ? ""
-                                  : "text-gray-700 dark:text-white"
-                              }`
-                            : "w-6 h-6"
+                        className={`mr-3 w-6 h-6 ${
+                          currentPage.name === item.target
+                            ? ""
+                            : "text-gray-700 dark:text-gray-200"
                         }`}
                       />
                       {t[item.name.toLowerCase()]}
