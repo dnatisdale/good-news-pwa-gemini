@@ -21,6 +21,7 @@ export const i18n = {
     language_finder: "Language Finder",
     messages: "messages",
     message_label: "Message",
+    selected_messages: "Selected Messages",
 
     // Status / Authentication
     loading: "Loading...",
@@ -50,7 +51,10 @@ export const i18n = {
     read_more_at: "Read more at",
     open_language_on_grn: "Open this language on GRN / 5fish",
     open_message_on_grn: "Open this message on 5fish / GRN",
-    search_languages: "Search Languages...",
+    search_languages:
+      "หาภาษาในภาษาไทยหรืออังกฤษ | Find a language in Thai or English...",
+    no_languages_found: "No languages found",
+    try_different_search: "Try a different search term",
     result: "Result",
     results: "Results",
     found: "found",
@@ -142,20 +146,8 @@ export const i18n = {
     select_track: "Select Track",
     find_message_btn: "Find Message",
     review_message_title: "Review This Message",
-    review_message_hint: "Check the details below, then click 'Add This Message' to add it to your list.",
-    add_message_btn: "Add This Message",
-    import_list_title: "My Import List",
-    import_list_hint: "These messages are ready to add to My Library. Click 'Add to My Library' to download them for offline use.",
-    add_to_library_btn: "Add to My Library",
-    added_to_library: "✅ Added to My Library! Find them in the My Library page.",
-    export_json_link: "Export JSON (for developers)",
-
-    // SelectedContentPage
-    messages_selected: "messages selected",
-    selected_messages: "Selected Messages",
-    selected_content: "Selected Messages",
-    share: "Share",
-    copy: "Copy",
+    review_message_hint:
+      "Check the details below, then click 'Add This Message' to add it to your list.",
     print: "Print/Download",
     print_word: "Print", // NEW
     no_content_selected:
@@ -220,6 +212,7 @@ export const i18n = {
     language_finder: "ค้นหาภาษา",
     messages: "ข้อความ",
     message_label: "ข้อความ",
+    selected_messages: "ข้อความที่เลือก",
 
     // Status / Authentication
     loading: "กำลังโหลด...",
@@ -260,7 +253,8 @@ export const i18n = {
     read_more_at: "อ่านเพิ่มเติมที่",
     open_language_on_grn: "เปิดภาษานี้ใน GRN / 5fish",
     open_message_on_grn: "เปิดข้อความนี้ใน 5fish / GRN",
-    search_languages: "ค้นหาภาษา...",
+    search_languages:
+      "หาภาษาในภาษาไทยหรืออังกฤษ | Find a language in Thai or English...",
     result: "ผลลัพธ์",
     results: "ผลลัพธ์",
     found: "พบ",
@@ -342,13 +336,17 @@ export const i18n = {
     select_track: "เลือกแทร็ก",
     find_message_btn: "ค้นหาข้อความ",
     review_message_title: "ตรวจสอบข้อความนี้",
-    review_message_hint: "ตรวจสอบรายละเอียดด้านล่าง จากนั้นคลิก 'เพิ่มข้อความนี้' เพื่อเพิ่มลงในรายการของคุณ",
+    review_message_hint:
+      "ตรวจสอบรายละเอียดด้านล่าง จากนั้นคลิก 'เพิ่มข้อความนี้' เพื่อเพิ่มลงในรายการของคุณ",
     add_message_btn: "เพิ่มข้อความนี้",
     import_list_title: "รายการนำเข้าของฉัน",
-    import_list_hint: "ข้อความเหล่านี้พร้อมที่จะเพิ่มลงในคลังของฉัน คลิก 'เพิ่มลงในคลังของฉัน' เพื่อดาวน์โหลดสำหรับใช้งานแบบออฟไลน์",
+    import_list_hint:
+      "ข้อความเหล่านี้พร้อมที่จะเพิ่มลงในคลังของฉัน คลิก 'เพิ่มลงในคลังของฉัน' เพื่อดาวน์โหลดสำหรับใช้งานแบบออฟไลน์",
     add_to_library_btn: "เพิ่มลงในคลังของฉัน",
     added_to_library: "✅ เพิ่มลงในคลังของคุณแล้ว! ค้นหาได้ในหน้าคลังของฉัน",
     export_json_link: "ส่งออก JSON (สำหรับนักพัฒนา)",
+    no_languages_found: "ไม่พบภาษา",
+    try_different_search: "ลองใช้คำค้นหาอื่น",
     pro_tip_button: "เคล็ดลับมืออาชีพ",
 
     // UI Helpers

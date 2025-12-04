@@ -39,7 +39,7 @@ import FloatingUtilityBar from "./components/FloatingUtilityBar";
 import AudioPlayer from "./components/AudioPlayer";
 import LanguageListPage from "./pages/LanguageListPage";
 import SelectedContentPage from "./pages/SelectedContentPage";
-import LanguageFinderPage from "./pages/LanguageFinderPage";
+
 import MessagesByLanguagePage from "./pages/MessagesByLanguagePage";
 import FavoritesPage from "./pages/FavoritesPage";
 import SearchPage from "./pages/SearchPage";
@@ -1307,23 +1307,7 @@ export default function App() {
       );
       break;
 
-    case "BrowseLanguages":
-      PageContent = (
-        <LanguageFinderPage
-          lang={lang}
-          t={t}
-          userData={userData}
-          onToggleFavoriteLanguage={handleToggleFavoriteLanguage}
-          onSelectLanguage={(stableKey) =>
-            navigateTo("MessagesByLanguage", stableKey)
-          }
-          onBack={goBack}
-          onForward={goForward}
-          hasPrev={hasPrev}
-          hasNext={hasNext}
-        />
-      );
-      break;
+
 
     case "Favorites":
       PageContent = (
@@ -1479,7 +1463,7 @@ export default function App() {
           className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} shadow-lg z-30 rounded-b-xl md:py-3 md:px-1`}
         >
           {/* Mobile/Tablet: 3-column grid layout */}
-          <div className="grid grid-cols-3 items-center h-14 md:hidden px-1">
+          <div className="grid grid-cols-3 items-center h-20 md:hidden px-1">
             {/* LEFT: Menu + Logo + Install */}
             <div className="flex items-center justify-start space-x-1">
               <div className="relative">
@@ -1892,11 +1876,6 @@ export default function App() {
               {/* Navigation Items */}
               {[
                 { name: "Search", icon: Search, target: "Search" },
-                {
-                  name: "Language_Finder",
-                  icon: Globe,
-                  target: "BrowseLanguages",
-                },
                 { name: "Favorites", icon: Heart, target: "Favorites" },
                 { name: "My_Library", icon: Download, target: "MyLibrary" },
                 { name: "Import", icon: Upload, target: "Import" },

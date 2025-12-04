@@ -23,7 +23,25 @@ const LanguageCard = ({
   // 👇 NEW: external GRN/5fish URL
   externalUrl,
   languageVideoUrl, // 👇 NEW: YouTube URL for the language
+  searchQuery, // 👇 NEW: Search query for highlighting
+  id, // 👇 NEW: ID for A-Z navigation scrolling
 }) => {
+  // Helper to highlight text
+  const highlightText = (text, query) => {
+    if (!query || !text) return text;
+    
+    const parts = text.split(new RegExp(`(${query})`, 'gi'));
+    return parts.map((part, index) => 
+      part.toLowerCase() === query.toLowerCase() ? (
+        <span key={index} className="bg-yellow-200 dark:bg-yellow-900 text-black dark:text-white rounded px-0.5">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   const handleLanguageClick = (e) => {
     e.stopPropagation(); // don’t trigger onSelect
     if (!externalUrl) return;
@@ -31,9 +49,10 @@ const LanguageCard = ({
   };
   return (
     <div
+      id={id}
       onMouseEnter={() => setHovering && setHovering(true)}
       onMouseLeave={() => setHovering && setHovering(false)}
-      className="bg-white dark:bg-[#374151] p-4 mb-3 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer card-hover transition-colors"
+      className="bg-white dark:bg-[#374151] p-2 mb-1 rounded-xl shadow-md border-b-4 border-brand-red cursor-pointer card-hover transition-colors"
     >
       {/* MAIN ROW */}
       <div className="flex items-center gap-1.5">
@@ -96,10 +115,10 @@ const LanguageCard = ({
                   "Open this language on GRN / 5fish"
                 }
               >
-                {languageName}
+                {highlightText(languageName, searchQuery)}
               </button>
             ) : (
-              languageName
+              highlightText(languageName, searchQuery)
             )}
           </h3>
 
