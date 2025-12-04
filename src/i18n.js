@@ -165,6 +165,8 @@ export const i18n = {
     please_select_messages:
       "📋 Please select some messages first!\n\nTap the checkboxes next to messages to add them to your selection.",
     "5fish website": "5fish Website",
+    watch_video: "Watch Video",
+    watch_on_youtube: "Watch on YouTube",
 
     // Import Page
     import_content_title: "Import Content",
@@ -369,6 +371,8 @@ export const i18n = {
     please_select_messages:
       "📋 กรุณาเลือกข้อความก่อน!\n\nแตะช่องทำเครื่องหมายข้างข้อความเพื่อเพิ่มลงในรายการที่เลือก",
     "5fish website": "เว็บไซต์ 5fish",
+    watch_video: "ดูวิดีโอ",
+    watch_on_youtube: "ดูบน YouTube",
 
     // Notes
     note_title_placeholder: "หัวข้อ",

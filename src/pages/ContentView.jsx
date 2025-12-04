@@ -11,6 +11,7 @@ import {
   PlayCircle,
   CheckCircle,
   Loader,
+  YouTube,
 } from "../components/Icons";
 import { i18n } from "../i18n";
 import AppLogo from "../assets/logo.png";
@@ -287,31 +288,24 @@ const ContentView = ({
             <h1 className="text-3xl font-extrabold text-brand-red dark:text-white leading-tight">
               {languageDisplay}
             </h1>
-            <div className="w-full flex justify-between items-end mb-4">
-              <div className="flex flex-col items-start">
-                <h1 className="text-3xl font-extrabold text-brand-red dark:text-white leading-tight">
-                  {languageDisplay}
-                </h1>
-                <p className="text-lg text-gray-800 dark:text-white leading-tight mt-1">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      window.open(cardUrl, "_blank", "noopener,noreferrer")
-                    }
-                    className="font-bold underline decoration-dotted underline-offset-2 hover:decoration-solid bg-transparent border-none p-0 m-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-red rounded-sm"
-                    title={
-                      t.open_message_on_grn ||
-                      "Open this message on 5fish / GRN"
-                    }
-                  >
-                    {messageTitle}
-                  </button>
-                  <span className="text-sm text-gray-500 dark:text-white ml-2">
-                    #{item.id}
-                  </span>
-                </p>
-              </div>
-            </div>
+            <p className="text-lg text-gray-800 dark:text-white leading-tight mt-1">
+              <button
+                type="button"
+                onClick={() =>
+                  window.open(cardUrl, "_blank", "noopener,noreferrer")
+                }
+                className="font-bold underline decoration-dotted underline-offset-2 hover:decoration-solid bg-transparent border-none p-0 m-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-red rounded-sm"
+                title={
+                  t.open_message_on_grn ||
+                  "Open this message on 5fish / GRN"
+                }
+              >
+                {messageTitle}
+              </button>
+              <span className="text-sm text-gray-500 dark:text-white ml-2">
+                #{item.id}
+              </span>
+            </p>
           </div>
         </div>
 
@@ -388,6 +382,19 @@ const ContentView = ({
                 <PlayCircle className="w-6 h-6 mr-2" />
                 {t.listen_offline || "Listen (Offline Enabled)"}
               </button>
+            )}
+
+            {/* Watch Video Button */}
+            {item.youtubeUrl && (
+              <a
+                href={item.youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-xl"
+              >
+                <YouTube className="w-6 h-6 mr-2" />
+                {t.watch_video || "Watch Video"}
+              </a>
             )}
 
             {/* Share/Copy and Download QR Card buttons - stacked, matching Download Audio style */}

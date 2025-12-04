@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import ContentCard from "../components/ContentCard";
-import { ChevronLeft, ChevronRight } from "../components/Icons";
+import { ChevronLeft, ChevronRight, YouTube, YouTubeOff } from "../components/Icons";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 
@@ -63,6 +63,18 @@ const MessagesByLanguagePage = ({
     }
 
     return null;
+  }, [languageGroups, selectedLanguageKey]);
+
+  const languageVideoUrl = useMemo(() => {
+    const group = languageGroups.find(
+      (g) => g.stableKey === selectedLanguageKey
+    );
+    if (!group || !group.messages || group.messages.length === 0) {
+      return null;
+    }
+    // Check if any message in the group has a languageVideoUrl (using the first one found)
+    const msgWithVideo = group.messages.find((m) => m.languageVideoUrl);
+    return msgWithVideo ? msgWithVideo.languageVideoUrl : null;
   }, [languageGroups, selectedLanguageKey]);
 
   // --- Audio Playback State for "sample" ---
@@ -156,7 +168,7 @@ const MessagesByLanguagePage = ({
       </div>
 
       {/* Simple header for this page area */}
-      <div className="px-4 pt-3 pb-2 border-b border-slate-200 dark:border-slate-600 bg-slate-100 dark:bg-slate-700">
+      <div className="px-4 pt-3 pb-2 border-b border-slate-200 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 flex items-center justify-between">
         <div className="flex items-baseline gap-2">
           {languageExternalUrl ? (
             <button
@@ -190,6 +202,21 @@ const MessagesByLanguagePage = ({
               : t.messages || "messages"}
             )
           </div>
+        </div>
+        
+        {/* Language Video Indicator */}
+        <div>
+          {languageVideoUrl && (
+            <a
+              href={languageVideoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-red-50 text-brand-red hover:bg-red-100 transition-all inline-block"
+              title={t.watch_video || "Watch Video"}
+            >
+              <YouTube className="w-6 h-6" />
+            </a>
+          )}
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Share2, Volume2, Heart, Download } from "./Icons";
+import { Share2, Volume2, Heart, Download, YouTubeColor } from "./Icons";
 import { i18n } from "../i18n";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
@@ -22,6 +22,7 @@ const LanguageCard = ({
   sampleUrl, // 👇 NEW: Sample URL for download
   // 👇 NEW: external GRN/5fish URL
   externalUrl,
+  languageVideoUrl, // 👇 NEW: YouTube URL for the language
 }) => {
   const handleLanguageClick = (e) => {
     e.stopPropagation(); // don’t trigger onSelect
@@ -128,6 +129,27 @@ const LanguageCard = ({
             >
               <Download className="w-6 h-6" />
             </a>
+          )}
+
+          {/* YouTube Button (Always visible, 2nd position) */}
+          {languageVideoUrl ? (
+            <a
+              href={languageVideoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white hover:bg-gray-300 transition-all"
+              title={lang === "en" ? "Watch Video" : "ดูวิดีโอ"}
+            >
+              <YouTubeColor className="w-6 h-6" />
+            </a>
+          ) : (
+            <div
+              className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white cursor-not-allowed"
+              title={lang === "en" ? "No video available" : "ไม่มีวิดีโอ"}
+            >
+              <YouTubeColor className="w-6 h-6" />
+            </div>
           )}
 
           {/* Play Button */}
