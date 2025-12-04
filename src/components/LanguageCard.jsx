@@ -20,7 +20,14 @@ const LanguageCard = ({
   isFavorite,
   onToggleFavorite,
   sampleUrl, // 👇 NEW: Sample URL for download
+  // 👇 NEW: external GRN/5fish URL
+  externalUrl,
 }) => {
+  const handleLanguageClick = (e) => {
+    e.stopPropagation(); // don’t trigger onSelect
+    if (!externalUrl) return;
+    window.open(externalUrl, "_blank", "noopener,noreferrer");
+  };
   return (
     <div
       onMouseEnter={() => setHovering && setHovering(true)}
@@ -61,32 +68,50 @@ const LanguageCard = ({
           >
             <Heart
               className={`w-5 h-5 cursor-pointer transition-all ${
-                isFavorite
-                  ? "fill-brand-red text-brand-red"
-                  : "text-brand-red"
+                isFavorite ? "fill-brand-red text-brand-red" : "text-brand-red"
               }`}
-              style={isFavorite ? { fill: "#CC3333", color: "#CC3333" } : { fill: "white", color: "#CC3333", strokeWidth: "2" }}
+              style={
+                isFavorite
+                  ? { fill: "#CC3333", color: "#CC3333" }
+                  : { fill: "white", color: "#CC3333", strokeWidth: "2" }
+              }
               title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
             />
           </div>
         )}
 
         {/* TEXT AREA – takes all remaining width */}
-        <div
-          onClick={() => onSelect(languageName)}
-          className="flex-1 min-w-0"
-        >
+        <div onClick={() => onSelect(languageName)} className="flex-1 min-w-0">
           <h3
             className={`text-xl font-bold ${ACCENT_COLOR_CLASS} dark:text-white`}
           >
-            {languageName}
+            {externalUrl ? (
+              <button
+                type="button"
+                onClick={handleLanguageClick}
+                className="underline decoration-dotted underline-offset-2 hover:decoration-solid bg-transparent border-none p-0 m-0 cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-brand-red rounded-sm"
+                title={
+                  i18n[lang].open_language_on_grn ||
+                  "Open this language on GRN / 5fish"
+                }
+              >
+                {languageName}
+              </button>
+            ) : (
+              languageName
+            )}
           </h3>
+
           <p className="text-xs text-gray-500 dark:text-gray-300 mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">
             {lang === "en" ? "Tap to view" : "แตะเพื่อดู"} ({messageCount}{" "}
-            {messageCount === 1 
-              ? (lang === "en" ? "message" : "ข้อความ")
-              : (lang === "en" ? "messages" : "ข้อความ")
-            })
+            {messageCount === 1
+              ? lang === "en"
+                ? "message"
+                : "ข้อความ"
+              : lang === "en"
+              ? "messages"
+              : "ข้อความ"}
+            )
           </p>
         </div>
 

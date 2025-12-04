@@ -21,10 +21,32 @@ const LanguageListPage = ({
 
   const handlePlayLanguageSample = (group) => {
     // Find first message in the group that has a sample
-    const firstMessageWithSample = group.messages.find(msg => msg.sampleUrl);
-    
+    const firstMessageWithSample = group.messages.find((msg) => msg.sampleUrl);
+
     if (!firstMessageWithSample || !firstMessageWithSample.sampleUrl) {
-      console.log('No sample available for this language');
+      console.log("No sample available for this language");
+      // Build external URL for a language (GRN language page if possible, else 5fish ISO3)
+      const buildLanguageExternalUrl = (group) => {
+        if (!group || !group.messages || group.messages.length === 0)
+          return null;
+
+        const firstMsg = group.messages[0];
+        const langId = group.langId || firstMsg?.langId;
+        const iso3 = firstMsg?.iso3;
+
+        // Prefer GRN language page if we know langId
+        if (langId) {
+          return `https://globalrecordings.net/en/language/${langId}`;
+        }
+
+        // Fallback to 5fish language page by ISO code
+        if (iso3) {
+          return `https://5fish.mobi/${iso3}`;
+        }
+
+        return null;
+      };
+
       return;
     }
 
@@ -37,16 +59,20 @@ const LanguageListPage = ({
       // Start playing new sample
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
-      
+
       audioRef.current.src = firstMessageWithSample.sampleUrl;
       audioRef.current.load();
-      
-      audioRef.current.play()
+
+      audioRef.current
+        .play()
         .then(() => {
-          console.log('Playing language sample:', firstMessageWithSample.sampleUrl);
+          console.log(
+            "Playing language sample:",
+            firstMessageWithSample.sampleUrl
+          );
           setPlayingLanguageKey(group.stableKey);
         })
-        .catch(e => {
+        .catch((e) => {
           console.error("Error playing sample:", e);
           setPlayingLanguageKey(null);
         });
@@ -65,8 +91,8 @@ const LanguageListPage = ({
   React.useEffect(() => {
     const audio = audioRef.current;
     const handleEnded = () => setPlayingLanguageKey(null);
-    audio.addEventListener('ended', handleEnded);
-    return () => audio.removeEventListener('ended', handleEnded);
+    audio.addEventListener("ended", handleEnded);
+    return () => audio.removeEventListener("ended", handleEnded);
   }, []);
 
   return (
@@ -93,7 +119,8 @@ const LanguageListPage = ({
           isPlayingLanguage={playingLanguageKey === group.stableKey}
           isFavorite={userData?.favoriteLanguages?.includes(group.stableKey)} // 👇 NEW
           onToggleFavorite={() => onToggleFavoriteLanguage(group.stableKey)} // 👇 NEW
-          sampleUrl={group.messages.find(msg => msg.sampleUrl)?.sampleUrl} // 👇 NEW: Pass sample URL for download
+          sampleUrl={group.messages.find((msg) => msg.sampleUrl)?.sampleUrl} // 👇 NEW: Pass sample URL for download
+          externalUrl={buildLanguageExternalUrl(group)}
         />
       ))}
       <div className="h-16"></div>
