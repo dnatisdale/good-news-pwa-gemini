@@ -40,6 +40,31 @@ const MessagesByLanguagePage = ({
     return group.count ?? currentMessageList?.length ?? 0;
   }, [languageGroups, selectedLanguageKey, currentMessageList]);
 
+  const languageExternalUrl = useMemo(() => {
+    const group = languageGroups.find(
+      (g) => g.stableKey === selectedLanguageKey
+    );
+    if (!group || !group.messages || group.messages.length === 0) {
+      return null;
+    }
+
+    const firstMsg = group.messages[0];
+    const langId = group.langId || firstMsg.langId;
+    const iso3 = firstMsg.iso3;
+
+    // Prefer GRN language page if we have langId
+    if (langId) {
+      return `https://globalrecordings.net/en/language/${langId}`;
+    }
+
+    // Fallback to 5fish language page by ISO code
+    if (iso3) {
+      return `https://5fish.mobi/${iso3}`;
+    }
+
+    return null;
+  }, [languageGroups, selectedLanguageKey]);
+
   // --- Audio Playback State for "sample" ---
   const [playingSampleId, setPlayingSampleId] = React.useState(null);
   const audioRef = React.useRef(new Audio());
@@ -107,18 +132,22 @@ const MessagesByLanguagePage = ({
           onClick={onBack}
           disabled={!hasPrev}
           className={`flex items-center text-base font-semibold transition-colors ${
-            hasPrev ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+            hasPrev
+              ? "hover:text-gray-900 dark:hover:text-gray-300"
+              : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
           }`}
         >
           <ChevronLeft className="w-5 h-5 mr-1" />
           {t.back || "Back"}
         </button>
-        
+
         <button
           onClick={onForward}
           disabled={!hasNext}
           className={`flex items-center text-base font-semibold transition-colors ${
-            hasNext ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+            hasNext
+              ? "hover:text-gray-900 dark:hover:text-gray-300"
+              : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
           }`}
         >
           {t.forward || "Forward"}
@@ -129,9 +158,31 @@ const MessagesByLanguagePage = ({
       {/* Simple header for this page area */}
       <div className="px-4 pt-3 pb-2 border-b border-slate-200 dark:border-slate-600 bg-slate-100 dark:bg-slate-700">
         <div className="flex items-baseline gap-2">
-          <div className={`text-lg font-semibold ${ACCENT_COLOR_CLASS} dark:text-white`}>
-            {languageDisplayName}
-          </div>
+          {languageExternalUrl ? (
+            <button
+              type="button"
+              onClick={() =>
+                window.open(
+                  languageExternalUrl,
+                  "_blank",
+                  "noopener,noreferrer"
+                )
+              }
+              className={`text-lg font-semibold ${ACCENT_COLOR_CLASS} dark:text-white underline decoration-dotted underline-offset-2 hover:decoration-solid focus:outline-none focus:ring-2 focus:ring-brand-red rounded-sm`}
+              title={
+                t.open_language_on_grn || "Open this language on GRN / 5fish"
+              }
+            >
+              {languageDisplayName}
+            </button>
+          ) : (
+            <div
+              className={`text-lg font-semibold ${ACCENT_COLOR_CLASS} dark:text-white`}
+            >
+              {languageDisplayName}
+            </div>
+          )}
+
           <div className="text-sm text-slate-500 dark:text-slate-400">
             ({languageMessageCount}{" "}
             {languageMessageCount === 1

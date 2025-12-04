@@ -32,12 +32,15 @@ const copyLink = (text, callback) => {
 };
 
 const shareQRCard = (item, lang, qrCodeUrl) => {
-  const { languageDisplay, messageTitle, trackTitle } = formatContentItem(item, lang);
+  const { languageDisplay, messageTitle, trackTitle } = formatContentItem(
+    item,
+    lang
+  );
   const programNumber = item.id;
-  
+
   // Get verse text and reference
   const verseText = lang === "th" ? item.verse_th : item.verse_en;
-  
+
   // Extract reference if verse has it (e.g., "Genesis 1:1 text..." -> ref: "Genesis 1:1", text: "text...")
   let verseQuote = "";
   let verseRef = "";
@@ -51,19 +54,23 @@ const shareQRCard = (item, lang, qrCodeUrl) => {
       verseQuote = verseText;
     }
   }
-  
+
   const divider = "━━━━━━━━━━━━━━━━";
-  
+
   let text;
   if (lang === "th") {
-    text = `${divider}\n${languageDisplay} | ${messageTitle} | ข้อความ #${programNumber}\n${divider}\n\nฟัง • แบ่งปัน • ดาวน์โหลด\nListen on 5fish: ${qrCodeUrl}\n\n${verseQuote ? `${verseQuote}  ${verseRef}\n\n` : ""}${divider}\nค้นพบภาษามากกว่า 6,000+ ภาษาที่ 5fish.mobi หรือ globalrecordings.net\nส่งความคิดเห็นไปที่: Thai@globalrecordings.net`;
+    text = `${divider}\n${languageDisplay} | ${messageTitle} | ข้อความ #${programNumber}\n${divider}\n\nฟัง • แบ่งปัน • ดาวน์โหลด\nListen on 5fish: ${qrCodeUrl}\n\n${
+      verseQuote ? `${verseQuote}  ${verseRef}\n\n` : ""
+    }${divider}\nค้นพบภาษามากกว่า 6,000+ ภาษาที่ 5fish.mobi หรือ globalrecordings.net\nส่งความคิดเห็นไปที่: Thai@globalrecordings.net`;
   } else {
-    text = `${divider}\n${languageDisplay} | ${messageTitle} | Message #${programNumber}\n${divider}\n\nListen • Share • Download\nListen on 5fish: ${qrCodeUrl}\n\n${verseQuote ? `${verseQuote}  ${verseRef}\n\n` : ""}${divider}\nDiscover 6,000+ languages at 5fish.mobi or globalrecordings.net\nEmail any feedback to: Thai@globalrecordings.net`;
+    text = `${divider}\n${languageDisplay} | ${messageTitle} | Message #${programNumber}\n${divider}\n\nListen • Share • Download\nListen on 5fish: ${qrCodeUrl}\n\n${
+      verseQuote ? `${verseQuote}  ${verseRef}\n\n` : ""
+    }${divider}\nDiscover 6,000+ languages at 5fish.mobi or globalrecordings.net\nEmail any feedback to: Thai@globalrecordings.net`;
   }
 
   if (navigator.share) {
     const title = lang === "th" ? "ข่าวดี" : "Thai: Good News";
-    
+
     navigator
       .share({
         title: title,
@@ -74,7 +81,7 @@ const shareQRCard = (item, lang, qrCodeUrl) => {
         console.error("Error sharing QR Card:", error);
         // Fallback to copy if share fails (e.g. user cancelled or not supported)
         if (error.name !== "AbortError") {
-             copyLink(text, (message) => alert(message));
+          copyLink(text, (message) => alert(message));
         }
       });
   } else {
@@ -84,7 +91,8 @@ const shareQRCard = (item, lang, qrCodeUrl) => {
 
 // --- Share Card Print View Component ---
 const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
-  const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
+  const { languageDisplay, messageTitle, trackTitle, programNumber } =
+    formatContentItem(item, lang);
   const readMoreLabel =
     lang === "en" ? "Listen, Share, Download at" : "ฟัง แบ่งปัน ดาวน์โหลดที่";
 
@@ -110,7 +118,9 @@ const ShareCardPrintView = ({ item, lang, t, cardUrl }) => {
             {languageDisplay}
           </h2>
           <h3 className="text-xl font-bold text-brand-red">{messageTitle}</h3>
-          <p className="text-sm text-gray-700 mt-1">{t.message_label || "Message"} # {programNumber}</p>
+          <p className="text-sm text-gray-700 mt-1">
+            {t.message_label || "Message"} # {programNumber}
+          </p>
         </div>
       </div>
 
@@ -161,10 +171,11 @@ const ContentView = ({
   pageStack,
 }) => {
   const [isQrLarge, setIsQrLarge] = useState(false);
-  
+
   // --- NEW: Offline Storage Hook ---
-  const { downloadTrack, isTrackOffline, isTrackDownloading } = useOfflineStorage();
-  
+  const { downloadTrack, isTrackOffline, isTrackDownloading } =
+    useOfflineStorage();
+
   // Safety check: ensure item exists before checking status
   const isOffline = item ? isTrackOffline(item.id) : false;
   const isDownloading = item ? isTrackDownloading(item.id) : false;
@@ -172,8 +183,9 @@ const ContentView = ({
   const cardUrl = `https://5fi.sh/T${item?.id}`;
 
   // --- USE CENTRALIZED FORMATTER ---
-  const { languageDisplay, messageTitle, trackTitle, programNumber } = formatContentItem(item, lang);
-  
+  const { languageDisplay, messageTitle, trackTitle, programNumber } =
+    formatContentItem(item, lang);
+
   // Bible Verse - currently missing from data structure, using placeholder logic
   const verseDisplay = "";
 
@@ -233,7 +245,7 @@ const ContentView = ({
   };
 
   if (!item) {
-      return <div className="p-8 text-center">Loading content...</div>;
+    return <div className="p-8 text-center">Loading content...</div>;
   }
 
   return (
@@ -244,18 +256,22 @@ const ContentView = ({
           onClick={onBack}
           disabled={!hasPrev}
           className={`flex items-center text-base font-semibold transition-colors ${
-            hasPrev ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+            hasPrev
+              ? "hover:text-gray-900 dark:hover:text-gray-300"
+              : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
           }`}
         >
           <ChevronLeft className="w-5 h-5 mr-1" />
           {t.back || "Back"}
         </button>
-        
+
         <button
           onClick={onForward}
           disabled={!hasNext}
           className={`flex items-center text-base font-semibold transition-colors ${
-            hasNext ? "hover:text-gray-900 dark:hover:text-gray-300" : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
+            hasNext
+              ? "hover:text-gray-900 dark:hover:text-gray-300"
+              : "text-gray-400 dark:text-gray-500 cursor-not-allowed"
           }`}
         >
           {t.forward || "Forward"}
@@ -265,23 +281,42 @@ const ContentView = ({
 
       {/* Centered Container */}
       <div className="flex flex-col items-center w-full max-w-lg mx-auto">
-        
         {/* --- HEADER ROW: Text Left, Heart Right --- */}
         <div className="w-full flex justify-between items-end mb-4">
           <div className="flex flex-col items-start">
             <h1 className="text-3xl font-extrabold text-brand-red dark:text-white leading-tight">
               {languageDisplay}
             </h1>
-            <p className="text-lg text-gray-800 dark:text-white leading-tight mt-1">
-              <span className="font-bold">{messageTitle}</span>
-              <span className="text-sm text-gray-500 dark:text-white ml-2">#{item.id}</span>
-            </p>
+            <div className="w-full flex justify-between items-end mb-4">
+              <div className="flex flex-col items-start">
+                <h1 className="text-3xl font-extrabold text-brand-red dark:text-white leading-tight">
+                  {languageDisplay}
+                </h1>
+                <p className="text-lg text-gray-800 dark:text-white leading-tight mt-1">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      window.open(cardUrl, "_blank", "noopener,noreferrer")
+                    }
+                    className="font-bold underline decoration-dotted underline-offset-2 hover:decoration-solid bg-transparent border-none p-0 m-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-red rounded-sm"
+                    title={
+                      t.open_message_on_grn ||
+                      "Open this message on 5fish / GRN"
+                    }
+                  >
+                    {messageTitle}
+                  </button>
+                  <span className="text-sm text-gray-500 dark:text-white ml-2">
+                    #{item.id}
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* --- NEW LAYOUT: QR Code Left, Buttons Right --- */}
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-6 w-full">
-          
           {/* QR Code (Left) */}
           <div
             className={`flex-shrink-0 flex flex-col items-center bg-white rounded-xl shadow-inner cursor-pointer transition-all duration-300 ${
@@ -312,7 +347,9 @@ const ContentView = ({
             {/* Download Audio Button */}
             {item.trackDownloadUrl && (
               <button
-                onClick={() => !isOffline && !isDownloading && downloadTrack(item)}
+                onClick={() =>
+                  !isOffline && !isDownloading && downloadTrack(item)
+                }
                 disabled={isOffline || isDownloading}
                 className={`w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 ${
                   isOffline
@@ -359,7 +396,8 @@ const ContentView = ({
                 onClick={handleShare}
                 className="w-full p-4 font-bold text-white text-lg rounded-xl shadow-lg flex items-center justify-center transition-all duration-200 bg-brand-red hover:bg-red-800 hover:scale-105 active:scale-95 hover:shadow-xl"
               >
-                <Share2 className="w-6 h-6 mr-2" /> {t.share_copy || "Share/Copy"}
+                <Share2 className="w-6 h-6 mr-2" />{" "}
+                {t.share_copy || "Share/Copy"}
               </button>
               <button
                 onClick={downloadShareCard}
