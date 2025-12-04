@@ -12,6 +12,7 @@ import {
 import { ChevronLeft, ChevronRight, Upload } from "../components/Icons"; // Use App icons for nav
 import { generateId } from "../utils/importUtils";
 import { staticContent } from "../data/staticContent";
+import { useOfflineStorage } from "../hooks/useOfflineStorage";
 
 const ACCENT_COLOR_CLASS = "text-brand-red dark:text-white";
 
@@ -21,6 +22,9 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [showProTip, setShowProTip] = useState(false);
+  
+  // Use offline storage hook for downloading imported messages
+  const { downloadTrack } = useOfflineStorage();
 
   const [manualEntry, setManualEntry] = useState({
     trackNumber: "1",
@@ -291,10 +295,29 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
     }
   };
 
+  const handleAddToLibrary = async () => {
+    if (importedData.length === 0) return;
+    
+    setIsLoading(true);
+    try {
+      // Download all items in importedData to offline library
+      for (const item of importedData) {
+        await downloadTrack(item);
+      }
+      alert(t.added_to_library || "✅ Added to My Library! Find them in the My Library page.");
+      setImportedData([]); // Clear the list after successful download
+    } catch (error) {
+      console.error("Failed to add to library:", error);
+      alert("Failed to add some messages. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
   const handleCopyJson = () => {
     const jsonString = JSON.stringify(importedData, null, 2);
     navigator.clipboard.writeText(jsonString);
-    alert(t.json_copied_alert || "JSON copied to clipboard!");
+    alert(t.json_copied_alert || "✅ Copied! Your message data is now on your clipboard. You can paste it anywhere you need it.");
   };
 
   const handleClearData = () => {
@@ -488,25 +511,28 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
               </select>
             </div>
             
-            {/* Fetch & Generate Button */}
+            {/* Find Message Button */}
             <button
               onClick={handleUrlSubmit}
               disabled={isLoading}
               className="w-full bg-brand-red hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50 hover:scale-[1.02] active:scale-95"
             >
               {isLoading ? "Loading..." : <Search className="w-5 h-5 text-white" />}
-              {t.fetch_generate_btn || "Fetch & Generate"}
+              {t.find_message_btn || "Find Message"}
             </button>
             {error && <p className="text-red-500 text-sm mt-2 text-center">{error}</p>}
           </div>
         </div>
 
-        {/* Review & Edit Section */}
+        {/* Review This Message Section */}
         {currentItem && (
-          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md border-2 border-red-100 dark:border-red-900/30 slide-up">
-            <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4 text-center">
-              {t.review_edit_title || "Review & Edit"}
+          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md border-2 border-green-100 dark:border-green-900/30 slide-up">
+            <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-2 text-center">
+              {t.review_message_title || "Review This Message"}
             </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400 text-center mb-4">
+              {t.review_message_hint || "Check the details below, then click 'Add This Message' to add it to your list."}
+            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
@@ -660,36 +686,45 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
               className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-md"
             >
               <Plus className="w-5 h-5" />
-              {t.add_to_list_btn || "Add to List"}
+              {t.add_message_btn || "Add This Message"}
             </button>
           </div>
         )}
 
-        {/* List of Imported Items */}
+        {/* My Import List */}
         {importedData.length > 0 && (
-          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md">
-            <div className="flex justify-between items-center mb-4">
+          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md border-2 border-blue-100 dark:border-blue-900/30">
+            <div className="flex justify-between items-center mb-2">
               <h2 className="text-xl font-bold text-gray-800 dark:text-white">
-                {t.ready_to_export_title || "Ready to Export"} (
-                {importedData.length})
+                {t.import_list_title || "My Import List"} ({importedData.length})
               </h2>
               <div className="flex gap-2">
                 <button
                   onClick={handleClearData}
                   className="text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-                  title="Clear All"
+                  title={t.clear_all || "Clear All"}
                 >
                   <Trash2 className="w-5 h-5" />
                 </button>
                 <button
-                  onClick={handleCopyJson}
-                  className="bg-gray-800 hover:bg-gray-900 dark:bg-gray-600 dark:hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors shadow-sm"
+                  onClick={handleAddToLibrary}
+                  disabled={isLoading}
+                  className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors shadow-sm"
                 >
-                  <Copy className="w-5 h-5" />
-                  {t.copy_json_btn || "Copy JSON"}
+                  <Download className="w-5 h-5" />
+                  {isLoading ? (t.downloading || "Downloading...") : (t.add_to_library_btn || "Add to My Library")}
                 </button>
               </div>
             </div>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+              {t.import_list_hint || "These messages are ready to add to My Library. Click 'Add to My Library' to download them for offline use."}
+            </p>
+            <button
+              onClick={handleCopyJson}
+              className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 underline mb-4"
+            >
+              {t.export_json_link || "Export JSON (for developers)"}
+            </button>
 
             <div className="max-h-96 overflow-y-auto space-y-4">
               {importedData.map((item, index) => (

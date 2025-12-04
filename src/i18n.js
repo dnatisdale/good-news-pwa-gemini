@@ -140,6 +140,15 @@ export const i18n = {
     select_language: "Select Language",
     select_message: "Select Message",
     select_track: "Select Track",
+    find_message_btn: "Find Message",
+    review_message_title: "Review This Message",
+    review_message_hint: "Check the details below, then click 'Add This Message' to add it to your list.",
+    add_message_btn: "Add This Message",
+    import_list_title: "My Import List",
+    import_list_hint: "These messages are ready to add to My Library. Click 'Add to My Library' to download them for offline use.",
+    add_to_library_btn: "Add to My Library",
+    added_to_library: "✅ Added to My Library! Find them in the My Library page.",
+    export_json_link: "Export JSON (for developers)",
 
     // SelectedContentPage
     messages_selected: "messages selected",
@@ -325,12 +334,21 @@ export const i18n = {
     ready_to_export_title: "พร้อมส่งออก",
     copy_json_btn: "คัดลอก JSON",
     json_copied_alert:
-      "คัดลอก JSON แล้ว! คุณสามารถวางลงในไฟล์ src/data/staticContent.js ได้เลย",
+      "✅ คัดลอกแล้ว! ข้อมูลข้อความของคุณอยู่ในคลิปบอร์ดแล้ว คุณสามารถวางได้ทุกที่ที่ต้องการ",
     clear_data_confirm: "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลที่นำเข้าทั้งหมด?",
     find_program_id: "ค้นหารหัสโปรแกรม",
     select_language: "เลือกภาษา",
     select_message: "เลือกข้อความ",
     select_track: "เลือกแทร็ก",
+    find_message_btn: "ค้นหาข้อความ",
+    review_message_title: "ตรวจสอบข้อความนี้",
+    review_message_hint: "ตรวจสอบรายละเอียดด้านล่าง จากนั้นคลิก 'เพิ่มข้อความนี้' เพื่อเพิ่มลงในรายการของคุณ",
+    add_message_btn: "เพิ่มข้อความนี้",
+    import_list_title: "รายการนำเข้าของฉัน",
+    import_list_hint: "ข้อความเหล่านี้พร้อมที่จะเพิ่มลงในคลังของฉัน คลิก 'เพิ่มลงในคลังของฉัน' เพื่อดาวน์โหลดสำหรับใช้งานแบบออฟไลน์",
+    add_to_library_btn: "เพิ่มลงในคลังของฉัน",
+    added_to_library: "✅ เพิ่มลงในคลังของคุณแล้ว! ค้นหาได้ในหน้าคลังของฉัน",
+    export_json_link: "ส่งออก JSON (สำหรับนักพัฒนา)",
     pro_tip_button: "เคล็ดลับมืออาชีพ",
 
     // UI Helpers
@@ -398,7 +416,7 @@ export const i18n = {
     ready_to_export_title: "พร้อมส่งออก",
     copy_json_btn: "คัดลอก JSON",
     json_copied_alert:
-      "คัดลอก JSON แล้ว! คุณสามารถวางลงใน src/data/staticContent.js ได้เลย",
+      "✅ คัดลอกแล้ว! ข้อมูลข้อความของคุณอยู่ในคลิปบอร์ดแล้ว คุณสามารถวางได้ทุกที่ที่ต้องการ",
     clear_data_confirm: "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลที่นำเข้าทั้งหมด?",
   },
 };
