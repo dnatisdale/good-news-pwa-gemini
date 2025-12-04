@@ -98,6 +98,9 @@ const ContentCard = ({
     }
   };
 
+  // 4) Determine Video URL (specific message URL or fallback to language/program URL)
+  const videoUrl = item.youtubeUrl || item.languageVideoUrl;
+
   return (
     <div className="bg-white dark:bg-[#374151] p-4 mb-3 rounded-xl shadow-md border-t-4 border-brand-red cursor-pointer card-hover flex items-start">
       {/* ================= LEFT SIDE: CHECKBOX + HEART ================= */}
@@ -226,9 +229,9 @@ const ContentCard = ({
         )}
 
         {/* YouTube Button (Always visible, 2nd position) */}
-        {item.youtubeUrl ? (
+        {videoUrl ? (
           <a
-            href={item.youtubeUrl}
+            href={videoUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}

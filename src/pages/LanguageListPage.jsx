@@ -153,6 +153,8 @@ const LanguageListPage = ({
           sampleUrl={group.messages.find((msg) => msg.sampleUrl)?.sampleUrl}
           // NEW: External GRN / 5fish link used by LanguageCard for the language name
           externalUrl={buildLanguageExternalUrl(group)}
+          // NEW: YouTube URL for the language (find first message with one)
+          languageVideoUrl={group.messages.find((msg) => msg.languageVideoUrl)?.languageVideoUrl}
         />
       ))}
 
