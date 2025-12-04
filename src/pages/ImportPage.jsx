@@ -248,39 +248,30 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
     // 3. Get random verses
     const randomVerses = getRandomVerses();
 
-    // 4. Try to get iso3 and langId from staticContent
-    const existingItem = staticContent.find(item => item.programId === id);
+    // 4. Try to get data from staticContent first (most reliable)
+    const existingItem = staticContent.find(item => item.id == id);
     const iso3 = existingItem?.iso3 || "ENG";
     const langId = existingItem?.langId || "0000";
 
+    // Use staticContent data if available, otherwise use fetched metadata
     setCurrentItem({
       id: generateId(), // Internal ID
       programId: id, // GRN ID
       iso3: iso3,
       langId: langId,
-      ...metadata,
-      verse_en: randomVerses.verse_en,
-      verse_th: randomVerses.verse_th,
+      languageEn: existingItem?.languageEn || metadata.languageEn,
+      langTh: existingItem?.langTh || metadata.langTh,
+      title_en: existingItem?.title_en || metadata.title_en,
+      title_th: existingItem?.title_th || metadata.title_th,
+      verse_en: existingItem?.verse_en || randomVerses.verse_en,
+      verse_th: existingItem?.verse_th || randomVerses.verse_th,
       streamUrl,
       trackDownloadUrl,
       zipDownloadUrl,
       shareUrl,
-      stableKey: metadata.languageEn || "New Import",
+      stableKey: existingItem?.languageEn || metadata.languageEn || "New Import",
     });
-    
-    // If a message was selected from finder, auto-populate from staticContent
-    if (finderMessageId) {
-      const selectedItem = staticContent.find(item => item.programId === id);
-      if (selectedItem) {
-        setCurrentItem(prev => ({
-          ...prev,
-          languageEn: selectedItem.languageEn || metadata.languageEn,
-          langTh: selectedItem.langTh || metadata.langTh,
-          title_en: selectedItem.title_en || metadata.title_en,
-          title_th: selectedItem.title_th || metadata.title_th,
-        }));
-      }
-    }
+
 
     setIsLoading(false);
   };
@@ -393,6 +384,11 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
                   placeholder="63629"
                   value={programId}
                   onChange={(e) => setProgramId(e.target.value)}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      handleUrlSubmit(e);
+                    }
+                  }}
                 />
               </div>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
@@ -414,9 +410,25 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
                     trackNumber: e.target.value,
                   })
                 }
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    handleUrlSubmit(e);
+                  }
+                }}
               />
             </div>
           </div>
+          
+          {/* Find Message Button - Right after inputs */}
+          <button
+            onClick={handleUrlSubmit}
+            disabled={isLoading}
+            className="w-full bg-brand-red hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50 hover:scale-[1.02] active:scale-95"
+          >
+            {isLoading ? "Loading..." : <Search className="w-5 h-5 text-white" />}
+            {t.find_message_btn || "Find Message"}
+          </button>
+          {error && <p className="text-red-500 text-sm mt-2 text-center">{error}</p>}
         </div>
 
         {/* Info Notes Box */}
@@ -510,17 +522,6 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
                 ))}
               </select>
             </div>
-            
-            {/* Find Message Button */}
-            <button
-              onClick={handleUrlSubmit}
-              disabled={isLoading}
-              className="w-full bg-brand-red hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50 hover:scale-[1.02] active:scale-95"
-            >
-              {isLoading ? "Loading..." : <Search className="w-5 h-5 text-white" />}
-              {t.find_message_btn || "Find Message"}
-            </button>
-            {error && <p className="text-red-500 text-sm mt-2 text-center">{error}</p>}
           </div>
         </div>
 
