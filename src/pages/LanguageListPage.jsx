@@ -254,10 +254,10 @@ const LanguageListPage = ({
                       text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-100
                       bg-gray-200 dark:bg-gray-700
                       hover:bg-brand-red hover:text-white
-                      dark:hover:bg-red-500 dark:hover:text-white
+                      dark:hover:bg-[#CC3333] dark:hover:text-white
                       transition-all duration-200 ease-out origin-center
                       hover:scale-150 hover:z-50 
-                      hover:shadow-xl dark:hover:shadow-[0_0_20px_rgba(239,68,68,0.6)]
+                      hover:shadow-xl dark:hover:shadow-[0_0_20px_rgba(204,51,51,0.6)]
                     "
                     style={{
                       clipPath:
