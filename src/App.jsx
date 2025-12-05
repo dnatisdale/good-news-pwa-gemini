@@ -165,6 +165,13 @@ export default function App() {
       .replace(/:/g, "-")
       .slice(0, 5); // HH-mm
     const filename = `TGN_Selected_Messages_${dateStr}_${timeStr}`;
+    const dateText = now.toLocaleString(isThai ? 'th-TH' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
 
     // Generate HTML list items
     const listItemsHtml = filteredContent
@@ -441,13 +448,13 @@ export default function App() {
           <style>
             @page {
               size: A4;
-              margin: 0.5in;
+              margin: 0.3in; /* Reduced margin */
             }
             body {
               font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
               margin: 0;
               padding: 0.25in;
-              background: #f3f4f6; /* Light gray background for the preview window */
+              background: #f3f4f6;
             }
             /* HIDE ELEMENTS WHEN PRINTING */
             @media print {
@@ -458,79 +465,94 @@ export default function App() {
               page-break-after: always;
               display: grid;
               grid-template-columns: repeat(3, 1fr);
-              gap: 0.4in;
+              grid-template-rows: repeat(3, 1fr); /* Force 3 rows */
+              gap: 0.2in; /* Reduced gap */
+              height: 10.8in; /* Fix height to ensure 3 rows fit */
+              align-content: start;
               background: white;
-              padding: 0.25in; /* Visual padding for the preview */
+              padding: 0;
             }
             .page:last-child {
               page-break-after: auto;
             }
             .qr-card {
-              border-radius: 16px;
-              box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-              padding: 10px 10px 14px;
+              border-radius: 12px;
+              border: 1px solid #eee; /* Light border for definition */
+              padding: 5px 5px 8px; /* Reduced padding */
               text-align: center;
               background: #ffffff;
-              /* Ensure cards don't split across pages */
-              break-inside: avoid; 
+              break-inside: avoid;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              height: 3.3in; /* Fixed height for 3 rows */
             }
             .qr-header {
               display: flex;
-              align-items: flex-start;
-              justify-content: space-between;
-              margin-bottom: 6px;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 4px;
             }
             .logo-wrap .logo {
-              width: 24px;
-              height: 24px;
+              width: 20px;
+              height: 20px;
             }
             .header-text {
-              flex: 1;
               margin-left: 6px;
               text-align: center;
             }
             .language {
-              font-size: 12px;
+              font-size: 11px;
               font-weight: 700;
               color: #111827;
+              line-height: 1.1;
             }
             .series {
-              font-size: 12px;
+              font-size: 10px;
               font-weight: 700;
               color: #CC3333;
+              line-height: 1.1;
             }
             .program {
-              font-size: 9px;
+              font-size: 8px;
               color: #4B5563;
             }
             .verse {
-              font-size: 9px;
+              font-size: 8px;
               font-style: italic;
               color: #374151;
-              margin: 6px 4px 6px;
-              min-height: 34px;
+              margin: 4px 4px;
+              min-height: 24px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
             }
             .qr-wrap {
               background: #F9FAFB;
-              border-radius: 12px;
-              padding: 6px;
-              margin-bottom: 6px;
+              border-radius: 8px;
+              padding: 4px;
+              margin-bottom: 4px;
+              display: flex;
+              justify-content: center;
             }
             .qr-img {
-              width: 110px;
-              height: 110px;
+              width: 90px;
+              height: 90px;
             }
             .read-more {
-              font-size: 8px;
+              font-size: 7px;
               color: #4B5563;
-              margin-bottom: 3px;
+              margin-bottom: 2px;
+              line-height: 1.1;
             }
             .url {
               color: #CC3333;
               word-break: break-all;
+              font-weight: 600;
             }
             .footer {
-              font-size: 7px;
+              font-size: 6px;
               color: #9CA3AF;
             }
             /* Close Button Style */
