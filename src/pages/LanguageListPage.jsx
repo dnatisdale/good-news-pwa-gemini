@@ -251,11 +251,13 @@ const LanguageListPage = ({
                     onClick={() => scrollToLetter(letter)}
                     className="
                       w-12 h-12 flex items-center justify-center
-                      text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-200
-                      bg-gray-200 dark:bg-gray-600
-                      hover:bg-brand-red hover:text-white dark:hover:text-white
+                      text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-100
+                      bg-gray-200 dark:bg-gray-700
+                      hover:bg-brand-red hover:text-white
+                      dark:hover:bg-red-500 dark:hover:text-white
                       transition-all duration-200 ease-out origin-center
-                      hover:scale-150 hover:z-50 hover:shadow-xl
+                      hover:scale-150 hover:z-50 
+                      hover:shadow-xl dark:hover:shadow-[0_0_20px_rgba(239,68,68,0.6)]
                     "
                     style={{
                       clipPath:
