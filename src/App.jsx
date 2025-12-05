@@ -1584,33 +1584,17 @@ export default function App() {
               {/* Language List Search Bar Toggle - only on Home page */}
               {currentPage.name === "Home" && (
                 <button
-                  onClick={() =>
-                    setIsLangSearchBarVisible((prev) => {
-                      const next = !prev;
-                      // If we’re opening the drawer, jump to the top so it’s visible
-                      if (!prev && mainScrollRef.current) {
-                        mainScrollRef.current.scrollTo({
-                          top: 0,
-                          behavior: "smooth",
-                        });
-                      }
-                      // Also scroll the window, in case the browser is using window scroll
-                      if (!prev) {
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }
-                      return next;
-                    })
-                  }
+                  onClick={() => setIsLangSearchBarVisible((prev) => !prev)}
                   className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
                   title={
                     isLangSearchBarVisible
-                      ? "Hide search bar"
-                      : "Show search bar"
+                      ? (lang === "th" ? "ซ่อนรายการตัวอักษร" : "Hide ABC List")
+                      : (lang === "th" ? "แสดงรายการตัวอักษร" : "Show ABC List")
                   }
                   aria-label={
                     isLangSearchBarVisible
-                      ? "Hide language search bar"
-                      : "Show language search bar"
+                      ? "Hide alphabet list"
+                      : "Show alphabet list"
                   }
                 >
                   <List className="w-6 h-6" />

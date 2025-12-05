@@ -83,13 +83,66 @@ const LanguageListPage = ({
     });
   }, [groupedByLetter, lang]);
 
+  // Responsive Honeycomb Logic
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  React.useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const getGridConfig = (width) => {
+    if (width >= 1280) return { major: 12, minor: 11 };
+    if (width >= 1024) return { major: 10, minor: 9 };
+    if (width >= 640) return { major: 9, minor: 8 };
+    return { major: 6, minor: 5 };
+  };
+
+  const { major, minor } = getGridConfig(windowWidth);
+
+  // Chunk alphabet into alternating rows for honeycomb interlocking
+  const honeycombRows = React.useMemo(() => {
+    const rawRows = [];
+    let currentIndex = 0;
+    let isMajorRow = true;
+
+    // First pass: Chunk the alphabet
+    while (currentIndex < alphabet.length) {
+      const rowSize = isMajorRow ? major : minor;
+      rawRows.push(alphabet.slice(currentIndex, currentIndex + rowSize));
+      currentIndex += rowSize;
+      isMajorRow = !isMajorRow;
+    }
+
+    // Second pass: Add smart padding for centering + locking
+    return rawRows.map((letters, index) => {
+      let placeholders = 0;
+      
+      // If not the first row, check parity against previous row
+      // Same parity (Even/Even or Odd/Odd) causes stacking (bad).
+      // Different parity (Even/Odd) causes interlocking (good).
+      if (index > 0) {
+        const prevLength = rawRows[index - 1].length;
+        const currentLength = letters.length;
+        
+        if ((prevLength % 2) === (currentLength % 2)) {
+           // Same parity -> Add 1 placeholder to shift center by 0.5
+           placeholders = 1;
+        }
+      }
+      
+      return { letters, placeholders, isMajor: index % 2 === 0 };
+    });
+  }, [alphabet, major, minor]);
+
   // Scroll to letter header when clicking alphabet navigation
   const scrollToLetter = (letter) => {
     console.log("🔤 Clicking letter:", letter);
 
     // Auto-hide the search bar first
     if (onToggleSearchBar) {
-      onToggleSearchBar(false);
+      // onToggleSearchBar(false); // Valid for auto-close, removed for sticky persistence
     }
 
     // Scroll after a brief delay to allow layout to settle
@@ -183,46 +236,45 @@ const LanguageListPage = ({
       {/* Search Bar with Slide Animation - always rendered, slides in/out */}
       {/* Search Bar - conditionally rendered for reliability */}
       {isSearchBarVisible && (
-        <div className="sticky top-0 z-30 bg-gray-100 dark:bg-[#374151] px-4 pt-2 pb-3">
-          <div className="bg-white dark:bg-gray-800 border-2 border-[#CC3333] rounded-lg p-2 shadow-md">
-            {/* Search Input */}
-            <div className="px-2 pt-1.5 pb-1">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder={
-                    t.search_languages ||
-                    "หาภาษาในภาษาไทยหรืออังกฤษ | Find a language in Thai or English."
-                  }
-                  title={
-                    t.search_languages ||
-                    "หาภาษาในภาษาไทยหรืออังกฤษ | Find a language in Thai or English."
-                  }
-                  aria-label={
-                    t.search_languages || "Find a language in Thai or English."
-                  }
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-brand-red focus:outline-none"
-                />
-              </div>
-            </div>
-
-            {/* A-Z / ก-ฮ Quick Navigation */}
-            <div className="px-2 pb-1">
-              <div className="flex flex-wrap gap-0.5 justify-between">
-                {alphabet.map((letter) => (
+        <div className="sticky top-0 z-30 bg-gray-100 dark:bg-[#374151] pb-6 pt-2 px-1 shadow-lg border-b border-gray-200 dark:border-gray-600 rounded-b-xl">
+          <div className="flex flex-col items-center">
+            {honeycombRows.map((row, rowIndex) => (
+              <div 
+                key={rowIndex} 
+                className="flex justify-center gap-[1px] -mb-3.5 w-full"
+                style={{ zIndex: 30 - rowIndex }}
+              >
+                {/* Visible Letters */}
+                {row.letters.map((letter) => (
                   <button
                     key={letter}
                     onClick={() => scrollToLetter(letter)}
-                    className="flex-grow px-1.5 py-1 text-xs font-bold text-gray-600 dark:text-gray-300 hover:bg-brand-red hover:text-white rounded transition-colors min-w-[1.75rem] text-center"
+                    className="
+                      w-12 h-12 flex items-center justify-center
+                      text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-200
+                      bg-gray-200 dark:bg-gray-600
+                      hover:bg-brand-red hover:text-white dark:hover:text-white
+                      transition-all duration-200 ease-out origin-center
+                      hover:scale-150 hover:z-50 hover:shadow-xl
+                    "
+                    style={{
+                      clipPath:
+                        "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                    }}
                   >
                     {letter}
                   </button>
                 ))}
+                
+                {/* Invisible Placeholders to maintain alignment */}
+                {row.placeholders > 0 && Array.from({ length: row.placeholders }).map((_, i) => (
+                  <div 
+                    key={`placeholder-${i}`} 
+                    className="w-12 h-12 invisible"
+                  />
+                ))}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       )}
