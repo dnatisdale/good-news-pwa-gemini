@@ -48,7 +48,7 @@ const FloatingUtilityBar = ({
   };
 
   return (
-    <div className="relative flex-shrink-0 mr-1 md:mr-2 z-50" ref={dropdownRef}>
+    <div className="relative flex-shrink-0 mr-1 md:mr-2 z-[100]" ref={dropdownRef}>
 
       {/* BUTTON CONTAINER */}
       <div className="relative flex flex-col md:flex-row items-center gap-px md:gap-1">

@@ -2,7 +2,7 @@
 // ===============================
 // Enhanced with search and A-Z navigation for faster browsing
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import LanguageCard from "../components/LanguageCard";
 import { getLanguageIndeterminateState } from "../utils/filterLogic";
 import { Search } from "lucide-react";
@@ -18,6 +18,8 @@ const LanguageListPage = ({
   onHoverChange,
   userData,
   onToggleFavoriteLanguage,
+  isSearchBarVisible = false,
+  onToggleSearchBar,
 }) => {
   // Local audio playback state for language samples
   const [playingLanguageKey, setPlayingLanguageKey] = useState(null);
@@ -38,57 +40,68 @@ const LanguageListPage = ({
     return nameEn.includes(query) || nameTh.includes(query);
   });
 
-  // Scroll to first language starting with a letter
+  // Sort languages based on current app language
+  const sortedLanguages = React.useMemo(() => {
+    return [...filteredLanguages].sort((a, b) => {
+      if (lang === "th") {
+        // Sort by Thai name in Thai mode
+        const nameA = a.displayNameTh || a.displayNameEn;
+        const nameB = b.displayNameTh || b.displayNameEn;
+        return nameA.localeCompare(nameB, "th");
+      } else {
+        // Sort by English name in English mode
+        return a.displayNameEn.localeCompare(b.displayNameEn, "en");
+      }
+    });
+  }, [filteredLanguages, lang]);
+
+  // Group languages by first letter
+  const groupedByLetter = React.useMemo(() => {
+    const groups = {};
+    sortedLanguages.forEach((group) => {
+      const name =
+        lang === "th"
+          ? group.displayNameTh || group.displayNameEn
+          : group.displayNameEn;
+      const firstLetter = name.charAt(0).toUpperCase();
+      if (!groups[firstLetter]) {
+        groups[firstLetter] = [];
+      }
+      groups[firstLetter].push(group);
+    });
+    return groups;
+  }, [sortedLanguages, lang]);
+
+  // Generate dynamic alphabet (only letters with languages)
+  const alphabet = React.useMemo(() => {
+    return Object.keys(groupedByLetter).sort((a, b) => {
+      if (lang === "th") {
+        return a.localeCompare(b, "th");
+      } else {
+        return a.localeCompare(b, "en");
+      }
+    });
+  }, [groupedByLetter, lang]);
+
+  // Scroll to letter header when clicking alphabet navigation
   const scrollToLetter = (letter) => {
     console.log("🔤 Clicking letter:", letter);
-    
-    const firstLanguageWithLetter = filteredLanguages.find((group) =>
-      group.displayNameEn.toUpperCase().startsWith(letter)
-    );
 
-    console.log("🎯 Found language:", firstLanguageWithLetter?.displayNameEn);
-
-    if (firstLanguageWithLetter) {
-      const element = document.getElementById(
-        `lang-${firstLanguageWithLetter.stableKey}`
-      );
-      console.log("🏷️ Element ID:", `lang-${firstLanguageWithLetter.stableKey}`);
-      console.log("📍 Element:", element);
-      
-      if (element) {
-        // Find the actual scrolling container (might be parent page wrapper)
-        let scrollContainer = scrollContainerRef.current;
-        
-        // If our ref container isn't scrolling, find the parent that is
-        if (scrollContainer && scrollContainer.scrollHeight <= scrollContainer.clientHeight) {
-          console.log("⚠️ Ref container not scrolling, finding parent...");
-          scrollContainer = element.closest('.overflow-y-auto') || 
-                           element.closest('[style*="overflow"]') ||
-                           document.querySelector('main');
-        }
-        
-        console.log("📦 Actual scroll container:", scrollContainer);
-        
-        if (scrollContainer) {
-          const elementTop = element.offsetTop;
-          const scrollTop = elementTop - 200; // Offset for header + search bar
-          
-          console.log("📏 Scrolling to:", scrollTop);
-          
-          scrollContainer.scrollTo({
-            top: scrollTop,
-            behavior: "smooth",
-          });
-        } else {
-          console.log("❌ No scroll container found, using scrollIntoView");
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      } else {
-        console.log("❌ Element not found in DOM!");
-      }
-    } else {
-      console.log("❌ No language found starting with:", letter);
+    // Auto-hide the search bar first
+    if (onToggleSearchBar) {
+      onToggleSearchBar(false);
     }
+
+    // Scroll after a brief delay to allow layout to settle
+    setTimeout(() => {
+      const element = document.getElementById(`letter-header-${letter}`);
+
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        console.log("❌ Letter header not found:", letter);
+      }
+    }, 100);
   };
 
   // Build external URL for a language
@@ -165,124 +178,119 @@ const LanguageListPage = ({
     };
   }, []);
 
-  // Alphabet for A-Z navigation
-  const alphabet = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
-
-
   return (
-    <div className="h-full">
-      {/* Fixed Search Bar and A-Z Navigation */}
-      <div className="fixed top-20 left-0 right-0 z-30 bg-white dark:bg-gray-800 border-2 border-[#CC3333] rounded-lg mx-2 shadow-md">
-        {/* Search Bar */}
-        <div className="px-2 pt-1.5 pb-1">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder={
-                t.search_languages ||
-                "หาภาษาในภาษาไทยหรืออังกฤษ | Find a language in Thai or English."
-              }
-              title={
-                t.search_languages ||
-                "หาภาษาในภาษาไทยหรืออังกฤษ | Find a language in Thai or English."
-              }
-              aria-label={
-                t.search_languages || "Find a language in Thai or English."
-              }
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-brand-red focus:outline-none"
-            />
+    <div className="h-full flex flex-col">
+      {/* Search Bar with Slide Animation - always rendered, slides in/out */}
+      {/* Search Bar - conditionally rendered for reliability */}
+      {isSearchBarVisible && (
+        <div className="sticky top-0 z-30 bg-gray-100 dark:bg-[#374151] px-4 pt-2 pb-3">
+          <div className="bg-white dark:bg-gray-800 border-2 border-[#CC3333] rounded-lg p-2 shadow-md">
+            {/* Search Input */}
+            <div className="px-2 pt-1.5 pb-1">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder={
+                    t.search_languages ||
+                    "หาภาษาในภาษาไทยหรืออังกฤษ | Find a language in Thai or English."
+                  }
+                  title={
+                    t.search_languages ||
+                    "หาภาษาในภาษาไทยหรืออังกฤษ | Find a language in Thai or English."
+                  }
+                  aria-label={
+                    t.search_languages || "Find a language in Thai or English."
+                  }
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-brand-red focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {/* A-Z / ก-ฮ Quick Navigation */}
+            <div className="px-2 pb-1">
+              <div className="flex flex-wrap gap-0.5 justify-between">
+                {alphabet.map((letter) => (
+                  <button
+                    key={letter}
+                    onClick={() => scrollToLetter(letter)}
+                    className="flex-grow px-1.5 py-1 text-xs font-bold text-gray-600 dark:text-gray-300 hover:bg-brand-red hover:text-white rounded transition-colors min-w-[1.75rem] text-center"
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
+      )}
 
-        {/* A-Z Quick Navigation */}
-        <div className="px-2 pb-1">
-          <div className="flex flex-wrap gap-0.5 justify-between">
-            {alphabet.map((letter) => (
-              <button
-                key={letter}
-                onClick={() => scrollToLetter(letter)}
-                className="flex-grow px-1.5 py-1 text-xs font-bold text-gray-600 dark:text-gray-300 hover:bg-brand-red hover:text-white rounded transition-colors min-w-[1.75rem] text-center"
-              >
-                {letter}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Scrollable Language Cards */}
-      <div 
+      {/* Scrollable Language Cards Container with Letter Headers */}
+      <div
         ref={scrollContainerRef}
-        className="h-full overflow-y-auto px-4"
-        style={{ 
-          WebkitOverflowScrolling: "touch",
-          paddingTop: "135px" 
-        }}
+        className="flex-1 overflow-y-auto px-4 relative"
       >
-        {filteredLanguages.length > 0 ? (
-          filteredLanguages.map((group) => (
-            <LanguageCard
-              key={group.stableKey}
-              id={`lang-${group.stableKey}`}
-              languageName={
-                lang === "th"
-                  ? group.displayNameTh || group.displayNameEn
-                  : group.displayNameEn
-              }
-              lang={lang}
-              onSelect={() => onSelectLanguage(group.stableKey)}
-              messageCount={group.count}
-              onShowQrForLanguage={() => onShowQrForLanguage(group.stableKey)}
-              selectionState={getLanguageIndeterminateState(
-                group,
-                selectedPrograms
-              )}
-              onToggle={() => onToggleLanguage(group.stableKey, group.messages)}
-              setHovering={onHoverChange}
-              onPlayLanguage={() => handlePlayLanguageSample(group)}
-              isPlayingLanguage={playingLanguageKey === group.stableKey}
-              isFavorite={
-                !!userData?.favoriteLanguages?.includes(group.stableKey)
-              }
-              onToggleFavorite={() => onToggleFavoriteLanguage(group.stableKey)}
-              sampleUrl={group.messages.find((msg) => msg.sampleUrl)?.sampleUrl}
-              externalUrl={buildLanguageExternalUrl(group)}
-              languageVideoUrl={
-                group.messages.find((msg) => msg.languageVideoUrl)
-                  ?.languageVideoUrl
-              }
-              searchQuery={searchQuery}
-            />
+        {Object.keys(groupedByLetter).length > 0 ? (
+          Object.entries(groupedByLetter).map(([letter, languages]) => (
+            <div key={letter} className="mb-4">
+              {/* Sticky Letter Header */}
+              <div
+                id={`letter-header-${letter}`}
+                className="sticky top-0 bg-gray-100 dark:bg-[#374151] py-1 z-20 -mx-4 px-4 scroll-mt-24"
+              >
+                <h2 className="text-2xl font-bold text-[#003366] dark:text-white ml-4">
+                  {letter}
+                </h2>
+              </div>
+
+              {/* Languages for this letter */}
+              <div className="space-y-2 pt-2">
+                {languages.map((group) => (
+                  <LanguageCard
+                    key={group.stableKey}
+                    id={`lang-${group.stableKey}`}
+                    languageName={
+                      lang === "th"
+                        ? group.displayNameTh || group.displayNameEn
+                        : group.displayNameEn
+                    }
+                    lang={lang}
+                    onSelect={() => onSelectLanguage(group.stableKey)}
+                    messageCount={group.count}
+                    onShowQrForLanguage={() =>
+                      onShowQrForLanguage(group.stableKey)
+                    }
+                    selectionState={getLanguageIndeterminateState(
+                      group,
+                      selectedPrograms
+                    )}
+                    onToggle={() =>
+                      onToggleLanguage(group.stableKey, group.messages)
+                    }
+                    setHovering={onHoverChange}
+                    onPlayLanguage={() => handlePlayLanguageSample(group)}
+                    isPlayingLanguage={playingLanguageKey === group.stableKey}
+                    isFavorite={
+                      !!userData?.favoriteLanguages?.includes(group.stableKey)
+                    }
+                    onToggleFavorite={() =>
+                      onToggleFavoriteLanguage(group.stableKey)
+                    }
+                    sampleUrl={
+                      group.messages.find((msg) => msg.sampleUrl)?.sampleUrl
+                    }
+                    externalUrl={buildLanguageExternalUrl(group)}
+                    languageVideoUrl={
+                      group.messages.find((msg) => msg.languageVideoUrl)
+                        ?.languageVideoUrl
+                    }
+                    searchQuery={searchQuery}
+                  />
+                ))}
+              </div>
+            </div>
           ))
         ) : (
           <div className="text-center py-12 text-gray-500 dark:text-gray-400">

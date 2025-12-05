@@ -25,6 +25,7 @@ import {
   MessageSquare, // NEW
   Music,
   Globe,
+  List, // For language search bar toggle
 } from "./components/Icons";
 
 import { staticContent } from "./data/staticContent";
@@ -597,12 +598,14 @@ export default function App() {
   const t = i18n[lang]; // Restored translation object
   const [fontSize, setFontSize] = useState(initialFontSize);
   const [pageStack, setPageStack] = useState([{ name: "Home" }]);
+  const mainScrollRef = React.useRef(null); // 👈 NEW: main scroll container
   const [track, setTrack] = useState(null);
   const [isHoveringContent, setIsHoveringContent] = useState(false);
   const [isAudioMinimized, setIsAudioMinimized] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLangSearchBarVisible, setIsLangSearchBarVisible] = useState(false); // start hidden; toggle with header button
 
   // --- NEW: Search History State ---
   const [searchHistory, setSearchHistory] = useState(() => {
@@ -664,14 +667,22 @@ export default function App() {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
   const [deferredPrompt, setDeferredPrompt] = useState(null); // Install Prompt state
-  // --- NEW FUNCTION: navigateToHome (Fixes ReferenceError at line 1564) ---
+  // --- NEW FUNCTION: navigateToHome ---
   const navigateToHome = () => {
-    // This function resets the pageStack to the single 'Home' entry
-    setPageStack([{ name: "Home" }]);
-    setIsSearchOpen(false); // Close search bar
-    // Optionally, close the sidebar if it's open, if that's the desired behavior:
-    // setIsDrawerOpen(false);
+    // Reset to a fresh Home page
+    setPageStack([{ name: "Home", key: Date.now() }]);
+
+    // Close the global search overlay
+    setIsSearchOpen(false);
+
+    // Scroll the main content area back to the very top
+    if (mainScrollRef.current) {
+      mainScrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    // Extra safety: also scroll the window (in case browser uses window scroll)
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   // --------------------------------------------------------------------------
   // *** FIX: Changed from array to object destructuring and passed setLang ***
   const { userData, saveUserData, isAuthReady, error, userId } =
@@ -976,6 +987,13 @@ export default function App() {
     setPageStack((prev) => [...prev, { name: pageName, key, sourceList }]);
     setIsDrawerOpen(false);
     setIsSearchOpen(false); // Close search bar
+
+    // Always jump to the top of the main content when navigating
+    if (mainScrollRef.current) {
+      mainScrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     // Clear search term when navigating away from Home/Search
     if (pageName !== "Search" && pageName !== "Home") {
       setSearchTerm("");
@@ -1210,6 +1228,9 @@ export default function App() {
           onHoverChange={setIsHoveringContent} // 👈 GIVE IT THE CONTROLLER
           userData={userData} // 👇 NEW
           onToggleFavoriteLanguage={handleToggleFavoriteLanguage} // 👇 NEW
+          isSearchBarVisible={isLangSearchBarVisible}
+          onToggleSearchBar={setIsLangSearchBarVisible}
+          key={currentPage.key || "home"} // Force remount on Home click
         />
       );
       break;
@@ -1306,8 +1327,6 @@ export default function App() {
         />
       );
       break;
-
-
 
     case "Favorites":
       PageContent = (
@@ -1460,7 +1479,7 @@ export default function App() {
 
         {/* --- HEADER (Banner) --- */}
         <header
-          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} shadow-lg z-30 rounded-b-xl md:py-3 md:px-1`}
+          className={`sticky top-0 w-full ${PRIMARY_COLOR_CLASS} shadow-lg z-40 rounded-b-xl md:py-3 md:px-1`}
         >
           {/* Mobile/Tablet: 3-column grid layout */}
           <div className="grid grid-cols-3 items-center h-20 md:hidden px-1">
@@ -1493,7 +1512,7 @@ export default function App() {
                   src={BannerLogo}
                   alt={t.app_name}
                   className="w-auto flex-shrink-0 object-cover rounded-lg"
-                  style={{ height: '4rem' }}
+                  style={{ height: "4rem" }}
                 />
               </a>
               <button
@@ -1540,6 +1559,42 @@ export default function App() {
 
             {/* RIGHT: Controls */}
             <div className="flex items-center justify-end space-x-1">
+              {/* Language List Search Bar Toggle - only on Home page */}
+              {currentPage.name === "Home" && (
+                <button
+                  onClick={() =>
+                    setIsLangSearchBarVisible((prev) => {
+                      const next = !prev;
+                      // If we’re opening the drawer, jump to the top so it’s visible
+                      if (!prev && mainScrollRef.current) {
+                        mainScrollRef.current.scrollTo({
+                          top: 0,
+                          behavior: "smooth",
+                        });
+                      }
+                      // Also scroll the window, in case the browser is using window scroll
+                      if (!prev) {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                      return next;
+                    })
+                  }
+                  className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                  title={
+                    isLangSearchBarVisible
+                      ? "Hide search bar"
+                      : "Show search bar"
+                  }
+                  aria-label={
+                    isLangSearchBarVisible
+                      ? "Hide language search bar"
+                      : "Show language search bar"
+                  }
+                >
+                  <List className="w-6 h-6" />
+                </button>
+              )}
+
               <LanguageToggle lang={lang} setLang={setLang} t={t} />
               <FloatingUtilityBar
                 t={t}
@@ -1619,7 +1674,7 @@ export default function App() {
                   src={BannerLogo}
                   alt={t.app_name}
                   className="w-auto flex-shrink-0 rounded-lg"
-                  style={{ height: '4rem' }}
+                  style={{ height: "4rem" }}
                 />
               </a>
               <button
@@ -1669,6 +1724,42 @@ export default function App() {
 
             {/* Right: Controls */}
             <div className="flex items-center space-x-4 flex-shrink-0">
+              {/* Language List Search Bar Toggle - only on Home page */}
+              {currentPage.name === "Home" && (
+                <button
+                  onClick={() =>
+                    setIsLangSearchBarVisible((prev) => {
+                      const next = !prev;
+                      // If we’re opening the drawer, jump to the top so it’s visible
+                      if (!prev && mainScrollRef.current) {
+                        mainScrollRef.current.scrollTo({
+                          top: 0,
+                          behavior: "smooth",
+                        });
+                      }
+                      // Also scroll the window, in case the browser is using window scroll
+                      if (!prev) {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                      return next;
+                    })
+                  }
+                  className="text-white p-1 rounded-lg hover:bg-red-800 transition-colors btn-hover"
+                  title={
+                    isLangSearchBarVisible
+                      ? "Hide search bar"
+                      : "Show search bar"
+                  }
+                  aria-label={
+                    isLangSearchBarVisible
+                      ? "Hide language search bar"
+                      : "Show language search bar"
+                  }
+                >
+                  <List className="w-6 h-6" />
+                </button>
+              )}
+
               <button
                 onClick={() => {
                   if (deferredPrompt) {
@@ -1760,7 +1851,9 @@ export default function App() {
         )}
 
         {/* --- MAIN CONTENT AREA --- */}
-        <main className="flex-grow overflow-y-auto pb-20">{PageContent}</main>
+        <main ref={mainScrollRef} className="flex-grow overflow-y-auto pb-20">
+          {PageContent}
+        </main>
 
         {/* --- AUDIO PLAYER --- */}
         <AudioPlayer
@@ -1904,9 +1997,7 @@ export default function App() {
                       rel="noopener noreferrer"
                       className="w-full flex items-center p-2 rounded-lg font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#004d99] transition-colors"
                     >
-                      <item.icon
-                        className="mr-3 w-6 h-6"
-                      />
+                      <item.icon className="mr-3 w-6 h-6" />
                       {t[item.name.toLowerCase()]}
                     </a>
                   );
