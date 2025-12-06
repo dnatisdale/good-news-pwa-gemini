@@ -186,6 +186,8 @@ export const i18n = {
     json_copied_alert:
       "JSON copied to clipboard! You can now paste it into src/data/staticContent.js",
     clear_data_confirm: "Are you sure you want to clear all imported data?",
+    light_mode: "Light Mode",
+    dark_mode: "Dark Mode",
   },
 
   // --- THAI TRANSLATIONS ---
@@ -416,5 +418,7 @@ export const i18n = {
     json_copied_alert:
       "✅ คัดลอกแล้ว! ข้อมูลข้อความของคุณอยู่ในคลิปบอร์ดแล้ว คุณสามารถวางได้ทุกที่ที่ต้องการ",
     clear_data_confirm: "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลที่นำเข้าทั้งหมด?",
+    light_mode: "โหมดสว่าง",
+    dark_mode: "โหมดมืด",
   },
 };

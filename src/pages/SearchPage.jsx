@@ -17,9 +17,9 @@ const SearchPage = ({
   searchHistory = [],
   onClearHistory,
   onHistorySelect,
-  userData, // 👇 NEW PROP
-  onToggleFavorite, // 👇 NEW PROP
-  onOpenSearch, // 👇 NEW PROP - function to open search bar
+  userData,
+  onToggleFavorite,
+  onOpenSearch, // function to open search bar
 }) => {
   // Receives searchTerm and nav props
   const filteredContent = useMemo(() => {

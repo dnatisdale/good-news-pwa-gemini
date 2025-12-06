@@ -137,9 +137,8 @@ const LanguageListPage = ({
   }, [alphabet, major, minor]);
 
   // Scroll to letter header when clicking alphabet navigation
+  // Scroll to letter header when clicking alphabet navigation
   const scrollToLetter = (letter) => {
-    console.log("🔤 Clicking letter:", letter);
-
     // Auto-hide the search bar first
     if (onToggleSearchBar) {
       // onToggleSearchBar(false); // Valid for auto-close, removed for sticky persistence
@@ -151,8 +150,6 @@ const LanguageListPage = ({
 
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
-        console.log("❌ Letter header not found:", letter);
       }
     }, 100);
   };
@@ -176,13 +173,11 @@ const LanguageListPage = ({
   // Play / stop a short language sample
   const handlePlayLanguageSample = (group) => {
     if (!group || !group.messages || group.messages.length === 0) {
-      console.log("No messages for this language.");
       return;
     }
 
     const firstMessageWithSample = group.messages.find((msg) => msg.sampleUrl);
     if (!firstMessageWithSample || !firstMessageWithSample.sampleUrl) {
-      console.log("No sample available for this language.");
       return;
     }
 
@@ -201,10 +196,6 @@ const LanguageListPage = ({
     audioRef.current
       .play()
       .then(() => {
-        console.log(
-          "Playing language sample:",
-          firstMessageWithSample.sampleUrl
-        );
         setPlayingLanguageKey(group.stableKey);
       })
       .catch((err) => {

@@ -30,7 +30,7 @@ const SelectedContentPage = ({
   const filteredContent = getFilteredMessages(allMessages, selectedPrograms);
   const count = filteredContent.length;
   
-  console.log("Debug Translation:", { lang, clear_all: t.clear_all, t });
+
 
   return (
     <div className="p-4 pt-8 h-full flex flex-col">

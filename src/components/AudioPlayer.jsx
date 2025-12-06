@@ -9,12 +9,11 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t, onGoBack, onGoForw
   useEffect(() => {
     const loadAudioSrc = async () => {
       if (!track || !track.trackDownloadUrl) {
-        console.log("AudioPlayer: No track or trackDownloadUrl", track);
         setAudioSrc(null);
         return;
       }
 
-      console.log("AudioPlayer: Loading audio for track:", track.id, track.trackDownloadUrl);
+
 
       try {
         // Try to get from cache first
@@ -26,18 +25,12 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t, onGoBack, onGoForw
             urlToCheck = "https://" + urlToCheck;
         }
         
-        console.log("AudioPlayer: Checking cache for URL:", urlToCheck);
+        console.debug("AudioPlayer: Checking cache for URL:", urlToCheck);
         const cachedResponse = await cache.match(urlToCheck);
         
         if (cachedResponse) {
           // Use cached version
-          console.log("AudioPlayer: Found cached audio!");
-          console.log("AudioPlayer: Response headers:", cachedResponse.headers);
-          console.log("AudioPlayer: Response status:", cachedResponse.status);
-          
           const blob = await cachedResponse.blob();
-          console.log("AudioPlayer: Blob type:", blob.type);
-          console.log("AudioPlayer: Blob size:", blob.size, "bytes");
           
           if (blob.size === 0) {
             console.error("AudioPlayer: Blob is empty! Falling back to online URL");
@@ -47,10 +40,8 @@ const AudioPlayer = ({ track, isMinimized, toggleMinimize, t, onGoBack, onGoForw
           
           const url = URL.createObjectURL(blob);
           setAudioSrc(url);
-          console.log("AudioPlayer: Set audio source to blob URL:", url);
         } else {
           // Use online URL (ensure protocol)
-          console.log("AudioPlayer: No cached audio, using online URL:", urlToCheck);
           setAudioSrc(urlToCheck);
         }
       } catch (error) {

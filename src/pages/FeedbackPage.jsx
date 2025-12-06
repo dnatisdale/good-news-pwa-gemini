@@ -18,7 +18,7 @@ const FeedbackPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
     try {
       await navigator.clipboard.writeText(emailAddress);
     } catch (err) {
-      console.log("Clipboard copy failed:", err);
+      // Ignore clipboard errors
     }
 
     const emailText = `${subject}\n\n${message}\n\n---\nTo: ${emailAddress}\n(Email address copied to clipboard - paste it in the To field)`;
@@ -34,7 +34,7 @@ const FeedbackPage = ({ lang, t, onBack, onForward, hasPrev, hasNext }) => {
       } catch (err) {
         // User cancelled or share failed, fall through to mailto
         if (err.name !== "AbortError") {
-          console.log("Share failed, trying mailto fallback:", err);
+          // Fallback to mailto
         }
       }
     }

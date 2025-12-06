@@ -77,7 +77,9 @@ const shareQRCard = (item, lang, qrCodeUrl) => {
         title: title,
         text: text,
       })
-      .then(() => console.log("QR Card shared successfully!"))
+      .then(() => {
+        // Shared successfully
+      })
       .catch((error) => {
         console.error("Error sharing QR Card:", error);
         // Fallback to copy if share fails (e.g. user cancelled or not supported)
