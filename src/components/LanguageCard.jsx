@@ -1,5 +1,5 @@
 import React from "react";
-import { Share2, Volume2, Heart, Download, YouTubeColor } from "./Icons";
+import { Share2, Volume2, Heart, Download, YouTubeColor, ExternalLink } from "./Icons";
 import { i18n } from "../i18n";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
@@ -42,11 +42,7 @@ const LanguageCard = ({
     );
   };
 
-  const handleLanguageClick = (e) => {
-    e.stopPropagation(); // don’t trigger onSelect
-    if (!externalUrl) return;
-    window.open(externalUrl, "_blank", "noopener,noreferrer");
-  };
+
   return (
     <div
       id={id}
@@ -105,21 +101,7 @@ const LanguageCard = ({
           <h3
             className={`text-xl font-bold ${ACCENT_COLOR_CLASS} dark:text-white`}
           >
-            {externalUrl ? (
-              <button
-                type="button"
-                onClick={handleLanguageClick}
-                className="underline decoration-dotted underline-offset-2 hover:decoration-solid bg-transparent border-none p-0 m-0 cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-brand-red rounded-sm"
-                title={
-                  i18n[lang].open_language_on_grn ||
-                  "Open this language on GRN / 5fish"
-                }
-              >
-                {highlightText(languageName, searchQuery)}
-              </button>
-            ) : (
-              highlightText(languageName, searchQuery)
-            )}
+            {highlightText(languageName, searchQuery)}
           </h3>
 
           <p className="text-xs text-gray-500 dark:text-gray-300 mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">
@@ -137,13 +119,30 @@ const LanguageCard = ({
 
         {/* ICONS – fixed width, don't squeeze text */}
         <div className="flex items-center gap-2 shrink-0">
+          {/* External Link Button (New) */}
+          {externalUrl && (
+            <a
+              href={externalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-blue-500 hover:text-white transition-all"
+              title={
+                i18n[lang].open_language_on_grn ||
+                "Open this language on GRN / 5fish"
+              }
+            >
+              <ExternalLink className="w-6 h-6" />
+            </a>
+          )}
+
           {/* Download Button */}
           {sampleUrl && (
             <a
               href={sampleUrl}
               download
               onClick={(e) => e.stopPropagation()}
-              className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-amber-500 hover:text-white transition-all"
+              className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-green-500 hover:text-white transition-all"
               title="Download Sample"
             >
               <Download className="w-6 h-6" />

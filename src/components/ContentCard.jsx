@@ -14,7 +14,7 @@
 
 import React from "react";
 import { formatContentItem } from "../utils/contentFormatter";
-import { Volume2, Pause, Share2, Heart, Download, YouTube, YouTubeColor, YouTubeOff } from "./Icons";
+import { Volume2, Pause, Share2, Heart, Download, YouTube, YouTubeColor, YouTubeOff, ExternalLink } from "./Icons";
 
 const ACCENT_COLOR_CLASS = "text-brand-red";
 const TEXT_COLOR_CLASS = "text-gray-800";
@@ -215,13 +215,32 @@ const ContentCard = ({
           </p>
         )}
 
+        {/* External Link Button (New) */}
+        {getExternalMessageUrl() && (
+          <a
+            href={getExternalMessageUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-blue-500 hover:text-white transition-all"
+            title={
+              t?.open_message_on_grn ||
+              (lang === "en"
+                ? "Open this message on 5fish / GRN"
+                : "เปิดข้อความนี้ใน 5fish / GRN")
+            }
+          >
+            <ExternalLink className="w-6 h-6" />
+          </a>
+        )}
+
         {/* Download button (uses first available download-ish URL) */}
         {(item.downloadUrl || item.audioUrl || item.sampleUrl) && (
           <a
             href={item.downloadUrl || item.audioUrl || item.sampleUrl}
             download
             onClick={(e) => e.stopPropagation()}
-            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-gray-200 transition-all"
+            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-green-500 hover:text-white transition-all"
             title={t?.download_audio || "Download"}
           >
             <Download className="w-6 h-6" />

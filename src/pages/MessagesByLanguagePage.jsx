@@ -180,7 +180,7 @@ const MessagesByLanguagePage = ({
                   "noopener,noreferrer"
                 )
               }
-              className={`text-lg font-semibold ${ACCENT_COLOR_CLASS} dark:text-white underline decoration-dotted underline-offset-2 hover:decoration-solid focus:outline-none focus:ring-2 focus:ring-brand-red rounded-sm`}
+              className={`text-lg font-semibold ${ACCENT_COLOR_CLASS} dark:text-white hover:underline hover:decoration-solid focus:outline-none focus:ring-2 focus:ring-brand-red rounded-sm`}
               title={
                 t.open_language_on_grn || "Open this language on GRN / 5fish"
               }
