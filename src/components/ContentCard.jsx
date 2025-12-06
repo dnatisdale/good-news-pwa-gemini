@@ -220,6 +220,8 @@ const ContentCard = ({
               e.stopPropagation();
               onToggleFavorite();
             }}
+            onMouseEnter={(e) => e.currentTarget.dataset.hovering = 'true'}
+            onMouseLeave={(e) => e.currentTarget.dataset.hovering = 'false'}
             className="group p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white hover:bg-brand-red transition-all"
             title={
               isFavorite
@@ -228,14 +230,28 @@ const ContentCard = ({
             }
           >
             <Heart
-              className={`w-6 h-6 transition-all ${
-                isFavorite ? "fill-current text-brand-red group-hover:text-white" : "text-brand-red group-hover:text-white"
-              }`}
-              style={
-                isFavorite
-                  ? { fill: "#CC3333", color: "#CC3333" }
-                  : { fill: "none", color: "#CC3333", strokeWidth: "2" }
-              }
+              className="w-6 h-6 transition-all"
+              style={{
+                fill: isFavorite ? "#CC3333" : "none",
+                color: "#CC3333",
+                strokeWidth: "2"
+              }}
+              onMouseEnter={(e) => {
+                if (isFavorite) {
+                  e.currentTarget.style.fill = "white";
+                  e.currentTarget.style.color = "white";
+                } else {
+                  e.currentTarget.style.color = "white";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (isFavorite) {
+                  e.currentTarget.style.fill = "#CC3333";
+                  e.currentTarget.style.color = "#CC3333";
+                } else {
+                  e.currentTarget.style.color = "#CC3333";
+                }
+              }}
             />
           </button>
         )}

@@ -73,29 +73,6 @@ const LanguageCard = ({
           />
         </div>
 
-        {/* Favorite Heart - Right after checkbox */}
-        {onToggleFavorite && (
-          <div
-            className="pr-1 flex items-center shrink-0"
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggleFavorite();
-            }}
-          >
-            <Heart
-              className={`w-5 h-5 cursor-pointer transition-all ${
-                isFavorite ? "fill-brand-red text-brand-red" : "text-brand-red"
-              }`}
-              style={
-                isFavorite
-                  ? { fill: "#CC3333", color: "#CC3333" }
-                  : { fill: "white", color: "#CC3333", strokeWidth: "2" }
-              }
-              title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-            />
-          </div>
-        )}
-
         {/* TEXT AREA – takes all remaining width */}
         <div onClick={() => onSelect(languageName)} className="flex-1 min-w-0">
           <h3
@@ -185,6 +162,43 @@ const LanguageCard = ({
           >
             <Volume2 className="w-6 h-6" />
           </button>
+
+          {/* Favorite Heart Button - Before Share */}
+          {onToggleFavorite && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleFavorite();
+              }}
+              className="group p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white hover:bg-brand-red transition-all"
+              title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+            >
+              <Heart
+                className="w-6 h-6 transition-all"
+                style={{
+                  fill: isFavorite ? "#CC3333" : "none",
+                  color: "#CC3333",
+                  strokeWidth: "2"
+                }}
+                onMouseEnter={(e) => {
+                  if (isFavorite) {
+                    e.currentTarget.style.fill = "white";
+                    e.currentTarget.style.color = "white";
+                  } else {
+                    e.currentTarget.style.color = "white";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (isFavorite) {
+                    e.currentTarget.style.fill = "#CC3333";
+                    e.currentTarget.style.color = "#CC3333";
+                  } else {
+                    e.currentTarget.style.color = "#CC3333";
+                  }
+                }}
+              />
+            </button>
+          )}
 
           {/* Share Button */}
           <button
