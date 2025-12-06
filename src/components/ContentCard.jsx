@@ -278,7 +278,7 @@ const ContentCard = ({
             className={`p-1 md:p-2 rounded-full transition-all ${
               isPlayingSample
                 ? "bg-amber-100 dark:bg-amber-100 text-amber-600 dark:text-amber-600 animate-pulse"
-                : "bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-gray-200"
+                : "bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-orange-500 hover:text-white"
             }`}
             title={isPlayingSample ? "Stop Preview" : "Listen to Preview"}
           >

@@ -203,21 +203,6 @@ const MessagesByLanguagePage = ({
             )
           </div>
         </div>
-        
-        {/* Language Video Indicator */}
-        <div>
-          {languageVideoUrl && (
-            <a
-              href={languageVideoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full bg-red-50 text-brand-red hover:bg-red-100 transition-all inline-block"
-              title={t.watch_video || "Watch Video"}
-            >
-              <YouTube className="w-6 h-6" />
-            </a>
-          )}
-        </div>
       </div>
 
       {/* Scrollable message list */}
