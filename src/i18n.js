@@ -46,7 +46,7 @@ export const i18n = {
 
     // Content & Search
     listen_offline: "Listen (Offline Enabled)",
-    program_number: "Message Number",
+    program_number: "Message #",
     no_verse_content: "No message content available.",
     read_more_at: "Read more at",
     open_language_on_grn: "Open this language on GRN / 5fish",
@@ -250,7 +250,7 @@ export const i18n = {
 
     // Content & Search
     listen_offline: "ฟัง (ออฟไลน์)",
-    program_number: "หมายเลขรายการ",
+    program_number: "ข้อความ #",
     no_verse_content: "ไม่มีเนื้อหาข้อความ",
     read_more_at: "อ่านเพิ่มเติมที่",
     open_language_on_grn: "เปิดภาษานี้ใน GRN / 5fish",
