@@ -419,15 +419,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
             </div>
           </div>
           
-          {/* Find Message Button - Right after inputs */}
-          <button
-            onClick={handleUrlSubmit}
-            disabled={isLoading}
-            className="w-full bg-brand-red hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50 hover:scale-[1.02] active:scale-95"
-          >
-            {isLoading ? "Loading..." : <Search className="w-5 h-5 text-white" />}
-            {t.find_message_btn || "Find Message"}
-          </button>
+
           {error && <p className="text-red-500 text-sm mt-2 text-center">{error}</p>}
         </div>
 
@@ -515,14 +507,33 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
                 onChange={handleFinderTrackChange}
                 disabled={!finderMessageId}
               >
-                {[...Array(20)].map((_, i) => (
-                  <option key={i} value={i + 1}>
-                    Track {i + 1}
-                  </option>
-                ))}
+                {(() => {
+                  const selectedMsg = staticContent.find(i => i.programId === finderMessageId);
+                  // Default to 20 if no track count, or parse the stored string (e.g. "41.0")
+                  const count = selectedMsg?.trackCount ? Math.ceil(parseFloat(selectedMsg.trackCount)) : 20;
+                  // Handle case where count might be 0 or NaN
+                  const safeCount = count > 0 ? count : 20;
+                  
+                  return [...Array(safeCount)].map((_, i) => (
+                    <option key={i} value={i + 1}>
+                      Track {i + 1}
+                    </option>
+                  ));
+                })()}
               </select>
             </div>
           </div>
+
+          {/* Find Message Button */}
+          <button
+            onClick={handleUrlSubmit}
+            disabled={isLoading}
+            className="w-full mt-6 bg-brand-red hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50 hover:scale-[1.02] active:scale-95"
+          >
+            {isLoading ? "Loading..." : <Search className="w-5 h-5 text-white" />}
+            {t.find_message_btn || "Find Message"}
+          </button>
+
         </div>
 
         {/* Review This Message Section */}
@@ -680,6 +691,21 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext }) => {
                 <p>Stream: {currentItem.streamUrl}</p>
                 <p>Download: {currentItem.trackDownloadUrl}</p>
               </div>
+            </div>
+
+            {/* Audio Preview */}
+            <div className="mb-6">
+              <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase mb-2">
+                {t.preview_audio_label || "Preview Audio"}
+              </label>
+              <audio
+                controls
+                src={currentItem.trackDownloadUrl}
+                className="w-full h-10 border border-gray-200 dark:border-gray-600 rounded-full bg-slate-100 dark:bg-slate-800"
+                preload="metadata"
+              >
+                Your browser does not support the audio element.
+              </audio>
             </div>
 
             <button

@@ -21,6 +21,8 @@ FIELD_MAPPING = {
     'playUrl': 'streamUrl',
     'downloadTrack001Url': 'trackDownloadUrl',
     'downloadZipUrl': 'zipDownloadUrl',
+    'duration': 'duration',
+    'trackCount': 'trackCount',
     
     # You can add other fields from your CSV here if you want them in the object:
     # 'Bible Reference': 'bibleRef',

@@ -20,7 +20,9 @@ const FIELD_MAPPING = {
     'downloadTrack001Url': 'trackDownloadUrl',
     'downloadZipUrl': 'zipDownloadUrl',
     'program': 'programId',
-    'shareProgUrl': 'shareUrl'
+    'shareProgUrl': 'shareUrl',
+    'duration': 'duration',
+    'trackCount': 'trackCount'
 };
 
 function parseCSV(csvText) {
