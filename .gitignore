@@ -14,3 +14,5 @@ yarn-error.log
 .cache
 /.cashe
 your_content_data_NEW.csv
+*.png
+*.png
