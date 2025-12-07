@@ -95,8 +95,8 @@ const LanguageCard = ({
         </div>
 
         {/* ICONS – fixed width, don't squeeze text */}
-        <div className="flex items-center gap-2 shrink-0">
-          {/* External Link Button (New) */}
+        <div className="grid grid-cols-3 md:flex items-center gap-2 shrink-0">
+          {/* External Link Button - Row 2 on mobile, position 1 on desktop */}
           {externalUrl && (
             <a
               href={externalUrl}
@@ -104,6 +104,7 @@ const LanguageCard = ({
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
               className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-blue-500 hover:text-white transition-all"
+              style={{ gridRow: '2' }}
               title={
                 i18n[lang].open_language_on_grn ||
                 "Open this language on GRN / 5fish"
@@ -113,20 +114,21 @@ const LanguageCard = ({
             </a>
           )}
 
-          {/* Download Button */}
+          {/* Download Button - Row 2 on mobile, position 2 on desktop */}
           {sampleUrl && (
             <a
               href={sampleUrl}
               download
               onClick={(e) => e.stopPropagation()}
               className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-green-500 hover:text-white transition-all"
+              style={{ gridRow: '2' }}
               title="Download Sample"
             >
               <Download className="w-6 h-6" />
             </a>
           )}
 
-          {/* YouTube Button (Always visible, 2nd position) */}
+          {/* YouTube Button - Row 2 on mobile, position 3 on desktop */}
           {languageVideoUrl ? (
             <a
               href={languageVideoUrl}
@@ -134,6 +136,7 @@ const LanguageCard = ({
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
               className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white hover:bg-gray-300 transition-all"
+              style={{ gridRow: '2' }}
               title={lang === "en" ? "Watch Video" : "ดูวิดีโอ"}
             >
               <YouTubeColor className="w-6 h-6" />
@@ -141,13 +144,14 @@ const LanguageCard = ({
           ) : (
             <div
               className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white cursor-not-allowed"
+              style={{ gridRow: '2' }}
               title={lang === "en" ? "No video available" : "ไม่มีวิดีโอ"}
             >
               <YouTubeColor className="w-6 h-6" />
             </div>
           )}
 
-          {/* Play Button */}
+          {/* Play Button - Row 1 on mobile, position 4 on desktop */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -158,12 +162,13 @@ const LanguageCard = ({
                 ? "bg-amber-100 dark:bg-amber-100 text-amber-600 dark:text-amber-600 animate-pulse"
                 : "bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-amber-500 hover:text-white"
             }`}
+            style={{ gridRow: '1' }}
             title={lang === "en" ? "Listen to sample" : "ฟังตัวอย่าง"}
           >
             <Volume2 className="w-6 h-6" />
           </button>
 
-          {/* Favorite Heart Button - Before Share */}
+          {/* Favorite Heart Button - Row 1 on mobile, position 5 on desktop */}
           {onToggleFavorite && (
             <button
               onClick={(e) => {
@@ -171,6 +176,7 @@ const LanguageCard = ({
                 onToggleFavorite();
               }}
               className="group p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white hover:bg-brand-red transition-all"
+              style={{ gridRow: '1' }}
               title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
             >
               <Heart
@@ -200,13 +206,14 @@ const LanguageCard = ({
             </button>
           )}
 
-          {/* Share Button */}
+          {/* Share Button - Row 1 on mobile, position 6 on desktop */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               onShowQrForLanguage(languageName);
             }}
             className="p-1 md:p-2 rounded-full bg-gray-200 dark:bg-white text-gray-600 dark:text-gray-600 hover:bg-brand-red hover:text-white transition-colors"
+            style={{ gridRow: '1' }}
             title={i18n[lang].share_language_qr || "Share Language QR"}
           >
             <Share2 className="w-6 h-6" />

@@ -186,8 +186,74 @@ const ContentCard = ({
       </div>
 
       {/* ================= RIGHT SIDE: RESPONSIVE BUTTON LAYOUT ================= */}
-      <div className="pl-2 pt-1 flex flex-wrap items-center gap-2">
-        {/* Preview play button (short sample audio) */}
+      <div className="pl-2 pt-1 grid grid-cols-3 md:flex md:flex-wrap items-center gap-2">
+        {/* External Link Button - Row 2 on mobile, position 1 on desktop */}
+        {getExternalMessageUrl() && (
+          <a
+            href={getExternalMessageUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-blue-500 hover:text-white transition-all"
+            style={{ gridRow: '2', '@media (min-width: 768px)': { gridRow: 'auto' } }}
+            title={
+              t?.open_message_on_grn
+                ? `${t.open_message_on_grn}${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
+                : lang === "en"
+                ? `Open this message on 5fish / GRN${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
+                : `เปิดข้อความนี้ใน 5fish / GRN${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
+            }
+          >
+            <ExternalLink className="w-6 h-6" />
+          </a>
+        )}
+
+        {/* Download button - Row 2 on mobile, position 2 on desktop */}
+        {(item.downloadUrl || item.audioUrl || item.sampleUrl) && (
+          <a
+            href={item.downloadUrl || item.audioUrl || item.sampleUrl}
+            download
+            onClick={(e) => e.stopPropagation()}
+            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-green-500 hover:text-white transition-all"
+            style={{ gridRow: '2' }}
+            title={
+              t?.download_audio
+                ? `${t.download_audio}${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
+                : `Download${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
+            }
+          >
+            <Download className="w-6 h-6" />
+          </a>
+        )}
+
+        {/* YouTube Button - Row 2 on mobile, position 3 on desktop */}
+        {videoUrl ? (
+          <a
+            href={videoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white hover:bg-gray-200 transition-all"
+            style={{ gridRow: '2' }}
+            title={
+              t?.watch_on_youtube
+                ? `${t.watch_on_youtube}${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
+                : `Watch on YouTube${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
+            }
+          >
+            <YouTubeColor className="w-6 h-6" />
+          </a>
+        ) : (
+          <div
+            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white cursor-not-allowed opacity-50"
+            style={{ gridRow: '2' }}
+            title={`No video available${item.duration ? ` (${formatDuration(item.duration)})` : ""}`}
+          >
+            <YouTubeColor className="w-6 h-6" />
+          </div>
+        )}
+
+        {/* Preview play button - Row 1 on mobile, position 4 on desktop */}
         {item.sampleUrl && (
           <button
             onClick={(e) => {
@@ -199,6 +265,7 @@ const ContentCard = ({
                 ? "bg-amber-100 dark:bg-amber-100 text-amber-600 dark:text-amber-600 animate-pulse"
                 : "bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-orange-500 hover:text-white"
             }`}
+            style={{ gridRow: '1' }}
             title={
               isPlayingSample
                 ? `Stop Preview${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
@@ -213,7 +280,7 @@ const ContentCard = ({
           </button>
         )}
 
-        {/* Favorite heart as gray button with Thai red outline */}
+        {/* Favorite heart - Row 1 on mobile, position 5 on desktop */}
         {onToggleFavorite && (
           <button
             onClick={(e) => {
@@ -223,6 +290,7 @@ const ContentCard = ({
             onMouseEnter={(e) => e.currentTarget.dataset.hovering = 'true'}
             onMouseLeave={(e) => e.currentTarget.dataset.hovering = 'false'}
             className="group p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white hover:bg-brand-red transition-all"
+            style={{ gridRow: '1' }}
             title={
               isFavorite
                 ? `Remove from Favorites${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
@@ -256,13 +324,14 @@ const ContentCard = ({
           </button>
         )}
 
-        {/* Share button */}
+        {/* Share button - Row 1 on mobile, position 6 on desktop */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             onShowQrForMessage && onShowQrForMessage();
           }}
           className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-brand-red hover:text-white transition-all"
+          style={{ gridRow: '1' }}
           title={
             t?.share_message
               ? `${t.share_message}${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
@@ -271,68 +340,6 @@ const ContentCard = ({
         >
           <Share2 className="w-6 h-6" />
         </button>
-
-        {/* External Link Button */}
-        {getExternalMessageUrl() && (
-          <a
-            href={getExternalMessageUrl()}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-blue-500 hover:text-white transition-all"
-            title={
-              t?.open_message_on_grn
-                ? `${t.open_message_on_grn}${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
-                : lang === "en"
-                ? `Open this message on 5fish / GRN${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
-                : `เปิดข้อความนี้ใน 5fish / GRN${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
-            }
-          >
-            <ExternalLink className="w-6 h-6" />
-          </a>
-        )}
-
-        {/* Download button */}
-        {(item.downloadUrl || item.audioUrl || item.sampleUrl) && (
-          <a
-            href={item.downloadUrl || item.audioUrl || item.sampleUrl}
-            download
-            onClick={(e) => e.stopPropagation()}
-            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white text-gray-500 dark:text-gray-600 hover:bg-green-500 hover:text-white transition-all"
-            title={
-              t?.download_audio
-                ? `${t.download_audio}${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
-                : `Download${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
-            }
-          >
-            <Download className="w-6 h-6" />
-          </a>
-        )}
-
-        {/* YouTube Button */}
-        {videoUrl ? (
-          <a
-            href={videoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white hover:bg-gray-200 transition-all"
-            title={
-              t?.watch_on_youtube
-                ? `${t.watch_on_youtube}${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
-                : `Watch on YouTube${item.duration ? ` (${formatDuration(item.duration)})` : ""}`
-            }
-          >
-            <YouTubeColor className="w-6 h-6" />
-          </a>
-        ) : (
-          <div
-            className="p-1 md:p-2 rounded-full bg-gray-100 dark:bg-white cursor-not-allowed opacity-50"
-            title={`No video available${item.duration ? ` (${formatDuration(item.duration)})` : ""}`}
-          >
-            <YouTubeColor className="w-6 h-6" />
-          </div>
-        )}
       </div>
     </div>
   );
