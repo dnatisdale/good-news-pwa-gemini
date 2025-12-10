@@ -1515,7 +1515,7 @@ export default function App() {
     isLoading ? (
       // 1. --- SPLASH SCREEN COMPONENT (Visible while isLoading is TRUE) ---
       <div
-        className={`fixed inset-0 flex items-center justify-center ${PRIMARY_COLOR_CLASS} z-50`}
+        className={`fixed inset-0 flex items-center justify-center bg-black z-50`}
       >
         <img
           src={AppLogo} // Your optimized square logo source
