@@ -688,7 +688,8 @@ export default function App() {
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
-  const [deferredPrompt, setDeferredPrompt] = useState(null); // Install Prompt state
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isPwaInstalled, setIsPwaInstalled] = useState(false); // Install Prompt state
   // --- NEW FUNCTION: navigateToHome ---
   const navigateToHome = () => {
     // Reset to a fresh Home page
@@ -1105,22 +1106,7 @@ export default function App() {
   };
 
   // --- NEW: PWA Install Click Handler ---
-  const handleInstallClick = async () => {
-    if (deferredPrompt) {
-      // Show the install prompt
-      deferredPrompt.prompt();
-      // Wait for the user to respond
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === "accepted") {
-        console.log("User accepted the PWA install prompt");
-      } else {
-        console.log("User dismissed the PWA install prompt");
-      }
-      // We can only use the prompt once, so clear it
-      setDeferredPrompt(null);
-      setIsDrawerOpen(false); // Close drawer after action
-    }
-  };
+
 
   // --- Current Content and Navigation Status ---
   const currentPage = pageStack[pageStack.length - 1];
@@ -1186,7 +1172,7 @@ export default function App() {
     // ... rest of useEffect
   }, [languageGroups]); // Depend on languageGroups to ensure data is loaded
 
-  // --- NEW: PWA Install Prompt Listener ---
+  // --- NEW: PWA Install Prompt Listener & Standalone Detection ---
   useEffect(() => {
     const handleBeforeInstallPrompt = (e) => {
       // Prevent the mini-infobar from appearing on mobile
@@ -1198,13 +1184,72 @@ export default function App() {
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
+    // Check if already installed
+    if (
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true
+    ) {
+      setIsPwaInstalled(true);
+    }
+
+    // Listen for mode changes
+    const mediaQueryLocal = window.matchMedia("(display-mode: standalone)");
+    const handleChange = (e) => setIsPwaInstalled(e.matches);
+
+    try {
+      mediaQueryLocal.addEventListener("change", handleChange);
+    } catch (e) {
+      // Create a fallback for Safari < 14
+      mediaQueryLocal.addListener(handleChange);
+    }
+
     return () => {
       window.removeEventListener(
         "beforeinstallprompt",
         handleBeforeInstallPrompt
       );
+      try {
+        mediaQueryLocal.removeEventListener("change", handleChange);
+      } catch (e) {
+        mediaQueryLocal.removeListener(handleChange);
+      }
     };
   }, []);
+
+  // --- NEW: PWA Install Click Handler ---
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      // Show the install prompt (Android / Chrome Desktop)
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === "accepted") {
+        console.log("User accepted the PWA install prompt");
+      } else {
+        console.log("User dismissed the PWA install prompt");
+      }
+      setDeferredPrompt(null);
+      setIsDrawerOpen(false);
+    } else {
+      // iOS / Safari / Existing PWA logic where prompt isn't supported
+      // Show instructions instead of false "Installed"
+      const isIOS =
+        /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      if (isIOS) {
+        alert(
+          lang === "th"
+            ? "ในการติดตั้ง: แตะปุ่มแชร์ด้านล่าง แล้วเลือก 'เพิ่มไปยังหน้าจอหลัก'"
+            : "To install: Tap the Share button below and select 'Add to Home Screen'"
+        );
+      } else {
+        // Fallback for other browsers
+        alert(
+          lang === "th"
+            ? "ติดตั้งแอพนี้ได้จากเมนูของเบราว์เซอร์ (เพิ่มไปยังหน้าจอหลัก)"
+            : "Install this app from your browser menu (Add to Home Screen)"
+        );
+      }
+    }
+  };
 
   // --- ADDED: New Global Font Size Effect ---
   useEffect(() => {
@@ -1612,32 +1657,16 @@ export default function App() {
                 setFontSize={setFontSize}
                 navigateToSelectedContent={navigateToSelectedContent}
               />
-              <button
-                onClick={() => {
-                  if (deferredPrompt) {
-                    handleInstallClick();
-                  } else {
-                    alert("App is already installed / แอปถูกติดตั้งแล้ว");
-                  }
-                }}
-                title={
-                  deferredPrompt
-                    ? t.install_app || "Install App"
-                    : t.app_installed || "App Installed"
-                }
-                className={`p-1 rounded-lg transition-colors btn-hover ${
-                  deferredPrompt
-                    ? "text-white hover:bg-red-800"
-                    : "text-red-300 cursor-pointer"
-                }`}
-                aria-label={
-                  deferredPrompt
-                    ? t.install_app || "Install App"
-                    : t.app_installed || "App Installed"
-                }
-              >
-                <Download className="w-6 h-6" />
-              </button>
+              {!isPwaInstalled && (
+                <button
+                  onClick={handleInstallClick}
+                  title={t.install_app || "Install App"}
+                  className="p-1 rounded-lg transition-colors btn-hover text-white hover:bg-red-800"
+                  aria-label={t.install_app || "Install App"}
+                >
+                  <Download className="w-6 h-6" />
+                </button>
+              )}
 
               <button
                 onClick={() => setIsSearchOpen(true)}
@@ -1766,32 +1795,16 @@ export default function App() {
                 </button>
               )}
 
-              <button
-                onClick={() => {
-                  if (deferredPrompt) {
-                    handleInstallClick();
-                  } else {
-                    alert("App is already installed / แอปถูกติดตั้งแล้ว");
-                  }
-                }}
-                title={
-                  deferredPrompt
-                    ? t.install_app || "Install App"
-                    : t.app_installed || "App Installed"
-                }
-                className={`p-1 rounded-lg transition-colors btn-hover ${
-                  deferredPrompt
-                    ? "text-white hover:bg-red-800"
-                    : "text-red-300 cursor-pointer"
-                }`}
-                aria-label={
-                  deferredPrompt
-                    ? t.install_app || "Install App"
-                    : t.app_installed || "App Installed"
-                }
-              >
-                <Download className="w-6 h-6" />
-              </button>
+              {!isPwaInstalled && (
+                <button
+                  onClick={handleInstallClick}
+                  title={t.install_app || "Install App"}
+                  className="p-1 rounded-lg transition-colors btn-hover text-white hover:bg-red-800"
+                  aria-label={t.install_app || "Install App"}
+                >
+                  <Download className="w-6 h-6" />
+                </button>
+              )}
               <FloatingUtilityBar
                 t={t}
                 lang={lang}
