@@ -19,8 +19,12 @@ const MyLibraryPage = ({
   hasNext,
   onPlay,
   onGoHome,
+  offlineTracks,
+  deleteTrack,
+  clearLibrary
 }) => {
-  const { offlineTracks, deleteTrack, clearLibrary } = useOfflineStorage();
+  // Use props instead of local hook
+  // const { offlineTracks, deleteTrack, clearLibrary } = useOfflineStorage();
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
@@ -113,7 +117,7 @@ const MyLibraryPage = ({
                         {verse}
                       </p>
                     )}
-                    <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-medium mt-1">
                       {track.programId ? (
                         <>ID: {track.programId} &bull; {t.track_number_label || "Track"}: {track.trackNumber}</>
                       ) : (
@@ -131,9 +135,13 @@ const MyLibraryPage = ({
                       <PlayCircle className="w-6 h-6" />
                     </button>
                     <button
-                      onClick={() => deleteTrack(track.id)}
+                      onClick={() => {
+                        if (window.confirm(t.confirm_delete_track || "Are you sure you want to delete this track?")) {
+                          deleteTrack(track.id);
+                        }
+                      }}
                       className="p-2 text-gray-400 hover:text-red-500 transition-colors"
-                      aria-label="Delete"
+                      title={t.delete || "Delete"}
                     >
                       <Trash2 className="w-5 h-5" />
                     </button>

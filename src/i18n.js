@@ -105,6 +105,16 @@ export const i18n = {
     font_size_medium: "Medium", // NEW
     font_size_large: "Large", // NEW
     pro_tip_button: "Pro Tip",
+    
+    // Storage Management
+    storage_management: "Storage Management",
+    manage_downloads: "Manage Downloads",
+    no_downloads: "No downloaded messages found",
+    delete_all: "Delete All",
+    delete_confirm: "Are you sure you want to delete all downloads?",
+    storage_used: "Storage Used",
+    confirm_delete_track: "Delete this track?",
+
     feedback: "Feedback", // NEW
     feedback_intro:
       "We value your feedback! Please let us know if you have any suggestions, questions, or issues.", // NEW
@@ -197,11 +207,14 @@ export const i18n = {
     add_to_list_btn: "Add to List",
     ready_to_export_title: "Ready to Export",
     copy_json_btn: "Copy JSON",
-    json_copied_alert:
-      "JSON copied to clipboard! You can now paste it into src/data/staticContent.js",
+    duplicate_warning_text: "You have already downloaded this track. Click to view in My Library.",
+    static_warning_title: "View in Main Collection",
+    static_warning_text: "This program is already listed in the app's Language List. Click to view.",
     clear_data_confirm: "Are you sure you want to clear all imported data?",
-    light_mode: "Light Mode",
-    dark_mode: "Dark Mode",
+    import_success_title: "Import Successful",
+    import_success_text: "Successfully added {{count}} messages to your library.",
+    go_to_library: "Go to My Library",
+    ok_close: "OK (Stay Here)",
   },
 
   // --- THAI TRANSLATIONS ---
@@ -376,8 +389,19 @@ export const i18n = {
     no_languages_found: "ไม่พบภาษา",
     try_different_search: "ลองใช้คำค้นหาอื่น",
     pro_tip_button: "เคล็ดลับมืออาชีพ",
+
+    // Storage Management
+    storage_management: "จัดการพื้นที่จัดเก็บ",
+    manage_downloads: "จัดการการดาวน์โหลด",
+    no_downloads: "ไม่พบข้อความที่ดาวน์โหลด",
+    delete_all: "ลบทั้งหมด",
+    delete_confirm: "คุณแน่ใจหรือไม่ว่าต้องการลบการดาวน์โหลดทั้งหมด?",
+    storage_used: "พื้นที่ที่ใช้",
+    confirm_delete_track: "ลบแทร็กนี้?",
+
     already_added: "เพิ่มแล้ว",
-    duplicate_warning: "แทร็กนี้อยู่ในรายการนำเข้าของคุณแล้ว",
+    duplicate_warning_text: "คุณได้ดาวน์โหลดแทร็กนี้แล้ว คลิกเพื่อดูในคลังของฉัน",
+    clear_data_confirm: "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลที่นำเข้าทั้งหมด?",
 
     // UI Helpers
     select_message_to_listen: "เลือกข้อความเพื่อฟัง",
@@ -446,7 +470,12 @@ export const i18n = {
     json_copied_alert:
       "✅ คัดลอกแล้ว! ข้อมูลข้อความของคุณอยู่ในคลิปบอร์ดแล้ว คุณสามารถวางได้ทุกที่ที่ต้องการ",
     clear_data_confirm: "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลที่นำเข้าทั้งหมด?",
-    light_mode: "โหมดสว่าง",
-    dark_mode: "โหมดมืด",
+    static_warning_title: "อยู่ในรายการภาษาหลัก",
+    static_warning_text: "รายการนี้มีอยู่ในรายการหลักของแอป คลิกเพื่อดู",
+    duplicate_warning_text: "คุณได้ดาวน์โหลดแทร็กนี้แล้ว คลิกเพื่อดูในคลังของฉัน",
+    import_success_title: "นำเข้าสำเร็จ",
+    import_success_text: "เพิ่มข้อความ {{count}} รายการไปยังคลังของคุณแล้ว",
+    go_to_library: "ไปที่คลังของฉัน",
+    ok_close: "ตกลง (อยู่ที่นี่)",
   },
 };

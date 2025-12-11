@@ -55,9 +55,12 @@ export const useOfflineStorage = () => {
       if (isTrackOffline(track.id)) return true; // Already downloaded
 
       setDownloadingIds((prev) => [...prev, track.id]);
+    
+    // Define isLocal for use in try and catch blocks
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-      try {
-        const cache = await caches.open(CACHE_NAME);
+    try {
+      const cache = await caches.open(CACHE_NAME);
         
         // Ensure URL has protocol
         let originalUrl = track.trackDownloadUrl;

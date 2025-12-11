@@ -10,6 +10,7 @@ import {
   Music,
   PlayCircle,
   PauseCircle,
+  ExternalLink,
 } from "lucide-react";
 import { ChevronLeft, ChevronRight, Upload } from "../components/Icons"; // Use App icons for nav
 import { generateId } from "../utils/importUtils";
@@ -18,30 +19,20 @@ import { useOfflineStorage } from "../hooks/useOfflineStorage";
 
 const ACCENT_COLOR_CLASS = "text-brand-red dark:text-white";
 
-const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBackHandler }) => {
-  // Load initial data from localStorage if available
-  const [importedData, setImportedData] = useState(() => {
-    const saved = localStorage.getItem("import_staging_list");
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  // Save to localStorage whenever importedData changes
-  React.useEffect(() => {
-    localStorage.setItem("import_staging_list", JSON.stringify(importedData));
-  }, [importedData]);
-
-  // Clear localStorage when successfully added to library
-  const clearStaging = () => {
-      setImportedData([]);
-      localStorage.removeItem("import_staging_list");
-  };
+const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBackHandler, onNavigate, offlineTracks, downloadTrack }) => {
+  // const [importedData, setImportedData] = useState([]); // REMOVED
+  
   const [programId, setProgramId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [showProTip, setShowProTip] = useState(false);
+  const [showClearConfirm, setShowClearConfirm] = useState(false); // NEW for Clear All logic
+  // Success Modal State
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [successCount, setSuccessCount] = useState(0);
   
-  // Use offline storage hook for downloading imported messages
-  const { downloadTrack, offlineTracks } = useOfflineStorage();
+  // Use props for storage
+  // const { downloadTrack, offlineTracks } = useOfflineStorage(); // REMOVED LOCAL HOOK
 
   const [manualEntry, setManualEntry] = useState({
     trackNumber: "1",
@@ -427,85 +418,41 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
     setIsLoading(false);
   };
 
-  const handleAddItem = () => {
-    if (currentItem) {
-      // Check for duplicates
-      const isDuplicate = importedData.some(
+  const handleDirectAdd = async () => {
+    if (!currentItem) return;
+
+    // Check for duplicates in offlineTracks
+    const isDuplicate = offlineTracks.some(
         item => item.programId === currentItem.programId && item.trackNumber === currentItem.trackNumber
-      );
+    );
 
-      if (isDuplicate) {
-          alert(`Duplicate Warning: Track ${currentItem.trackNumber} (ID: ${currentItem.programId}) is already in your list.`);
-          return;
-      }
-
-      setImportedData([...importedData, currentItem]);
-      setCurrentItem(null);
-      // setProgramId(""); // Keep program ID for next add
-      
-      // Reset Finder State? NO, keep it for multi-track add
-      // setFinderLang("");
-      // setFinderMessageId("");
-      // setFinderTrack("1");
-      
-      // Reset manual entry? NO, keep it, maybe user just wants to increment
-      // setManualEntry((prev) => ({ ...prev, trackNumber: "1", durationString: "" }));
+    if (isDuplicate) {
+        alert(t.duplicate_error || "This track is already in your library.");
+        return; 
     }
-  };
-
-  const handleAddToLibrary = async () => {
-    if (importedData.length === 0) return;
     
     setIsLoading(true);
-    let successCount = 0;
-    let failCount = 0;
-
-    let lastError = "";
-
     try {
-      // Download all items in importedData to offline library
-      for (const item of importedData) {
-        const result = await downloadTrack(item);
+        const result = await downloadTrack(currentItem);
+        
         if (result && result.success) {
-            successCount++;
+            setSuccessCount(1);
+            setShowSuccessModal(true);
+            // Don't close Review modal yet, let Success modal handle navigation
         } else {
-            failCount++;
-            if (result && result.error) lastError = result.error;
+             alert(`Failed to download: ${result?.error || "Unknown error"}`);
         }
-      }
-      
-      if (successCount > 0) {
-          alert(t.added_to_library || `✅ Added ${successCount} messages to My Library!`);
-          
-          if (failCount === 0) {
-              clearStaging(); 
-          } else {
-              alert(`Warning: ${failCount} messages failed to download.\nLast Error: ${lastError}`);
-          }
-      } else {
-          // All failed
-          alert(`Failed to add messages. Please try again.\n\nError details: ${lastError}`);
-      }
-
     } catch (error) {
-      console.error("Failed to add to library:", error);
-      alert("Failed to add messages. Please try again.");
+        console.error("Direct add failed", error);
+        alert("Failed to download track.");
     } finally {
-      setIsLoading(false);
+        setIsLoading(false);
     }
-  };
-  
-  const handleCopyJson = () => {
-    const jsonString = JSON.stringify(importedData, null, 2);
-    navigator.clipboard.writeText(jsonString);
-    alert(t.json_copied_alert || "✅ Copied! Your message data is now on your clipboard. You can paste it anywhere you need it.");
   };
 
-  const handleClearData = () => {
-    if (window.confirm(t.clear_data_confirm || "Are you sure?")) {
-      setImportedData([]);
-    }
-  };
+  /* REMOVED: handleAddItem and handleAddToLibrary */
+  
+  /* REMOVED: handleCopyJson and handleClearData */
 
   return (
     <div className="p-4 pt-8 h-full overflow-y-auto">
@@ -585,7 +532,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                 {t.select_message || "Step 2: Select Message"}
               </label>
               <select
-                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors disabled:cursor-not-allowed"
                 value={finderMessageId}
                 onChange={handleFinderMessageChange}
                 disabled={!finderLang}
@@ -610,42 +557,44 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                     {t.track_number_label || "Track #"}
                   </label>
                    <div className="relative">
-                      {finderMessageId ? (
-                         <select
-                            className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm font-bold text-blue-900"
-                            value={manualEntry.trackNumber}
-                            onChange={(e) => handleTrackChange(e.target.value)}
-                         >
-                            {(() => {
-                              const selectedMsg = staticContent.find(i => i.programId === finderMessageId);
-                              const count = selectedMsg?.trackCount ? Math.ceil(parseFloat(selectedMsg.trackCount)) : 20;
-                              const safeCount = count > 0 ? count : 20;
-                              return [...Array(safeCount)].map((_, i) => (
-                                <option key={i} value={i + 1}>Track {i + 1}</option>
-                              ));
-                            })()}
-                         </select>
-                      ) : (
-                        <input
-                          type="text"
-                          className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-slate-50 dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm text-center"
-                          value={manualEntry.trackNumber}
-                          onChange={(e) => handleTrackChange(e.target.value)}
-                        />
-                      )}
+                          <select
+                             className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm font-bold text-blue-900"
+                             value={manualEntry.trackNumber}
+                             onChange={(e) => handleTrackChange(e.target.value)}
+                             disabled={!finderMessageId}
+                          >
+                             {(() => {
+                               // Default count if no message selected (though disabled)
+                               const count = 20;
+                               
+                               if (finderMessageId) {
+                                   const selectedMsg = staticContent.find(i => i.programId === finderMessageId);
+                                   const msgCount = selectedMsg?.trackCount ? Math.ceil(parseFloat(selectedMsg.trackCount)) : 20;
+                                   // Use msgCount if valid
+                                   if (msgCount > 0) return [...Array(msgCount)].map((_, i) => (
+                                     <option key={i} value={i + 1}>Track {i + 1}</option>
+                                   ));
+                               }
+                               
+                               // Fallback default options
+                               return [...Array(count)].map((_, i) => (
+                                 <option key={i} value={i + 1}>Track {i + 1}</option>
+                               ));
+                             })()}
+                          </select>
                   </div>
                 </div>
 
                 {/* 2. Duration (Minutes : Seconds) - Editable & Auto-fill */}
                 <div>
-                   <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
+                   <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1 text-center">
                       {t.full_message_length_label || "Full Message Length"}
                    </label>
                    <div className="relative">
                       <input 
                           type="text" 
-                          placeholder="MM:SS" 
-                          className="w-full px-3 py-2 border border-blue-300 rounded-lg bg-slate-50 dark:bg-gray-800 dark:border-gray-500 dark:text-gray-400 text-center text-sm font-mono focus:outline-none cursor-not-allowed"
+                          placeholder="HH:MM:SS" 
+                          className="w-full px-3 py-2 border border-blue-300 rounded-lg bg-slate-50 dark:bg-gray-800 dark:border-gray-500 dark:text-white text-center text-sm font-mono focus:outline-none cursor-not-allowed"
                           value={manualEntry.durationString || ""}
                           readOnly
                           title="Message Duration"
@@ -661,7 +610,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                   <div className="relative">
                     <input
                       type="text"
-                      className="block w-full px-3 py-2 border border-gray-200 rounded-lg bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 focus:outline-none transition-colors text-sm font-mono text-center cursor-not-allowed"
+                      className="block w-full px-3 py-2 border border-gray-200 rounded-lg bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:text-white focus:outline-none transition-colors text-sm font-mono text-center cursor-not-allowed"
                       placeholder="---"
                       value={programId}
                       readOnly
@@ -715,6 +664,37 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
           </div>
         )}
         
+        {/* External Lookup Section */}
+        <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-600">
+           <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center">
+              <Globe className="w-5 h-5 mr-2 text-brand-red dark:text-orange-400" />
+              {t.external_lookup_title || "Looking for Something Else?"}
+           </h3>
+           <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+              {t.external_lookup_desc || "If you can't find your message above, try searching these websites to find the Program ID:"}
+           </p>
+           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <a 
+                href="https://5fish.mobi/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 p-3 bg-brand-red hover:bg-red-800 text-white rounded-lg font-bold transition-colors shadow-md"
+              >
+                 <img src="/icons/5fish-dark.png" alt="5fish" className="w-6 h-6 object-contain" />
+                 5fish.mobi
+              </a>
+              <a 
+                href="https://globalrecordings.net/en/search" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 p-3 bg-brand-red hover:bg-red-800 text-white rounded-lg font-bold transition-colors shadow-md"
+              >
+                 <img src="/icons/grn-thick-dark.svg" alt="Global Recordings Network" className="w-6 h-6 object-contain" />
+                 GlobalRecordings.net
+              </a>
+           </div>
+        </div>
+
         {/* Review This Message Section */}
 
         {/* Modal Overlay for Review */}
@@ -729,7 +709,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                    </h2>
                    <button 
                      onClick={() => setCurrentItem(null)}
-                     className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors"
+                     className="text-gray-400 hover:text-gray-600 dark:text-white dark:hover:text-gray-300 transition-colors"
                    >
                      <span className="sr-only">Close</span>
                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -790,33 +770,26 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                         return (
                           <div className="col-span-2 space-y-2">
                             {isOffline && (
-                              <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 p-3 rounded-lg flex items-start gap-3">
-                                <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                              <button
+                                onClick={() => {
+                                  if (onNavigate) {
+                                      setCurrentItem(null); // Close modal
+                                      onNavigate("MyLibrary");
+                                  }
+                                }}
+                                className="w-full text-left bg-green-50 hover:bg-green-100 dark:bg-green-900/20 dark:hover:bg-green-900/40 border border-green-200 dark:border-green-800 p-3 rounded-lg flex items-start gap-3 transition-colors cursor-pointer group animate-bounce"
+                              >
+                                <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
                                 <div>
-                                  <p className="text-sm font-bold text-orange-700 dark:text-orange-300">
+                                  <p className="text-sm font-bold text-green-700 dark:text-green-300 underline decoration-green-300 underline-offset-2">
                                     {t.duplicate_warning_title || "Already in Library"}
                                   </p>
-                                  <p className="text-xs text-orange-600 dark:text-orange-400">
+                                  <p className="text-xs text-green-600 dark:text-green-400">
                                     {t.duplicate_warning_text ||
-                                      "You have already downloaded this specific track."}
+                                      "You have already downloaded this track. Click to view in My Library."}
                                   </p>
                                 </div>
-                              </div>
-                            )}
-
-                            {isStatic && (
-                              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3 rounded-lg flex items-start gap-3">
-                                <Music className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                                <div>
-                                  <p className="text-sm font-bold text-blue-700 dark:text-blue-300">
-                                    {t.static_warning_title || "Available in Main App"}
-                                  </p>
-                                  <p className="text-xs text-blue-600 dark:text-blue-400">
-                                    {t.static_warning_text ||
-                                      "This program is available in the main list (Sample)."}
-                                  </p>
-                                </div>
-                              </div>
+                              </button>
                             )}
                           </div>
                         );
@@ -904,42 +877,27 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
             {/* Modal Footer */}
             <div className="p-6 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-700">
                {(() => {
-                   // Check for duplicates in render
-                   const isDuplicate = importedData.some(
-                      item => item.programId === currentItem.programId && String(item.trackNumber) === String(manualEntry.trackNumber)
+                   const isDuplicate = offlineTracks.some(
+                       item => item.programId === currentItem.programId && item.trackNumber === currentItem.trackNumber
                    );
-
                    return (
-                     <div className="flex flex-col gap-3">
-                        {isDuplicate && (
-                             <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-3 rounded-lg flex items-center gap-2 text-sm text-red-600 dark:text-red-300 animate-bounce">
-                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                                 </svg>
-                                 <span className="font-bold">{t.duplicate_warning || "This track is already in your Import List."}</span>
-                             </div>
-                        )}
-                        <div className="flex gap-3">
-                           <button
+                       <div className="flex gap-3">
+                          <button
                               onClick={() => setCurrentItem(null)}
                               className="flex-1 py-3 px-4 rounded-lg font-bold text-gray-600 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600 transition-colors"
-                            >
-                              {t.cancel || "Cancel"}
-                           </button>
-                           <button
-                              onClick={handleAddItem}
-                              disabled={isDuplicate}
-                              className={`flex-[2] py-3 px-4 rounded-lg font-bold text-white shadow-md transition-colors flex items-center justify-center gap-2
-                                  ${isDuplicate 
-                                      ? "bg-gray-400 cursor-not-allowed opacity-70" 
-                                      : "bg-[#003366] hover:bg-[#002244] dark:bg-orange-500 dark:hover:bg-orange-600"
-                                  }`}
                            >
-                              <Plus className="w-5 h-5" />
-                              {isDuplicate ? (t.already_added || "Already Added") : (t.add_to_list_btn || "Add to Import List")}
+                              {t.cancel || "Cancel"}
+                          </button>
+                          <button
+                              onClick={handleDirectAdd}
+                              disabled={isDuplicate}
+                              className={`flex-[2] py-3 px-4 rounded-lg font-bold text-white shadow-md transition-colors flex items-center justify-center gap-2 
+                                  ${isDuplicate ? "bg-gray-400 cursor-not-allowed opacity-70" : "bg-[#003366] hover:bg-[#002244] dark:bg-orange-500 dark:hover:bg-orange-600"}`}
+                           >
+                              {isDuplicate ? <CheckCircle className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                              {isDuplicate ? (t.already_added || "Already Added") : (t.add_to_library_btn || "Add to My Library")}
                            </button>
-                        </div>
-                     </div>
+                       </div>
                    );
                })()}
             </div>
@@ -948,88 +906,45 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
           </div>
         )}
 
-        {/* My Import List */}
-        {importedData.length > 0 && (
-          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md border-2 border-blue-100 dark:border-blue-900/30">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="text-xl font-bold text-gray-800 dark:text-white">
-                {t.import_list_title || "My Import List"} ({importedData.length})
-              </h2>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => {
-                      if(window.confirm(t.clear_data_confirm)) {
-                          clearStaging();
-                      }
-                  }}
-                  className="text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-                  title={t.clear_all || "Clear All"}
-                >
-                  <Trash2 className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={handleAddToLibrary}
-                  disabled={isLoading}
-                  className="bg-[#003366] hover:bg-[#002244] dark:bg-orange-500 dark:hover:bg-orange-600 disabled:bg-gray-400 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors shadow-sm"
-                >
-                  <Download className="w-5 h-5" />
-                  {isLoading ? (t.downloading || "Downloading...") : (t.add_to_library_btn || "Add to My Library")}
-                </button>
+      </div>
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 max-w-sm w-full shadow-2xl animate-in fade-in zoom-in duration-200">
+            <div className="text-center mb-6">
+              <div className="mx-auto w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
+                <Download className="w-6 h-6 text-green-600 dark:text-green-400" />
               </div>
+              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                {t.import_success_title || "Import Successful"}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                 {(t.import_success_text || "Successfully added {{count}} messages to your library.").replace("{{count}}", successCount)}
+              </p>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-              {t.import_list_hint || "These messages are ready to add to My Library. Click 'Add to My Library' to download them for offline use."}
-            </p>
-            <button
-              onClick={handleCopyJson}
-              className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 underline mb-4"
-            >
-              {t.export_json_link || "Export JSON (for developers)"}
-            </button>
-
-            <div className="max-h-96 overflow-y-auto space-y-4">
-              {importedData.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 flex justify-between items-center"
-                >
-                  <div>
-                    {/* Row 1: Languages (Combined) */}
-                    <h3 className="font-bold text-gray-900 dark:text-white">
-                      {item.languageEn}
-                      {item.langTh && (
-                        <span className="ml-2 text-gray-600 dark:text-gray-300 font-normal">
-                          / {item.langTh}
-                        </span>
-                      )}
-                    </h3>
-
-                    {/* Row 2: Titles (Combined) */}
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1 line-clamp-1">
-                      <span className="font-medium text-gray-900 dark:text-white">{item.title_en}</span>
-                      {item.title_th && (
-                        <span className="ml-2 text-gray-500 dark:text-gray-400">
-                           / {item.title_th}
-                        </span>
-                      )}
-                    </p>
-
-                    {/* Row 3: Details */}
-                    <p className="text-xs text-gray-400 mt-1 font-mono">
-                      ID: {item.programId} <span className="mx-1">•</span> Track: {item.trackNumber}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {item.trackDownloadUrl && (
-                      <Music className="w-4 h-4 text-green-500" />
-                    )}
-                  </div>
-                </div>
-              ))}
+            
+            <div className="space-y-3">
+              <button
+                onClick={() => {
+                   setShowSuccessModal(false);
+                   if (onNavigate) onNavigate("MyLibrary");
+                }}
+                className="w-full py-3 px-4 bg-brand-red hover:bg-red-800 text-white font-bold rounded-lg shadow transition-colors flex items-center justify-center gap-2"
+              >
+                <Download className="w-5 h-5" />
+                {t.go_to_library || "Go to My Library"}
+              </button>
+              
+              <button
+                onClick={() => setShowSuccessModal(false)}
+                className="w-full py-3 px-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-semibold rounded-lg transition-colors"
+              >
+                {t.ok_close || "OK (Stay Here)"}
+              </button>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

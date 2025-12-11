@@ -45,13 +45,14 @@ import SelectedContentPage from "./pages/SelectedContentPage";
 import MessagesByLanguagePage from "./pages/MessagesByLanguagePage";
 import FavoritesPage from "./pages/FavoritesPage";
 import SearchPage from "./pages/SearchPage";
-import SettingsPage from "./pages/SettingsPage";
 import NotesPage from "./pages/NotesPage";
 import MyLibraryPage from "./pages/MyLibraryPage";
 import ImportPage from "./pages/ImportPage";
-import FeedbackPage from "./pages/FeedbackPage"; // NEW
+import FeedbackPage from "./pages/FeedbackPage";
 import SelectionBadge from "./components/SelectionBadge";
 import UpdateNotification from "./components/UpdateNotification";
+// import SettingsPage from "./pages/SettingsPage"; // REMOVED
+import StorageManagementPage from "./pages/StorageManagementPage"; // NEW
 
 // --- CONSTANTS ---
 const PRIMARY_COLOR_CLASS = "bg-gradient-to-r from-brand-red to-brand-red-dark";
@@ -61,6 +62,10 @@ const DEFAULT_FONT_SIZE = "16px";
 export default function App() {
   // --- Swipe to Close Sidebar Logic ---
   const [customBackHandler, setCustomBackHandler] = useState(null); // NEW: Allow pages to intercept Back
+  
+  // --- STATE LIFTING: Shared Offline Storage ---
+  const { offlineTracks, downloadTrack, deleteTrack, clearLibrary } = useOfflineStorage();
+  
   const touchStartRef = React.useRef(null);
   const touchEndRef = React.useRef(null);
   const minSwipeDistance = 50; // Minimum distance for a swipe to be registered
@@ -711,7 +716,7 @@ export default function App() {
   // --------------------------------------------------------------------------
   // *** FIX: Changed from array to object destructuring and passed  // --- HOOKS ---
   const { isAuthReady, userId, userData, saveUserData, error, logOut, signUp } = useFirebase(setLang); // Modified to include signUp
-  const { offlineTracks } = useOfflineStorage(); // 👈 GET OFFLINE TRACKS
+  // const { offlineTracks } = useOfflineStorage(); // REMOVED: Managed at top level
 
   // --- NEW: Toggle Favorite (Message) ---
   const handleToggleFavorite = (id) => {
@@ -1455,18 +1460,36 @@ export default function App() {
           hasNext={hasNext}
           onPlay={handlePlayMessage}
           onGoHome={navigateToHome}
+          // Shared Storage Props
+          offlineTracks={offlineTracks}
+          deleteTrack={deleteTrack}
+          clearLibrary={clearLibrary}
         />
       );
       break;
 
-    case "Settings":
+    // case "Settings": // REMOVED
+    //   PageContent = (
+    //     <SettingsPage
+    //       lang={lang}
+    //       t={t}
+    //       setLang={setLang}
+    //       fontSize={fontSize}
+    //       setFontSize={setFontSize}
+    //       onBack={goBack}
+    //       onForward={goForward}
+    //       hasPrev={hasPrev}
+    //       hasNext={hasNext}
+    //       onNavigate={navigateTo}
+    //     />
+    //   );
+    //   break;
+
+    case "StorageManagement": // NEW ROUTE
       PageContent = (
-        <SettingsPage
+        <StorageManagementPage
           lang={lang}
           t={t}
-          setLang={setLang}
-          fontSize={fontSize}
-          setFontSize={setFontSize}
           onBack={goBack}
           onForward={goForward}
           hasPrev={hasPrev}
@@ -1484,7 +1507,11 @@ export default function App() {
           onForward={goForward}
           hasPrev={hasPrev}
           hasNext={hasNext}
-          setCustomBackHandler={setCustomBackHandler} // NEW
+          setCustomBackHandler={setCustomBackHandler}
+          onNavigate={navigateTo} // 👈 NEW
+          // Shared Storage Props
+          offlineTracks={offlineTracks}
+          downloadTrack={downloadTrack}
         />
       );
       break;
@@ -1535,6 +1562,7 @@ export default function App() {
             lg:w-96 lg:h-96 
             rounded-full shadow-2xl 
             object-cover
+            brightness-125
           "
         />
       </div>
@@ -1588,7 +1616,7 @@ export default function App() {
                 <img
                   src={BannerLogo}
                   alt={t.app_name}
-                  className="w-auto flex-shrink-0 object-cover rounded-lg"
+                  className="w-auto flex-shrink-0 object-cover rounded-lg brightness-125"
                   style={{ height: "4rem" }}
                 />
               </a>
@@ -1718,7 +1746,7 @@ export default function App() {
                 <img
                   src={BannerLogo}
                   alt={t.app_name}
-                  className="w-auto flex-shrink-0 rounded-lg"
+                  className="w-auto flex-shrink-0 rounded-lg brightness-125"
                   style={{ height: "4rem" }}
                 />
               </a>
@@ -1939,7 +1967,7 @@ export default function App() {
                   <img
                     src={AppLogo}
                     alt="Logo"
-                    className="h-12 w-12 flex-shrink-0 object-cover"
+                    className="h-12 w-12 flex-shrink-0 object-cover brightness-125"
                   />
                 </button>
 
@@ -2008,13 +2036,13 @@ export default function App() {
                   target: "SelectedContent",
                 },
                 { name: "Feedback", icon: MessageSquare, target: "Feedback" },
-                // --- 5fish Website Link ---
                 {
                   name: "5fish Website",
                   icon: ExternalLink,
                   target: "5fish",
                   url: "https://5fish.mobi/",
                 },
+                { name: "manage_downloads", icon: Settings, target: "StorageManagement" }, // 👈 CHANGED
               ].map((item) => {
                 // --- NEW: Logic to render a link or a button ---
                 if (item.url) {
