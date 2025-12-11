@@ -114,6 +114,10 @@ export const i18n = {
     // Import Page
     import_content_title: "Import Content",
     import_new_content_title: "Import New Content",
+    import_content_title: "Import Content",
+    import_new_content_title: "Import New Content",
+    find_content_label: "Find Content", // NEW
+    full_message_length_label: "Full Message Length", // NEW
     program_id_label: "Program ID",
     message_id_label: "Message ID",
     find_message_id_label: "Find Message ID",
@@ -133,8 +137,9 @@ export const i18n = {
     lang_th_label: "Language (TH)",
     title_en_label: "Title (EN)",
     title_th_label: "Title (TH)",
+    title_label: "Title",
     generated_urls_label: "Generated URLs (Read-only)",
-    add_to_list_btn: "Add to List",
+    add_to_list_btn: "Add to Import List",
     ready_to_export_title: "Ready to Export",
     copy_json_btn: "Copy JSON",
     json_copied_alert:
@@ -144,6 +149,11 @@ export const i18n = {
     select_language: "Select Language",
     select_message: "Select Message",
     select_track: "Select Track",
+    iso3_code_label: "ISO3 Code", // NEW
+    language_id_label: "Language ID", // NEW
+    verse_en_label: "Verse (EN)", // NEW
+    verse_th_label: "Verse (TH)", // NEW
+    preview_audio_label: "Preview Audio", // NEW
     find_message_btn: "Find Message",
     review_message_title: "Review This Message",
     review_message_hint:
@@ -152,7 +162,11 @@ export const i18n = {
     print_word: "Print", // NEW
     no_content_selected:
       "It looks like you haven't selected any messages yet. To get started, click here to go back to the Language Finder and check the messages you want to use. Once you return, we can help you with sharing, copying, or printing your selections.",
+    no_content_selected:
+      "It looks like you haven't selected any messages yet. To get started, click here to go back to the Language Finder and check the messages you want to use. Once you return, we can help you with sharing, copying, or printing your selections.",
     go_back: "Go Back",
+    already_added: "Already Added",
+    duplicate_warning: "This track is already in your Import List.",
 
     // Share App
     share_app: "Share App",
@@ -307,6 +321,10 @@ export const i18n = {
     // Import Page
     import_content_title: "นำเข้าเนื้อหา",
     import_new_content_title: "นำเข้าเนื้อหาใหม่",
+    import_content_title: "นำเข้าเนื้อหา",
+    import_new_content_title: "นำเข้าเนื้อหาใหม่",
+    find_content_label: "ค้นหาเนื้อหา", // NEW
+    full_message_length_label: "ความยาวข้อความเต็ม", // NEW
     program_id_label: "รหัสโปรแกรม",
     message_id_label: "รหัสข้อความ",
     find_message_id_label: "ค้นหารหัสข้อความ",
@@ -318,6 +336,11 @@ export const i18n = {
     fetch_generate_btn: "ดึงข้อมูล & สร้าง",
     url_pattern_info: "รูปแบบ URL ที่สร้างอัตโนมัติ",
     download_url_label: "รูปแบบ URL สำหรับดาวน์โหลด:",
+    iso3_code_label: "รหัส ISO3", // NEW
+    language_id_label: "รหัสภาษา", // NEW
+    verse_en_label: "ข้อพระคัมภีร์ (อังกฤษ)", // NEW
+    verse_th_label: "ข้อพระคัมภีร์ (ไทย)", // NEW
+    preview_audio_label: "ตัวอย่างเสียง", // NEW
     url_pattern_note:
       "แอปจะสร้าง URL สำหรับดาวน์โหลดให้อัตโนมัติจาก Program ID และหมายเลขแทร็กของคุณ ในการใช้งานจริงจะเรียกผ่าน Netlify (/api/proxy-audio/*) เพื่อหลีกเลี่ยงปัญหา CORS",
     review_edit_title: "ตรวจสอบ & แก้ไข",
@@ -325,8 +348,9 @@ export const i18n = {
     lang_th_label: "ภาษา (ไทย)",
     title_en_label: "ชื่อเรื่อง (อังกฤษ)",
     title_th_label: "ชื่อเรื่อง (ไทย)",
+    title_label: "ชื่อเรื่อง",
     generated_urls_label: "URL ที่สร้างขึ้น (อ่านอย่างเดียว)",
-    add_to_list_btn: "เพิ่มลงในรายการ",
+    add_to_list_btn: "เพิ่มลงในรายการที่นำเข้า",
     ready_to_export_title: "พร้อมส่งออก",
     copy_json_btn: "คัดลอก JSON",
     json_copied_alert:
@@ -340,7 +364,7 @@ export const i18n = {
     review_message_title: "ตรวจสอบข้อความนี้",
     review_message_hint:
       "ตรวจสอบรายละเอียดด้านล่าง จากนั้นคลิก 'เพิ่มข้อความนี้' เพื่อเพิ่มลงในรายการของคุณ",
-    add_message_btn: "เพิ่มข้อความนี้",
+    add_message_btn: "เพิ่มลงในรายการที่นำเข้า",
     import_list_title: "รายการนำเข้าของฉัน",
     import_list_hint:
       "ข้อความเหล่านี้พร้อมที่จะเพิ่มลงในคลังของฉัน คลิก 'เพิ่มลงในคลังของฉัน' เพื่อดาวน์โหลดสำหรับใช้งานแบบออฟไลน์",
@@ -349,7 +373,11 @@ export const i18n = {
     export_json_link: "ส่งออก JSON (สำหรับนักพัฒนา)",
     no_languages_found: "ไม่พบภาษา",
     try_different_search: "ลองใช้คำค้นหาอื่น",
+    no_languages_found: "ไม่พบภาษา",
+    try_different_search: "ลองใช้คำค้นหาอื่น",
     pro_tip_button: "เคล็ดลับมืออาชีพ",
+    already_added: "เพิ่มแล้ว",
+    duplicate_warning: "แทร็กนี้อยู่ในรายการนำเข้าของคุณแล้ว",
 
     // UI Helpers
     select_message_to_listen: "เลือกข้อความเพื่อฟัง",

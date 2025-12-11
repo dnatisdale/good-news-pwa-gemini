@@ -1,0 +1,80 @@
+[
+  {
+    "problem": {
+      "file": "Cham.Cambodia.1024.mp3",
+      "langId": "1024",
+      "programId": "3410",
+      "language": "Cham Cambodia",
+      "duration": 14.785
+    },
+    "matches": 1,
+    "bestMatch": "ចាម Words of Life M001 Do Not Be Afraid 03410.mp3",
+    "bestSize": 816351,
+    "bestPath": "C:\\GitHub\\good-news-pwa-gemini\\audio_full_tracks\\ចាម Words of Life M001 Do Not Be Afraid 03410.mp3"
+  },
+  {
+    "problem": {
+      "file": "Karen.Pwo.Eastern.Kanjanaburi.2403.mp3",
+      "langId": "2403",
+      "programId": "9320",
+      "language": "Karen Pwo Eastern Kanjanaburi",
+      "duration": 15.151
+    },
+    "matches": 1,
+    "bestMatch": "Karen Pwo Eastern Kanjanaburi Words of Life 1 M002 Do Not Be Afraid ♦ About Jesus 1 ♦ Abou 09320.mp3",
+    "bestSize": 1999306,
+    "bestPath": "C:\\GitHub\\good-news-pwa-gemini\\audio_full_tracks\\Karen Pwo Eastern Kanjanaburi Words of Life 1 M002 Do Not Be Afraid ♦ About Jesus 1 ♦ Abou 09320.mp3"
+  },
+  {
+    "problem": {
+      "file": "Khamu.Thailand.488.mp3",
+      "langId": "488",
+      "programId": "6700",
+      "language": "Khamu Thailand",
+      "duration": 15.264
+    },
+    "matches": 1,
+    "bestMatch": "Khamu Thailand Power over Fear M001 Deliverance From Fear 06700 (3).mp3",
+    "bestSize": 747694,
+    "bestPath": "C:\\GitHub\\good-news-pwa-gemini\\audio_full_tracks\\Khamu Thailand Power over Fear M001 Deliverance From Fear 06700 (3).mp3"
+  },
+  {
+    "problem": {
+      "file": "Khmer.Thailand.3450.mp3",
+      "langId": "3450",
+      "programId": "3590",
+      "language": "Khmer Thailand",
+      "duration": 14.576
+    },
+    "matches": 1,
+    "bestMatch": "ខ្មែរលើ Words of Life M001 Are You Going to Heaven 03590.mp3",
+    "bestSize": 823807,
+    "bestPath": "C:\\GitHub\\good-news-pwa-gemini\\audio_full_tracks\\ខ្មែរលើ Words of Life M001 Are You Going to Heaven 03590.mp3"
+  },
+  {
+    "problem": {
+      "file": "Kuy.530.mp3",
+      "langId": "530",
+      "programId": "7581",
+      "language": "Kuy",
+      "duration": 14.367
+    },
+    "matches": 1,
+    "bestMatch": "គុយ Words of Life M007 Deliverance From Demons 07581.mp3",
+    "bestSize": 974116,
+    "bestPath": "C:\\GitHub\\good-news-pwa-gemini\\audio_full_tracks\\គុយ Words of Life M007 Deliverance From Demons 07581.mp3"
+  },
+  {
+    "problem": {
+      "file": "Thai.Northern.101.mp3",
+      "langId": "101",
+      "programId": "3031",
+      "language": "Thai Northern",
+      "duration": 14.576
+    },
+    "matches": 1,
+    "bestMatch": "ไทยเหนือ - กำเมือง Words of Life M005 Fear Not 03031.mp3",
+    "bestSize": 896017,
+    "bestPath": "C:\\GitHub\\good-news-pwa-gemini\\audio_full_tracks\\ไทยเหนือ - กำเมือง Words of Life M005 Fear Not 03031.mp3"
+  }
+]

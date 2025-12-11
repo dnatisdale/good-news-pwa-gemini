@@ -59,6 +59,7 @@ const DEFAULT_FONT_SIZE = "16px";
 
 export default function App() {
   // --- Swipe to Close Sidebar Logic ---
+  const [customBackHandler, setCustomBackHandler] = useState(null); // NEW: Allow pages to intercept Back
   const touchStartRef = React.useRef(null);
   const touchEndRef = React.useRef(null);
   const minSwipeDistance = 50; // Minimum distance for a swipe to be registered
@@ -1032,6 +1033,11 @@ export default function App() {
   };
 
   const goBack = () => {
+    if (customBackHandler) {
+      customBackHandler();
+      return;
+    }
+
     // If we are on Search page and going back, we might want to keep it open?
     // But usually "Back" implies leaving the current context.
     // Let's close it to be safe, unless we want to preserve state.
@@ -1446,6 +1452,7 @@ export default function App() {
           hasPrev={hasPrev}
           hasNext={hasNext}
           onPlay={handlePlayMessage}
+          onGoHome={navigateToHome}
         />
       );
       break;
@@ -1475,6 +1482,7 @@ export default function App() {
           onForward={goForward}
           hasPrev={hasPrev}
           hasNext={hasNext}
+          setCustomBackHandler={setCustomBackHandler} // NEW
         />
       );
       break;

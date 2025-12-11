@@ -51,8 +51,8 @@ export const useOfflineStorage = () => {
   // Download a track
   const downloadTrack = useCallback(
     async (track) => {
-      if (!track || !track.trackDownloadUrl) return;
-      if (isTrackOffline(track.id)) return; // Already downloaded
+      if (!track || !track.trackDownloadUrl) return false;
+      if (isTrackOffline(track.id)) return true; // Already downloaded
 
       setDownloadingIds((prev) => [...prev, track.id]);
 
@@ -68,11 +68,11 @@ export const useOfflineStorage = () => {
         // Use Netlify redirect proxy to avoid CORS issues
         // In production: /api/proxy-audio/* redirects to https://api.globalrecordings.net/*
         // In development: use direct URL (will fail due to CORS, but good for testing)
-        const isProduction = window.location.hostname !== 'localhost';
+        // In development: use direct URL (will fail due to CORS, but good for testing)
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const isProduction = !isLocal;
         
         // Extract the path after the domain for the proxy
-        // e.g., "https://api.globalrecordings.net/files/track/mp3-low/62808/1" 
-        // becomes "/api/proxy-audio/files/track/mp3-low/62808/1"
         let proxyUrl = originalUrl;
         if (isProduction && originalUrl.includes('api.globalrecordings.net')) {
           const urlPath = originalUrl.replace('https://api.globalrecordings.net', '');
@@ -89,40 +89,42 @@ export const useOfflineStorage = () => {
         }
         
         console.log(`useOfflineStorage: Storing in cache with key: ${originalUrl}`);
-        // Store in cache using the original URL as the key
-        // This way the audio player can find it later
         await cache.put(originalUrl, response.clone());
         
-        console.log(`useOfflineStorage: Successfully cached audio file`);
-
         // Add to metadata
         setOfflineTracks((prev) => {
-            // Avoid duplicates
-            if (prev.some(t => t.id === track.id)) {
-              console.log(`useOfflineStorage: Track ${track.id} already in library, skipping`);
-              return prev;
-            }
+            if (prev.some(t => t.id === track.id)) return prev;
             
             const newTrack = {
-                ...track, // Store full track data first
-                id: track.id,
-                title_en: track.title_en,
-                title_th: track.title_th,
-                languageEn: track.languageEn,
-                langTh: track.langTh,
-                verse_en: track.verse_en,
-                verse_th: track.verse_th,
-                trackDownloadUrl: originalUrl, // Override with the correct URL (with https)
+                ...track,
+                trackDownloadUrl: originalUrl, // Store normalized URL
             };
-            
-            console.log(`useOfflineStorage: Adding track to library:`, newTrack);
             return [...prev, newTrack];
         });
         
-        console.log(`Track ${track.id} downloaded successfully.`);
+        return true; // Success
       } catch (error) {
         console.error(`Failed to download track ${track.id}:`, error);
+        
+        // MOCK SUCCESS FOR LOCALHOST
+        // MOCK SUCCESS FOR LOCALHOST
+        if (isLocal) {
+            console.warn("Localhost detected: Mocking download success despite error (Audio won't play offline, but UI will update).");
+             // Add to metadata anyway so user can test the Library UI
+            setOfflineTracks((prev) => {
+                if (prev.some(t => t.id === track.id)) return prev;
+                const newTrack = {
+                    ...track,
+                    trackDownloadUrl: track.trackDownloadUrl, 
+                    isMock: true
+                };
+                return [...prev, newTrack];
+            });
+            return true;
+        }
+
         alert(`Download failed: ${error.message}\n\nNote: Offline downloads only work when deployed to Netlify.`);
+        return false; // Failed
       } finally {
         setDownloadingIds((prev) => prev.filter((id) => id !== track.id));
       }
