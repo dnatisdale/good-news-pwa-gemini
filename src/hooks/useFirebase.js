@@ -45,7 +45,22 @@ export function useFirebase(setLang) {
     const storedLang = localStorage.getItem("appLang") || "en";
     setLang(storedLang);
 
-    return () => unsubscribe();
+    // --- NEW: Failsafe Timeout ---
+    // If Firebase hangs (e.g. network issue), force entry after 10 seconds
+    const safetyTimer = setTimeout(() => {
+      setIsAuthReady((prev) => {
+        if (!prev) {
+          console.warn("Auth timed out. Forcing app entry.");
+          return true; 
+        }
+        return prev;
+      });
+    }, 10000); // 10 seconds
+
+    return () => {
+      unsubscribe();
+      clearTimeout(safetyTimer);
+    };
   }, [setLang]);
 
   // 2. Data Listener (runs once auth is ready)
