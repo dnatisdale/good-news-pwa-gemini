@@ -114,7 +114,11 @@ const MyLibraryPage = ({
                       </p>
                     )}
                     <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
-                      {t.program_number || "Message No."} {track.id}
+                      {track.programId ? (
+                        <>ID: {track.programId} &bull; {t.track_number_label || "Track"}: {track.trackNumber}</>
+                      ) : (
+                        <>{t.program_number || "Message No."} {track.id}</>
+                      )}
                     </p>
                   </div>
 

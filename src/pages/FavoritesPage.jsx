@@ -23,6 +23,7 @@ const FavoritesPage = ({
   languageGroups,
   onToggleFavoriteLanguage,
   onSelectLanguage,
+  onGoHome,
 }) => {
   // ⭐ Favorite messages
   const favoriteMessageItems = useMemo(() => {
@@ -230,7 +231,13 @@ const FavoritesPage = ({
             ))
           ) : (
             <div className="text-center p-8 text-gray-500">
-              <Heart className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+              <button 
+                onClick={onGoHome}
+                className="group focus:outline-none transition-transform active:scale-95"
+                title="Go to Languages"
+              >
+                <Heart className="w-12 h-12 mx-auto mb-4 text-gray-300 group-hover:text-brand-red transition-colors cursor-pointer" />
+              </button>
               <p>{t.no_favorites}</p>
               <p className="text-sm mt-2">{t.favorite_tip}</p>
             </div>

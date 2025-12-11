@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import html2canvas from "html2canvas";
 import ContentView from "./pages/ContentView";
 import { useFirebase } from "./hooks/useFirebase";
+import { useOfflineStorage } from "./hooks/useOfflineStorage"; // 👈 IMPORTED
 import { i18n } from "./i18n";
 import { useContentFilter } from "./hooks/useContentFilter";
 import { getFilteredMessages } from "./utils/filterLogic";
@@ -708,9 +709,9 @@ export default function App() {
   };
 
   // --------------------------------------------------------------------------
-  // *** FIX: Changed from array to object destructuring and passed setLang ***
-  const { userData, saveUserData, isAuthReady, error, userId } =
-    useFirebase(setLang); // Added userId
+  // *** FIX: Changed from array to object destructuring and passed  // --- HOOKS ---
+  const { isAuthReady, userId, userData, saveUserData, error, logOut, signUp } = useFirebase(setLang); // Modified to include signUp
+  const { offlineTracks } = useOfflineStorage(); // 👈 GET OFFLINE TRACKS
 
   // --- NEW: Toggle Favorite (Message) ---
   const handleToggleFavorite = (id) => {
@@ -1423,6 +1424,7 @@ export default function App() {
           onSelectLanguage={(stableKey) =>
             navigateTo("MessagesByLanguage", stableKey)
           }
+          onGoHome={() => navigateTo("Home")}
         />
       );
       break;
@@ -2033,6 +2035,7 @@ export default function App() {
                 // Original button logic
                 const isFavorites = item.name === "Favorites";
                 const isNotes = item.name === "Notes";
+                const isLibrary = item.name === "My_Library"; // 👈 NEW CHECK
 
                 // Calculate counts safely
                 const favoritesCount =
@@ -2040,11 +2043,14 @@ export default function App() {
                   (userData?.favoriteLanguages?.length || 0);
 
                 const notesCount = userData?.notes?.length || 0;
+                const libraryCount = offlineTracks.length || 0; // 👈 NEW COUNT
 
                 const count = isFavorites
                   ? favoritesCount
                   : isNotes
                   ? notesCount
+                  : isLibrary // 👈 NEW CONDITION
+                  ? libraryCount
                   : 0;
 
                 return (
@@ -2069,7 +2075,7 @@ export default function App() {
                     </div>
 
                     {/* Counter Badge */}
-                    {(isFavorites || isNotes) && count > 0 && (
+                    {(isFavorites || isNotes || isLibrary) && count > 0 && (
                       <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
                         {count}
                       </span>
