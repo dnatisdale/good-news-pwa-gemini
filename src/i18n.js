@@ -7,7 +7,10 @@ export const i18n = {
     qr_code: "QR Code",
     back: "Back",
     forward: "Forward",
+    forward: "Forward",
     share_app: "Share App",
+    light_mode: "Light Mode",
+    dark_mode: "Dark Mode",
 
     // Navigation
     contents: "Contents",
@@ -215,6 +218,8 @@ export const i18n = {
     import_success_text: "Successfully added {{count}} messages to your library.",
     go_to_library: "Go to My Library",
     ok_close: "OK (Stay Here)",
+    external_lookup_title: "Looking for Something Else?",
+    external_lookup_desc: "If you can't find your message above, try searching these websites to find the Program ID:",
   },
 
   // --- THAI TRANSLATIONS ---
@@ -228,6 +233,8 @@ export const i18n = {
     share_app: "แชร์แอป",
     controls: "ควบคุม",
     playing: "กำลังเล่น",
+    light_mode: "โหมดสว่าง",
+    dark_mode: "โหมดมืด",
 
     // Navigation
     contents: "สารบัญ",
@@ -477,5 +484,7 @@ export const i18n = {
     import_success_text: "เพิ่มข้อความ {{count}} รายการไปยังคลังของคุณแล้ว",
     go_to_library: "ไปที่คลังของฉัน",
     ok_close: "ตกลง (อยู่ที่นี่)",
+    external_lookup_title: "มองหาอย่างอื่นอยู่ใช่ไหม?",
+    external_lookup_desc: "หากไม่พบข้อความที่ต้องการด้านบน ลองค้นหาจากเว็บไซต์เหล่านี้เพื่อหารหัสรายการ (Program ID):",
   },
 };

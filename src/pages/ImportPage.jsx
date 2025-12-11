@@ -401,10 +401,10 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
       trackNumber: trackNum,
       iso3: iso3,
       langId: langId,
-      languageEn: existingItem?.languageEn || metadata.languageEn,
-      langTh: existingItem?.langTh || metadata.langTh,
-      title_en: existingItem?.title_en || metadata.title_en,
-      title_th: existingItem?.title_th || metadata.title_th,
+      languageEn: existingItem?.languageEn || metadata.languageEn || "Custom Import",
+      langTh: existingItem?.langTh || metadata.langTh || "นำเข้าเอง",
+      title_en: existingItem?.title_en || metadata.title_en || `Message ${id}`,
+      title_th: existingItem?.title_th || metadata.title_th || `ข้อความ ${id}`,
       verse_en: existingItem?.verse_en || randomVerses.verse_en,
       verse_th: existingItem?.verse_th || randomVerses.verse_th,
       streamUrl,
@@ -506,50 +506,11 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
              </button>
           </div>
 
-          <div className="space-y-4">
-            {/* Language */}
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                {t.select_language || "Step 1: Select Language"}
-              </label>
-              <select
-                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors"
-                value={finderLang}
-                onChange={handleFinderLangChange}
-              >
-                <option value="">-- {lang === "th" ? "เลือกภาษา" : "Select Language"} --</option>
-                {(lang === "th" ? existingLanguagesTh : existingLanguagesEn).map((langName, i) => (
-                  <option key={i} value={langName}>
-                    {langName}
-                  </option>
-                ))}
-              </select>
-            </div>
 
-            {/* Message */}
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                {t.select_message || "Step 2: Select Message"}
-              </label>
-              <select
-                className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded-lg bg-white dark:bg-gray-600 dark:text-white focus:ring-2 focus:ring-brand-red focus:border-transparent focus:outline-none transition-colors disabled:cursor-not-allowed"
-                value={finderMessageId}
-                onChange={handleFinderMessageChange}
-                disabled={!finderLang}
-              >
-                <option value="">-- {lang === "th" ? "เลือกข้อความ" : "Select Message"} --</option>
-                {availableMessages.map((msg, i) => (
-                  <option key={i} value={msg.id}>
-                    {msg.title}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
         
           {/* 2. Track Details Row (Track -> Duration -> ID) */}
-          <div className="pt-4 border-t border-gray-100 dark:border-gray-600">
-             <div className="grid grid-cols-3 gap-4">
+          <div className="pt-0">
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 
                 {/* 1. Track Number */}
                 <div>
@@ -561,7 +522,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                              className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm font-bold text-blue-900"
                              value={manualEntry.trackNumber}
                              onChange={(e) => handleTrackChange(e.target.value)}
-                             disabled={!finderMessageId}
+                             disabled={!finderMessageId && !programId}
                           >
                              {(() => {
                                // Default count if no message selected (though disabled)
@@ -603,17 +564,17 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                 </div>
 
                 {/* 3. Program ID (Read Only / Auto-filled) */}
-                <div>
+                <div className="md:col-span-1">
                   <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
                     {t.message_id_label || "Message ID"}
                   </label>
                   <div className="relative">
                     <input
                       type="text"
-                      className="block w-full px-3 py-2 border border-gray-200 rounded-lg bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:text-white focus:outline-none transition-colors text-sm font-mono text-center cursor-not-allowed"
-                      placeholder="---"
+                      className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm font-mono text-center font-bold text-blue-900"
+                      placeholder={t.message_id_placeholder || "e.g. 62808 or Paste URL"}
                       value={programId}
-                      readOnly
+                      onChange={(e) => setProgramId(e.target.value)}
                     />
                   </div>
                 </div>
@@ -632,7 +593,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
           </button>
           
           {error && <p className="text-red-500 text-sm mt-2 text-center">{error}</p>}
-        </div>
+
 
         {/* Info Notes Box (Default Hidden) */}
         {showProTip && (
@@ -665,7 +626,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
         )}
         
         {/* External Lookup Section */}
-        <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-600">
+        <div className="pt-6 border-t border-gray-100 dark:border-gray-600">
            <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center">
               <Globe className="w-5 h-5 mr-2 text-brand-red dark:text-orange-400" />
               {t.external_lookup_title || "Looking for Something Else?"}
@@ -678,7 +639,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                 href="https://5fish.mobi/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 p-3 bg-brand-red hover:bg-red-800 text-white rounded-lg font-bold transition-colors shadow-md"
+                className="flex items-center justify-center gap-2 p-3 bg-brand-red hover:bg-red-800 text-white rounded-lg font-bold transition-all duration-200 shadow-lg hover:scale-[1.02] active:scale-95"
               >
                  <img src="/icons/5fish-dark.png" alt="5fish" className="w-6 h-6 object-contain" />
                  5fish.mobi
@@ -687,13 +648,15 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                 href="https://globalrecordings.net/en/search" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 p-3 bg-brand-red hover:bg-red-800 text-white rounded-lg font-bold transition-colors shadow-md"
+                className="flex items-center justify-center gap-2 p-3 bg-brand-red hover:bg-red-800 text-white rounded-lg font-bold transition-all duration-200 shadow-lg hover:scale-[1.02] active:scale-95"
               >
                  <img src="/icons/grn-thick-dark.svg" alt="Global Recordings Network" className="w-6 h-6 object-contain" />
                  GlobalRecordings.net
               </a>
            </div>
         </div>
+      </div>
+      </div>
 
         {/* Review This Message Section */}
 
@@ -891,8 +854,8 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                           <button
                               onClick={handleDirectAdd}
                               disabled={isDuplicate}
-                              className={`flex-[2] py-3 px-4 rounded-lg font-bold text-white shadow-md transition-colors flex items-center justify-center gap-2 
-                                  ${isDuplicate ? "bg-gray-400 cursor-not-allowed opacity-70" : "bg-[#003366] hover:bg-[#002244] dark:bg-orange-500 dark:hover:bg-orange-600"}`}
+                              className={`flex-[2] py-3 px-4 rounded-lg font-bold text-white transition-all duration-200 flex items-center justify-center gap-2 
+                                  ${isDuplicate ? "bg-gray-400 cursor-not-allowed opacity-70 shadow-none" : "bg-brand-red hover:bg-red-800 shadow-lg hover:scale-[1.02] active:scale-95"}`}
                            >
                               {isDuplicate ? <CheckCircle className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                               {isDuplicate ? (t.already_added || "Already Added") : (t.add_to_library_btn || "Add to My Library")}
@@ -906,7 +869,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
           </div>
         )}
 
-      </div>
+
       {/* Success Modal */}
       {showSuccessModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">

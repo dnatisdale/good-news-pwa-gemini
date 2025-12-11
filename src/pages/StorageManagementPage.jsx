@@ -9,7 +9,7 @@ const StorageManagementPage = ({
   onForward,
   hasPrev,
   hasNext,
-  offlineTracks,
+  offlineTracks = [],
   deleteTrack,
   clearLibrary
 }) => {

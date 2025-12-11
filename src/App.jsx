@@ -1494,6 +1494,9 @@ export default function App() {
           onForward={goForward}
           hasPrev={hasPrev}
           hasNext={hasNext}
+          offlineTracks={offlineTracks}
+          deleteTrack={deleteTrack}
+          clearLibrary={clearLibrary}
         />
       );
       break;
