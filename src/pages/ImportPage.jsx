@@ -460,12 +460,18 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
     let successCount = 0;
     let failCount = 0;
 
+    let lastError = "";
+
     try {
       // Download all items in importedData to offline library
       for (const item of importedData) {
-        const success = await downloadTrack(item);
-        if (success) successCount++;
-        else failCount++;
+        const result = await downloadTrack(item);
+        if (result && result.success) {
+            successCount++;
+        } else {
+            failCount++;
+            if (result && result.error) lastError = result.error;
+        }
       }
       
       if (successCount > 0) {
@@ -474,11 +480,11 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
           if (failCount === 0) {
               clearStaging(); 
           } else {
-              alert(`Warning: ${failCount} messages failed to download.`);
+              alert(`Warning: ${failCount} messages failed to download.\nLast Error: ${lastError}`);
           }
       } else {
           // All failed
-          // Alert is already shown by downloadTrack for individual failures
+          alert(`Failed to add messages. Please try again.\n\nError details: ${lastError}`);
       }
 
     } catch (error) {

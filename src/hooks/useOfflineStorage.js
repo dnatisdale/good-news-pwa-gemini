@@ -66,9 +66,6 @@ export const useOfflineStorage = () => {
         }
         
         // Use Netlify redirect proxy to avoid CORS issues
-        // In production: /api/proxy-audio/* redirects to https://api.globalrecordings.net/*
-        // In development: use direct URL (will fail due to CORS, but good for testing)
-        // In development: use direct URL (will fail due to CORS, but good for testing)
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         const isProduction = !isLocal;
         
@@ -102,11 +99,10 @@ export const useOfflineStorage = () => {
             return [...prev, newTrack];
         });
         
-        return true; // Success
+        return { success: true }; // Success
       } catch (error) {
         console.error(`Failed to download track ${track.id}:`, error);
         
-        // MOCK SUCCESS FOR LOCALHOST
         // MOCK SUCCESS FOR LOCALHOST
         if (isLocal) {
             console.warn("Localhost detected: Mocking download success despite error (Audio won't play offline, but UI will update).");
@@ -120,11 +116,10 @@ export const useOfflineStorage = () => {
                 };
                 return [...prev, newTrack];
             });
-            return true;
+            return { success: true };
         }
 
-        alert(`Download failed: ${error.message}\n\nNote: Offline downloads only work when deployed to Netlify.`);
-        return false; // Failed
+        return { success: false, error: error.message }; // Failed with reason
       } finally {
         setDownloadingIds((prev) => prev.filter((id) => id !== track.id));
       }

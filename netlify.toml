@@ -3,12 +3,10 @@
   publish = "build"
 
 [[redirects]]
-  from = "/api/proxy-audio/*"
-  to = "https://api.globalrecordings.net/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[edge_functions]]
+  path = "/api/proxy-audio/*"
+  function = "proxy-audio"
