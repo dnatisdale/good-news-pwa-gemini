@@ -11,7 +11,10 @@ import {
   PlayCircle,
   PauseCircle,
   ExternalLink,
+  Info,
 } from "lucide-react";
+
+
 import { ChevronLeft, ChevronRight, Upload } from "../components/Icons"; // Use App icons for nav
 import { generateId } from "../utils/importUtils";
 import { staticContent } from "../data/staticContent";
@@ -26,6 +29,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [showProTip, setShowProTip] = useState(false);
+  const [showIdHelp, setShowIdHelp] = useState(false); // NEW: Help toggle
   const [showClearConfirm, setShowClearConfirm] = useState(false); // NEW for Clear All logic
   // Success Modal State
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -43,6 +47,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
   const [finderLang, setFinderLang] = useState("");
   const [finderMessageId, setFinderMessageId] = useState("");
   const [finderTrack, setFinderTrack] = useState("1");
+  const trackInputRef = React.useRef(null); // Ref for Track dropdown
 
   const availableMessages = React.useMemo(() => {
     if (!finderLang) return [];
@@ -67,7 +72,6 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
   const handleFinderLangChange = (e) => {
     setFinderLang(e.target.value);
     setFinderMessageId("");
-    setFinderMessageId("");
     setProgramId(""); // Clear program ID when language changes
     setManualEntry(prev => ({ ...prev, trackNumber: "1", durationString: "" }));
   };
@@ -83,7 +87,6 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
       const selectedItem = staticContent.find(item => item.programId === newId);
       if (selectedItem) {
         // 1. Auto-fill duration if available
-        // 1. Auto-fill duration if available
         const dString = selectedItem.duration || "";
 
         const newTrack = manualEntry.trackNumber || "1";
@@ -92,39 +95,19 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
             durationString: dString
         }));
 
-        // 2. ALWAYS update Current Item (Review Card) to be in sync
-        const streamUrl = `fivefish.org/T${newId}`;
-        const trackDownloadUrl = `https://api.globalrecordings.net/files/track/mp3-low/${newId}/${newTrack}`;
-        const zipDownloadUrl = `https://api.globalrecordings.net/files/set/mp3-low/${newId}`;
-        const shareUrl = `5fi.sh/T${newId}`;
-
-        setCurrentItem({
-             id: generateId(),
-             programId: newId,
-             iso3: selectedItem.iso3 || "ENG",
-             langId: selectedItem.langId || "0000",
-             trackNumber: newTrack,
-             languageEn: selectedItem.languageEn || "",
-             langTh: selectedItem.langTh || "",
-             title_en: selectedItem.title_en || "",
-             title_th: selectedItem.title_th || "",
-             verse_en: selectedItem.verse_en || "",
-             verse_th: selectedItem.verse_th || "",
-             streamUrl,
-             trackDownloadUrl,
-             zipDownloadUrl,
-             shareUrl,
-             stableKey: selectedItem.languageEn || "New Import"
-        });
+        // Focus Track Input after a brief delay to allow re-render (enabling the input)
+        setTimeout(() => {
+            trackInputRef.current?.focus();
+        }, 50);
 
       } else {
          // Clear if not found
           setManualEntry(prev => ({ ...prev, durationString: "" }));
-         setCurrentItem(null); 
+         // setCurrentItem(null); // Don't clear explicitly, just leave as is or let user decide
       }
     } else {
         setManualEntry(prev => ({ ...prev, durationString: "" }));
-        setCurrentItem(null);
+        // setCurrentItem(null);
     }
   };
 
@@ -508,18 +491,56 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
 
 
         
-          {/* 2. Track Details Row (Track -> Duration -> ID) */}
-          <div className="pt-0">
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+          {/* 1.a Language & Message Selection Row (Restored) */}
+          {/* 1.a Language & Message Selection Row (Restored) */}
+          <div className="grid grid-cols-1 gap-4 mb-4 border-b border-gray-100 pb-4 dark:border-gray-600">
+             {/* Language Select */}
+             <div>
+                <div className="relative">
+                  <select
+                    className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm font-bold text-black"
+                    value={finderLang}
+                    onChange={handleFinderLangChange}
+                  >
+                    <option value="">{t.select_language_placeholder || "-- Select Language --"}</option>
+                    {(lang === "th" ? existingLanguagesTh : existingLanguagesEn).map((l, i) => (
+                      <option key={i} value={l}>{l}</option>
+                    ))}
+                  </select>
+                </div>
+             </div>
+
+             {/* Message Select */}
+             <div>
+                <div className="relative">
+                  <select
+                    className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm font-bold text-black"
+                    value={finderMessageId}
+                    onChange={handleFinderMessageChange}
+                    disabled={!finderLang}
+                  >
+                    <option value="">{t.select_message_placeholder || "-- Select Message --"}</option>
+                    {availableMessages.map((msg) => (
+                      <option key={msg.id} value={msg.id}>
+                        {msg.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+             </div>
+          </div>
+        
+          {/* 2. Track & Duration Row */}
+          <div className="pt-0 mb-4">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 
                 {/* 1. Track Number */}
                 <div>
-                  <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                    {t.track_number_label || "Track #"}
-                  </label>
                    <div className="relative">
                           <select
-                             className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm font-bold text-blue-900"
+                              ref={trackInputRef}
+                              className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm font-bold text-black"
                              value={manualEntry.trackNumber}
                              onChange={(e) => handleTrackChange(e.target.value)}
                              disabled={!finderMessageId && !programId}
@@ -548,9 +569,6 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
 
                 {/* 2. Duration (Minutes : Seconds) - Editable & Auto-fill */}
                 <div>
-                   <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1 text-center">
-                      {t.full_message_length_label || "Full Message Length"}
-                   </label>
                    <div className="relative">
                       <input 
                           type="text" 
@@ -563,23 +581,37 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                    </div>
                 </div>
 
-                {/* 3. Program ID (Read Only / Auto-filled) */}
-                <div className="md:col-span-1">
-                  <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
-                    {t.message_id_label || "Message ID"}
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm font-mono text-center font-bold text-blue-900"
-                      placeholder={t.message_id_placeholder || "e.g. 62808 or Paste URL"}
-                      value={programId}
-                      onChange={(e) => setProgramId(e.target.value)}
-                    />
-                  </div>
-                </div>
-
              </div>
+          </div>
+
+          {/* 3. Program ID Row (Full Width) */}
+          <div className="mb-4">
+             <div className="relative">
+               <input
+                 type="text"
+                 className="block w-full px-3 py-2 border border-blue-300 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-500 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-colors text-sm font-mono text-center font-bold text-black pr-10"
+                 placeholder={t.message_id_placeholder || "Message # or Paste URL"}
+                 value={programId}
+                 onChange={(e) => setProgramId(e.target.value)}
+               />
+               <button
+                  type="button"
+                  onClick={() => setShowIdHelp(!showIdHelp)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-500 hover:text-blue-700 dark:text-blue-400"
+               >
+                 <Info className="w-5 h-5" />
+               </button>
+             </div>
+             {showIdHelp && (
+               <div className="mt-2 text-xs text-gray-600 dark:text-gray-300 bg-blue-50 dark:bg-gray-700 p-2 rounded-lg border border-blue-100 dark:border-gray-600">
+                  <p className="font-bold mb-1">Enter a Message ID or URL:</p>
+                  <ul className="list-disc pl-4 space-y-1">
+                    <li>Message ID: <span className="font-mono">62808</span></li>
+                    <li>5fish URL: <span className="font-mono break-all">https://5fish.mobi/en/62808</span></li>
+                    <li>GRN URL: <span className="font-mono break-all">https://globalrecordings.net/en/program/62808</span></li>
+                  </ul>
+               </div>
+             )}
           </div>
 
           {/* Find Message Button */}
@@ -641,7 +673,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 p-3 bg-brand-red hover:bg-red-800 text-white rounded-lg font-bold transition-all duration-200 shadow-lg hover:scale-[1.02] active:scale-95"
               >
-                 <img src="/icons/5fish-dark.png" alt="5fish" className="w-6 h-6 object-contain" />
+                 <img src="/icons/5fish-custom.png" alt="5fish" className="w-6 h-6 object-contain" />
                  5fish.mobi
               </a>
               <a 
