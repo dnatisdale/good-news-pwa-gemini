@@ -41,7 +41,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
   const [showProTip, setShowProTip] = useState(false);
   
   // Use offline storage hook for downloading imported messages
-  const { downloadTrack } = useOfflineStorage();
+  const { downloadTrack, offlineTracks } = useOfflineStorage();
 
   const [manualEntry, setManualEntry] = useState({
     trackNumber: "1",
@@ -772,6 +772,55 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                              </div>
                           </div>
                       </div>
+
+                      {/* --- DUPLICATE WARNINGS --- */}
+                      {(() => {
+                        const isOffline = offlineTracks.some(
+                          (t) =>
+                            t.programId == currentItem.programId &&
+                            t.trackNumber == currentItem.trackNumber
+                        );
+                        // Check if program exists in static content (usually Track 1, but we warn generally)
+                        const isStatic = staticContent.some(
+                          (i) => i.id == currentItem.programId
+                        );
+
+                        if (!isOffline && !isStatic) return null;
+
+                        return (
+                          <div className="col-span-2 space-y-2">
+                            {isOffline && (
+                              <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 p-3 rounded-lg flex items-start gap-3">
+                                <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <p className="text-sm font-bold text-orange-700 dark:text-orange-300">
+                                    {t.duplicate_warning_title || "Already in Library"}
+                                  </p>
+                                  <p className="text-xs text-orange-600 dark:text-orange-400">
+                                    {t.duplicate_warning_text ||
+                                      "You have already downloaded this specific track."}
+                                  </p>
+                                </div>
+                              </div>
+                            )}
+
+                            {isStatic && (
+                              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3 rounded-lg flex items-start gap-3">
+                                <Music className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <p className="text-sm font-bold text-blue-700 dark:text-blue-300">
+                                    {t.static_warning_title || "Available in Main App"}
+                                  </p>
+                                  <p className="text-xs text-blue-600 dark:text-blue-400">
+                                    {t.static_warning_text ||
+                                      "This program is available in the main list (Sample)."}
+                                  </p>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })()}
 
                       {/* TRACK NUMBER EDITING */}
                       <div className="col-span-2 border-t border-b border-gray-100 dark:border-gray-700 py-4 my-2">
