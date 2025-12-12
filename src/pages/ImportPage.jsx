@@ -289,49 +289,77 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
   };
 
   const fetchMetadata = async (id) => {
-    // Note: This might hit CORS issues if run directly in browser without a proxy.
-    // We try to fetch the HTML and parse the title.
+    // Helper to try multiple proxies (Netlify -> AllOrigins)
+    const fetchWithFallback = async (targetUrl, signal) => {
+        // 1. Try Netlify Proxy (Production Standard)
+        try {
+            const res = await fetch(`/.netlify/functions/fast-proxy?url=${encodeURIComponent(targetUrl)}`, { signal });
+            if (res.ok) {
+                const text = await res.text();
+                // Ensure we didn't get the React App HTML (common 404 behavior in SPA)
+                if (!text.includes('<div id="root">') && !text.includes("<title>Good News PWA</title>")) {
+                    return text;
+                }
+            }
+        } catch (e) {}
+
+        // 2. Try AllOrigins (Dev Fallback)
+        try {
+           const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`, { signal });
+           if (res.ok) return await res.text();
+        } catch (e) {}
+        
+        return null;
+    };
+
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+      const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
 
       // Fetch English Page
-      const resEn = await fetch(
-        `https://globalrecordings.net/en/program/${id}`,
-        { signal: controller.signal }
-      );
-      const textEn = await resEn.text();
-      const parser = new DOMParser();
-      const docEn = parser.parseFromString(textEn, "text/html");
+      const textEn = await fetchWithFallback(`https://globalrecordings.net/en/program/${id}`, controller.signal);
+      
+      let titleEn = "Unknown Title";
+      let langEn = "Unknown Language";
 
-      // Extract Title (e.g., "Good News - Akeu")
-      const fullTitleEn = docEn.querySelector("title")?.innerText || "";
-      const [titleEn, langEn] = fullTitleEn.split(" - ").map((s) => s.trim());
+      if (textEn) {
+          const parser = new DOMParser();
+          const docEn = parser.parseFromString(textEn, "text/html");
+          const fullTitleEn = docEn.querySelector("title")?.innerText || "";
+          const parts = fullTitleEn.split(" - ").map((s) => s.trim());
+          if (parts.length >= 2) {
+             titleEn = parts[0];
+             langEn = parts[1];
+          }
+      }
 
       // Fetch Thai Page
-      const resTh = await fetch(
-        `https://globalrecordings.net/th/program/${id}`,
-        { signal: controller.signal }
-      );
-      const textTh = await resTh.text();
-      const docTh = parser.parseFromString(textTh, "text/html");
+      const textTh = await fetchWithFallback(`https://globalrecordings.net/th/program/${id}`, controller.signal);
+      
+      let titleTh = "ชื่อเรื่องไม่ระบุ";
+      let langTh = "ภาษาไม่ระบุ";
 
-      const fullTitleTh = docTh.querySelector("title")?.innerText || "";
-      const [titleTh, langTh] = fullTitleTh.split(" - ").map((s) => s.trim());
+      if (textTh) {
+          const parser = new DOMParser();
+          const docTh = parser.parseFromString(textTh, "text/html");
+          const fullTitleTh = docTh.querySelector("title")?.innerText || "";
+          const parts = fullTitleTh.split(" - ").map((s) => s.trim());
+          if (parts.length >= 2) {
+             titleTh = parts[0];
+             langTh = parts[1];
+          }
+      }
 
       clearTimeout(timeoutId);
 
       return {
-        languageEn: langEn || "Unknown Language",
-        langTh: langTh || "ภาษาไม่ระบุ",
-        title_en: titleEn || "Unknown Title",
-        title_th: titleTh || "ชื่อเรื่องไม่ระบุ",
+        languageEn: langEn,
+        langTh: langTh,
+        title_en: titleEn,
+        title_th: titleTh,
       };
     } catch (err) {
-      console.warn(
-        "Metadata fetch failed (likely CORS), using placeholders.",
-        err
-      );
+      console.warn("Metadata fetch failed", err);
       return {
         languageEn: "",
         langTh: "",
