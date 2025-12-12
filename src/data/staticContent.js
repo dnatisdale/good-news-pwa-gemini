@@ -17,7 +17,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T62808",
     "duration": "57:45",
     "trackCount": "41.0",
-    "sampleUrl": "/audio/Akeu.1148.mp3",
+    "sampleUrl": "/audio/Akeu.62808.mp3",
     "stableKey": "Akeu"
   },
   {
@@ -77,7 +77,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T74874",
     "duration": "42:03",
     "trackCount": "42.0",
-    "sampleUrl": "/audio/Akha.Thailand.3127.mp3",
+    "sampleUrl": "/audio/Akha.Thailand.74874.mp3",
     "stableKey": "Akha Thailand"
   },
   {
@@ -297,7 +297,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T29841",
     "duration": "64:19",
     "trackCount": "40.0",
-    "sampleUrl": "/audio/Blang.Shan.6164.mp3",
+    "sampleUrl": "/audio/Blang-Shan.29841.mp3",
     "stableKey": "Blang-Shan"
   },
   {
@@ -437,7 +437,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T37410",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Bru.Eastern.Tri.8378.mp3",
+    "sampleUrl": "/audio/Bru.Eastern.Tri.37410.mp3",
     "stableKey": "Bru Eastern Tri"
   },
   {
@@ -457,7 +457,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T37370",
     "duration": "408:32",
     "trackCount": "50.0",
-    "sampleUrl": "/audio/Bru.Western.Dong.Luang.8379.mp3",
+    "sampleUrl": "/audio/Bru.Western.Dong.Luang.37370.mp3",
     "stableKey": "Bru Western Dong Luang"
   },
   {
@@ -597,7 +597,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T37401",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Buguo.20037.mp3",
+    "sampleUrl": "/audio/Buguo.37401.mp3",
     "stableKey": "Buguo"
   },
   {
@@ -617,7 +617,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80570",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Burmese.195.mp3",
+    "sampleUrl": "/audio/Burmese.80570.mp3",
     "stableKey": "Burmese"
   },
   {
@@ -997,7 +997,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T70590",
     "duration": "37:37",
     "trackCount": "25.0",
-    "sampleUrl": "/audio/Cantonese.13.mp3",
+    "sampleUrl": "/audio/Cantonese.70590.mp3",
     "stableKey": "Cantonese"
   },
   {
@@ -1277,7 +1277,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T31891",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Chinese.Huang.Yuan.6238.mp3",
+    "sampleUrl": "/audio/Chinese.Huang.Yuan.31891.mp3",
     "stableKey": "Chinese Huang Yuan"
   },
   {
@@ -1317,7 +1317,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T30170",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Chinese.Hubei.Dangyanghua.6278.mp3",
+    "sampleUrl": "/audio/Chinese.Hubei.Dangyanghua.30170.mp3",
     "stableKey": "Chinese Hubei Dangyanghua"
   },
   {
@@ -1337,7 +1337,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T30630",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Chinese.Hubei.Wuhandayehua.6277.mp3",
+    "sampleUrl": "/audio/Chinese.Hubei.Wuhandayehua.30630.mp3",
     "stableKey": "Chinese Hubei Wuhandayehua"
   },
   {
@@ -1357,7 +1357,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T29501",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Chinese.Liansan.6143.mp3",
+    "sampleUrl": "/audio/Chinese.Liansan.29501.mp3",
     "stableKey": "Chinese Liansan"
   },
   {
@@ -1377,7 +1377,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T31900",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Chinese.Min.Zhou.6239.mp3",
+    "sampleUrl": "/audio/Chinese.Min.Zhou.31900.mp3",
     "stableKey": "Chinese Min Zhou"
   },
   {
@@ -1397,7 +1397,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T25310",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Chinese.Ningxia.4665.mp3",
+    "sampleUrl": "/audio/Chinese.Ningxia.25310.mp3",
     "stableKey": "Chinese Ningxia"
   },
   {
@@ -1417,7 +1417,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T27500",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Chinese.Sichuan.4837.mp3",
+    "sampleUrl": "/audio/Chinese.Sichuan.27500.mp3",
     "stableKey": "Chinese Sichuan"
   },
   {
@@ -1437,7 +1437,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T31870",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Chinese.Zang.Ye.6241.mp3",
+    "sampleUrl": "/audio/Chinese.Zang.Ye.31870.mp3",
     "stableKey": "Chinese Zang Ye"
   },
   {
@@ -1457,7 +1457,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T64447",
     "duration": "92:53",
     "trackCount": "41.0",
-    "sampleUrl": "/audio/Chong.8901.mp3",
+    "sampleUrl": "/audio/Chong.64447.mp3",
     "stableKey": "Chong"
   },
   {
@@ -1477,7 +1477,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T31030",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Deang.Hongfenglong.6296.mp3",
+    "sampleUrl": "/audio/Deang.Hongfenglong.31030.mp3",
     "stableKey": "Deang Hongfenglong"
   },
   {
@@ -1537,7 +1537,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T64560",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/English.USA.25.mp3",
+    "sampleUrl": "/audio/English.USA.64560.mp3",
     "stableKey": "English USA"
   },
   {
@@ -1737,7 +1737,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T3630",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Foochow.Colloquial.Chinese.113.mp3",
+    "sampleUrl": "/audio/Foochow.Colloquial.Chinese.03630.mp3",
     "stableKey": "Foochow Colloquial Chinese"
   },
   {
@@ -1777,7 +1777,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80909",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Guiliu.6039.mp3",
+    "sampleUrl": "/audio/Guiliu.80909.mp3",
     "stableKey": "Guiliu"
   },
   {
@@ -1837,7 +1837,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T3600",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Hainanese.366.mp3",
+    "sampleUrl": "/audio/Hainanese.03600.mp3",
     "stableKey": "Hainanese"
   },
   {
@@ -1877,7 +1877,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T17390",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Hakka.340.mp3",
+    "sampleUrl": "/audio/Hakka.17390.mp3",
     "stableKey": "Hakka"
   },
   {
@@ -1937,7 +1937,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T62596",
     "duration": "41:14",
     "trackCount": "40.0",
-    "sampleUrl": "/audio/Hmong.Blue.492.mp3",
+    "sampleUrl": "/audio/Hmong.Blue.62596.mp3",
     "stableKey": "Hmong Blue"
   },
   {
@@ -2017,7 +2017,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T37600",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Hmong.Shuad.20040.mp3",
+    "sampleUrl": "/audio/Hmong.Shuad.37600.mp3",
     "stableKey": "Hmong Shuad"
   },
   {
@@ -2177,7 +2177,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T37700",
     "duration": "42:19",
     "trackCount": "4.0",
-    "sampleUrl": "/audio/Hmong.White.491.mp3",
+    "sampleUrl": "/audio/Hmong.White.37700.mp3",
     "stableKey": "Hmong White"
   },
   {
@@ -2297,7 +2297,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T13240",
     "duration": "61:28",
     "trackCount": "8.0",
-    "sampleUrl": "/audio/Hmong.White.491.mp3",
+    "sampleUrl": "/audio/Hmong.White.13240.mp3",
     "stableKey": "Hmong White"
   },
   {
@@ -2317,7 +2317,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T38079",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Hui.20057.mp3",
+    "sampleUrl": "/audio/Hui.38079.mp3",
     "stableKey": "Hui"
   },
   {
@@ -2437,7 +2437,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T63085",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Japanese.96.mp3",
+    "sampleUrl": "/audio/Japanese.63085.mp3",
     "stableKey": "Japanese"
   },
   {
@@ -2617,7 +2617,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T9340",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Karen.Pao.Moulmein.415.mp3",
+    "sampleUrl": "/audio/Karen.Pa'o.Moulmein.09340.mp3",
     "stableKey": "Karen Pa'o Moulmein"
   },
   {
@@ -2637,7 +2637,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80827",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Karen.Pao.Southern.334.mp3",
+    "sampleUrl": "/audio/Karen.Pa'o.Southern.80827.mp3",
     "stableKey": "Karen Pa'o Southern"
   },
   {
@@ -2677,7 +2677,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T62599",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Karen.Pwo.Eastern.19467.mp3",
+    "sampleUrl": "/audio/Karen.Pwo.Eastern.62599.mp3",
     "stableKey": "Karen Pwo Eastern"
   },
   {
@@ -2757,7 +2757,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T17200",
     "duration": "21:19",
     "trackCount": "6.0",
-    "sampleUrl": "/audio/Karen.Pwo.Prae.1182.mp3",
+    "sampleUrl": "/audio/Karen.Pwo.Prae.17200.mp3",
     "stableKey": "Karen Pwo Prae"
   },
   {
@@ -2777,7 +2777,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80604",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Karen.Pwo.Western.416.mp3",
+    "sampleUrl": "/audio/Karen.Pwo.Western.80604.mp3",
     "stableKey": "Karen Pwo Western"
   },
   {
@@ -2917,7 +2917,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T38334",
     "duration": "59:14",
     "trackCount": "40.0",
-    "sampleUrl": "/audio/Karen.Sgaw.238.mp3",
+    "sampleUrl": "/audio/Karen.S'gaw.38334.mp3",
     "stableKey": "Karen S'gaw"
   },
   {
@@ -3177,7 +3177,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80842",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Kayah.Eastern.Presule.5169.mp3",
+    "sampleUrl": "/audio/Kayah.Eastern.Presule.80842.mp3",
     "stableKey": "Kayah Eastern Presule"
   },
   {
@@ -3197,7 +3197,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80838",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Kayah.Western.404.mp3",
+    "sampleUrl": "/audio/Kayah.Western.80838.mp3",
     "stableKey": "Kayah Western"
   },
   {
@@ -3277,7 +3277,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T19141",
     "duration": "65:39",
     "trackCount": "44.0",
-    "sampleUrl": "/audio/Kayan.4229.mp3",
+    "sampleUrl": "/audio/Kayan.19141.mp3",
     "stableKey": "Kayan"
   },
   {
@@ -3357,7 +3357,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T11431",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Khamet.487.mp3",
+    "sampleUrl": "/audio/Khamet.11431.mp3",
     "stableKey": "Khamet"
   },
   {
@@ -3417,7 +3417,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T35880",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Khamu.1005.mp3",
+    "sampleUrl": "/audio/Khamu.35880.mp3",
     "stableKey": "Khamu"
   },
   {
@@ -3477,7 +3477,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T64394",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Khmer.365.mp3",
+    "sampleUrl": "/audio/Khmer.64394.mp3",
     "stableKey": "Khmer"
   },
   {
@@ -4077,7 +4077,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T62806",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Lahu.Shi.Barkeo.20144.mp3",
+    "sampleUrl": "/audio/Lahu.Shi.Barkeo.62806.mp3",
     "stableKey": "Lahu Shi Barkeo"
   },
   {
@@ -4117,7 +4117,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T64576",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Lamet.3120.mp3",
+    "sampleUrl": "/audio/Lamet.64576.mp3",
     "stableKey": "Lamet"
   },
   {
@@ -4237,7 +4237,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T62858",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Lao.999.mp3",
+    "sampleUrl": "/audio/Lao.62858.mp3",
     "stableKey": "Lao"
   },
   {
@@ -4337,7 +4337,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T34271",
     "duration": "50:23",
     "trackCount": "42.0",
-    "sampleUrl": "/audio/Lao.Song.Dam.16824.mp3",
+    "sampleUrl": "/audio/Lao.Song.Dam.34271.mp3",
     "stableKey": "Lao Song Dam"
   },
   {
@@ -4397,7 +4397,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T18020",
     "duration": "7:00",
     "trackCount": "2.0",
-    "sampleUrl": "/audio/Lawa.Ban.Dong.3124.mp3",
+    "sampleUrl": "/audio/Lawa.Ban.Dong.18020.mp3",
     "stableKey": "Lawa Ban Dong"
   },
   {
@@ -4417,7 +4417,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T18021",
     "duration": "6:47",
     "trackCount": "2.0",
-    "sampleUrl": "/audio/Lawa.Ban.Sam.3125.mp3",
+    "sampleUrl": "/audio/Lawa.Ban.Sam.18021.mp3",
     "stableKey": "Lawa Ban Sam"
   },
   {
@@ -4437,7 +4437,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T18030",
     "duration": "13:01",
     "trackCount": "2.0",
-    "sampleUrl": "/audio/Lawa.Chang.Maw.2187.mp3",
+    "sampleUrl": "/audio/Lawa.Chang.Maw.18030.mp3",
     "stableKey": "Lawa Chang Maw"
   },
   {
@@ -4457,7 +4457,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T18031",
     "duration": "27:20",
     "trackCount": "2.0",
-    "sampleUrl": "/audio/Lawa.Kawng.Lawi.2404.mp3",
+    "sampleUrl": "/audio/Lawa.Kawng.Lawi.18031.mp3",
     "stableKey": "Lawa Kawng Lawi"
   },
   {
@@ -4477,7 +4477,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T17990",
     "duration": "53:55",
     "trackCount": "2.0",
-    "sampleUrl": "/audio/Lawa.La.oop.1154.mp3",
+    "sampleUrl": "/audio/Lawa.La-oop.17990.mp3",
     "stableKey": "Lawa La-oop"
   },
   {
@@ -4497,7 +4497,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T18010",
     "duration": "7:38",
     "trackCount": "1.0",
-    "sampleUrl": "/audio/Lawa.Northern.2188.mp3",
+    "sampleUrl": "/audio/Lawa.Northern.18010.mp3",
     "stableKey": "Lawa Northern"
   },
   {
@@ -4517,7 +4517,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T18011",
     "duration": "7:13",
     "trackCount": "2.0",
-    "sampleUrl": "/audio/Lawa.Papae.3126.mp3",
+    "sampleUrl": "/audio/Lawa.Papae.18011.mp3",
     "stableKey": "Lawa Papae"
   },
   {
@@ -4557,7 +4557,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80711",
     "duration": "56:02",
     "trackCount": "41.0",
-    "sampleUrl": "/audio/Lisu.Southern.482.mp3",
+    "sampleUrl": "/audio/Lisu.Southern.80711.mp3",
     "stableKey": "Lisu Southern"
   },
   {
@@ -4657,7 +4657,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80831",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Lisu.White.5143.mp3",
+    "sampleUrl": "/audio/Lisu.White.80831.mp3",
     "stableKey": "Lisu White"
   },
   {
@@ -4717,7 +4717,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T26111",
     "duration": "62:31",
     "trackCount": "1.0",
-    "sampleUrl": "/audio/Malay.Pattani.1958.mp3",
+    "sampleUrl": "/audio/Malay.Pattani.26111.mp3",
     "stableKey": "Malay Pattani"
   },
   {
@@ -5077,7 +5077,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80921",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Mandarin.37.mp3",
+    "sampleUrl": "/audio/Mandarin.80921.mp3",
     "stableKey": "Mandarin"
   },
   {
@@ -5357,7 +5357,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T37926",
     "duration": "40:57",
     "trackCount": "41.0",
-    "sampleUrl": "/audio/Moken.1136.mp3",
+    "sampleUrl": "/audio/Moken.37926.mp3",
     "stableKey": "Moken"
   },
   {
@@ -5497,7 +5497,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80865",
     "duration": "57:20",
     "trackCount": "42.0",
-    "sampleUrl": "/audio/Mon.399.mp3",
+    "sampleUrl": "/audio/Mon.80865.mp3",
     "stableKey": "Mon"
   },
   {
@@ -5537,7 +5537,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T9321",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Mon.Takanoon.2405.mp3",
+    "sampleUrl": "/audio/Mon.Takanoon.09321.mp3",
     "stableKey": "Mon Takanoon"
   },
   {
@@ -5557,7 +5557,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T64238",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Nepali.6428.mp3",
+    "sampleUrl": "/audio/Nepali.64238.mp3",
     "stableKey": "Nepali"
   },
   {
@@ -5617,7 +5617,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80350",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Nepali.Bhutan.5115.mp3",
+    "sampleUrl": "/audio/Nepali.Bhutan.80350.mp3",
     "stableKey": "Nepali Bhutan"
   },
   {
@@ -5777,7 +5777,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T79174",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Nepali.Kathmandu.2522.mp3",
+    "sampleUrl": "/audio/Nepali.Kathmandu.79174.mp3",
     "stableKey": "Nepali Kathmandu"
   },
   {
@@ -5957,7 +5957,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T22510",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Ngochang.4370.mp3",
+    "sampleUrl": "/audio/Ngochang.22510.mp3",
     "stableKey": "Ngochang"
   },
   {
@@ -6017,7 +6017,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T64993",
     "duration": "49:07",
     "trackCount": "40.0",
-    "sampleUrl": "/audio/Nyah.Kur.15143.mp3",
+    "sampleUrl": "/audio/Nyah.Kur.64993.mp3",
     "stableKey": "Nyah Kur"
   },
   {
@@ -6137,7 +6137,7 @@ export const staticContent = [
     "shareUrl": "",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Nyaw.15183.mp3",
+    "sampleUrl": "/audio/Nyaw.65961.mp3",
     "stableKey": "Nyaw"
   },
   {
@@ -6157,7 +6157,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T2951",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Okinawan.1944.mp3",
+    "sampleUrl": "/audio/Okinawan.02951.mp3",
     "stableKey": "Okinawan"
   },
   {
@@ -6177,7 +6177,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T11340",
     "duration": "13:34",
     "trackCount": "2.0",
-    "sampleUrl": "/audio/Phai.Central.3118.mp3",
+    "sampleUrl": "/audio/Phai.Central.11340.mp3",
     "stableKey": "Phai Central"
   },
   {
@@ -6197,7 +6197,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T11341",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Phai.Northern.2041.mp3",
+    "sampleUrl": "/audio/Phai.Northern.11341.mp3",
     "stableKey": "Phai Northern"
   },
   {
@@ -6217,7 +6217,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T11330",
     "duration": "14:02",
     "trackCount": "4.0",
-    "sampleUrl": "/audio/Phai.Southern.3119.mp3",
+    "sampleUrl": "/audio/Phai.Southern.11330.mp3",
     "stableKey": "Phai Southern"
   },
   {
@@ -6237,7 +6237,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T18081",
     "duration": "19:45",
     "trackCount": "6.0",
-    "sampleUrl": "/audio/Phu.Thai.1711.mp3",
+    "sampleUrl": "/audio/Phu.Thai.18081.mp3",
     "stableKey": "Phu Thai"
   },
   {
@@ -6257,7 +6257,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T63894",
     "duration": "55:35",
     "trackCount": "41.0",
-    "sampleUrl": "/audio/Phu.Thai.Na.Kae.22139.mp3",
+    "sampleUrl": "/audio/Phu.Thai.Na.Kae.63894.mp3",
     "stableKey": "Phu Thai Na Kae"
   },
   {
@@ -6337,7 +6337,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T65751",
     "duration": "42:40",
     "trackCount": "24.0",
-    "sampleUrl": "/audio/Phu.Thai.Renu.22140.mp3",
+    "sampleUrl": "/audio/Phu.Thai.Renu.65751.mp3",
     "stableKey": "Phu Thai Renu"
   },
   {
@@ -6397,7 +6397,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T32211",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Pinghua.Guangxi.Nanning.6331.mp3",
+    "sampleUrl": "/audio/Pinghua.Guangxi.Nanning.32211.mp3",
     "stableKey": "Pinghua Guangxi Nanning"
   },
   {
@@ -6417,7 +6417,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T24620",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Saek.3112.mp3",
+    "sampleUrl": "/audio/Saek.24620.mp3",
     "stableKey": "Saek"
   },
   {
@@ -6437,7 +6437,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80859",
     "duration": "58:01",
     "trackCount": "40.0",
-    "sampleUrl": "/audio/Shan.83.mp3",
+    "sampleUrl": "/audio/Shan.80859.mp3",
     "stableKey": "Shan"
   },
   {
@@ -6817,7 +6817,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80633",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Sinhala.345.mp3",
+    "sampleUrl": "/audio/Sinhala.80633.mp3",
     "stableKey": "Sinhala"
   },
   {
@@ -6917,7 +6917,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T65653",
     "duration": "45:06",
     "trackCount": "40.0",
-    "sampleUrl": "/audio/So.Thavung.6765.mp3",
+    "sampleUrl": "/audio/So.Thavung.65653.mp3",
     "stableKey": "So Thavung"
   },
   {
@@ -6937,7 +6937,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T19561",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Sui.South.1003.mp3",
+    "sampleUrl": "/audio/Sui.South.19561.mp3",
     "stableKey": "Sui South"
   },
   {
@@ -6957,7 +6957,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T22900",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Tai.Black.794.mp3",
+    "sampleUrl": "/audio/Tai.Black.22900.mp3",
     "stableKey": "Tai Black"
   },
   {
@@ -6997,7 +6997,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T6701",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Tai.Ya.508.mp3",
+    "sampleUrl": "/audio/Tai.Ya.06701.mp3",
     "stableKey": "Tai Ya"
   },
   {
@@ -7077,7 +7077,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80580",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Tamil.174.mp3",
+    "sampleUrl": "/audio/Tamil.80580.mp3",
     "stableKey": "Tamil"
   },
   {
@@ -7317,7 +7317,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T18871",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Teochew.186.mp3",
+    "sampleUrl": "/audio/Teochew.18871.mp3",
     "stableKey": "Teochew"
   },
   {
@@ -7357,7 +7357,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T74673",
     "duration": "22:29",
     "trackCount": "40.0",
-    "sampleUrl": "/audio/Thai.Central.1124.mp3",
+    "sampleUrl": "/audio/Thai.Central.74673.mp3",
     "stableKey": "Thai Central"
   },
   {
@@ -7617,7 +7617,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T6851",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Thai.Lu.2286.mp3",
+    "sampleUrl": "/audio/Tai.Lu.06851.mp3",
     "stableKey": "Thai Lu"
   },
   {
@@ -7637,7 +7637,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T33831",
     "duration": "50:08",
     "trackCount": "42.0",
-    "sampleUrl": "/audio/Thai.Northeastern.311.mp3",
+    "sampleUrl": "/audio/Thai.Northeastern.33831.mp3",
     "stableKey": "Thai Northeastern"
   },
   {
@@ -7757,7 +7757,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T27241",
     "duration": "59:53",
     "trackCount": "16.0",
-    "sampleUrl": "/audio/Thai.Southern.1167.mp3",
+    "sampleUrl": "/audio/Thai.Southern.27241.mp3",
     "stableKey": "Thai Southern"
   },
   {
@@ -7937,7 +7937,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T10841",
     "duration": "26:46",
     "trackCount": "8.0",
-    "sampleUrl": "/audio/Tin.Western.2290.mp3",
+    "sampleUrl": "/audio/Tin.Western.10841.mp3",
     "stableKey": "Tin Western"
   },
   {
@@ -8037,7 +8037,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T35660",
     "duration": "74:02",
     "trackCount": "40.0",
-    "sampleUrl": "/audio/Urak.Lawoi.1135.mp3",
+    "sampleUrl": "/audio/Urak.Lawoi.35660.mp3",
     "stableKey": "Urak Lawoi"
   },
   {
@@ -8277,7 +8277,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T77480",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Urdu.61.mp3",
+    "sampleUrl": "/audio/Urdu.77480.mp3",
     "stableKey": "Urdu"
   },
   {
@@ -8437,7 +8437,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T12741",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Vietnamese.4568.mp3",
+    "sampleUrl": "/audio/Vietnamese.12741.mp3",
     "stableKey": "Vietnamese"
   },
   {
@@ -8637,7 +8637,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T80420",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Vietnamese.South.2.mp3",
+    "sampleUrl": "/audio/Vietnamese.South.80420.mp3",
     "stableKey": "Vietnamese South"
   },
   {
@@ -8697,7 +8697,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T28831",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Yi.Pula.in.Mengzi.6074.mp3",
+    "sampleUrl": "/audio/Yi.Pula.in.Mengzi.28831.mp3",
     "stableKey": "Yi Pula in Mengzi"
   },
   {
@@ -8717,7 +8717,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T28840",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Yi.Pula.in.Yuanyang.6084.mp3",
+    "sampleUrl": "/audio/Yi.Pula.in.Yuanyang.28840.mp3",
     "stableKey": "Yi Pula in Yuanyang"
   },
   {
@@ -8737,7 +8737,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T65100",
     "duration": "58:19",
     "trackCount": "40.0",
-    "sampleUrl": "/audio/Yong.18600.mp3",
+    "sampleUrl": "/audio/Yong.65100.mp3",
     "stableKey": "Yong"
   },
   {
@@ -8817,7 +8817,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T63898",
     "duration": "47:14",
     "trackCount": "24.0",
-    "sampleUrl": "/audio/Yoy.18626.mp3",
+    "sampleUrl": "/audio/Yoy.63898.mp3",
     "stableKey": "Yoy"
   },
   {
@@ -8837,7 +8837,7 @@ export const staticContent = [
     "shareUrl": "5fi.sh/T3241",
     "duration": "",
     "trackCount": "",
-    "sampleUrl": "/audio/Yunnanese.241.mp3",
+    "sampleUrl": "/audio/Yunnanese.03241.mp3",
     "stableKey": "Yunnanese"
   },
   {
@@ -8860,4 +8860,67 @@ export const staticContent = [
     "sampleUrl": "/audio/Akeu.1148.mp3",
     "stableKey": "Akeu"
   }
-];
+,
+{
+  "id": 70900,
+  "iso3": "ENG",
+  "langId": "1234",
+  "languageEn": "English Australia",
+  "langTh": "อังกฤษ ออสเตรเลีย",
+  "title_en": "LLL",
+  "title_th": "พระคำแห่งชีวิต",
+  "verse_en": "",
+  "verse_th": "",
+  "streamUrl": "fivefish.org/T70900",
+  "trackDownloadUrl": "fivefish.org/T70900-001.mp3",
+  "zipDownloadUrl": "https://files.globalrecordings.net/files/set/mp3-low/70900.zip",
+  "programId": "70900",
+  "shareUrl": "5fi.sh/T70900",
+  "duration": "",
+  "trackCount": "",
+  "sampleUrl": "/audio/English.Australia.70900.mp3",
+  "stableKey": "English Australia"
+}
+,
+{
+  "id": 31874,
+  "iso3": "KAC",
+  "langId": "348",
+  "languageEn": "Kachin",
+  "langTh": "คะฉิ่น",
+  "title_en": "Good News",
+  "title_th": "พระคำแห่งชีวิต",
+  "verse_en": "",
+  "verse_th": "",
+  "streamUrl": "fivefish.org/T31874",
+  "trackDownloadUrl": "fivefish.org/T31874-001.mp3",
+  "zipDownloadUrl": "https://files.globalrecordings.net/files/set/mp3-low/31874.zip",
+  "programId": "31874",
+  "shareUrl": "5fi.sh/T31874",
+  "duration": "",
+  "trackCount": "",
+  "sampleUrl": "/audio/Kachin.Singpho.31874.mp3",
+  "stableKey": "Kachin"
+}
+,
+{
+  "id": 22750,
+  "iso3": "CTG",
+  "langId": "3259",
+  "languageEn": "Bangla Chittagonian",
+  "langTh": "บังกลา ชิตตาโกเนียน",
+  "title_en": "Good News",
+  "title_th": "พระคำแห่งชีวิต",
+  "verse_en": "",
+  "verse_th": "",
+  "streamUrl": "fivefish.org/T22750",
+  "trackDownloadUrl": "fivefish.org/T22750-001.mp3",
+  "zipDownloadUrl": "https://files.globalrecordings.net/files/set/mp3-low/22750.zip",
+  "programId": "22750",
+  "shareUrl": "5fi.sh/T22750",
+  "duration": "",
+  "trackCount": "",
+  "sampleUrl": "/audio/Bangla.Chittagonian.22750.mp3",
+  "stableKey": "Bangla Chittagonian"
+}
+]
