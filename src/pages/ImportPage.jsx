@@ -670,6 +670,11 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                  placeholder={t.message_id_placeholder || "Message # or Paste URL"}
                  value={programId}
                  onChange={(e) => setProgramId(e.target.value)}
+                 onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        handleUrlSubmit(e);
+                    }
+                 }}
                />
                <button
                   type="button"
