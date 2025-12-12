@@ -381,8 +381,8 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
           }
       }
 
-      // Check if Thai title is missing or same as English (common GRN issue)
-      if (titleTh === titleEn || titleTh === "Unknown Title") {
+      // Check if Thai title is missing, same as English, or default placeholder
+      if (titleTh === titleEn || titleTh === "Unknown Title" || titleTh === "ชื่อเรื่องไม่ระบุ") {
           try {
              // Use Free Translation API
              const transRes = await fetchWithFallback(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(titleEn)}&langpair=en|th`, controller.signal);
@@ -393,7 +393,23 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                  }
              }
           } catch (e) {
-              console.warn("Auto-translation failed", e);
+              console.warn("Auto-translation for Title failed", e);
+          }
+      }
+
+      // Check if Thai language name is missing, same as English, or default placeholder
+      if (langTh === languageEn || langTh === "Unknown Language" || langTh === "ภาษาไม่ระบุ") {
+          try {
+             // Use Free Translation API
+             const transRes = await fetchWithFallback(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(languageEn)}&langpair=en|th`, controller.signal);
+             if (transRes) {
+                 const transData = JSON.parse(transRes);
+                 if (transData.responseData?.translatedText) {
+                     langTh = transData.responseData.translatedText;
+                 }
+             }
+          } catch (e) {
+              console.warn("Auto-translation for Language failed", e);
           }
       }
 
