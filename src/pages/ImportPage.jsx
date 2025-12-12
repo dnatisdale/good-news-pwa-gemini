@@ -379,6 +379,22 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
              titleTh = partsTh[0];
              langTh = partsTh[1];
           }
+
+          // RECOVERY: If English Fetch Failed but Thai Succeeded (and likely returned English text)
+          // We copy the Thai results to English fields so we have *something* to work with
+          // and something to base the translation on.
+          if (titleEn === "Unknown Title" && titleTh !== "ชื่อเรื่องไม่ระบุ") {
+              titleEn = titleTh;
+              languageEn = langTh;
+          }
+
+          // RECOVERY: Try to find ID in Thai page if missed in English
+          if (foundLangId === "0000") {
+             const langLinkMatch = textTh.match(/href="\/[^/]+\/language\/(\d+)"/);
+             if (langLinkMatch) {
+                 foundLangId = langLinkMatch[1];
+             }
+          }
       }
 
       // Check if Thai title is missing, same as English, or default placeholder
