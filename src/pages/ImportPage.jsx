@@ -320,16 +320,47 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
       const textEn = await fetchWithFallback(`https://globalrecordings.net/en/program/${id}`, controller.signal);
       
       let titleEn = "Unknown Title";
-      let langEn = "Unknown Language";
+      let languageEn = "Unknown Language";
+      let foundLangId = "0000";
+      let foundIso = "ENG";
 
       if (textEn) {
+          // 1. Parse Title & Language Name
           const parser = new DOMParser();
           const docEn = parser.parseFromString(textEn, "text/html");
           const fullTitleEn = docEn.querySelector("title")?.innerText || "";
           const parts = fullTitleEn.split(" - ").map((s) => s.trim());
           if (parts.length >= 2) {
              titleEn = parts[0];
-             langEn = parts[1];
+             languageEn = parts[1];
+          }
+
+          // 2. Deep Fetch: Find Language ID Link
+          // Look for href="/en/language/12345"
+          const langLinkMatch = textEn.match(/href="\/en\/language\/(\d+)"/);
+          if (langLinkMatch) {
+              foundLangId = langLinkMatch[1];
+              
+              // 3. Deep Fetch: Get ISO from Language Page
+              try {
+                  const textLang = await fetchWithFallback(`https://globalrecordings.net/en/language/${foundLangId}`, controller.signal);
+                  if (textLang) {
+                      // Regex to find "ISO Language Name: ... [kor]"
+                      // The [kor] might be inside an <a> tag, so we match loosely
+                      // Pattern: ISO Language Name: ... [ ... iso ... ]
+                      const isoMatch = textLang.match(/ISO Language Name:.*?\[(.*?)\]/);
+                      if (isoMatch) {
+                           // Remove any HTML tags if present (e.g. <a href...>kor</a>)
+                           let rawIso = isoMatch[1];
+                           rawIso = rawIso.replace(/<[^>]*>?/gm, ''); // Strip tags
+                           if (rawIso && rawIso.length === 3) {
+                               foundIso = rawIso.toUpperCase();
+                           }
+                      }
+                  }
+              } catch (e) {
+                  console.warn("Deep fetch for ISO failed", e);
+              }
           }
       }
 
@@ -343,20 +374,38 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
           const parser = new DOMParser();
           const docTh = parser.parseFromString(textTh, "text/html");
           const fullTitleTh = docTh.querySelector("title")?.innerText || "";
-          const parts = fullTitleTh.split(" - ").map((s) => s.trim());
-          if (parts.length >= 2) {
-             titleTh = parts[0];
-             langTh = parts[1];
+          const partsTh = fullTitleTh.split(" - ").map((s) => s.trim());
+          if (partsTh.length >= 2) {
+             titleTh = partsTh[0];
+             langTh = partsTh[1];
+          }
+      }
+
+      // Check if Thai title is missing or same as English (common GRN issue)
+      if (titleTh === titleEn || titleTh === "Unknown Title") {
+          try {
+             // Use Free Translation API
+             const transRes = await fetchWithFallback(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(titleEn)}&langpair=en|th`, controller.signal);
+             if (transRes) {
+                 const transData = JSON.parse(transRes);
+                 if (transData.responseData?.translatedText) {
+                     titleTh = transData.responseData.translatedText;
+                 }
+             }
+          } catch (e) {
+              console.warn("Auto-translation failed", e);
           }
       }
 
       clearTimeout(timeoutId);
 
       return {
-        languageEn: langEn,
+        languageEn: languageEn,
         langTh: langTh,
         title_en: titleEn,
         title_th: titleTh,
+        iso3: foundIso,
+        langId: foundLangId
       };
     } catch (err) {
       console.warn("Metadata fetch failed", err);
@@ -410,8 +459,8 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
       id: generateId(), // Internal ID
       programId: id, // GRN ID
       trackNumber: trackNum,
-      iso3: iso3,
-      langId: langId,
+      iso3: existingItem?.iso3 || metadata.iso3 || "ENG",
+      langId: existingItem?.langId || metadata.langId || "0000",
       languageEn: existingItem?.languageEn || metadata.languageEn || "Custom Import",
       langTh: existingItem?.langTh || metadata.langTh || "นำเข้าเอง",
       title_en: existingItem?.title_en || metadata.title_en || `Message ${id}`,
@@ -771,7 +820,7 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
                              </p>
                              <div className="text-xs text-gray-400 mt-1 flex gap-3">
                                 <span>ISO: {currentItem.iso3}</span>
-                                <span>ID: {currentItem.langId}</span>
+                                <span>ID: {currentItem.programId}</span>
                              </div>
                           </div>
                       </div>
