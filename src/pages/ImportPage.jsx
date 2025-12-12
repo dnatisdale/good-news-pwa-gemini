@@ -303,10 +303,16 @@ const ImportPage = ({ t, lang, onBack, onForward, hasPrev, hasNext, setCustomBac
             }
         } catch (e) {}
 
-        // 2. Try AllOrigins (Dev Fallback)
+        // 2. Try AllOrigins (Dev Fallback 1)
         try {
            const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`, { signal });
            if (res.ok) return await res.text();
+        } catch (e) {}
+
+        // 3. Try CorsProxy.io (Dev Fallback 2)
+        try {
+            const res = await fetch(`https://corsproxy.io/?` + encodeURIComponent(targetUrl), { signal });
+            if (res.ok) return await res.text();
         } catch (e) {}
         
         return null;

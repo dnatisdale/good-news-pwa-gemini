@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
-
 exports.handler = async (event, context) => {
+  const { default: fetch } = await import('node-fetch');
+
   const { url } = event.queryStringParameters;
 
   if (!url) {
