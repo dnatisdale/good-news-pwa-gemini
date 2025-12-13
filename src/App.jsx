@@ -53,6 +53,8 @@ import SelectionBadge from "./components/SelectionBadge";
 import UpdateNotification from "./components/UpdateNotification";
 // import SettingsPage from "./pages/SettingsPage"; // REMOVED
 import StorageManagementPage from "./pages/StorageManagementPage"; // NEW
+import InstallBanner from "./components/InstallBanner"; // NEW: Install Banner
+
 
 // --- CONSTANTS ---
 const PRIMARY_COLOR_CLASS = "bg-gradient-to-r from-brand-red to-brand-red-dark";
@@ -633,6 +635,7 @@ export default function App() {
   const [isAudioMinimized, setIsAudioMinimized] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isBannerDismissed, setIsBannerDismissed] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLangSearchBarVisible, setIsLangSearchBarVisible] = useState(false); // start hidden; toggle with header button
 
@@ -1566,6 +1569,7 @@ export default function App() {
             rounded-full shadow-2xl 
             object-cover
             brightness-125
+            animate-windy
           "
         />
       </div>
@@ -1619,7 +1623,7 @@ export default function App() {
                 <img
                   src={BannerLogo}
                   alt={t.app_name}
-                  className="w-auto flex-shrink-0 object-cover rounded-lg brightness-125"
+                  className="w-auto flex-shrink-0 object-cover rounded-lg brightness-125 animate-windy"
                   style={{ height: "4rem" }}
                 />
               </a>
@@ -1749,7 +1753,7 @@ export default function App() {
                 <img
                   src={BannerLogo}
                   alt={t.app_name}
-                  className="w-auto flex-shrink-0 rounded-lg brightness-125"
+                  className="w-auto flex-shrink-0 rounded-lg brightness-125 animate-windy"
                   style={{ height: "4rem" }}
                 />
               </a>
@@ -1970,7 +1974,7 @@ export default function App() {
                   <img
                     src={AppLogo}
                     alt="Logo"
-                    className="h-12 w-12 flex-shrink-0 object-cover brightness-125"
+                    className="h-12 w-12 flex-shrink-0 object-cover brightness-125 animate-windy"
                   />
                 </button>
 
@@ -2228,6 +2232,28 @@ export default function App() {
             </div>
           </div>
         </div>
+        
+        {/* --- INSTALL BANNER --- */}
+        {(!isPwaInstalled && !isBannerDismissed) && (
+          <InstallBanner 
+            onInstall={handleInstallClick} 
+            t={t} 
+            lang={lang} 
+            onClose={() => {
+              // Mark as dismissed for this session or logic as needed
+              // For now, simpler is better: clicking close removes it from DOM until refresh
+              // But InstallBanner handles its own visibility via onClose usually? 
+              // Wait, InstallBanner component we wrote uses internal visibility logic but we passed onClose.
+              // We should probably just store dismissal in a generic state if we want it to persist?
+              // The component provided by the thinking block calls `onClose` so we can set a state in App.jsx or let component unmount.
+              // Actually, simpler: Let's just have a state `showInstallBanner`?
+              // Or better: InstallBanner handles its own "close" visibility?
+              // Looking at previous step's code: InstallBanner accepts `onClose`.
+              // We can create a state `isBannerDismissed`.
+              setIsBannerDismissed(true);
+            }} 
+          />
+        )}
       </div>
     ) // This is the closing parenthesis for the entire application UI block
   ); // This is the closing parenthesis for the main return

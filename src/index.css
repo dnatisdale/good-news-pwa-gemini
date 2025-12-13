@@ -138,3 +138,43 @@ body {
 .slide-up {
   animation: slideUp 0.5s ease-out forwards;
 }
+
+/* 5. Wiggle / Shake Animation (Attention Grabbing) */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+
+@keyframes wiggle-subtle {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.4s ease-in-out infinite;
+}
+
+.animate-wiggle-subtle {
+  animation: wiggle-subtle 0.4s ease-in-out infinite;
+}
+
+/* 6. Breathe / Pulse Text Animation */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-breathe {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+/* 7. Windy Animation (Gentle Sway & Breathe) */
+@keyframes windy {
+  0% { transform: rotate(-3deg) scale(1); }
+  50% { transform: rotate(3deg) scale(1.05); }
+  100% { transform: rotate(-3deg) scale(1); }
+}
+
+.animate-windy {
+  animation: windy 4s ease-in-out infinite;
+}
