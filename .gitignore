@@ -16,3 +16,6 @@ yarn-error.log
 your_content_data_NEW.csv
 *.png
 *.png
+
+# Backups
+backups/

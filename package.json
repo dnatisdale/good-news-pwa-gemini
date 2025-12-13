@@ -21,7 +21,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "add-keys": "powershell -File ./scripts/addStableKeys.ps1"
+    "add-keys": "powershell -File ./scripts/addStableKeys.ps1",
+    "backup": "powershell -File ./scripts/backup_project.ps1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
